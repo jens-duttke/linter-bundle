@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 const childProcess = require('child_process');
+// const { sync: resolveBin } = require('resolve-bin');
+const resolveBin = require('resolve-bin');
 
 // process.exit(await checkOutdated(process.argv.slice(2)));
 
@@ -8,6 +10,9 @@ let lintingProcess;
 const taskName = process.argv[2];
 
 process.stdout.write(`\n> lint ${taskName}\n`);
+
+// console.log(resolveBin('eslint'));
+console.log(resolveBin);
 
 switch (taskName) {
 	case 'tsc':
