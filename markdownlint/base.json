@@ -1,4 +1,4 @@
-module.exports = {
+{
 	"default": true,
 
 	"MD013": {
@@ -15,4 +15,4 @@ module.exports = {
 		]
 	},
 	"MD046": false
-};
+}

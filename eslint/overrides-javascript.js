@@ -26,12 +26,7 @@ module.exports = {
 		 * @see https://github.com/benmosher/eslint-plugin-import
 		 */
 		'import/no-commonjs': 'off',
-		'import/no-internal-modules': ['error', {
-			allow: [
-				'**/webpack/*',
-				'**/helper/*'
-			]
-		}],
+		'import/no-internal-modules': 'off',
 		'import/no-nodejs-modules': 'off',
 
 		/**
