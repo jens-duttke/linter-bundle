@@ -19,10 +19,7 @@
 	"author": "Jens Duttke <github@duttke.de> (https://github.com/jens-duttke)",
 	"license": "MIT",
 	"bin": {
-		"lint": "lint.js",
-		"eslint": "node_modules/eslint/bin/eslint.js",
-		"stylelint": "node_modules/stylelint/bin/stylelint.js",
-		"markdownlint": "node_modules/markdownlint-cli/markdownlint.js"
+		"lint": "lint.js"
 	},
 	"repository": {
 		"type": "git",
