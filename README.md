@@ -6,6 +6,8 @@
 
 # linter-bundle
 
+## This code is currently in development, and not ready for usage.
+
 Ready-to use bundle of linting tools, containing configurations for
 - [ESLint](https://eslint.org/): JavaScript (Node.js); TypeScript, React (Browser)
 - [stylelint](https://stylelint.io/): SCSS (Browser)
