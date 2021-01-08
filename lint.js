@@ -1,18 +1,12 @@
 #!/usr/bin/env node
 
 const childProcess = require('child_process');
-// const { sync: resolveBin } = require('resolve-bin');
-const resolveBin = require('resolve-bin');
-
-// process.exit(await checkOutdated(process.argv.slice(2)));
+const { sync: resolveBin } = require('resolve-bin');
 
 let lintingProcess;
 const taskName = process.argv[2];
 
-process.stdout.write(`\n> lint ${taskName}\n`);
-
-// console.log(resolveBin('eslint'));
-console.log(resolveBin);
+process.stdout.write(`\n> lint ${taskName}\n\n`);
 
 switch (taskName) {
 	case 'tsc':
@@ -20,7 +14,7 @@ switch (taskName) {
 		break;
 
 	case 'ts':
-		lintingProcess = childProcess.exec('eslint . --ext .ts,.tsx,.js --format unix', {
+		lintingProcess = childProcess.exec(`node "${resolveBin('eslint')}" . --ext .ts,.tsx,.js --format unix`, {
 			env: {
 				TIMING: 10
 			}
@@ -28,11 +22,11 @@ switch (taskName) {
 		break;
 
 	case 'sass':
-		lintingProcess = childProcess.exec('stylelint "src/**/*.scss" --formatter unix --report-needless-disables --report-invalid-scope-disables --report-descriptionless-disables');
+		lintingProcess = childProcess.exec(`node "${resolveBin('stylelint')}"  "src/**/*.scss" --formatter unix --report-needless-disables --report-invalid-scope-disables --report-descriptionless-disables`);
 		break;
 
 	case 'md':
-		lintingProcess = childProcess.exec('markdownlint **/*.md --config node_modules/linter-bundle/markdownlint/index.js --ignore node_modules');
+		lintingProcess = childProcess.exec(`node "${resolveBin('markdownlint-cli', { executable: 'markdownlint' })}"  **/*.md --ignore node_modules`);
 		break;
 
 	case 'audit':
