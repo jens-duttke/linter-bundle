@@ -6,8 +6,6 @@
 
 # linter-bundle
 
-## This code is currently in development, and not ready for usage.
-
 Ready-to use bundle of linting tools, containing configurations for
 - [ESLint](https://eslint.org/): JavaScript (Node.js); TypeScript, React (Browser)
 - [stylelint](https://stylelint.io/): SCSS (Browser)
@@ -44,3 +42,88 @@ npm install linter-bundle --save-dev
 ```
 
 ### Usage
+
+#### package.json
+
+```json
+{
+  "scripts": {
+    "lint": "lint tsc & lint ts & lint sass & lint md & lint audit"
+  }
+}
+```
+
+#### .eslintrc.js
+
+```js
+module.exports = {
+	extends: [
+		'./node_modules/linter-bundle/eslint'
+	],
+	ignorePatterns: [
+		'build/',
+		'coverage/',
+		'etc/',
+		'node_modules/',
+		'private/'
+	],
+	overrides: [
+		require('linter-bundle/eslint/overrides-type-declarations'),
+		require('linter-bundle/eslint/overrides-worker'),
+		require('linter-bundle/eslint/overrides-react'),
+		require('linter-bundle/eslint/overrides-javascript'),
+		require('linter-bundle/eslint/overrides-jest')
+	]
+};
+```
+
+#### stylelint.config.js
+
+```js
+module.exports = {
+	extends: 'linter-bundle/stylelint'
+};
+
+```
+
+#### .markdownlint.json
+
+```json
+{
+	"extends": "node_modules/linter-bundle/markdownlint/base.json"
+}
+```
+
+## Available commands and what they are doing
+
+### `lint tsc`
+
+```sh
+tsc --skipLibCheck
+```
+
+### `lint ts`
+
+```sh
+eslint . --ext .ts,.tsx,.js --format unix
+```
+
+Additionally, the environment variable `TIMING` is set to `10`.
+
+### `lint sass`
+
+```sh
+stylelint "src/**/*.scss" --formatter unix --report-needless-disables 
+```
+
+### `lint md`
+
+```sh
+markdownlint **/*.md --ignore node_modules
+```
+
+### `lint audit`
+
+```sh
+npm audit --production --audit-level=moderate
+```
