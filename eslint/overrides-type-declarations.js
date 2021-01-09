@@ -28,8 +28,8 @@ module.exports = {
 				 */
 				'unicorn/filename-case': ['error', {
 					cases: {
-						camelCase: true,
-						kebabCase: true
+						kebabCase: true,
+						pascalCase: true
 					}
 				}]
 			}
