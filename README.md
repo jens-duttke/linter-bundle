@@ -9,7 +9,7 @@
 Ready-to use bundle of linting tools, containing configurations for
 - [ESLint](https://eslint.org/): JavaScript (Node.js); TypeScript, React (Browser)
 - [stylelint](https://stylelint.io/): SCSS (Browser)
-- [markdownlint](https://github.com/DavidAnson/markdownlint): and Markdown
+- [markdownlint](https://github.com/DavidAnson/markdownlint): Markdown
 
 ## Used plugins
 
