@@ -368,7 +368,7 @@ module.exports = {
 		}],
 		'@typescript-eslint/return-await': 'error',
 		'@typescript-eslint/semi': 'error',
-		'@typescript-eslint/sort-type-union-intersection-members': 'error',
+		'@typescript-eslint/sort-type-union-intersection-members': 'off', // Types should be sorted and grouped by priority and their meaning, not alphabetically
 		'@typescript-eslint/space-before-function-paren': 'error',
 		'@typescript-eslint/strict-boolean-expressions': ['off', { allowNullable: true, allowSafe: true, ignoreRhs: true }], // @todo Doesn't work for specific code, check later after all linter warnings are fixed, maybe at some positions we can use '??'
 		'@typescript-eslint/switch-exhaustiveness-check': 'error',
