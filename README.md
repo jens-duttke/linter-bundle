@@ -42,7 +42,7 @@ This setup is using the following additional plugins:
 npm install linter-bundle --save-dev
 ```
 
-### Usage
+### Usage examples
 
 #### package.json
 
@@ -57,32 +57,58 @@ npm install linter-bundle --save-dev
 #### .eslintrc.js
 
 ```js
+// Sometimes it's required to adjust specific settings. These can be defined here:
+global.linterBundleSettings = {
+  overrides: {
+    general: {
+      'import/order': {
+        additionalExternalPatterns: ['@sentry/*']
+      }
+    },
+    react: {
+      'react/forbid-component-props': {
+        allowClassNameFor: ['Checkbox', 'Grid', 'GridItem', 'Button'],
+        allowStyleFor: []
+      }
+    }
+  }
+};
+
 module.exports = {
-	extends: [
-		'./node_modules/linter-bundle/eslint'
-	],
-	ignorePatterns: [
-		'build/',
-		'coverage/',
-		'etc/',
-		'node_modules/',
-		'private/'
-	],
-	overrides: [
-		require('linter-bundle/eslint/overrides-type-declarations'),
-		require('linter-bundle/eslint/overrides-worker'),
-		require('linter-bundle/eslint/overrides-react'),
-		require('linter-bundle/eslint/overrides-javascript'),
-		require('linter-bundle/eslint/overrides-jest')
-	]
+  extends: [
+    require.resolve('linter-bundle/eslint'),
+    require.resolve('linter-bundle/eslint/overrides-type-declarations'),
+    require.resolve('linter-bundle/eslint/overrides-worker'),
+    require.resolve('linter-bundle/eslint/overrides-react'),
+    require.resolve('linter-bundle/eslint/overrides-gatsby'),
+    require.resolve('linter-bundle/eslint/overrides-javascript'),
+    require.resolve('linter-bundle/eslint/overrides-jest')
+  ],
+  ignorePatterns: [
+    // Define paths which should be ignored here. (The following paths are ignored by default: '.cache/', '.vscode/', 'coverage/', 'node_modules/')
+    'build/',
+    'etc/',
+    'private/'
+  ],
+  globals: {
+    // Define project-specific global variables. JavaScript built-in objects (like ArrayBuffer, typed arrays, Promise, Set/Map etc.) are automatically set to 'readonly', and don't need to be added here.
+    __DEV__: 'readonly',
+    APP_NAME: 'readonly',
+    APP_VERSION: 'readonly',
+  }
 };
 ```
 
 #### stylelint.config.js
 
 ```js
+global.linterBundleSettings = {
+  // The prefix used for the 'custom-media-pattern' and 'custom-property-pattern' rule. If not defined, these rules are disabled.
+  propertyPrefix: 'hexedit'
+};
+
 module.exports = {
-	extends: 'linter-bundle/stylelint'
+  extends: 'linter-bundle/stylelint'
 };
 
 ```
@@ -91,7 +117,7 @@ module.exports = {
 
 ```json
 {
-	"extends": "node_modules/linter-bundle/markdownlint/base.json"
+  "extends": "node_modules/linter-bundle/markdownlint/base.json"
 }
 ```
 

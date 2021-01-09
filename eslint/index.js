@@ -1,14 +1,18 @@
 module.exports = {
 	ignorePatterns: [
+		'.cache/',
+		'.vscode/',
+		'coverage/',
 		'node_modules/'
 	],
 	parser: '@typescript-eslint/parser',
 	plugins: [
-		'react',
-		'react-hooks',
 		'functional',
 		'import',
+		'jsx-a11y',
 		'node',
+		'react-hooks',
+		'react',
 		'unicorn'
 	],
 	extends: [
@@ -32,18 +36,6 @@ module.exports = {
 		commonjs: true
 	},
 	globals: {
-		__DEV__: 'readonly',
-		APP_NAME: 'readonly',
-		APP_VERSION: 'readonly',
-
-		MAX_RADIX: 'readonly',
-		RADIX_DEC: 'readonly',
-		RADIX_HEX: 'readonly',
-		SIZE_KB: 'readonly',
-		SIZE_MB: 'readonly',
-		SIZE_GB: 'readonly',
-		MAX_BYTES_OF_DECODED_LEB128_DATA: 'readonly',
-
 		ArrayBuffer: 'readonly',
 		FileReaderSync: 'readonly',
 		Float32Array: 'readonly',
@@ -51,6 +43,7 @@ module.exports = {
 		Int8Array: 'readonly',
 		Int16Array: 'readonly',
 		Int32Array: 'readonly',
+		Map: 'readonly',
 		Promise: 'readonly',
 		Set: 'readonly',
 		Uint8Array: 'readonly',
@@ -460,8 +453,7 @@ module.exports = {
 			'newlines-between': 'always',
 			'pathGroupsExcludedImportTypes': [],
 			'pathGroups': [
-				{ pattern: '@pmmmwh/*', group: 'external' },
-				{ pattern: '@sentry/*', group: 'external' },
+				...(global.linterBundleSettings?.overrides?.general?.['import/order']?.additionalExternalPatterns ?? []).map((pattern) => ({ pattern, group: 'external' })),
 				{ pattern: '@*', group: 'internal' },
 				{ pattern: '@*/**', group: 'internal' },
 				{ pattern: '*!*/**', group: 'internal', position: 'after' } // Webpack loaders, e.g. 'worker-ref-loader!@app/components/FileFormatIdentificationDialog/TypeDetection.worker'
@@ -469,6 +461,42 @@ module.exports = {
 		}],
 		'import/prefer-default-export': 'off',
 		'import/unambiguous': 'off',
+
+		/**
+		 * eslint-plugin-jsx-a11y Rules
+		 * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y
+		 */
+		'jsx-a11y/alt-text': 'error',
+		'jsx-a11y/anchor-has-content': 'error',
+		'jsx-a11y/anchor-is-valid': 'error',
+		'jsx-a11y/aria-activedescendant-has-tabindex': 'error',
+		'jsx-a11y/aria-props': 'error',
+		'jsx-a11y/aria-proptypes': 'error',
+		'jsx-a11y/aria-role': 'error',
+		'jsx-a11y/aria-unsupported-elements': 'error',
+		'jsx-a11y/autocomplete-valid': 'error',
+		'jsx-a11y/click-events-have-key-events': 'error',
+		'jsx-a11y/heading-has-content': 'error',
+		'jsx-a11y/html-has-lang': 'off', // <html> elements set by react-helmet automatically have a lang attribute set
+		'jsx-a11y/iframe-has-title': 'error',
+		'jsx-a11y/img-redundant-alt': 'error',
+		'jsx-a11y/interactive-supports-focus': 'error',
+		'jsx-a11y/label-has-associated-control': 'error',
+		'jsx-a11y/media-has-caption': 'error',
+		'jsx-a11y/mouse-events-have-key-events': 'error',
+		'jsx-a11y/no-access-key': 'error',
+		'jsx-a11y/no-autofocus': 'error',
+		'jsx-a11y/no-distracting-elements': 'error',
+		'jsx-a11y/no-interactive-element-to-noninteractive-role': 'error',
+		'jsx-a11y/no-noninteractive-element-interactions': 'error',
+		'jsx-a11y/no-noninteractive-element-to-interactive-role': 'error',
+		'jsx-a11y/no-noninteractive-tabindex': 'error',
+		'jsx-a11y/no-redundant-roles': 'error',
+		'jsx-a11y/no-static-element-interactions': 'error',
+		'jsx-a11y/role-has-required-aria-props': 'error',
+		'jsx-a11y/role-supports-aria-props': 'error',
+		'jsx-a11y/scope': 'error',
+		'jsx-a11y/tabindex-no-positive': 'error',
 
 		/**
 		 * eslint-plugin-unicorn Rules
@@ -543,11 +571,10 @@ module.exports = {
 		'unicorn/prefer-string-trim-start-end': 'error',
 		'unicorn/prefer-ternary': 'off', // We prefer readability over saving a few chars
 		'unicorn/prefer-type-error': 'error',
-		'unicorn/prevent-abbreviations': ['error', { ignore: ['args', 'doc', 'i', 'j', 'i18n', 'ref', 'params', 'prevState', 'props', 'Props'] }],
+		'unicorn/prevent-abbreviations': ['error', { ignore: ['args', 'i', 'j', 'i18n', 'ref', 'params', 'props', 'Props'] }],
 		'unicorn/string-content': ['error', {
 			patterns: {
 				'\\.\\.\\.': '…',
-				// eslint-disable-next-line unicorn/string-content
 				'->': '→'
 			}
 		}],

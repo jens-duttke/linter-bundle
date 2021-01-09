@@ -610,9 +610,9 @@ module.exports = {
 		'comment-pattern': /^[^\s].+[^\s]$/u,
 		'comment-whitespace-inside': 'always',
 		'comment-word-disallowed-list': null,
-		'custom-media-pattern': 'hexedit-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)+',
+		'custom-media-pattern': (global.linterBundleSettings?.patternPrefix ? `${global.linterBundleSettings.patternPrefix}-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)+` : null),
 		'custom-property-empty-line-before': null, // Empty lines between custom properties are optional
-		'custom-property-pattern': 'hexedit-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)*',
+		'custom-property-pattern': (global.linterBundleSettings?.patternPrefix ? `${global.linterBundleSettings.patternPrefix}-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)*` : null),
 		'declaration-bang-space-after': 'never',
 		'declaration-bang-space-before': 'always',
 		'declaration-block-no-duplicate-properties': [

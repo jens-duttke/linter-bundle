@@ -18,6 +18,17 @@ module.exports = {
 		 * @see https://eslint.org/docs/rules/
 		 */
 		'max-classes-per-file': 'off',
-		'one-var': 'off'
+		'one-var': 'off',
+
+		/**
+		 * eslint-plugin-unicorn Rules
+		 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
+		 */
+		'unicorn/filename-case': ['error', {
+			cases: {
+				camelCase: true,
+				kebabCase: true
+			}
+		}]
 	}
 };

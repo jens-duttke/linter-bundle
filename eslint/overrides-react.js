@@ -16,9 +16,12 @@ module.exports = {
 		'react/forbid-component-props': ['error', { forbid: [
 			{
 				propName: 'className',
-				allowedFor: ['Checkbox', 'Grid', 'GridItem', 'Button', 'ModalDialog', 'PopupDialog', 'SelectionList']
+				allowedFor: global.linterBundleSettings?.overrides?.react?.['react/forbid-component-props']?.allowClassNameFor ?? []
 			},
-			'style'
+			{
+				propName: 'style',
+				allowedFor: global.linterBundleSettings?.overrides?.react?.['react/forbid-component-props']?.allowStyleFor ?? []
+			}
 		] }],
 		'react/forbid-dom-props': 'error',
 		'react/forbid-elements': 'error',
