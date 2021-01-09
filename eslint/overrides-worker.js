@@ -1,6 +1,10 @@
 module.exports = {
-	files: ['*.worker.ts'],
-	rules: {
-		'import/no-default-export': 'off'
-	}
+	overrides: [
+        {
+			files: ['*.worker.ts'],
+			rules: {
+				'import/no-default-export': 'off'
+			}
+		}
+	]
 };
