@@ -17,6 +17,7 @@ This setup is using the following additional plugins:
 
 ### ESLint
 
+- @typescript-eslint/eslint-plugin
 - eslint-plugin-functional
 - eslint-plugin-import
 - eslint-plugin-jsx-a11y
