@@ -3,13 +3,24 @@ module.exports = {
         {
 			files: ['*.tsx'],
 			rules: {
+				/**
+				 * @typescript-eslint Rules
+				 * @see https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules
+				 */
 				'@typescript-eslint/member-ordering': 'off', // For React components we are using react/sort-comp
 
-				// eslint-plugin-react-hooks (https://reactjs.org/docs/hooks-rules.html)
+				/**
+				 * eslint-plugin-react-hooks Rules
+				 * @see https://github.com/facebook/react/tree/master/packages/eslint-plugin-react-hooks
+				 * @see https://reactjs.org/docs/hooks-rules.html
+				 */
 				'react-hooks/rules-of-hooks': 'error',
 				'react-hooks/exhaustive-deps': 'error',
 
-				// eslint-plugin-react
+				/**
+				 * eslint-plugin-react Rules
+				 * @see https://github.com/yannickcr/eslint-plugin-react
+				 */
 				'react/boolean-prop-naming': 'error',
 				'react/button-has-type': 'error',
 				'react/default-props-match-prop-types': 'error',
@@ -88,6 +99,7 @@ module.exports = {
 				'react/style-prop-object': 'error',
 				'react/void-dom-elements-no-children': 'error',
 
+				// JSX-specific rules
 				'react/jsx-boolean-value': ['error', 'always'],
 				'react/jsx-child-element-spacing': 'off',
 				'react/jsx-closing-bracket-location': 'error',

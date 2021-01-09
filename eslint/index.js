@@ -10,7 +10,6 @@ module.exports = {
 		'functional',
 		'import',
 		'jsx-a11y',
-		'node',
 		'react-hooks',
 		'react',
 		'unicorn'
@@ -60,6 +59,325 @@ module.exports = {
 	},
 	reportUnusedDisableDirectives: true,
 	rules: {
+		/**
+		 * eslint Rules
+		 * @see https://eslint.org/docs/rules/
+		 */
+
+		// Possible Errors
+		'for-direction': 'error',
+		'getter-return': 'error',
+		'no-async-promise-executor': 'error',
+		'no-await-in-loop': 'error',
+		'no-compare-neg-zero': 'error',
+		'no-cond-assign': 'error',
+		'no-console': 'error',
+		'no-constant-condition': 'error',
+		'no-control-regex': 'off', // This rule does not make sense to me
+		'no-debugger': 'error',
+		'no-dupe-args': 'error',
+		'no-dupe-else-if': 'error',
+		'no-dupe-keys': 'error',
+		'no-duplicate-case': 'error',
+		'no-empty': 'error',
+		'no-empty-character-class': 'error',
+		'no-ex-assign': 'error',
+		'no-extra-boolean-cast': 'error',
+		'no-extra-parens': 'off', // @typescript-eslint/no-extra-parens
+		'no-extra-semi': 'off', // @typescript-eslint/no-extra-semi
+		'no-func-assign': 'error',
+		'no-import-assign': 'error',
+		'no-inner-declarations': ['error', 'both'],
+		'no-invalid-regexp': 'error',
+		'no-irregular-whitespace': 'error',
+		'no-misleading-character-class': 'error',
+		'no-obj-calls': 'error',
+		'no-promise-executor-return': 'error',
+		'no-prototype-builtins': 'error',
+		'no-regex-spaces': 'error',
+		'no-setter-return': 'error',
+		'no-sparse-arrays': 'error',
+		'no-template-curly-in-string': 'error',
+		'no-unexpected-multiline': 'error',
+		'no-unreachable': 'error',
+		'no-unreachable-loop': 'error',
+		'no-unsafe-finally': 'error',
+		'no-unsafe-negation': 'error',
+		'no-unsafe-optional-chaining': 'error',
+		'no-useless-backreference': 'error',
+		'require-atomic-updates': 'error',
+		'use-isnan': 'error',
+		'valid-typeof': ['error', { requireStringLiterals: true }],
+
+		// Best Practices
+		'accessor-pairs': 'error',
+		'array-callback-return': 'error',
+		'block-scoped-var': 'error',
+		'class-methods-use-this': ['error', { exceptMethods: ['componentDidMount', 'componentDidUpdate', 'componentWillUnmount', 'shouldComponentUpdate'] }],
+		'complexity': ['error', { max: 90 }], // @todo Decrease that to 20 and fix functions which are too complex
+		'consistent-return': 'off', // Handled by TypeScript type annotations
+		'curly': 'error',
+		'default-case': 'error',
+		'default-case-last': 'error',
+		'default-param-last': 'off', // @todo It should be valid to have optional parameters after default parameters
+		'dot-location': ['error', 'property'],
+		'dot-notation': 'off', // @typescript-eslint/dot-notation
+		'eqeqeq': 'error',
+		'grouped-accessor-pairs': 'error',
+		'guard-for-in': 'error',
+		'max-classes-per-file': 'error',
+		'no-alert': 'error',
+		'no-caller': 'error',
+		'no-case-declarations': 'error',
+		'no-constructor-return': 'error',
+		'no-div-regex': 'error',
+		'no-else-return': 'error',
+		'no-empty-function': 'off', // @typescript-eslint/no-empty-function
+		'no-empty-pattern': 'error',
+		'no-eq-null': 'error',
+		'no-eval': 'error',
+		'no-extend-native': 'error',
+		'no-extra-bind': 'error',
+		'no-extra-label': 'error',
+		'no-fallthrough': ['error', { commentPattern: '[]' }], // @todo There is a conflict between this rule and the `reportUnusedDisableDirectives` option, which requires the `commonPattern`. Remove it, as soon as https://github.com/eslint/eslint/issues/13627 is fixed.
+		'no-floating-decimal': 'error',
+		'no-global-assign': 'error',
+		'no-implicit-coercion': 'error',
+		'no-implicit-globals': 'error',
+		'no-implied-eval': 'error',
+		'no-invalid-this': 'off', // @typescript-eslint/no-invalid-this
+		'no-iterator': 'error',
+		'no-labels': ['error', { allowLoop: true }],
+		'no-lone-blocks': 'error',
+		'no-loop-func': 'off', // @typescript-eslint/no-loop-func
+		'no-loss-of-precision': 'off', // @typescript-eslint/no-loss-of-precision
+		'no-magic-numbers': 'off', // @typescript-eslint/no-magic-numbers
+		'no-multi-spaces': 'error',
+		'no-multi-str': 'error',
+		'no-new': 'error',
+		'no-new-func': 'error',
+		'no-new-wrappers': 'error',
+		'no-nonoctal-decimal-escape': 'error',
+		'no-octal': 'error',
+		'no-octal-escape': 'error',
+		'no-param-reassign': 'off', // @todo Disabled for now, activate later ['error', { props: true }],
+		'no-proto': 'error',
+		'no-redeclare': 'off', // @typescript-eslint/no-redeclare
+		'no-return-assign': 'error',
+		'no-return-await': 'off', // @typescript-eslint/return-await
+		'no-script-url': 'error',
+		'no-self-assign': 'error',
+		'no-self-compare': 'error',
+		'no-sequences': 'error',
+		'no-throw-literal': 'off', // @typescript-eslint/no-throw-literal
+		'no-unmodified-loop-condition': 'error',
+		'no-unused-expressions': 'off', // @typescript-eslint/no-unused-expressions
+		'no-unused-labels': 'error',
+		'no-useless-call': 'off', // @todo Produces into false-positives for CharsetConverter → `internalMap.encoder.call(encoding, str.toLowerCase())`
+		'no-useless-catch': 'error',
+		'no-useless-concat': 'error',
+		'no-useless-escape': 'error',
+		'no-useless-return': 'off', // @todo Option to ignore switch-case blocks: In switch-case blocks it makes sense to keep all cases equal, instead of removing the 'return' from the last case, because this could produce bugs in later adjustments.
+		'no-void': 'off', // This is in conflict with @typescript-eslint/no-floating-promises which expects either `await` or `void`
+		'no-warning-comments': 'error',
+		'no-with': 'error',
+		'prefer-named-capture-group': 'off', // ES2018+, not supported in most browsers yet
+		'prefer-promise-reject-errors': 'error',
+		'prefer-regex-literals': 'error',
+		'radix': 'error',
+		'require-await': 'off', // @typescript-eslint/require-await
+		'require-unicode-regexp': 'error',
+		'vars-on-top': 'error',
+		'wrap-iife': 'error',
+		'yoda': 'error',
+
+		// Strict Mode
+		'strict': 'error',
+
+		// Variables
+		'init-declarations': 'off', // @todo It should be possible to ignore predefined consts like MAX_RADIX
+		'no-delete-var': 'error',
+		'no-label-var': 'error',
+		'no-restricted-globals': [
+			'error',
+			{
+				name: 'isNaN',
+				message: 'Use Number.isNaN() instead, and ensure that the input value is of type number. isNaN(undefined) !== Number.isNaN(undefined)'
+			},
+			{
+				name: 'fetch',
+				message: 'Use Utils.fetchWithTimeout() instead.'
+			}
+		],
+		'no-restricted-properties': [
+			'error',
+			{
+				object: 'localStorage',
+				property: 'getItem',
+				message: 'Use StorageHelper.getItem() instead.'
+			},
+			{
+				object: 'localStorage',
+				property: 'setItem',
+				message: 'Use StorageHelper.setItem() instead.'
+			},
+			{
+				object: 'localStorage',
+				property: 'removeItem',
+				message: 'Use StorageHelper.removeItem() instead.'
+			}
+		],
+		'no-restricted-syntax': [
+			'error',
+			{
+				selector: 'NewExpression[callee.name="Blob"]',
+				message: 'Use BlobHelper.create() instead of new Blob().'
+			}
+		],
+		'no-shadow': 'off', // @typescript-eslint/no-shadow
+		'no-shadow-restricted-names': 'error',
+		'no-undef': 'off', // Covered by TypeScript
+		'no-undef-init': 'error',
+		'no-undefined': 'off', // @todo "Using the void operator to generate the value of undefined if necessary." should be disableable
+		'no-unused-vars': 'off', // @typescript-eslint/no-unused-vars
+		'no-use-before-define': 'off', // @typescript-eslint/no-use-before-define
+
+		// Stylistic Issues
+		'array-bracket-newline': ['error', 'consistent'],
+		'array-bracket-spacing': 'error',
+		'array-element-newline': ['error', 'consistent'],
+		'block-spacing': 'error',
+		'brace-style': 'off', // @typescript-eslint/brace-style
+		'camelcase': 'off', // @typescript-eslint/naming-convention
+		'capitalized-comments': 'off',
+		'comma-dangle': 'off', // @typescript-eslint/comma-dangle
+		'comma-spacing': 'off', // @typescript-eslint/comma-spacing
+		'comma-style': 'error',
+		'computed-property-spacing': 'error',
+		'consistent-this': 'error',
+		'eol-last': 'error',
+		'func-call-spacing': 'off', // @typescript-eslint/func-call-spacing
+		'func-name-matching': 'error',
+		'func-names': 'error',
+		'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
+		'function-call-argument-newline': 'off', // @todo Multiple multi-line object arguments are not allowed, so this option is not usable right now
+		'function-paren-newline': ['error', 'multiline-arguments'],
+		'id-denylist': 'error',
+		'id-length': ['error', { exceptions: ['a', 'b', 'i', 'j', 'n', 'x', 'y', 'z'] }],
+		'id-match': 'error',
+		'implicit-arrow-linebreak': 'error',
+		'indent': 'off', // @typescript-eslint/indent
+		'jsx-quotes': 'error',
+		'key-spacing': 'error',
+		'keyword-spacing': 'error',
+		'line-comment-position': 'off',
+		'linebreak-style': 'error',
+		'lines-around-comment': 'off', // @todo Disabled for now ['error', { beforeBlockComment: true, beforeLineComment: true, allowBlockStart: true, allowObjectStart: true, allowArrayStart: true, allowClassStart: true }],
+		'lines-between-class-members': 'off', // @todo Deactivated till we have a JSDoc description for all class members
+		'max-depth': ['error', { max: 10 }], // @todo Decrease to 5 or 4
+		'max-len': ['error', {
+			code: 300,
+			tabWidth: 4,
+			comments: 300,
+			ignoreUrls: true
+		}],
+		'max-lines': ['error', { max: 2500, skipBlankLines: true, skipComments: true }], // @todo Decrease "max" to 1000 or even better, 300
+		'max-lines-per-function': ['error', { max: 250, skipBlankLines: true, skipComments: true }], // @todo Decrease to 50
+		'max-nested-callbacks': 'error',
+		'max-params': ['error', { max: 5 }],
+		'max-statements': ['error', 100, { ignoreTopLevelFunctions: true }], // @todo Decrease to 20
+		'max-statements-per-line': ['error', { max: 3 }],
+		'multiline-comment-style': 'off', // Comment style must be decided from case to case
+		'multiline-ternary': 'off', // @todo Disabled for now, since no option really matches my use ['error', 'always-multiline'],
+		'new-cap': ['error', { properties: false }],
+		'new-parens': 'error',
+		'newline-per-chained-call': ['error', { ignoreChainWithDepth: 4 }],
+		'no-array-constructor': 'off', // @typescript-eslint/no-array-constructor
+		'no-bitwise': ['error', { allow: ['^', '~', '<<', '>>', '>>>', '|=', '&=', '^=', '<<=', '>>=', '>>>='] }], // Disallow "&" and "|".
+		'no-continue': 'off', // If it makes the code more readable, wer are using `continue`
+		'no-inline-comments': 'off',
+		'no-lonely-if': 'off', // Covered by unicorn/no-lonely-if
+		'no-mixed-operators': 'error',
+		'no-mixed-spaces-and-tabs': 'error',
+		'no-multi-assign': 'error',
+		'no-multiple-empty-lines': ['error', { max: 1 }],
+		'no-negated-condition': 'off',
+		'no-nested-ternary': 'error',
+		'no-new-object': 'error',
+		'no-plusplus': 'off',
+		'no-tabs': ['error', { allowIndentationTabs: true }],
+		'no-ternary': 'off',
+		'no-trailing-spaces': 'error',
+		'no-underscore-dangle': ['error', { allow: ['__DEV__'], allowAfterThis: true }],
+		'no-unneeded-ternary': 'error',
+		'no-whitespace-before-property': 'error',
+		'nonblock-statement-body-position': 'error',
+		'object-curly-newline': 'error',
+		'object-curly-spacing': ['error', 'always'],
+		'object-property-newline': ['error', { allowAllPropertiesOnSameLine: true }],
+		'one-var': ['error', { initialized: 'never', uninitialized: 'never' }],
+		'one-var-declaration-per-line': 'error',
+		'operator-assignment': 'error',
+		'operator-linebreak': ['error', 'after', { overrides: { ':': 'ignore' } }],
+		'padded-blocks': ['error', 'never'],
+		'padding-line-between-statements': 'error',
+		'prefer-exponentiation-operator': 'error',
+		'prefer-object-spread': 'error',
+		'quote-props': ['error', 'consistent-as-needed'],
+		'quotes': 'off', // @typescript-eslint/quotes
+		'semi': 'off', // @typescript-eslint/semi
+		'semi-spacing': 'error',
+		'semi-style': 'error',
+		'sort-keys': 'off', // Keys should be grouped by their scope/category, not by their name
+		'sort-vars': 'off', // Something like `for (let pos = 4 + addressLength, dataPos = 0; pos < length - 2; pos += 2, dataPos++) {` should be sorted by importanance
+		'space-before-blocks': 'error',
+		'space-before-function-paren': 'off', // @typescript-eslint/space-before-function-paren
+		'space-in-parens': 'error',
+		'space-infix-ops': 'error',
+		'space-unary-ops': 'error',
+		'spaced-comment': ['error', 'always', { markers: ['/'], block: { markers: ['!'], balanced: true } }], // @todo Remove '/' as soon as we use import instead of require()
+		'switch-colon-spacing': 'error',
+		'template-tag-spacing': 'error',
+		'unicode-bom': 'error',
+		'wrap-regex': 'error',
+
+		// ECMAScript 6
+		'arrow-body-style': 'error',
+		'arrow-parens': 'error',
+		'arrow-spacing': 'error',
+		'constructor-super': 'error',
+		'generator-star-spacing': 'error',
+		'no-class-assign': 'error',
+		'no-confusing-arrow': ['error', { allowParens: true }],
+		'no-const-assign': 'error',
+		'no-dupe-class-members': 'off', // @typescript-eslint/no-no-dupe-class-members
+		'no-duplicate-imports': 'off', // @typescript-eslint/no-duplicate-imports / import/no-duplicates (see https://github.com/typescript-eslint/typescript-eslint/issues/2315)
+		'no-new-symbol': 'error',
+		'no-restricted-exports': 'error',
+		'no-restricted-imports': 'error',
+		'no-this-before-super': 'error',
+		'no-useless-computed-key': 'error',
+		'no-useless-constructor': 'off', // @typescript-eslint/no-useless-constructor
+		'no-useless-rename': 'error',
+		'no-var': 'error',
+		'object-shorthand': 'error',
+		'prefer-arrow-callback': ['error', { allowNamedFunctions: true }],
+		'prefer-const': 'error',
+		'prefer-destructuring': 'off', // We don't prefer destructuring if a type is specified ['error', { VariableDeclarator: { array: true, object: true }, AssignmentExpression: { array: false, object: false } }],
+		'prefer-numeric-literals': 'error',
+		'prefer-rest-params': 'error',
+		'prefer-spread': 'error',
+		'prefer-template': 'error',
+		'require-yield': 'error',
+		'rest-spread-spacing': 'error',
+		'sort-imports': 'off', /* @todo Disabled for now ['error', {
+			ignoreCase: true,
+			memberSyntaxSortOrder: ['all', 'single', 'multiple', 'none']
+		}], */
+		'symbol-description': 'error',
+		'template-curly-spacing': 'error',
+		'yield-star-spacing': ['error', { before: true, after: false }],
+
 		/**
 		 * @typescript-eslint Rules
 		 * @see https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules
@@ -539,7 +857,7 @@ module.exports = {
 		'unicorn/no-new-buffer': 'error',
 		'unicorn/no-null': 'off', // @todo Too much old native JavaScript functions are based on `null`. Maybe we can replace them later.
 		'unicorn/no-object-as-default-parameter': 'error',
-		'unicorn/no-process-exit': 'off', // node/no-process-exit
+		'unicorn/no-process-exit': 'error',
 		'unicorn/no-unreadable-array-destructuring': 'error',
 		'unicorn/no-unsafe-regex': 'off',
 		'unicorn/no-unused-properties': 'error',
@@ -581,325 +899,6 @@ module.exports = {
 				'->': '→'
 			}
 		}],
-		'unicorn/throw-new-error': 'error',
-
-		/**
-		 * eslint Rules
-		 * @see https://eslint.org/docs/rules/
-		 */
-
-		// Possible Errors
-		'for-direction': 'error',
-		'getter-return': 'error',
-		'no-async-promise-executor': 'error',
-		'no-await-in-loop': 'error',
-		'no-compare-neg-zero': 'error',
-		'no-cond-assign': 'error',
-		'no-console': 'error',
-		'no-constant-condition': 'error',
-		'no-control-regex': 'off', // This rule does not make sense to me
-		'no-debugger': 'error',
-		'no-dupe-args': 'error',
-		'no-dupe-else-if': 'error',
-		'no-dupe-keys': 'error',
-		'no-duplicate-case': 'error',
-		'no-empty': 'error',
-		'no-empty-character-class': 'error',
-		'no-ex-assign': 'error',
-		'no-extra-boolean-cast': 'error',
-		'no-extra-parens': 'off', // @typescript-eslint/no-extra-parens
-		'no-extra-semi': 'off', // @typescript-eslint/no-extra-semi
-		'no-func-assign': 'error',
-		'no-import-assign': 'error',
-		'no-inner-declarations': ['error', 'both'],
-		'no-invalid-regexp': 'error',
-		'no-irregular-whitespace': 'error',
-		'no-misleading-character-class': 'error',
-		'no-obj-calls': 'error',
-		'no-promise-executor-return': 'error',
-		'no-prototype-builtins': 'error',
-		'no-regex-spaces': 'error',
-		'no-setter-return': 'error',
-		'no-sparse-arrays': 'error',
-		'no-template-curly-in-string': 'error',
-		'no-unexpected-multiline': 'error',
-		'no-unreachable': 'error',
-		'no-unreachable-loop': 'error',
-		'no-unsafe-finally': 'error',
-		'no-unsafe-negation': 'error',
-		'no-unsafe-optional-chaining': 'error',
-		'no-useless-backreference': 'error',
-		'require-atomic-updates': 'error',
-		'use-isnan': 'error',
-		'valid-typeof': ['error', { requireStringLiterals: true }],
-
-		// Best Practices
-		'accessor-pairs': 'error',
-		'array-callback-return': 'error',
-		'block-scoped-var': 'error',
-		'class-methods-use-this': ['error', { exceptMethods: ['componentDidMount', 'componentDidUpdate', 'componentWillUnmount', 'shouldComponentUpdate'] }],
-		'complexity': ['error', { max: 90 }], // @todo Decrease that to 20 and fix functions which are too complex
-		'consistent-return': 'off', // Handled by TypeScript type annotations
-		'curly': 'error',
-		'default-case': 'error',
-		'default-case-last': 'error',
-		'default-param-last': 'off', // @todo It should be valid to have optional parameters after default parameters
-		'dot-location': ['error', 'property'],
-		'dot-notation': 'off', // @typescript-eslint/dot-notation
-		'eqeqeq': 'error',
-		'grouped-accessor-pairs': 'error',
-		'guard-for-in': 'error',
-		'max-classes-per-file': 'error',
-		'no-alert': 'error',
-		'no-caller': 'error',
-		'no-case-declarations': 'error',
-		'no-constructor-return': 'error',
-		'no-div-regex': 'error',
-		'no-else-return': 'error',
-		'no-empty-function': 'off', // @typescript-eslint/no-empty-function
-		'no-empty-pattern': 'error',
-		'no-eq-null': 'error',
-		'no-eval': 'error',
-		'no-extend-native': 'error',
-		'no-extra-bind': 'error',
-		'no-extra-label': 'error',
-		'no-fallthrough': ['error', { commentPattern: '[]' }], // @todo There is a conflict between this rule and the `reportUnusedDisableDirectives` option, which requires the `commonPattern`. Remove it, as soon as https://github.com/eslint/eslint/issues/13627 is fixed.
-		'no-floating-decimal': 'error',
-		'no-global-assign': 'error',
-		'no-implicit-coercion': 'error',
-		'no-implicit-globals': 'error',
-		'no-implied-eval': 'error',
-		'no-invalid-this': 'off', // @typescript-eslint/no-invalid-this
-		'no-iterator': 'error',
-		'no-labels': ['error', { allowLoop: true }],
-		'no-lone-blocks': 'error',
-		'no-loop-func': 'off', // @typescript-eslint/no-loop-func
-		'no-loss-of-precision': 'off', // @typescript-eslint/no-loss-of-precision
-		'no-magic-numbers': 'off', // @typescript-eslint/no-magic-numbers
-		'no-multi-spaces': 'error',
-		'no-multi-str': 'error',
-		'no-new': 'error',
-		'no-new-func': 'error',
-		'no-new-wrappers': 'error',
-		'no-nonoctal-decimal-escape': 'error',
-		'no-octal': 'error',
-		'no-octal-escape': 'error',
-		'no-param-reassign': 'off', // @todo Disabled for now, activate later ['error', { props: true }],
-		'no-proto': 'error',
-		'no-redeclare': 'off', // @typescript-eslint/no-redeclare
-		'no-return-assign': 'error',
-		'no-return-await': 'off', // @typescript-eslint/return-await
-		'no-script-url': 'error',
-		'no-self-assign': 'error',
-		'no-self-compare': 'error',
-		'no-sequences': 'error',
-		'no-throw-literal': 'off', // @typescript-eslint/no-throw-literal
-		'no-unmodified-loop-condition': 'error',
-		'no-unused-expressions': 'off', // @typescript-eslint/no-unused-expressions
-		'no-unused-labels': 'error',
-		'no-useless-call': 'off', // @todo Produces into false-positives for CharsetConverter → `internalMap.encoder.call(encoding, str.toLowerCase())`
-		'no-useless-catch': 'error',
-		'no-useless-concat': 'error',
-		'no-useless-escape': 'error',
-		'no-useless-return': 'off', // @todo Option to ignore switch-case blocks: In switch-case blocks it makes sense to keep all cases equal, instead of removing the 'return' from the last case, because this could produce bugs in later adjustments.
-		'no-void': 'off', // This is in conflict with @typescript-eslint/no-floating-promises which expects either `await` or `void`
-		'no-warning-comments': 'error',
-		'no-with': 'error',
-		'prefer-named-capture-group': 'off', // ES2018+, not supported in most browsers yet
-		'prefer-promise-reject-errors': 'error',
-		'prefer-regex-literals': 'error',
-		'radix': 'error',
-		'require-await': 'off', // @typescript-eslint/require-await
-		'require-unicode-regexp': 'error',
-		'vars-on-top': 'error',
-		'wrap-iife': 'error',
-		'yoda': 'error',
-
-		// Strict Mode
-		'strict': 'error',
-
-		// Variables
-		'init-declarations': 'off', // @todo It should be possible to ignore predefined consts like MAX_RADIX
-		'no-delete-var': 'error',
-		'no-label-var': 'error',
-		'no-restricted-globals': [
-			'error',
-			{
-				name: 'isNaN',
-				message: 'Use Number.isNaN() instead, and ensure that the input value is of type number. isNaN(undefined) !== Number.isNaN(undefined)'
-			},
-			{
-				name: 'fetch',
-				message: 'Use Utils.fetchWithTimeout() instead.'
-			}
-		],
-		'no-restricted-properties': [
-			'error',
-			{
-				object: 'localStorage',
-				property: 'getItem',
-				message: 'Use StorageHelper.getItem() instead.'
-			},
-			{
-				object: 'localStorage',
-				property: 'setItem',
-				message: 'Use StorageHelper.setItem() instead.'
-			},
-			{
-				object: 'localStorage',
-				property: 'removeItem',
-				message: 'Use StorageHelper.removeItem() instead.'
-			}
-		],
-		'no-restricted-syntax': [
-			'error',
-			{
-				selector: 'NewExpression[callee.name="Blob"]',
-				message: 'Use BlobHelper.create() instead of new Blob().'
-			}
-		],
-		'no-shadow': 'off', // @typescript-eslint/no-shadow
-		'no-shadow-restricted-names': 'error',
-		'no-undef': 'off', // Covered by TypeScript
-		'no-undef-init': 'error',
-		'no-undefined': 'off', // @todo "Using the void operator to generate the value of undefined if necessary." should be disableable
-		'no-unused-vars': 'off', // @typescript-eslint/no-unused-vars
-		'no-use-before-define': 'off', // @typescript-eslint/no-use-before-define
-
-		// Stylistic Issues
-		'array-bracket-newline': ['error', 'consistent'],
-		'array-bracket-spacing': 'error',
-		'array-element-newline': ['error', 'consistent'],
-		'block-spacing': 'error',
-		'brace-style': 'off', // @typescript-eslint/brace-style
-		'camelcase': 'off', // @typescript-eslint/naming-convention
-		'capitalized-comments': 'off',
-		'comma-dangle': 'off', // @typescript-eslint/comma-dangle
-		'comma-spacing': 'off', // @typescript-eslint/comma-spacing
-		'comma-style': 'error',
-		'computed-property-spacing': 'error',
-		'consistent-this': 'error',
-		'eol-last': 'error',
-		'func-call-spacing': 'off', // @typescript-eslint/func-call-spacing
-		'func-name-matching': 'error',
-		'func-names': 'error',
-		'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
-		'function-call-argument-newline': 'off', // @todo Multiple multi-line object arguments are not allowed, so this option is not usable right now
-		'function-paren-newline': ['error', 'multiline-arguments'],
-		'id-denylist': 'error',
-		'id-length': ['error', { exceptions: ['a', 'b', 'i', 'j', 'n', 'x', 'y', 'z'] }],
-		'id-match': 'error',
-		'implicit-arrow-linebreak': 'error',
-		'indent': 'off', // @typescript-eslint/indent
-		'jsx-quotes': 'error',
-		'key-spacing': 'error',
-		'keyword-spacing': 'error',
-		'line-comment-position': 'off',
-		'linebreak-style': 'error',
-		'lines-around-comment': 'off', // @todo Disabled for now ['error', { beforeBlockComment: true, beforeLineComment: true, allowBlockStart: true, allowObjectStart: true, allowArrayStart: true, allowClassStart: true }],
-		'lines-between-class-members': 'off', // @todo Deactivated till we have a JSDoc description for all class members
-		'max-depth': ['error', { max: 10 }], // @todo Decrease to 5 or 4
-		'max-len': ['error', {
-			code: 300,
-			tabWidth: 4,
-			comments: 300,
-			ignoreUrls: true
-		}],
-		'max-lines': ['error', { max: 2500, skipBlankLines: true, skipComments: true }], // @todo Decrease "max" to 1000 or even better, 300
-		'max-lines-per-function': ['error', { max: 250, skipBlankLines: true, skipComments: true }], // @todo Decrease to 50
-		'max-nested-callbacks': 'error',
-		'max-params': ['error', { max: 5 }],
-		'max-statements': ['error', 100, { ignoreTopLevelFunctions: true }], // @todo Decrease to 20
-		'max-statements-per-line': ['error', { max: 3 }],
-		'multiline-comment-style': 'off', // Comment style must be decided from case to case
-		'multiline-ternary': 'off', // @todo Disabled for now, since no option really matches my use ['error', 'always-multiline'],
-		'new-cap': ['error', { properties: false }],
-		'new-parens': 'error',
-		'newline-per-chained-call': ['error', { ignoreChainWithDepth: 4 }],
-		'no-array-constructor': 'off', // @typescript-eslint/no-array-constructor
-		'no-bitwise': ['error', { allow: ['^', '~', '<<', '>>', '>>>', '|=', '&=', '^=', '<<=', '>>=', '>>>='] }], // Disallow "&" and "|".
-		'no-continue': 'off', // If it makes the code more readable, wer are using `continue`
-		'no-inline-comments': 'off',
-		'no-lonely-if': 'off', // Covered by unicorn/no-lonely-if
-		'no-mixed-operators': 'error',
-		'no-mixed-spaces-and-tabs': 'error',
-		'no-multi-assign': 'error',
-		'no-multiple-empty-lines': ['error', { max: 1 }],
-		'no-negated-condition': 'off',
-		'no-nested-ternary': 'error',
-		'no-new-object': 'error',
-		'no-plusplus': 'off',
-		'no-tabs': ['error', { allowIndentationTabs: true }],
-		'no-ternary': 'off',
-		'no-trailing-spaces': 'error',
-		'no-underscore-dangle': ['error', { allow: ['__DEV__'], allowAfterThis: true }],
-		'no-unneeded-ternary': 'error',
-		'no-whitespace-before-property': 'error',
-		'nonblock-statement-body-position': 'error',
-		'object-curly-newline': 'error',
-		'object-curly-spacing': ['error', 'always'],
-		'object-property-newline': ['error', { allowAllPropertiesOnSameLine: true }],
-		'one-var': ['error', { initialized: 'never', uninitialized: 'never' }],
-		'one-var-declaration-per-line': 'error',
-		'operator-assignment': 'error',
-		'operator-linebreak': ['error', 'after', { overrides: { ':': 'ignore' } }],
-		'padded-blocks': ['error', 'never'],
-		'padding-line-between-statements': 'error',
-		'prefer-exponentiation-operator': 'error',
-		'prefer-object-spread': 'error',
-		'quote-props': ['error', 'consistent-as-needed'],
-		'quotes': 'off', // @typescript-eslint/quotes
-		'semi': 'off', // @typescript-eslint/semi
-		'semi-spacing': 'error',
-		'semi-style': 'error',
-		'sort-keys': 'off', // Keys should be grouped by their scope/category, not by their name
-		'sort-vars': 'off', // Something like `for (let pos = 4 + addressLength, dataPos = 0; pos < length - 2; pos += 2, dataPos++) {` should be sorted by importanance
-		'space-before-blocks': 'error',
-		'space-before-function-paren': 'off', // @typescript-eslint/space-before-function-paren
-		'space-in-parens': 'error',
-		'space-infix-ops': 'error',
-		'space-unary-ops': 'error',
-		'spaced-comment': ['error', 'always', { markers: ['/'], block: { markers: ['!'], balanced: true } }], // @todo Remove '/' as soon as we use import instead of require()
-		'switch-colon-spacing': 'error',
-		'template-tag-spacing': 'error',
-		'unicode-bom': 'error',
-		'wrap-regex': 'error',
-
-		// ECMAScript 6
-		'arrow-body-style': 'error',
-		'arrow-parens': 'error',
-		'arrow-spacing': 'error',
-		'constructor-super': 'error',
-		'generator-star-spacing': 'error',
-		'no-class-assign': 'error',
-		'no-confusing-arrow': ['error', { allowParens: true }],
-		'no-const-assign': 'error',
-		'no-dupe-class-members': 'off', // @typescript-eslint/no-no-dupe-class-members
-		'no-duplicate-imports': 'off', // @typescript-eslint/no-duplicate-imports / import/no-duplicates (see https://github.com/typescript-eslint/typescript-eslint/issues/2315)
-		'no-new-symbol': 'error',
-		'no-restricted-exports': 'error',
-		'no-restricted-imports': 'error',
-		'no-this-before-super': 'error',
-		'no-useless-computed-key': 'error',
-		'no-useless-constructor': 'off', // @typescript-eslint/no-useless-constructor
-		'no-useless-rename': 'error',
-		'no-var': 'error',
-		'object-shorthand': 'error',
-		'prefer-arrow-callback': ['error', { allowNamedFunctions: true }],
-		'prefer-const': 'error',
-		'prefer-destructuring': 'off', // We don't prefer destructuring if a type is specified ['error', { VariableDeclarator: { array: true, object: true }, AssignmentExpression: { array: false, object: false } }],
-		'prefer-numeric-literals': 'error',
-		'prefer-rest-params': 'error',
-		'prefer-spread': 'error',
-		'prefer-template': 'error',
-		'require-yield': 'error',
-		'rest-spread-spacing': 'error',
-		'sort-imports': 'off', /* @todo Disabled for now ['error', {
-			ignoreCase: true,
-			memberSyntaxSortOrder: ['all', 'single', 'multiple', 'none']
-		}], */
-		'symbol-description': 'error',
-		'template-curly-spacing': 'error',
-		'yield-star-spacing': ['error', { before: true, after: false }]
+		'unicorn/throw-new-error': 'error'
 	}
 };

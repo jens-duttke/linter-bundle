@@ -8,6 +8,26 @@ module.exports = {
 			plugins: ['jest'],
 			rules: {
 				/**
+				 * eslint Rules
+				 * @see https://eslint.org/docs/rules/
+				 */
+				'max-lines-per-function': 'off',
+
+				/**
+				 * @typescript-eslint Rules
+				 * @see https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules
+				 */
+				'@typescript-eslint/ban-ts-comment': ['error', {
+					'ts-expect-error': false
+				}],
+
+				/**
+				 * eslint-plugin-import Rules
+				 * @see https://github.com/benmosher/eslint-plugin-import
+				 */
+				'import/no-unassigned-import': 'error',
+
+				/**
 				 * eslint-plugin-jest Rules
 				 * @see https://github.com/jest-community/eslint-plugin-jest/tree/master/docs/rules
 				 */
@@ -56,27 +76,7 @@ module.exports = {
 				'jest/valid-describe': 'error',
 				'jest/valid-expect-in-promise': 'error',
 				'jest/valid-expect': 'error',
-				'jest/valid-title': 'error',
-
-				/**
-				 * @typescript-eslint Rules
-				 * @see https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules
-				 */
-				'@typescript-eslint/ban-ts-comment': ['error', {
-					'ts-expect-error': false
-				}],
-
-				/**
-				 * eslint-plugin-import Rules
-				 * @see https://github.com/benmosher/eslint-plugin-import
-				 */
-				'import/no-unassigned-import': 'error',
-
-				/**
-				 * eslint Rules
-				 * @see https://eslint.org/docs/rules/
-				 */
-				'max-lines-per-function': 'off'
+				'jest/valid-title': 'error'
 			}
 		}
 	]

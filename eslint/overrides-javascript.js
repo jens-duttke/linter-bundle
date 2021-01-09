@@ -6,8 +6,15 @@ module.exports = {
 				node: true,
 				es6: true
 			},
-			globals: {},
+			plugins: ['node'],
 			rules: {
+				/**
+				 * eslint Rules
+				 * @see https://eslint.org/docs/rules/
+				 */
+				'max-lines-per-function': 'off',
+				'no-undef': 'error',
+
 				/**
 				 * @typescript-eslint Rules
 				 * @see https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules
@@ -30,24 +37,6 @@ module.exports = {
 				'import/no-commonjs': 'off',
 				'import/no-internal-modules': 'off',
 				'import/no-nodejs-modules': 'off',
-
-				/**
-				 * eslint-plugin-unicorn Rules
-				 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
-				 */
-				'unicorn/filename-case': ['error', {
-					cases: {
-						kebabCase: true
-					}
-				}],
-				'unicorn/prevent-abbreviations': ['error', { ignore: ['dev', 'env', 'i', 'j', 'i18n', 'pkg', 'ref', 'Ref', 'req', 'res', 'setupDevServerMiddleware'] }],
-
-				/**
-				 * eslint Rules
-				 * @see https://eslint.org/docs/rules/
-				 */
-				'max-lines-per-function': 'off',
-				'no-undef': 'error',
 
 				/**
 				 * eslint-plugin-node Rules
@@ -95,7 +84,19 @@ module.exports = {
 				'node/prefer-global/url-search-params': 'error',
 				'node/prefer-global/url': 'error',
 				'node/prefer-promises/dns': 'error',
-				'node/prefer-promises/fs': 'error'
+				'node/prefer-promises/fs': 'error',
+
+				/**
+				 * eslint-plugin-unicorn Rules
+				 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
+				 */
+				'unicorn/filename-case': ['error', {
+					cases: {
+						kebabCase: true
+					}
+				}],
+				'unicorn/no-process-exit': 'off', // node/no-process-exit
+				'unicorn/prevent-abbreviations': ['error', { ignore: ['dev', 'env', 'i', 'j', 'i18n', 'pkg', 'ref', 'Ref', 'req', 'res', 'setupDevServerMiddleware'] }]
 			}
 		}
 	]
