@@ -53,6 +53,9 @@ module.exports = {
 	settings: {
 		'import/parsers': {
 			'@typescript-eslint/parser': ['.ts', '.tsx']
+		},
+		'react': {
+			version: 'detect'
 		}
 	},
 	reportUnusedDisableDirectives: true,
