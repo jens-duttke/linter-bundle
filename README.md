@@ -19,6 +19,7 @@ This setup is using the following additional plugins:
 
 - eslint-plugin-functional
 - eslint-plugin-import
+- eslint-plugin-jsx-a11y
 - eslint-plugin-jest
 - eslint-plugin-node
 - eslint-plugin-react
