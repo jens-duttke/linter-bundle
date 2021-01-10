@@ -171,7 +171,7 @@ module.exports = {
 		'no-missing-end-of-source-newline': true,
 		'no-unknown-animations': true,
 		'number-leading-zero': 'always',
-		'number-max-precision': 4,
+		'number-max-precision': 5,
 		'number-no-trailing-zeros': true,
 		'property-allowed-list': null,
 		'property-case': 'lower',
