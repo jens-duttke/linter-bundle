@@ -35,6 +35,26 @@ module.exports = {
 					}
 				}]
 			}
+		},
+		{
+			files: ['src/pages/*.tsx'],
+			rules: {
+				/**
+				 * eslint-plugin-import Rules
+				 * @see https://github.com/benmosher/eslint-plugin-import
+				 */
+				'import/no-default-export': 'off',
+
+				/**
+				 * eslint-plugin-unicorn Rules
+				 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
+				 */
+				'unicorn/filename-case': ['error', {
+					cases: {
+						kebabCase: true
+					}
+				}]
+			}
 		}
 	]
 };
