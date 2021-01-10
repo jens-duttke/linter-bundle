@@ -11,6 +11,7 @@ module.exports = {
 				 * eslint
 				 * @see https://eslint.org/docs/rules/
 				 */
+				'max-lines': 'off',
 				'max-lines-per-function': 'off',
 
 				/**
