@@ -60,7 +60,7 @@ module.exports = {
 	reportUnusedDisableDirectives: true,
 	rules: {
 		/**
-		 * eslint Rules
+		 * eslint
 		 * @see https://eslint.org/docs/rules/
 		 */
 
@@ -376,7 +376,7 @@ module.exports = {
 		'yield-star-spacing': ['error', { before: true, after: false }],
 
 		/**
-		 * @typescript-eslint Rules
+		 * @typescript-eslint
 		 * @see https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules
 		 */
 		'@typescript-eslint/adjacent-overload-signatures': 'error',
@@ -690,7 +690,7 @@ module.exports = {
 		'@typescript-eslint/unified-signatures': 'error',
 
 		/**
-		 * eslint-plugin-functional Rules
+		 * eslint-plugin-functional
 		 * @see https://github.com/jonaskello/eslint-plugin-functional#supported-rules
 		 */
 		'functional/immutable-data': 'off', // This rule would require a lot of additional code and workarounds, which would make the result much more illegible.
@@ -714,7 +714,7 @@ module.exports = {
 		'functional/functional-parameters': 'off',
 
 		/**
-		 * eslint-plugin-import Rules
+		 * eslint-plugin-import
 		 * @see https://github.com/benmosher/eslint-plugin-import
 		 */
 		'import/default': 'error',
@@ -781,7 +781,7 @@ module.exports = {
 		'import/unambiguous': 'off',
 
 		/**
-		 * eslint-plugin-jsx-a11y Rules
+		 * eslint-plugin-jsx-a11y
 		 * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y
 		 */
 		'jsx-a11y/alt-text': 'error',
@@ -817,7 +817,7 @@ module.exports = {
 		'jsx-a11y/tabindex-no-positive': 'error',
 
 		/**
-		 * eslint-plugin-unicorn Rules
+		 * eslint-plugin-unicorn
 		 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
 		 */
 		'unicorn/better-regex': 'error',

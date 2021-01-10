@@ -9,23 +9,37 @@ module.exports = {
 		'stylelint-use-nesting'
 	],
 	rules: {
-		// https://www.npmjs.com/package/stylelint-declaration-block-no-ignored-properties
+		/**
+		 * stylelint-declaration-block-no-ignored-properties
+		 * @see https://www.npmjs.com/package/stylelint-declaration-block-no-ignored-properties
+		 */
 		'plugin/declaration-block-no-ignored-properties': true,
 
-		// https://github.com/kristerkari/stylelint-high-performance-animation
-
+		/**
+		 * stylelint-high-performance-animation
+		 * @see https://github.com/kristerkari/stylelint-high-performance-animation
+		 */
 		'plugin/no-low-performance-animation-properties': [true, {
 			ignore: 'paint-properties',
 			severity: 'warning'
 		}],
 
-		// https://github.com/ssivanatarajan/stylelint-selector-no-empty
+		/**
+		 * stylelint-selector-no-empty
+		 * @see https://github.com/ssivanatarajan/stylelint-selector-no-empty
+		 */
 		'plugin/stylelint-selector-no-empty': true,
 
-		// https://github.com/csstools/stylelint-use-nesting
+		/**
+		 * stylelint-use-nesting
+		 * @see https://github.com/csstools/stylelint-use-nesting
+		 */
 		'csstools/use-nesting': 'always',
 
-		// https://github.com/Jordan-Hall/stylelint-use-logical-spec
+		/**
+		 * stylelint-use-logical-spec
+		 * @see https://github.com/Jordan-Hall/stylelint-use-logical-spec
+		 */
 		'liberty/use-logical-spec': ['always', { except: [
 			'float',
 			'top',
@@ -53,7 +67,10 @@ module.exports = {
 			'text-align' // @todo Should only be disabled for "right", since numbers should be always aligned right, for any direction.
 		] }],
 
-		// https://www.npmjs.com/package/stylelint-order
+		/**
+		 * stylelint-order
+		 * @see https://www.npmjs.com/package/stylelint-order
+		 */
 		'order/properties-order': [
 			[
 				{
@@ -489,7 +506,10 @@ module.exports = {
 			}
 		],
 
-		// https://www.npmjs.com/package/stylelint-scss
+		/**
+		 * stylelint-scss
+		 * @see https://www.npmjs.com/package/stylelint-scss
+		 */
 		'scss/at-each-key-value-single-line': true,
 		'scss/at-else-closing-brace-newline-after': 'always-last-in-chain',
 		'scss/at-else-closing-brace-space-after': 'never-intermediate',
@@ -557,7 +577,10 @@ module.exports = {
 		'scss/selector-no-redundant-nesting-selector': true,
 		'scss/selector-no-union-class-name': true,
 
-		// stylelint Rules
+		/**
+		 * stylelint
+		 * @see https://github.com/stylelint/stylelint/tree/master/lib/rules
+		 */
 		'alpha-value-notation': 'number', // @todo change that to 'percentage'?
 		'at-rule-allowed-list': null,
 		'at-rule-disallowed-list': null,
@@ -621,7 +644,7 @@ module.exports = {
 				ignore: ['consecutive-duplicates-with-different-values']
 			}
 		],
-		'declaration-block-no-redundant-longhand-properties': true,
+		'declaration-block-no-redundant-longhand-properties': [true, { ignoreShorthands: [/^grid-template/u] }],
 		'declaration-block-no-shorthand-property-overrides': true,
 		'declaration-block-semicolon-newline-after': 'always-multi-line',
 		'declaration-block-semicolon-newline-before': 'never-multi-line',
@@ -660,7 +683,7 @@ module.exports = {
 		'font-family-name-quotes': 'always-where-recommended',
 		'font-family-no-duplicate-names': true,
 		'font-family-no-missing-generic-family-keyword': true,
-		'font-weight-notation': 'named-where-possible',
+		'font-weight-notation': 'numeric',
 		'function-allowed-list': null,
 		'function-calc-no-invalid': true,
 		'function-calc-no-unspaced-operator': true,

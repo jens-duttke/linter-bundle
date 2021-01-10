@@ -8,13 +8,13 @@ module.exports = {
 			plugins: ['jest'],
 			rules: {
 				/**
-				 * eslint Rules
+				 * eslint
 				 * @see https://eslint.org/docs/rules/
 				 */
 				'max-lines-per-function': 'off',
 
 				/**
-				 * @typescript-eslint Rules
+				 * @typescript-eslint
 				 * @see https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules
 				 */
 				'@typescript-eslint/ban-ts-comment': ['error', {
@@ -22,13 +22,13 @@ module.exports = {
 				}],
 
 				/**
-				 * eslint-plugin-import Rules
+				 * eslint-plugin-import
 				 * @see https://github.com/benmosher/eslint-plugin-import
 				 */
 				'import/no-unassigned-import': 'error',
 
 				/**
-				 * eslint-plugin-jest Rules
+				 * eslint-plugin-jest
 				 * @see https://github.com/jest-community/eslint-plugin-jest/tree/master/docs/rules
 				 */
 				'jest/consistent-test-it': 'error',

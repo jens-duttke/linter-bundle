@@ -9,14 +9,14 @@ module.exports = {
 			plugins: ['node'],
 			rules: {
 				/**
-				 * eslint Rules
+				 * eslint
 				 * @see https://eslint.org/docs/rules/
 				 */
 				'max-lines-per-function': 'off',
 				'no-undef': 'error',
 
 				/**
-				 * @typescript-eslint Rules
+				 * @typescript-eslint
 				 * @see https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules
 				 */
 				'@typescript-eslint/explicit-function-return-type': 'off', // Requires type information (@see https://github.com/typescript-eslint/typescript-eslint/issues/906)
@@ -31,7 +31,7 @@ module.exports = {
 				'@typescript-eslint/triple-slash-reference': 'off', // Required to make use of *.d.ts files
 
 				/**
-				 * eslint-plugin-import Rules
+				 * eslint-plugin-import
 				 * @see https://github.com/benmosher/eslint-plugin-import
 				 */
 				'import/no-commonjs': 'off',
@@ -39,7 +39,7 @@ module.exports = {
 				'import/no-nodejs-modules': 'off',
 
 				/**
-				 * eslint-plugin-node Rules
+				 * eslint-plugin-node
 				 * @see https://github.com/mysticatea/eslint-plugin-node
 				 */
 
@@ -87,7 +87,7 @@ module.exports = {
 				'node/prefer-promises/fs': 'error',
 
 				/**
-				 * eslint-plugin-unicorn Rules
+				 * eslint-plugin-unicorn
 				 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
 				 */
 				'unicorn/filename-case': ['error', {

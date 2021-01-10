@@ -9,13 +9,13 @@ module.exports = {
 			},
 			rules: {
 				/**
-				 * @typescript-eslint Rules
+				 * @typescript-eslint
 				 * @see https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules
 				 */
 				'@typescript-eslint/no-confusing-void-expression': 'off', // @todo Conflicts with graphql-template strings
 
 				/**
-				 * eslint-plugin-unicorn Rules
+				 * eslint-plugin-unicorn
 				 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
 				 */
 				'unicorn/filename-case': ['error', {
@@ -40,13 +40,13 @@ module.exports = {
 			files: ['src/pages/*.tsx'],
 			rules: {
 				/**
-				 * eslint-plugin-import Rules
+				 * eslint-plugin-import
 				 * @see https://github.com/benmosher/eslint-plugin-import
 				 */
 				'import/no-default-export': 'off',
 
 				/**
-				 * eslint-plugin-unicorn Rules
+				 * eslint-plugin-unicorn
 				 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
 				 */
 				'unicorn/filename-case': ['error', {
