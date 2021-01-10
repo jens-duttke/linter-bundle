@@ -272,7 +272,7 @@ module.exports = {
 		'keyword-spacing': 'error',
 		'line-comment-position': 'off',
 		'linebreak-style': 'error',
-		'lines-around-comment': ['error', { beforeBlockComment: true, beforeLineComment: true, allowBlockStart: true, allowObjectStart: true, allowArrayStart: true, allowClassStart: true }],
+		'lines-around-comment': 'off', // Doesn't work with interfaces; sometimes doesn't make sense if the comment is related to the code above it
 		'lines-between-class-members': 'off', // @todo Deactivated till we have a JSDoc description for all class members
 		'max-depth': ['error', { max: 5 }],
 		'max-len': ['error', {
