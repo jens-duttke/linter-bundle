@@ -114,7 +114,7 @@ module.exports = {
 		'array-callback-return': 'error',
 		'block-scoped-var': 'error',
 		'class-methods-use-this': ['error', { exceptMethods: ['componentDidMount', 'componentDidUpdate', 'componentWillUnmount', 'shouldComponentUpdate'] }],
-		'complexity': ['error', { max: 90 }], // @todo Decrease that to 20 and fix functions which are too complex
+		'complexity': ['error', { max: 20 }],
 		'consistent-return': 'off', // Handled by TypeScript type annotations
 		'curly': 'error',
 		'default-case': 'error',
@@ -139,7 +139,7 @@ module.exports = {
 		'no-extend-native': 'error',
 		'no-extra-bind': 'error',
 		'no-extra-label': 'error',
-		'no-fallthrough': ['error', { commentPattern: '[]' }], // @todo There is a conflict between this rule and the `reportUnusedDisableDirectives` option, which requires the `commonPattern`. Remove it, as soon as https://github.com/eslint/eslint/issues/13627 is fixed.
+		'no-fallthrough': 'error',
 		'no-floating-decimal': 'error',
 		'no-global-assign': 'error',
 		'no-implicit-coercion': 'error',
@@ -160,7 +160,7 @@ module.exports = {
 		'no-nonoctal-decimal-escape': 'error',
 		'no-octal': 'error',
 		'no-octal-escape': 'error',
-		'no-param-reassign': 'off', // @todo Disabled for now, activate later ['error', { props: true }],
+		'no-param-reassign': ['error', { props: true }],
 		'no-proto': 'error',
 		'no-redeclare': 'off', // @typescript-eslint/no-redeclare
 		'no-return-assign': 'error',
@@ -272,23 +272,23 @@ module.exports = {
 		'keyword-spacing': 'error',
 		'line-comment-position': 'off',
 		'linebreak-style': 'error',
-		'lines-around-comment': 'off', // @todo Disabled for now ['error', { beforeBlockComment: true, beforeLineComment: true, allowBlockStart: true, allowObjectStart: true, allowArrayStart: true, allowClassStart: true }],
+		'lines-around-comment': ['error', { beforeBlockComment: true, beforeLineComment: true, allowBlockStart: true, allowObjectStart: true, allowArrayStart: true, allowClassStart: true }],
 		'lines-between-class-members': 'off', // @todo Deactivated till we have a JSDoc description for all class members
-		'max-depth': ['error', { max: 10 }], // @todo Decrease to 5 or 4
+		'max-depth': ['error', { max: 5 }],
 		'max-len': ['error', {
 			code: 300,
 			tabWidth: 4,
 			comments: 300,
 			ignoreUrls: true
 		}],
-		'max-lines': ['error', { max: 2500, skipBlankLines: true, skipComments: true }], // @todo Decrease "max" to 1000 or even better, 300
-		'max-lines-per-function': ['error', { max: 250, skipBlankLines: true, skipComments: true }], // @todo Decrease to 50
+		'max-lines': ['error', { max: 500, skipBlankLines: true, skipComments: true }],
+		'max-lines-per-function': ['error', { max: 200, skipBlankLines: true, skipComments: true }],
 		'max-nested-callbacks': 'error',
 		'max-params': ['error', { max: 5 }],
-		'max-statements': ['error', 100, { ignoreTopLevelFunctions: true }], // @todo Decrease to 20
+		'max-statements': ['error', 50, { ignoreTopLevelFunctions: true }],
 		'max-statements-per-line': ['error', { max: 3 }],
 		'multiline-comment-style': 'off', // Comment style must be decided from case to case
-		'multiline-ternary': 'off', // @todo Disabled for now, since no option really matches my use ['error', 'always-multiline'],
+		'multiline-ternary': ['error', 'always-multiline'],
 		'new-cap': ['error', { properties: false }],
 		'new-parens': 'error',
 		'newline-per-chained-call': ['error', { ignoreChainWithDepth: 4 }],
@@ -335,7 +335,7 @@ module.exports = {
 		'space-in-parens': 'error',
 		'space-infix-ops': 'error',
 		'space-unary-ops': 'error',
-		'spaced-comment': ['error', 'always', { markers: ['/'], block: { markers: ['!'], balanced: true } }], // @todo Remove '/' as soon as we use import instead of require()
+		'spaced-comment': ['error', 'always', { markers: ['/'], block: { markers: ['!'], balanced: true } }],
 		'switch-colon-spacing': 'error',
 		'template-tag-spacing': 'error',
 		'unicode-bom': 'error',
@@ -370,10 +370,7 @@ module.exports = {
 		'prefer-template': 'error',
 		'require-yield': 'error',
 		'rest-spread-spacing': 'error',
-		'sort-imports': 'off', /* @todo Disabled for now ['error', {
-			ignoreCase: true,
-			memberSyntaxSortOrder: ['all', 'single', 'multiple', 'none']
-		}], */
+		'sort-imports': 'off', // import/order
 		'symbol-description': 'error',
 		'template-curly-spacing': 'error',
 		'yield-star-spacing': ['error', { before: true, after: false }],
@@ -644,9 +641,9 @@ module.exports = {
 		'@typescript-eslint/no-unnecessary-type-assertion': 'error',
 		'@typescript-eslint/no-unnecessary-type-constraint': 'error',
 		'@typescript-eslint/no-unsafe-assignment': 'error',
-		'@typescript-eslint/no-unsafe-call': 'off', // @todo Activate later
-		'@typescript-eslint/no-unsafe-member-access': 'off', // @todo Activate later
-		'@typescript-eslint/no-unsafe-return': 'off', // @todo Activate later
+		'@typescript-eslint/no-unsafe-call': 'error',
+		'@typescript-eslint/no-unsafe-member-access': 'error',
+		'@typescript-eslint/no-unsafe-return': 'error',
 		'@typescript-eslint/no-unused-expressions': 'error',
 		'@typescript-eslint/no-unused-vars-experimental': 'error',
 		'@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
@@ -696,10 +693,10 @@ module.exports = {
 		 * eslint-plugin-functional Rules
 		 * @see https://github.com/jonaskello/eslint-plugin-functional#supported-rules
 		 */
-		'functional/immutable-data': ['off', { ignoreImmediateMutation: true }], // @todo Disable for now. Deactivate later
-		'functional/no-let': ['off', { allowLocalMutation: true }], // @todo Disable for now. Deactivate later
+		'functional/immutable-data': 'off', // This rule would require a lot of additional code and workarounds, which would make the result much more illegible.
+		'functional/no-let': ['error', { allowLocalMutation: true }],
 		'functional/no-method-signature': 'off',
-		'functional/prefer-readonly-type': ['off', { ignoreClass: true, allowLocalMutation: true, ignoreCollections: true }], // @todo Disable for now. Deactivate later
+		'functional/prefer-readonly-type': ['error', { ignoreClass: true, allowLocalMutation: true, ignoreCollections: true, ignoreInterface: true }],
 		'functional/no-class': 'off',
 		'functional/no-mixed-type': ['error', {
 			checkInterfaces: false,
@@ -753,9 +750,9 @@ module.exports = {
 		'import/no-named-as-default': 'error',
 		'import/no-named-default': 'error',
 		'import/no-named-export': 'off',
-		'import/no-namespace': 'off', // @todo enabling this produces a JavaScript error in the rule; anyhow - could that reduce the package size, because of improved tree-shaking/dead-code-elimination?
+		'import/no-namespace': 'off', // @todo Enabling this produces a JavaScript error in the rule; anyhow - could that reduce the package size, because of improved tree-shaking/dead-code-elimination?
 		'import/no-nodejs-modules': 'error',
-		'import/no-relative-parent-imports': 'off', // @todo Disabled because of a bug on Windows, reenable as soon as it's resolved: https://github.com/benmosher/eslint-plugin-import/issues/1644
+		'import/no-relative-parent-imports': 'off', // @todo Disabled because of a bug on Windows, re-enable as soon as it's resolved: https://github.com/benmosher/eslint-plugin-import/issues/1644
 		'import/no-restricted-paths': 'error',
 		'import/no-self-import': 'error',
 		'import/no-unassigned-import': ['error', {

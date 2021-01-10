@@ -35,7 +35,7 @@ module.exports = {
 				'jest/expect-expect': 'error',
 				'jest/lowercase-name': ['error', { ignore: ['describe'] }],
 				'jest/no-alias-methods': 'error',
-				'jest/no-commented-out-tests': 'off', // @todo Disable as soon as all activated tests are working currently
+				'jest/no-commented-out-tests': 'error',
 				'jest/no-conditional-expect': 'error',
 				'jest/no-deprecated-functions': 'error',
 				'jest/no-disabled-tests': 'error',
@@ -43,7 +43,7 @@ module.exports = {
 				'jest/no-duplicate-hooks': 'error',
 				'jest/no-export': 'error',
 				'jest/no-focused-tests': 'error',
-				'jest/no-hooks': 'off', // @todo Sometimes we are using shared states (e.g. for the NumberHelper). Should we get rid of shared states?
+				'jest/no-hooks': 'error',
 				'jest/no-identical-title': 'error',
 				'jest/no-if': 'error',
 				'jest/no-interpolation-in-snapshots': 'error',
