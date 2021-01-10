@@ -286,6 +286,7 @@ module.exports = {
 					properties: [
 						'contain',
 						'content-visibility',
+						'contain-intrinsic-size',
 						'will-change'
 					]
 				},
