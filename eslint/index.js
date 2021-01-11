@@ -822,6 +822,7 @@ module.exports = {
 		 */
 		'unicorn/better-regex': 'error',
 		'unicorn/catch-error-name': 'error',
+		'unicorn/consistent-destructuring': 'error',
 		'unicorn/consistent-function-scoping': 'error',
 		'unicorn/custom-error-definition': 'off',
 		'unicorn/empty-brace-spaces': 'error',
@@ -851,6 +852,7 @@ module.exports = {
 		'unicorn/no-keyword-prefix': 'off',
 		'unicorn/no-lonely-if': 'off', // Sometimes the code is clearer if-conditions are not combined
 		'unicorn/no-nested-ternary': 'off', // We prefer no-nested-ternary of ESlint
+		'unicorn/no-new-array': 'off', // `new Array(length)` should be preferred over `Array.from({ length })` because it's much faster. @see https://jsben.ch/qTpYp
 		'unicorn/no-new-buffer': 'error',
 		'unicorn/no-null': 'off', // @todo Too much old native JavaScript functions are based on `null`. Maybe we can replace them later.
 		'unicorn/no-object-as-default-parameter': 'error',
@@ -865,6 +867,7 @@ module.exports = {
 		'unicorn/prefer-add-event-listener': 'error',
 		'unicorn/prefer-array-find': 'error',
 		'unicorn/prefer-array-flat-map': 'error',
+		'unicorn/prefer-array-index-of': 'error',
 		'unicorn/prefer-array-some': 'error',
 		'unicorn/prefer-date-now': 'error',
 		'unicorn/prefer-default-parameters': 'error',
@@ -888,6 +891,7 @@ module.exports = {
 		'unicorn/prefer-string-starts-ends-with': 'error',
 		'unicorn/prefer-string-trim-start-end': 'error',
 		'unicorn/prefer-ternary': 'off', // We prefer readability over saving a few chars
+		'unicorn/prefer-regexp-test': 'error',
 		'unicorn/prefer-type-error': 'error',
 		'unicorn/prevent-abbreviations': ['error', { ignore: ['args', 'i', 'j', 'i18n', 'ref', 'params', 'props', 'Props'] }],
 		'unicorn/string-content': ['error', {

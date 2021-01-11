@@ -95,6 +95,7 @@ module.exports = {
 						kebabCase: true
 					}
 				}],
+				'unicorn/import-index': 'off', // @see https://github.com/sindresorhus/eslint-plugin-unicorn/pull/977
 				'unicorn/no-process-exit': 'off', // node/no-process-exit
 				'unicorn/prevent-abbreviations': ['error', { ignore: ['dev', 'env', 'i', 'j', 'i18n', 'pkg', 'ref', 'Ref', 'req', 'res', 'setupDevServerMiddleware'] }]
 			}
