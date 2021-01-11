@@ -1,42 +1,41 @@
 #!/usr/bin/env node
 
 const childProcess = require('child_process');
-const { sync: resolveBin } = require('resolve-bin');
 
-let lintingProcess;
 const taskName = process.argv[2];
 
-process.stdout.write(`\n> lint ${taskName}\n\n`);
-
-switch (taskName) {
-	case 'tsc':
-		lintingProcess = childProcess.exec('tsc --skipLibCheck');
-		break;
-
-	case 'ts':
-		lintingProcess = childProcess.exec(`node "${resolveBin('eslint')}" . --ext .ts,.tsx,.js --format unix`, {
+const TASKS = {
+	'tsc': {
+		command: 'tsc --skipLibCheck'
+	},
+	'ts': {
+		command: `node "${require.resolve('eslint/bin/eslint.js')}" . --ext .ts,.tsx,.js --format unix --resolve-plugins-relative-to "${__dirname}"`,
+		options: {
 			env: {
 				TIMING: 10
 			}
-		});
-		break;
+		}
+	},
+	'sass': {
+		command: `node "${require.resolve('stylelint/bin/stylelint.js')}"  "src/**/*.scss" --formatter unix --report-needless-disables --report-invalid-scope-disables --report-descriptionless-disables`
+	},
+	'md': {
+		command: `node "${require.resolve('markdownlint-cli/markdownlint.js')}"  **/*.md --ignore node_modules`
+	},
+	'audit': {
+		command: 'npm audit --production --audit-level=moderate'
+	}
+};
 
-	case 'sass':
-		lintingProcess = childProcess.exec(`node "${resolveBin('stylelint')}"  "src/**/*.scss" --formatter unix --report-needless-disables --report-invalid-scope-disables --report-descriptionless-disables`);
-		break;
-
-	case 'md':
-		lintingProcess = childProcess.exec(`node "${resolveBin('markdownlint-cli', { executable: 'markdownlint' })}"  **/*.md --ignore node_modules`);
-		break;
-
-	case 'audit':
-		lintingProcess = childProcess.exec('npm audit --production --audit-level=moderate');
-		break;
-
-	default:
-		throw new Error(`"${taskName}" is not a valid task.`)
+if (!(taskName in TASKS)) {
+	throw new Error(`"${taskName}" is not a valid task.`);
 }
 
+const { command, options } = TASKS[taskName];
+
+process.stdout.write(`\n[lint ${taskName}] ${command}\n\n`);
+
+lintingProcess = childProcess.exec(command, options);
 lintingProcess.stdout.pipe(process.stdout);
 lintingProcess.stderr.pipe(process.stderr);
 lintingProcess.on('exit', (code) => process.exit(code));

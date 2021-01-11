@@ -155,3 +155,20 @@ markdownlint **/*.md --ignore node_modules
 ```sh
 npm audit --production --audit-level=moderate
 ```
+
+## VSCode setup
+
+For VSCode I recommend the [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) extension.
+
+If you have multiple ESLint versions in your project - which can happen if you use Gatsby, which comes with an own, outdated ESLint version - the ESLint VSCode extension may use this outdated version, and then show you errors like `Definition for rule '...' was not found.` or doesn't work at all.
+
+To solve this issue, add these options to your `.vscode/settings.json`:
+```json
+{
+  "eslint.nodePath": "./node_modules/linter-bundle/node_modules/eslint",
+	"eslint.options": {
+		"configFile": "./.eslintrc.js",
+		"resolvePluginsRelativeTo": "./node_modules/linter-bundle"
+  },
+}
+```

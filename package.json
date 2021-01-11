@@ -47,7 +47,6 @@
 		"eslint-plugin-react-hooks": "4.2.0",
 		"eslint-plugin-unicorn": "25.0.1",
 		"markdownlint-cli": "0.26.0",
-		"resolve-bin": "0.4.0",
 		"stylelint": "13.8.0",
 		"stylelint-declaration-block-no-ignored-properties": "2.3.0",
 		"stylelint-high-performance-animation": "1.5.2",
