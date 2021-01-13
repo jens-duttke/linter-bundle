@@ -71,7 +71,7 @@ module.exports = {
 				 * eslint-plugin-node
 				 * @see https://github.com/mysticatea/eslint-plugin-node
 				 */
-				'node/no-unsupported-features/es-syntax': 'error'
+				'node/no-unsupported-features/es-syntax': 'off'
 			}
 		}
 	]
