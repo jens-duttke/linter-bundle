@@ -160,7 +160,7 @@ module.exports = {
 		'no-nonoctal-decimal-escape': 'error',
 		'no-octal': 'error',
 		'no-octal-escape': 'error',
-		'no-param-reassign': ['error', { props: true }],
+		'no-param-reassign': ['error', { props: false }],
 		'no-proto': 'error',
 		'no-redeclare': 'off', // @typescript-eslint/no-redeclare
 		'no-return-assign': 'error',
@@ -288,7 +288,7 @@ module.exports = {
 		'max-statements': ['error', 50, { ignoreTopLevelFunctions: true }],
 		'max-statements-per-line': ['error', { max: 3 }],
 		'multiline-comment-style': 'off', // Comment style must be decided from case to case
-		'multiline-ternary': ['error', 'always-multiline'],
+		'multiline-ternary': 'off', // I would prefer this style: `(a === b ? (\ntrue\n) : {\notherwise: false\n})`, which means line-breaks should be only allowed, if the operand is wrapped into `(`, `{` or `[`.
 		'new-cap': ['error', { properties: false }],
 		'new-parens': 'error',
 		'newline-per-chained-call': ['error', { ignoreChainWithDepth: 4 }],
@@ -406,7 +406,7 @@ module.exports = {
 		'@typescript-eslint/consistent-indexed-object-style': 'error',
 		'@typescript-eslint/consistent-type-assertions': 'error',
 		'@typescript-eslint/consistent-type-definitions': 'error',
-		'@typescript-eslint/consistent-type-imports': 'error',
+		'@typescript-eslint/consistent-type-imports': ['error', { disallowTypeAnnotations: false }],
 		'@typescript-eslint/dot-notation': ['error', { allowProtectedClassPropertyAccess: true }],
 		'@typescript-eslint/explicit-function-return-type': 'off', // @todo Disabled till we can specify exceptions (React-default class methods, like render())
 		'@typescript-eslint/explicit-member-accessibility': ['error', {
@@ -893,7 +893,7 @@ module.exports = {
 		'unicorn/prefer-ternary': 'off', // We prefer readability over saving a few chars
 		'unicorn/prefer-regexp-test': 'error',
 		'unicorn/prefer-type-error': 'error',
-		'unicorn/prevent-abbreviations': ['error', { ignore: ['args', 'i', 'j', 'i18n', 'ref', 'params', 'props', 'Props'] }],
+		'unicorn/prevent-abbreviations': ['error', { ignore: ['args', 'i', 'j', 'i18n', 'ref', 'Ref', 'params', 'props', 'Props'] }],
 		'unicorn/string-content': ['error', {
 			patterns: {
 				'\\.\\.\\.': '…',

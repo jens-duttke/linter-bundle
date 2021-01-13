@@ -115,7 +115,7 @@ module.exports = {
 				'react/jsx-key': ['error', { checkKeyMustBeforeSpread: true }],
 				'react/jsx-max-depth': ['error', { max: 8 }],
 				'react/jsx-max-props-per-line': ['error', { maximum: 5, when: 'multiline' }],
-				'react/no-adjacent-inline-elements': 'error',
+				'react/no-adjacent-inline-elements': 'off', // @todo There is an issue if inline and block elements are mixed. Simple example: `<span itemProp="name">Text</span><br />` here, the space between the SPAN and BR should not be forced, because a space at the end of a line does not make sense.
 				'react/jsx-newline': 'off',
 				'react/jsx-no-bind': ['error', { ignoreDOMComponents: true }],
 				'react/jsx-no-comment-textnodes': 'error',

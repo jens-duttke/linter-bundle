@@ -1,12 +1,7 @@
 module.exports = {
 	overrides: [
-        {
-			files: ['*.tsx'],
-			settings: {
-				linkComponents: [
-					{ name: 'Link', linkAttribute: 'to' }
-				]
-			},
+		{
+			files: ['*.ts', '*.tsx'],
 			rules: {
 				/**
 				 * @typescript-eslint
@@ -18,21 +13,34 @@ module.exports = {
 				 * eslint-plugin-unicorn
 				 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
 				 */
+				'unicorn/string-content': ['error', {
+					patterns: {
+						// '\\.\\.\\.': '…', // @todo Does not support graphql-template strings. Report that as bug!
+						'->': '→'
+					}
+				}]
+			}
+		},
+        {
+			files: ['*.tsx'],
+			settings: {
+				linkComponents: [
+					{ name: 'Link', linkAttribute: 'to' }
+				]
+			},
+			rules: {
+				/**
+				 * eslint-plugin-unicorn
+				 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
+				 */
 				'unicorn/filename-case': ['error', {
 					cases: {
 						camelCase: true,
 						pascalCase: true
 					},
 					ignore: [
-						/([A-Za-z0-9]?[a-z0-9]+)*[A-Z]{2,4}([A-Za-z0-9]?[a-z0-9]+)*/u, // Up to 4 Characters can be upper-case in a row (e.g. in `prepareDOM` or `SVGIcon`)
-						'gatsby-browser.js'
+						/([A-Za-z0-9]?[a-z0-9]+)*[A-Z]{2,4}([A-Za-z0-9]?[a-z0-9]+)*/u // Up to 4 Characters can be upper-case in a row (e.g. in `prepareDOM` or `SVGIcon`)
 					]
-				}],
-				'unicorn/string-content': ['error', {
-					patterns: {
-						// '\\.\\.\\.': '…', // @todo Does not support graphql-template strings. Report that as bug!
-						'->': '→'
-					}
 				}]
 			}
 		},
@@ -54,6 +62,16 @@ module.exports = {
 						kebabCase: true
 					}
 				}]
+			}
+		},
+		{
+			files: ['gatsby-browser.js'],
+			rules: {
+				/**
+				 * eslint-plugin-node
+				 * @see https://github.com/mysticatea/eslint-plugin-node
+				 */
+				'node/no-unsupported-features/es-syntax': 'error'
 			}
 		}
 	]
