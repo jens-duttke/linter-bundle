@@ -160,7 +160,7 @@ module.exports = {
 		'no-nonoctal-decimal-escape': 'error',
 		'no-octal': 'error',
 		'no-octal-escape': 'error',
-		'no-param-reassign': ['error', { props: false }],
+		'no-param-reassign': 'off', // Parameter reassignment used wisely makes the code more readable
 		'no-proto': 'error',
 		'no-redeclare': 'off', // @typescript-eslint/no-redeclare
 		'no-return-assign': 'error',
@@ -694,7 +694,7 @@ module.exports = {
 		 * @see https://github.com/jonaskello/eslint-plugin-functional#supported-rules
 		 */
 		'functional/immutable-data': 'off', // This rule would require a lot of additional code and workarounds, which would make the result much more illegible.
-		'functional/no-let': ['error', { allowLocalMutation: true }],
+		'functional/no-let': 'off', // This is better covered by the `prefer-const` rule
 		'functional/no-method-signature': 'off',
 		'functional/prefer-readonly-type': ['error', { ignoreClass: true, allowLocalMutation: true, ignoreCollections: true, ignoreInterface: true }],
 		'functional/no-class': 'off',
@@ -822,7 +822,7 @@ module.exports = {
 		 */
 		'unicorn/better-regex': 'error',
 		'unicorn/catch-error-name': 'error',
-		'unicorn/consistent-destructuring': 'error',
+		'unicorn/consistent-destructuring': 'off', // Depending on the usage, it makes sense to destructure e.g. `props` only partial.
 		'unicorn/consistent-function-scoping': 'error',
 		'unicorn/custom-error-definition': 'off',
 		'unicorn/empty-brace-spaces': 'error',
