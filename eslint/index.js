@@ -313,7 +313,7 @@ module.exports = {
 		'no-whitespace-before-property': 'error',
 		'nonblock-statement-body-position': 'error',
 		'object-curly-newline': 'error',
-		'object-curly-spacing': ['error', 'always'],
+		'object-curly-spacing': 'off', // @typescript-eslint/object-curly-spacing
 		'object-property-newline': ['error', { allowAllPropertiesOnSameLine: true }],
 		'one-var': ['error', { initialized: 'never', uninitialized: 'never' }],
 		'one-var-declaration-per-line': 'error',
@@ -651,6 +651,7 @@ module.exports = {
 		'@typescript-eslint/no-useless-constructor': 'error',
 		'@typescript-eslint/no-var-requires': 'error',
 		'@typescript-eslint/non-nullable-type-assertion-style': 'off', // Conflicts with `no-non-null-assertion`, which we prefer
+		'@typescript-eslint/object-curly-spacing': ['error', 'always'],
 		'@typescript-eslint/prefer-as-const': 'error',
 		'@typescript-eslint/prefer-enum-initializers': 'off',
 		'@typescript-eslint/prefer-for-of': 'error',
@@ -844,6 +845,8 @@ module.exports = {
 		'unicorn/new-for-builtins': 'error',
 		'unicorn/no-abusive-eslint-disable': 'error',
 		'unicorn/no-array-callback-reference': 'off', // If I use functions, they are specially developed for this use-case
+		'unicorn/no-array-for-each': 'error',
+		'unicorn/no-array-push-push': 'error',
 		'unicorn/no-array-reduce': 'error',
 		'unicorn/no-console-spaces': 'error',
 		'unicorn/no-for-loop': 'off', // @typescript-eslint/prefer-for-of
@@ -857,6 +860,7 @@ module.exports = {
 		'unicorn/no-null': 'off', // @todo Too much old native JavaScript functions are based on `null`. Maybe we can replace them later.
 		'unicorn/no-object-as-default-parameter': 'error',
 		'unicorn/no-process-exit': 'error',
+		'unicorn/no-this-assignment': 'error',
 		'unicorn/no-unreadable-array-destructuring': 'error',
 		'unicorn/no-unsafe-regex': 'off',
 		'unicorn/no-unused-properties': 'error',
