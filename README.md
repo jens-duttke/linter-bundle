@@ -83,6 +83,7 @@ module.exports = {
     require.resolve('linter-bundle/eslint/overrides-react'),
     require.resolve('linter-bundle/eslint/overrides-gatsby'),
     require.resolve('linter-bundle/eslint/overrides-javascript'),
+    // require.resolve('linter-bundle/eslint/overrides-javascript-lazy'),
     require.resolve('linter-bundle/eslint/overrides-jest')
   ],
   ignorePatterns: [
