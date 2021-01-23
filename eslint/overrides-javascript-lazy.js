@@ -1,4 +1,4 @@
-const overridesJavascript = require('overrides.javascript');
+const overridesJavaScript = require('./overrides-javascript');
 
 /**
  * @typescript-eslint
