@@ -204,35 +204,15 @@ module.exports = {
 				name: 'isNaN',
 				message: 'Use Number.isNaN() instead, and ensure that the input value is of type number. isNaN(undefined) !== Number.isNaN(undefined)'
 			},
-			{
-				name: 'fetch',
-				message: 'Use Utils.fetchWithTimeout() instead.'
-			}
+			...global.linterBundleSettings?.overrides?.general?.['no-restricted-globals']?.additionalRestictions
 		],
 		'no-restricted-properties': [
 			'error',
-			{
-				object: 'localStorage',
-				property: 'getItem',
-				message: 'Use StorageHelper.getItem() instead.'
-			},
-			{
-				object: 'localStorage',
-				property: 'setItem',
-				message: 'Use StorageHelper.setItem() instead.'
-			},
-			{
-				object: 'localStorage',
-				property: 'removeItem',
-				message: 'Use StorageHelper.removeItem() instead.'
-			}
+			...global.linterBundleSettings?.overrides?.general?.['no-restricted-properties']?.additionalRestictions
 		],
 		'no-restricted-syntax': [
 			'error',
-			{
-				selector: 'NewExpression[callee.name="Blob"]',
-				message: 'Use BlobHelper.create() instead of new Blob().'
-			}
+			...global.linterBundleSettings?.overrides?.general?.['no-restricted-syntax']?.additionalRestictions
 		],
 		'no-shadow': 'off', // @typescript-eslint/no-shadow
 		'no-shadow-restricted-names': 'error',

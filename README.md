@@ -62,6 +62,41 @@ npm install linter-bundle --save-dev
 global.linterBundleSettings = {
   overrides: {
     general: {
+      'no-restricted-globals': {
+        additionalRestictions: [
+          {
+            name: 'fetch',
+            message: 'Use Utils.fetchWithTimeout() instead.'
+          }
+        ]
+      },
+      'no-restricted-properties': {
+        additionalRestictions: [
+          {
+            object: 'localStorage',
+            property: 'getItem',
+            message: 'Use StorageHelper.getItem() instead.'
+          },
+          {
+            object: 'localStorage',
+            property: 'setItem',
+            message: 'Use StorageHelper.setItem() instead.'
+          },
+          {
+            object: 'localStorage',
+            property: 'removeItem',
+            message: 'Use StorageHelper.removeItem() instead.'
+          }
+        ]
+      },
+      'no-restricted-syntax': {
+        additionalRestictions: [
+          {
+            selector: 'NewExpression[callee.name="Blob"]',
+            message: 'Use BlobHelper.create() instead of new Blob().'
+          }
+        ]
+      },
       'import/order': {
         additionalExternalPatterns: ['@sentry/*']
       }
@@ -167,9 +202,9 @@ To solve this issue, add these options to your `.vscode/settings.json`:
 ```json
 {
   "eslint.nodePath": "./node_modules/linter-bundle/node_modules/eslint",
-	"eslint.options": {
-		"configFile": "./.eslintrc.js",
-		"resolvePluginsRelativeTo": "./node_modules/linter-bundle"
+  "eslint.options": {
+    "configFile": "./.eslintrc.js",
+    "resolvePluginsRelativeTo": "./node_modules/linter-bundle"
   },
 }
 ```
