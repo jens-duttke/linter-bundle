@@ -1,3 +1,5 @@
+/* eslint-disable max-lines */
+
 module.exports = {
 	plugins: [
 		'stylelint-declaration-block-no-ignored-properties',

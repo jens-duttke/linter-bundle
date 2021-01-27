@@ -1,6 +1,6 @@
 module.exports = {
 	overrides: [
-        {
+		{
 			files: ['*.worker.ts'],
 			rules: {
 				/**

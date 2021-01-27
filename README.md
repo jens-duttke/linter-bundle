@@ -1,12 +1,13 @@
+# linter-bundle
+
 [![npm version](https://badge.fury.io/js/linter-bundle.svg)](https://badge.fury.io/js/linter-bundle)
 [![Dependency Status](https://img.shields.io/david/jens-duttke/linter-bundle)](https://www.npmjs.com/package/linter-bundle)
 [![Known Vulnerabilities](https://snyk.io/test/github/jens-duttke/linter-bundle/badge.svg?targetFile=package.json)](https://snyk.io/test/github/jens-duttke/linter-bundle?targetFile=package.json)
 [![npm](https://img.shields.io/npm/dm/linter-bundle.svg?maxAge=2592000)](https://www.npmjs.com/package/linter-bundle)
 [![MIT license](https://img.shields.io/github/license/jens-duttke/linter-bundle.svg?style=flat)](https://opensource.org/licenses/MIT)
 
-# linter-bundle
-
 Ready-to use bundle of linting tools, containing configurations for
+
 - [ESLint](https://eslint.org/): JavaScript (Node.js); TypeScript, React (Browser)
 - [stylelint](https://stylelint.io/): SCSS (Browser)
 - [markdownlint](https://github.com/DavidAnson/markdownlint): Markdown
@@ -128,7 +129,8 @@ module.exports = {
     'private/'
   ],
   globals: {
-    // Define project-specific global variables. JavaScript built-in objects (like ArrayBuffer, typed arrays, Promise, Set/Map etc.) are automatically set to 'readonly', and don't need to be added here.
+    // Define project-specific global variables. JavaScript built-in objects (like ArrayBuffer, typed arrays, Promise, Set/Map etc.) are automatically set to
+    // 'readonly', and don't need to be added here.
     __DEV__: 'readonly',
     APP_NAME: 'readonly',
     APP_VERSION: 'readonly',
@@ -196,9 +198,11 @@ npm audit --production --audit-level=moderate
 
 For VSCode I recommend the [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) extension.
 
-If you have multiple ESLint versions in your project - which can happen if you use Gatsby, which comes with an own, outdated ESLint version - the ESLint VSCode extension may use this outdated version, and then show you errors like `Definition for rule '...' was not found.` or doesn't work at all.
+If you have multiple ESLint versions in your project - which can happen if you use Gatsby, which comes with an own, outdated ESLint version - the ESLint VSCode
+extension may use this outdated version, and then show you errors like `Definition for rule '...' was not found.` or doesn't work at all.
 
 To solve this issue, add these options to your `.vscode/settings.json`:
+
 ```json
 {
   "eslint.nodePath": "./node_modules/linter-bundle/node_modules/eslint",

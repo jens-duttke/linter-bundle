@@ -1,6 +1,6 @@
 module.exports = {
 	overrides: [
-        {
+		{
 			files: ['*.d.ts'],
 			rules: {
 				/**

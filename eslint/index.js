@@ -1,3 +1,10 @@
+/* eslint-disable max-lines */
+
+const fs = require('fs');
+const path = require('path');
+
+const ensureType = require('../helper/ensure-type');
+
 module.exports = {
 	ignorePatterns: [
 		'.cache/',
@@ -208,15 +215,15 @@ module.exports = {
 				name: 'isNaN',
 				message: 'Use Number.isNaN() instead, and ensure that the input value is of type number. isNaN(undefined) !== Number.isNaN(undefined)'
 			},
-			...global.linterBundleSettings?.overrides?.general?.['no-restricted-globals']?.additionalRestictions
+			...ensureType.array(global.linterBundleSettings?.overrides?.general?.['no-restricted-globals']?.additionalRestictions)
 		],
 		'no-restricted-properties': [
 			'error',
-			...global.linterBundleSettings?.overrides?.general?.['no-restricted-properties']?.additionalRestictions
+			...ensureType.array(global.linterBundleSettings?.overrides?.general?.['no-restricted-properties']?.additionalRestictions)
 		],
 		'no-restricted-syntax': [
 			'error',
-			...global.linterBundleSettings?.overrides?.general?.['no-restricted-syntax']?.additionalRestictions
+			...ensureType.array(global.linterBundleSettings?.overrides?.general?.['no-restricted-syntax']?.additionalRestictions)
 		],
 		'no-shadow': 'off', // @typescript-eslint/no-shadow
 		'no-shadow-restricted-names': 'error',
@@ -756,7 +763,7 @@ module.exports = {
 			'newlines-between': 'always',
 			'pathGroupsExcludedImportTypes': [],
 			'pathGroups': [
-				...(global.linterBundleSettings?.overrides?.general?.['import/order']?.additionalExternalPatterns ?? []).map((pattern) => ({ pattern, group: 'external' })),
+				...ensureType.array(global.linterBundleSettings?.overrides?.general?.['import/order']?.additionalExternalPatterns).map((pattern) => ({ pattern, group: 'external' })),
 				{ pattern: '@*', group: 'internal' },
 				{ pattern: '@*/**', group: 'internal' },
 				{ pattern: '*!*/**', group: 'internal', position: 'after' } // Webpack loaders, e.g. 'worker-ref-loader!@app/components/FileFormatIdentificationDialog/TypeDetection.worker'
@@ -885,6 +892,7 @@ module.exports = {
 		'unicorn/string-content': ['error', {
 			patterns: {
 				'\\.\\.\\.': '…',
+				// eslint-disable-next-line unicorn/string-content
 				'->': '→'
 			}
 		}],

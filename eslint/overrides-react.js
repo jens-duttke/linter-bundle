@@ -1,6 +1,8 @@
+const ensureType = require('../helper/ensure-type');
+
 module.exports = {
 	overrides: [
-        {
+		{
 			files: ['*.tsx'],
 			rules: {
 				/**
@@ -29,11 +31,11 @@ module.exports = {
 				'react/forbid-component-props': ['error', { forbid: [
 					{
 						propName: 'className',
-						allowedFor: global.linterBundleSettings?.overrides?.react?.['react/forbid-component-props']?.allowClassNameFor ?? []
+						allowedFor: ensureType.array(global.linterBundleSettings?.overrides?.react?.['react/forbid-component-props']?.allowClassNameFor)
 					},
 					{
 						propName: 'style',
-						allowedFor: global.linterBundleSettings?.overrides?.react?.['react/forbid-component-props']?.allowStyleFor ?? []
+						allowedFor: ensureType.array(global.linterBundleSettings?.overrides?.react?.['react/forbid-component-props']?.allowStyleFor)
 					}
 				] }],
 				'react/forbid-dom-props': 'error',
@@ -115,7 +117,7 @@ module.exports = {
 				'react/jsx-key': ['error', { checkKeyMustBeforeSpread: true }],
 				'react/jsx-max-depth': ['error', { max: 8 }],
 				'react/jsx-max-props-per-line': ['error', { maximum: 5, when: 'multiline' }],
-				'react/no-adjacent-inline-elements': 'off', // @todo There is an issue if inline and block elements are mixed. Simple example: `<span itemProp="name">Text</span><br />` here, the space between the SPAN and BR should not be forced, because a space at the end of a line does not make sense.
+				'react/no-adjacent-inline-elements': 'off', // @todo There is an issue if inline and block elements are mixed. Simple example: `<span>Text</span><br />` here, the space between the SPAN and BR should not be forced, because a space at the end of a line does not make sense.
 				'react/jsx-newline': 'off',
 				'react/jsx-no-bind': ['error', { ignoreDOMComponents: true }],
 				'react/jsx-no-comment-textnodes': 'error',
