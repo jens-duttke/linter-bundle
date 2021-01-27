@@ -27,7 +27,11 @@ module.exports = {
 		project: [
 			'./tsconfig.json',
 			'./jsconfig.json'
-		],
+		].filter((fileName) => {
+			const filePath = path.resolve(process.cwd(), fileName);
+
+			return (fs.existsSync(filePath) && fs.lstatSync(filePath).isFile());
+		}),
 		warnOnUnsupportedTypeScriptVersion: false
 	},
 	env: {
