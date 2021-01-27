@@ -1,0 +1,60 @@
+{
+	"debug.console.wordWrap": false,
+	"editor.autoClosingBrackets": "never",
+	"editor.detectIndentation": false,
+	"editor.insertSpaces": false,
+	"editor.tabSize": 4,
+	"errorLens.delay": 1000,
+	"errorLens.gutterIconsEnabled": true,
+	"errorLens.gutterIconSet": "circle",
+	"errorLens.followCursor": "activeLine",
+	"eslint.options": {
+		"configFile": "./.eslintrc.js"
+	},
+	"files.associations": {
+		"*.json": "jsonc",
+		"package.json": "json"
+	},
+	"files.eol": "\n",
+	"files.exclude": {
+		".gitattributes": false,
+		".gitignore": false,
+		".vscode": false,
+		"node_modules": false,
+		"package-lock.json": false
+	},
+	"git.inputValidationSubjectLength": 72,
+	"javascript.preferences.quoteStyle": "single",
+	"javascript.validate.enable": false,
+	"search.exclude": {
+		"node_modules": true,
+		"package-lock.json": true
+	},
+	"stylelint.enable": true,
+	"terminal.integrated.rightClickBehavior": "copyPaste",
+	"terminal.integrated.scrollback": 10000,
+	"todo-tree.general.debug": true,
+	"todo-tree.filtering.useBuiltInExcludes": "search excludes",
+	"todo-tree.general.tags": [
+		"@todo"
+	],
+	"todo-tree.tree.labelFormat": "${after}",
+	"todo-tree.regex.regex": "((//|#|<!--|/\\*|^\\s*\\*)\\s*($TAGS))|(\"\\?(\\\\.|[^\"])+\")",
+	"typescript.format.insertSpaceBeforeFunctionParenthesis": true,
+	"typescript.preferences.quoteStyle": "single",
+	"typescript.tsdk": "node_modules\\typescript\\lib",
+	"workbench.iconTheme": "material-icon-theme",
+	"workbench.tree.indent": 22,
+	"[markdown]": {
+		"editor.rulers": [160]
+	},
+	"[scss]": {
+		"editor.rulers": [160]
+	},
+	"[typescript]": {
+		"editor.rulers": [300]
+	},
+	"[typescriptreact]": {
+		"editor.rulers": [300]
+	}
+}
