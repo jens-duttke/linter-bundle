@@ -160,6 +160,12 @@ module.exports = {
 }
 ```
 
+#### .gitignore / .npmignore
+
+```json
+.eslintcache
+```
+
 ## Available commands and what they are doing
 
 ### `lint tsc`
@@ -171,7 +177,7 @@ tsc --skipLibCheck
 ### `lint ts`
 
 ```sh
-eslint . --ext .ts,.tsx,.js --format unix
+eslint . --ext .ts,.tsx,.js --format unix --cache
 ```
 
 Additionally, the environment variable `TIMING` is set to `10`.
@@ -179,7 +185,7 @@ Additionally, the environment variable `TIMING` is set to `10`.
 ### `lint sass`
 
 ```sh
-stylelint "src/**/*.scss" --formatter unix --report-needless-disables 
+stylelint "src/**/*.scss" --formatter unix --report-needless-disables --report-invalid-scope-disables --report-descriptionless-disables
 ```
 
 ### `lint md`
