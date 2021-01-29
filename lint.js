@@ -11,7 +11,7 @@ const TASKS = {
 		command: 'tsc --skipLibCheck'
 	},
 	ts: {
-		command: `node "${require.resolve('eslint/bin/eslint.js')}" . --ext .ts,.tsx,.js --format unix --resolve-plugins-relative-to "${__dirname}"`,
+		command: `node "${require.resolve('eslint/bin/eslint.js')}" . --ext .ts,.tsx,.js --format unix --cache --resolve-plugins-relative-to "${__dirname}"`,
 		options: {
 			env: {
 				TIMING: 10
