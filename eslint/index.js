@@ -616,8 +616,8 @@ module.exports = {
 		'@typescript-eslint/no-shadow': 'error',
 		'@typescript-eslint/no-this-alias': 'error',
 		'@typescript-eslint/no-throw-literal': 'error',
-		'@typescript-eslint/no-type-alias': ['error', {
-			allowAliases: 'always', // @todo There should be an option like 'sub-in-unions-and-intersections', which allows `type A = (string | number)[];`
+		'@typescript-eslint/no-type-alias': ['off', { // @todo There should be an option like 'sub-in-unions-and-intersections', which allows `type A = (string | number)[];`
+			allowAliases: 'always',
 			allowCallbacks: 'always',
 			allowConditionalTypes: 'always',
 			allowConstructors: 'always',
