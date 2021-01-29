@@ -1,5 +1,6 @@
 .github/
 .vscode/
 .editorconfig
+.eslintcache
 *.log
 npm-debug.log*
