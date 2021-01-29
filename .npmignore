@@ -1,3 +1,5 @@
+.github/
+.vscode/
 .editorconfig
 *.log
 npm-debug.log*
