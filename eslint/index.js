@@ -236,7 +236,7 @@ module.exports = {
 		// Stylistic Issues
 		'array-bracket-newline': ['error', 'consistent'],
 		'array-bracket-spacing': 'error',
-		'array-element-newline': ['error', 'consistent'],
+		'array-element-newline': 'off', // Line breaks should be used in such a way that maximum readability is achieved. This cannot be represented by a fixed rule.
 		'block-spacing': 'error',
 		'brace-style': 'off', // @typescript-eslint/brace-style
 		'camelcase': 'off', // @typescript-eslint/naming-convention
