@@ -27,6 +27,7 @@
 	"javascript.preferences.quoteStyle": "single",
 	"javascript.validate.enable": false,
 	"search.exclude": {
+		".eslintcache": true,
 		"node_modules": true,
 		"package-lock.json": true
 	},
