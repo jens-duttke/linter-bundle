@@ -32,13 +32,13 @@
 		"lint": "node ./lint ts & node ./lint md & node ./lint audit",
 		"preversion": "npm run check-outdated",
 		"postversion": "git push && git push --tags && npm publish",
-		"check-outdated": "check-outdated --ignore-pre-releases"
+		"check-outdated": "check-outdated --ignore-pre-releases --ignore-packages eslint@7.19.0"
 	},
 	"dependencies": {
 		"@typescript-eslint/eslint-plugin": "4.14.1",
 		"@typescript-eslint/parser": "4.14.1",
 		"check-outdated": "2.5.0",
-		"eslint": "7.19.0",
+		"eslint": "7.18.0",
 		"eslint-plugin-functional": "3.2.1",
 		"eslint-plugin-import": "2.22.1",
 		"eslint-plugin-jest": "24.1.3",
