@@ -35,8 +35,8 @@
 		"check-outdated": "check-outdated --ignore-pre-releases --ignore-packages eslint@7.19.0"
 	},
 	"dependencies": {
-		"@typescript-eslint/eslint-plugin": "4.14.1",
-		"@typescript-eslint/parser": "4.14.1",
+		"@typescript-eslint/eslint-plugin": "4.14.2",
+		"@typescript-eslint/parser": "4.14.2",
 		"check-outdated": "2.5.0",
 		"eslint": "7.18.0",
 		"eslint-plugin-functional": "3.2.1",
