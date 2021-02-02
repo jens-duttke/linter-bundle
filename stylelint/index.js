@@ -762,7 +762,7 @@ module.exports = {
 				except: ['last-nested', 'before-comment', 'before-dollar-variable']
 			}
 		],
-		'scss/dollar-variable-first-in-block': true,
+		'scss/dollar-variable-first-in-block': [true, { ignore: ['comments', 'imports'] }],
 		'scss/dollar-variable-no-missing-interpolation': true,
 		'scss/dollar-variable-pattern': '^[a-z]+(-[a-z]+)*$',
 		'scss/double-slash-comment-empty-line-before': [
