@@ -1,6 +1,9 @@
 /* eslint-disable max-lines */
 
 module.exports = {
+	reportNeedlessDisables: true,
+	reportInvalidScopeDisables: true,
+	reportDescriptionlessDisables: true,
 	plugins: [
 		'stylelint-declaration-block-no-ignored-properties',
 		'stylelint-high-performance-animation',
@@ -72,6 +75,7 @@ module.exports = {
 		'custom-property-pattern': (global.linterBundleSettings?.patternPrefix ? `${global.linterBundleSettings.patternPrefix}-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)*` : null),
 		'declaration-bang-space-after': 'never',
 		'declaration-bang-space-before': 'always',
+		'declaration-block-no-duplicate-custom-properties': true,
 		'declaration-block-no-duplicate-properties': [
 			true,
 			{
