@@ -33,6 +33,16 @@ module.exports = {
 					}
 				}]
 			}
+		},
+		{
+			files: ['*.scss.d.ts'],
+			rules: {
+				/**
+				 * eslint
+				 * @see https://eslint.org/docs/rules/
+				 */
+				'linebreak-style': 'off' // Ignore for automatically generated .scss.d.ts files, since that does not affect the project.
+			}
 		}
 	]
 };
