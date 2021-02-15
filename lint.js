@@ -8,7 +8,8 @@ const ARG_REGEXP = /^--([^=]+)(?:=(.+))?$/u;
 
 const taskName = process.argv[2];
 
-const additionalArgs = Object.fromEntries(process.argv.splice(3).map((argument) => {
+/** @type {Record<string, string | undefined | true>} */
+const additionalArguments = Object.fromEntries(process.argv.splice(3).map((argument) => {
 	const [, name, value = true] = ARG_REGEXP.exec(argument) ?? [];
 
 	return [name.toLowerCase(), value];
@@ -16,14 +17,14 @@ const additionalArgs = Object.fromEntries(process.argv.splice(3).map((argument) 
 
 const TASKS = {
 	tsc: {
-		command: ['tsc --skipLibCheck --noEmit', ...(additionalArgs.tsconfig ? [`--project ${additionalArgs.tsconfig}`] : [])].join(' ')
+		command: ['tsc --skipLibCheck --noEmit', ...(additionalArguments.tsconfig ? [`--project ${additionalArguments.tsconfig}`] : [])].join(' ')
 	},
 	ts: {
-		command: `node "${require.resolve('eslint/bin/eslint.js')}" . --ext .ts,.tsx,.js --format unix --cache --resolve-plugins-relative-to "${__dirname}"`,
+		command: `node "${require.resolve('eslint/bin/eslint.js')}" ${additionalArguments.include ?? '"./**/*.{js,jsx,ts,tsx}"'}${additionalArguments.exclude ? ` --ignore-pattern ${additionalArguments.exclude}` : ''} --format unix --cache --resolve-plugins-relative-to "${__dirname}"`,
 		options: {
 			env: {
 				TIMING: 10,
-				TSCONFIG: additionalArgs.tsconfig
+				TSCONFIG: additionalArguments.tsconfig
 			}
 		}
 	},
@@ -46,7 +47,7 @@ if (!(taskName in TASKS)) {
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 const { command, options } = TASKS[taskName];
 
-process.stdout.write(`\n[lint ${taskName}] ${command}\n\n`);
+process.stdout.write(`\n[lint ${taskName}${(additionalArguments.length > 0 ? ` ${Object.entries(additionalArguments).map(([name, value]) => (value === true ? `--${name}` : `--${name}="${value}"`)).join(' ')}` : '')}] ${command}\n\n`);
 
 const lintingProcess = childProcess.exec(command, options);
 lintingProcess.stdout.pipe(process.stdout);
