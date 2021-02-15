@@ -174,6 +174,12 @@ module.exports = {
 tsc --skipLibCheck
 ```
 
+#### Optional command line arguments
+
+Argument | Description | Example
+-|-|-
+`--tsconfig` | Allows to specifiy a different `tsconfig.json` file. | `--tsconfig=./cypress/tsconfig.json`
+
 ### `lint ts`
 
 ```sh
@@ -181,6 +187,12 @@ eslint . --ext .ts,.tsx,.js --format unix --cache
 ```
 
 Additionally, the environment variable `TIMING` is set to `10`.
+
+#### Optional command line arguments
+
+Argument | Description | Example
+-|-|-
+`--tsconfig` | Allows to specifiy a different `tsconfig.json` file. | `--tsconfig=./cypress/tsconfig.json`
 
 ### `lint sass`
 

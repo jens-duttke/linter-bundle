@@ -4,17 +4,26 @@
 
 const childProcess = require('child_process');
 
+const ARG_REGEXP = /^--([^=]+)(?:=(.+))?$/u;
+
 const taskName = process.argv[2];
+
+const additionalArgs = Object.fromEntries(process.argv.splice(3).map((argument) => {
+	const [, name, value = true] = ARG_REGEXP.exec(argument) ?? [];
+
+	return [name.toLowerCase(), value];
+}));
 
 const TASKS = {
 	tsc: {
-		command: 'tsc --skipLibCheck'
+		command: ['tsc --skipLibCheck --noEmit', ...(additionalArgs.tsconfig ? [`--project ${additionalArgs.tsconfig}`] : [])].join(' ')
 	},
 	ts: {
 		command: `node "${require.resolve('eslint/bin/eslint.js')}" . --ext .ts,.tsx,.js --format unix --cache --resolve-plugins-relative-to "${__dirname}"`,
 		options: {
 			env: {
-				TIMING: 10
+				TIMING: 10,
+				TSCONFIG: additionalArgs.tsconfig
 			}
 		}
 	},

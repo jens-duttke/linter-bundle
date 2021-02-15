@@ -1,4 +1,5 @@
 /* eslint-disable max-lines */
+/* eslint-disable node/no-process-env */
 
 const fs = require('fs');
 const path = require('path');
@@ -32,7 +33,7 @@ module.exports = {
 			jsx: true
 		},
 		project: [
-			'./tsconfig.json',
+			(process.env.TSCONFIG ?? './tsconfig.json'),
 			'./jsconfig.json'
 		].filter((fileName) => {
 			const filePath = path.resolve(process.cwd(), fileName);
