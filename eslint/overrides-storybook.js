@@ -34,6 +34,19 @@ module.exports = {
 					}
 				}]
 			}
+		},
+		{
+			files: ['.storybook/preview.{js,jsx,ts,tsx}'],
+			rules: {
+				/**
+				 * eslint
+				 * @see https://eslint.org/docs/rules/
+				 */
+				'no-underscore-dangle': ['error', {
+					allow: ['__BASE_PATH__', '___loader', '___navigate'],
+					allowAfterThis: true
+				}]
+			}
 		}
 	]
 };
