@@ -188,13 +188,7 @@ module.exports = {
 			'margin-inline', // That's not widely supported and there is no fallback. @see https://caniuse.com/mdn-css_properties_margin-inline
 			'inset-inline', // That's not widely supported and there is no fallback. @see https://caniuse.com/mdn-css_properties_inset-inline
 			'inset-inline-start', // That's not widely supported and there is no fallback. @see https://caniuse.com/mdn-css_properties_inset-inline-start
-			'inset-inline-end', // That's not widely supported and there is no fallback. @see https://caniuse.com/mdn-css_properties_inset-inline-end
-			'block-size', // Very rare use-case. "height" is much more clear.
-			'inline-size', // Very rare use-case. "width" is much more clear.
-			'min-block-size', // Very rare use-case. "min-height" is much more clear.
-			'min-inline-size', // Very rare use-case. "min-width" is much more clear.
-			'max-block-size', // Very rare use-case. "max-height" is much more clear.
-			'max-inline-size' // Very rare use-case. "max-width" is much more clear.
+			'inset-inline-end' // That's not widely supported and there is no fallback. @see https://caniuse.com/mdn-css_properties_inset-inline-end
 		],
 		'property-no-unknown': true,
 		'property-no-vendor-prefix': true,
@@ -813,8 +807,10 @@ module.exports = {
 		 */
 		'liberty/use-logical-spec': ['always', { except: [
 			'float',
+
 			'top',
 			'bottom',
+
 			'border-top', // "border-block-start" is new and should not be used before 2022. @see https://caniuse.com/mdn-css_properties_border-block-start
 			'border-top-color', // "border-block-start-color" is new and should not be used before 2022. @see https://caniuse.com/mdn-css_properties_border-block-start-color
 			'border-top-left-radius', // "border-start-start-radius" is new and should not be used before 2022. @see https://caniuse.com/mdn-css_properties_border-start-start-radius
@@ -829,13 +825,24 @@ module.exports = {
 			'border-left-color', // "border-inline-start-color" is new and should not be used before 2022. @see https://caniuse.com/mdn-css_properties_border-inline-start-color
 			'border-right', // "border-inline-end" is new and should not be used before 2022. @see https://caniuse.com/mdn-css_properties_border-inline-end
 			'border-right-color', // "border-inline-end-color" is new and should not be used before 2022. @see https://caniuse.com/mdn-css_properties_border-inline-end-color
+
 			'margin-top',
 			'margin-bottom',
+
 			'padding-top',
 			'padding-bottom',
+
 			'left', // "inset-inline" is not supported by any browser, expect Firefox. @see https://caniuse.com/mdn-css_properties_inset-inline
 			'right', // "inset-inline-end" is not supported by any browser, expect Firefox. @see https://caniuse.com/mdn-css_properties_inset-inline
-			'text-align' // @todo Should only be disabled for "right", since numbers should be always aligned right, for any direction.
+
+			'text-align', // @todo Should only be disabled for "right", since numbers should be always aligned right, for any direction.
+
+			'block-size', // Very rare use-case. "height" is much more clear.
+			'inline-size', // Very rare use-case. "width" is much more clear.
+			'min-block-size', // Very rare use-case. "min-height" is much more clear.
+			'min-inline-size', // Very rare use-case. "min-width" is much more clear.
+			'max-block-size', // Very rare use-case. "max-height" is much more clear.
+			'max-inline-size' // Very rare use-case. "max-width" is much more clear.
 		] }],
 
 		/**
