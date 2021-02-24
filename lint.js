@@ -8,23 +8,32 @@ const ARG_REGEXP = /^--([^=]+)(?:=(.+))?$/u;
 
 const taskName = process.argv[2];
 
-/** @type {Record<string, string | undefined | true>} */
-const additionalArguments = Object.fromEntries(process.argv.splice(3).map((argument) => {
+/** @type {Record<string, (string | true)[] | undefined>} */
+const additionalArguments = {};
+
+for (const argument of process.argv.splice(3)) {
 	const [, name, value = true] = ARG_REGEXP.exec(argument) ?? [];
 
-	return [name.toLowerCase(), value];
-}));
+	const normalizedName = name.toLowerCase();
+
+	if (normalizedName in additionalArguments) {
+		additionalArguments[normalizedName].push(value);
+	}
+	else {
+		additionalArguments[normalizedName] = [value];
+	}
+}
 
 const TASKS = {
 	tsc: {
-		command: ['tsc --skipLibCheck --noEmit', ...(additionalArguments.tsconfig ? [`--project ${additionalArguments.tsconfig}`] : [])].join(' ')
+		command: ['tsc --skipLibCheck --noEmit', ...(additionalArguments.tsconfig?.[0] ? [`--project ${additionalArguments.tsconfig[0]}`] : [])].join(' ')
 	},
 	ts: {
-		command: `node "${require.resolve('eslint/bin/eslint.js')}" ${additionalArguments.include ?? '"./**/*.{js,jsx,ts,tsx}"'}${additionalArguments.exclude ? ` --ignore-pattern ${additionalArguments.exclude}` : ''} --format unix --cache --resolve-plugins-relative-to "${__dirname}"`,
+		command: `node "${require.resolve('eslint/bin/eslint.js')}" ${additionalArguments.include?.[0] ?? '"./**/*.{js,jsx,ts,tsx}"'}${additionalArguments.exclude?.map((exclude) => ` --ignore-pattern ${exclude}`).join(' ') ?? ''} --format unix --cache --resolve-plugins-relative-to "${__dirname}"`,
 		options: {
 			env: {
 				TIMING: 10,
-				TSCONFIG: additionalArguments.tsconfig
+				TSCONFIG: additionalArguments.tsconfig?.[0]
 			}
 		}
 	},
@@ -47,7 +56,7 @@ if (!(taskName in TASKS)) {
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 const { command, options } = TASKS[taskName];
 
-process.stdout.write(`\n[lint ${taskName}${(additionalArguments.length > 0 ? ` ${Object.entries(additionalArguments).map(([name, value]) => (value === true ? `--${name}` : `--${name}="${value}"`)).join(' ')}` : '')}] ${command}\n\n`);
+process.stdout.write(`\n[lint ${taskName}${(additionalArguments.length > 0 ? ` ${Object.entries(additionalArguments).map(([name, values]) => values.map((value) => (value === true ? `--${name}` : `--${name}="${value}"`)).join(' ')).join(' ')}` : '')}] ${command}\n\n`);
 
 const lintingProcess = childProcess.exec(command, options);
 lintingProcess.stdout.pipe(process.stdout);

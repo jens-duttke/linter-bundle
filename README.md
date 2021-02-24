@@ -195,7 +195,7 @@ Argument | Description | Example
 -|-|-
 `--tsconfig` | Allows to specifiy a different `tsconfig.json` file. | `--tsconfig=./cypress/tsconfig.json`
 `--include` | Patterns with files which should be considered | `--include="./cypress/**/*.ts"`
-`--exclude` | Patterns with files which should not be considered. Used as `--ignore-pattern` argument for ESLint. | `--exclude="cypress"`
+`--exclude` | Patterns with files which should not be considered. Can be used multiple times for different patterns. Used as `--ignore-pattern` argument for ESLint. | `--exclude="cypress" --exclude=".storybook"`
 
 ### `lint sass`
 
