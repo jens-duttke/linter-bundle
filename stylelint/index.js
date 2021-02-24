@@ -188,7 +188,13 @@ module.exports = {
 			'margin-inline', // That's not widely supported and there is no fallback. @see https://caniuse.com/mdn-css_properties_margin-inline
 			'inset-inline', // That's not widely supported and there is no fallback. @see https://caniuse.com/mdn-css_properties_inset-inline
 			'inset-inline-start', // That's not widely supported and there is no fallback. @see https://caniuse.com/mdn-css_properties_inset-inline-start
-			'inset-inline-end' // That's not widely supported and there is no fallback. @see https://caniuse.com/mdn-css_properties_inset-inline-end
+			'inset-inline-end', // That's not widely supported and there is no fallback. @see https://caniuse.com/mdn-css_properties_inset-inline-end
+			'block-size', // Very rare use-case. "height" is much more clear.
+			'inline-size', // Very rare use-case. "width" is much more clear.
+			'min-block-size', // Very rare use-case. "min-height" is much more clear.
+			'min-inline-size', // Very rare use-case. "min-width" is much more clear.
+			'max-block-size', // Very rare use-case. "max-height" is much more clear.
+			'max-inline-size' // Very rare use-case. "max-width" is much more clear.
 		],
 		'property-no-unknown': true,
 		'property-no-vendor-prefix': true,
