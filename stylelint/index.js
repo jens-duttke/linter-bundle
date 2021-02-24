@@ -837,12 +837,12 @@ module.exports = {
 
 			'text-align', // @todo Should only be disabled for "right", since numbers should be always aligned right, for any direction.
 
-			'block-size', // Very rare use-case. "height" is much more clear.
-			'inline-size', // Very rare use-case. "width" is much more clear.
-			'min-block-size', // Very rare use-case. "min-height" is much more clear.
-			'min-inline-size', // Very rare use-case. "min-width" is much more clear.
-			'max-block-size', // Very rare use-case. "max-height" is much more clear.
-			'max-inline-size' // Very rare use-case. "max-width" is much more clear.
+			'width', // "inline-size" is very rarely needed. I'm not aware of any use-case.
+			'height', // "block-size" is very rarely needed. I'm not aware of any use-case.
+			'min-width', // "min-inline-size" is very rarely needed. I'm not aware of any use-case.
+			'min-height', // "min-block-size" is very rarely needed. I'm not aware of any use-case.
+			'max-width', // "max-inline-size" is very rarely needed. I'm not aware of any use-case.
+			'max-height' // "max-block-size" is very rarely needed. I'm not aware of any use-case.
 		] }],
 
 		/**
