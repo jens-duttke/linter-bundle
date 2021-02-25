@@ -29,7 +29,7 @@ const TASKS = {
 		command: ['tsc --skipLibCheck --noEmit', ...(additionalArguments.tsconfig?.[0] ? [`--project ${additionalArguments.tsconfig[0]}`] : [])].join(' ')
 	},
 	ts: {
-		command: `node "${require.resolve('eslint/bin/eslint.js')}" ${additionalArguments.include?.[0] ?? '"./**/*.{js,jsx,ts,tsx}"'}${additionalArguments.exclude?.map((exclude) => ` --ignore-pattern ${exclude}`).join(' ') ?? ''} --format unix --cache --resolve-plugins-relative-to "${__dirname}"`,
+		command: `node "${require.resolve('eslint/bin/eslint.js')}" ${additionalArguments.include?.[0] ?? '"./**/*.{js,jsx,ts,tsx}"'}${additionalArguments.exclude?.map((exclude) => ` --ignore-pattern ${exclude}`).join(' ') ?? ''} --format unix --resolve-plugins-relative-to "${__dirname}"`,
 		options: {
 			env: {
 				TIMING: 10,

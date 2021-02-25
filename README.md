@@ -172,7 +172,7 @@ module.exports = {
 ### `lint tsc`
 
 ```sh
-tsc --skipLibCheck
+tsc --skipLibCheck --noEmit
 ```
 
 #### Optional command line arguments for `lint tsc`
@@ -184,7 +184,7 @@ Argument | Description | Example
 ### `lint ts`
 
 ```sh
-eslint . --ext .ts,.tsx,.js --format unix --cache
+eslint "./**/*.{js,jsx,ts,tsx}" --format unix
 ```
 
 Additionally, the environment variable `TIMING` is set to `10`.
