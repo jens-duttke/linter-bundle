@@ -8,7 +8,7 @@ const ARG_REGEXP = /^--([^=]+)(?:=(.+))?$/u;
 
 const taskName = process.argv[2];
 
-/** @type {Record<string, (string | true)[] | undefined>} */
+/** @type {Partial<Readonly<Record<'tsconfig' | 'include' | 'exclude', (string | true)[]>>>} */
 const additionalArguments = {};
 
 for (const argument of process.argv.splice(3)) {
@@ -52,13 +52,14 @@ if (!(taskName in TASKS)) {
 	throw new Error(`"${taskName}" is not a valid task.`);
 }
 
-/** @type {{ command: string; options: { env: Record<string, unknown>; }; }} */
+/** @type {{ command: string; options: import('child_process').ExecOptions; }} */
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 const { command, options } = TASKS[taskName];
 
-process.stdout.write(`\n[lint ${taskName}${(additionalArguments.length > 0 ? ` ${Object.entries(additionalArguments).map(([name, values]) => values.map((value) => (value === true ? `--${name}` : `--${name}="${value}"`)).join(' ')).join(' ')}` : '')}] ${command}\n\n`);
+const additionalArgumentString = Object.entries(additionalArguments).map(([name, values]) => (Array.isArray(values) ? values.map((value) => (value === true ? `--${name}` : `--${name}="${value}"`)).join(' ') : '')).join(' ');
+process.stdout.write(`\n[lint ${taskName}${(additionalArgumentString.length > 0 ? ` ${additionalArgumentString}` : '')}] ${command}\n\n`);
 
 const lintingProcess = childProcess.exec(command, options);
-lintingProcess.stdout.pipe(process.stdout);
-lintingProcess.stderr.pipe(process.stderr);
-lintingProcess.on('exit', (code) => process.exit(code));
+lintingProcess.stdout?.pipe(process.stdout);
+lintingProcess.stderr?.pipe(process.stderr);
+lintingProcess.on('exit', (code) => process.exit(code ?? 0));
