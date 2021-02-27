@@ -32,7 +32,7 @@
 		"publish:major": "npm version major",
 		"publish:minor": "npm version minor",
 		"publish:patch": "npm version patch",
-		"lint": "node ./lint ts & node ./lint md & node ./lint audit",
+		"lint": "node ./lint tsc & node ./lint ts & node ./lint md & node ./lint audit",
 		"preversion": "npm run check-outdated && npm run lint",
 		"postversion": "git push && git push --tags && npm publish",
 		"check-outdated": "check-outdated --ignore-pre-releases --ignore-packages eslint@7.19.0"

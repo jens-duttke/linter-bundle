@@ -26,6 +26,7 @@
 		"noImplicitReturns": true,
 		"noImplicitThis": true,
 		"noImplicitUseStrict": false,
+		"noPropertyAccessFromIndexSignature": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"strict": true,
@@ -37,6 +38,7 @@
 		"suppressImplicitAnyIndexErrors": true
 	},
     "include": [
+		"./types.d.ts",
 		"**/*.js",
 		"./.eslintrc.js"
 	]
