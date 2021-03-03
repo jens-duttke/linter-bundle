@@ -38,10 +38,10 @@
 		"check-outdated": "check-outdated --ignore-pre-releases --ignore-packages eslint@7.19.0"
 	},
 	"dependencies": {
-		"@typescript-eslint/eslint-plugin": "4.15.2",
-		"@typescript-eslint/parser": "4.15.2",
+		"@typescript-eslint/eslint-plugin": "4.16.1",
+		"@typescript-eslint/parser": "4.16.1",
 		"check-outdated": "2.5.1",
-		"eslint": "7.20.0",
+		"eslint": "7.21.0",
 		"eslint-plugin-functional": "3.2.1",
 		"eslint-plugin-import": "2.22.1",
 		"eslint-plugin-jest": "24.1.5",
@@ -50,7 +50,7 @@
 		"eslint-plugin-react": "7.22.0",
 		"eslint-plugin-react-hooks": "4.2.0",
 		"eslint-plugin-unicorn": "28.0.2",
-		"markdownlint-cli": "0.26.0",
+		"markdownlint-cli": "0.27.1",
 		"stylelint": "13.11.0",
 		"stylelint-declaration-block-no-ignored-properties": "2.3.0",
 		"stylelint-high-performance-animation": "1.5.2",
