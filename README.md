@@ -12,6 +12,8 @@ Ready-to use bundle of linting tools, containing configurations for
 - [stylelint](https://stylelint.io/): SCSS (Browser)
 - [markdownlint](https://github.com/DavidAnson/markdownlint): Markdown
 
+The linting tools are running in parallel to improve performance.
+
 ## Used plugins
 
 This setup is using the following additional plugins:
@@ -51,7 +53,8 @@ npm install linter-bundle --save-dev
 ```json
 {
   "scripts": {
-    "lint": "lint tsc & lint ts & lint sass & lint md & lint audit"
+    "lint": "lint tsc ts sass md audit",
+    "lint-different-configurations": "lint tsc --tsconfig=./path1/tsconfig.json tsc --tsconfig=./path2/tsconfig.json ts sass md audit"
   }
 }
 ```

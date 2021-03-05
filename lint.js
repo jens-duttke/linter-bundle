@@ -4,62 +4,162 @@
 
 const childProcess = require('child_process');
 
-const ARG_REGEXP = /^--([^=]+)(?:=(.+))?$/u;
+const jobs = getTasksToRun(process.argv.splice(2)).map(async ({ taskName, config }) => {
+	switch (taskName) {
+		case 'tsc':
+			return runTask({
+				taskName,
+				config,
+				command: [`node "${require.resolve('typescript/bin/tsc')}" --skipLibCheck --noEmit`, ...(config.tsconfig?.[0] ? [`--project ${config.tsconfig[0]}`] : [])].join(' ')
+			});
 
-const taskName = process.argv[2];
+		case 'ts':
+			return runTask({
+				taskName,
+				command: `node "${require.resolve('eslint/bin/eslint.js')}" ${config.include?.[0] ?? '"./**/*.{js,jsx,ts,tsx}"'}${config.exclude?.map((exclude) => ` --ignore-pattern ${exclude}`).join(' ') ?? ''} --format unix --resolve-plugins-relative-to "${__dirname}"`,
+				config,
+				options: {
+					env: {
+						TIMING: 10,
+						TSCONFIG: config.tsconfig?.[0]
+					}
+				}
+			});
 
-/** @type {Partial<Readonly<Record<'tsconfig' | 'include' | 'exclude', (string | true)[]>>>} */
-const additionalArguments = {};
+		case 'sass':
+			return runTask({
+				taskName,
+				config,
+				command: `node "${require.resolve('stylelint/bin/stylelint.js')}"  "src/**/*.scss" --formatter unix`
+			});
 
-for (const argument of process.argv.splice(3)) {
-	const [, name, value = true] = ARG_REGEXP.exec(argument) ?? [];
+		case 'md':
+			return runTask({
+				taskName,
+				config,
+				command: `node "${require.resolve('markdownlint-cli/markdownlint.js')}"  **/*.md --ignore node_modules`
+			});
 
-	const normalizedName = name.toLowerCase();
+		case 'audit':
+			return runTask({
+				taskName,
+				config,
+				command: 'npm audit --production --audit-level=moderate'
+			});
 
-	if (normalizedName in additionalArguments) {
-		additionalArguments[normalizedName].push(value);
+		default:
 	}
-	else {
-		additionalArguments[normalizedName] = [value];
-	}
-}
 
-const TASKS = {
-	tsc: {
-		command: [`node "${require.resolve('typescript/bin/tsc')}" --skipLibCheck --noEmit`, ...(additionalArguments.tsconfig?.[0] ? [`--project ${additionalArguments.tsconfig[0]}`] : [])].join(' ')
-	},
-	ts: {
-		command: `node "${require.resolve('eslint/bin/eslint.js')}" ${additionalArguments.include?.[0] ?? '"./**/*.{js,jsx,ts,tsx}"'}${additionalArguments.exclude?.map((exclude) => ` --ignore-pattern ${exclude}`).join(' ') ?? ''} --format unix --resolve-plugins-relative-to "${__dirname}"`,
-		options: {
-			env: {
-				TIMING: 10,
-				TSCONFIG: additionalArguments.tsconfig?.[0]
-			}
+	return Promise.reject(new Error(`"${taskName}" is not a valid task.`));
+});
+
+/*
+void Promise.all(jobs)
+	.then((results) => {
+		process.exitCode = Math.max(
+			...results.map(({ code, stdout, stderr }) => {
+				if (stdout) {
+					process.stdout.write(stdout);
+				}
+
+				if (stderr) {
+					process.stderr.write(stderr);
+				}
+
+				return code;
+			})
+		);
+
+		process.exit();
+	});
+*/
+
+void (async () => {
+	for (const job of jobs) {
+		// eslint-disable-next-line no-await-in-loop -- Replace by `for await (const { ... } of jobs) {` as soon as Node.js supports it
+		const { code, stdout, stderr } = await job;
+
+		if (stdout) {
+			process.stdout.write(stdout);
 		}
-	},
-	sass: {
-		command: `node "${require.resolve('stylelint/bin/stylelint.js')}"  "src/**/*.scss" --formatter unix`
-	},
-	md: {
-		command: `node "${require.resolve('markdownlint-cli/markdownlint.js')}"  **/*.md --ignore node_modules`
-	},
-	audit: {
-		command: 'npm audit --production --audit-level=moderate'
-	}
-};
 
-if (!(taskName in TASKS)) {
-	throw new Error(`"${taskName}" is not a valid task.`);
+		if (stderr) {
+			process.stderr.write(stderr);
+		}
+
+		if (code > process.exitCode) {
+			process.exitCode = code;
+		}
+	}
+})();
+
+/**
+ * @param {string[]} argv
+ * @returns {{ taskName: string; config: Partial<Record<string, (string | true)[]>>; }[]}
+ */
+function getTasksToRun (argv) {
+	const TASKS = new Set(['tsc', 'ts', 'sass', 'md', 'audit']);
+	const ARG_REGEXP = /^--([^=]+)(?:=(.+))?$/u;
+
+	let currentTask = null;
+	const TasksToRun = [];
+
+	for (const argument of argv) {
+		if (TASKS.has(argument)) {
+			currentTask = {
+				taskName: argument,
+				config: {}
+			};
+
+			TasksToRun.push(currentTask);
+
+			continue;
+		}
+
+		const [, name, value = true] = ARG_REGEXP.exec(argument) ?? [];
+
+		const normalizedName = name.toLowerCase();
+
+		if (currentTask === null) {
+			throw new Error(`No task specified for optional arguments "${argument}".`);
+		}
+
+		if (normalizedName in currentTask.config) {
+			currentTask.config[normalizedName].push(value);
+		}
+		else {
+			currentTask.config[normalizedName] = [value];
+		}
+	}
+
+	return TasksToRun;
 }
 
-/** @type {{ command: string; options: import('child_process').ExecOptions; }} */
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-const { command, options } = TASKS[taskName];
+/**
+ * @param {{ taskName: string; config: Record<string, (string | true)[]>; command: string; options?: import('child_process').ExecOptions; }} setup
+ * @returns {Promise<{ code: number; stdout: string; stderr: string; }>} Exit code
+ */
+async function runTask (setup) {
+	return new Promise((resolve) => {
+		const additionalArgumentString = Object.entries(setup.config).map(([name, values]) => (Array.isArray(values) ? values.map((value) => (value === true ? `--${name}` : `--${name}="${value}"`)).join(' ') : '')).join(' ');
 
-const additionalArgumentString = Object.entries(additionalArguments).map(([name, values]) => (Array.isArray(values) ? values.map((value) => (value === true ? `--${name}` : `--${name}="${value}"`)).join(' ') : '')).join(' ');
-process.stdout.write(`\n[lint ${taskName}${(additionalArgumentString.length > 0 ? ` ${additionalArgumentString}` : '')}] ${command}\n\n`);
+		const stdout = [`\n[lint ${setup.taskName}${(additionalArgumentString.length > 0 ? ` ${additionalArgumentString}` : '')}] ${setup.command}\n\n`];
+		const stderr = [];
 
-const lintingProcess = childProcess.exec(command, options);
-lintingProcess.stdout?.pipe(process.stdout);
-lintingProcess.stderr?.pipe(process.stderr);
-lintingProcess.on('exit', (code) => process.exit(code ?? 0));
+		const lintingProcess = childProcess.exec(setup.command, setup.options);
+
+		lintingProcess.stdout?.on('data', (data) => {
+			stdout.push(data);
+		});
+
+		lintingProcess.stderr?.on('data', (data) => {
+			stderr.push(data);
+		});
+
+		lintingProcess.on('exit', (code) => resolve({
+			code: code ?? 0,
+			stdout: stdout.join(''),
+			stderr: stderr.join('')
+		}));
+	});
+}
