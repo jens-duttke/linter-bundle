@@ -2,7 +2,7 @@
 
 const childProcess = require('child_process');
 
-const jobs = getTasksToRun(process.argv.splice(2)).map(async ({ taskName, config }) => {
+const jobs = getTasksToRun(process.argv.splice(2)).map(({ taskName, config }) => {
 	switch (taskName) {
 		case 'tsc':
 			return runTask({
@@ -51,11 +51,13 @@ const jobs = getTasksToRun(process.argv.splice(2)).map(async ({ taskName, config
 		default:
 	}
 
-	return Promise.reject(new Error(`"${taskName}" is not a valid task.`));
+	throw new Error(`"${taskName}" is not a valid task.`);
 });
 
 void (async () => {
-	for (const job of jobs) {
+	for (const { jobTitle, job } of jobs) {
+		process.stdout.write(jobTitle);
+
 		// eslint-disable-next-line no-await-in-loop -- Replace by `for await (const { ... } of jobs) {` as soon as Node.js supports it
 		const { code, stdout, stderr } = await job;
 
@@ -119,33 +121,36 @@ function getTasksToRun (argv) {
 
 /**
  * @param {{ taskName: string; config: Partial<Record<string, (string | true)[]>>; command: string; options?: import('child_process').ExecOptions; }} setup
- * @returns {Promise<{ code: number; stdout: string; stderr: string; }>} Exit code
+ * @returns {{ jobTitle: string; job: Promise<{ code: number; stdout: string; stderr: string; }>}} Exit code
  */
-async function runTask (setup) {
-	return new Promise((resolve) => {
-		/** @type {string} */
-		const additionalArgumentString = Object.entries(setup.config).map(([name, values]) => (Array.isArray(values) ? values.map((value) => (value === true ? `--${name}` : `--${name}="${value}"`)).join(' ') : '')).join(' ');
+function runTask (setup) {
+	/** @type {string} */
+	const additionalArgumentString = Object.entries(setup.config).map(([name, values]) => (Array.isArray(values) ? values.map((value) => (value === true ? `--${name}` : `--${name}="${value}"`)).join(' ') : '')).join(' ');
 
-		/** @type {string[]} */
-		const stdout = [`\n[lint ${setup.taskName}${(additionalArgumentString.length > 0 ? ` ${additionalArgumentString}` : '')}] ${setup.command}\n\n`];
+	return {
+		jobTitle: `\n[lint ${setup.taskName}${(additionalArgumentString.length > 0 ? ` ${additionalArgumentString}` : '')}] ${setup.command}\n\n`,
+		job: new Promise((resolve) => {
+			/** @type {string[]} */
+			const stdout = [];
 
-		/** @type {string[]} */
-		const stderr = [];
+			/** @type {string[]} */
+			const stderr = [];
 
-		const lintingProcess = childProcess.exec(setup.command, setup.options);
+			const lintingProcess = childProcess.exec(setup.command, setup.options);
 
-		lintingProcess.stdout?.on('data', (data) => {
-			stdout.push(data);
-		});
+			lintingProcess.stdout?.on('data', (data) => {
+				stdout.push(data);
+			});
 
-		lintingProcess.stderr?.on('data', (data) => {
-			stderr.push(data);
-		});
+			lintingProcess.stderr?.on('data', (data) => {
+				stderr.push(data);
+			});
 
-		lintingProcess.on('exit', (code) => resolve({
-			code: code ?? 0,
-			stdout: stdout.join(''),
-			stderr: stderr.join('')
-		}));
-	});
+			lintingProcess.on('exit', (code) => resolve({
+				code: code ?? 0,
+				stdout: stdout.join(''),
+				stderr: stderr.join('')
+			}));
+		})
+	};
 }
