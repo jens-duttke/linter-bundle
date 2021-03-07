@@ -166,6 +166,7 @@ module.exports = {
 		'media-query-list-comma-newline-before': 'never-multi-line',
 		'media-query-list-comma-space-after': 'always-single-line',
 		'media-query-list-comma-space-before': 'never',
+		'named-grid-areas-no-invalid': true,
 		'no-descending-specificity': null, // doesn't work in many cases (e.g. while using the SCSS :global()-pseudo-class)
 		'no-duplicate-at-import-rules': true,
 		'no-duplicate-selectors': true,
