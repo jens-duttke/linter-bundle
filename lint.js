@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const childProcess = require('child_process');
+const fs = require('fs');
 
 const jobs = getTasksToRun(process.argv.splice(2)).map(({ taskName, config }) => {
 	switch (taskName) {
@@ -42,11 +43,33 @@ const jobs = getTasksToRun(process.argv.splice(2)).map(({ taskName, config }) =>
 			});
 
 		case 'audit':
-			return runTask({
-				taskName,
-				config,
-				command: 'npm audit --production --audit-level=moderate'
-			});
+			if (fs.existsSync('package-lock.json')) {
+				return runTask({
+					taskName,
+					config,
+					command: 'npm audit --production --audit-level=moderate'
+				});
+			}
+			else if (fs.existsSync('yarn.lock')) {
+				return runTask({
+					taskName,
+					config,
+					command: 'yarn audit --group dependencies --level moderate'
+				});
+			}
+
+			return {
+				jobTitle: getJobTitle({
+					taskName,
+					config,
+					command: ''
+				}),
+				job: Promise.resolve({
+					code: 1,
+					stdout: '',
+					stderr: 'Neither a "package-lock.json" nor a "yarn.lock" have need found.\n\n'
+				})
+			};
 
 		default:
 	}
@@ -124,11 +147,8 @@ function getTasksToRun (argv) {
  * @returns {{ jobTitle: string; job: Promise<{ code: number; stdout: string; stderr: string; }>}} Exit code
  */
 function runTask (setup) {
-	/** @type {string} */
-	const additionalArgumentString = Object.entries(setup.config).map(([name, values]) => (Array.isArray(values) ? values.map((value) => (value === true ? `--${name}` : `--${name}="${value}"`)).join(' ') : '')).join(' ');
-
 	return {
-		jobTitle: `\n[lint ${setup.taskName}${(additionalArgumentString.length > 0 ? ` ${additionalArgumentString}` : '')}] ${setup.command}\n\n`,
+		jobTitle: getJobTitle(setup),
 		job: new Promise((resolve) => {
 			/** @type {string[]} */
 			const stdout = [];
@@ -153,4 +173,15 @@ function runTask (setup) {
 			}));
 		})
 	};
+}
+
+/**
+ * @param {{ taskName: string; config: Partial<Record<string, (string | true)[]>>; command: string; options?: import('child_process').ExecOptions; }} setup
+ * @returns {string}
+ */
+function getJobTitle (setup) {
+	/** @type {string} */
+	const additionalArgumentString = Object.entries(setup.config).map(([name, values]) => (Array.isArray(values) ? values.map((value) => (value === true ? `--${name}` : `--${name}="${value}"`)).join(' ') : '')).join(' ');
+
+	return `\n[lint ${setup.taskName}${(additionalArgumentString.length > 0 ? ` ${additionalArgumentString}` : '')}] ${setup.command}\n\n`;
 }

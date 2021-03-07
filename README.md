@@ -214,8 +214,16 @@ markdownlint **/*.md --ignore node_modules
 
 ### `lint audit`
 
+If a `package.json` exist:
+
 ```sh
 npm audit --production --audit-level=moderate
+```
+
+If a `yarn.lock` exist:
+
+```sh
+yarn audit --group dependencies --level moderate
 ```
 
 ## VSCode setup
