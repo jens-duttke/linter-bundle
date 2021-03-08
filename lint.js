@@ -2,6 +2,7 @@
 
 const childProcess = require('child_process');
 const fs = require('fs');
+const path = require('path');
 
 const jobs = getTasksToRun(process.argv.splice(2)).map(({ taskName, config }) => {
 	switch (taskName) {
@@ -17,7 +18,15 @@ const jobs = getTasksToRun(process.argv.splice(2)).map(({ taskName, config }) =>
 
 			return runTask({
 				taskName,
-				command: `node "${require.resolve('eslint/bin/eslint.js')}" ${config['include']?.[0] ?? '"./**/*.{js,jsx,ts,tsx}"'}${config['exclude']?.map((exclude) => ` --ignore-pattern ${exclude}`).join(' ') ?? ''} --format unix --resolve-plugins-relative-to "${__dirname}"`,
+				command: [
+					'node',
+					`"${require.resolve('eslint/bin/eslint.js')}"`,
+					config['include']?.[0] ?? '"./**/*.{js,jsx,ts,tsx}"',
+					config['exclude']?.map((exclude) => `--ignore-pattern ${exclude}`).join(' '),
+					`--rulesdir "${path.resolve(__dirname, './eslint/rules/')}"`,
+					'--format unix',
+					`--resolve-plugins-relative-to "${__dirname}"`
+				].filter((argument) => Boolean(argument)).join(' '),
 				config,
 				options: {
 					env: {
