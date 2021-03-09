@@ -217,14 +217,20 @@ markdownlint **/*.md --ignore node_modules
 If a `package.json` exist:
 
 ```sh
-npm audit --production --audit-level=moderate
+better-npm-audit audit -l moderate -p
 ```
 
 If a `yarn.lock` exist:
 
 ```sh
-yarn audit --group dependencies --level moderate
+improved-yarn-audit --min-severity moderate --fail-on-missing-exclusions --ignore-dev-deps
 ```
+
+#### Optional command line arguments for `lint audit`
+
+Argument | Description | Example
+-|-|-
+`--exclude` | Comma-separated list of  advisory IDs to ignore. Used as `-i` argument for [better-npm-audit](https://www.npmjs.com/package/better-npm-audit), and`--exclude` argument for [improved-yarn-audit](https://www.npmjs.com/package/improved-yarn-audit). | `--exclude=118,577`
 
 ## VSCode setup
 

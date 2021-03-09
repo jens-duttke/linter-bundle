@@ -41,14 +41,14 @@ const jobs = getTasksToRun(process.argv.splice(2)).map(({ taskName, config }) =>
 			return runTask({
 				taskName,
 				config,
-				command: `node "${require.resolve('stylelint/bin/stylelint.js')}"  "src/**/*.scss" --formatter unix`
+				command: `node "${require.resolve('stylelint/bin/stylelint.js')}" "src/**/*.scss" --formatter unix`
 			});
 
 		case 'md':
 			return runTask({
 				taskName,
 				config,
-				command: `node "${require.resolve('markdownlint-cli/markdownlint.js')}"  **/*.md --ignore node_modules`
+				command: `node "${require.resolve('markdownlint-cli/markdownlint.js')}" **/*.md --ignore node_modules`
 			});
 
 		case 'audit':
@@ -56,14 +56,28 @@ const jobs = getTasksToRun(process.argv.splice(2)).map(({ taskName, config }) =>
 				return runTask({
 					taskName,
 					config,
-					command: 'npm audit --production --audit-level=moderate'
+					command: [
+						'node',
+						`"${require.resolve('better-npm-audit')}"`,
+						'audit',
+						'-l moderate',
+						'-p',
+						config['exclude']?.map((exclude) => `-i ${exclude}`).join(' ')
+					].filter((argument) => Boolean(argument)).join(' ')
 				});
 			}
 			else if (fs.existsSync('yarn.lock')) {
 				return runTask({
 					taskName,
 					config,
-					command: 'yarn audit --group dependencies --level moderate'
+					command: [
+						'node',
+						`"${require.resolve('improved-yarn-audit')}"`,
+						'--min-severity moderate',
+						'--fail-on-missing-exclusions',
+						'--ignore-dev-deps',
+						config['exclude']?.map((exclude) => `--exclude ${exclude}`).join(' ')
+					].filter((argument) => Boolean(argument)).join(' ')
 				});
 			}
 

@@ -40,6 +40,7 @@
 	"dependencies": {
 		"@typescript-eslint/eslint-plugin": "4.17.0",
 		"@typescript-eslint/parser": "4.17.0",
+		"better-npm-audit": "1.7.0",
 		"check-outdated": "2.5.1",
 		"eslint": "7.21.0",
 		"eslint-plugin-functional": "3.2.1",
@@ -50,6 +51,7 @@
 		"eslint-plugin-react": "7.22.0",
 		"eslint-plugin-react-hooks": "4.2.0",
 		"eslint-plugin-unicorn": "28.0.2",
+		"improved-yarn-audit": "2.3.2",
 		"markdownlint-cli": "0.27.1",
 		"stylelint": "13.12.0",
 		"stylelint-declaration-block-no-ignored-properties": "2.3.0",
