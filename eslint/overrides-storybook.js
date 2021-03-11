@@ -1,3 +1,7 @@
+/**
+ * @file Settings for Storybook configuration and stories.
+ */
+
 module.exports = {
 	overrides: [
 		{
@@ -5,6 +9,7 @@ module.exports = {
 			rules: {
 				/**
 				 * eslint-plugin-import
+				 *
 				 * @see https://github.com/benmosher/eslint-plugin-import
 				 */
 				'import/no-default-export': 'off'
@@ -15,12 +20,14 @@ module.exports = {
 			rules: {
 				/**
 				 * eslint-plugin-import
+				 *
 				 * @see https://github.com/benmosher/eslint-plugin-import
 				 */
 				'import/no-nodejs-modules': 'off',
 
 				/**
 				 * eslint-plugin-unicorn
+				 *
 				 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
 				 */
 				'unicorn/import-style': ['error', {
@@ -40,6 +47,7 @@ module.exports = {
 			rules: {
 				/**
 				 * eslint
+				 *
 				 * @see https://eslint.org/docs/rules/
 				 */
 				'no-underscore-dangle': ['error', {

@@ -1,3 +1,7 @@
+/**
+ * @file Settings for TypeScript type definition files.
+ */
+
 module.exports = {
 	overrides: [
 		{
@@ -5,6 +9,7 @@ module.exports = {
 			rules: {
 				/**
 				 * eslint
+				 *
 				 * @see https://eslint.org/docs/rules/
 				 */
 				'max-classes-per-file': 'off',
@@ -12,12 +17,14 @@ module.exports = {
 
 				/**
 				 * eslint-plugin-import
+				 *
 				 * @see https://github.com/benmosher/eslint-plugin-import
 				 */
 				'import/no-default-export': 'off',
 
 				/**
 				 * eslint-plugin-unicorn
+				 *
 				 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
 				 */
 				'unicorn/filename-case': ['error', {
@@ -33,6 +40,7 @@ module.exports = {
 			rules: {
 				/**
 				 * eslint
+				 *
 				 * @see https://eslint.org/docs/rules/
 				 */
 				'linebreak-style': 'off' // Ignore for automatically generated .scss.d.ts files, since that does not affect the project.

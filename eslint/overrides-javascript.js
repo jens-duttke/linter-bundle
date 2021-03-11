@@ -1,3 +1,7 @@
+/**
+ * @file Settings for JavaScript (Node.js) files.
+ */
+
 module.exports = {
 	overrides: [
 		{
@@ -10,13 +14,15 @@ module.exports = {
 			rules: {
 				/**
 				 * eslint
+				 *
 				 * @see https://eslint.org/docs/rules/
 				 */
 				'max-lines-per-function': 'off',
 				'no-undef': 'error',
 
 				/**
-				 * @typescript-eslint
+				 * typescript-eslint
+				 *
 				 * @see https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules
 				 */
 				'@typescript-eslint/explicit-function-return-type': 'off', // Requires type information (@see https://github.com/typescript-eslint/typescript-eslint/issues/906)
@@ -32,6 +38,7 @@ module.exports = {
 
 				/**
 				 * eslint-plugin-import
+				 *
 				 * @see https://github.com/benmosher/eslint-plugin-import
 				 */
 				'import/no-commonjs': 'off',
@@ -40,6 +47,7 @@ module.exports = {
 
 				/**
 				 * eslint-plugin-node
+				 *
 				 * @see https://github.com/mysticatea/eslint-plugin-node
 				 */
 
@@ -88,6 +96,7 @@ module.exports = {
 
 				/**
 				 * eslint-plugin-unicorn
+				 *
 				 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
 				 */
 				'unicorn/filename-case': ['error', {

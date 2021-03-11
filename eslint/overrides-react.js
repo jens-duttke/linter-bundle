@@ -1,3 +1,7 @@
+/**
+ * @file Settings for React code in TypeScript (TSX) files.
+ */
+
 const ensureType = require('../helper/ensure-type');
 
 module.exports = {
@@ -6,13 +10,15 @@ module.exports = {
 			files: ['*.tsx'],
 			rules: {
 				/**
-				 * @typescript-eslint
+				 * typescript-eslint
+				 *
 				 * @see https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules
 				 */
 				'@typescript-eslint/member-ordering': 'off', // For React components we are using react/sort-comp
 
 				/**
 				 * eslint-plugin-react-hooks
+				 *
 				 * @see https://github.com/facebook/react/tree/master/packages/eslint-plugin-react-hooks
 				 * @see https://reactjs.org/docs/hooks-rules.html
 				 */
@@ -21,6 +27,7 @@ module.exports = {
 
 				/**
 				 * eslint-plugin-react
+				 *
 				 * @see https://github.com/yannickcr/eslint-plugin-react
 				 */
 				'react/boolean-prop-naming': 'error',

@@ -1,7 +1,12 @@
+/**
+ * @file Extends `./overrides-javascript` but ignores unsafe types.
+ */
+
 const overridesJavaScript = require('./overrides-javascript');
 
 /**
- * @typescript-eslint
+ * typescript-eslint
+ *
  * @see https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules
  */
 overridesJavaScript.overrides[0].rules['@typescript-eslint/no-unsafe-call'] = 'off';

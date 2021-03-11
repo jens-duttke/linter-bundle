@@ -1,3 +1,7 @@
+/**
+ * @file Settings for Gatsby-based projects.
+ */
+
 module.exports = {
 	overrides: [
 		{
@@ -9,13 +13,15 @@ module.exports = {
 				'no-global-undefined-check': 'error',
 
 				/**
-				 * @typescript-eslint
+				 * typescript-eslint
+				 *
 				 * @see https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules
 				 */
 				'@typescript-eslint/no-confusing-void-expression': 'off', // @todo Conflicts with graphql-template strings
 
 				/**
 				 * eslint-plugin-unicorn
+				 *
 				 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
 				 */
 				'unicorn/string-content': ['error', {
@@ -37,6 +43,7 @@ module.exports = {
 			rules: {
 				/**
 				 * eslint-plugin-unicorn
+				 *
 				 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
 				 */
 				'unicorn/filename-case': ['error', {
@@ -55,12 +62,14 @@ module.exports = {
 			rules: {
 				/**
 				 * eslint-plugin-import
+				 *
 				 * @see https://github.com/benmosher/eslint-plugin-import
 				 */
 				'import/no-default-export': 'off',
 
 				/**
 				 * eslint-plugin-unicorn
+				 *
 				 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
 				 */
 				'unicorn/filename-case': ['error', {
@@ -75,6 +84,7 @@ module.exports = {
 			rules: {
 				/**
 				 * eslint-plugin-node
+				 *
 				 * @see https://github.com/mysticatea/eslint-plugin-node
 				 */
 				'node/no-unsupported-features/es-syntax': 'off'

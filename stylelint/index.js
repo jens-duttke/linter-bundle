@@ -1,3 +1,7 @@
+/**
+ * @file Global Stylelint settings
+ */
+
 /* eslint-disable max-lines */
 
 module.exports = {
@@ -16,6 +20,7 @@ module.exports = {
 	rules: {
 		/**
 		 * stylelint
+		 *
 		 * @see https://github.com/stylelint/stylelint/tree/master/lib/rules
 		 */
 		'alpha-value-notation': 'number', // @todo change that to 'percentage'?
@@ -267,12 +272,14 @@ module.exports = {
 
 		/**
 		 * stylelint-declaration-block-no-ignored-properties
+		 *
 		 * @see https://www.npmjs.com/package/stylelint-declaration-block-no-ignored-properties
 		 */
 		'plugin/declaration-block-no-ignored-properties': true,
 
 		/**
 		 * stylelint-high-performance-animation
+		 *
 		 * @see https://github.com/kristerkari/stylelint-high-performance-animation
 		 */
 		'plugin/no-low-performance-animation-properties': [true, {
@@ -282,6 +289,7 @@ module.exports = {
 
 		/**
 		 * stylelint-order
+		 *
 		 * @see https://www.npmjs.com/package/stylelint-order
 		 */
 		'order/properties-order': [
@@ -722,6 +730,7 @@ module.exports = {
 
 		/**
 		 * stylelint-scss
+		 *
 		 * @see https://www.npmjs.com/package/stylelint-scss
 		 */
 		'scss/at-each-key-value-single-line': true,
@@ -798,12 +807,14 @@ module.exports = {
 
 		/**
 		 * stylelint-selector-no-empty
+		 *
 		 * @see https://github.com/ssivanatarajan/stylelint-selector-no-empty
 		 */
 		'plugin/stylelint-selector-no-empty': true,
 
 		/**
 		 * stylelint-use-logical-spec
+		 *
 		 * @see https://github.com/Jordan-Hall/stylelint-use-logical-spec
 		 */
 		'liberty/use-logical-spec': ['always', { except: [
@@ -848,6 +859,7 @@ module.exports = {
 
 		/**
 		 * stylelint-use-nesting
+		 *
 		 * @see https://github.com/csstools/stylelint-use-nesting
 		 */
 		'csstools/use-nesting': 'always'

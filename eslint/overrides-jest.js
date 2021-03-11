@@ -1,3 +1,7 @@
+/**
+ * @file Settings for Jest based unit tests.
+ */
+
 module.exports = {
 	overrides: [
 		{
@@ -9,13 +13,15 @@ module.exports = {
 			rules: {
 				/**
 				 * eslint
+				 *
 				 * @see https://eslint.org/docs/rules/
 				 */
 				'max-lines': 'off',
 				'max-lines-per-function': 'off',
 
 				/**
-				 * @typescript-eslint
+				 * typescript-eslint
+				 *
 				 * @see https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules
 				 */
 				'@typescript-eslint/ban-ts-comment': ['error', {
@@ -24,12 +30,14 @@ module.exports = {
 
 				/**
 				 * eslint-plugin-import
+				 *
 				 * @see https://github.com/benmosher/eslint-plugin-import
 				 */
 				'import/no-unassigned-import': 'error',
 
 				/**
 				 * eslint-plugin-jest
+				 *
 				 * @see https://github.com/jest-community/eslint-plugin-jest/tree/master/docs/rules
 				 */
 				'jest/consistent-test-it': 'error',

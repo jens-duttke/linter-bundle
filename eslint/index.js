@@ -1,3 +1,7 @@
+/**
+ * @file Global ESLint settings
+ */
+
 /* eslint-disable max-lines */
 /* eslint-disable node/no-process-env */
 
@@ -73,6 +77,7 @@ module.exports = {
 	rules: {
 		/**
 		 * eslint
+		 *
 		 * @see https://eslint.org/docs/rules/
 		 */
 
@@ -368,7 +373,8 @@ module.exports = {
 		'yield-star-spacing': ['error', { before: true, after: false }],
 
 		/**
-		 * @typescript-eslint
+		 * typescript-eslint
+		 *
 		 * @see https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules
 		 */
 		'@typescript-eslint/adjacent-overload-signatures': 'error',
@@ -600,7 +606,8 @@ module.exports = {
 		'@typescript-eslint/no-invalid-void-type': ['error', { allowInGenericTypeArguments: true }],
 		'@typescript-eslint/no-loop-func': 'error',
 		'@typescript-eslint/no-loss-of-precision': 'error',
-		'@typescript-eslint/no-magic-numbers': 'off', /* @todo There should be an option that numbers in arrays are ok like `const MaxSizes = [4, 8, 16, 32, 64];` ['error', {
+		'@typescript-eslint/no-magic-numbers': 'off', // @todo There should be an option that numbers in arrays are ok like `const MaxSizes = [4, 8, 16, 32, 64];`
+		/* ['error', {
 			ignore: [-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 15, 16, 24, 32, 60, 63, 64, 100, 128, 250, 255, 256, 500, 1000, 4_294_967_296],
 			ignoreArrayIndexes: true,
 			enforceConst: true,
@@ -684,6 +691,7 @@ module.exports = {
 
 		/**
 		 * eslint-plugin-functional
+		 *
 		 * @see https://github.com/jonaskello/eslint-plugin-functional#supported-rules
 		 */
 		'functional/immutable-data': 'off', // This rule would require a lot of additional code and workarounds, which would make the result much more illegible.
@@ -708,6 +716,7 @@ module.exports = {
 
 		/**
 		 * eslint-plugin-import
+		 *
 		 * @see https://github.com/benmosher/eslint-plugin-import
 		 */
 		'import/default': 'error',
@@ -764,7 +773,15 @@ module.exports = {
 			'newlines-between': 'always',
 			'pathGroupsExcludedImportTypes': [],
 			'pathGroups': [
-				...ensureType.array(global.linterBundleSettings?.overrides?.general?.['import/order']?.additionalExternalPatterns).map((pattern) => ({ pattern, group: 'external' })),
+				...ensureType.array(global.linterBundleSettings?.overrides?.general?.['import/order']?.additionalExternalPatterns).map(
+					/**
+					 * Creates an "external" group using the additional external pattern configuration.
+					 *
+					 * @param {string} pattern - A given pattern
+					 * @returns {{ pattern: string; group: 'external'; }} An "external" path configuration object
+					 */
+					(pattern) => ({ pattern, group: 'external' })
+				),
 				{ pattern: '@*', group: 'internal' },
 				{ pattern: '@*/**', group: 'internal' },
 				{ pattern: '*!*/**', group: 'internal', position: 'after' } // Webpack loaders, e.g. 'worker-ref-loader!@app/components/FileFormatIdentificationDialog/TypeDetection.worker'
@@ -775,6 +792,7 @@ module.exports = {
 
 		/**
 		 * eslint-plugin-jsx-a11y
+		 *
 		 * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y
 		 */
 		'jsx-a11y/alt-text': 'error',
@@ -811,6 +829,7 @@ module.exports = {
 
 		/**
 		 * eslint-plugin-unicorn
+		 *
 		 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
 		 */
 		'unicorn/better-regex': 'error',

@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 
+/**
+ * @file Entry point of the linter-bundle.
+ */
+
 const childProcess = require('child_process');
 const fs = require('fs');
 const path = require('path');

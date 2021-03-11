@@ -25,4 +25,10 @@ const b = (typeof window !== 'undefined' ? 1 : 2);
 (typeof window !== 'undefined' && window.innerWidth <= 1024);
 ```
 
+## When Not To Use It
+
+If you've ensured that your check does not produce a different DOM structure for SSR and CSR, and that there is no other way to do it.
+
+## Further Reading
+
 See [The Perils of Rehydration](https://www.joshwcomeau.com/react/the-perils-of-rehydration/)
