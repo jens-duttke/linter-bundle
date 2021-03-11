@@ -11,6 +11,8 @@ Ready-to use bundle of linting tools, containing configurations for
 - [ESLint](https://eslint.org/): JavaScript (Node.js); TypeScript, React (Browser)
 - [stylelint](https://stylelint.io/): SCSS (Browser)
 - [markdownlint](https://github.com/DavidAnson/markdownlint): Markdown
+- [better-npm-audit](https://www.npmjs.com/package/better-npm-audit): Security audit using `npm`
+- [improved-yarn-audit](https://www.npmjs.com/package/improved-yarn-audit): Security audit using `yarn`
 
 The linting tools are running in parallel to improve performance.
 
