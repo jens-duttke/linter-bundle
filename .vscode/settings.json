@@ -9,7 +9,9 @@
 	"errorLens.gutterIconSet": "circle",
 	"errorLens.followCursor": "activeLine",
 	"eslint.options": {
-		"configFile": "./.eslintrc.js"
+		"configFile": "./.eslintrc.js",
+		"rulePath": ["./eslint/rules"],
+		"reportUnusedDisableDirectives": "error",
 	},
 	"files.associations": {
 		"*.json": "jsonc",
