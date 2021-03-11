@@ -31,6 +31,10 @@ This setup is using the following additional plugins:
 - [eslint-plugin-react-hooks](https://www.npmjs.com/packonaleslint-plugin-react-hooks)
 - [eslint-plugin-unicorn](https://www.npmjs.com/package/eslint-plugin-unicorn)
 
+Beside that, the following additional rules are part of this bundle:
+
+- [no-global-undefined-check](./eslint/rules/no-global-undefined-check.md)
+
 ### stylelint
 
 - [stylelint-declaration-block-no-ignored-properties](https://www.npmjs.com/package/stylelint-declaration-block-no-ignored-properties)
@@ -247,7 +251,9 @@ To solve this issue, add these options to your `.vscode/settings.json`:
   "eslint.nodePath": "./node_modules/linter-bundle/node_modules/eslint",
   "eslint.options": {
     "configFile": "./.eslintrc.js",
-    "resolvePluginsRelativeTo": "./node_modules/linter-bundle"
+    "resolvePluginsRelativeTo": "./node_modules/linter-bundle",
+    "rulePath": ["./node_modules/linter-bundle/eslint/rules"],
+    "reportUnusedDisableDirectives": "error",
   },
 }
 ```
