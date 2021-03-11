@@ -3,7 +3,11 @@
 const childProcess = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const tty = require('tty');
 
+const isTerminal = tty.isatty(1);
+
+/** @type {{ jobTitle: string; taskName: string; job: Promise<{ code: number; stdout: string; stderr: string; }>; }[]} */
 const jobs = getTasksToRun(process.argv.splice(2)).map(({ taskName, config }) => {
 	switch (taskName) {
 		case 'tsc':
@@ -87,6 +91,7 @@ const jobs = getTasksToRun(process.argv.splice(2)).map(({ taskName, config }) =>
 					config,
 					command: ''
 				}),
+				taskName,
 				job: Promise.resolve({
 					code: 1,
 					stdout: '',
@@ -101,7 +106,7 @@ const jobs = getTasksToRun(process.argv.splice(2)).map(({ taskName, config }) =>
 });
 
 void (async () => {
-	for (const { jobTitle, job } of jobs) {
+	for (const { jobTitle, taskName, job } of jobs) {
 		process.stdout.write(jobTitle);
 
 		// eslint-disable-next-line no-await-in-loop -- Replace by `for await (const { ... } of jobs) {` as soon as Node.js supports it
@@ -115,15 +120,29 @@ void (async () => {
 			process.stderr.write(stderr);
 		}
 
+		if (code > 0) {
+			if (isTerminal) {
+				process.stderr.write(`\n[lint ${taskName}] \u001B[31mProblems detected\u001B[39m\n`);
+			}
+			else {
+				process.stderr.write(`\n[lint ${taskName}] Problems detected`);
+			}
+		}
+
 		if (process.exitCode === undefined || code > process.exitCode) {
 			process.exitCode = code;
 		}
 	}
+
+	process.stdout.write('\n');
 })();
 
 /**
- * @param {string[]} argv
- * @returns {{ taskName: string; config: Partial<Record<string, (string | true)[]>>; }[]}
+ * Extracts the tasks which should be run from the command-line arguments passed in.
+ *
+ * @param {string[]} argv - Command-line arguments (usual `process.argv.splice(2)`)
+ * @returns {{ taskName: string; config: Partial<Record<string, (string | true)[]>>; }[]} The task execution setup.
+ * @throws {Error} If no task has be specified in the arguments.
  */
 function getTasksToRun (argv) {
 	const TASKS = new Set(['tsc', 'ts', 'sass', 'md', 'audit']);
@@ -166,12 +185,15 @@ function getTasksToRun (argv) {
 }
 
 /**
- * @param {{ taskName: string; config: Partial<Record<string, (string | true)[]>>; command: string; options?: import('child_process').ExecOptions; }} setup
- * @returns {{ jobTitle: string; job: Promise<{ code: number; stdout: string; stderr: string; }>}} Exit code
+ * Exectues a task asynchronously.
+ *
+ * @param {{ taskName: string; config: Partial<Record<string, (string | true)[]>>; command: string; options?: import('child_process').ExecOptions; }} setup - The task execution setup.
+ * @returns {{ jobTitle: string; taskName: string, job: Promise<{ code: number; stdout: string; stderr: string; }>}} Exit code
  */
 function runTask (setup) {
 	return {
 		jobTitle: getJobTitle(setup),
+		taskName: setup.taskName,
 		job: new Promise((resolve) => {
 			/** @type {string[]} */
 			const stdout = [];
@@ -199,8 +221,10 @@ function runTask (setup) {
 }
 
 /**
- * @param {{ taskName: string; config: Partial<Record<string, (string | true)[]>>; command: string; options?: import('child_process').ExecOptions; }} setup
- * @returns {string}
+ * Returns the title (command line string) of a specific job.
+ *
+ * @param {{ taskName: string; config: Partial<Record<string, (string | true)[]>>; command: string; options?: import('child_process').ExecOptions; }} setup - The task execution setup.
+ * @returns {string} The title of the job with a leading line-break and two trailing line-breaks.
  */
 function getJobTitle (setup) {
 	/** @type {string} */
