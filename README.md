@@ -20,25 +20,26 @@ This setup is using the following additional plugins:
 
 ### ESLint
 
-- @typescript-eslint/eslint-plugin
-- eslint-plugin-functional
-- eslint-plugin-import
-- eslint-plugin-jsx-a11y
-- eslint-plugin-jest
-- eslint-plugin-node
-- eslint-plugin-react
-- eslint-plugin-react-hooks
-- eslint-plugin-unicorn
+- [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin)
+- [eslint-plugin-functional](https://www.npmjs.com/package/eslint-plugin-functional)
+- [eslint-plugin-import](https://www.npmjs.com/package/eslint-plugin-import)
+- [eslint-plugin-jest](https://www.npmjs.com/package/eslint-plugin-jest)
+- [eslint-plugin-jsdoc](https://www.npmjs.com/package/eslint-plugin-jsdoc)
+- [eslint-plugin-jsx-a11y](https://www.npmjs.com/packageleslint-plugin-jsx-a11y)
+- [eslint-plugin-node](https://www.npmjs.com/package/eslint-plugin-node)
+- [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)
+- [eslint-plugin-react-hooks](https://www.npmjs.com/packonaleslint-plugin-react-hooks)
+- [eslint-plugin-unicorn](https://www.npmjs.com/package/eslint-plugin-unicorn)
 
 ### stylelint
 
-- stylelint-declaration-block-no-ignored-properties
-- stylelint-high-performance-animation
-- stylelint-order
-- stylelint-scss
-- stylelint-selector-no-empty
-- stylelint-use-logical-spec
-- stylelint-use-nesting
+- [stylelint-declaration-block-no-ignored-properties](https://www.npmjs.com/package/stylelint-declaration-block-no-ignored-properties)
+- [stylelint-high-performance-animation](https://www.npmjs.com/package/stylelint-high-performance-animation)
+- [stylelint-order](https://www.npmjs.com/package/stylelint-order)
+- [stylelint-scss](https://www.npmjs.com/package/stylelint-scss)
+- [stylelint-selector-no-empty](https://www.npmjs.com/package/stylelint-selector-no-empty)
+- [stylelint-use-logical-spec](https://www.npmjs.com/package/stylelint-use-logical-spec)
+- [stylelint-use-nesting](https://www.npmjs.com/package/stylelint-use-nesting)
 
 ## Install
 
