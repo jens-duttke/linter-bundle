@@ -124,14 +124,15 @@ global.linterBundleSettings = {
 module.exports = {
   extends: [
     require.resolve('linter-bundle/eslint'),
-    require.resolve('linter-bundle/eslint/overrides-type-declarations'),
-    require.resolve('linter-bundle/eslint/overrides-worker'),
-    require.resolve('linter-bundle/eslint/overrides-react'),
     require.resolve('linter-bundle/eslint/overrides-gatsby'),
     require.resolve('linter-bundle/eslint/overrides-javascript'),
-    require.resolve('linter-bundle/eslint/overrides-storybook'),
     // require.resolve('linter-bundle/eslint/overrides-javascript-lazy'),
-    require.resolve('linter-bundle/eslint/overrides-jest')
+    require.resolve('linter-bundle/eslint/overrides-jest'),
+    require.resolve('linter-bundle/eslint/overrides-jsdoc'),
+    require.resolve('linter-bundle/eslint/overrides-react'),
+    require.resolve('linter-bundle/eslint/overrides-storybook'),
+    require.resolve('linter-bundle/eslint/overrides-type-declarations'),
+    require.resolve('linter-bundle/eslint/overrides-worker')
   ],
   ignorePatterns: [
     // Define paths which should be ignored here. (The following paths are ignored by default: '.cache/', '.vscode/', 'coverage/', 'node_modules/')
@@ -148,6 +149,21 @@ module.exports = {
   }
 };
 ```
+
+##### Available `extends`
+
+Source | Description | Rules setup
+-|-|-
+`linter-bundle/eslint` | General rule setup. This is also the base for the following **overrides**. | [View](./eslint/index.js)
+`linter-bundle/eslint/overrides-gatsby` | Settings for Gatsby-based projects. | [View](./eslint/overrides-gatsby)
+`linter-bundle/eslint/overrides-javascript` |  Strict settings for JavaScript files, which enforces correct types everywhere. | [View](./eslint/overrides-javascript.js)
+`linter-bundle/eslint/overrides-javascript-lazy` | Can be used instead of `overrides-javascript`. It's less strict and allows the `any` type. | [View](./eslint/overrides-javascript-lazy.js)
+`linter-bundle/eslint/overrides-jest` | Settings for projects using Jest. | [View](./eslint/overrides-jest.js)
+`linter-bundle/eslint/overrides-jsdoc` | Settings for projects using JSDoc comments. | [View](./eslint/overrides-jsdoc.js)
+`linter-bundle/eslint/overrides-react` | Settings for projects using React comments. | [View](./eslint/overrides-react.js)
+`linter-bundle/eslint/overrides-storybook` | Settings for projects using Storybook comments. | [View](./eslint/overrides-storybook.js)
+`linter-bundle/eslint/overrides-type-declarations` | Settings for type declaration files (.d.ts). | [View](./eslint/overrides-type-declarations.js)
+`linter-bundle/eslint/overrides-worker` | Settings for projects using Web Workers. | [View](./eslint/overrides-worker.js)
 
 #### stylelint.config.js
 
