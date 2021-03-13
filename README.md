@@ -283,4 +283,4 @@ Click on "Select Node Path". A selection popup will appear at the top of the edi
 
 ![https://cdn.jsdelivr.net/gh/jens-duttke/linter-bundle@f7d514f/vscode-eslint-2.png](https://cdn.jsdelivr.net/gh/jens-duttke/linter-bundle@f7d514f/vscode-eslint-2.png)
 
-Here, choose the option "Use NODE_PATH value defined via settings".
+Here, choose the option "Use NODE_PATH value defined via setting".
