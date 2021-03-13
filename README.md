@@ -243,10 +243,9 @@ Argument | Description | Example
 
 For VSCode I recommend the [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) extension.
 
-If you have multiple ESLint versions in your project - which can happen if you use Gatsby, which comes with an own, outdated ESLint version - the ESLint VSCode
-extension may use this outdated version, and then show you errors like `Definition for rule '...' was not found.` or doesn't work at all.
+To ensure the ESLint plugins are correctly loaded, you need to adjust the settings of this plugin.
 
-To solve this issue, add these options to your `.vscode/settings.json`:
+This can be done by adding these options to your `.vscode/settings.json`:
 
 ```json
 {
@@ -259,3 +258,13 @@ To solve this issue, add these options to your `.vscode/settings.json`:
   },
 }
 ```
+
+If the ESLint extension shows the following message on the bottom-right:
+
+[<img src="https://cdn.jsdelivr.net/gh/jens-duttke/linter-bundle@f7d514f/vscode-eslint-1.png" />](https://cdn.jsdelivr.net/gh/jens-duttke/linter-bundle@f7d514f/vscode-eslint-1.png)
+
+Click on "Select Node Path". A selection popup will appear at the top of the editor:
+
+[<img src="https://cdn.jsdelivr.net/gh/jens-duttke/linter-bundle@f7d514f/vscode-eslint-2.png" />](https://cdn.jsdelivr.net/gh/jens-duttke/linter-bundle@f7d514f/vscode-eslint-2.png)
+
+Here, choose the option "Use NODE_PATH value defined via settings".
