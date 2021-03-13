@@ -277,10 +277,10 @@ This can be done by adding these options to your `.vscode/settings.json`:
 
 If the ESLint extension shows the following message on the bottom-right:
 
-[<img src="https://cdn.jsdelivr.net/gh/jens-duttke/linter-bundle@f7d514f/vscode-eslint-1.png" />](https://cdn.jsdelivr.net/gh/jens-duttke/linter-bundle@f7d514f/vscode-eslint-1.png)
+![https://cdn.jsdelivr.net/gh/jens-duttke/linter-bundle@f7d514f/vscode-eslint-1.png](https://cdn.jsdelivr.net/gh/jens-duttke/linter-bundle@f7d514f/vscode-eslint-1.png)
 
 Click on "Select Node Path". A selection popup will appear at the top of the editor:
 
-[<img src="https://cdn.jsdelivr.net/gh/jens-duttke/linter-bundle@f7d514f/vscode-eslint-2.png" />](https://cdn.jsdelivr.net/gh/jens-duttke/linter-bundle@f7d514f/vscode-eslint-2.png)
+![https://cdn.jsdelivr.net/gh/jens-duttke/linter-bundle@f7d514f/vscode-eslint-2.png](https://cdn.jsdelivr.net/gh/jens-duttke/linter-bundle@f7d514f/vscode-eslint-2.png)
 
 Here, choose the option "Use NODE_PATH value defined via settings".
