@@ -13,6 +13,20 @@ module.exports = {
 				'no-global-undefined-check': 'error',
 
 				/**
+				 * eslint
+				 *
+				 * @see https://eslint.org/docs/rules/
+				 */
+
+				'no-restricted-imports': ['error', {
+					paths: [{
+						name: '@reach/router',
+						importNames: ['useNavigate'],
+						message: 'Use "import { navigate } from \'gatsby\';" instead of "const navigate = useNavigate();"'
+					}]
+				}],
+
+				/**
 				 * typescript-eslint
 				 *
 				 * @see https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules
