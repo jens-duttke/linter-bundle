@@ -82,6 +82,7 @@ module.exports = {
 				}],
 				'jest/require-top-level-describe': 'error',
 				'jest/require-to-throw-message': 'error',
+				'jest/unbound-method': 'error',
 				'jest/valid-describe': 'error',
 				'jest/valid-expect-in-promise': 'error',
 				'jest/valid-expect': 'error',
