@@ -383,11 +383,33 @@ module.exports = {
 						'flex-grow',
 						'flex-shrink',
 						'flex-wrap',
+						'order'
+					]
+				},
+				{
+					groupName: 'Gap',
+					emptyLineBefore: 'always',
+					noEmptyLineBetween: true,
+					properties: [
+						'gap',
+						'row-gap',
+						'column-gap'
+					]
+				},
+				{
+					groupName: 'Alignment',
+					emptyLineBefore: 'always',
+					noEmptyLineBetween: true,
+					properties: [
 						'align-content',
 						'align-items',
 						'align-self',
 						'justify-content',
-						'order'
+						'justify-items',
+						'justify-self',
+						'place-content',
+						'place-items',
+						'place-self'
 					]
 				},
 				{
@@ -401,16 +423,6 @@ module.exports = {
 						'height',
 						'min-height',
 						'max-height'
-					]
-				},
-				{
-					groupName: 'Gap',
-					emptyLineBefore: 'always',
-					noEmptyLineBetween: true,
-					properties: [
-						'gap',
-						'row-gap',
-						'column-gap'
 					]
 				},
 				{
