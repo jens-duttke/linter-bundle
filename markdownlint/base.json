@@ -14,5 +14,8 @@
 			"span"
 		]
 	},
+	"MD024": {
+		"siblings_only": true
+	},
 	"MD046": false
 }
