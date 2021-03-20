@@ -193,9 +193,35 @@ module.exports = {
 .eslintcache
 ```
 
-## Available commands and what they are doing
+## Available commands
+
+The command line arguments are separated in groups. Here are some examples:
+
+```sh
+# Run TypeScript compiler, ESLint, Stylelint, Markdownlint, and audit in the given order, using the default configuration
+lint tsc ts sass md audit
+
+# Run ESLint and Audit, and show their terminal output even on success
+lint --verbose ts audit
+
+# Run ESLint and Audit, and show the ESLint terminal output even on success
+lint ts --verbose audit
+
+# Run TypeScript compiler and ESLint, but with different tsconfig.json files
+lint tsc --tsconfig=./cypress/tsconfig.json ts --tsconfig=./.storybook/tsconfig.json
+```
+
+Below, you can find the available command line arguments and what they are doing.
+
+### General optional command line arguments
+
+Argument | Description | Example
+-|-|-
+`--verbose` | By default, the terminal output of linters is only shown if an error occurs. Use this option to show their terminal output even on success. | `--verbose`
 
 ### `lint tsc`
+
+Will execute:
 
 ```sh
 tsc --skipLibCheck --noEmit
@@ -208,6 +234,8 @@ Argument | Description | Example
 `--tsconfig` | Allows to specifiy a different `tsconfig.json` file. | `--tsconfig=./cypress/tsconfig.json`
 
 ### `lint ts`
+
+Will execute:
 
 ```sh
 eslint "./**/*.{js,jsx,ts,tsx}" --format unix
@@ -225,11 +253,15 @@ Argument | Description | Example
 
 ### `lint sass`
 
+Will execute:
+
 ```sh
 stylelint "src/**/*.scss" --formatter unix --report-needless-disables --report-invalid-scope-disables --report-descriptionless-disables
 ```
 
 ### `lint md`
+
+Will execute:
 
 ```sh
 markdownlint **/*.md --ignore node_modules
@@ -237,13 +269,13 @@ markdownlint **/*.md --ignore node_modules
 
 ### `lint audit`
 
-If a `package.json` exist:
+If a `package.json` exist, it will execute:
 
 ```sh
 better-npm-audit audit -l moderate -p
 ```
 
-If a `yarn.lock` exist:
+If a `yarn.lock` exist, it will execute:
 
 ```sh
 improved-yarn-audit --min-severity moderate --fail-on-missing-exclusions --ignore-dev-deps
