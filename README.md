@@ -301,7 +301,7 @@ This can be done by adding these options to your `.vscode/settings.json`:
   "eslint.options": {
     "configFile": "./.eslintrc.js",
     "resolvePluginsRelativeTo": "./node_modules/linter-bundle",
-    "rulePath": ["./node_modules/linter-bundle/eslint/rules"],
+    "rulePaths": ["./node_modules/linter-bundle/eslint/rules"],
     "reportUnusedDisableDirectives": "error",
   },
 }

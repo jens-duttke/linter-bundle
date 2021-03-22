@@ -10,7 +10,7 @@
 	"errorLens.followCursor": "activeLine",
 	"eslint.options": {
 		"configFile": "./.eslintrc.js",
-		"rulePath": ["./eslint/rules"],
+		"rulePaths": ["./eslint/rules"],
 		"reportUnusedDisableDirectives": "error",
 	},
 	"files.associations": {
