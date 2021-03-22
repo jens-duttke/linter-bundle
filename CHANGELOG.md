@@ -7,7 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.8.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.9.0...HEAD)
+
+## [1.9.0] - 2021-03-22
+
+### Changed
+
+- [eslint] Updated `@typescript-eslint` to v4.19.0
+- [eslint] Updated `eslint-plugin-unicorn` to v29.0.0
+- [eslint] Make use of `eslint-plugin-unicorn`
+  "[no-static-only-class](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-static-only-class.md)" and
+  "[prefer-array-flat](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-array-flat.md)" rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.8.0...v1.9.0)
 
 ## [1.8.0] - 2021-03-20
 
@@ -28,7 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - [general] Move `check-outdated` dependency to devDependencies
-- [eslint] Updated `"eslint-plugin-jest`to v24.3.2
+- [eslint] Updated `"eslint-plugin-jest` to v24.3.2
 - [markdownlint] [`MD024`](https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md024---multiple-headings-with-the-same-content): Activate
   "siblings_only" option
 
