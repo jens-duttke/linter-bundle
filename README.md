@@ -209,6 +209,9 @@ lint ts --verbose audit
 
 # Run TypeScript compiler and ESLint, but with different tsconfig.json files
 lint tsc --tsconfig=./cypress/tsconfig.json ts --tsconfig=./.storybook/tsconfig.json
+
+# Run TypeScript compiler twice with different configurations
+lint tsc tsc --tsconfig="./cypress/tsconfig.json"
 ```
 
 Below, you can find the available command line arguments and what they are doing.
