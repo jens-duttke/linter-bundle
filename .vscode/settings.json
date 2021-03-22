@@ -1,6 +1,10 @@
 {
 	"debug.console.wordWrap": false,
 	"editor.autoClosingBrackets": "never",
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true,
+		"source.fixAll.stylelint": true
+	},
 	"editor.detectIndentation": false,
 	"editor.insertSpaces": false,
 	"editor.tabSize": 4,
