@@ -871,6 +871,7 @@ module.exports = {
 		'unicorn/no-null': 'off', // @todo Too much old native JavaScript functions are based on `null`. Maybe we can replace them later.
 		'unicorn/no-object-as-default-parameter': 'error',
 		'unicorn/no-process-exit': 'error',
+		'unicorn/no-static-only-class': 'error',
 		'unicorn/no-this-assignment': 'error',
 		'unicorn/no-unreadable-array-destructuring': 'error',
 		'unicorn/no-unsafe-regex': 'off',
@@ -881,6 +882,7 @@ module.exports = {
 		'unicorn/numeric-separators-style': 'error',
 		'unicorn/prefer-add-event-listener': 'error',
 		'unicorn/prefer-array-find': 'error',
+		'unicorn/prefer-array-flat': 'error',
 		'unicorn/prefer-array-flat-map': 'error',
 		'unicorn/prefer-array-index-of': 'error',
 		'unicorn/prefer-array-some': 'error',
