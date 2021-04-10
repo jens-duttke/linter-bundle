@@ -17,7 +17,7 @@ module.exports = {
 			url: 'https://www.joshwcomeau.com/react/the-perils-of-rehydration/'
 		},
 		messages: {
-			text: 'Use `React.useEffect()` instead of checking if `{{ name }}` is `undefined`.'
+			text: 'Use `React.useEffect()`, or `componentDidMount` instead of checking if `{{ name }}` is `undefined`.'
 		}
 	},
 	create (context) {
