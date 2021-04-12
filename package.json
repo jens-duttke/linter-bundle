@@ -63,7 +63,7 @@
 		"stylelint-use-nesting": "3.0.0"
 	},
 	"peerDependencies": {
-		"typescript": "4.2.3"
+		"typescript": "^4.0.0"
 	},
 	"devDependencies": {
 		"@types/eslint": "7.2.7",
