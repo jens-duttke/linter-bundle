@@ -159,7 +159,7 @@ module.exports = {
 		'no-fallthrough': 'error',
 		'no-floating-decimal': 'error',
 		'no-global-assign': 'error',
-		'no-implicit-coercion': 'error',
+		'no-implicit-coercion': ['error', { disallowTemplateShorthand: true }],
 		'no-implicit-globals': 'error',
 		'no-implied-eval': 'error',
 		'no-invalid-this': 'off', // @typescript-eslint/no-invalid-this
@@ -639,6 +639,7 @@ module.exports = {
 		'@typescript-eslint/no-unnecessary-type-arguments': 'error',
 		'@typescript-eslint/no-unnecessary-type-assertion': 'error',
 		'@typescript-eslint/no-unnecessary-type-constraint': 'error',
+		'@typescript-eslint/no-unsafe-argument': 'error',
 		'@typescript-eslint/no-unsafe-assignment': 'error',
 		'@typescript-eslint/no-unsafe-call': 'error',
 		'@typescript-eslint/no-unsafe-member-access': 'error',
