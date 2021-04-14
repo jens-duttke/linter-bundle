@@ -234,11 +234,11 @@ function runTask (setup) {
 
 			const lintingProcess = childProcess.exec(setup.command, setup.options);
 
-			lintingProcess.stdout?.on('data', (data) => {
+			lintingProcess.stdout?.on('data', (/** @type {string} */data) => {
 				stdout.push(data);
 			});
 
-			lintingProcess.stderr?.on('data', (data) => {
+			lintingProcess.stderr?.on('data', (/** @type {string} */data) => {
 				stderr.push(data);
 			});
 
