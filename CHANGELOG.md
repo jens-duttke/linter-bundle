@@ -7,7 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.9.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.10.0...HEAD)
+
+## [1.10.0] - 2021-04-14
+
+### Changed
+
+- [tsc] Lazy peer dependency check for TypeScript, instead of forcing a specific version
+- [eslint] Updated `eslint` from v7.22.0 to v4.24.0
+- [eslint] Make use of `eslint`
+  option "disallowTemplateShorthand" of "[no-implicit-coercion](https://eslint.org/docs/rules/no-implicit-coercion)"
+- [eslint] Updated `@typescript-eslint` from v4.19.0 to v4.22.0
+- [eslint] Make use of `@typescript-eslint`
+  "[@typescript-eslint/no-unsafe-argument](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin/docs/rules/no-unsafe-argument.md)"
+- [eslint] Updated `eslint-plugin-jest` from v24.3.2 to v24.3.5
+- [eslint] Updated `eslint-plugin-react` from v7.22.0 to v7.23.2
+- [eslint] Make use of `eslint-plugin-react`
+  "[no-unstable-nested-components](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md)"
+- [sass] Updated `stylelint-selector-no-empty` from v1.0.7 to v1.0.8
+- [audit] Updated `better-npm-audit` from v1.0.7 to v1.0.8
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.9.0...v1.10.0)
 
 ## [1.9.0] - 2021-03-22
 
