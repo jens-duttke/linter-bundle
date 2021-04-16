@@ -7,7 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.10.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.11.0...HEAD)
+
+## [1.11.0] - 2021-04-16
+
+### Changed
+
+- [eslint] Disable "[unicorn/prefer-spread](https://git.io/JOlHO)" because of false-positives for non-array objects (like non-iterables or typed arrays).
+- [eslint/overrides-javascript-lazy] Disable "[@typescript-eslint/no-unsafe-argument](https://git.io/JOlHv)" for "overrides"
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.10.0...v1.11.0)
 
 ## [1.10.0] - 2021-04-14
 
