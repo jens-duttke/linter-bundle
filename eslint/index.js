@@ -890,7 +890,7 @@ module.exports = {
 		'unicorn/prefer-date-now': 'error',
 		'unicorn/prefer-default-parameters': 'error',
 		'unicorn/prefer-dom-node-append': 'error',
-		'unicorn/prefer-dom-node-dataset': 'off', // `setAttribute` is faster than `dataset`. Set https://www.measurethat.net/Benchmarks/Show/7740/0/classname-vs-setattribute-vs-classlist-vs-dataset
+		'unicorn/prefer-dom-node-dataset': 'off', // `setAttribute` is faster than `dataset`. See https://www.measurethat.net/Benchmarks/Show/7740/0/classname-vs-setattribute-vs-classlist-vs-dataset
 		'unicorn/prefer-dom-node-remove': 'error',
 		'unicorn/prefer-dom-node-text-content': 'error',
 		'unicorn/prefer-includes': 'error',
@@ -903,7 +903,7 @@ module.exports = {
 		'unicorn/prefer-query-selector': 'off', // document.getElementById() is much faster
 		'unicorn/prefer-reflect-apply': 'error',
 		'unicorn/prefer-set-has': 'error',
-		'unicorn/prefer-spread': 'error',
+		'unicorn/prefer-spread': 'off', // @todo Disabled till there a solution for the warning, that `slice()` on Typed-Arrays should be replaced (which is not possible). @see https://github.com/sindresorhus/eslint-plugin-unicorn/issues/1064
 		'unicorn/prefer-string-replace-all': 'off',
 		'unicorn/prefer-string-slice': 'off', // @todo As of today (2020.08.24) and since the last 9 years, substr() is three times faster than slice() in Firefox.
 		'unicorn/prefer-string-starts-ends-with': 'error',
