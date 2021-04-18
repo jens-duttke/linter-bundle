@@ -344,10 +344,10 @@ In order to fix the code according to the ESLint/stylelint rules when saving, th
 
 ```json
 {
-	"editor.codeActionsOnSave": {
-		"source.fixAll.eslint": true,
-		"source.fixAll.stylelint": true
-	}
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  }
 }
 ```
 
@@ -355,19 +355,19 @@ In order to fix the code according to the ESLint/stylelint rules when saving, th
 
 To visualize the max line-length rules in VSCode, you can activate rulers, by adding the following settings to your `.vscode/settings.json`:
 
-```
+```json
 {
-	"[markdown]": {
-		"editor.rulers": [300]
-	},
-	"[scss]": {
-		"editor.rulers": [160]
-	},
-	"[typescript]": {
-		"editor.rulers": [300]
-	},
-	"[typescriptreact]": {
-		"editor.rulers": [300]
-	}
+  "[markdown]": {
+    "editor.rulers": [300]
+  },
+  "[scss]": {
+    "editor.rulers": [160]
+  },
+  "[typescript]": {
+    "editor.rulers": [300]
+  },
+  "[typescriptreact]": {
+    "editor.rulers": [300]
+  }
 }
 ```
