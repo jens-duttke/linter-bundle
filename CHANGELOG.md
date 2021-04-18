@@ -2,25 +2,44 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.12.0...HEAD)
+
+## [1.12.0] - 2021-04-18
+
 ### Added
 
-- [stylelint] Disallow all tag selectors without class in CSS Modules, using the
-  [stylelint-selector-tag-no-without-class](https://github.com/Moxio/stylelint-selector-tag-no-without-class) plugin for.
-- [stylelint] Restrict disallowed reserved ECMAScript keywords (added in v1.8.0) to CSS Modules
+- [stylelint] Disallow all tag selectors without class in CSS Modules, using the [stylelint-selector-tag-no-without-class](https://github.com/Moxio/stylelint-selector-tag-no-without-class) plugin (only `from`/`to` is allowed, because of
+  [this issue](https://github.com/Moxio/stylelint-selector-tag-no-without-class/issues/5))
+- [stylelint] Activate the "[order/order](https://github.com/hudochenkov/stylelint-order/blob/master/rules/order/README.md)" rule and enforce this order:
+  - "dollar-variables"
+  - `@extend`
+  - `@include`
+  - "custom-properties"
+  - "declarations"
+  - `@media`
+  - "rules"
+  - `@keyframes`
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.11.0...HEAD)
+  (other at-rules can be used everywhere)
+- [stylelint] Activate the "[scss/no-global-function-names](https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/no-global-function-names/README.md)" rule
+
+### Changed
+
+- [stylelint] Restrict disallowed reserved ECMAScript keywords (added in v1.8.0) to CSS Modules
+- [stylelint] Explicitly disable the `order/properties-alphabetical-order` rule (which was previously not configured)
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.11.0...v1.12.0)
 
 ## [1.11.0] - 2021-04-16
 
 ### Changed
 
-- [eslint] Disable "[unicorn/prefer-spread](https://git.io/JOlHO)" because of false-positives for non-array objects (like non-iterables or typed arrays).
-- [eslint/overrides-javascript-lazy] Disable "[@typescript-eslint/no-unsafe-argument](https://git.io/JOlHv)"
+- [eslint] Disable "[unicorn/prefer-spread](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-spread.md)" because of false-positives for non-array objects (like non-iterables or typed arrays).
+- [eslint/overrides-javascript-lazy] Disable "[@typescript-eslint/no-unsafe-argument](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unsafe-argument.md)"
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.10.0...v1.11.0)
 
@@ -30,15 +49,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [tsc] Lazy peer dependency check for TypeScript, instead of forcing a specific version
 - [eslint] Updated `eslint` from v7.22.0 to v4.24.0
-- [eslint] Make use of `eslint`
-  option "disallowTemplateShorthand" of "[no-implicit-coercion](https://eslint.org/docs/rules/no-implicit-coercion)"
+- [eslint] Make use of `eslint` option "disallowTemplateShorthand" of "[no-implicit-coercion](https://eslint.org/docs/rules/no-implicit-coercion)"
 - [eslint] Updated `@typescript-eslint` from v4.19.0 to v4.22.0
-- [eslint] Make use of `@typescript-eslint`
-  "[@typescript-eslint/no-unsafe-argument](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin/docs/rules/no-unsafe-argument.md)"
+- [eslint] Make use of `@typescript-eslint` "[@typescript-eslint/no-unsafe-argument](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin/docs/rules/no-unsafe-argument.md)"
 - [eslint] Updated `eslint-plugin-jest` from v24.3.2 to v24.3.5
 - [eslint] Updated `eslint-plugin-react` from v7.22.0 to v7.23.2
-- [eslint] Make use of `eslint-plugin-react`
-  "[no-unstable-nested-components](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md)"
+- [eslint] Make use of `eslint-plugin-react` "[no-unstable-nested-components](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md)"
 - [sass] Updated `stylelint-selector-no-empty` from v1.0.7 to v1.0.8
 - [audit] Updated `better-npm-audit` from v1.0.7 to v1.0.8
 
@@ -50,9 +66,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [eslint] Updated `@typescript-eslint` to v4.19.0
 - [eslint] Updated `eslint-plugin-unicorn` to v29.0.0
-- [eslint] Make use of `eslint-plugin-unicorn`
-  "[no-static-only-class](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-static-only-class.md)" and
-  "[prefer-array-flat](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-array-flat.md)" rule
+- [eslint] Make use of `eslint-plugin-unicorn` "[no-static-only-class](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-static-only-class.md)" and "[prefer-array-flat](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-array-flat.md)" rule
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.8.0...v1.9.0)
 
@@ -60,13 +74,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- By default, the terminal output of the linters is printed only in case of failure to prevent unnecessary noise. Use `--verbose` to show their output even
-  on success.
-- [stylelint] Disallow reserved ECMAScript keywords (`abstract`, `arguments`, `await`, `boolean`, `break`, `byte`, `case`, `catch`, `char`,
-  `class`, `const`, `continue`, `debugger`, `default`, `delete`, `do`, `double`, `else`, `enum`, `eval`, `export`, `extends`, `false`, `final`, `finally`,
-  `float`, `for`, `function`, `goto`, `if`, `implements`, `import`, `in`, `Infinity`, `instanceof`, `int`, `interface`, `let`, `long`, `NaN`, `native`, `new`,
-  `null`, `package`, `private`, `protected`, `public`, `return`, `short`, `static`, `super`, `switch`, `synchronized`, `this`, `throw`, `throws`, `transient`,
-  `true`, `try`, `typeof`, `undefined`, `var`, `void`, `volatile`, `while`, `with`, and `yield`) as class names
+- By default, the terminal output of the linters is printed only in case of failure to prevent unnecessary noise. Use `--verbose` to show their output even on success.
+- [stylelint] Disallow reserved ECMAScript keywords (`abstract`, `arguments`, `await`, `boolean`, `break`, `byte`, `case`, `catch`, `char`, `class`, `const`, `continue`, `debugger`, `default`, `delete`, `do`, `double`, `else`, `enum`, `eval`, `export`, `extends`, `false`, `final`, `finally`,
+  `float`, `for`, `function`, `goto`, `if`, `implements`, `import`, `in`, `Infinity`, `instanceof`, `int`, `interface`, `let`, `long`, `NaN`, `native`, `new`, `null`, `package`, `private`, `protected`, `public`, `return`, `short`, `static`, `super`, `switch`, `synchronized`, `this`, `throw`,
+  `throws`, `transient`, `true`, `try`, `typeof`, `undefined`, `var`, `void`, `volatile`, `while`, `with`, and `yield`) as class names
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.7.0...v1.8.0)
 
@@ -88,8 +99,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [eslint] Updated `@typescript-eslint` to v4.18.0
 - [eslint] Updated `eslint-plugin-jest` to v24.3.1
 - [eslint] Updated `eslint-plugin-jsdoc` to v32.3.0
-- [stylelint] `order/properties-order`: Group of "Alignment" properties has been added, containing "align-content", "align-items", "align-self",
-  "justify-content", "justify-items", "justify-self", "place-content", "place-items" and "place-self"
+- [stylelint] `order/properties-order`: Group of "Alignment" properties has been added, containing "align-content", "align-items", "align-self", "justify-content", "justify-items", "justify-self", "place-content", "place-items" and "place-self"
 - [stylelint] `order/properties-order`: Group "Gap" has been moved before group "Dimension"
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.5.0...v1.6.0)
@@ -98,7 +108,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- [eslint ]Updated `eslint` to v7.22.0
+- [eslint] Updated `eslint` to v7.22.0
 - [eslint/overrides-gatsby] `no-restricted-imports`: Added rule to ensure `navigate` from gatsby is used, instead of `useNavigate()` from `@reach/router`
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.4.0...v1.5.0)
@@ -121,8 +131,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- [audit] Replaced `npm audit` and `yarn audit` by [`better-npm-audit`](https://www.npmjs.com/package/better-npm-audit) and
-  [`improved-yarn-audit`](https://www.npmjs.com/package/improved-yarn-audit)
+- [audit] Replaced `npm audit` and `yarn audit` by [`better-npm-audit`](https://www.npmjs.com/package/better-npm-audit) and [`improved-yarn-audit`](https://www.npmjs.com/package/improved-yarn-audit)
 
 ### Fixed
 
@@ -134,8 +143,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [gatsby/overrides-gatsby] New rule `no-global-undefined-check`, which prevents `typeof window === 'undefined'` checks, which are often [the source of
-  rehydration problems](https://www.joshwcomeau.com/react/the-perils-of-rehydration/) in Gatsby
+- [gatsby/overrides-gatsby] New rule `no-global-undefined-check`, which prevents `typeof window === 'undefined'` checks, which are often [the source of rehydration problems](https://www.joshwcomeau.com/react/the-perils-of-rehydration/) in Gatsby
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.1.0...v1.2.0)
 
