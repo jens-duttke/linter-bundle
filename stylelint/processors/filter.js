@@ -6,7 +6,7 @@
  * The processor hook.
  *
  * @param {{ test: RegExp | string; include?: string[];  exclude?: string[]; }[] | undefined} options - The processors options, set in the stylelint configuration.
- * @returns {{ code? (input: string, filePath: stirng): string; result (stylelintResult: import('stylelint').LintResult, filePath: string): import('stylelint').LintResult; } | void} The processor functionality.
+ * @returns {{ code? (input: string, filePath: stirng): string; result (stylelintResult: import('stylelint').LintResult, filePath: string): import('stylelint').LintResult | void; }} The processor functionality.
  */
 module.exports = (options) => ({
 	result (stylelintResult, filePath) {
@@ -14,7 +14,10 @@ module.exports = (options) => ({
 			throw new Error('No options set for filter processor.');
 		}
 
+		/** @type {string[]} */
 		const collectedInclude = [];
+
+		/** @type {string[]} */
 		const collectedExclude = [];
 
 		for (const { test, include, exclude } of options) {
