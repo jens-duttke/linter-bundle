@@ -325,6 +325,14 @@ module.exports = {
 		 *
 		 * @see https://www.npmjs.com/package/stylelint-order
 		 */
+		'order/order': [
+			'dollar-variables',
+			'custom-properties',
+			'declarations',
+			'rules',
+			'at-rules'
+		],
+		'order/properties-alphabetical-order': null,
 		'order/properties-order': [
 			[
 				{
