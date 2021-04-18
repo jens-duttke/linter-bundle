@@ -327,10 +327,26 @@ module.exports = {
 		 */
 		'order/order': [
 			'dollar-variables',
+			'at-variables',
+			{
+				type: 'at-rule',
+				name: 'extend'
+			},
+			{
+				type: 'at-rule',
+				name: 'include'
+			},
 			'custom-properties',
 			'declarations',
+			{
+				type: 'at-rule',
+				name: 'media'
+			},
 			'rules',
-			'at-rules'
+			{
+				type: 'at-rule',
+				name: 'keyframes'
+			}
 		],
 		'order/properties-alphabetical-order': null,
 		'order/properties-order': [
