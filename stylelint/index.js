@@ -841,6 +841,7 @@ module.exports = {
 		'scss/no-dollar-variables': null,
 		'scss/no-duplicate-dollar-variables': true,
 		'scss/no-duplicate-mixins': true,
+		'scss/no-global-function-names': true,
 		'scss/operator-no-newline-after': true,
 		'scss/operator-no-newline-before': true,
 		'scss/operator-no-unspaced': true,
