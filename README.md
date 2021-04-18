@@ -340,13 +340,34 @@ To ensure the stylelint plugins are correctly loaded, you need to adjust the set
 
 ### Auto-fix code on save
 
-In order to fix the code according to the ESLint/stylelint rules when saving, the following option can be added to your `.vscode/settings.json`:
+In order to fix the code according to the ESLint/stylelint rules when saving, the following settings can be added to your `.vscode/settings.json`:
 
 ```json
 {
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": true,
 		"source.fixAll.stylelint": true
+	}
+}
+```
+
+### Rulers
+
+To visualize the max line-length rules in VSCode, you can activate rulers, by adding the following settings to your `.vscode/settings.json`:
+
+```
+{
+	"[markdown]": {
+		"editor.rulers": [300]
+	},
+	"[scss]": {
+		"editor.rulers": [160]
+	},
+	"[typescript]": {
+		"editor.rulers": [300]
+	},
+	"[typescriptreact]": {
+		"editor.rulers": [300]
 	}
 }
 ```
