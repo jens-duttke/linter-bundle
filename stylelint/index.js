@@ -862,7 +862,7 @@ module.exports = {
 		 *
 		 * @see https://github.com/Moxio/stylelint-selector-tag-no-without-class
 		 */
-		'plugin/selector-tag-no-without-class': ['/./'],
+		'plugin/selector-tag-no-without-class': ['/^(?!(from|to)$)/'],
 
 		/**
 		 * stylelint-use-logical-spec
