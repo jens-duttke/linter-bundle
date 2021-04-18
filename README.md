@@ -293,6 +293,8 @@ Argument | Description | Example
 
 ## VSCode setup
 
+### ESLint
+
 For VSCode I recommend the [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) extension.
 
 To ensure the ESLint plugins are correctly loaded, you need to adjust the settings of this plugin.
@@ -307,7 +309,7 @@ This can be done by adding these options to your `.vscode/settings.json`:
     "resolvePluginsRelativeTo": "./node_modules/linter-bundle",
     "rulePaths": ["./node_modules/linter-bundle/eslint/rules"],
     "reportUnusedDisableDirectives": "error",
-  },
+  }
 }
 ```
 
@@ -320,3 +322,31 @@ Click on "Select Node Path". A selection popup will appear at the top of the edi
 ![https://cdn.jsdelivr.net/gh/jens-duttke/linter-bundle@f7d514f/vscode-eslint-2.png](https://cdn.jsdelivr.net/gh/jens-duttke/linter-bundle@f7d514f/vscode-eslint-2.png)
 
 Here, choose the option "Use NODE_PATH value defined via setting".
+
+### stylelint
+
+For VSCode I recommend the [stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint) extension.
+
+To ensure the stylelint plugins are correctly loaded, you need to adjust the settings of this plugin in your `.vscode/settings.json`:
+
+```json
+{
+  "stylelint.enable": true,
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false
+}
+```
+
+### Auto-fix code on save
+
+In order to fix the code according to the ESLint/stylelint rules when saving, the following option can be added to your `.vscode/settings.json`:
+
+```json
+{
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true,
+		"source.fixAll.stylelint": true
+	}
+}
+```
