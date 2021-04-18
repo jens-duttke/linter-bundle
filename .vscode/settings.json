@@ -53,7 +53,7 @@
 	"workbench.iconTheme": "material-icon-theme",
 	"workbench.tree.indent": 22,
 	"[markdown]": {
-		"editor.rulers": [160]
+		"editor.rulers": [300]
 	},
 	"[scss]": {
 		"editor.rulers": [160]
