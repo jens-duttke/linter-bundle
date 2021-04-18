@@ -44,6 +44,7 @@ Beside that, the following additional rules are part of this bundle:
 - [stylelint-order](https://www.npmjs.com/package/stylelint-order)
 - [stylelint-scss](https://www.npmjs.com/package/stylelint-scss)
 - [stylelint-selector-no-empty](https://www.npmjs.com/package/stylelint-selector-no-empty)
+- [stylelint-selector-tag-no-without-class](https://github.com/Moxio/stylelint-selector-tag-no-without-class)
 - [stylelint-use-logical-spec](https://www.npmjs.com/package/stylelint-use-logical-spec)
 - [stylelint-use-nesting](https://www.npmjs.com/package/stylelint-use-nesting)
 

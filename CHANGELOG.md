@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- [stylelint]  Make use of the [stylelint-selector-tag-no-without-class](https://github.com/Moxio/stylelint-selector-tag-no-without-class) plugin for
+  CSS Modules.
+
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.11.0...HEAD)
 
 ## [1.11.0] - 2021-04-16
@@ -14,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - [eslint] Disable "[unicorn/prefer-spread](https://git.io/JOlHO)" because of false-positives for non-array objects (like non-iterables or typed arrays).
-- [eslint/overrides-javascript-lazy] Disable "[@typescript-eslint/no-unsafe-argument](https://git.io/JOlHv)" for "overrides"
+- [eslint/overrides-javascript-lazy] Disable "[@typescript-eslint/no-unsafe-argument](https://git.io/JOlHv)"
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.10.0...v1.11.0)
 
@@ -56,7 +61,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - By default, the terminal output of the linters is printed only in case of failure to prevent unnecessary noise. Use `--verbose` to show their output even
   on success.
-- [stylelint/overrides-module] Disallow reserved ECMAScript keywords (`abstract`, `arguments`, `await`, `boolean`, `break`, `byte`, `case`, `catch`, `char`,
+- [stylelint] Disallow reserved ECMAScript keywords (`abstract`, `arguments`, `await`, `boolean`, `break`, `byte`, `case`, `catch`, `char`,
   `class`, `const`, `continue`, `debugger`, `default`, `delete`, `do`, `double`, `else`, `enum`, `eval`, `export`, `extends`, `false`, `final`, `finally`,
   `float`, `for`, `function`, `goto`, `if`, `implements`, `import`, `in`, `Infinity`, `instanceof`, `int`, `interface`, `let`, `long`, `NaN`, `native`, `new`,
   `null`, `package`, `private`, `protected`, `public`, `return`, `short`, `static`, `super`, `switch`, `synchronized`, `this`, `throw`, `throws`, `transient`,
