@@ -23,7 +23,8 @@ module.exports = {
 			{
 				test: /^((?!\.module\.).)*$/u,
 				exclude: [
-					'plugin/selector-tag-no-without-class'
+					'plugin/selector-tag-no-without-class',
+					'selector-class-pattern'
 				]
 			}
 		]]
