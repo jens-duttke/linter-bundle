@@ -6,7 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.12.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.13.0...HEAD)
+
+## [1.13.0] - 2021-04-23
+
+## Changed
+
+- [eslint] Updated `eslint-plugin-unicorn` from v29.0.0 to v30.0.0
+- [eslint] Make use of `eslint-plugin-unicorn` "[prefer-switch](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-switch.md)"
+- [eslint] Updated `stylelint-selector-tag-no-without-class` from v2.0.3 to v2.0.4
+- [eslint] Activate the "[unicorn/no-useless-undefined](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-useless-undefined.md)" rule
+- [eslint] Update `eslint-plugin-jsdoc` from v32.3.0 to v32.3.1
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.12.0...v1.13.0)
 
 ## [1.12.0] - 2021-04-18
 
