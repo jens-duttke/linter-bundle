@@ -36,7 +36,7 @@
 		"preversion": "npm run check-outdated && npm run stylelint-find-rules && npm run lint",
 		"postversion": "git push && git push --tags && npm publish",
 		"stylelint-find-rules": "stylelint-find-new-rules ./stylelint/index.js",
-		"check-outdated": "check-outdated --ignore-pre-releases --ignore-packages eslint@7.19.0"
+		"check-outdated": "npx --yes check-outdated -- --ignore-pre-releases --ignore-packages eslint@7.19.0"
 	},
 	"dependencies": {
 		"@typescript-eslint/eslint-plugin": "4.22.0",
@@ -71,7 +71,6 @@
 		"@types/eslint": "7.2.10",
 		"@types/node": "14.14.41",
 		"@types/stylelint": "9.10.1",
-		"check-outdated": "2.7.0",
 		"stylelint-find-new-rules": "^3.0.1",
 		"typescript": "4.2.4"
 	}
