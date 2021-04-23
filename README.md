@@ -332,6 +332,9 @@ To ensure the stylelint plugins are correctly loaded, you need to adjust the set
 ```json
 {
   "stylelint.enable": true,
+	"stylelint.validate": [
+		"scss"
+	],
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false
