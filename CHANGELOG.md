@@ -12,8 +12,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## Changed
 
-- [eslint] Updated `eslint-plugin-unicorn` from v29.0.0 to v30.0.0
+- [eslint] Updated `eslint-plugin-unicorn` from v29.0.0 to v31.0.0
 - [eslint] Make use of `eslint-plugin-unicorn` "[prefer-switch](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-switch.md)"
+- [eslint] Disable new `eslint-plugin-unicorn` "[prefer-node-protocol](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-node-protocol.md)" rule, till it's widely supported
+- [eslint] Disable new `eslint-plugin-unicorn` "[prefer-module](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-module.md)" rule, till it's wider supported
 - [eslint] Updated `stylelint-selector-tag-no-without-class` from v2.0.3 to v2.0.4
 - [eslint] Activate the "[unicorn/no-useless-undefined](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-useless-undefined.md)" rule
 - [eslint] Update `eslint-plugin-jsdoc` from v32.3.0 to v32.3.1

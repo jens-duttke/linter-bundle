@@ -51,7 +51,7 @@
 		"eslint-plugin-node": "11.1.0",
 		"eslint-plugin-react": "7.23.2",
 		"eslint-plugin-react-hooks": "4.2.0",
-		"eslint-plugin-unicorn": "30.0.0",
+		"eslint-plugin-unicorn": "31.0.0",
 		"improved-yarn-audit": "2.3.2",
 		"markdownlint-cli": "0.27.1",
 		"stylelint": "13.12.0",
