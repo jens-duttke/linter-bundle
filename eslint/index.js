@@ -908,6 +908,7 @@ module.exports = {
 		'unicorn/prefer-string-slice': 'off', // @todo As of today (2020.08.24) and since the last 9 years, substr() is three times faster than slice() in Firefox.
 		'unicorn/prefer-string-starts-ends-with': 'error',
 		'unicorn/prefer-string-trim-start-end': 'error',
+		'unicorn/prefer-switch': 'error',
 		'unicorn/prefer-ternary': 'off', // We prefer readability over saving a few chars
 		'unicorn/prefer-regexp-test': 'error',
 		'unicorn/prefer-type-error': 'error',
