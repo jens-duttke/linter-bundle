@@ -6,16 +6,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.13.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.13.1...HEAD)
+
+## [1.13.1] - 2021-04-23
+
+## Changed
+
+- [eslint] Disable "[unicorn/no-useless-undefined](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-useless-undefined.md)" option `checkArguments`
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.13.0...v1.13.1)
 
 ## [1.13.0] - 2021-04-23
 
 ## Changed
 
 - [eslint] Updated `eslint-plugin-unicorn` from v29.0.0 to v31.0.0
-- [eslint] Make use of `eslint-plugin-unicorn` "[prefer-switch](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-switch.md)"
-- [eslint] Disable new `eslint-plugin-unicorn` "[prefer-node-protocol](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-node-protocol.md)" rule, till it's widely supported
-- [eslint] Disable new `eslint-plugin-unicorn` "[prefer-module](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-module.md)" rule, till it's wider supported
+- [eslint] Make use of new "[unicorn/prefer-switch](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-switch.md)"
+- [eslint] Disable new "[unicorn/prefer-node-protocol](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-node-protocol.md)" rule, till it's widely supported
+- [eslint] Disable new "[unicorn/prefer-module](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-module.md)" rule, till it's wider supported
 - [eslint] Updated `stylelint-selector-tag-no-without-class` from v2.0.3 to v2.0.4
 - [eslint] Activate the "[unicorn/no-useless-undefined](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-useless-undefined.md)" rule
 - [eslint] Update `eslint-plugin-jsdoc` from v32.3.0 to v32.3.1
@@ -65,10 +73,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Updated `eslint` from v7.22.0 to v4.24.0
 - [eslint] Make use of `eslint` option "disallowTemplateShorthand" of "[no-implicit-coercion](https://eslint.org/docs/rules/no-implicit-coercion)"
 - [eslint] Updated `@typescript-eslint` from v4.19.0 to v4.22.0
-- [eslint] Make use of `@typescript-eslint` "[@typescript-eslint/no-unsafe-argument](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin/docs/rules/no-unsafe-argument.md)"
+- [eslint] Make use of new "[@typescript-eslint/no-unsafe-argument](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin/docs/rules/no-unsafe-argument.md)"
 - [eslint] Updated `eslint-plugin-jest` from v24.3.2 to v24.3.5
 - [eslint] Updated `eslint-plugin-react` from v7.22.0 to v7.23.2
-- [eslint] Make use of `eslint-plugin-react` "[no-unstable-nested-components](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md)"
+- [eslint] Make use of new "[react/no-unstable-nested-components](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md)"
 - [sass] Updated `stylelint-selector-no-empty` from v1.0.7 to v1.0.8
 - [audit] Updated `better-npm-audit` from v1.0.7 to v1.0.8
 
