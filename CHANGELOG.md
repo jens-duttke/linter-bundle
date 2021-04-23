@@ -10,7 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [1.13.1] - 2021-04-23
 
-## Changed
+### Changed
 
 - [eslint] Disable "[unicorn/no-useless-undefined](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-useless-undefined.md)" option `checkArguments`
 
@@ -18,7 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [1.13.0] - 2021-04-23
 
-## Changed
+### Changed
 
 - [eslint] Updated `eslint-plugin-unicorn` from v29.0.0 to v31.0.0
 - [eslint] Make use of new "[unicorn/prefer-switch](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-switch.md)"
