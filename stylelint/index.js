@@ -808,7 +808,7 @@ module.exports = {
 		'scss/at-else-empty-line-before': 'never',
 		'scss/at-else-if-parentheses-space-before': 'always',
 		'scss/at-extend-no-missing-placeholder': true,
-		'scss/at-function-named-arguments': ['never', { ignoreFunctions: ['scale-color'] }],
+		'scss/at-function-named-arguments': ['never', { ignoreFunctions: ['scale-color', 'color.scale'] }],
 		'scss/at-function-parentheses-space-before': 'always',
 		'scss/at-function-pattern': '^[a-z]+(-[a-z]+)*$',
 		'scss/at-if-closing-brace-newline-after': 'always-last-in-chain',
