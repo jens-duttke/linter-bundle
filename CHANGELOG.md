@@ -6,7 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.13.1...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.14.0...HEAD)
+
+## [1.14.0] - 2021-04-27
+
+### Added
+
+- [stylelint] "[scss/at-function-named-arguments](https://github.com/kristerkari/stylelint-scss/tree/master/src/rules/at-function-named-arguments) now ignores "color.scale", beside "scale-color"
+
+### Changed
+
+- [eslint] Updated `eslint` from v7.24.0 to v7.25.0
+- [eslint] Updated `eslint-plugin-jest` from v24.3.5 to v24.3.6
+- [eslint] Updated `eslint-plugin-jsdoc` from v32.3.1 to v32.3.2
+- [stylelint] Updated `stylelint` from v13.12.0 to v13.13.0
+- [stylelint] Activate the "[no-invalid-position-at-import-rule](https://github.com/stylelint/stylelint/tree/master/lib/rules/no-invalid-position-at-import-rule)" rule
+- [stylelint] Activate the "[no-irregular-whitespace](https://github.com/stylelint/stylelint/tree/master/lib/rules/no-irregular-whitespace)" rule
+- [stylelint] Added but disabled new "[selector-disallowed-list](https://github.com/stylelint/stylelint/tree/master/lib/rules/selector-disallowed-list)" rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.13.1...v1.14.0)
 
 ## [1.13.1] - 2021-04-23
 
