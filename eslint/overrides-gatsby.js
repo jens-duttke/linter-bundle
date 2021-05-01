@@ -41,7 +41,7 @@ module.exports = {
 				'unicorn/string-content': ['error', {
 					patterns: {
 						// '\\.\\.\\.': '…', // @todo Does not support graphql-template strings. Report that as bug!
-						// eslint-disable-next-line unicorn/string-content
+						// eslint-disable-next-line unicorn/string-content -- If not disabled, the rule would report it's own disable-patterns.
 						'->': '→'
 					}
 				}]

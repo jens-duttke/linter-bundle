@@ -23,14 +23,16 @@ This setup is using the following additional plugins:
 ### ESLint
 
 - [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin)
+- [eslint-plugin-eslint-comments](https://www.npmjs.com/package/eslint-plugin-eslint-comments)
 - [eslint-plugin-functional](https://www.npmjs.com/package/eslint-plugin-functional)
 - [eslint-plugin-import](https://www.npmjs.com/package/eslint-plugin-import)
 - [eslint-plugin-jest](https://www.npmjs.com/package/eslint-plugin-jest)
 - [eslint-plugin-jsdoc](https://www.npmjs.com/package/eslint-plugin-jsdoc)
-- [eslint-plugin-jsx-a11y](https://www.npmjs.com/packageleslint-plugin-jsx-a11y)
+- [eslint-plugin-jsx-a11y](https://www.npmjs.com/package/eslint-plugin-jsx-a11y)
 - [eslint-plugin-node](https://www.npmjs.com/package/eslint-plugin-node)
+- [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise)
+- [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks)
 - [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)
-- [eslint-plugin-react-hooks](https://www.npmjs.com/packonaleslint-plugin-react-hooks)
 - [eslint-plugin-unicorn](https://www.npmjs.com/package/eslint-plugin-unicorn)
 
 Beside that, the following additional rules are part of this bundle:

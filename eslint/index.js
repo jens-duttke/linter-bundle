@@ -2,8 +2,8 @@
  * @file Global ESLint settings
  */
 
-/* eslint-disable max-lines */
-/* eslint-disable node/no-process-env */
+/* eslint-disable max-lines -- The rules can be easier managed if they are all in one file */
+/* eslint-disable node/no-process-env -- `process.env` is required to inject configuration adjustments */
 
 const fs = require('fs');
 const path = require('path');
@@ -19,9 +19,11 @@ module.exports = {
 	],
 	parser: '@typescript-eslint/parser',
 	plugins: [
+		'eslint-comments',
 		'functional',
 		'import',
 		'jsx-a11y',
+		'promise',
 		'react-hooks',
 		'react',
 		'unicorn'
@@ -293,7 +295,7 @@ module.exports = {
 		'no-bitwise': ['error', { allow: ['^', '~', '<<', '>>', '>>>', '|=', '&=', '^=', '<<=', '>>=', '>>>='] }], // Disallow "&" and "|".
 		'no-continue': 'off', // If it makes the code more readable, wer are using `continue`
 		'no-inline-comments': 'off',
-		'no-lonely-if': 'off', // Covered by unicorn/no-lonely-if
+		'no-lonely-if': 'off', // Covered by `unicorn/no-lonely-if`
 		'no-mixed-operators': 'error',
 		'no-mixed-spaces-and-tabs': 'error',
 		'no-multi-assign': 'error',
@@ -829,6 +831,41 @@ module.exports = {
 		'jsx-a11y/tabindex-no-positive': 'error',
 
 		/**
+		 * eslint-plugin-eslint-comments
+		 *
+		 * @see https://mysticatea.github.io/eslint-plugin-eslint-comments/
+		 */
+		'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }],
+		'eslint-comments/no-aggregating-enable': 'error',
+		'eslint-comments/no-duplicate-disable': 'error',
+		'eslint-comments/no-unlimited-disable': 'off', // Covered by `unicorn/no-abusive-eslint-disable`
+		'eslint-comments/no-unused-disable': 'error', // @todo What's the benefit over the `reportUnusedDisableDirectives` option?
+		'eslint-comments/no-unused-enable': 'error',
+		'eslint-comments/no-restricted-disable': 'off',
+		'eslint-comments/no-use': 'off',
+		'eslint-comments/require-description': 'error',
+
+		/**
+		 * eslint-plugin-promise
+		 *
+		 * @see https://github.com/xjamundx/eslint-plugin-promise
+		 */
+		'promise/always-return': 'off', // If the result of an `.then()` is not used, there is no need to return something.
+		'promise/avoid-new': 'off',
+		'promise/catch-or-return': 'error',
+		'promise/no-callback-in-promise': 'off',
+		'promise/no-native': 'off',
+		'promise/no-nesting': 'off',
+		'promise/no-new-statics': 'error',
+		'promise/no-promise-in-callback': 'off',
+		'promise/no-return-in-finally': 'error',
+		'promise/no-return-wrap': 'error',
+		'promise/param-names': 'off', // @todo Disabled until this issue is fixed: https://github.com/xjamundx/eslint-plugin-promise/issues/206
+		'promise/prefer-await-to-callbacks': 'off', // It's not always possible to use avoid callbacks.
+		'promise/prefer-await-to-then': 'off', // Depending on the use-case `.then()`/`.catch()` might be easier to understand
+		'promise/valid-params': 'off', // TypeScript ensures that
+
+		/**
 		 * eslint-plugin-unicorn
 		 *
 		 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
@@ -916,7 +953,7 @@ module.exports = {
 		'unicorn/string-content': ['error', {
 			patterns: {
 				'\\.\\.\\.': '…',
-				// eslint-disable-next-line unicorn/string-content
+				// eslint-disable-next-line unicorn/string-content -- If not disabled, the rule would report it's own disable-patterns.
 				'->': '→'
 			}
 		}],

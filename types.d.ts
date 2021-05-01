@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
-namespace NodeJS {
+declare namespace NodeJS {
 	interface Global {
 		linterBundleSettings?: {
 			overrides?: {

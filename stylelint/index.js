@@ -2,7 +2,7 @@
  * @file Global Stylelint settings
  */
 
-/* eslint-disable max-lines */
+/* eslint-disable max-lines -- The rules can be easier managed if they are all in one file  */
 
 module.exports = {
 	reportNeedlessDisables: true,
