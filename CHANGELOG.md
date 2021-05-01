@@ -6,7 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.14.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.15.0...HEAD)
+
+## [1.15.0] - 2021-05-01
+
+### Added
+
+- [eslint] Make use of the [eslint-plugin-eslint-comments](https://www.npmjs.com/package/eslint-plugin-eslint-comments) plugin
+- [eslint] Make use of the [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise) plugin
+
+### Changed
+
+- [eslint] Updated `eslint-plugin-jsdoc` from v32.3.2 to v33.0.0
+- [eslint] Activate `allowDeclarations` options for "[@typescript-eslint/no-namespace](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-namespace.md)" rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.14.0...v1.15.0)
 
 ## [1.14.0] - 2021-04-27
 
