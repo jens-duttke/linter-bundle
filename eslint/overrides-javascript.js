@@ -30,6 +30,7 @@ module.exports = {
 				'@typescript-eslint/naming-convention': 'off', // Requires type information
 				'@typescript-eslint/no-implicit-any-catch': 'off', // @todo What's the correct way to define the type of the error-parameter in js files?
 				'@typescript-eslint/no-require-imports': 'off', // Requires type information
+				'@typescript-eslint/no-unsafe-assignment': 'off', // @todo Reactivate after bug in @typescript-eslint is fixed (@see https://github.com/typescript-eslint/typescript-eslint/issues/1943)
 				'@typescript-eslint/no-unused-vars-experimental': 'off', // @todo Throws an error "Maximum call stack size exceeded."
 				'@typescript-eslint/no-var-requires': 'off', // Requires type information
 				'@typescript-eslint/prefer-nullish-coalescing': 'off', // @todo `??` is not yet supported by NodeJS. Remove this like, as soon as it is supported.
