@@ -6,7 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.15.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.15.1...HEAD)
+
+## [1.15.1] - 2021-05-04
+
+### Changed
+
+- [eslint/overrides-javascript(-lazy)] The "[@typescript-eslint/no-unsafe-assignment](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-namespace.md)" rule has been disabled for JavaScript files due a
+  [bug in typescript-eslint](https://github.com/typescript-eslint/typescript-eslint/issues/1943)
+- [eslint] Updated `stylelint` from v13.13.0 to v13.13.1
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.15.0...v1.15.1)
 
 ## [1.15.0] - 2021-05-01
 
