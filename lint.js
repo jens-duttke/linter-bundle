@@ -72,7 +72,7 @@ const jobs = getTasksToRun(process.argv.splice(2)).map(({ taskName, config }) =>
 						'node',
 						`"${require.resolve('better-npm-audit')}"`,
 						'audit',
-						'-l moderate',
+						`-l ${config['min-severity'] ?? 'moderate'}`,
 						'-p',
 						config['exclude']?.map((exclude) => `-i ${exclude}`).join(' ')
 					].filter((argument) => Boolean(argument)).join(' ')
@@ -85,7 +85,7 @@ const jobs = getTasksToRun(process.argv.splice(2)).map(({ taskName, config }) =>
 					command: [
 						'node',
 						`"${require.resolve('improved-yarn-audit')}"`,
-						'--min-severity moderate',
+						`--min-severity ${config['min-severity'] ?? 'moderate'}`,
 						'--fail-on-missing-exclusions',
 						'--ignore-dev-deps',
 						config['exclude']?.map((exclude) => `--exclude ${exclude}`).join(' ')

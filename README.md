@@ -291,7 +291,8 @@ improved-yarn-audit --min-severity moderate --fail-on-missing-exclusions --ignor
 
 Argument | Description | Example
 -|-|-
-`--exclude` | Comma-separated list of  advisory IDs to ignore. Used as `-i` argument for [better-npm-audit](https://www.npmjs.com/package/better-npm-audit), and`--exclude` argument for [improved-yarn-audit](https://www.npmjs.com/package/improved-yarn-audit). | `--exclude=118,577`
+`--min-severity` | Minimum severity to treat as an error, default is moderate (info, low, moderate, high, critical). Used as `-l` argument for [better-npm-audit](https://www.npmjs.com/package/better-npm-audit), and `--min-severity` argument for [improved-yarn-audit](https://www.npmjs.com/package/improved-yarn-audit). | `--min-severity=moderate`
+`--exclude` | Comma-separated list of  advisory IDs to ignore. Used as `-i` argument for [better-npm-audit](https://www.npmjs.com/package/better-npm-audit), and `--exclude` argument for [improved-yarn-audit](https://www.npmjs.com/package/improved-yarn-audit). | `--exclude=118,577`
 
 ## VSCode setup
 
