@@ -6,7 +6,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.15.1...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.16.0...HEAD)
+
+## [1.16.0] - 2021.05.12
+
+### Added
+
+- [eslint] Activate the "[unicorn/no-document-cookie](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-document-cookie.md)" rule
+- [audit] Make minimum severity level configurable using `--min-severity`
+
+### Changed
+
+- [eslint] Updated `@typescript-eslint/parser` from v4.22.0 to v4.23.0
+- [eslint] Updated `eslint` from v7.25.0 to v7.26.0
+- [eslint] Updated `eslint-plugin-jsdoc` from v33.0.0 to v34.0.2
+- [eslint] Updated `eslint-plugin-unicorn` from v31.0.0 to v32.0.1
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.15.1...v1.16.0)
 
 ## [1.15.1] - 2021-05-04
 
@@ -14,7 +30,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - [eslint/overrides-javascript(-lazy)] The "[@typescript-eslint/no-unsafe-assignment](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-namespace.md)" rule has been disabled for JavaScript files due a
   [bug in typescript-eslint](https://github.com/typescript-eslint/typescript-eslint/issues/1943)
-- [eslint] Updated `stylelint` from v13.13.0 to v13.13.1
+- [stylelint] Updated `stylelint` from v13.13.0 to v13.13.1
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.15.0...v1.15.1)
 
@@ -37,6 +53,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 
 - [stylelint] "[scss/at-function-named-arguments](https://github.com/kristerkari/stylelint-scss/tree/master/src/rules/at-function-named-arguments) now ignores "color.scale", beside "scale-color"
+- [stylelint] Activate the "[no-invalid-position-at-import-rule](https://github.com/stylelint/stylelint/tree/master/lib/rules/no-invalid-position-at-import-rule)" rule
+- [stylelint] Activate the "[no-irregular-whitespace](https://github.com/stylelint/stylelint/tree/master/lib/rules/no-irregular-whitespace)" rule
 
 ### Changed
 
@@ -44,8 +62,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Updated `eslint-plugin-jest` from v24.3.5 to v24.3.6
 - [eslint] Updated `eslint-plugin-jsdoc` from v32.3.1 to v32.3.2
 - [stylelint] Updated `stylelint` from v13.12.0 to v13.13.0
-- [stylelint] Activate the "[no-invalid-position-at-import-rule](https://github.com/stylelint/stylelint/tree/master/lib/rules/no-invalid-position-at-import-rule)" rule
-- [stylelint] Activate the "[no-irregular-whitespace](https://github.com/stylelint/stylelint/tree/master/lib/rules/no-irregular-whitespace)" rule
 - [stylelint] Added but disabled new "[selector-disallowed-list](https://github.com/stylelint/stylelint/tree/master/lib/rules/selector-disallowed-list)" rule
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.13.1...v1.14.0)
@@ -60,6 +76,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [1.13.0] - 2021-04-23
 
+### Added
+
+- [eslint] Activate the "[unicorn/no-useless-undefined](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-useless-undefined.md)" rule
+
 ### Changed
 
 - [eslint] Updated `eslint-plugin-unicorn` from v29.0.0 to v31.0.0
@@ -67,7 +87,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Disable new "[unicorn/prefer-node-protocol](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-node-protocol.md)" rule, till it's widely supported
 - [eslint] Disable new "[unicorn/prefer-module](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-module.md)" rule, till it's wider supported
 - [eslint] Updated `stylelint-selector-tag-no-without-class` from v2.0.3 to v2.0.4
-- [eslint] Activate the "[unicorn/no-useless-undefined](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-useless-undefined.md)" rule
 - [eslint] Update `eslint-plugin-jsdoc` from v32.3.0 to v32.3.1
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.12.0...v1.13.0)
