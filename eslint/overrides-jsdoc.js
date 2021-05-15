@@ -35,6 +35,7 @@ module.exports = {
 				'jsdoc/empty-tags': 'error',
 				'jsdoc/implements-on-classes': 'error',
 				'jsdoc/match-description': 'error',
+				'jsdoc/multiline-blocks': ['error', { noSingleLineBlocks: true, singleLineTags: ['lends', 'type', 'typedef'] }],
 				'jsdoc/newline-after-description': 'error',
 				'jsdoc/no-bad-blocks': 'error',
 				'jsdoc/no-defaults': 'off',
@@ -60,6 +61,7 @@ module.exports = {
 				'jsdoc/require-throws': 'error',
 				'jsdoc/require-yields': 'error',
 				'jsdoc/require-yields-check': 'error',
+				'jsdoc/tag-lines': ['off', 'never', { noEndLines: true }], // @todo Activate as soon as this is implemented: https://github.com/gajus/eslint-plugin-jsdoc/issues/734
 				'jsdoc/valid-types': 'off' // Checked by TypeScript
 			}
 		}
