@@ -845,7 +845,7 @@ module.exports = {
 		'eslint-comments/no-unused-enable': 'error',
 		'eslint-comments/no-restricted-disable': 'off',
 		'eslint-comments/no-use': 'off',
-		'eslint-comments/require-description': 'error',
+		'eslint-comments/require-description': ['error', { ignore: ['eslint-enable'] }],
 
 		/**
 		 * eslint-plugin-promise
