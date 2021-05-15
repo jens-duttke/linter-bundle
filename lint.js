@@ -187,7 +187,11 @@ function getTasksToRun (argv) {
 			continue;
 		}
 
-		const [, name, value = true] = ARG_REGEXP.exec(argument) ?? [];
+		const [, name, value = true] = /** @type {[string | undefined, string | undefined, string | true | undefined]} */(/** @type {any} */(ARG_REGEXP.exec(argument)) ?? []);
+
+		if (name === undefined) {
+			throw new Error(`Unknown argument "${argument}"`);
+		}
 
 		const normalizedName = name.toLowerCase();
 
