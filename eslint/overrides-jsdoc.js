@@ -38,6 +38,8 @@ module.exports = {
 				'jsdoc/newline-after-description': 'error',
 				'jsdoc/no-bad-blocks': 'error',
 				'jsdoc/no-defaults': 'off',
+				'jsdoc/no-missing-syntax': 'off',
+				'jsdoc/no-restricted-syntax': 'off',
 				'jsdoc/no-types': 'off',
 				'jsdoc/no-undefined-types': ['error', { definedTypes: ['void', 'never', 'Readonly'] }],
 				'jsdoc/require-description-complete-sentence': 'off', // @todo Doesn't work correctly (e.g. the `g` of `e.g.` is interpreted as separate sentence).
