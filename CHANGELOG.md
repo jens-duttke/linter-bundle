@@ -6,7 +6,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.16.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.17.0...HEAD)
+
+## [1.17.0] - 2021.05.15
+
+### Added
+
+- [eslint] Activate the "[import/no-relative-packages](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-relative-packages.md)" rule
+- [eslint] Make use of new "[jsdoc/multiline-blocks](https://github.com/gajus/eslint-plugin-jsdoc#eslint-plugin-jsdoc-rules-multiline-blocks)" rule
+- [eslint] Added but disabled the "[jsdoc/tag-lines](https://github.com/gajus/eslint-plugin-jsdoc#eslint-plugin-jsdoc-rules-tag-lines)" rule
+- [eslint] Added but disabled the "[import/no-import-module-exports](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-import-module-exports.md)" rule
+- [eslint/overrides-javascript(-lazy)] Added "args" the the [unicorn/prevent-abbreviations](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v32.0.1/docs/rules/prevent-abbreviations.md) `allowList`.
+
+### Changed
+
+- [audit] Updated `better-npm-audit` from v1.8.1 to v1.9.1
+- [eslint] Updated `eslint-plugin-import` from v2.22.1 to v2.23.2
+- [eslint] Updated `eslint-plugin-jsdoc` from v34.0.2 to v34.5.0
+- [eslint] [eslint-comments/require-description](https://mysticatea.github.io/eslint-plugin-eslint-comments/rules/require-description.html) ignores "eslint-enable" now
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.16.0...v1.17.0)
 
 ## [1.16.0] - 2021.05.12
 
@@ -83,7 +102,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - [eslint] Updated `eslint-plugin-unicorn` from v29.0.0 to v31.0.0
-- [eslint] Make use of new "[unicorn/prefer-switch](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-switch.md)"
+- [eslint] Make use of new "[unicorn/prefer-switch](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-switch.md)" rule
 - [eslint] Disable new "[unicorn/prefer-node-protocol](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-node-protocol.md)" rule, till it's widely supported
 - [eslint] Disable new "[unicorn/prefer-module](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-module.md)" rule, till it's wider supported
 - [eslint] Updated `stylelint-selector-tag-no-without-class` from v2.0.3 to v2.0.4
@@ -134,10 +153,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Updated `eslint` from v7.22.0 to v4.24.0
 - [eslint] Make use of `eslint` option "disallowTemplateShorthand" of "[no-implicit-coercion](https://eslint.org/docs/rules/no-implicit-coercion)"
 - [eslint] Updated `@typescript-eslint` from v4.19.0 to v4.22.0
-- [eslint] Make use of new "[@typescript-eslint/no-unsafe-argument](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin/docs/rules/no-unsafe-argument.md)"
+- [eslint] Make use of new "[@typescript-eslint/no-unsafe-argument](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin/docs/rules/no-unsafe-argument.md)" rule
 - [eslint] Updated `eslint-plugin-jest` from v24.3.2 to v24.3.5
 - [eslint] Updated `eslint-plugin-react` from v7.22.0 to v7.23.2
-- [eslint] Make use of new "[react/no-unstable-nested-components](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md)"
+- [eslint] Make use of new "[react/no-unstable-nested-components](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md)" rule
 - [sass] Updated `stylelint-selector-no-empty` from v1.0.7 to v1.0.8
 - [audit] Updated `better-npm-audit` from v1.0.7 to v1.0.8
 
