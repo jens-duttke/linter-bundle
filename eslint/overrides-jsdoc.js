@@ -40,6 +40,7 @@ module.exports = {
 				'jsdoc/no-bad-blocks': 'error',
 				'jsdoc/no-defaults': 'off',
 				'jsdoc/no-missing-syntax': 'off',
+				'jsdoc/no-multi-asterisks': ['error', { preventAtEnd: false }],
 				'jsdoc/no-restricted-syntax': 'off',
 				'jsdoc/no-types': 'off',
 				'jsdoc/no-undefined-types': ['error', { definedTypes: ['void', 'never', 'Readonly'] }],
