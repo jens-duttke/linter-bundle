@@ -750,6 +750,7 @@ module.exports = {
 				'workbox-window/utils/WorkboxEvent'
 			]
 		}],
+		'import/no-import-module-exports': 'off', //  @todo Throws error "Cannot find module 'P:\linter-bundle'"
 		'import/no-mutable-exports': 'error',
 		'import/no-named-as-default-member': 'error',
 		'import/no-named-as-default': 'error',
