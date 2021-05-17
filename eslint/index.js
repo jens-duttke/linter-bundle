@@ -39,7 +39,7 @@ module.exports = {
 			jsx: true
 		},
 		project: [
-			(process.env.TSCONFIG ?? './tsconfig.json'),
+			(process.env['TSCONFIG'] ?? './tsconfig.json'),
 			'./jsconfig.json'
 		].filter((fileName) => {
 			const filePath = path.resolve(process.cwd(), fileName);
