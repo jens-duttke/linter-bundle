@@ -35,7 +35,7 @@ module.exports = {
 				'jsdoc/empty-tags': 'error',
 				'jsdoc/implements-on-classes': 'error',
 				'jsdoc/match-description': 'error',
-				'jsdoc/multiline-blocks': ['error', { noSingleLineBlocks: true, singleLineTags: ['lends', 'type', 'typedef'] }],
+				'jsdoc/multiline-blocks': ['error', { noSingleLineBlocks: true, singleLineTags: ['lends', 'type', 'typedef'], noFinalLineText: false }],
 				'jsdoc/newline-after-description': 'error',
 				'jsdoc/no-bad-blocks': 'error',
 				'jsdoc/no-defaults': 'off',
