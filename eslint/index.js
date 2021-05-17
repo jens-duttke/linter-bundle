@@ -39,7 +39,7 @@ module.exports = {
 			jsx: true
 		},
 		project: [
-			(process.env['TSCONFIG'] ?? './tsconfig.json'),
+			(process.env.TSCONFIG ?? './tsconfig.json'),
 			'./jsconfig.json'
 		].filter((fileName) => {
 			const filePath = path.resolve(process.cwd(), fileName);
@@ -758,7 +758,7 @@ module.exports = {
 		'import/no-named-export': 'off',
 		'import/no-namespace': 'off', // @todo Enabling this produces a JavaScript error in the rule; anyhow - could that reduce the package size, because of improved tree-shaking/dead-code-elimination?
 		'import/no-nodejs-modules': 'error',
-		'import/no-relative-packages': 'error',
+		// 'import/no-relative-packages': 'error', -- Removed because of roll-back of eslint-plugin-import in version 1.18.0
 		'import/no-relative-parent-imports': 'off', // @todo Disabled because of a bug on Windows, re-enable as soon as it's resolved: https://github.com/benmosher/eslint-plugin-import/issues/1644
 		'import/no-restricted-paths': 'error',
 		'import/no-self-import': 'error',
