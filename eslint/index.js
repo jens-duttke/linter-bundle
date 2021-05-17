@@ -407,7 +407,7 @@ module.exports = {
 		'@typescript-eslint/consistent-type-assertions': 'error',
 		'@typescript-eslint/consistent-type-definitions': 'error',
 		'@typescript-eslint/consistent-type-imports': ['error', { disallowTypeAnnotations: false }],
-		'@typescript-eslint/dot-notation': 'off', // Conflicts with TypeScript 4.2 "noPropertyAccessFromIndexSignature" option
+		'@typescript-eslint/dot-notation': 'error',
 		'@typescript-eslint/explicit-function-return-type': 'off', // @todo Disabled till we can specify exceptions (React-default class methods, like render())
 		'@typescript-eslint/explicit-member-accessibility': ['error', {
 			ignoredMethodNames: [
