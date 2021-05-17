@@ -6,7 +6,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.17.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.18.0...HEAD)
+
+## [1.18.0] - 2021.05.17
+
+### Added
+
+- [eslint] Reactivate the rule `@typescript-eslint/dot-notation`, since it now supports the TypeScript compiler option `noPropertyAccessFromIndexSignature`
+- [eslint/overrides-jsdoc] Set `noFinalLineText` to `false` for [jsdoc/multiline-blocks](https://github.com/gajus/eslint-plugin-jsdoc/blob/master/.README/rules/multiline-blocks.md)
+
+### Changed
+
+- [eslint] Downgrade `eslint-plugin-import` from v2.23.2 to v2.22.1 because of [this issue](https://github.com/benmosher/eslint-plugin-import/issues/2070)
+- [eslint] Updated `@typescript-eslint` from v4.23.0 to v4.24.0
+- [eslint] Updated `eslint-plugin-jsdoc` from v34.6.0 to v34.7.0
+- [audit] Updated `improved-yarn-audit` from v2.3.2 to v2.3.3
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.17.0...v1.18.0)
 
 ## [1.17.0] - 2021.05.15
 
@@ -23,7 +39,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - [audit] Updated `better-npm-audit` from v1.8.1 to v1.9.1
 - [eslint] Updated `eslint-plugin-import` from v2.22.1 to v2.23.2
-- [eslint] Updated `eslint-plugin-jsdoc` from v34.0.2 to v34.5.0
+- [eslint] Updated `eslint-plugin-jsdoc` from v34.0.2 to v34.6.0
 - [eslint] [eslint-comments/require-description](https://mysticatea.github.io/eslint-plugin-eslint-comments/rules/require-description.html) ignores "eslint-enable" now
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.16.0...v1.17.0)
