@@ -6,7 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.18.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.19.0...HEAD)
+
+## [1.19.0] - 2021.05.18
+
+### Changed
+
+- [styleint] Enforce the `all` property to be the first property in `import/order`.
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.18.0...v1.19.0)
 
 ## [1.18.0] - 2021.05.17
 

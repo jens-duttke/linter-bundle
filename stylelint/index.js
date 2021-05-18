@@ -355,6 +355,15 @@ module.exports = {
 		'order/properties-order': [
 			[
 				{
+					groupName: 'Reset',
+					emptyLineBefore: 'always',
+					noEmptyLineBetween: true,
+					properties: [
+						'all'
+					]
+				},
+
+				{
 					groupName: 'Performance Optimizations',
 					emptyLineBefore: 'always',
 					noEmptyLineBetween: true,
