@@ -6,7 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.19.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.20.0...HEAD)
+
+## [1.20.0] - 2021.05.22
+
+### Changed
+
+- [audit] Use of `npx` to load [`better-npm-audit`](https://www.npmjs.com/package/better-npm-audit) or [`improved-yarn-audit`](https://www.npmjs.com/package/improved-yarn-audit) on demand. This reduces the bundle size and installation
+- [eslint] Updated `eslint` from v7.26.0 to v7.27.0
+- [eslint] Updated `eslint-plugin-import` from v2.22.1 to v2.23.3
+- [eslint] Updated `eslint-plugin-jsdoc` from v34.7.0 to v34.8.2
+- [eslint] Activated "[jsdoc/tag-lines](https://github.com/gajus/eslint-plugin-jsdoc#eslint-plugin-jsdoc-rules-tag-lines)" rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.19.0...v1.20.0)
 
 ## [1.19.0] - 2021.05.18
 
