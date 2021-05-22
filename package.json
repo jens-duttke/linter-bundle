@@ -41,7 +41,6 @@
 	"dependencies": {
 		"@typescript-eslint/eslint-plugin": "4.24.0",
 		"@typescript-eslint/parser": "4.24.0",
-		"better-npm-audit": "1.9.1",
 		"eslint": "7.27.0",
 		"eslint-plugin-eslint-comments": "3.2.0",
 		"eslint-plugin-functional": "3.2.1",
@@ -54,7 +53,6 @@
 		"eslint-plugin-react": "7.23.2",
 		"eslint-plugin-react-hooks": "4.2.0",
 		"eslint-plugin-unicorn": "32.0.1",
-		"improved-yarn-audit": "2.3.3",
 		"markdownlint-cli": "0.27.1",
 		"stylelint": "13.13.1",
 		"stylelint-declaration-block-no-ignored-properties": "2.3.0",
