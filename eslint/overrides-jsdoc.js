@@ -62,7 +62,18 @@ module.exports = {
 				'jsdoc/require-throws': 'error',
 				'jsdoc/require-yields': 'error',
 				'jsdoc/require-yields-check': 'error',
-				'jsdoc/tag-lines': ['off', 'never', { noEndLines: true }], // @todo Activate as soon as this is implemented: https://github.com/gajus/eslint-plugin-jsdoc/issues/734
+				'jsdoc/tag-lines': ['error', 'any', {
+					tags: {
+						example: { lines: 'always' },
+						file: { lines: 'always' },
+						fileOverview: { lines: 'always' },
+						param: { lines: 'never' },
+						private: { lines: 'never' },
+						protected: { lines: 'never' },
+						public: { lines: 'never' }
+					},
+					noEndLines: true
+				}], // @todo Activate as soon as this is implemented: https://github.com/gajus/eslint-plugin-jsdoc/issues/734
 				'jsdoc/valid-types': 'off' // Checked by TypeScript
 			}
 		}
