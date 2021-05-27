@@ -819,7 +819,7 @@ module.exports = {
 		'jsx-a11y/media-has-caption': 'error',
 		'jsx-a11y/mouse-events-have-key-events': 'error',
 		'jsx-a11y/no-access-key': 'off', // If you explicitly specify an access key, you usually have a reason for this, so it should not be prevented by a rule
-		'jsx-a11y/no-autofocus': 'error',
+		'jsx-a11y/no-autofocus': ['error', { ignoreNonDOM: true }],
 		'jsx-a11y/no-distracting-elements': 'error',
 		'jsx-a11y/no-interactive-element-to-noninteractive-role': 'error',
 		'jsx-a11y/no-noninteractive-element-interactions': 'error',
