@@ -172,8 +172,8 @@ Source | Description | Rules setup
 
 ```js
 global.linterBundleSettings = {
-  // The prefix used for the 'custom-media-pattern' and 'custom-property-pattern' rule. If not defined, these rules are disabled.
-  propertyPrefix: 'hexedit'
+  // The prefix used for the 'custom-media-pattern' (`@media (--my-prefix-foo)`) and 'custom-property-pattern' (`var(--my-prefix-bar)`) rule. If not defined, these rules are disabled.
+  propertyPrefix: 'my-prefix'
 };
 
 module.exports = {
