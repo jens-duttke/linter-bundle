@@ -8,6 +8,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.20.0...HEAD)
 
+## [1.21.0] - 2021.05.27
+
+### Changed
+
+- [eslint] Updated `@typescript-eslint` from v4.24.0 to v4.25.0
+- [eslint] Updated `eslint-plugin-jsdoc` from v34.8.2 to v35.0.0  
+- [eslint] Active `ignoreNonDOM` option for `jsx-a11y/no-autofocus` rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.20.0...v1.21.0)
+
 ## [1.20.0] - 2021.05.22
 
 ### Changed
