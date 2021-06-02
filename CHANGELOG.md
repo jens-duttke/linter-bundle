@@ -6,7 +6,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.20.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.21.0...HEAD)
+
+## [1.22.0] - 2021.06.02
+
+### Changed
+
+- [eslint] Updated `@typescript-eslint/eslint-plugin` from v4.25.0 to v4.26.0
+- [eslint] Updated `eslint-plugin-import` from v2.23.3 to v2.23.4
+- [eslint] Updated `eslint-plugin-jsdoc` from v35.0.0 to v35.1.2
+- [eslint] Updated `eslint-plugin-react` from v7.23.2 to v7.24.0
+- [eslint] Updated `eslint-plugin-unicorn` from v32.0.1 to v33.0.0
+- [eslint] Make use of new "[unicorn/require-array-join-separator](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/require-array-join-separator.md)" rule
+- [eslint] Make use of new "[unicorn/require-number-to-fixed-digits-argument](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/require-number-to-fixed-digits-argument.md)" rule
+- [eslint] Make use of new "[unicorn/prefer-prototype-methods](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-prototype-methods.md)" rule
+- [eslint] Make use of new "[unicorn/prefer-object-has-own](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-object-has-own.md)" rule
+- [eslint] Activate "[import/no-import-module-exports](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-import-module-exports.md)" rule
+- [eslint] Change `@typescript-eslint/method-signature-style` to `property`
+- [eslint/overrides-react] Activate options `forbidDefaultForRequired` and `ignoreFunctionalComponents` of `react/require-default-props` rule
+- [eslint] Make use of [`eslint-import-resolver-typescript`](https://www.npmjs.com/package/eslint-import-resolver-typescript) package
+- [eslint] Activate "[import/no-unresolved](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md)" rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.21.0...v1.22.0)
 
 ## [1.21.0] - 2021.05.27
 
