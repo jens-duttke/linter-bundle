@@ -750,7 +750,7 @@ module.exports = {
 				'workbox-window/utils/WorkboxEvent'
 			]
 		}],
-		'import/no-import-module-exports': 'off', //  @todo Throws error "Cannot find module 'P:\linter-bundle'"
+		'import/no-import-module-exports': 'error',
 		'import/no-mutable-exports': 'error',
 		'import/no-named-as-default-member': 'error',
 		'import/no-named-as-default': 'error',
@@ -939,7 +939,9 @@ module.exports = {
 		'unicorn/prefer-modern-dom-apis': 'error',
 		'unicorn/prefer-negative-index': 'error',
 		'unicorn/prefer-number-properties': 'error',
+		'unicorn/prefer-object-has-own': 'error',
 		'unicorn/prefer-optional-catch-binding': 'error',
+		'unicorn/prefer-prototype-methods': 'error',
 		'unicorn/prefer-query-selector': 'off', // document.getElementById() is much faster
 		'unicorn/prefer-reflect-apply': 'error',
 		'unicorn/prefer-set-has': 'error',
@@ -953,6 +955,8 @@ module.exports = {
 		'unicorn/prefer-regexp-test': 'error',
 		'unicorn/prefer-type-error': 'error',
 		'unicorn/prevent-abbreviations': ['error', { ignore: ['args', 'i', 'j', 'i18n', 'ref', 'Ref', 'params', 'props', 'Props'] }],
+		'unicorn/require-array-join-separator': 'error',
+		'unicorn/require-number-to-fixed-digits-argument': 'error',
 		'unicorn/string-content': ['error', {
 			patterns: {
 				'\\.\\.\\.': '…',
