@@ -493,7 +493,7 @@ module.exports = {
 				'private-abstract-method'
 			]
 		}],
-		'@typescript-eslint/method-signature-style': ['error', 'method'],
+		'@typescript-eslint/method-signature-style': ['error', 'property'],
 		'@typescript-eslint/naming-convention': [
 			'error',
 
