@@ -71,6 +71,9 @@ module.exports = {
 		'import/parsers': {
 			'@typescript-eslint/parser': ['.ts', '.tsx']
 		},
+		'import/resolver': {
+			typescript: { alwaysTryTypes: true }
+		},
 		'react': {
 			version: 'detect'
 		}
@@ -768,7 +771,7 @@ module.exports = {
 				'jest-extended'
 			]
 		}],
-		'import/no-unresolved': 'off', // Does not support import aliases; is handled by TypeScript/Webpack
+		'import/no-unresolved': 'error',
 		'import/no-unused-modules': 'error',
 		'import/no-useless-path-segments': 'error',
 		'import/no-webpack-loader-syntax': 'off', // Indeed, you should avoid that, but if we do it, we have a reason for it
