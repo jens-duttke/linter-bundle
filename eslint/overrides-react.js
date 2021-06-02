@@ -83,7 +83,7 @@ module.exports = {
 				'react/prefer-stateless-function': 'error',
 				'react/prop-types': 'off',
 				'react/react-in-jsx-scope': 'error',
-				'react/require-default-props': 'error',
+				'react/require-default-props': ['error', { forbidDefaultForRequired: true, ignoreFunctionalComponents: true }], // @see https://medium.com/@matanbobi/react-defaultprops-is-dying-whos-the-contender-443c19d9e7f1
 				'react/require-optimization': 'error',
 				'react/require-render-return': 'error',
 				'react/self-closing-comp': 'error',
@@ -111,7 +111,7 @@ module.exports = {
 
 				// JSX-specific rules
 				'react/jsx-boolean-value': ['error', 'always'],
-				'react/jsx-child-element-spacing': 'off',
+				'react/jsx-child-element-spacing': 'off', // @todo Why is this disabled? Could it be, that the faulty behaviour is fixed in the meantime?
 				'react/jsx-closing-bracket-location': 'error',
 				'react/jsx-closing-tag-location': 'error',
 				'react/jsx-curly-newline': 'off',
