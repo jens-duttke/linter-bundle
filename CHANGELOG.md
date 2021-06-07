@@ -6,7 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.21.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.22.1...HEAD)
+
+## [1.22.1] - 2021.06.07
+
+### Changed
+
+- [eslint] Updated `eslint` from v7.27.0 to v7.28.0
+- [eslint] Updated `eslint-plugin-jsdoc` from v35.1.2 to v35.1.3
+- [eslint] Updated `eslint-plugin-unicorn` from v33.0.0 to v33.0.1
+- [eslint] Make use of [`eslint-import-resolver-webpack`](https://www.npmjs.com/package/eslint-import-resolver-webpack) package
+- [eslint] Disabled the `import/no-import-module-exports` rule because of false-positives
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.22.0...v1.22.1)
 
 ## [1.22.0] - 2021.06.02
 
