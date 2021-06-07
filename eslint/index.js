@@ -754,7 +754,7 @@ module.exports = {
 				'workbox-window/utils/WorkboxEvent'
 			]
 		}],
-		'import/no-import-module-exports': 'error',
+		'import/no-import-module-exports': 'off', // @todo The rule reports files, which don't use `exports`. This must be a bug, report it!
 		'import/no-mutable-exports': 'error',
 		'import/no-named-as-default-member': 'error',
 		'import/no-named-as-default': 'error',
