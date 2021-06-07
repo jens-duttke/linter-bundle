@@ -72,7 +72,8 @@ module.exports = {
 			'@typescript-eslint/parser': ['.ts', '.tsx']
 		},
 		'import/resolver': {
-			typescript: { alwaysTryTypes: true }
+			typescript: { alwaysTryTypes: true },
+			webpack: { config: 'webpack.config.js' }
 		},
 		'react': {
 			version: 'detect'
