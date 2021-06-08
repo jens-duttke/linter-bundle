@@ -6,7 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.22.1...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.22.2...HEAD)
+
+## [1.22.2] - 2021.06.08
+
+### Changed
+
+- [eslint] Updated `@typescript-eslint/eslint-plugin` from v4.26.0 to v4.26.1
+- [eslint] Activate `allowComputed` of "[import/namespace](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/namespace.md)" rule
+
+### Fixed
+
+- [eslint] Use [`eslint-import-resolver-webpack`](https://www.npmjs.com/package/eslint-import-resolver-webpack) package only if there is a `webpack.config.js` in the projects folder.
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.22.1...v1.22.2)
 
 ## [1.22.1] - 2021.06.07
 
@@ -16,6 +29,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Updated `eslint-plugin-jsdoc` from v35.1.2 to v35.1.3
 - [eslint] Updated `eslint-plugin-unicorn` from v33.0.0 to v33.0.1
 - [eslint] Make use of [`eslint-import-resolver-webpack`](https://www.npmjs.com/package/eslint-import-resolver-webpack) package
+
+### Fixed
+
 - [eslint] Disabled the `import/no-import-module-exports` rule because of false-positives
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.22.0...v1.22.1)
