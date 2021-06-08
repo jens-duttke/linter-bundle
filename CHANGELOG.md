@@ -6,7 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.22.2...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.22.3...HEAD)
+
+## [1.22.3] - 2021.06.08
+
+- [eslint] Re-add [`eslint-import-resolver-typescript`](https://www.npmjs.com/package/eslint-import-resolver-typescript) for configurations without `webpack.config.js`
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.22.2...v1.22.3)
 
 ## [1.22.2] - 2021.06.08
 
