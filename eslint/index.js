@@ -71,20 +71,20 @@ module.exports = {
 		'import/parsers': {
 			'@typescript-eslint/parser': ['.ts', '.tsx']
 		},
-		...(() => {
-			const filePath = path.resolve(process.cwd(), 'webpack.config.js');
+		'import/resolver': {
+			typescript: { alwaysTryTypes: true },
+			...(() => {
+				const filePath = path.resolve(process.cwd(), 'webpack.config.js');
 
-			if ((fs.existsSync(filePath) && fs.lstatSync(filePath).isFile())) {
-				return {
-					'import/resolver': {
-						typescript: { alwaysTryTypes: true },
+				if ((fs.existsSync(filePath) && fs.lstatSync(filePath).isFile())) {
+					return {
 						webpack: { config: filePath }
-					}
-				};
-			}
+					};
+				}
 
-			return;
-		})(),
+				return;
+			})()
+		},
 		'react': {
 			version: 'detect'
 		}
