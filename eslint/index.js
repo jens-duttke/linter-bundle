@@ -737,7 +737,7 @@ module.exports = {
 		'import/group-exports': 'off',
 		'import/max-dependencies': ['error', { max: 20 }],
 		'import/named': 'error',
-		'import/namespace': 'error',
+		'import/namespace': ['error', { allowComputed: true }],
 		'import/newline-after-import': 'error',
 		'import/no-absolute-path': 'error',
 		'import/no-amd': 'error',
