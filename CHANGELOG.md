@@ -6,7 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.22.3...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.23.0...HEAD)
+
+## [1.23.0] - 2021.06.14
+
+### Changed
+
+- [eslint/overrides-jest] Don't apply any of the rules for `.jsx` and `.tsx` files
+- [eslint] Update `eslint-plugin-jsdoc`from v35.1.3 to v35.2.0
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.22.3...v1.23.0)
 
 ## [1.22.3] - 2021.06.08
 
