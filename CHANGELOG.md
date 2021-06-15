@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Changed
+
+- [stylelint] Add `overscroll-behavior` CSS property to `order/properties-order` plugin configuration after `overflow[-x/y]`
+
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.23.0...HEAD)
 
 ## [1.23.0] - 2021.06.14

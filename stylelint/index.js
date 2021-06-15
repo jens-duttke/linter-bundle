@@ -538,7 +538,8 @@ module.exports = {
 					properties: [
 						'overflow',
 						'overflow-x',
-						'overflow-y'
+						'overflow-y',
+						'overscroll-behavior'
 					]
 				},
 				{
