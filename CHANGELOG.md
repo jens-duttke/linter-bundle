@@ -6,18 +6,35 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.24.0...HEAD)
+
+## [1.24.0] - 2021.07.27
+
 ### Changed
 
 - [stylelint] Add `overscroll-behavior` CSS property to `order/properties-order` plugin configuration after `overflow[-x/y]`
+- [eslint] Make use of [`unicorn/no-array-method-this-argument`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-array-method-this-argument.md) rule
+- [eslint] Make use of [`unicorn/prefer-top-level-await`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-top-level-await.md) rule
+- [eslint] Make use of [`jest/max-nested-describe`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/max-nested-describe.md) rule
+- [eslint] Update `@typescript-eslint` from v4.26.1 to v4.28.5
+- [eslint] Update `eslint` from v7.28.0 to v7.31.0
+- [eslint] Update `eslint-plugin-functional` from v3.2.1 to v3.3.0
+- [eslint] Update `eslint-plugin-jest` from v24.3.6 to v24.4.0
+- [eslint] Update `eslint-plugin-jsdoc` from v35.2.0 to v36.0.6
+- [eslint] Update `eslint-plugin-unicorn` from v33.0.1 to v34.0.1
+- [markdownlint] Update `markdownlint-cli` from v0.27.1 to v0.28.1
+- [stylelint] Update `stylelint-declaration-block-no-ignored-properties` from v2.3.0 to v2.4.0
+- [stylelint] Update `stylelint-scss` from v3.19.0 to v3.20.1
+- [stylelint] Update `stylelint-use-logical-spec` from v3.2.0 to v3.2.2
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.23.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.23.0...v1.14.0)
 
 ## [1.23.0] - 2021.06.14
 
 ### Changed
 
 - [eslint/overrides-jest] Don't apply any of the rules for `.jsx` and `.tsx` files
-- [eslint] Update `eslint-plugin-jsdoc`from v35.1.3 to v35.2.0
+- [eslint] Update `eslint-plugin-jsdoc` from v35.1.3 to v35.2.0
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.22.3...v1.23.0)
 
@@ -399,7 +416,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
-- [general] Enforces `typescript` v4.2.3 as peer dependency.
+- [general] Enforces `typescript` v4.2.3 as peer dependency
 - [eslint/overrides-type-declarations] Don't disable `typescript-eslint/no-unused-vars` anymore
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v0.16.5...v1.0.0)
