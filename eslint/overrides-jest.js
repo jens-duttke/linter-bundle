@@ -43,6 +43,7 @@ module.exports = {
 				'jest/consistent-test-it': 'error',
 				'jest/expect-expect': 'error',
 				'jest/lowercase-name': ['error', { ignore: ['describe'] }],
+				'jest/max-nested-describe': 'error',
 				'jest/no-alias-methods': 'error',
 				'jest/no-commented-out-tests': 'error',
 				'jest/no-conditional-expect': 'error',

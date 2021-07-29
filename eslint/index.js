@@ -721,7 +721,7 @@ module.exports = {
 			checkTypeLiterals: true
 		}],
 		'functional/no-this-expression': 'off',
-		'functional/prefer-type-literal': 'off',
+		'functional/prefer-type-literal': 'off', // Deprecated in favor of @typescript-eslint/consistent-type-definitions
 		'functional/no-conditional-statement': 'off',
 		'functional/no-expression-statement': 'off',
 		'functional/no-loop-statement': 'off',
@@ -911,6 +911,7 @@ module.exports = {
 		'unicorn/no-abusive-eslint-disable': 'error',
 		'unicorn/no-array-callback-reference': 'off', // If I use functions, they are specially developed for this use-case
 		'unicorn/no-array-for-each': 'error',
+		'unicorn/no-array-method-this-argument': 'error',
 		'unicorn/no-array-push-push': 'error',
 		'unicorn/no-array-reduce': 'error',
 		'unicorn/no-console-spaces': 'error',
@@ -941,6 +942,7 @@ module.exports = {
 		'unicorn/prefer-array-flat-map': 'error',
 		'unicorn/prefer-array-index-of': 'error',
 		'unicorn/prefer-array-some': 'error',
+		'unicorn/prefer-at': 'off', // @todo Disabled for now, since `at` is not supported by TypeScript type definitions yet.
 		'unicorn/prefer-date-now': 'error',
 		'unicorn/prefer-default-parameters': 'error',
 		'unicorn/prefer-dom-node-append': 'error',
@@ -951,6 +953,7 @@ module.exports = {
 		'unicorn/prefer-keyboard-event-key': 'error',
 		'unicorn/prefer-math-trunc': 'error',
 		'unicorn/prefer-modern-dom-apis': 'error',
+		'unicorn/prefer-module': 'off',
 		'unicorn/prefer-negative-index': 'error',
 		'unicorn/prefer-number-properties': 'error',
 		'unicorn/prefer-object-has-own': 'error',
@@ -966,11 +969,13 @@ module.exports = {
 		'unicorn/prefer-string-trim-start-end': 'error',
 		'unicorn/prefer-switch': 'error',
 		'unicorn/prefer-ternary': 'off', // We prefer readability over saving a few chars
+		'unicorn/prefer-top-level-await': 'error',
 		'unicorn/prefer-regexp-test': 'error',
 		'unicorn/prefer-type-error': 'error',
 		'unicorn/prevent-abbreviations': ['error', { ignore: ['args', 'i', 'j', 'i18n', 'ref', 'Ref', 'params', 'props', 'Props'] }],
 		'unicorn/require-array-join-separator': 'error',
 		'unicorn/require-number-to-fixed-digits-argument': 'error',
+		'unicorn/require-post-message-target-origin': 'off', // False-positive with Workers which don't support a `targetOrigin`
 		'unicorn/string-content': ['error', {
 			patterns: {
 				'\\.\\.\\.': '…',

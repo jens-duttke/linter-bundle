@@ -35,6 +35,7 @@ module.exports = {
 				'jsdoc/empty-tags': 'error',
 				'jsdoc/implements-on-classes': 'error',
 				'jsdoc/match-description': 'error',
+				'jsdoc/match-name': 'off',
 				'jsdoc/multiline-blocks': ['error', { noSingleLineBlocks: true, singleLineTags: ['lends', 'type', 'typedef'], noFinalLineText: false }],
 				'jsdoc/newline-after-description': 'error',
 				'jsdoc/no-bad-blocks': 'error',
@@ -73,7 +74,7 @@ module.exports = {
 						public: { lines: 'never' }
 					},
 					noEndLines: true
-				}], // @todo Activate as soon as this is implemented: https://github.com/gajus/eslint-plugin-jsdoc/issues/734
+				}],
 				'jsdoc/valid-types': 'off' // Checked by TypeScript
 			}
 		}
