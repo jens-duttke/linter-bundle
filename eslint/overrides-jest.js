@@ -31,7 +31,7 @@ module.exports = {
 				/**
 				 * eslint-plugin-import
 				 *
-				 * @see https://github.com/benmosher/eslint-plugin-import
+				 * @see https://github.com/import-js/eslint-plugin-import
 				 */
 				'import/no-unassigned-import': 'error',
 
