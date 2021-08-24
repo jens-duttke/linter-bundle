@@ -635,7 +635,7 @@ module.exports = {
 		'@typescript-eslint/no-non-null-assertion': 'error',
 		'@typescript-eslint/no-non-null-asserted-optional-chain': 'error',
 		'@typescript-eslint/no-parameter-properties': 'error',
-		'@typescript-eslint/no-redeclare': 'error',
+		'@typescript-eslint/no-redeclare': ['error', { ignoreDeclarationMerge: true }],
 		'@typescript-eslint/no-require-imports': 'error',
 		'@typescript-eslint/no-shadow': 'error',
 		'@typescript-eslint/no-this-alias': 'error',
@@ -681,6 +681,7 @@ module.exports = {
 		'@typescript-eslint/prefer-readonly-parameter-types': ['off', { ignoreInferredTypes: true }], // @todo An interface should ensure that it's properties are readonly, not every usage of it
 		'@typescript-eslint/prefer-reduce-type-parameter': 'error',
 		'@typescript-eslint/prefer-regexp-exec': 'error',
+		'@typescript-eslint/prefer-return-this-type': 'error',
 		'@typescript-eslint/prefer-string-starts-ends-with': 'error',
 		'@typescript-eslint/prefer-ts-expect-error': 'error',
 		'@typescript-eslint/promise-function-async': 'error',
@@ -711,30 +712,31 @@ module.exports = {
 		 *
 		 * @see https://github.com/jonaskello/eslint-plugin-functional#supported-rules
 		 */
+		'functional/functional-parameters': 'off',
 		'functional/immutable-data': 'off', // This rule would require a lot of additional code and workarounds, which would make the result much more illegible.
-		'functional/no-let': 'off', // This is better covered by the `prefer-const` rule
-		'functional/no-method-signature': 'off',
-		'functional/prefer-readonly-type': ['error', { ignoreClass: true, allowLocalMutation: true, ignoreCollections: true, ignoreInterface: true }],
 		'functional/no-class': 'off',
+		'functional/no-conditional-statement': 'off',
+		'functional/no-expression-statement': ['off', { ignoreVoid: true }], // Creates too much false-positives
+		'functional/no-let': 'off', // This is better covered by the `prefer-const` rule
+		'functional/no-loop-statement': 'off',
+		'functional/no-method-signature': 'off',
 		'functional/no-mixed-type': ['error', {
 			checkInterfaces: false,
 			checkTypeLiterals: true
 		}],
-		'functional/no-this-expression': 'off',
-		'functional/prefer-type-literal': 'off', // Deprecated in favor of @typescript-eslint/consistent-type-definitions
-		'functional/no-conditional-statement': 'off',
-		'functional/no-expression-statement': 'off',
-		'functional/no-loop-statement': 'off',
-		'functional/no-return-void': 'off',
 		'functional/no-promise-reject': 'off',
+		'functional/no-return-void': 'off',
+		'functional/no-this-expression': 'off',
 		'functional/no-throw-statement': 'off',
 		'functional/no-try-statement': 'off',
-		'functional/functional-parameters': 'off',
+		'functional/prefer-readonly-type': ['error', { ignoreClass: true, allowLocalMutation: true, ignoreCollections: true, ignoreInterface: true }],
+		'functional/prefer-tacit': 'error',
+		'functional/prefer-type-literal': 'off', // Deprecated in favor of @typescript-eslint/consistent-type-definitions
 
 		/**
 		 * eslint-plugin-import
 		 *
-		 * @see https://github.com/benmosher/eslint-plugin-import
+		 * @see https://github.com/import-js/eslint-plugin-import
 		 */
 		'import/default': 'error',
 		'import/dynamic-import-chunkname': ['off', { // Here an "ignore" option is missing, which allows to ignore "@json\/locales\/.+?\.json", because these are handled in the webpack configuration.
@@ -745,7 +747,7 @@ module.exports = {
 		'import/extensions': 'off', // There is no check that it's really an extension or part of the file name. Misinterpretes 'JavaDateTime' as extension in 'DateTime.JavaDateTime' for 'DateTime.DOSDateTime.ts'. So, we disable this rule
 		'import/first': 'error',
 		'import/group-exports': 'off',
-		'import/max-dependencies': ['error', { max: 20 }],
+		'import/max-dependencies': ['error', { max: 20, ignoreTypeImports: true }],
 		'import/named': 'error',
 		'import/namespace': ['error', { allowComputed: true }],
 		'import/newline-after-import': 'error',
@@ -773,7 +775,7 @@ module.exports = {
 		'import/no-namespace': 'off', // @todo Enabling this produces a JavaScript error in the rule; anyhow - could that reduce the package size, because of improved tree-shaking/dead-code-elimination?
 		'import/no-nodejs-modules': 'error',
 		// 'import/no-relative-packages': 'error', -- Removed because of roll-back of eslint-plugin-import in version 1.18.0
-		'import/no-relative-parent-imports': 'off', // @todo Disabled because of a bug on Windows, re-enable as soon as it's resolved: https://github.com/benmosher/eslint-plugin-import/issues/1644
+		'import/no-relative-parent-imports': 'off', // @todo Disabled because of a bug on Windows, re-enable as soon as it's resolved: https://github.com/import-js/eslint-plugin-import/issues/1644
 		'import/no-restricted-paths': 'error',
 		'import/no-self-import': 'error',
 		'import/no-unassigned-import': ['error', {
@@ -913,7 +915,7 @@ module.exports = {
 		'unicorn/no-array-for-each': 'error',
 		'unicorn/no-array-method-this-argument': 'error',
 		'unicorn/no-array-push-push': 'error',
-		'unicorn/no-array-reduce': 'error',
+		'unicorn/no-array-reduce': ['error', { allowSimpleOperations: true }],
 		'unicorn/no-console-spaces': 'error',
 		'unicorn/no-document-cookie': 'error',
 		'unicorn/no-for-loop': 'off', // @typescript-eslint/prefer-for-of
@@ -932,6 +934,8 @@ module.exports = {
 		'unicorn/no-unreadable-array-destructuring': 'error',
 		'unicorn/no-unsafe-regex': 'off',
 		'unicorn/no-unused-properties': 'error',
+		'unicorn/no-useless-length-check': 'error',
+		'unicorn/no-useless-spread': 'error',
 		'unicorn/no-useless-undefined': ['error', { checkArguments: false }],
 		'unicorn/no-zero-fractions': 'error',
 		'unicorn/number-literal-case': 'error',
@@ -957,6 +961,7 @@ module.exports = {
 		'unicorn/prefer-negative-index': 'error',
 		'unicorn/prefer-number-properties': 'error',
 		'unicorn/prefer-object-has-own': 'error',
+		'unicorn/prefer-object-from-entries': 'error',
 		'unicorn/prefer-optional-catch-binding': 'error',
 		'unicorn/prefer-prototype-methods': 'error',
 		'unicorn/prefer-query-selector': 'off', // document.getElementById() is much faster
