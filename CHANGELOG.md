@@ -6,7 +6,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.24.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.25.0...HEAD)
+
+## [1.25.0] - 2021.08.24
+
+### Changed
+
+- [eslint] Update `@typescript-eslint` from v4.28.5 to v4.29.3
+- [eslint] Update `eslint` from v7.31.0 to v7.32.0
+- [eslint] Update `eslint-plugin-functional` from v3.3.0 to v3.6.0
+- [eslint] Update `eslint-plugin-import` from v2.23.4 to v2.24.1
+- [eslint] Update `eslint-plugin-jsdoc` from v36.0.6 to v36.0.7
+- [eslint] Update `eslint-plugin-unicorn` from v34.0.1 to v35.0.0
+- [eslint] Activate `ignoreDeclarationMerge` of [`@typescript-eslint/no-redeclare`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-redeclare.md) rule
+- [eslint] Make use of [`@typescript-eslint/prefer-return-this-type`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/prefer-return-this-type.md) rule
+- [eslint] Make use of [`functional/prefer-tacit`](https://github.com/jonaskello/eslint-plugin-functional/blob/master/docs/rules/prefer-tacit.md) rule
+- [eslint] Activate `ignoreTypeImports` of [`import/max-dependencies`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/max-dependencies.md) rule
+- [eslint] Make use of [`unicorn/prefer-object-from-entries`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-object-from-entries.md) rule
+- [eslint] Make use of [`unicorn/no-useless-length-check`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-useless-length-check.md) rule
+- [eslint] Make use of [`unicorn/no-useless-spread`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-useless-spread.md) rule
+- [eslint] Activate `allowSimpleOperations` of [`unicorn/no-array-reduce`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-array-reduce.md) rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.24.0...v1.25.0)
 
 ## [1.24.0] - 2021.07.28
 
@@ -27,7 +48,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [stylelint] Update `stylelint-scss` from v3.19.0 to v3.20.1
 - [stylelint] Update `stylelint-use-logical-spec` from v3.2.0 to v3.2.2
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.23.0...v1.14.0)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.23.0...v1.24.0)
 
 ## [1.23.0] - 2021.06.14
 
@@ -49,7 +70,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - [eslint] Updated `@typescript-eslint/eslint-plugin` from v4.26.0 to v4.26.1
-- [eslint] Activate `allowComputed` of "[import/namespace](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/namespace.md)" rule
+- [eslint] Activate `allowComputed` of [`import/namespace`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/namespace.md) rule
 
 ### Fixed
 
@@ -85,11 +106,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Make use of new "[unicorn/require-number-to-fixed-digits-argument](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/require-number-to-fixed-digits-argument.md)" rule
 - [eslint] Make use of new "[unicorn/prefer-prototype-methods](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-prototype-methods.md)" rule
 - [eslint] Make use of new "[unicorn/prefer-object-has-own](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-object-has-own.md)" rule
-- [eslint] Activate "[import/no-import-module-exports](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-import-module-exports.md)" rule
+- [eslint] Activate "[import/no-import-module-exports](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/no-import-module-exports.md)" rule
 - [eslint] Change `@typescript-eslint/method-signature-style` to `property`
 - [eslint/overrides-react] Activate options `forbidDefaultForRequired` and `ignoreFunctionalComponents` of `react/require-default-props` rule
 - [eslint] Make use of [`eslint-import-resolver-typescript`](https://www.npmjs.com/package/eslint-import-resolver-typescript) package
-- [eslint] Activate "[import/no-unresolved](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md)" rule
+- [eslint] Activate "[import/no-unresolved](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md)" rule
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.21.0...v1.22.0)
 
@@ -132,7 +153,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
-- [eslint] Downgrade `eslint-plugin-import` from v2.23.2 to v2.22.1 because of [this issue](https://github.com/benmosher/eslint-plugin-import/issues/2070)
+- [eslint] Downgrade `eslint-plugin-import` from v2.23.2 to v2.22.1 because of [this issue](https://github.com/import-js/eslint-plugin-import/issues/2070)
 - [eslint] Updated `@typescript-eslint` from v4.23.0 to v4.24.0
 - [eslint] Updated `eslint-plugin-jsdoc` from v34.6.0 to v34.7.0
 - [audit] Updated `improved-yarn-audit` from v2.3.2 to v2.3.3
@@ -143,11 +164,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 
-- [eslint] Activate the "[import/no-relative-packages](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-relative-packages.md)" rule
+- [eslint] Activate the "[import/no-relative-packages](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/no-relative-packages.md)" rule
 - [eslint] Make use of new "[jsdoc/multiline-blocks](https://github.com/gajus/eslint-plugin-jsdoc#eslint-plugin-jsdoc-rules-multiline-blocks)" rule
 - [eslint] Make use of new "[jsdoc/no-multi-asterisks](https://github.com/gajus/eslint-plugin-jsdoc#eslint-plugin-jsdoc-rules-no-multi-asterisks)" rule
 - [eslint] Added but disabled the "[jsdoc/tag-lines](https://github.com/gajus/eslint-plugin-jsdoc#eslint-plugin-jsdoc-rules-tag-lines)" rule
-- [eslint] Added but disabled the "[import/no-import-module-exports](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-import-module-exports.md)" rule
+- [eslint] Added but disabled the "[import/no-import-module-exports](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/no-import-module-exports.md)" rule
 - [eslint/overrides-javascript(-lazy)] Added "args" the the [unicorn/prevent-abbreviations](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v32.0.1/docs/rules/prevent-abbreviations.md) `allowList`.
 
 ### Changed
