@@ -19,7 +19,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Update `eslint-plugin-import` from v2.24.1 to v2.24.2
 - [eslint] Update `eslint-plugin-jsdoc` from v36.0.7 to v36.0.8
 
-
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.25.0...v1.25.1)
 
 ## [1.25.0] - 2021.08.24
