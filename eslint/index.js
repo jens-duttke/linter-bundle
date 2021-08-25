@@ -421,7 +421,7 @@ module.exports = {
 		'@typescript-eslint/consistent-type-assertions': 'error',
 		'@typescript-eslint/consistent-type-definitions': 'error',
 		'@typescript-eslint/consistent-type-imports': ['error', { disallowTypeAnnotations: false }],
-		'@typescript-eslint/dot-notation': 'error',
+		'@typescript-eslint/dot-notation': 'off', // @todo Reactivate as soon as this issue is fixed: https://github.com/typescript-eslint/typescript-eslint/issues/3510
 		'@typescript-eslint/explicit-function-return-type': 'off', // @todo Disabled till we can specify exceptions (React-default class methods, like render())
 		'@typescript-eslint/explicit-member-accessibility': ['error', {
 			ignoredMethodNames: [
