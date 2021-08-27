@@ -616,7 +616,7 @@ module.exports = {
 		'@typescript-eslint/no-extraneous-class': 'error',
 		'@typescript-eslint/no-floating-promises': 'error',
 		'@typescript-eslint/no-for-in-array': 'error',
-		'@typescript-eslint/no-implicit-any-catch': 'error',
+		'@typescript-eslint/no-implicit-any-catch': 'off', // Results into false-positive with the TS4.4 option "useUnknownInCatchVariables"
 		'@typescript-eslint/no-inferrable-types': 'off',
 		'@typescript-eslint/no-invalid-this': 'error',
 		'@typescript-eslint/no-invalid-void-type': ['error', { allowInGenericTypeArguments: true }],
