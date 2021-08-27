@@ -6,7 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.25.1...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.25.2...HEAD)
+
+## [1.25.2] - 2021.08.27
+
+- [eslint] Disabled `@typescript-eslint/no-implicit-any-catch` because of false-positive with the new TypeScript 4.4 option "useUnknownInCatchVariables"
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.25.1...v1.25.2)
 
 ## [1.25.1] - 2021.08.25
 
