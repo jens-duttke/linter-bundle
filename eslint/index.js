@@ -116,8 +116,8 @@ module.exports = {
 		'no-empty-character-class': 'error',
 		'no-ex-assign': 'error',
 		'no-extra-boolean-cast': 'error',
-		'no-extra-parens': 'off', // @typescript-eslint/no-extra-parens
-		'no-extra-semi': 'off', // @typescript-eslint/no-extra-semi
+		'no-extra-parens': 'off', // Covered by @typescript-eslint/no-extra-parens
+		'no-extra-semi': 'off', // Covered by @typescript-eslint/no-extra-semi
 		'no-func-assign': 'error',
 		'no-import-assign': 'error',
 		'no-inner-declarations': ['error', 'both'],
@@ -154,7 +154,7 @@ module.exports = {
 		'default-case-last': 'error',
 		'default-param-last': 'off', // @todo It should be valid to have optional parameters after default parameters
 		'dot-location': ['error', 'property'],
-		'dot-notation': 'off', // @typescript-eslint/dot-notation
+		'dot-notation': 'off', // Covered by @typescript-eslint/dot-notation
 		'eqeqeq': 'error',
 		'grouped-accessor-pairs': 'error',
 		'guard-for-in': 'error',
@@ -165,7 +165,7 @@ module.exports = {
 		'no-constructor-return': 'error',
 		'no-div-regex': 'error',
 		'no-else-return': 'error',
-		'no-empty-function': 'off', // @typescript-eslint/no-empty-function
+		'no-empty-function': 'off', // Covered by @typescript-eslint/no-empty-function
 		'no-empty-pattern': 'error',
 		'no-eq-null': 'error',
 		'no-eval': 'error',
@@ -178,13 +178,13 @@ module.exports = {
 		'no-implicit-coercion': ['error', { disallowTemplateShorthand: true }],
 		'no-implicit-globals': 'error',
 		'no-implied-eval': 'error',
-		'no-invalid-this': 'off', // @typescript-eslint/no-invalid-this
+		'no-invalid-this': 'off', // Covered by @typescript-eslint/no-invalid-this
 		'no-iterator': 'error',
 		'no-labels': ['error', { allowLoop: true }],
 		'no-lone-blocks': 'error',
-		'no-loop-func': 'off', // @typescript-eslint/no-loop-func
-		'no-loss-of-precision': 'off', // @typescript-eslint/no-loss-of-precision
-		'no-magic-numbers': 'off', // @typescript-eslint/no-magic-numbers
+		'no-loop-func': 'off', // Covered by @typescript-eslint/no-loop-func
+		'no-loss-of-precision': 'off', // Covered by @typescript-eslint/no-loss-of-precision
+		'no-magic-numbers': 'off', // Covered by @typescript-eslint/no-magic-numbers
 		'no-multi-spaces': 'error',
 		'no-multi-str': 'error',
 		'no-new': 'error',
@@ -195,16 +195,16 @@ module.exports = {
 		'no-octal-escape': 'error',
 		'no-param-reassign': 'off', // Parameter reassignment used wisely makes the code more readable
 		'no-proto': 'error',
-		'no-redeclare': 'off', // @typescript-eslint/no-redeclare
+		'no-redeclare': 'off', // Covered by @typescript-eslint/no-redeclare
 		'no-return-assign': 'error',
-		'no-return-await': 'off', // @typescript-eslint/return-await
+		'no-return-await': 'off', // Covered by @typescript-eslint/return-await
 		'no-script-url': 'error',
 		'no-self-assign': 'error',
 		'no-self-compare': 'error',
 		'no-sequences': 'error',
-		'no-throw-literal': 'off', // @typescript-eslint/no-throw-literal
+		'no-throw-literal': 'off', // Covered by @typescript-eslint/no-throw-literal
 		'no-unmodified-loop-condition': 'error',
-		'no-unused-expressions': 'off', // @typescript-eslint/no-unused-expressions
+		'no-unused-expressions': 'off', // Covered by @typescript-eslint/no-unused-expressions
 		'no-unused-labels': 'error',
 		'no-useless-call': 'off', // @todo Produces into false-positives for CharsetConverter → `internalMap.encoder.call(encoding, str.toLowerCase())`
 		'no-useless-catch': 'error',
@@ -218,7 +218,7 @@ module.exports = {
 		'prefer-promise-reject-errors': 'error',
 		'prefer-regex-literals': 'error',
 		'radix': 'error',
-		'require-await': 'off', // @typescript-eslint/require-await
+		'require-await': 'off', // Covered by @typescript-eslint/require-await
 		'require-unicode-regexp': 'error',
 		'vars-on-top': 'error',
 		'wrap-iife': 'error',
@@ -247,29 +247,29 @@ module.exports = {
 			'error',
 			...ensureType.array(global.linterBundleSettings?.overrides?.general?.['no-restricted-syntax']?.additionalRestictions)
 		],
-		'no-shadow': 'off', // @typescript-eslint/no-shadow
+		'no-shadow': 'off', // Covered by @typescript-eslint/no-shadow
 		'no-shadow-restricted-names': 'error',
 		'no-undef': 'off', // Covered by TypeScript
 		'no-undef-init': 'error',
 		'no-undefined': 'off', // @todo "Using the void operator to generate the value of undefined if necessary." should be disableable
-		'no-unused-vars': 'off', // @typescript-eslint/no-unused-vars
-		'no-use-before-define': 'off', // @typescript-eslint/no-use-before-define
+		'no-unused-vars': 'off', // Covered by @typescript-eslint/no-unused-vars
+		'no-use-before-define': 'off', // Covered by @typescript-eslint/no-use-before-define
 
 		// Stylistic Issues
 		'array-bracket-newline': ['error', 'consistent'],
 		'array-bracket-spacing': 'error',
 		'array-element-newline': 'off', // Line breaks should be used in such a way that maximum readability is achieved. This cannot be represented by a fixed rule.
 		'block-spacing': 'error',
-		'brace-style': 'off', // @typescript-eslint/brace-style
-		'camelcase': 'off', // @typescript-eslint/naming-convention
+		'brace-style': 'off', // Covered by @typescript-eslint/brace-style
+		'camelcase': 'off', // Covered by @typescript-eslint/naming-convention
 		'capitalized-comments': 'off',
-		'comma-dangle': 'off', // @typescript-eslint/comma-dangle
-		'comma-spacing': 'off', // @typescript-eslint/comma-spacing
+		'comma-dangle': 'off', // Covered by @typescript-eslint/comma-dangle
+		'comma-spacing': 'off', // Covered by @typescript-eslint/comma-spacing
 		'comma-style': 'error',
 		'computed-property-spacing': 'error',
 		'consistent-this': 'error',
 		'eol-last': 'error',
-		'func-call-spacing': 'off', // @typescript-eslint/func-call-spacing
+		'func-call-spacing': 'off', // Covered by @typescript-eslint/func-call-spacing
 		'func-name-matching': 'error',
 		'func-names': 'error',
 		'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
@@ -279,7 +279,7 @@ module.exports = {
 		'id-length': ['error', { exceptions: ['a', 'b', 'i', 'j', 'n', 'x', 'y', 'z'] }],
 		'id-match': 'error',
 		'implicit-arrow-linebreak': 'error',
-		'indent': 'off', // @typescript-eslint/indent
+		'indent': 'off', // Covered by @typescript-eslint/indent
 		'jsx-quotes': 'error',
 		'key-spacing': 'error',
 		'keyword-spacing': 'error',
@@ -305,11 +305,11 @@ module.exports = {
 		'new-cap': ['error', { properties: false }],
 		'new-parens': 'error',
 		'newline-per-chained-call': ['error', { ignoreChainWithDepth: 4 }],
-		'no-array-constructor': 'off', // @typescript-eslint/no-array-constructor
+		'no-array-constructor': 'off', // Covered by @typescript-eslint/no-array-constructor
 		'no-bitwise': ['error', { allow: ['^', '~', '<<', '>>', '>>>', '|=', '&=', '^=', '<<=', '>>=', '>>>='] }], // Disallow "&" and "|".
 		'no-continue': 'off', // If it makes the code more readable, wer are using `continue`
 		'no-inline-comments': 'off',
-		'no-lonely-if': 'off', // Covered by `unicorn/no-lonely-if`
+		'no-lonely-if': 'off', // Covered by unicorn/no-lonely-if
 		'no-mixed-operators': 'error',
 		'no-mixed-spaces-and-tabs': 'error',
 		'no-multi-assign': 'error',
@@ -326,7 +326,7 @@ module.exports = {
 		'no-whitespace-before-property': 'error',
 		'nonblock-statement-body-position': 'error',
 		'object-curly-newline': 'error',
-		'object-curly-spacing': 'off', // @typescript-eslint/object-curly-spacing
+		'object-curly-spacing': 'off', // Covered by @typescript-eslint/object-curly-spacing
 		'object-property-newline': ['error', { allowAllPropertiesOnSameLine: true }],
 		'one-var': ['error', { initialized: 'never', uninitialized: 'never' }],
 		'one-var-declaration-per-line': 'error',
@@ -337,14 +337,14 @@ module.exports = {
 		'prefer-exponentiation-operator': 'error',
 		'prefer-object-spread': 'error',
 		'quote-props': ['error', 'consistent-as-needed'],
-		'quotes': 'off', // @typescript-eslint/quotes
-		'semi': 'off', // @typescript-eslint/semi
+		'quotes': 'off', // Covered by @typescript-eslint/quotes
+		'semi': 'off', // Covered by @typescript-eslint/semi
 		'semi-spacing': 'error',
 		'semi-style': 'error',
 		'sort-keys': 'off', // Keys should be grouped by their scope/category, not by their name
 		'sort-vars': 'off', // Something like `for (let pos = 4 + addressLength, dataPos = 0; pos < length - 2; pos += 2, dataPos++) {` should be sorted by importanance
 		'space-before-blocks': 'error',
-		'space-before-function-paren': 'off', // @typescript-eslint/space-before-function-paren
+		'space-before-function-paren': 'off', // Covered by @typescript-eslint/space-before-function-paren
 		'space-in-parens': 'error',
 		'space-infix-ops': 'error',
 		'space-unary-ops': 'error',
@@ -363,14 +363,14 @@ module.exports = {
 		'no-class-assign': 'error',
 		'no-confusing-arrow': ['error', { allowParens: true }],
 		'no-const-assign': 'error',
-		'no-dupe-class-members': 'off', // @typescript-eslint/no-no-dupe-class-members
-		'no-duplicate-imports': 'off', // @typescript-eslint/no-duplicate-imports / import/no-duplicates (see https://github.com/typescript-eslint/typescript-eslint/issues/2315)
+		'no-dupe-class-members': 'off', // Covered by @typescript-eslint/no-no-dupe-class-members
+		'no-duplicate-imports': 'off', // Covered by @typescript-eslint/no-duplicate-imports / import/no-duplicates (see https://github.com/typescript-eslint/typescript-eslint/issues/2315)
 		'no-new-symbol': 'error',
 		'no-restricted-exports': 'error',
 		'no-restricted-imports': 'error',
 		'no-this-before-super': 'error',
 		'no-useless-computed-key': 'error',
-		'no-useless-constructor': 'off', // @typescript-eslint/no-useless-constructor
+		'no-useless-constructor': 'off', // Covered by @typescript-eslint/no-useless-constructor
 		'no-useless-rename': 'error',
 		'no-var': 'error',
 		'object-shorthand': 'error',
@@ -719,7 +719,7 @@ module.exports = {
 		'functional/no-expression-statement': ['off', { ignoreVoid: true }], // Creates too much false-positives
 		'functional/no-let': 'off', // This is better covered by the `prefer-const` rule
 		'functional/no-loop-statement': 'off',
-		'functional/no-method-signature': 'off',
+		'functional/no-method-signature': 'off', // Covered by @typescript-eslint/method-signature-style
 		'functional/no-mixed-type': ['error', {
 			checkInterfaces: false,
 			checkTypeLiterals: true
