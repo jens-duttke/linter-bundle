@@ -79,6 +79,7 @@ module.exports = {
 				'react/no-unused-state': 'error',
 				'react/no-will-update-set-state': 'error',
 				'react/prefer-es6-class': 'error',
+				'react/prefer-exact-props': 'off', // With TypeScript interfaces, this rule is not required
 				'react/prefer-read-only-props': 'error',
 				'react/prefer-stateless-function': 'error',
 				'react/prop-types': 'off',
@@ -133,7 +134,7 @@ module.exports = {
 				'react/jsx-no-duplicate-props': 'error',
 				'react/jsx-no-literals': 'off',
 				'react/jsx-no-script-url': 'error',
-				'react/jsx-no-target-blank': ['error', { allowReferrer: true }],
+				'react/jsx-no-target-blank': ['error', { allowReferrer: true, forms: true }],
 				'react/jsx-no-undef': 'error',
 				'react/jsx-no-useless-fragment': 'error',
 				'react/jsx-one-expression-per-line': ['off', { allow: 'single-child' }], // @todo Doesn't work with something like "Text <a href="...">Link</a> More Text", which should be valid
