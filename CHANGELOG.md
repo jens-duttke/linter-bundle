@@ -6,7 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.25.2...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.26.0...HEAD)
+
+## [1.26.0] - 2021.08.29
+
+## Changed
+
+- [eslint] Update `eslint-plugin-functional` from v3.6.0 to v3.7.0
+- [eslint] Update `eslint-plugin-react` from v7.24.0 to v7.25.0
+- [eslint] Disabled [`functional/prefer-tacit`](https://github.com/jonaskello/eslint-plugin-functional/blob/master/docs/rules/prefer-tacit.md) because changes are recommended that could [lead to potential bugs](https://github.com/jonaskello/eslint-plugin-functional/issues/263)
+- [eslint] Activate the `forms` option of the [`react/jsx-no-target-blank`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-target-blank.md) rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.25.2...v1.26.0)
 
 ## [1.25.2] - 2021.08.27
 
