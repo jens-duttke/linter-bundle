@@ -730,7 +730,7 @@ module.exports = {
 		'functional/no-throw-statement': 'off',
 		'functional/no-try-statement': 'off',
 		'functional/prefer-readonly-type': ['error', { ignoreClass: true, allowLocalMutation: true, ignoreCollections: true, ignoreInterface: true }],
-		'functional/prefer-tacit': 'error',
+		'functional/prefer-tacit': 'off', // @see https://github.com/jonaskello/eslint-plugin-functional/issues/263
 		'functional/prefer-type-literal': 'off', // Deprecated in favor of @typescript-eslint/consistent-type-definitions
 
 		/**
