@@ -6,7 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.26.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.27.0...HEAD)
+
+## [1.27.0] - 2021.09.12
+
+## Changed
+
+- [eslint] Update `@typescript-eslint` from v4.29.3 to v4.31.0
+- [eslint] Update `eslint-plugin-jsdoc` from v36.0.8 to v36.1.0
+- [eslint] Update `eslint-plugin-react` from v7.25.0 to v7.25.1
+- [eslint] Update `eslint-plugin-unicorn`from v35.0.0 to v36.0.0
+- [eslint] Make use of [@typescript-eslint/no-meaningless-void-operator](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-meaningless-void-operator.md) rule
+- [eslint] Reactivate [@typescript-eslint/dot-notation](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/dot-notation.md) rule
+- [eslint] Make use of [unicorn/no-useless-fallback-in-spread](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-useless-fallback-in-spread.md) rule
+- [eslint] Make use of [unicorn/no-invalid-remove-event-listener](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-invalid-remove-event-listener.md) rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.26.0...v1.27.0)
 
 ## [1.26.0] - 2021.08.29
 
