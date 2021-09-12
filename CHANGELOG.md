@@ -10,7 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [1.27.0] - 2021.09.12
 
-## Changed
+### Changed
 
 - [eslint] Update `@typescript-eslint` from v4.29.3 to v4.31.0
 - [eslint] Update `eslint-plugin-jsdoc` from v36.0.8 to v36.1.0
@@ -25,7 +25,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [1.26.0] - 2021.08.29
 
-## Changed
+### Changed
 
 - [eslint] Update `eslint-plugin-functional` from v3.6.0 to v3.7.0
 - [eslint] Update `eslint-plugin-react` from v7.24.0 to v7.25.0
