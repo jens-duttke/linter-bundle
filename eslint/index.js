@@ -421,7 +421,7 @@ module.exports = {
 		'@typescript-eslint/consistent-type-assertions': 'error',
 		'@typescript-eslint/consistent-type-definitions': 'error',
 		'@typescript-eslint/consistent-type-imports': ['error', { disallowTypeAnnotations: false }],
-		'@typescript-eslint/dot-notation': 'off', // @todo Reactivate as soon as this issue is fixed: https://github.com/typescript-eslint/typescript-eslint/issues/3510
+		'@typescript-eslint/dot-notation': 'error',
 		'@typescript-eslint/explicit-function-return-type': 'off', // @todo Disabled till we can specify exceptions (React-default class methods, like render())
 		'@typescript-eslint/explicit-member-accessibility': ['error', {
 			ignoredMethodNames: [
@@ -629,6 +629,7 @@ module.exports = {
 			enforceConst: true,
 			detectObjects: true
 		}], */
+		'@typescript-eslint/no-meaningless-void-operator': 'error',
 		'@typescript-eslint/no-misused-new': 'error',
 		'@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: false }],
 		'@typescript-eslint/no-namespace': ['error', { allowDeclarations: true }],
@@ -934,6 +935,8 @@ module.exports = {
 		'unicorn/no-unreadable-array-destructuring': 'error',
 		'unicorn/no-unsafe-regex': 'off',
 		'unicorn/no-unused-properties': 'error',
+		'unicorn/no-useless-fallback-in-spread': 'error',
+		'unicorn/no-invalid-remove-event-listener': 'error',
 		'unicorn/no-useless-length-check': 'error',
 		'unicorn/no-useless-spread': 'error',
 		'unicorn/no-useless-undefined': ['error', { checkArguments: false }],
