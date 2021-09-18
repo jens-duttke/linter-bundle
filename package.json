@@ -22,7 +22,7 @@
 		"lint": "lint.js"
 	},
 	"engines": {
-		"node": ">=12.0.0"
+		"node": ">=14.0.0"
 	},
 	"repository": {
 		"type": "git",
@@ -39,20 +39,20 @@
 		"check-outdated": "npx --yes -- check-outdated --ignore-pre-releases"
 	},
 	"dependencies": {
-		"@typescript-eslint/eslint-plugin": "4.31.0",
-		"@typescript-eslint/parser": "4.31.0",
+		"@typescript-eslint/eslint-plugin": "4.31.1",
+		"@typescript-eslint/parser": "4.31.1",
 		"eslint": "7.32.0",
-		"eslint-import-resolver-typescript": "2.4.0",
+		"eslint-import-resolver-typescript": "2.5.0",
 		"eslint-import-resolver-webpack": "0.13.1",
 		"eslint-plugin-eslint-comments": "3.2.0",
 		"eslint-plugin-functional": "3.7.0",
 		"eslint-plugin-import": "2.24.2",
-		"eslint-plugin-jest": "24.4.0",
+		"eslint-plugin-jest": "24.4.2",
 		"eslint-plugin-jsdoc": "36.1.0",
 		"eslint-plugin-jsx-a11y": "6.4.1",
 		"eslint-plugin-node": "11.1.0",
 		"eslint-plugin-promise": "5.1.0",
-		"eslint-plugin-react": "7.25.1",
+		"eslint-plugin-react": "7.25.2",
 		"eslint-plugin-react-hooks": "4.2.0",
 		"eslint-plugin-unicorn": "36.0.0",
 		"markdownlint-cli": "0.28.1",
@@ -60,7 +60,7 @@
 		"stylelint-declaration-block-no-ignored-properties": "2.4.0",
 		"stylelint-high-performance-animation": "1.5.2",
 		"stylelint-order": "4.1.0",
-		"stylelint-scss": "3.20.1",
+		"stylelint-scss": "3.21.0",
 		"stylelint-selector-no-empty": "1.0.8",
 		"stylelint-selector-tag-no-without-class": "2.0.4",
 		"stylelint-use-logical-spec": "3.2.2",
@@ -71,7 +71,7 @@
 	},
 	"devDependencies": {
 		"@types/eslint": "7.28.0",
-		"@types/node": "16.9.1",
+		"@types/node": "16.9.2",
 		"@types/stylelint": "13.13.2",
 		"stylelint-find-new-rules": "3.0.2",
 		"typescript": "4.4.3"
