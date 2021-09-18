@@ -52,6 +52,8 @@ Beside that, the following additional rules are part of this bundle:
 
 ## Install
 
+Ensure you are using atleast Node.js version 14.
+
 ```sh
 npm install linter-bundle --save-dev
 ```
