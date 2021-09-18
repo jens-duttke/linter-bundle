@@ -8,6 +8,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.27.0...HEAD)
 
+## [1.28.0] - 2021.09.18
+
+### Changed
+
+- The minimum required Node.js version is v14 now
+- [eslint] Update `@typescript-eslint` from v4.31.0 to v4.31.1
+- [eslint] Update `eslint-import-resolver-typescript` from v2.4.0 to v2.5.0
+- [eslint] Update `eslint-plugin-jest` from v24.4.0 to v24.4.2
+- [eslint] Update `eslint-plugin-react` from v7.25.1 to v7.25.2
+- [stylelint] Update `stylelint-scss` from v3.20.1 to v3.21.0
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.27.0...v1.28.0)
+
 ## [1.27.0] - 2021.09.12
 
 ### Changed
