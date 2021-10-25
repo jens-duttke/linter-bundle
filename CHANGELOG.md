@@ -23,6 +23,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Make use of `caseSensitiveStrict` option of [`import/no-unresolved`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-unresolved.md) rule
 - [eslint] Remove deprecated `@typescript-eslint/no-unused-vars-experimental` rule
 - [eslint] Remove deprecated `functional/prefer-type-literal` rule
+- [eslint] Make use of [`react/no-namespace`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-namespace.md) rule
+- [eslint] Make use of [`react/jsx-max-props-per-line`}(https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-max-props-per-line.md) rule
 - [eslint] Make use of [`template-indent`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/template-indent.md) rule
 - [markdownlint] Update `markdownlint-cli` from v0.28.1 to v0.29.0
 - [stylelint] Update `stylelint` from v13.13.1 to v14.0.0
