@@ -65,6 +65,7 @@ module.exports = {
 				'react/no-find-dom-node': 'error',
 				'react/no-is-mounted': 'error',
 				'react/no-multi-comp': 'error',
+				'react/no-namespace': 'error',
 				'react/no-redundant-should-component-update': 'error',
 				'react/no-render-return-value': 'error',
 				'react/no-set-state': 'off',
@@ -125,7 +126,7 @@ module.exports = {
 				'react/jsx-indent-props': ['error', 'tab'],
 				'react/jsx-key': ['error', { checkKeyMustBeforeSpread: true }],
 				'react/jsx-max-depth': ['error', { max: 8 }],
-				'react/jsx-max-props-per-line': ['error', { maximum: 5, when: 'multiline' }],
+				'react/jsx-max-props-per-line': ['error', { maximum: { single: 5, multi: 1 } }],
 				'react/no-adjacent-inline-elements': 'off', // @todo There is an issue if inline and block elements are mixed. Simple example: `<span>Text</span><br />` here, the space between the SPAN and BR should not be forced, because a space at the end of a line does not make sense.
 				'react/jsx-newline': 'off',
 				'react/jsx-no-bind': ['error', { ignoreDOMComponents: true }],
