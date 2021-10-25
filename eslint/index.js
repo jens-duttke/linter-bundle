@@ -732,7 +732,6 @@ module.exports = {
 		'functional/no-try-statement': 'off',
 		'functional/prefer-readonly-type': ['error', { ignoreClass: true, allowLocalMutation: true, ignoreCollections: true, ignoreInterface: true }],
 		'functional/prefer-tacit': 'off', // @see https://github.com/jonaskello/eslint-plugin-functional/issues/263
-		'functional/prefer-type-literal': 'off', // Deprecated in favor of @typescript-eslint/consistent-type-definitions
 
 		/**
 		 * eslint-plugin-import
@@ -785,7 +784,7 @@ module.exports = {
 				'jest-extended'
 			]
 		}],
-		'import/no-unresolved': 'error',
+		'import/no-unresolved': ['error', { caseSensitiveStrict: true }],
 		'import/no-unused-modules': 'error',
 		'import/no-useless-path-segments': 'error',
 		'import/no-webpack-loader-syntax': 'off', // Indeed, you should avoid that, but if we do it, we have a reason for it
@@ -991,6 +990,7 @@ module.exports = {
 				'->': '→'
 			}
 		}],
+		'unicorn/template-indent': 'error',
 		'unicorn/throw-new-error': 'error'
 	}
 };

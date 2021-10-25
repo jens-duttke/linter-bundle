@@ -71,6 +71,7 @@ module.exports = {
 		'block-opening-brace-space-after': 'always-single-line',
 		'block-opening-brace-space-before': 'always',
 		'color-function-notation': null, // @todo Doesn't work with variables like: hsl(var(--xyz)). Create issue. Later change that to 'modern'.
+		'color-hex-alpha': null, // @todo Not widely supported yet. Activate in 2024.
 		'color-hex-case': 'lower',
 		'color-hex-length': 'short',
 		'color-named': 'never',
@@ -89,6 +90,7 @@ module.exports = {
 		'comment-word-disallowed-list': null,
 		'custom-media-pattern': (global.linterBundleSettings?.patternPrefix ? `${global.linterBundleSettings.patternPrefix}-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)+` : null),
 		'custom-property-empty-line-before': null, // Empty lines between custom properties are optional
+		'custom-property-no-missing-var-function': true,
 		'custom-property-pattern': (global.linterBundleSettings?.patternPrefix ? `${global.linterBundleSettings.patternPrefix}-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)*` : null),
 		'declaration-bang-space-after': 'never',
 		'declaration-bang-space-before': 'always',
@@ -140,7 +142,6 @@ module.exports = {
 		'font-family-no-missing-generic-family-keyword': true,
 		'font-weight-notation': 'numeric',
 		'function-allowed-list': null,
-		'function-calc-no-invalid': true,
 		'function-calc-no-unspaced-operator': true,
 		'function-comma-newline-after': 'always-multi-line',
 		'function-comma-newline-before': 'never-multi-line',
@@ -171,9 +172,7 @@ module.exports = {
 		'media-feature-name-allowed-list': null,
 		'media-feature-name-case': 'lower',
 		'media-feature-name-disallowed-list': null,
-		'media-feature-name-no-unknown': [true, {
-			ignoreMediaFeatureNames: ['prefers-contrast']
-		}],
+		'media-feature-name-no-unknown': true,
 		'media-feature-name-no-vendor-prefix': null, // For Safari, we still need "-webkit-min-device-pixel-ratio": https://caniuse.com/css-media-resolution
 		'media-feature-name-value-allowed-list': null,
 		'media-feature-parentheses-space-inside': 'never',
