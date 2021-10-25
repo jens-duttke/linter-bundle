@@ -18,16 +18,46 @@ module.exports = {
 		'stylelint-use-logical-spec',
 		'stylelint-use-nesting'
 	],
-	processors: [
-		['./processors/filter.js', [
-			{
-				test: /^((?!\.module\.).)*$/u,
-				exclude: [
-					'plugin/selector-tag-no-without-class',
-					'selector-class-pattern'
-				]
+	overrides: [
+		{
+			files: ['**/*.module.*']
+			rules: {
+				/**
+				 * stylelint
+				 *
+				 * @see https://github.com/stylelint/stylelint/tree/master/lib/rules
+				 */
+				'selector-class-pattern': `^(?!(${[
+					// Disallowed reserved JavaScript keywords
+					'abstract',
+					'arguments', 'await',
+					'boolean', 'break', 'byte',
+					'case', 'catch', 'char', 'class', 'const', 'continue',
+					'debugger', 'default', 'delete', 'do', 'double',
+					'else', 'enum', 'eval', 'export', 'extends',
+					'false', 'final', 'finally', 'float', 'for', 'function',
+					'goto',
+					'if', 'implements', 'import', 'in', 'Infinity', 'instanceof', 'int', 'interface',
+					'let', 'long',
+					'NaN', 'native', 'new', 'null',
+					'package', 'private', 'protected', 'public',
+					'return',
+					'short', 'static', 'super', 'switch', 'synchronized',
+					'this', 'throw', 'throws', 'transient', 'true', 'try', 'typeof',
+					'undefined',
+					'var', 'void', 'volatile',
+					'while', 'with',
+					'yield'
+				].join('|')})$).+`,
+
+				/**
+				 * stylelint-selector-tag-no-without-class
+				 *
+				 * @see https://github.com/Moxio/stylelint-selector-tag-no-without-class
+				 */
+				'plugin/selector-tag-no-without-class': ['/./'],
 			}
-		]]
+		}
 	],
 	rules: {
 		/**
@@ -225,28 +255,7 @@ module.exports = {
 		'selector-attribute-operator-space-after': 'never',
 		'selector-attribute-operator-space-before': 'never',
 		'selector-attribute-quotes': 'always',
-		'selector-class-pattern': `^(?!(${[
-			// Disallowed reserved JavaScript keywords
-			'abstract',
-			'arguments', 'await',
-			'boolean', 'break', 'byte',
-			'case', 'catch', 'char', 'class', 'const', 'continue',
-			'debugger', 'default', 'delete', 'do', 'double',
-			'else', 'enum', 'eval', 'export', 'extends',
-			'false', 'final', 'finally', 'float', 'for', 'function',
-			'goto',
-			'if', 'implements', 'import', 'in', 'Infinity', 'instanceof', 'int', 'interface',
-			'let', 'long',
-			'NaN', 'native', 'new', 'null',
-			'package', 'private', 'protected', 'public',
-			'return',
-			'short', 'static', 'super', 'switch', 'synchronized',
-			'this', 'throw', 'throws', 'transient', 'true', 'try', 'typeof',
-			'undefined',
-			'var', 'void', 'volatile',
-			'while', 'with',
-			'yield'
-		].join('|')})$).+`,
+		'selector-class-pattern': null,
 		'selector-combinator-allowed-list': null,
 		'selector-combinator-disallowed-list': null,
 		'selector-combinator-space-after': 'always',
@@ -899,7 +908,7 @@ module.exports = {
 		 *
 		 * @see https://github.com/Moxio/stylelint-selector-tag-no-without-class
 		 */
-		'plugin/selector-tag-no-without-class': ['/./'],
+		'plugin/selector-tag-no-without-class': null,
 
 		/**
 		 * stylelint-use-logical-spec
