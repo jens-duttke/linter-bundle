@@ -33,7 +33,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Removed deprecated `functional/prefer-type-literal` rule
 - [eslint] Make use of [`no-unused-private-class-members`](https://github.com/eslint/eslint/blob/main/docs/rules/no-unused-private-class-members.md) rule
 - [eslint] Make use of [`react/no-namespace`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-namespace.md) rule
-- [eslint] Make use of [`react/jsx-max-props-per-line`}(https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-max-props-per-line.md) rule
+- [eslint] Make use of [`react/jsx-max-props-per-line`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-max-props-per-line.md) rule
 - [eslint] Make use of [`template-indent`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/template-indent.md) rule
 - [eslint] Make use of [`@typescript-eslint/consistent-type-exports`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/consistent-type-exports.md) rule
 - [eslint] Make use of [unicorn/no-empty-file](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-empty-file.md) rule
