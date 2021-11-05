@@ -137,6 +137,7 @@ module.exports = {
 		'no-unsafe-finally': 'error',
 		'no-unsafe-negation': 'error',
 		'no-unsafe-optional-chaining': 'error',
+		'no-unused-private-class-members': 'error',
 		'no-useless-backreference': 'error',
 		'require-atomic-updates': 'error',
 		'use-isnan': 'error',
@@ -420,6 +421,7 @@ module.exports = {
 		'@typescript-eslint/consistent-indexed-object-style': 'error',
 		'@typescript-eslint/consistent-type-assertions': 'error',
 		'@typescript-eslint/consistent-type-definitions': 'error',
+		'@typescript-eslint/consistent-type-exports': 'error',
 		'@typescript-eslint/consistent-type-imports': ['error', { disallowTypeAnnotations: false }],
 		'@typescript-eslint/dot-notation': 'error',
 		'@typescript-eslint/explicit-function-return-type': 'off', // @todo Disabled till we can specify exceptions (React-default class methods, like render())
@@ -662,7 +664,6 @@ module.exports = {
 		'@typescript-eslint/no-unsafe-member-access': 'error',
 		'@typescript-eslint/no-unsafe-return': 'error',
 		'@typescript-eslint/no-unused-expressions': 'error',
-		'@typescript-eslint/no-unused-vars-experimental': 'error',
 		'@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
 		'@typescript-eslint/no-use-before-define': ['error', { functions: false }],
 		'@typescript-eslint/no-useless-constructor': 'error',
@@ -918,6 +919,7 @@ module.exports = {
 		'unicorn/no-array-reduce': ['error', { allowSimpleOperations: true }],
 		'unicorn/no-console-spaces': 'error',
 		'unicorn/no-document-cookie': 'error',
+		'unicorn/no-empty-file': 'error',
 		'unicorn/no-for-loop': 'off', // @typescript-eslint/prefer-for-of
 		'unicorn/no-hex-escape': 'error',
 		'unicorn/no-instanceof-array': 'error',
@@ -955,6 +957,7 @@ module.exports = {
 		'unicorn/prefer-dom-node-dataset': 'off', // `setAttribute` is faster than `dataset`. See https://www.measurethat.net/Benchmarks/Show/7740/0/classname-vs-setattribute-vs-classlist-vs-dataset
 		'unicorn/prefer-dom-node-remove': 'error',
 		'unicorn/prefer-dom-node-text-content': 'error',
+		'unicorn/prefer-export-from': 'error',
 		'unicorn/prefer-includes': 'error',
 		'unicorn/prefer-keyboard-event-key': 'error',
 		'unicorn/prefer-math-trunc': 'error',

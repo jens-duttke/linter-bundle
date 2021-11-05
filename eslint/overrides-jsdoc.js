@@ -25,7 +25,7 @@ module.exports = {
 				'jsdoc/check-access': 'error',
 				'jsdoc/check-alignment': 'error',
 				'jsdoc/check-examples': 'off', // @todo need to be configured to allow text-based examples
-				'jsdoc/check-indentation': ['off', { excludeTags: ['typedef'] }], // @todo this doesn't work in all cases
+				'jsdoc/check-indentation': ['off', { excludeTags: ['typedef'] }],
 				'jsdoc/check-param-names': 'error',
 				'jsdoc/check-syntax': 'error',
 				'jsdoc/check-line-alignment': 'error',

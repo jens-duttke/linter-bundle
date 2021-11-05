@@ -10,24 +10,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 **Right now, a couple of ESLint plugins (e.g. eslint-plugin-jsx-a11y, eslint-plugin-promise) are still not compatible with ESLint v8. They prevent us from updating.**
 
-- [eslint] Update `@typescript-eslint` from v4.31.1 to v5.1.0
+### Changed
+
+- [eslint] Update `@typescript-eslint` from v4.31.1 to v5.3.0
 - [eslint] Update `eslint` from v7.32.0 to v8.1.0
 - [eslint] Update `eslint-plugin-functional` from v3.7.0 to v4.0.2
 - [eslint] Update `eslint-plugin-import` from v2.24.2 to v2.25.2
-- [eslint] Update `eslint-plugin-jest` from v24.4.2 to v25.2.2
-- [eslint] Update `eslint-plugin-jsdoc` from v36.1.0 to v37.0.0
+- [eslint] Update `eslint-plugin-jest` from v24.4.2 to v25.2.3
+- [eslint] Update `eslint-plugin-jsdoc` from v36.1.0 to v37.0.3
 - [eslint] Update `eslint-plugin-promise` from v5.1.0 to v5.1.1
 - [eslint] Update `eslint-plugin-react` from v7.25.2 to v7.26.1
-- [eslint] Update `eslint-plugin-unicorn` from v36.0.0 to v37.0.1
+- [eslint] Update `eslint-plugin-unicorn` from v36.0.0 to v38.0.0
 - [eslint] Update `eslint-import-resolver-webpack` from v0.13.1 to v0.13.2
 - [eslint] Make use of `caseSensitiveStrict` option of [`import/no-unresolved`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-unresolved.md) rule
 - [eslint] Remove deprecated `@typescript-eslint/no-unused-vars-experimental` rule
 - [eslint] Remove deprecated `functional/prefer-type-literal` rule
+- [eslint] Make use of [`no-unused-private-class-members`](https://github.com/eslint/eslint/blob/main/docs/rules/no-unused-private-class-members.md) rule
 - [eslint] Make use of [`react/no-namespace`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-namespace.md) rule
 - [eslint] Make use of [`react/jsx-max-props-per-line`}(https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-max-props-per-line.md) rule
 - [eslint] Make use of [`template-indent`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/template-indent.md) rule
+- [eslint] Make use of [`@typescript-eslint/consistent-type-exports`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/consistent-type-exports.md) rule
+- [eslint] Make use of [unicorn/no-empty-file](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-empty-file.md) rule
+- [eslint] Make use of [unicorn/prefer-export-from](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-export-from.md) rule
 - [markdownlint] Update `markdownlint-cli` from v0.28.1 to v0.29.0
-- [stylelint] Update `stylelint` from v13.13.1 to v14.0.0
+- [stylelint] Update `stylelint` from v13.13.1 to v14.0.1
 - [stylelint] Update `stylelint-order` from v4.1.0 to v5.0.0
 - [stylelint] Update `stylelint-scss` from v3.21.0 to v4.0.0
 - [stylelint] Added but disabled [`color-hex-alpha`](https://github.com/stylelint/stylelint/blob/main/lib/rules/color-hex-alpha/README.md) rule, because of limited browser support

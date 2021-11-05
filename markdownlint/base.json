@@ -6,6 +6,9 @@
 		"code_block_line_length": 300,
 		"tables": false
 	},
+	"MD024": {
+		"siblings_only": true
+	},
 	"MD026": {
 		"punctuation": ".,;:!。，；：！"
 	},
@@ -13,9 +16,6 @@
 		"allowed_elements": [
 			"span"
 		]
-	},
-	"MD024": {
-		"siblings_only": true
 	},
 	"MD046": false
 }
