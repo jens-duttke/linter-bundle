@@ -865,26 +865,6 @@ module.exports = {
 		'eslint-comments/require-description': ['error', { ignore: ['eslint-enable'] }],
 
 		/**
-		 * eslint-plugin-promise
-		 *
-		 * @see https://github.com/xjamundx/eslint-plugin-promise
-		 */
-		'promise/always-return': 'off', // If the result of an `.then()` is not used, there is no need to return something.
-		'promise/avoid-new': 'off',
-		'promise/catch-or-return': 'error',
-		'promise/no-callback-in-promise': 'off',
-		'promise/no-native': 'off',
-		'promise/no-nesting': 'off',
-		'promise/no-new-statics': 'error',
-		'promise/no-promise-in-callback': 'off',
-		'promise/no-return-in-finally': 'error',
-		'promise/no-return-wrap': 'error',
-		'promise/param-names': 'off', // @todo Disabled until this issue is fixed: https://github.com/xjamundx/eslint-plugin-promise/issues/206
-		'promise/prefer-await-to-callbacks': 'off', // It's not always possible to use avoid callbacks.
-		'promise/prefer-await-to-then': 'off', // Depending on the use-case `.then()`/`.catch()` might be easier to understand
-		'promise/valid-params': 'off', // TypeScript ensures that
-
-		/**
 		 * eslint-plugin-unicorn
 		 *
 		 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
