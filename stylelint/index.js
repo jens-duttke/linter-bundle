@@ -8,6 +8,7 @@ module.exports = {
 	reportNeedlessDisables: true,
 	reportInvalidScopeDisables: true,
 	reportDescriptionlessDisables: true,
+	customSyntax: 'postcss-scss',
 	plugins: [
 		'stylelint-high-performance-animation',
 		'stylelint-order',
