@@ -17,7 +17,7 @@ module.exports = {
 	],
 	overrides: [
 		{
-			files: ['**/*.module.*']
+			files: ['**/*.module.*'],
 			rules: {
 				/**
 				 * stylelint
