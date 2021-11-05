@@ -32,7 +32,7 @@ const jobs = getTasksToRun(process.argv.splice(2)).map(({ taskName, config }) =>
 				taskName,
 				command: [
 					'node',
-					`"${require.resolve('eslint/bin/eslint.js')}"`,
+					`"${path.join(path.dirname(require.resolve('eslint')), '../bin/eslint.js')}"`,
 					config['include']?.[0] ?? '"./**/*.{js,jsx,ts,tsx}"',
 					config['exclude']?.map((exclude) => `--ignore-pattern ${exclude}`).join(' '),
 					`--rulesdir "${path.resolve(__dirname, './eslint/rules/')}"`,
