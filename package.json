@@ -50,6 +50,7 @@
 		"eslint-plugin-jsdoc": "37.0.3",
 		"eslint-plugin-node": "11.1.0",
 		"eslint-plugin-unicorn": "38.0.0",
+		"eslint-plugin-react-hooks": "4.2.1-alpha-13455d26d-20211104",
 		"markdownlint-cli": "0.29.0",
 		"stylelint": "14.0.1",
 		"stylelint-order": "5.0.0",

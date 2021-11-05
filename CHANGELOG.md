@@ -11,7 +11,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] [`eslint-plugin-jsx-a11y`](https://www.npmjs.com/package/eslint-plugin-jsx-a11y) has been removed, because it seems not to be regularly maintained anymore, which blocks us from updating to ESLint v8
 - [eslint] [`eslint-plugin-promise`](https://www.npmjs.com/package/eslint-plugin-promise) has been removed, because it seems not to be regularly maintained anymore, which blocks us from updating to ESLint v8
 - [eslint] [`eslint-plugin-react`](https://www.npmjs.com/package/eslint-plugin-jsx-a11y) has been removed, because it's relying on unmaintained dependencies, which blocks us from updating to ESLint v8
-- [eslint] [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) has been removed, because it's relying on unmaintained dependencies, which blocks us from updating to ESLint v8
 - [stylelint] [`stylelint-declaration-block-no-ignored-properties`](https://www.npmjs.com/package/stylelint-declaration-block-no-ignored-properties) has been removed, because it seems not to be regularly maintained anymore, which blocks us from updating to Stylelint v14
 - [stylelint] [`stylelint-selector-tag-no-without-class`](https://www.npmjs.com/package/stylelint-selector-tag-no-without-class) has been removed, because it seems not to be regularly maintained anymore, which blocks us from updating to Stylelint v14
 - [stylelint] [`stylelint-use-nesting`](https://www.npmjs.com/package/stylelint-use-nesting) has been removed, because it seems not to be regularly maintained anymore, which blocks us from updating to Stylelint v14
@@ -28,6 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Updated `eslint-plugin-react` from v7.25.2 to v7.26.1
 - [eslint] Updated `eslint-plugin-unicorn` from v36.0.0 to v38.0.0
 - [eslint] Updated `eslint-import-resolver-webpack` from v0.13.1 to v0.13.2
+- [eslint] Updated `eslint-plugin-react-hooks` from v4.2.0 to v4.2.1-alpha-13455d26d-20211104
 - [eslint] Make use of `caseSensitiveStrict` option of [`import/no-unresolved`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-unresolved.md) rule
 - [eslint] Removed deprecated `@typescript-eslint/no-unused-vars-experimental` rule
 - [eslint] Removed deprecated `functional/prefer-type-literal` rule
