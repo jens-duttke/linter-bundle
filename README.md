@@ -29,7 +29,6 @@ This setup is using the following additional plugins:
 - [eslint-plugin-jest](https://www.npmjs.com/package/eslint-plugin-jest)
 - [eslint-plugin-jsdoc](https://www.npmjs.com/package/eslint-plugin-jsdoc)
 - [eslint-plugin-node](https://www.npmjs.com/package/eslint-plugin-node)
-- [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks)
 - [eslint-plugin-unicorn](https://www.npmjs.com/package/eslint-plugin-unicorn)
 
 Beside that, the following additional rules are part of this bundle:
@@ -48,12 +47,13 @@ Beside that, the following additional rules are part of this bundle:
 
 ### Previously used, but now unmaintained plugins
 
-Unfortunately a couple of previously used plugins are not regularly maintained, so they don't provide updates for the major releases of the linters (ESLint and Stylelint).
+Unfortunately a couple of previously used plugins are not regularly maintained or depend on unmaintained third-party code which blocks them from updating, so they don't provide updates for the major releases of the linters (ESLint and Stylelint).
 For that reason the following plugins are not used anymore:
 
 - [eslint-plugin-jsx-a11y](https://www.npmjs.com/package/eslint-plugin-jsx-a11y) (removed on 2021-11-05)
 - [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise) (removed on 2021-11-05)
 - [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react) (removed on 2021-11-05)
+- [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks) (removed on 2021-11-05)
 - [stylelint-use-nesting](https://www.npmjs.com/package/stylelint-use-nesting) (removed on 2021-11-05)
 
 If these plugins are maintained again, the plugins will also be used again.
