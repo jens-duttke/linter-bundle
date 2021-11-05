@@ -43,6 +43,7 @@ Beside that, the following additional rules are part of this bundle:
 - [stylelint-scss](https://www.npmjs.com/package/stylelint-scss)
 - [stylelint-selector-no-empty](https://www.npmjs.com/package/stylelint-selector-no-empty)
 - [stylelint-use-logical-spec](https://www.npmjs.com/package/stylelint-use-logical-spec)
+- [stylelint-selector-tag-no-without-class](https://www.npmjs.com/package/stylelint-selector-tag-no-without-class) (Forked version)
 
 ### Previously used, but now unmaintained plugins
 
@@ -53,7 +54,6 @@ For that reason the following plugins are not used anymore:
 - [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise) (removed on 2021-11-05)
 - [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react) (removed on 2021-11-05)
 - [stylelint-declaration-block-no-ignored-properties](https://www.npmjs.com/package/stylelint-declaration-block-no-ignored-properties) (removed on 2021-11-05)
-- [stylelint-selector-tag-no-without-class](https://www.npmjs.com/package/stylelint-selector-tag-no-without-class) (removed on 2021-11-05)
 - [stylelint-use-nesting](https://www.npmjs.com/package/stylelint-use-nesting) (removed on 2021-11-05)
 
 If these plugins are maintained again, the plugins will also be used again.

@@ -14,7 +14,8 @@ module.exports = {
 		'stylelint-order',
 		'stylelint-scss',
 		'stylelint-selector-no-empty',
-		'stylelint-use-logical-spec'
+		'stylelint-use-logical-spec',
+		'./plugins/stylelint-selector-tag-no-without-class.js'
 	],
 	overrides: [
 		{
@@ -46,7 +47,14 @@ module.exports = {
 					'var', 'void', 'volatile',
 					'while', 'with',
 					'yield'
-				].join('|')})$).+`
+				].join('|')})$).+`,
+
+				/**
+				 * stylelint-selector-tag-no-without-class
+				 *
+				 * @see https://github.com/Moxio/stylelint-selector-tag-no-without-class
+				 */
+				'plugin/selector-tag-no-without-class': ['/./']
 			}
 		}
 	],
@@ -886,6 +894,13 @@ module.exports = {
 		 * @see https://github.com/ssivanatarajan/stylelint-selector-no-empty
 		 */
 		'plugin/stylelint-selector-no-empty': true,
+
+		/**
+		 * stylelint-selector-tag-no-without-class
+		 *
+		 * @see https://github.com/Moxio/stylelint-selector-tag-no-without-class
+		 */
+		'plugin/selector-tag-no-without-class': null,
 
 		/**
 		 * stylelint-use-logical-spec
