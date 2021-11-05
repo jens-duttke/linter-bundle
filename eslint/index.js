@@ -22,10 +22,7 @@ module.exports = {
 		'eslint-comments',
 		'functional',
 		'import',
-		'jsx-a11y',
-		'promise',
 		'react-hooks',
-		'react',
 		'unicorn'
 	],
 	extends: [
