@@ -9,7 +9,6 @@ module.exports = {
 	reportInvalidScopeDisables: true,
 	reportDescriptionlessDisables: true,
 	plugins: [
-		'stylelint-declaration-block-no-ignored-properties',
 		'stylelint-high-performance-animation',
 		'stylelint-order',
 		'stylelint-scss',
@@ -312,13 +311,6 @@ module.exports = {
 		'value-list-comma-space-before': 'never',
 		'value-list-max-empty-lines': 0,
 		'value-no-vendor-prefix': true,
-
-		/**
-		 * stylelint-declaration-block-no-ignored-properties
-		 *
-		 * @see https://www.npmjs.com/package/stylelint-declaration-block-no-ignored-properties
-		 */
-		'plugin/declaration-block-no-ignored-properties': true,
 
 		/**
 		 * stylelint-high-performance-animation

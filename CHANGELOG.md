@@ -13,7 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] [`eslint-plugin-react`](https://www.npmjs.com/package/eslint-plugin-jsx-a11y) has been removed, because it's relying on unmaintained dependencies, which blocks us from updating to ESLint v8
 - [eslint] [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) has been removed, because it's relying on unmaintained dependencies, which blocks us from updating to ESLint v8
 - [stylelint] [`stylelint-use-nesting`](https://www.npmjs.com/package/stylelint-use-nesting) has been removed, because it seems not to be regularly maintained anymore, which blocks us from updating to Stylelint v14
-
+- [stylelint] [`stylelint-declaration-block-no-ignored-properties`](https://www.npmjs.com/package/stylelint-declaration-block-no-ignored-properties) has been removed, because it seems not to be regularly maintained anymore, which blocks us from updating to Stylelint v14
 ### Changed
 
 - [eslint] Update `@typescript-eslint` from v4.31.1 to v5.3.0

@@ -53,8 +53,6 @@
 		"eslint-plugin-unicorn": "38.0.0",
 		"markdownlint-cli": "0.29.0",
 		"stylelint": "14.0.1",
-		"stylelint-declaration-block-no-ignored-properties": "2.4.0",
-		"stylelint-high-performance-animation": "1.5.2",
 		"stylelint-order": "5.0.0",
 		"stylelint-scss": "4.0.0",
 		"stylelint-selector-no-empty": "1.0.8",
