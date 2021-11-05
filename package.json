@@ -62,8 +62,7 @@
 		"stylelint-scss": "4.0.0",
 		"stylelint-selector-no-empty": "1.0.8",
 		"stylelint-selector-tag-no-without-class": "2.0.4",
-		"stylelint-use-logical-spec": "3.2.2",
-		"stylelint-use-nesting": "3.0.0"
+		"stylelint-use-logical-spec": "3.2.2"
 	},
 	"peerDependencies": {
 		"typescript": "^4.0.0"

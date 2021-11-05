@@ -15,8 +15,7 @@ module.exports = {
 		'stylelint-scss',
 		'stylelint-selector-no-empty',
 		'stylelint-selector-tag-no-without-class',
-		'stylelint-use-logical-spec',
-		'stylelint-use-nesting'
+		'stylelint-use-logical-spec'
 	],
 	overrides: [
 		{
@@ -953,13 +952,6 @@ module.exports = {
 			'min-height', // "min-block-size" is very rarely needed. I'm not aware of any use-case.
 			'max-width', // "max-inline-size" is very rarely needed. I'm not aware of any use-case.
 			'max-height' // "max-block-size" is very rarely needed. I'm not aware of any use-case.
-		] }],
-
-		/**
-		 * stylelint-use-nesting
-		 *
-		 * @see https://github.com/csstools/stylelint-use-nesting
-		 */
-		'csstools/use-nesting': 'always'
+		] }]
 	}
 };

@@ -8,7 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Removed
 
-- [eslint] `eslint-plugin-promise` has be removed, because it seems not to be regularly maintained anymore, which blocks us since one month from updating to ESLint v8.
+- [eslint] [`eslint-plugin-promise`](https://www.npmjs.com/package/eslint-plugin-promise) has be removed, because it seems not to be regularly maintained anymore, which blocks us from updating to ESLint v8.
+- [stylelint] [stylelint-use-nesting](https://www.npmjs.com/package/stylelint-use-nesting) has be removed, because it seems not to be regularly maintained anymore, which blocks us from updating to Stylelint v14.
 
 ### Changed
 

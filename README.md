@@ -47,7 +47,16 @@ Beside that, the following additional rules are part of this bundle:
 - [stylelint-selector-no-empty](https://www.npmjs.com/package/stylelint-selector-no-empty)
 - [stylelint-selector-tag-no-without-class](https://github.com/Moxio/stylelint-selector-tag-no-without-class)
 - [stylelint-use-logical-spec](https://www.npmjs.com/package/stylelint-use-logical-spec)
-- [stylelint-use-nesting](https://www.npmjs.com/package/stylelint-use-nesting)
+
+### Previously used, but now unmaintained plugins
+
+Unfortunately a couple of previously used plugins are not regularly maintained, so they don't provide updates for the major releases of the linters (ESLint and Stylelint).
+For that reason the following plugins are not used anymore:
+
+- [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise) (removed on 2021-11-05)
+- [stylelint-use-nesting](https://www.npmjs.com/package/stylelint-use-nesting) (removed on 2021-11-05)
+
+If these plugins are maintained again, the plugins will also be used again.
 
 ## Install
 
