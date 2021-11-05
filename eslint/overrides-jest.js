@@ -9,6 +9,25 @@ module.exports = {
 			env: {
 				jest: true
 			},
+			settings: {
+				jest: {
+					version: (() => {
+						try {
+							// eslint-disable-next-line node/no-missing-require, import/no-dynamic-require -- If "overrides-jest" is used, "jest" should be installed, and it should be searched in the working directory of the process.
+							const jestVersion = require(require.resolve('jest', { paths: [process.cwd()] })).getVersion().split('.')[0];
+
+							process.stdout.write(`Detected Jest version: ${jestVersion}\n\n`);
+
+							return jestVersion;
+						}
+						catch {
+							process.stderr.write('No Jest version detected\n\n');
+
+							return 'detect';
+						}
+					})()
+				}
+			},
 			plugins: ['jest'],
 			rules: {
 				/**
@@ -42,7 +61,7 @@ module.exports = {
 				 */
 				'jest/consistent-test-it': 'error',
 				'jest/expect-expect': 'error',
-				'jest/lowercase-name': ['error', { ignore: ['describe'] }],
+				'jest/prefer-lowercase-title': ['error', { ignore: ['describe'] }],
 				'jest/max-nested-describe': 'error',
 				'jest/no-alias-methods': 'error',
 				'jest/no-commented-out-tests': 'error',
@@ -66,11 +85,12 @@ module.exports = {
 				'jest/no-test-return-statement': 'error',
 				'jest/prefer-called-with': 'error',
 				'jest/prefer-expect-assertions': ['error', { onlyFunctionsWithAsyncKeyword: true }],
+				'jest/prefer-expect-resolves': 'off', // We prefer `expect(await promise)` enforced by 'jest/no-restricted-matchers'
 				'jest/prefer-hooks-on-top': 'error',
+				'jest/require-hook': 'error',
 				'jest/prefer-spy-on': 'error',
 				'jest/prefer-strict-equal': 'error',
-				'jest/prefer-to-be-null': 'error',
-				'jest/prefer-to-be-undefined': 'error',
+				'jest/prefer-to-be': 'error',
 				'jest/prefer-to-contain': 'error',
 				'jest/prefer-to-have-length': 'error',
 				'jest/prefer-todo': 'error',
@@ -84,7 +104,7 @@ module.exports = {
 				'jest/require-top-level-describe': 'error',
 				'jest/require-to-throw-message': 'error',
 				'jest/unbound-method': 'error',
-				'jest/valid-describe': 'error',
+				'jest/valid-describe-callback': 'error',
 				'jest/valid-expect-in-promise': 'error',
 				'jest/valid-expect': 'error',
 				'jest/valid-title': 'error'
