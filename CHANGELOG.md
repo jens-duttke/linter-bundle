@@ -6,13 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.0.0...HEAD)
+
+## [2.0.0] - 2021.11.05
+
 ### Removed
 
 - [eslint] [`eslint-plugin-jsx-a11y`](https://www.npmjs.com/package/eslint-plugin-jsx-a11y) has been removed, because it seems not to be regularly maintained anymore, which blocks us from updating to ESLint v8
 - [eslint] [`eslint-plugin-promise`](https://www.npmjs.com/package/eslint-plugin-promise) has been removed, because it seems not to be regularly maintained anymore, which blocks us from updating to ESLint v8
 - [eslint] [`eslint-plugin-react`](https://www.npmjs.com/package/eslint-plugin-jsx-a11y) has been removed, because it's relying on unmaintained dependencies, which blocks us from updating to ESLint v8
 - [stylelint] [`stylelint-declaration-block-no-ignored-properties`](https://www.npmjs.com/package/stylelint-declaration-block-no-ignored-properties) has been removed, because it seems not to be regularly maintained anymore, which blocks us from updating to Stylelint v14
-- [stylelint] [`stylelint-selector-tag-no-without-class`](https://www.npmjs.com/package/stylelint-selector-tag-no-without-class) has been removed, because it seems not to be regularly maintained anymore, which blocks us from updating to Stylelint v14
 - [stylelint] [`stylelint-use-nesting`](https://www.npmjs.com/package/stylelint-use-nesting) has been removed, because it seems not to be regularly maintained anymore, which blocks us from updating to Stylelint v14
 
 ### Changed
@@ -31,6 +34,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Make use of `caseSensitiveStrict` option of [`import/no-unresolved`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-unresolved.md) rule
 - [eslint] Removed deprecated `@typescript-eslint/no-unused-vars-experimental` rule
 - [eslint] Removed deprecated `functional/prefer-type-literal` rule
+- [eslint] Removed deprecated `jest/prefer-to-be-null` rule
+- [eslint] Removed deprecated `jest/prefer-to-be-undefined` rule
+- [eslint] Added but disabled [`jest/prefer-expect-resolves`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/prefer-expect-resolves.md) rule, because we prefer `expect(await promise)`
+- [eslint] Make use of [`jest/prefer-to-be`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/prefer-to-be.md) rule
+- [eslint] Make use of [`jest/require-hook`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/require-hook.md) rule
+- [eslint] `jest/valid-describe` as been renamed to `valid-describe-callback`
+- [eslint] `jest/lowercase-name` as been renamed to `prefer-lowercase-title`
 - [eslint] Make use of [`no-unused-private-class-members`](https://github.com/eslint/eslint/blob/main/docs/rules/no-unused-private-class-members.md) rule
 - [eslint] Make use of [`react/no-namespace`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-namespace.md) rule
 - [eslint] Make use of [`react/jsx-max-props-per-line`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-max-props-per-line.md) rule
@@ -45,8 +55,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [stylelint] Added but disabled [`color-hex-alpha`](https://github.com/stylelint/stylelint/blob/main/lib/rules/color-hex-alpha/README.md) rule, because of limited browser support
 - [stylelint] Make use of [`custom-property-no-missing-var-function`](https://github.com/stylelint/stylelint/blob/main/lib/rules/custom-property-no-missing-var-function/README.md) rule
 - [stylelint] Removed deprecated `function-calc-no-invalid` rule
+- [stylelint] Forked [`stylelint-selector-tag-no-without-class`](https://www.npmjs.com/package/stylelint-selector-tag-no-without-class), because it seems not to be regularly maintained anymore
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.28.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.28.0...v2.0.0)
 
 ## [1.28.0] - 2021.09.18
 
