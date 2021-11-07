@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Changed
+
+- [eslint] Updated `eslint` from v8.1.0 to v8.2.0
+
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.0.0...HEAD)
 
 ## [2.0.0] - 2021.11.05
