@@ -4,6 +4,8 @@
 
 /* eslint-disable max-lines -- The rules can be easier managed if they are all in one file  */
 
+const path = require('path');
+
 module.exports = {
 	reportNeedlessDisables: true,
 	reportInvalidScopeDisables: true,
@@ -14,8 +16,8 @@ module.exports = {
 		'stylelint-scss',
 		'stylelint-selector-no-empty',
 		'stylelint-use-logical-spec',
-		'./plugins/stylelint-high-performance-animation.js',
-		'./plugins/stylelint-selector-tag-no-without-class.js'
+		path.join(__dirname, '/plugins/stylelint-high-performance-animation.js'),
+		path.join(__dirname, '/plugins/stylelint-selector-tag-no-without-class.js')
 	],
 	overrides: [
 		{
