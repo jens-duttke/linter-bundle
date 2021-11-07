@@ -38,7 +38,7 @@ Beside that, the following additional rules are part of this bundle:
 
 ### stylelint
 
-- [stylelint-high-performance-animation](https://www.npmjs.com/package/stylelint-high-performance-animation)
+- [stylelint-high-performance-animation](https://www.npmjs.com/package/stylelint-high-performance-animation) (Forked version)
 - [stylelint-order](https://www.npmjs.com/package/stylelint-order)
 - [stylelint-scss](https://www.npmjs.com/package/stylelint-scss)
 - [stylelint-selector-no-empty](https://www.npmjs.com/package/stylelint-selector-no-empty)

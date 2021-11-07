@@ -10,11 +10,11 @@ module.exports = {
 	reportDescriptionlessDisables: true,
 	customSyntax: 'postcss-scss',
 	plugins: [
-		'stylelint-high-performance-animation',
 		'stylelint-order',
 		'stylelint-scss',
 		'stylelint-selector-no-empty',
 		'stylelint-use-logical-spec',
+		'./plugins/stylelint-high-performance-animation.js',
 		'./plugins/stylelint-selector-tag-no-without-class.js'
 	],
 	overrides: [
