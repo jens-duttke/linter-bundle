@@ -1,6 +1,7 @@
 /**
  * @file Fork of `stylelint-selector-tag-no-without-class` rule.
  *
+ * @license MIT
  * @see https://github.com/Moxio/stylelint-selector-tag-no-without-class
  */
 
