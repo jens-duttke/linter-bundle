@@ -6,9 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.2.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.3.0...HEAD)
 
-## [2.2.0] - 2022.01.27
+## [2.3.0] - 2022.01.27
 
 ### Changed
 
@@ -47,7 +47,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [stylelint] Added new [`scss/at-use-no-unnamespaced`](https://github.com/stylelint-scss/stylelint-scss/tree/master/src/rules/at-use-no-unnamespaced) rule
 - [stylelint] Added but disabled [`rule-selector-property-disallowed-list`](https://github.com/stylelint/stylelint/tree/main/lib/rules/rule-selector-property-disallowed-list) rule
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.1.0...v2.2.0)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.1.0...v2.3.0)
 
 ## [2.1.0] - 2021.11.07
 
