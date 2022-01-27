@@ -6,7 +6,48 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.1.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.2.0...HEAD)
+
+## [2.2.0] - 2022.01.27
+
+### Changed
+
+- [eslint] In the `.vscode/settings.json` the "configFile" option in "eslint.options" has been renamed to "overrideConfigFile"
+- [eslint] Re-added [`eslint-plugin-jsx-a11y`](https://www.npmjs.com/package/eslint-plugin-jsx-a11y) v6.5.1
+- [eslint] Re-added [`eslint-plugin-promise`](https://www.npmjs.com/package/eslint-plugin-promise) v6.0.0
+- [eslint] Re-added [`eslint-plugin-react`](https://www.npmjs.com/package/eslint-plugin-react) v7.28.0
+- [stylelint] Re-added [`stylelint-declaration-block-no-ignored-properties`](https://www.npmjs.com/package/stylelint-declaration-block-no-ignored-properties) v2.5.0
+- [eslint] Updated `eslint-plugin-react-hooks` from v4.2.1-alpha-13455d26d-20211104 to v4.3.0
+- [eslint] Re-added [`react/no-invalid-html-attribute`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-invalid-html-attribute.md) rule
+- [eslint] Re-added [`react/no-arrow-function-lifecycle`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-arrow-function-lifecycle.md) rule
+- [eslint] Re-added [`react/no-unused-class-component-methods`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unused-class-component-methods.md) rule
+- [eslint] Disabled [`unicorn/prefer-object-has-own`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-object-has-own.md) for now, because of limited engine support
+- [eslint] Disabled `allowThrowingAny` and `allowThrowingUnknown` of the [`@typescript-eslint/no-throw-literal`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-throw-literal.md) rule
+- [eslint] Reactivated [`import/no-import-module-exports`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/no-import-module-exports.md) rule
+- [eslint] Added new [`import/no-unused-modules`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/no-unused-modules.md) rule
+- [eslint] Added new [`jest/prefer-comparison-matcher`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/prefer-comparison-matcher.md) rule
+- [eslint] Added new [`jest/prefer-equality-matcher`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/prefer-equality-matcher.md) rule
+- [eslint] Added new [`unicorn/no-await-expression-member`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-await-expression-member.md) rule
+- [eslint] Added new [`unicorn/prefer-code-point`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-code-point.md) rule
+- [eslint] Added new [`unicorn/no-thenable`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-thenable.md) rule
+- [eslint] Added new [`unicorn/no-useless-promise-resolve-reject`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-useless-promise-resolve-reject.md) rule
+- [eslint] Added new [`unicorn/relative-url-style`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/relative-url-style.md) rule
+- [eslint] Added new [`unicorn/prefer-json-parse-buffer`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-json-parse-buffer.md) rule
+- [eslint] Updated `@typescript-eslint` from v5.3.0 to v5.10.1
+- [eslint] Updated `eslint` from v8.2.0 to v8.7.0
+- [eslint] Updated `eslint-plugin-functional` from v4.0.2 to v4.1.1
+- [eslint] Updated `eslint-plugin-import` from v2.25.2 to v2.25.4
+- [eslint] Updated `eslint-plugin-jest` from v25.2.3 to v26.0.0
+- [eslint] Updated `eslint-plugin-jsdoc` from v37.0.3 to v37.7.0
+- [eslint] Updated `eslint-plugin-unicode` from v38.0.0 to v40.1.0
+- [markdownlint] Updated `markdownlint-cli` from v0.29.0 to v0.30.0
+- [stylelint] Updated `stylelint` from v14.0.1 to v14.3.0
+- [stylelint] Updated `stylelint-scss` from v4.0.0 to v4.1.0
+- [stylelint] Added new [`scss/dollar-variable-no-namespaced-assignment`](https://github.com/stylelint-scss/stylelint-scss/tree/master/src/rules/dollar-variable-no-namespaced-assignment) rule
+- [stylelint] Added new [`scss/at-use-no-unnamespaced`](https://github.com/stylelint-scss/stylelint-scss/tree/master/src/rules/at-use-no-unnamespaced) rule
+- [stylelint] Added but disabled [`rule-selector-property-disallowed-list`](https://github.com/stylelint/stylelint/tree/main/lib/rules/rule-selector-property-disallowed-list) rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.1.0...v2.2.0)
 
 ## [2.1.0] - 2021.11.07
 
@@ -23,7 +64,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - [eslint] [`eslint-plugin-jsx-a11y`](https://www.npmjs.com/package/eslint-plugin-jsx-a11y) has been removed, because it seems not to be regularly maintained anymore, which blocks us from updating to ESLint v8
 - [eslint] [`eslint-plugin-promise`](https://www.npmjs.com/package/eslint-plugin-promise) has been removed, because it seems not to be regularly maintained anymore, which blocks us from updating to ESLint v8
-- [eslint] [`eslint-plugin-react`](https://www.npmjs.com/package/eslint-plugin-jsx-a11y) has been removed, because it's relying on unmaintained dependencies, which blocks us from updating to ESLint v8
+- [eslint] [`eslint-plugin-react`](https://www.npmjs.com/package/eslint-plugin-react) has been removed, because it's relying on unmaintained dependencies, which blocks us from updating to ESLint v8
 - [stylelint] [`stylelint-declaration-block-no-ignored-properties`](https://www.npmjs.com/package/stylelint-declaration-block-no-ignored-properties) has been removed, because it seems not to be regularly maintained anymore, which blocks us from updating to Stylelint v14
 - [stylelint] [`stylelint-use-nesting`](https://www.npmjs.com/package/stylelint-use-nesting) has been removed, because it seems not to be regularly maintained anymore, which blocks us from updating to Stylelint v14
 
