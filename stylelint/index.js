@@ -12,6 +12,7 @@ module.exports = {
 	reportDescriptionlessDisables: true,
 	customSyntax: 'postcss-scss',
 	plugins: [
+		'stylelint-declaration-block-no-ignored-properties',
 		'stylelint-order',
 		'stylelint-scss',
 		'stylelint-selector-no-empty',
@@ -242,6 +243,7 @@ module.exports = {
 		],
 		'property-no-unknown': true,
 		'property-no-vendor-prefix': true,
+		'rule-selector-property-disallowed-list': null,
 		'rule-empty-line-before': [
 			'always-multi-line',
 			{
@@ -314,6 +316,13 @@ module.exports = {
 		'value-list-comma-space-before': 'never',
 		'value-list-max-empty-lines': 0,
 		'value-no-vendor-prefix': true,
+
+		/**
+		 * stylelint-declaration-block-no-ignored-properties
+		 *
+		 * @see https://www.npmjs.com/package/stylelint-declaration-block-no-ignored-properties
+		 */
+		'plugin/declaration-block-no-ignored-properties': true,
 
 		/**
 		 * stylelint-high-performance-animation
@@ -839,6 +848,7 @@ module.exports = {
 		'scss/at-mixin-pattern': '^[a-z]+(-[a-z]+)*$',
 		'scss/at-rule-conditional-no-parentheses': true,
 		'scss/at-rule-no-unknown': true,
+		'scss/at-use-no-unnamespaced': true,
 		'scss/comment-no-empty': true,
 		'scss/comment-no-loud': true,
 		'scss/declaration-nested-properties-no-divided-groups': true,
@@ -862,6 +872,7 @@ module.exports = {
 		],
 		'scss/dollar-variable-first-in-block': [true, { ignore: ['comments', 'imports'] }],
 		'scss/dollar-variable-no-missing-interpolation': true,
+		'scss/dollar-variable-no-namespaced-assignment': true,
 		'scss/dollar-variable-pattern': '^[a-z]+(-[a-z]+)*$',
 		'scss/double-slash-comment-empty-line-before': [
 			'always',

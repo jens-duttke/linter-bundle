@@ -88,6 +88,8 @@ module.exports = {
 				'jest/prefer-expect-resolves': 'off', // We prefer `expect(await promise)` enforced by 'jest/no-restricted-matchers'
 				'jest/prefer-hooks-on-top': 'error',
 				'jest/require-hook': 'error',
+				'jest/prefer-comparison-matcher': 'error',
+				'jest/prefer-equality-matcher': 'error',
 				'jest/prefer-spy-on': 'error',
 				'jest/prefer-strict-equal': 'error',
 				'jest/prefer-to-be': 'error',

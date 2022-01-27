@@ -22,7 +22,10 @@ module.exports = {
 		'eslint-comments',
 		'functional',
 		'import',
+		'jsx-a11y',
+		'promise',
 		'react-hooks',
+		'react',
 		'unicorn'
 	],
 	extends: [
@@ -639,7 +642,10 @@ module.exports = {
 		'@typescript-eslint/no-require-imports': 'error',
 		'@typescript-eslint/no-shadow': 'error',
 		'@typescript-eslint/no-this-alias': 'error',
-		'@typescript-eslint/no-throw-literal': 'error',
+		'@typescript-eslint/no-throw-literal': ['error', {
+			allowThrowingAny: false,
+			allowThrowingUnknown: false
+		}],
 		'@typescript-eslint/no-type-alias': ['off', { // @todo There should be an option like 'sub-in-unions-and-intersections', which allows `type A = (string | number)[];`
 			allowAliases: 'always',
 			allowCallbacks: 'always',
@@ -764,7 +770,7 @@ module.exports = {
 				'workbox-window/utils/WorkboxEvent'
 			]
 		}],
-		'import/no-import-module-exports': 'off', // @todo The rule reports files, which don't use `exports`. This must be a bug, report it!
+		'import/no-import-module-exports': 'error',
 		'import/no-mutable-exports': 'error',
 		'import/no-named-as-default-member': 'error',
 		'import/no-named-as-default': 'error',
@@ -810,6 +816,43 @@ module.exports = {
 		'import/unambiguous': 'off',
 
 		/**
+		 * eslint-plugin-jsx-a11y
+		 *
+		 * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y
+		 */
+		'jsx-a11y/alt-text': 'error',
+		'jsx-a11y/anchor-has-content': 'error',
+		'jsx-a11y/anchor-is-valid': 'error',
+		'jsx-a11y/aria-activedescendant-has-tabindex': 'error',
+		'jsx-a11y/aria-props': 'error',
+		'jsx-a11y/aria-proptypes': 'error',
+		'jsx-a11y/aria-role': 'error',
+		'jsx-a11y/aria-unsupported-elements': 'error',
+		'jsx-a11y/autocomplete-valid': 'error',
+		'jsx-a11y/click-events-have-key-events': 'error',
+		'jsx-a11y/heading-has-content': 'error',
+		'jsx-a11y/html-has-lang': 'off', // <html> elements set by react-helmet automatically have a lang attribute set
+		'jsx-a11y/iframe-has-title': 'error',
+		'jsx-a11y/img-redundant-alt': 'error',
+		'jsx-a11y/interactive-supports-focus': 'error',
+		'jsx-a11y/label-has-associated-control': 'error',
+		'jsx-a11y/media-has-caption': 'error',
+		'jsx-a11y/mouse-events-have-key-events': 'error',
+		'jsx-a11y/no-access-key': 'off', // If you explicitly specify an access key, you usually have a reason for this, so it should not be prevented by a rule
+		'jsx-a11y/no-autofocus': ['error', { ignoreNonDOM: true }],
+		'jsx-a11y/no-distracting-elements': 'error',
+		'jsx-a11y/no-interactive-element-to-noninteractive-role': 'error',
+		'jsx-a11y/no-noninteractive-element-interactions': 'error',
+		'jsx-a11y/no-noninteractive-element-to-interactive-role': 'error',
+		'jsx-a11y/no-noninteractive-tabindex': 'error',
+		'jsx-a11y/no-redundant-roles': 'error',
+		'jsx-a11y/no-static-element-interactions': 'error',
+		'jsx-a11y/role-has-required-aria-props': 'error',
+		'jsx-a11y/role-supports-aria-props': 'error',
+		'jsx-a11y/scope': 'error',
+		'jsx-a11y/tabindex-no-positive': 'error',
+
+		/**
 		 * eslint-plugin-eslint-comments
 		 *
 		 * @see https://mysticatea.github.io/eslint-plugin-eslint-comments/
@@ -823,6 +866,26 @@ module.exports = {
 		'eslint-comments/no-restricted-disable': 'off',
 		'eslint-comments/no-use': 'off',
 		'eslint-comments/require-description': ['error', { ignore: ['eslint-enable'] }],
+
+		/**
+		 * eslint-plugin-promise
+		 *
+		 * @see https://github.com/xjamundx/eslint-plugin-promise
+		 */
+		'promise/always-return': 'off', // If the result of an `.then()` is not used, there is no need to return something.
+		'promise/avoid-new': 'off',
+		'promise/catch-or-return': 'error',
+		'promise/no-callback-in-promise': 'off',
+		'promise/no-native': 'off',
+		'promise/no-nesting': 'off',
+		'promise/no-new-statics': 'error',
+		'promise/no-promise-in-callback': 'off',
+		'promise/no-return-in-finally': 'error',
+		'promise/no-return-wrap': 'error',
+		'promise/param-names': 'off', // @todo Disabled until this issue is fixed: https://github.com/xjamundx/eslint-plugin-promise/issues/206
+		'promise/prefer-await-to-callbacks': 'off', // It's not always possible to use avoid callbacks.
+		'promise/prefer-await-to-then': 'off', // Depending on the use-case `.then()`/`.catch()` might be easier to understand
+		'promise/valid-params': 'off', // TypeScript ensures that
 
 		/**
 		 * eslint-plugin-unicorn
@@ -852,11 +915,12 @@ module.exports = {
 		'unicorn/import-style': 'error',
 		'unicorn/new-for-builtins': 'error',
 		'unicorn/no-abusive-eslint-disable': 'error',
-		'unicorn/no-array-callback-reference': 'off', // If I use functions, they are specially developed for this use-case
+		'unicorn/no-array-callback-reference': 'off', // If I use functions, they are the best option for this use-case
 		'unicorn/no-array-for-each': 'error',
 		'unicorn/no-array-method-this-argument': 'error',
 		'unicorn/no-array-push-push': 'error',
 		'unicorn/no-array-reduce': ['error', { allowSimpleOperations: true }],
+		'unicorn/no-await-expression-member': 'error',
 		'unicorn/no-console-spaces': 'error',
 		'unicorn/no-document-cookie': 'error',
 		'unicorn/no-empty-file': 'error',
@@ -872,11 +936,13 @@ module.exports = {
 		'unicorn/no-object-as-default-parameter': 'error',
 		'unicorn/no-process-exit': 'error',
 		'unicorn/no-static-only-class': 'error',
+		'unicorn/no-thenable': 'error',
 		'unicorn/no-this-assignment': 'error',
 		'unicorn/no-unreadable-array-destructuring': 'error',
 		'unicorn/no-unsafe-regex': 'off',
 		'unicorn/no-unused-properties': 'error',
 		'unicorn/no-useless-fallback-in-spread': 'error',
+		'unicorn/no-useless-promise-resolve-reject': 'error',
 		'unicorn/no-invalid-remove-event-listener': 'error',
 		'unicorn/no-useless-length-check': 'error',
 		'unicorn/no-useless-spread': 'error',
@@ -891,6 +957,7 @@ module.exports = {
 		'unicorn/prefer-array-index-of': 'error',
 		'unicorn/prefer-array-some': 'error',
 		'unicorn/prefer-at': 'off', // @todo Disabled for now, since `at` is not supported by TypeScript type definitions yet.
+		'unicorn/prefer-code-point': 'error',
 		'unicorn/prefer-date-now': 'error',
 		'unicorn/prefer-default-parameters': 'error',
 		'unicorn/prefer-dom-node-append': 'error',
@@ -899,13 +966,14 @@ module.exports = {
 		'unicorn/prefer-dom-node-text-content': 'error',
 		'unicorn/prefer-export-from': 'error',
 		'unicorn/prefer-includes': 'error',
+		'unicorn/prefer-json-parse-buffer': 'error',
 		'unicorn/prefer-keyboard-event-key': 'error',
 		'unicorn/prefer-math-trunc': 'error',
 		'unicorn/prefer-modern-dom-apis': 'error',
 		'unicorn/prefer-module': 'off',
 		'unicorn/prefer-negative-index': 'error',
 		'unicorn/prefer-number-properties': 'error',
-		'unicorn/prefer-object-has-own': 'error',
+		'unicorn/prefer-object-has-own': 'off', // Not widely supported yet. Can be activated in 2024
 		'unicorn/prefer-object-from-entries': 'error',
 		'unicorn/prefer-optional-catch-binding': 'error',
 		'unicorn/prefer-prototype-methods': 'error',
@@ -923,6 +991,7 @@ module.exports = {
 		'unicorn/prefer-regexp-test': 'error',
 		'unicorn/prefer-type-error': 'error',
 		'unicorn/prevent-abbreviations': ['error', { ignore: ['args', 'i', 'j', 'i18n', 'ref', 'Ref', 'params', 'props', 'Props'] }],
+		'unicorn/relative-url-style': 'error',
 		'unicorn/require-array-join-separator': 'error',
 		'unicorn/require-number-to-fixed-digits-argument': 'error',
 		'unicorn/require-post-message-target-origin': 'off', // False-positive with Workers which don't support a `targetOrigin`
