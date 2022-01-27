@@ -121,6 +121,7 @@ const jobs = getTasksToRun(process.argv.splice(2)).map(({ taskName, config }) =>
 	throw new Error(`"${taskName}" is not a valid task.`);
 });
 
+// eslint-disable-next-line unicorn/prefer-top-level-await -- The minimum required Node.js version is v14.8, but we are also support down till v14.0
 void (async () => {
 	for (const { jobTitle, taskSetup, job } of jobs) {
 		process.stdout.write(jobTitle);
