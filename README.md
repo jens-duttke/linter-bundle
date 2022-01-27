@@ -28,8 +28,11 @@ This setup is using the following additional plugins:
 - [eslint-plugin-import](https://www.npmjs.com/package/eslint-plugin-import)
 - [eslint-plugin-jest](https://www.npmjs.com/package/eslint-plugin-jest)
 - [eslint-plugin-jsdoc](https://www.npmjs.com/package/eslint-plugin-jsdoc)
+- [eslint-plugin-jsx-a11y](https://www.npmjs.com/package/eslint-plugin-jsx-a11y)
 - [eslint-plugin-node](https://www.npmjs.com/package/eslint-plugin-node)
+- [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise)
 - [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks)
+- [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)
 - [eslint-plugin-unicorn](https://www.npmjs.com/package/eslint-plugin-unicorn)
 
 Beside that, the following additional rules are part of this bundle:
@@ -38,22 +41,19 @@ Beside that, the following additional rules are part of this bundle:
 
 ### stylelint
 
+- [stylelint-declaration-block-no-ignored-properties](https://www.npmjs.com/package/stylelint-declaration-block-no-ignored-properties)
 - [stylelint-high-performance-animation](https://www.npmjs.com/package/stylelint-high-performance-animation) (Forked version)
 - [stylelint-order](https://www.npmjs.com/package/stylelint-order)
 - [stylelint-scss](https://www.npmjs.com/package/stylelint-scss)
 - [stylelint-selector-no-empty](https://www.npmjs.com/package/stylelint-selector-no-empty)
-- [stylelint-use-logical-spec](https://www.npmjs.com/package/stylelint-use-logical-spec)
 - [stylelint-selector-tag-no-without-class](https://www.npmjs.com/package/stylelint-selector-tag-no-without-class) (Forked version)
+- [stylelint-use-logical-spec](https://www.npmjs.com/package/stylelint-use-logical-spec)
 
 ### Previously used, but now unmaintained plugins
 
 Unfortunately a couple of previously used plugins are not regularly maintained or depend on unmaintained third-party code which blocks them from updating, so they don't provide updates for the major releases of the linters (ESLint and Stylelint).
 For that reason the following plugins are not used anymore:
 
-- [eslint-plugin-jsx-a11y](https://www.npmjs.com/package/eslint-plugin-jsx-a11y) (removed on 2021-11-05)
-- [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise) (removed on 2021-11-05)
-- [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react) (removed on 2021-11-05)
-- [stylelint-declaration-block-no-ignored-properties](https://www.npmjs.com/package/stylelint-declaration-block-no-ignored-properties) (removed on 2021-11-05)
 - [stylelint-use-nesting](https://www.npmjs.com/package/stylelint-use-nesting) (removed on 2021-11-05)
 
 If these plugins are maintained again, the plugins will also be used again.
@@ -318,7 +318,7 @@ This can be done by adding these options to your `.vscode/settings.json`:
 {
   "eslint.nodePath": "./node_modules/linter-bundle/node_modules/eslint",
   "eslint.options": {
-    "configFile": "./.eslintrc.js",
+    "overrideConfigFile": "./.eslintrc.js",
     "resolvePluginsRelativeTo": "./node_modules/linter-bundle",
     "rulePaths": ["./node_modules/linter-bundle/eslint/rules"],
     "reportUnusedDisableDirectives": "error",
