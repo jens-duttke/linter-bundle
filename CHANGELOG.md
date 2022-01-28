@@ -6,7 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.3.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.3.1...HEAD)
+
+## [2.3.1] - 2022.01.28
+
+### Fixed
+
+- [eslint/overrides-javascript(-lazy)] Move `import/no-import-module-exports` rule to`overrides-javascript`
+- [eslint/overrides-gatsby] Ignore '@reach/router' in `import/no-unresolved` rule
+- [eslint] Disabled `react/require-default-props`, because of false-positive for React.forwardRef wrapped functional components
+- [eslint] Disabled `unicorn/prefer-top-level-await`, because of false-positive on environments with Node.js below v14.8
+- [eslint] Activated `allowThrowingUnknown` option of the [`@typescript-eslint/no-throw-literal`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-throw-literal.md) rule
+- [stylelint] Activate `camelCaseSvgKeywords` option of the [`value-keyword-case`](https://github.com/stylelint/stylelint/tree/main/lib/rules/value-keyword-case) rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.3.0...v2.3.1)
 
 ## [2.3.0] - 2022.01.27
 
