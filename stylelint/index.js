@@ -309,7 +309,12 @@ module.exports = {
 		'unit-case': 'lower',
 		'unit-disallowed-list': null,
 		'unit-no-unknown': true,
-		'value-keyword-case': 'lower',
+		'value-keyword-case': [
+			'lower',
+			{
+				camelCaseSvgKeywords: true
+			}
+		],
 		'value-list-comma-newline-after': 'always-multi-line',
 		'value-list-comma-newline-before': 'never-multi-line',
 		'value-list-comma-space-after': 'always-single-line',

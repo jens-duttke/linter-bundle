@@ -34,6 +34,13 @@ module.exports = {
 				'@typescript-eslint/no-confusing-void-expression': 'off', // @todo Conflicts with graphql-template strings
 
 				/**
+				 * eslint-plugin-import
+				 *
+				 * @see https://github.com/import-js/eslint-plugin-import
+				 */
+				'import/no-unresolved': ['error', { caseSensitiveStrict: true, ignore: ['@reach/router'] }],
+
+				/**
 				 * eslint-plugin-unicorn
 				 *
 				 * @see https://github.com/sindresorhus/eslint-plugin-unicorn

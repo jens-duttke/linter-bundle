@@ -88,7 +88,7 @@ module.exports = {
 				'react/prefer-stateless-function': 'error',
 				'react/prop-types': 'off',
 				'react/react-in-jsx-scope': 'error',
-				'react/require-default-props': ['error', { forbidDefaultForRequired: true, ignoreFunctionalComponents: true }], // @see https://medium.com/@matanbobi/react-defaultprops-is-dying-whos-the-contender-443c19d9e7f1
+				'react/require-default-props': ['off', { forbidDefaultForRequired: true, ignoreFunctionalComponents: true }], // @see https://medium.com/@matanbobi/react-defaultprops-is-dying-whos-the-contender-443c19d9e7f1 @todo Also disabled becaues of false-positive with React.forwardRef(), create bug report?
 				'react/require-optimization': 'error',
 				'react/require-render-return': 'error',
 				'react/self-closing-comp': 'error',

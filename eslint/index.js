@@ -644,7 +644,7 @@ module.exports = {
 		'@typescript-eslint/no-this-alias': 'error',
 		'@typescript-eslint/no-throw-literal': ['error', {
 			allowThrowingAny: false,
-			allowThrowingUnknown: false
+			allowThrowingUnknown: true
 		}],
 		'@typescript-eslint/no-type-alias': ['off', { // @todo There should be an option like 'sub-in-unions-and-intersections', which allows `type A = (string | number)[];`
 			allowAliases: 'always',
@@ -770,7 +770,7 @@ module.exports = {
 				'workbox-window/utils/WorkboxEvent'
 			]
 		}],
-		'import/no-import-module-exports': 'error',
+		'import/no-import-module-exports': 'off', // Activated only for JavaScript files
 		'import/no-mutable-exports': 'error',
 		'import/no-named-as-default-member': 'error',
 		'import/no-named-as-default': 'error',
@@ -987,7 +987,7 @@ module.exports = {
 		'unicorn/prefer-string-trim-start-end': 'error',
 		'unicorn/prefer-switch': 'error',
 		'unicorn/prefer-ternary': 'off', // We prefer readability over saving a few chars
-		'unicorn/prefer-top-level-await': 'error',
+		'unicorn/prefer-top-level-await': 'off', // @todo There should be a detection that this option is only activated on Node.js v14.8 environments and above (Check for "engine" property in package.json, and "node -v")
 		'unicorn/prefer-regexp-test': 'error',
 		'unicorn/prefer-type-error': 'error',
 		'unicorn/prevent-abbreviations': ['error', { ignore: ['args', 'i', 'j', 'i18n', 'ref', 'Ref', 'params', 'props', 'Props'] }],

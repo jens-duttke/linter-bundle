@@ -42,6 +42,7 @@ module.exports = {
 				 * @see https://github.com/import-js/eslint-plugin-import
 				 */
 				'import/no-commonjs': 'off',
+				'import/no-import-module-exports': 'error',
 				'import/no-internal-modules': 'off',
 				'import/no-nodejs-modules': 'off',
 
