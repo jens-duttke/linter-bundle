@@ -6,7 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.3.1...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.4.0...HEAD)
+
+## [2.4.0] - 2022.02.09
+
+- [eslint] Updated `@typescript-eslint/eslint-plugin` from v5.10.1 to v5.11.0
+- [eslint] Updated `eslint` from v8.7.0 to v8.8.0
+- [eslint] Updated `eslint-plugin-functional` from v4.1.1 to v4.2.0
+- [eslint] Updated `eslint-plugin-jest` from v26.0.0 to v26.1.0
+- [eslint] Updated `eslint-plugin-jsdoc` from v37.7.0 to v37.8.0
+- [markdownlint] Updated `markdownlint-cli` from v0.30.0 to v0.31.1, which adds the new rules `MD049` and `MD050` for consistent emphasis/strong style, and improves the rules `MD007`/`MD010`/`MD032`/`MD033`/`MD035`/`MD037`/`MD039`
+- [stylelint] Updated `stylelint` from v14.3.0 to v14.4.0
+- [eslint] Activated `unusedExports` option of the [`import/no-unused-modules`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-unused-modules.md) rule
+- [eslint] Activate [`@typescript-eslint/explicit-function-return-type`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/explicit-function-return-type.md) rule
+- [eslint/react] Add React class methods (`componentDidMount`, `render` etc.) to the allowed names in the [`@typescript-eslint/explicit-function-return-type`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/explicit-function-return-type.md) rule
+- [eslint/jest] Make use of new [`no-conditional-in-test`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/no-conditional-in-test.md) rule, which deprecates `no-if`
+- [eslint/jest] Make use of new [`prefer-snapshot-hint`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/prefer-snapshot-hint.md) rule
+- [stylelint] Added but disabled new [`function-no-unknown`](https://github.com/stylelint/stylelint/blob/main/lib/rules/function-no-unknown/README.md) rule, because of false positives
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.3.1...v2.4.0)
 
 ## [2.3.1] - 2022.01.28
 

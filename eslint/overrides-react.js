@@ -15,6 +15,19 @@ module.exports = {
 				 * @see https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules
 				 */
 				'@typescript-eslint/member-ordering': 'off', // For React components we are using react/sort-comp
+				'@typescript-eslint/explicit-function-return-type': ['error', {
+					allowedNames: [
+						'componentDidCatch',
+						'componentDidMount',
+						'componentDidUpdate',
+						'componentWillUnmount',
+						'getDerivedStateFromError',
+						'getDerivedStateFromProps',
+						'getSnapshotBeforeUpdate',
+						'render',
+						'shouldComponentUpdate'
+					]
+				}],
 
 				/**
 				 * eslint-plugin-react-hooks

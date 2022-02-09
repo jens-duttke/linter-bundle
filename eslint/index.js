@@ -424,7 +424,7 @@ module.exports = {
 		'@typescript-eslint/consistent-type-exports': 'error',
 		'@typescript-eslint/consistent-type-imports': ['error', { disallowTypeAnnotations: false }],
 		'@typescript-eslint/dot-notation': 'error',
-		'@typescript-eslint/explicit-function-return-type': 'off', // @todo Disabled till we can specify exceptions (React-default class methods, like render())
+		'@typescript-eslint/explicit-function-return-type': 'error',
 		'@typescript-eslint/explicit-member-accessibility': ['error', {
 			ignoredMethodNames: [
 				'constructor',
@@ -789,7 +789,7 @@ module.exports = {
 			]
 		}],
 		'import/no-unresolved': ['error', { caseSensitiveStrict: true }],
-		'import/no-unused-modules': 'error',
+		'import/no-unused-modules': ['error', { unusedExports: true }],
 		'import/no-useless-path-segments': 'error',
 		'import/no-webpack-loader-syntax': 'off', // Indeed, you should avoid that, but if we do it, we have a reason for it
 		'import/order': ['error', {
