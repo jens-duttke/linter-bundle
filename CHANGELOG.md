@@ -14,7 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Updated `eslint` from v8.7.0 to v8.8.0
 - [eslint] Updated `eslint-plugin-functional` from v4.1.1 to v4.2.0
 - [eslint] Updated `eslint-plugin-jest` from v26.0.0 to v26.1.0
-- [eslint] Updated `eslint-plugin-jsdoc` from v37.7.0 to v37.8.0
+- [eslint] Updated `eslint-plugin-jsdoc` from v37.7.0 to v37.8.1
 - [markdownlint] Updated `markdownlint-cli` from v0.30.0 to v0.31.1, which adds the new rules `MD049` and `MD050` for consistent emphasis/strong style, and improves the rules `MD007`/`MD010`/`MD032`/`MD033`/`MD035`/`MD037`/`MD039`
 - [stylelint] Updated `stylelint` from v14.3.0 to v14.4.0
 - [eslint] Activated `unusedExports` option of the [`import/no-unused-modules`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-unused-modules.md) rule
