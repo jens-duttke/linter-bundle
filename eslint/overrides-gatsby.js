@@ -87,6 +87,7 @@ module.exports = {
 				 * @see https://github.com/import-js/eslint-plugin-import
 				 */
 				'import/no-default-export': 'off',
+				'import/no-unused-modules': ['error', { missingExports: true }],
 
 				/**
 				 * eslint-plugin-unicorn
