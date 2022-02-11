@@ -6,7 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.4.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.5.0...HEAD)
+
+## [2.5.0] - 2022.02.11
+
+- [eslint] Updated `eslint-plugin-jsdoc` from v37.8.1 to v37.8.2
+- [stylelint] Updated `stylelint` from v14.4.0 to v14.5.0
+- [eslint/overrides-gatsby] Disabled `unusedExports` and enabled `missingExports` for the [`import/no-unused-modules`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-unused-modules.md) rule, for `src/pages/*.tsx` files.
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.4.0...v2.5.0)
 
 ## [2.4.0] - 2022.02.09
 
