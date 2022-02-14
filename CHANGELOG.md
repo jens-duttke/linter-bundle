@@ -6,7 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.5.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.6.0...HEAD)
+
+## [2.6.0] - 2022.02.14
+
+- [eslint] Updated `@typescript-eslint/eslint-plugin` from v5.11.0 to v5.12.0
+- [eslint] Updated `@typescript-eslint/parser` from v5.11.0 to v5.12.0
+- [eslint] Updated `eslint` from v8.8.0 to v8.9.0
+- [eslint] Updated `eslint-plugin-jsdoc` from v37.8.2 to v37.9.1
+- [eslint] Ignore `generics` in [@typescript-eslint/comma-dangle](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/comma-dangle.md) to allow [generic component definitions for function components](https://wanago.io/2020/03/09/functional-react-components-with-generic-props-in-typescript/#crayon-620a96e97d44a141656396)
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.5.0...v2.6.0)
 
 ## [2.5.0] - 2022.02.11
 
