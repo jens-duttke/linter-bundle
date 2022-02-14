@@ -416,7 +416,9 @@ module.exports = {
 		}],
 		'@typescript-eslint/brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
 		'@typescript-eslint/class-literal-property-style': 'error',
-		'@typescript-eslint/comma-dangle': ['error', 'never'],
+		'@typescript-eslint/comma-dangle': ['error', {
+			generics: 'ignore'
+		}],
 		'@typescript-eslint/comma-spacing': 'error',
 		'@typescript-eslint/consistent-indexed-object-style': 'error',
 		'@typescript-eslint/consistent-type-assertions': 'error',
