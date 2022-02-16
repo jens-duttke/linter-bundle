@@ -6,7 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.6.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.7.0...HEAD)
+
+## [2.7.0] - 2022.02.16
+
+- [eslint] Update `eslint-plugin-jest` from v26.1.0 to v26.1.1
+- [stylelint] Update `stylelint`  from v14.5.0 to v14.5.1
+- [eslint] Activate `ignoreUsedVariables` option of [unicorn/prefer-export-from](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-export-from.md) rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.6.0...v2.7.0)
 
 ## [2.6.0] - 2022.02.14
 
