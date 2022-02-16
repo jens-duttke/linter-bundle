@@ -966,7 +966,7 @@ module.exports = {
 		'unicorn/prefer-dom-node-dataset': 'off', // `setAttribute` is faster than `dataset`. See https://www.measurethat.net/Benchmarks/Show/7740/0/classname-vs-setattribute-vs-classlist-vs-dataset
 		'unicorn/prefer-dom-node-remove': 'error',
 		'unicorn/prefer-dom-node-text-content': 'error',
-		'unicorn/prefer-export-from': 'error',
+		'unicorn/prefer-export-from': ['error', { ignoreUsedVariables: true }],
 		'unicorn/prefer-includes': 'error',
 		'unicorn/prefer-json-parse-buffer': 'error',
 		'unicorn/prefer-keyboard-event-key': 'error',
