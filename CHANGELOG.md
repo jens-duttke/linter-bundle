@@ -6,13 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.7.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.8.0...HEAD)
+
+## [2.8.0] - 2022.02.18
+
+- [eslint] Update `eslint-plugin-jsdoc` from v37.9.1 to v37.9.4
+- [eslint] Update `eslint-plugin-unicorn` from v40.1.0 to v41.0.0
+- [eslint] Make use of [`unicorn/text-encoding-identifier-case`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/text-encoding-identifier-case.md) rule
+- [stylelint] Fixed disabling of [`function-no-unknown`](https://github.com/stylelint/stylelint/blob/main/lib/rules/function-no-unknown/README.md) rule, because of false positives
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.7.0...v2.8.0)
 
 ## [2.7.0] - 2022.02.16
 
 - [eslint] Update `eslint-plugin-jest` from v26.1.0 to v26.1.1
 - [stylelint] Update `stylelint`  from v14.5.0 to v14.5.1
-- [eslint] Activate `ignoreUsedVariables` option of [unicorn/prefer-export-from](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-export-from.md) rule
+- [eslint] Activate `ignoreUsedVariables` option of [`unicorn/prefer-export-from`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-export-from.md) rule
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.6.0...v2.7.0)
 
@@ -22,7 +31,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Updated `@typescript-eslint/parser` from v5.11.0 to v5.12.0
 - [eslint] Updated `eslint` from v8.8.0 to v8.9.0
 - [eslint] Updated `eslint-plugin-jsdoc` from v37.8.2 to v37.9.1
-- [eslint] Ignore `generics` in [@typescript-eslint/comma-dangle](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/comma-dangle.md) to allow [generic component definitions for function components](https://wanago.io/2020/03/09/functional-react-components-with-generic-props-in-typescript/#crayon-620a96e97d44a141656396)
+- [eslint] Ignore `generics` in [`@typescript-eslint/comma-dangle`](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/comma-dangle.md) to allow [generic component definitions for function components](https://wanago.io/2020/03/09/functional-react-components-with-generic-props-in-typescript/#crayon-620a96e97d44a141656396)
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.5.0...v2.6.0)
 
