@@ -183,7 +183,7 @@ module.exports = {
 		'function-linear-gradient-no-nonstandard-direction': true,
 		'function-max-empty-lines': 0,
 		'function-name-case': 'lower',
-		'function-no-unknown': false, // @todo Create issue for false positives for "color.scale". Need this be covered by the `ignoreFunctions` option?
+		'function-no-unknown': null, // @todo Create issue for false positives for "color.scale". Need this be covered by the `ignoreFunctions` option?
 		'function-parentheses-newline-inside': 'always-multi-line',
 		'function-parentheses-space-inside': 'never-single-line',
 		'function-url-no-scheme-relative': true,
