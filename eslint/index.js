@@ -1005,7 +1005,7 @@ module.exports = {
 			}
 		}],
 		'unicorn/template-indent': 'error',
-		'unicorn/text-encoding-identifier-case': 'error',
+		'unicorn/text-encoding-identifier-case': 'off',
 		'unicorn/throw-new-error': 'error'
 	}
 };

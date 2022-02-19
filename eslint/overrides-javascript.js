@@ -109,7 +109,8 @@ module.exports = {
 				'unicorn/no-process-exit': 'off', // node/no-process-exit
 				'unicorn/prefer-module': 'off', // @todo Requires Node.js v13.2. Activate in 2023
 				'unicorn/prefer-node-protocol': 'off', // @todo Requires Node.js v16. Activate in 2025
-				'unicorn/prevent-abbreviations': ['error', { ignore: ['args', 'dev', 'env', 'i', 'j', 'i18n', 'pkg', 'ref', 'Ref', 'req', 'res', 'setupDevServerMiddleware'] }]
+				'unicorn/prevent-abbreviations': ['error', { ignore: ['args', 'dev', 'env', 'i', 'j', 'i18n', 'pkg', 'ref', 'Ref', 'req', 'res', 'setupDevServerMiddleware'] }],
+				'unicorn/text-encoding-identifier-case': 'off'
 			}
 		}
 	]
