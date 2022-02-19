@@ -6,7 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.8.3...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.8.4...HEAD)
+
+## [2.8.4] - 2022.02.19
+
+- [eslint] Disabled [`import/no-unused-modules`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-unused-modules.md) rule, because of false positives with type exports.
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.8.3...v2.8.4)
 
 ## [2.8.3] - 2022.02.19
 
