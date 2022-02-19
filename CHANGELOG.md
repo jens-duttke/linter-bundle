@@ -6,7 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.8.2...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.8.3...HEAD)
+
+## [2.8.3] - 2022.02.19
+
+- [eslint/overrides-react] Disable [`react/no-unused-class-component-methods`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unused-class-component-methods.md) rule, because of false positives with public methods.
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.8.2...v2.8.3)
 
 ## [2.8.2] - 2022.02.19
 
