@@ -91,7 +91,7 @@ module.exports = {
 				'react/no-unknown-property': 'error',
 				'react/no-unsafe': 'error',
 				'react/no-unstable-nested-components': 'error',
-				'react/no-unused-class-component-methods': 'error',
+				'react/no-unused-class-component-methods': 'off', // @todo False-positives with public methods.
 				'react/no-unused-prop-types': 'error',
 				'react/no-unused-state': 'error',
 				'react/no-will-update-set-state': 'error',
