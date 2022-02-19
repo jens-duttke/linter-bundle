@@ -791,7 +791,7 @@ module.exports = {
 			]
 		}],
 		'import/no-unresolved': ['error', { caseSensitiveStrict: true }],
-		'import/no-unused-modules': ['error', { unusedExports: true }],
+		'import/no-unused-modules': ['off', { unusedExports: true }], // Disabled because of false-positive with `export type { ... }` + `import type { ... }`
 		'import/no-useless-path-segments': 'error',
 		'import/no-webpack-loader-syntax': 'off', // Indeed, you should avoid that, but if we do it, we have a reason for it
 		'import/order': ['error', {
