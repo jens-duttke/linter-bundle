@@ -6,7 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.8.1...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.8.2...HEAD)
+
+## [2.8.2] - 2022.02.19
+
+- [eslint] Disable `@typescript-eslint/no-unnecessary-type-arguments` rule, because of false positives with `React.FunctionComponent` generics
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.8.1...v2.8.2)
 
 ## [2.8.1] - 2022.02.19
 
