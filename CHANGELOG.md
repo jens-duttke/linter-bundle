@@ -6,13 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.8.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.8.1...HEAD)
+
+## [2.8.1] - 2022.02.19
+
+- [eslint/overrides-javascript] Use [`unicorn/text-encoding-identifier-case`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/text-encoding-identifier-case.md) rule, only in JavaScript files.
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.8.0...v2.8.1)
 
 ## [2.8.0] - 2022.02.18
 
 - [eslint] Update `eslint-plugin-jsdoc` from v37.9.1 to v37.9.4
 - [eslint] Update `eslint-plugin-unicorn` from v40.1.0 to v41.0.0
-- [eslint] Make use of [`unicorn/text-encoding-identifier-case`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/text-encoding-identifier-case.md) rule
+- [eslint] Make use of new [`unicorn/text-encoding-identifier-case`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/text-encoding-identifier-case.md) rule
 - [stylelint] Fixed disabling of [`function-no-unknown`](https://github.com/stylelint/stylelint/blob/main/lib/rules/function-no-unknown/README.md) rule, because of false positives
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.7.0...v2.8.0)
