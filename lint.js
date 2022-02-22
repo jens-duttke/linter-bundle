@@ -10,8 +10,9 @@ const path = require('path');
 const tty = require('tty');
 
 /** @typedef {{ taskName: string; config: Partial<Record<string, (string | true)[]>>; }} TaskNameAndConfig */
-/** @typedef {TaskNameAndConfig & { command: string; options?: import('child_process').ExecOptions; }} TaskSetup */
-/** @typedef {{ jobTitle: string; taskSetup: TaskSetup; job: Promise<{ code: number; stdout: string; stderr: string; runtime: number; }>; }} Job */
+/** @typedef {TaskNameAndConfig & { command: string; options?: childProcess.ExecOptions; }} TaskSetup */
+/** @typedef {{ code: number; stdout: string; stderr: string; runtime: number; }} ProcessResult */
+/** @typedef {{ jobTitle: string; taskSetup: TaskSetup; job: Promise<ProcessResult>; }} Job */
 
 const isTerminal = tty.isatty(1);
 
@@ -248,33 +249,44 @@ function runTask (setup) {
 	return {
 		jobTitle: getJobTitle(setup),
 		taskSetup: setup,
-		job: new Promise((resolve) => {
-			const startTimestamp = performance.now();
-
-			/** @type {string[]} */
-			const stdout = [];
-
-			/** @type {string[]} */
-			const stderr = [];
-
-			const lintingProcess = childProcess.exec(setup.command, setup.options);
-
-			lintingProcess.stdout?.on('data', (/** @type {string} */data) => {
-				stdout.push(data);
-			});
-
-			lintingProcess.stderr?.on('data', (/** @type {string} */data) => {
-				stderr.push(data);
-			});
-
-			lintingProcess.on('exit', (code) => resolve({
-				code: code ?? 0,
-				stdout: stdout.join(''),
-				stderr: stderr.join(''),
-				runtime: performance.now() - startTimestamp
-			}));
-		})
+		job: runProcess(setup.command, setup.options)
 	};
+}
+
+/**
+ * Exectues a process asynchronously.
+ *
+ * @param {string} command - The process to execute.
+ * @param {childProcess.ExecOptions | undefined} options - The options of the `childProcess.exec()` method.
+ * @returns {Promise<ProcessResult>} An object containing the result of the process execution
+ */
+async function runProcess (command, options) {
+	return new Promise((resolve) => {
+		const startTimestamp = performance.now();
+
+		/** @type {string[]} */
+		const stdout = [];
+
+		/** @type {string[]} */
+		const stderr = [];
+
+		const lintingProcess = childProcess.exec(command, options);
+
+		lintingProcess.stdout?.on('data', (/** @type {string} */data) => {
+			stdout.push(data);
+		});
+
+		lintingProcess.stderr?.on('data', (/** @type {string} */data) => {
+			stderr.push(data);
+		});
+
+		lintingProcess.on('exit', (code) => resolve({
+			code: code ?? 0,
+			stdout: stdout.join(''),
+			stderr: stderr.join(''),
+			runtime: performance.now() - startTimestamp
+		}));
+	});
 }
 
 /**
