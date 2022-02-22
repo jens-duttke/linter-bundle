@@ -90,6 +90,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [2.4.0] - 2022.02.09
 
 ### Changed
+
 - [eslint] Updated `@typescript-eslint/eslint-plugin` from v5.10.1 to v5.11.0
 - [eslint] Updated `eslint` from v8.7.0 to v8.8.0
 - [eslint] Updated `eslint-plugin-functional` from v4.1.1 to v4.2.0
