@@ -6,9 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Added
+
+- `--timing` argument to show information how long each linting process was running.
+
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.8.4...HEAD)
 
 ## [2.8.4] - 2022.02.19
+
+### Changed
 
 - [eslint] Disabled [`import/no-unused-modules`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-unused-modules.md) rule, because of false positives with type exports.
 
@@ -16,11 +22,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [2.8.3] - 2022.02.19
 
+### Changed
+
 - [eslint/overrides-react] Disable [`react/no-unused-class-component-methods`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unused-class-component-methods.md) rule, because of false positives with public methods.
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.8.2...v2.8.3)
 
 ## [2.8.2] - 2022.02.19
+
+### Changed
 
 - [eslint] Disable `@typescript-eslint/no-unnecessary-type-arguments` rule, because of false positives with `React.FunctionComponent` generics
 
@@ -28,11 +38,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [2.8.1] - 2022.02.19
 
+### Changed
+
 - [eslint/overrides-javascript] Use [`unicorn/text-encoding-identifier-case`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/text-encoding-identifier-case.md) rule, only in JavaScript files.
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.8.0...v2.8.1)
 
 ## [2.8.0] - 2022.02.18
+
+### Changed
 
 - [eslint] Update `eslint-plugin-jsdoc` from v37.9.1 to v37.9.4
 - [eslint] Update `eslint-plugin-unicorn` from v40.1.0 to v41.0.0
@@ -43,6 +57,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [2.7.0] - 2022.02.16
 
+### Changed
+
 - [eslint] Update `eslint-plugin-jest` from v26.1.0 to v26.1.1
 - [stylelint] Update `stylelint`  from v14.5.0 to v14.5.1
 - [eslint] Activate `ignoreUsedVariables` option of [`unicorn/prefer-export-from`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-export-from.md) rule
@@ -50,6 +66,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.6.0...v2.7.0)
 
 ## [2.6.0] - 2022.02.14
+
+### Changed
 
 - [eslint] Updated `@typescript-eslint/eslint-plugin` from v5.11.0 to v5.12.0
 - [eslint] Updated `@typescript-eslint/parser` from v5.11.0 to v5.12.0
@@ -61,6 +79,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [2.5.0] - 2022.02.11
 
+### Changed
+
 - [eslint] Updated `eslint-plugin-jsdoc` from v37.8.1 to v37.8.2
 - [stylelint] Updated `stylelint` from v14.4.0 to v14.5.0
 - [eslint/overrides-gatsby] Disabled `unusedExports` and enabled `missingExports` for the [`import/no-unused-modules`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-unused-modules.md) rule, for `src/pages/*.tsx` files.
@@ -69,6 +89,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [2.4.0] - 2022.02.09
 
+### Changed
 - [eslint] Updated `@typescript-eslint/eslint-plugin` from v5.10.1 to v5.11.0
 - [eslint] Updated `eslint` from v8.7.0 to v8.8.0
 - [eslint] Updated `eslint-plugin-functional` from v4.1.1 to v4.2.0

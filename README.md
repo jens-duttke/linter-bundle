@@ -234,6 +234,7 @@ Below, you can find the available command line arguments and what they are doing
 Argument | Description | Example
 -|-|-
 `--verbose` | By default, the terminal output of linters is only shown if an error occurs. Use this option to show their terminal output even on success. | `--verbose`
+`--timing` | Show information how long each linting process was running. | `--timing`
 
 ### `lint tsc`
 

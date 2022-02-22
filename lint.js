@@ -11,7 +11,7 @@ const tty = require('tty');
 
 /** @typedef {{ taskName: string; config: Partial<Record<string, (string | true)[]>>; }} TaskNameAndConfig */
 /** @typedef {TaskNameAndConfig & { command: string; options?: import('child_process').ExecOptions; }} TaskSetup */
-/** @typedef {{ jobTitle: string; taskSetup: TaskSetup; job: Promise<{ code: number; stdout: string; stderr: string; }>; }} Job */
+/** @typedef {{ jobTitle: string; taskSetup: TaskSetup; job: Promise<{ code: number; stdout: string; stderr: string; runtime: number; }>; }} Job */
 
 const isTerminal = tty.isatty(1);
 
@@ -111,7 +111,8 @@ const jobs = getTasksToRun(process.argv.splice(2)).map(({ taskName, config }) =>
 				job: Promise.resolve({
 					code: 1,
 					stdout: '',
-					stderr: 'Neither a "package-lock.json" nor a "yarn.lock" have need found.'
+					stderr: 'Neither a "package-lock.json" nor a "yarn.lock" have need found.',
+					runtime: 0
 				})
 			};
 
@@ -122,11 +123,14 @@ const jobs = getTasksToRun(process.argv.splice(2)).map(({ taskName, config }) =>
 });
 
 void (async () => {
+	const totalStartTimestamp = performance.now();
+	let showTimingForAllJobs = true;
+
 	for (const { jobTitle, taskSetup, job } of jobs) {
 		process.stdout.write(jobTitle);
 
 		// eslint-disable-next-line no-await-in-loop -- Replace by `for await (const { ... } of jobs) {` as soon as Node.js supports it
-		const { code, stdout, stderr } = await job;
+		const { code, stdout, stderr, runtime } = await job;
 
 		const trimmedError = stderr.trim();
 
@@ -151,9 +155,20 @@ void (async () => {
 			}
 		}
 
+		if (taskSetup.config['timing']) {
+			process.stdout.write(`\nJob finished after ${((runtime) / 1000).toFixed(1)}s\n`);
+		}
+		else {
+			showTimingForAllJobs = false;
+		}
+
 		if (process.exitCode === undefined || code > process.exitCode) {
 			process.exitCode = code;
 		}
+	}
+
+	if (showTimingForAllJobs) {
+		process.stdout.write(`\nTask finished after ${((performance.now() - totalStartTimestamp) / 1000).toFixed(1)}s\n`);
 	}
 
 	process.stdout.write('\n');
@@ -234,6 +249,8 @@ function runTask (setup) {
 		jobTitle: getJobTitle(setup),
 		taskSetup: setup,
 		job: new Promise((resolve) => {
+			const startTimestamp = performance.now();
+
 			/** @type {string[]} */
 			const stdout = [];
 
@@ -253,7 +270,8 @@ function runTask (setup) {
 			lintingProcess.on('exit', (code) => resolve({
 				code: code ?? 0,
 				stdout: stdout.join(''),
-				stderr: stderr.join('')
+				stderr: stderr.join(''),
+				runtime: performance.now() - startTimestamp
 			}));
 		})
 	};
