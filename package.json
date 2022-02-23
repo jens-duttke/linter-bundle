@@ -32,7 +32,7 @@
 		"publish:major": "npm version major",
 		"publish:minor": "npm version minor",
 		"publish:patch": "npm version patch",
-		"lint": "node ./lint --timing tsc ts md audit --min-severity=critical",
+		"lint": "node ./lint tsc ts md audit --min-severity=critical",
 		"preversion": "npm run check-outdated && npm run stylelint-find-rules && npm run lint",
 		"postversion": "git push && git push --tags && npm publish",
 		"stylelint-find-rules": "stylelint-find-new-rules ./stylelint/index.js",
