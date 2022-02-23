@@ -235,6 +235,7 @@ Argument | Description | Example
 -|-|-
 `--verbose` | By default, the terminal output of linters is only shown if an error occurs. Use this option to show their terminal output even on success. | `--verbose`
 `--timing` | Show information how long each linting process was running. | `--timing`
+`--git` | **Experimental** Only lint (ESLint, Stylelint and Markdownlint) files which have been detected as changed (compared to the upstream branch) by Git. This can result into massive performance improvements on large code bases, but also lead to undetected issues with cross-file rules. | `--git`
 
 ### `lint tsc`
 
