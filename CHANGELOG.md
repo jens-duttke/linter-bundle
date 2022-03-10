@@ -6,7 +6,29 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.9.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.10.0...HEAD)
+
+## [2.10.0] - 2022.03.10
+
+### Changed
+
+- [stylelint] Remove `"before-comment"` exception in `scss/dollar-variable-empty-line-after` rule
+- [eslint] Updated `@typescript-eslint/eslint-plugin` from `5.12.1` to `5.14.0`
+- [eslint] Updated `@typescript-eslint/parser` from `5.12.1` to `5.14.0`
+- [eslint] Updated `eslint` from `8.9.0` to `8.10.0`jsx-key:
+- [eslint] Updated `eslint-plugin-jsdoc` from `37.9.4` to `37.9.7`
+- [eslint] Updated `eslint-plugin-react` from `7.28.0` to `7.29.3`
+- [stylelint] Updated `stylelint` from `14.5.2` to `14.5.3`
+
+### Added
+
+- [eslint] Make use of new [`@typescript-eslint/no-redundant-type-constituents`](https://typescript-eslint.io/rules/no-redundant-type-constituents/) rule
+- [eslint/override-react] Make use of new [`react/hook-use-state`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/hook-use-state.md) rule
+- [eslint/override-react] Set new `propElementValues` option to "always" for [`react/jsx-curly-brace-presence`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-brace-presence.md) rule
+- [eslint/override-react] Make use of new [`react/iframe-missing-sandbox`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/iframe-missing-sandbox.md) rule
+- [eslint/override-react] Make use of new `warnDuplicates` option of [`react/jsx-key`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-key.md) rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.9.0...v2.10.0)
 
 ## [2.9.0] - 2022.02.23
 
