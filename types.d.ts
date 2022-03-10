@@ -10,6 +10,8 @@
  * @see https://stackoverflow.com/a/68452689/4449804
  */
 
+/* eslint-disable @typescript-eslint/naming-convention -- We have to follow the naming conventions of the Linter rules here. */
+
 // @ts-expect-error -- False-positive
 declare namespace globalThis {
 	// eslint-disable-next-line no-inner-declarations, vars-on-top, no-var -- False-positives
