@@ -873,7 +873,7 @@ module.exports = {
 		'scss/dollar-variable-empty-line-after': [
 			'always',
 			{
-				except: ['last-nested', 'before-comment', 'before-dollar-variable']
+				except: ['last-nested', 'before-dollar-variable']
 			}
 		],
 		'scss/dollar-variable-first-in-block': [true, { ignore: ['comments', 'imports'] }],
