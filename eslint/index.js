@@ -969,7 +969,7 @@ module.exports = {
 		'unicorn/prefer-dom-node-text-content': 'error',
 		'unicorn/prefer-export-from': ['error', { ignoreUsedVariables: true }],
 		'unicorn/prefer-includes': 'error',
-		'unicorn/prefer-json-parse-buffer': 'error',
+		'unicorn/prefer-json-parse-buffer': 'off', // TypeScript states that string needs to be used as of the ES specification. @see https://github.com/microsoft/TypeScript/issues/11842
 		'unicorn/prefer-keyboard-event-key': 'error',
 		'unicorn/prefer-math-trunc': 'error',
 		'unicorn/prefer-modern-dom-apis': 'error',

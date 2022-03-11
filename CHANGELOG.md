@@ -6,7 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.10.1...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.11.0...HEAD)
+
+## [2.11.0] - 2020.03.12
+
+- [eslint] Disabled [`unicorn/prefer-json-parse-buffer`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-json-parse-buffer.md) rule, as [TypeScript states](https://github.com/microsoft/TypeScript/issues/11842) that string needs to be used as of the ES specification.
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.10.1...v2.11.0)
 
 ## [2.10.1] - 2020.03.11
 
