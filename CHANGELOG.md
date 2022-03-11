@@ -6,7 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.10.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.10.1...HEAD)
+
+## [2.10.1] - 2020.03.11
+
+### Fixed
+
+- [eslint/override-react] Fix naming `warnOnDuplicates` option of [`react/jsx-key`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-key.md) rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.10.0...v2.10.1)
 
 ## [2.10.0] - 2022.03.10
 

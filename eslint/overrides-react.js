@@ -141,7 +141,7 @@ module.exports = {
 				'react/jsx-handler-names': 'off', // @todo There should be an option which checks if the function is used multiple times in a class (like this.closeTooltip()) - in that case, the 'handle' prefix should not be mandatory
 				'react/jsx-indent': ['error', 'tab', { checkAttributes: true, indentLogicalExpressions: true }],
 				'react/jsx-indent-props': ['error', 'tab'],
-				'react/jsx-key': ['error', { checkKeyMustBeforeSpread: true, warnDuplicates: true }],
+				'react/jsx-key': ['error', { checkKeyMustBeforeSpread: true, warnOnDuplicates: true }],
 				'react/jsx-max-depth': ['error', { max: 8 }],
 				'react/jsx-max-props-per-line': ['error', { maximum: { single: 5, multi: 1 } }],
 				'react/no-adjacent-inline-elements': 'off', // @todo There is an issue if inline and block elements are mixed. Simple example: `<span>Text</span><br />` here, the space between the SPAN and BR should not be forced, because a space at the end of a line does not make sense.
