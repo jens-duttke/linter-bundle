@@ -11,6 +11,8 @@ const tty = require('tty');
 
 const micromatch = require('micromatch');
 
+const { validatePackageOverrides } = require('./helper/validate-package-overrides.js');
+
 /** @typedef {{ taskName: string; config: Partial<Record<string, (string | true)[]>>; }} TaskNameAndConfig */
 /** @typedef {TaskNameAndConfig & { command: string; options?: childProcess.ExecOptions; }} TaskSetup */
 /** @typedef {{ code: number; stdout: string; stderr: string; runtime: number; }} ProcessResult */
@@ -19,6 +21,22 @@ const micromatch = require('micromatch');
 const isTerminal = tty.isatty(1);
 
 void (async () => {
+	const outdatedOverrides = validatePackageOverrides();
+
+	if (outdatedOverrides.overrides.length > 0 || outdatedOverrides.resolutions.length > 0) {
+		if (outdatedOverrides.overrides.length > 0) {
+			process.stderr.write(`Outdated "overrides" in package.json detected:\n- ${outdatedOverrides.overrides.map((dependency) => `${dependency.name}: ${dependency.configuredVersion} is configured, but ${dependency.expectedVersion} is expected`).join('\n- ')}\n\n`);
+		}
+
+		if (outdatedOverrides.resolutions.length > 0) {
+			process.stderr.write(`Outdated "resolutions" in package.json detected:\n- ${outdatedOverrides.overrides.map((dependency) => `${dependency.name}: ${dependency.configuredVersion} is configured, but ${dependency.expectedVersion} is expected`).join('\n- ')}\n\n`);
+		}
+
+		process.exitCode = 1;
+
+		return;
+	}
+
 	/** @type {{ diff: Promise<ProcessResult>; modified: Promise<ProcessResult>; deleted: Promise<ProcessResult>; } | undefined} */
 	let gitFilesProcessPromise;
 	/** @type {string[] | undefined} */
