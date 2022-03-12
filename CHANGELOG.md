@@ -10,6 +10,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [2.11.0] - 2020.03.12
 
+### Added
+
+- Ensures that the ["overrides"](https://docs.npmjs.com/cli/v8/configuring-npm/package-json#overrides) and ["resolutions"](https://classic.yarnpkg.com/en/docs/selective-version-resolutions/) configuration in the `package.json` is up-to-date for linter dependencies, to prevent errors with unknown
+  linter rules or options.
+
+### Changed
+
+- [eslint] Updated `eslint` from `8.10.0` to `8.11.0`
+- [eslint] Update `eslint-plugin-jsdoc` from `37.9.7` to `38.0.2`
 - [eslint] Disabled [`unicorn/prefer-json-parse-buffer`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-json-parse-buffer.md) rule, as [TypeScript states](https://github.com/microsoft/TypeScript/issues/11842) that string needs to be used as of the ES specification.
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.10.1...v2.11.0)
@@ -29,7 +38,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [stylelint] Remove `"before-comment"` exception in `scss/dollar-variable-empty-line-after` rule
 - [eslint] Updated `@typescript-eslint/eslint-plugin` from `5.12.1` to `5.14.0`
 - [eslint] Updated `@typescript-eslint/parser` from `5.12.1` to `5.14.0`
-- [eslint] Updated `eslint` from `8.9.0` to `8.10.0`jsx-key:
+- [eslint] Updated `eslint` from `8.9.0` to `8.10.0`
 - [eslint] Updated `eslint-plugin-jsdoc` from `37.9.4` to `37.9.7`
 - [eslint] Updated `eslint-plugin-react` from `7.28.0` to `7.29.3`
 - [stylelint] Updated `stylelint` from `14.5.2` to `14.5.3`
