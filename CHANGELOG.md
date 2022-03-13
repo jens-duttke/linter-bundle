@@ -6,9 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.11.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.11.1...HEAD)
 
-## [2.11.0] - 2020.03.12
+## [2.11.1] - 2022.03.13
+
+### Changed
+
+- [eslint] Disabled `@typescript-eslint/no-redundant-type-constituents`, because of false positives with `Promise<... | never>`
+- [eslint] Weaken `@typescript-eslint/naming-convention` rule to allow names with special characters for `objectLiteralProperty`.
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.11.0...v2.11.1)
+
+## [2.11.0] - 2022.03.12
 
 ### Added
 
@@ -18,12 +27,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - [eslint] Updated `eslint` from `8.10.0` to `8.11.0`
-- [eslint] Update `eslint-plugin-jsdoc` from `37.9.7` to `38.0.2`
+- [eslint] Updated `eslint-plugin-jsdoc` from `37.9.7` to `38.0.2`
 - [eslint] Disabled [`unicorn/prefer-json-parse-buffer`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-json-parse-buffer.md) rule, as [TypeScript states](https://github.com/microsoft/TypeScript/issues/11842) that string needs to be used as of the ES specification.
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.10.1...v2.11.0)
 
-## [2.10.1] - 2020.03.11
+## [2.10.1] - 2022.03.11
 
 ### Fixed
 
