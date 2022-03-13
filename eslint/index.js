@@ -561,8 +561,27 @@ module.exports = {
 			},
 			{
 				selector: 'objectLiteralProperty',
+				// `__html` is a property of React's `dangerouslySetInnerHTML` object
 				filter: '^__html$',
 				types: ['string'],
+				format: null
+			},
+			{
+				// Allow properties which only contain digits
+				selector: 'objectLiteralProperty',
+				filter: '^\\d+$',
+				format: null
+			},
+			{
+				// Allow empty or one-character properties
+				selector: 'objectLiteralProperty',
+				filter: '^.?$',
+				format: null
+			},
+			{
+				// Allow properties which which don't contain an underscore (to prevent usage of "UPPER_CASE") and contain atleast 4 characters
+				selector: 'objectLiteralProperty',
+				filter: '^[^_]{4,}$',
 				format: null
 			},
 			{ selector: 'typeProperty', format: ['camelCase', 'PascalCase'] },
