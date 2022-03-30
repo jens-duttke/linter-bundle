@@ -157,6 +157,7 @@ module.exports = {
 				]
 			}
 		],
+		'declaration-property-max-value': [true, { 'unprefixed-property-name': 4 }],
 		'declaration-no-important': [true, {
 			severity: 'warning'
 		}],
