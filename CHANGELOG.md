@@ -25,6 +25,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Updated `micromatch` from `4.0.4` to `4.0.5`
 - [eslint] Make use of [`destructuredArrayIgnorePattern`](https://eslint.org/docs/rules/no-unused-vars#destructuredarrayignorepattern) of `@typescript-eslint/no-unused-vars` rule, to ignore variables with leading underscore.
 - [stylelint] Make use of [`declaration-property-max-values`](https://stylelint.io/user-guide/rules/list/declaration-property-max-values/) rule, and set `unprefixed-property-name` to `4`
+- [stylelint] Replace `function-no-unknown` by `scss/function-no-unknown`
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.11.1...v2.12.0)
 

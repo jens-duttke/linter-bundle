@@ -157,7 +157,7 @@ module.exports = {
 				]
 			}
 		],
-		'declaration-property-max-value': [true, { 'unprefixed-property-name': 4 }],
+		'declaration-property-max-values': [true, { 'unprefixed-property-name': 4 }],
 		'declaration-no-important': [true, {
 			severity: 'warning'
 		}],
@@ -184,7 +184,7 @@ module.exports = {
 		'function-linear-gradient-no-nonstandard-direction': true,
 		'function-max-empty-lines': 0,
 		'function-name-case': 'lower',
-		'function-no-unknown': null, // @todo Create issue for false positives for "color.scale". Need this be covered by the `ignoreFunctions` option?
+		'function-no-unknown': null, // Implemented by scss/function-no-unknown
 		'function-parentheses-newline-inside': 'always-multi-line',
 		'function-parentheses-space-inside': 'never-single-line',
 		'function-url-no-scheme-relative': true,
@@ -891,6 +891,7 @@ module.exports = {
 		'scss/double-slash-comment-inline': null,
 		'scss/double-slash-comment-whitespace-inside': 'always',
 		'scss/function-color-relative': true,
+		'scss/function-no-unknown': true,
 		'scss/function-quote-no-quoted-strings-inside': true,
 		'scss/function-unquote-no-unquoted-strings-inside': true,
 		'scss/map-keys-quotes': 'always',
