@@ -6,7 +6,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.11.1...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.12.0...HEAD)
+
+## [2.12.0] - 2022.03.30
+
+### Changed
+
+- [eslint] Updated `@typescript-eslint` from `5.14.0` to `5.17.0`
+- [eslint] Updated `eslint` from `8.11.0` to `8.12.0`
+- [eslint] Updated `eslint-import-resolver-typescript` from `2.5.0` to `2.7.0`
+- [eslint] Updated `eslint-plugin-jest` from `26.1.1` to `26.1.3`
+- [eslint] Updated `eslint-plugin-jsdoc` from `38.0.2` to `38.1.4`
+- [eslint] Updated `eslint-plugin-react` from `7.29.3` to `7.29.4`
+- [eslint] Updated `eslint-plugin-react-hooks` from `4.3.0` to `4.4.0`
+- [eslint] Updated `eslint-plugin-unicorn` from `41.0.0` to `41.0.1`
+- [stylelint] Updated `stylelint` from `14.5.3` to `14.6.1`
+- [stylelint] Updated `stylelint-scss` from `4.1.0` to `4.2.0`
+- Updated `micromatch` from `4.0.4` to `4.0.5`
+- [eslint] Make use of [`destructuredArrayIgnorePattern`](https://eslint.org/docs/rules/no-unused-vars#destructuredarrayignorepattern) of `@typescript-eslint/no-unused-vars` rule, to ignore variables with leading underscore.
+- [stylelint] Make use of [`declaration-property-max-values`](https://stylelint.io/user-guide/rules/list/declaration-property-max-values/) rule, and set `unprefixed-property-name` to `4`
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.11.1...v2.12.0)
 
 ## [2.11.1] - 2022.03.13
 
