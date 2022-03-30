@@ -168,7 +168,7 @@ module.exports = {
 Source | Description | Rules setup
 -|-|-
 `linter-bundle/eslint` | General rule setup. This is also the base for the following **overrides**. | [View](./eslint/index.js)
-`linter-bundle/eslint/overrides-gatsby` | Settings for Gatsby-based projects. | [View](./eslint/overrides-gatsby)
+`linter-bundle/eslint/overrides-gatsby` | Settings for Gatsby-based projects. | [View](./eslint/overrides-gatsby.js)
 `linter-bundle/eslint/overrides-javascript` |  Strict settings for JavaScript files, which enforces correct types everywhere. | [View](./eslint/overrides-javascript.js)
 `linter-bundle/eslint/overrides-javascript-lazy` | Can be used instead of `overrides-javascript`. It's less strict and allows the `any` type. | [View](./eslint/overrides-javascript-lazy.js)
 `linter-bundle/eslint/overrides-jest` | Settings for projects using Jest. | [View](./eslint/overrides-jest.js)
