@@ -6,7 +6,33 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.12.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.13.0...HEAD)
+
+## [2.13.0] - 2022.04.25
+
+### Changed
+
+- [eslint] Activate `allowExpressions` option of [`@typescript-eslint/explicit-function-return-type`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/explicit-function-return-type.md) rule
+- [eslint] Updated `@typescript-eslint` from `5.17.0` to `5.20.0`
+- [eslint] Updated `eslint` from `8.12.0` to `8.14.0`
+- [eslint] Updated `eslint-import-resolver-typescript` from `2.7.0` to `2.7.1`
+- [eslint] Updated `eslint-plugin-functional` from `4.2.0` to `4.2.1`
+- [eslint] Updated `eslint-plugin-import` from `2.25.4` to `2.26.0`
+- [eslint] Updated `eslint-plugin-jest` from `26.1.3` to `26.1.5`
+- [eslint] Updated `eslint-plugin-jsdoc` from `38.1.4` to `39.2.8`
+- [eslint] Updated `eslint-plugin-unicorn` from `41.0.1` to `42.0.0`
+- [stylelint] Updated `postcss-scss` from `4.0.3` to `4.0.4`
+- [stylelint] Updated `stylelint` from `14.6.1` to `14.7.1`
+- [eslint] Activate `allowExpressions` option of [`@typescript-eslint/explicit-function-return-type`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/explicit-function-return-type.md) rule
+- [eslint/overrides-jsdoc] Set [`minLineCount` option to 2](https://github.com/gajus/eslint-plugin-jsdoc/issues/870) for `require-jsdoc` rule
+- [eslint] Reactivated the [`import/no-relative-packages`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/no-relative-packages.md) rule
+- [eslint] Make use of [`unicorn/no-useless-switch-case`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-useless-switch-case.md) rule
+- [eslint] Make use of [`unicorn/prefer-modern-math-apis`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-modern-math-apis.md) rule
+- [eslint] Make use of [`unicorn/no-unreadable-iife`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-unreadable-iife.md) rule
+- [eslint] Add but disable [`unicorn/prefer-native-coercion-functions`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-native-coercion-functions.md) rule, because this would produce inconsistency in the code and is harder to read
+- [stylelint] Set new [`selector-not-notation`](https://github.com/stylelint/stylelint/blob/main/lib/rules/selector-not-notation/README.md) rule to `"complex"`
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.12.0...v2.13.0)
 
 ## [2.12.0] - 2022.03.30
 
