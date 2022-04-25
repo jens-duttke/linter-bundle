@@ -13,7 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - [eslint] Activate `allowExpressions` option of [`@typescript-eslint/explicit-function-return-type`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/explicit-function-return-type.md) rule
-- [eslint] Updated `@typescript-eslint` from `5.17.0` to `5.20.0`
+- [eslint] Updated `@typescript-eslint` from `5.17.0` to `5.21.0`
 - [eslint] Updated `eslint` from `8.12.0` to `8.14.0`
 - [eslint] Updated `eslint-import-resolver-typescript` from `2.7.0` to `2.7.1`
 - [eslint] Updated `eslint-plugin-functional` from `4.2.0` to `4.2.1`
