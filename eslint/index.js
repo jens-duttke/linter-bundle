@@ -426,7 +426,7 @@ module.exports = {
 		'@typescript-eslint/consistent-type-exports': 'error',
 		'@typescript-eslint/consistent-type-imports': ['error', { disallowTypeAnnotations: false }],
 		'@typescript-eslint/dot-notation': 'error',
-		'@typescript-eslint/explicit-function-return-type': 'error',
+		'@typescript-eslint/explicit-function-return-type': ['error', { allowExpressions: true }],
 		'@typescript-eslint/explicit-member-accessibility': ['error', {
 			ignoredMethodNames: [
 				'constructor',
@@ -800,7 +800,7 @@ module.exports = {
 		'import/no-named-export': 'off',
 		'import/no-namespace': 'off', // @todo Enabling this produces a JavaScript error in the rule; anyhow - could that reduce the package size, because of improved tree-shaking/dead-code-elimination?
 		'import/no-nodejs-modules': 'error',
-		// 'import/no-relative-packages': 'error', -- Removed because of roll-back of eslint-plugin-import in version 1.18.0
+		'import/no-relative-packages': 'error',
 		'import/no-relative-parent-imports': 'off', // @todo Disabled because of a bug on Windows, re-enable as soon as it's resolved: https://github.com/import-js/eslint-plugin-import/issues/1644
 		'import/no-restricted-paths': 'error',
 		'import/no-self-import': 'error',
@@ -961,6 +961,7 @@ module.exports = {
 		'unicorn/no-thenable': 'error',
 		'unicorn/no-this-assignment': 'error',
 		'unicorn/no-unreadable-array-destructuring': 'error',
+		'unicorn/no-unreadable-iife': 'error',
 		'unicorn/no-unsafe-regex': 'off',
 		'unicorn/no-unused-properties': 'error',
 		'unicorn/no-useless-fallback-in-spread': 'error',
@@ -968,6 +969,7 @@ module.exports = {
 		'unicorn/no-invalid-remove-event-listener': 'error',
 		'unicorn/no-useless-length-check': 'error',
 		'unicorn/no-useless-spread': 'error',
+		'unicorn/no-useless-switch-case': 'error',
 		'unicorn/no-useless-undefined': ['error', { checkArguments: false }],
 		'unicorn/no-zero-fractions': 'error',
 		'unicorn/number-literal-case': 'error',
@@ -992,7 +994,9 @@ module.exports = {
 		'unicorn/prefer-keyboard-event-key': 'error',
 		'unicorn/prefer-math-trunc': 'error',
 		'unicorn/prefer-modern-dom-apis': 'error',
+		'unicorn/prefer-modern-math-apis': 'error',
 		'unicorn/prefer-module': 'off',
+		'unicorn/prefer-native-coercion-functions': 'off',
 		'unicorn/prefer-negative-index': 'error',
 		'unicorn/prefer-number-properties': 'error',
 		'unicorn/prefer-object-has-own': 'off', // Not widely supported yet. Can be activated in 2024

@@ -290,6 +290,7 @@ module.exports = {
 		'selector-nested-pattern': null,
 		'selector-no-qualifying-type': [true, { ignore: ['attribute', 'class'] }],
 		'selector-no-vendor-prefix': true,
+		'selector-not-notation': 'complex',
 		'selector-pseudo-class-allowed-list': null,
 		'selector-pseudo-class-case': 'lower',
 		'selector-pseudo-class-disallowed-list': null,
