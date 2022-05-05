@@ -157,7 +157,7 @@ module.exports = {
 				]
 			}
 		],
-		'declaration-property-max-values': { '/.*/': 4 },
+		'declaration-property-max-values': null, // { '/.*/': 4 }, @todo disabled because of false-positive with `padding-inline-start: #{24px + $i * 16px};` and `transition: transform, background-color, color, border-color, box-shadow;`
 		'declaration-no-important': [true, {
 			severity: 'warning'
 		}],
@@ -291,7 +291,7 @@ module.exports = {
 		'selector-nested-pattern': null,
 		'selector-no-qualifying-type': [true, { ignore: ['attribute', 'class'] }],
 		'selector-no-vendor-prefix': true,
-		'selector-not-notation': 'complex',
+		'selector-not-notation': null, // 'complex', @todo Reactivate in 2024. Disabled for now, because it depends on the project if modern Selectors Level 4 CSS can be used.
 		'selector-pseudo-class-allowed-list': null,
 		'selector-pseudo-class-case': 'lower',
 		'selector-pseudo-class-disallowed-list': null,
