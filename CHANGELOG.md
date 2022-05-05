@@ -8,6 +8,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.13.0...HEAD)
 
+## [2.14.0] - 2022.05.05
+
+### Changed
+
+- [general] Remove files from npm package which are only necessary for development
+- [eslint] Updated `eslint-import-resolver-typescript` from `2.7.0` to `2.7.1`
+- [eslint] Updated `@typescript-eslint` from `5.21.0` to `5.22.0`
+- [eslint] Updated `eslint-plugin-jsdoc` from `39.2.8` to `39.2.9`
+- [eslint] Updated `eslint-plugin-react-hooks` from `4.4.0` to `4.5.0`
+- [stylelint] Updated `stylelint` from `14.7.1` to `14.8.2`
+- [eslint] Make use of new [`@typescript-eslint/no-duplicate-enum-values`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-duplicate-enum-values.md) rule
+- [stylelint] Make use of new [`keyframe-block-no-duplicate-selectors`](https://github.com/stylelint/stylelint/blob/main/lib/rules/keyframe-block-no-duplicate-selectors/README.md) rule
+- [stylelint] In the deployment process, ensure that the used Stylelint options are valid
+- [stylelint] Fix invalid configuration of [`declaration-property-max-values`](https://github.com/stylelint/stylelint/blob/main/lib/rules/declaration-property-max-values/README.md) rule
+
 ## [2.13.0] - 2022.04.25
 
 ### Changed
@@ -26,11 +41,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Activate `allowExpressions` option of [`@typescript-eslint/explicit-function-return-type`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/explicit-function-return-type.md) rule
 - [eslint/overrides-jsdoc] Set [`minLineCount` option to 2](https://github.com/gajus/eslint-plugin-jsdoc/issues/870) for `require-jsdoc` rule
 - [eslint] Reactivated the [`import/no-relative-packages`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/no-relative-packages.md) rule
-- [eslint] Make use of [`unicorn/no-useless-switch-case`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-useless-switch-case.md) rule
-- [eslint] Make use of [`unicorn/prefer-modern-math-apis`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-modern-math-apis.md) rule
-- [eslint] Make use of [`unicorn/no-unreadable-iife`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-unreadable-iife.md) rule
+- [eslint] Make use of new [`unicorn/no-useless-switch-case`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-useless-switch-case.md) rule
+- [eslint] Make use of new [`unicorn/prefer-modern-math-apis`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-modern-math-apis.md) rule
+- [eslint] Make use of new [`unicorn/no-unreadable-iife`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-unreadable-iife.md) rule
 - [eslint] Add but disable [`unicorn/prefer-native-coercion-functions`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-native-coercion-functions.md) rule, because this would produce inconsistency in the code and is harder to read
-- [stylelint] Set new [`selector-not-notation`](https://github.com/stylelint/stylelint/blob/main/lib/rules/selector-not-notation/README.md) rule to `"complex"`
+- [stylelint] Set [`selector-not-notation`](https://github.com/stylelint/stylelint/blob/main/lib/rules/selector-not-notation/README.md) rule to `"complex"`
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.12.0...v2.13.0)
 
@@ -48,7 +63,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Updated `eslint-plugin-unicorn` from `41.0.0` to `41.0.1`
 - [stylelint] Updated `stylelint` from `14.5.3` to `14.6.1`
 - [stylelint] Updated `stylelint-scss` from `4.1.0` to `4.2.0`
-- Updated `micromatch` from `4.0.4` to `4.0.5`
+- [general] Updated `micromatch` from `4.0.4` to `4.0.5`
 - [eslint] Make use of [`destructuredArrayIgnorePattern`](https://eslint.org/docs/rules/no-unused-vars#destructuredarrayignorepattern) of `@typescript-eslint/no-unused-vars` rule, to ignore variables with leading underscore.
 - [stylelint] Make use of [`declaration-property-max-values`](https://stylelint.io/user-guide/rules/list/declaration-property-max-values/) rule, and set `unprefixed-property-name` to `4`
 - [stylelint] Replace `function-no-unknown` by `scss/function-no-unknown`
@@ -68,7 +83,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 
-- Ensures that the ["overrides"](https://docs.npmjs.com/cli/v8/configuring-npm/package-json#overrides) and ["resolutions"](https://classic.yarnpkg.com/en/docs/selective-version-resolutions/) configuration in the `package.json` is up-to-date for linter dependencies, to prevent errors with unknown
+- [general] Ensures that the ["overrides"](https://docs.npmjs.com/cli/v8/configuring-npm/package-json#overrides) and ["resolutions"](https://classic.yarnpkg.com/en/docs/selective-version-resolutions/) configuration in the `package.json` is up-to-date for linter dependencies, to prevent errors with unknown
   linter rules or options.
 
 ### Changed
@@ -119,8 +134,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 
-- `--timing` argument to show information how long each linting process was running.
-- Experimental `--git` argument to only lint (ESLint, Stylelint and Markdownlint) files which have been detected as changed (compared to the upstream branch) by Git
+- [general] `--timing` argument to show information how long each linting process was running.
+- [general] Experimental `--git` argument to only lint (ESLint, Stylelint and Markdownlint) files which have been detected as changed (compared to the upstream branch) by Git
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.8.4...v2.9.0)
 
@@ -358,7 +373,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
-- The minimum required Node.js version is v14 now
+- [general] The minimum required Node.js version is v14 now
 - [eslint] Updated `@typescript-eslint` from v4.31.0 to v4.31.1
 - [eslint] Updated `eslint-import-resolver-typescript` from v2.4.0 to v2.5.0
 - [eslint] Updated `eslint-plugin-jest` from v24.4.0 to v24.4.2
@@ -747,7 +762,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
-- By default, the terminal output of the linters is printed only in case of failure to prevent unnecessary noise. Use `--verbose` to show their output even on success.
+- [general] By default, the terminal output of the linters is printed only in case of failure to prevent unnecessary noise. Use `--verbose` to show their output even on success.
 - [stylelint] Disallow reserved ECMAScript keywords (`abstract`, `arguments`, `await`, `boolean`, `break`, `byte`, `case`, `catch`, `char`, `class`, `const`, `continue`, `debugger`, `default`, `delete`, `do`, `double`, `else`, `enum`, `eval`, `export`, `extends`, `false`, `final`, `finally`,
   `float`, `for`, `function`, `goto`, `if`, `implements`, `import`, `in`, `Infinity`, `instanceof`, `int`, `interface`, `let`, `long`, `NaN`, `native`, `new`, `null`, `package`, `private`, `protected`, `public`, `return`, `short`, `static`, `super`, `switch`, `synchronized`, `this`, `throw`,
   `throws`, `transient`, `true`, `try`, `typeof`, `undefined`, `var`, `void`, `volatile`, `while`, `with`, and `yield`) as class names
