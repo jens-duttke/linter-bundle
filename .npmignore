@@ -1,8 +1,14 @@
 .github/
 .vscode/
+src/
+
 .editorconfig
 .eslintcache
+.eslintrc.js
+.markdownlint.json
 *.log
 npm-debug.log*
+stylelint.config.js
+tsconfig.json
 vscode-eslint-1.png
 vscode-eslint-2.png
