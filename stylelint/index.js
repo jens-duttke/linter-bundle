@@ -194,6 +194,7 @@ module.exports = {
 		'function-whitespace-after': 'always',
 		'hue-degree-notation': 'number', // @todo change that to 'angle'?
 		'indentation': 'tab',
+		'keyframe-block-no-duplicate-selectors': true,
 		'keyframe-declaration-no-important': true,
 		'keyframes-name-pattern': '^[a-z]+(-[a-z]+)*\\d*$',
 		'length-zero-no-unit': true,
