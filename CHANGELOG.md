@@ -6,7 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.14.1...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.15.0...HEAD)
+
+## [2.15.0] - 2022.05.05
+
+### Changed
+
+- [stylelint] Disabled `declaration-property-max-values` rule because of false-positives.
+- [stylelint] Disabled `selector-not-notation` for now, because it depends on the project if modern Selectors Level 4 CSS can be used.
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.14.1...v2.15.0)
 
 ## [2.14.1] - 2022.05.05
 
