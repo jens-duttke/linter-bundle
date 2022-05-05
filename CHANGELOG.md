@@ -6,7 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.13.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.14.1...HEAD)
+
+## [2.14.1] - 2022.05.05
+
+### Fixed
+
+- [general] Fixed empty warning for outdated `resolutions` in `package.json`
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.14.0...v2.14.1)
 
 ## [2.14.0] - 2022.05.05
 
@@ -22,6 +30,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [stylelint] Make use of new [`keyframe-block-no-duplicate-selectors`](https://github.com/stylelint/stylelint/blob/main/lib/rules/keyframe-block-no-duplicate-selectors/README.md) rule
 - [stylelint] In the deployment process, ensure that the used Stylelint options are valid
 - [stylelint] Fix invalid configuration of [`declaration-property-max-values`](https://github.com/stylelint/stylelint/blob/main/lib/rules/declaration-property-max-values/README.md) rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.13.0...v2.14.0)
 
 ## [2.13.0] - 2022.04.25
 
