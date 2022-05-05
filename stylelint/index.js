@@ -157,7 +157,7 @@ module.exports = {
 				]
 			}
 		],
-		'declaration-property-max-values': [true, { 'unprefixed-property-name': 4 }],
+		'declaration-property-max-values': { '/.*/': 4 },
 		'declaration-no-important': [true, {
 			severity: 'warning'
 		}],
