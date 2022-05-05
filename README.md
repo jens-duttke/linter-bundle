@@ -81,6 +81,27 @@ npm install linter-bundle --save-dev
 
 #### .eslintrc.js
 
+##### Minimum configuration
+
+```js
+module.exports = {
+  extends: [
+    require.resolve('linter-bundle/eslint'),
+    // require.resolve('linter-bundle/eslint/overrides-gatsby'),
+    // require.resolve('linter-bundle/eslint/overrides-javascript'),
+    require.resolve('linter-bundle/eslint/overrides-javascript-lazy'),
+    // require.resolve('linter-bundle/eslint/overrides-jest'),
+    require.resolve('linter-bundle/eslint/overrides-jsdoc'),
+    // require.resolve('linter-bundle/eslint/overrides-react'),
+    // require.resolve('linter-bundle/eslint/overrides-storybook'),
+    // require.resolve('linter-bundle/eslint/overrides-type-declarations'),
+    // require.resolve('linter-bundle/eslint/overrides-worker')
+  ]
+};
+```
+
+##### Maximum configuration
+
 ```js
 // Sometimes it's required to adjust specific settings. These can be defined here:
 global.linterBundleSettings = {
@@ -202,7 +223,7 @@ module.exports = {
 
 #### .gitignore / .npmignore
 
-```json
+```cmd
 .eslintcache
 ```
 
@@ -389,3 +410,17 @@ To visualize the max line-length rules in VSCode, you can activate rulers, by ad
   }
 }
 ```
+
+## FAQ
+
+### How to solve the problem `Parsing error: "parserOptions.project" has been set for @typescript-eslint/parser.` ?
+
+If you get such an error message:
+
+> Parsing error: "parserOptions.project" has been set for @typescript-eslint/parser.  
+> The file does not match your project config: *[any-name]*.js.  
+> The file must be included in at least one of the projects provided.
+
+the problem is most likely, that your `tsconfig.json` does not cover your JavaScript files and that you don't have a `jsconfig.json` file in your root directory. This is required by the `@typescript-eslint` to use TypeScript for linting of JavaScript files.
+
+To solve this problem, either `"include"` your JavaScript files in your `tsconfig.json` (don't forget to set the compiler option `"checkJs"` to `true`) or create a `jsconfig.json` file in your root directory (this can be a copy of your `tsconfig.json` with an `"include"` of your JavaScript files).
