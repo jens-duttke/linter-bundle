@@ -29,7 +29,7 @@ void (async () => {
 		}
 
 		if (outdatedOverrides.resolutions.length > 0) {
-			process.stderr.write(`Outdated "resolutions" in package.json detected:\n- ${outdatedOverrides.overrides.map((dependency) => `${dependency.name}: ${dependency.configuredVersion} is configured, but ${dependency.expectedVersion} is expected`).join('\n- ')}\n\n`);
+			process.stderr.write(`Outdated "resolutions" in package.json detected:\n- ${outdatedOverrides.resolutions.map((dependency) => `${dependency.name}: ${dependency.configuredVersion} is configured, but ${dependency.expectedVersion} is expected`).join('\n- ')}\n\n`);
 		}
 
 		process.exitCode = 1;
