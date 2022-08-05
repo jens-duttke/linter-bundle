@@ -8,6 +8,36 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.15.0...HEAD)
 
+## [2.16.0] - 2022.08.05
+
+- [eslint] Updated `eslint` from `8.14.0` to `8.21.0`
+- [eslint] Updated `eslint-import-resolver-typescript` from `2.7.1` to `3.4.0`
+- [eslint] Updated `eslint-plugin-functional` from `4.2.1` to `4.2.2`
+- [eslint] Updated `eslint-plugin-jest` from `26.1.5` to `26.7.0`
+- [eslint] Updated `eslint-plugin-jsdoc` from `39.2.9` to `39.3.4`
+- [eslint] Updated `eslint-plugin-jsx-a11y` from `6.5.1` to `6.6.1`
+- [eslint] Updated `eslint-plugin-react` from `7.29.4` to `7.30.1`
+- [eslint] Updated `eslint-plugin-react-hooks` from `4.5.0` to `4.6.0`
+- [eslint] Updated `eslint-plugin-unicorn` from `42.0.0` to `43.0.2`
+- [eslint] Updated `@typescript-eslint` from `5.22.0` to `5.32.0`
+- [eslint] Remove deprecated `@typescript-eslint/no-duplicate-imports` rule
+- [eslint] Make use of [`@typescript-eslint/no-restricted-imports`](https://typescript-eslint.io/rules/no-restricted-imports/) rule
+- [eslint] Make use of [`@typescript-eslint/space-infix-ops`](https://typescript-eslint.io/rules/space-infix-ops/) rule
+- [eslint] Make use of [`@typescript-eslint/consistent-generic-constructors`](https://typescript-eslint.io/rules/consistent-generic-constructors/) rule
+- [eslint/overrides-jest] Make use of [`jest/prefer-hooks-in-order`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/prefer-hooks-in-order.md) rule
+- [eslint/overrides-jest] Make use of [`jest/max-expects`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/max-expects.md) rule
+- [eslint/overrides-jest] Make use of [`jest/prefer-mock-promise-shorthand`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/prefer-mock-promise-shorthand.md) rule
+- [eslint/overrides-react] Make use of [`react/jsx-no-leaked-render`](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-no-leaked-render.md) rule
+- [eslint] Added but disable [`unicorn/prefer-event-target`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-event-target.md) rule
+- [eslint] Make use of [`unicorn/prefer-logical-operator-over-ternary`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-logical-operator-over-ternary.md) rule
+- [eslint] Remove deprecated `unicorn/import-index` rule
+- [markdownlint] Updated `markdownlint-cli` from `0.31.1` to `0.32.1`
+- [stylelint] Updated `stylelint` from `14.8.2` to `14.9.1`
+- [stylelint] Updated `stylelint-scss` from `4.2.0` to `4.3.0`
+- [stylelint] Updated `stylelint-selector-no-empty` from `1.0.8` to `1.0.9`
+- [stylelint] Updated `stylelint-use-logical-spec` from `3.2.2` to `4.1.0`
+- [stylelint] Added but disable [`import-notation`](https://github.com/stylelint/stylelint/tree/main/lib/rules/import-notation) rule
+
 ## [2.15.0] - 2022.05.05
 
 ### Changed
@@ -30,7 +60,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - [general] Remove files from npm package which are only necessary for development
-- [eslint] Updated `eslint-import-resolver-typescript` from `2.7.0` to `2.7.1`
 - [eslint] Updated `@typescript-eslint` from `5.21.0` to `5.22.0`
 - [eslint] Updated `eslint-plugin-jsdoc` from `39.2.8` to `39.2.9`
 - [eslint] Updated `eslint-plugin-react-hooks` from `4.4.0` to `4.5.0`
@@ -126,8 +155,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - [stylelint] Remove `"before-comment"` exception in `scss/dollar-variable-empty-line-after` rule
-- [eslint] Updated `@typescript-eslint/eslint-plugin` from `5.12.1` to `5.14.0`
-- [eslint] Updated `@typescript-eslint/parser` from `5.12.1` to `5.14.0`
+- [eslint] Updated `@typescript-eslint` from `5.12.1` to `5.14.0`
 - [eslint] Updated `eslint` from `8.9.0` to `8.10.0`
 - [eslint] Updated `eslint-plugin-jsdoc` from `37.9.4` to `37.9.7`
 - [eslint] Updated `eslint-plugin-react` from `7.28.0` to `7.29.3`
@@ -147,7 +175,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
-- [eslint] Updated `@typescript-eslint/eslint-plugin` from v5.12.0 to v5.12.1
+- [eslint] Updated `@typescript-eslint` from v5.12.0 to v5.12.1
 - [stylelint] Updated `stylelint` from v14.5.1 to v14.5.2
 - [eslint] Re-activated `@typescript-eslint/no-unnecessary-type-arguments` since the false positives with `React.FunctionComponent` generics has been fixed.
 
@@ -224,8 +252,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
-- [eslint] Updated `@typescript-eslint/eslint-plugin` from v5.11.0 to v5.12.0
-- [eslint] Updated `@typescript-eslint/parser` from v5.11.0 to v5.12.0
+- [eslint] Updated `@typescript-eslint` from v5.11.0 to v5.12.0
 - [eslint] Updated `eslint` from v8.8.0 to v8.9.0
 - [eslint] Updated `eslint-plugin-jsdoc` from v37.8.2 to v37.9.1
 - [eslint] Ignore `generics` in [`@typescript-eslint/comma-dangle`](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/comma-dangle.md) to allow [generic component definitions for function components](https://wanago.io/2020/03/09/functional-react-components-with-generic-props-in-typescript/#crayon-620a96e97d44a141656396)
@@ -246,7 +273,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
-- [eslint] Updated `@typescript-eslint/eslint-plugin` from v5.10.1 to v5.11.0
+- [eslint] Updated `@typescript-eslint` from v5.10.1 to v5.11.0
 - [eslint] Updated `eslint` from v8.7.0 to v8.8.0
 - [eslint] Updated `eslint-plugin-functional` from v4.1.1 to v4.2.0
 - [eslint] Updated `eslint-plugin-jest` from v26.0.0 to v26.1.0
@@ -521,7 +548,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
-- [eslint] Updated `@typescript-eslint/eslint-plugin` from v4.26.0 to v4.26.1
+- [eslint] Updated `@typescript-eslint` from v4.26.0 to v4.26.1
 - [eslint] Activated `allowComputed` of [`import/namespace`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/namespace.md) rule
 
 ### Fixed
@@ -549,7 +576,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
-- [eslint] Updated `@typescript-eslint/eslint-plugin` from v4.25.0 to v4.26.0
+- [eslint] Updated `@typescript-eslint` from v4.25.0 to v4.26.0
 - [eslint] Updated `eslint-plugin-import` from v2.23.3 to v2.23.4
 - [eslint] Updated `eslint-plugin-jsdoc` from v35.0.0 to v35.1.2
 - [eslint] Updated `eslint-plugin-react` from v7.23.2 to v7.24.0
@@ -641,7 +668,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
-- [eslint] Updated `@typescript-eslint/parser` from v4.22.0 to v4.23.0
+- [eslint] Updated `@typescript-eslint` from v4.22.0 to v4.23.0
 - [eslint] Updated `eslint` from v7.25.0 to v7.26.0
 - [eslint] Updated `eslint-plugin-jsdoc` from v33.0.0 to v34.0.2
 - [eslint] Updated `eslint-plugin-unicorn` from v31.0.0 to v32.0.1
