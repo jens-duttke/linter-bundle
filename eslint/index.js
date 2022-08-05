@@ -347,7 +347,7 @@ module.exports = {
 		'space-before-blocks': 'error',
 		'space-before-function-paren': 'off', // Covered by @typescript-eslint/space-before-function-paren
 		'space-in-parens': 'error',
-		'space-infix-ops': 'error',
+		'space-infix-ops': 'off', // Covered by @typescript-eslint/space-infix-ops
 		'space-unary-ops': 'error',
 		'spaced-comment': ['error', 'always', { markers: ['/'], block: { markers: ['!'], balanced: true } }],
 		'switch-colon-spacing': 'error',
@@ -364,11 +364,11 @@ module.exports = {
 		'no-class-assign': 'error',
 		'no-confusing-arrow': ['error', { allowParens: true }],
 		'no-const-assign': 'error',
-		'no-dupe-class-members': 'off', // Covered by @typescript-eslint/no-no-dupe-class-members
-		'no-duplicate-imports': 'off', // Covered by @typescript-eslint/no-duplicate-imports / import/no-duplicates (see https://github.com/typescript-eslint/typescript-eslint/issues/2315)
+		'no-dupe-class-members': 'off', // Covered by @typescript-eslint/no-dupe-class-members
+		'no-duplicate-imports': 'off', // Covered by import/no-duplicates (see https://github.com/typescript-eslint/typescript-eslint/issues/2315)
 		'no-new-symbol': 'error',
 		'no-restricted-exports': 'error',
-		'no-restricted-imports': 'error',
+		'no-restricted-imports': 'off', // Covered by @typescript-eslint/no-restricted-imports
 		'no-this-before-super': 'error',
 		'no-useless-computed-key': 'error',
 		'no-useless-constructor': 'off', // Covered by @typescript-eslint/no-useless-constructor
@@ -420,6 +420,7 @@ module.exports = {
 			generics: 'ignore'
 		}],
 		'@typescript-eslint/comma-spacing': 'error',
+		'@typescript-eslint/consistent-generic-constructors': 'error',
 		'@typescript-eslint/consistent-indexed-object-style': 'error',
 		'@typescript-eslint/consistent-type-assertions': 'error',
 		'@typescript-eslint/consistent-type-definitions': 'error',
@@ -629,7 +630,6 @@ module.exports = {
 		'@typescript-eslint/no-confusing-void-expression': ['error', { ignoreArrowShorthand: true, ignoreVoidOperator: true }],
 		'@typescript-eslint/no-dupe-class-members': 'error',
 		'@typescript-eslint/no-duplicate-enum-values': 'error',
-		'@typescript-eslint/no-duplicate-imports': 'error',
 		'@typescript-eslint/no-dynamic-delete': 'error',
 		'@typescript-eslint/no-empty-function': 'error',
 		'@typescript-eslint/no-empty-interface': 'off',
@@ -641,7 +641,7 @@ module.exports = {
 		'@typescript-eslint/no-floating-promises': 'error',
 		'@typescript-eslint/no-for-in-array': 'error',
 		'@typescript-eslint/no-implicit-any-catch': 'off', // Results into false-positive with the TS4.4 option "useUnknownInCatchVariables"
-		'@typescript-eslint/no-inferrable-types': 'off',
+		'@typescript-eslint/no-inferrable-types': 'off', // Sometimes an explicit type helps to understand the code better
 		'@typescript-eslint/no-invalid-this': 'error',
 		'@typescript-eslint/no-invalid-void-type': ['error', { allowInGenericTypeArguments: true }],
 		'@typescript-eslint/no-loop-func': 'error',
@@ -663,6 +663,7 @@ module.exports = {
 		'@typescript-eslint/no-redeclare': ['error', { ignoreDeclarationMerge: true }],
 		'@typescript-eslint/no-redundant-type-constituents': 'off', // False positive with Promise<... | never>
 		'@typescript-eslint/no-require-imports': 'error',
+		'@typescript-eslint/no-restricted-imports': 'error',
 		'@typescript-eslint/no-shadow': 'error',
 		'@typescript-eslint/no-this-alias': 'error',
 		'@typescript-eslint/no-throw-literal': ['error', {
@@ -727,6 +728,7 @@ module.exports = {
 		'@typescript-eslint/semi': 'error',
 		'@typescript-eslint/sort-type-union-intersection-members': 'off', // Types should be sorted and grouped by priority and their meaning, not alphabetically
 		'@typescript-eslint/space-before-function-paren': 'error',
+		'@typescript-eslint/space-infix-ops': 'error',
 		'@typescript-eslint/strict-boolean-expressions': ['off', { allowNullable: true, allowSafe: true, ignoreRhs: true }], // @todo Doesn't work for specific code, check later after all linter warnings are fixed, maybe at some positions we can use '??'
 		'@typescript-eslint/switch-exhaustiveness-check': 'error',
 		'@typescript-eslint/triple-slash-reference': 'error',
@@ -934,7 +936,6 @@ module.exports = {
 				/([A-Za-z0-9]?[a-z0-9]+)*[A-Z]{2,4}([A-Za-z0-9]?[a-z0-9]+)*/u // Up to 4 Characters can be upper-case in a row (e.g. in `prepareDOM` or `SVGIcon`)
 			]
 		}],
-		'unicorn/import-index': 'error',
 		'unicorn/import-style': 'error',
 		'unicorn/new-for-builtins': 'error',
 		'unicorn/no-abusive-eslint-disable': 'error',
@@ -989,10 +990,12 @@ module.exports = {
 		'unicorn/prefer-dom-node-dataset': 'off', // `setAttribute` is faster than `dataset`. See https://www.measurethat.net/Benchmarks/Show/7740/0/classname-vs-setattribute-vs-classlist-vs-dataset
 		'unicorn/prefer-dom-node-remove': 'error',
 		'unicorn/prefer-dom-node-text-content': 'error',
+		'unicorn/prefer-event-target': 'off', // @todo Disabled for now, since `EventTarget` requires Node.js 16. Activate in 2025
 		'unicorn/prefer-export-from': ['error', { ignoreUsedVariables: true }],
 		'unicorn/prefer-includes': 'error',
 		'unicorn/prefer-json-parse-buffer': 'off', // TypeScript states that string needs to be used as of the ES specification. @see https://github.com/microsoft/TypeScript/issues/11842
 		'unicorn/prefer-keyboard-event-key': 'error',
+		'unicorn/prefer-logical-operator-over-ternary': 'error',
 		'unicorn/prefer-math-trunc': 'error',
 		'unicorn/prefer-modern-dom-apis': 'error',
 		'unicorn/prefer-modern-math-apis': 'error',

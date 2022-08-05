@@ -193,6 +193,7 @@ module.exports = {
 		'function-url-scheme-allowed-list': null,
 		'function-whitespace-after': 'always',
 		'hue-degree-notation': 'number', // @todo change that to 'angle'?
+		'import-notation': null, // This rule, does not make sense. `node_modules` dependencies need to use `url("css_bundle")`, while project files are using only a string.
 		'indentation': 'tab',
 		'keyframe-block-no-duplicate-selectors': true,
 		'keyframe-declaration-no-important': true,

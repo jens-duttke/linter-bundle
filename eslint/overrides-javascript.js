@@ -105,7 +105,6 @@ module.exports = {
 						kebabCase: true
 					}
 				}],
-				'unicorn/import-index': 'off', // @see https://github.com/sindresorhus/eslint-plugin-unicorn/pull/977
 				'unicorn/no-process-exit': 'off', // node/no-process-exit
 				'unicorn/prefer-module': 'off', // @todo Requires Node.js v13.2. Activate in 2023
 				'unicorn/prefer-node-protocol': 'off', // @todo Requires Node.js v16. Activate in 2025

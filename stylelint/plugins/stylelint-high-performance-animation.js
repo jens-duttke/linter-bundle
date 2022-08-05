@@ -168,7 +168,7 @@ module.exports = stylelint.createPlugin(
 		// @ts-expect-error -- Property 'ignore' comes from an index signature, so it must be accessed with ['ignore'].
 		const blacklist = getBlacklist(options.ignore);
 		// @ts-expect-error -- Property 'ignoreProperties' comes from an index signature, so it must be accessed with ['ignoreProperties'].
-		const ignored = (options.ignoreProperties ? options.ignoreProperties : []);
+		const ignored = options.ignoreProperties ?? [];
 
 		cssRoot.walkDecls('transition-property', (decl) => {
 			valueParser(decl.value).walk((node) => {

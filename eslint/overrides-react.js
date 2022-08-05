@@ -145,11 +145,12 @@ module.exports = {
 				'react/jsx-max-depth': ['error', { max: 8 }],
 				'react/jsx-max-props-per-line': ['error', { maximum: { single: 5, multi: 1 } }],
 				'react/no-adjacent-inline-elements': 'off', // @todo There is an issue if inline and block elements are mixed. Simple example: `<span>Text</span><br />` here, the space between the SPAN and BR should not be forced, because a space at the end of a line does not make sense.
-				'react/jsx-newline': 'off',
+				'react/jsx-newline': 'off', // @todo Why is this rule deactivated?
 				'react/jsx-no-bind': ['error', { ignoreDOMComponents: true }],
 				'react/jsx-no-comment-textnodes': 'error',
 				'react/jsx-no-constructed-context-values': 'error',
 				'react/jsx-no-duplicate-props': 'error',
+				'react/jsx-no-leaked-render': 'error',
 				'react/jsx-no-literals': 'off',
 				'react/jsx-no-script-url': 'error',
 				'react/jsx-no-target-blank': ['error', { allowReferrer: true, forms: true }],
