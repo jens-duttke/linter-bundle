@@ -6,7 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.15.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.17.0...HEAD)
+
+## [2.17.0] - 2022.08.10
+
+- [eslint] Updated `@typescript-eslint/eslint-plugin` from `5.32.0` to `5.33.0`
+- [eslint] Updated `eslint-plugin-jest` from `26.7.0` to `26.8.2`
+- [eslint] Updated `eslint-plugin-jsdoc` from `39.3.4` to `39.3.6`
+- [eslint/overrides-react] Disable [`react/jsx-no-leaked-render`](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-no-leaked-render.md) rule, as this should be covered by types in TypeScript to prevent unnecessary type castings from boolean to boolean
+- [stylelint] Add `except` for `"margin"` and `"padding"` in `stylelint-use-logical-spec` rule, to prevent [unnecessary warnings](https://github.com/Jordan-Hall/stylelint-use-logical-spec/issues/33) for usages like `margin: 10px 20px;`
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.16.0...v2.17.0)
 
 ## [2.16.0] - 2022.08.05
 
@@ -37,6 +47,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [stylelint] Updated `stylelint-selector-no-empty` from `1.0.8` to `1.0.9`
 - [stylelint] Updated `stylelint-use-logical-spec` from `3.2.2` to `4.1.0`
 - [stylelint] Added but disable [`import-notation`](https://github.com/stylelint/stylelint/tree/main/lib/rules/import-notation) rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.15.0...v2.16.0)
 
 ## [2.15.0] - 2022.05.05
 
