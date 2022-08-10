@@ -150,7 +150,7 @@ module.exports = {
 				'react/jsx-no-comment-textnodes': 'error',
 				'react/jsx-no-constructed-context-values': 'error',
 				'react/jsx-no-duplicate-props': 'error',
-				'react/jsx-no-leaked-render': 'error',
+				'react/jsx-no-leaked-render': 'off', // Should be covered by boolean-types in TypeScript, otherwise unnecessary type-castings from boolean to boolean would be required
 				'react/jsx-no-literals': 'off',
 				'react/jsx-no-script-url': 'error',
 				'react/jsx-no-target-blank': ['error', { allowReferrer: true, forms: true }],
