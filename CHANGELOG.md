@@ -50,6 +50,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.15.0...v2.16.0)
 
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.15.0...v2.16.0)
+
 ## [2.15.0] - 2022.05.05
 
 ### Changed
