@@ -952,9 +952,11 @@ module.exports = {
 			'border-right', // "border-inline-end" is new and should not be used before 2022. @see https://caniuse.com/mdn-css_properties_border-inline-end
 			'border-right-color', // "border-inline-end-color" is new and should not be used before 2022. @see https://caniuse.com/mdn-css_properties_border-inline-end-color
 
+			'margin',
 			'margin-top',
 			'margin-bottom',
 
+			'padding',
 			'padding-top',
 			'padding-bottom',
 
