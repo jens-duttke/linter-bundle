@@ -155,7 +155,7 @@ module.exports = {
 				'react/jsx-no-script-url': 'error',
 				'react/jsx-no-target-blank': ['error', { allowReferrer: true, forms: true }],
 				'react/jsx-no-undef': 'error',
-				'react/jsx-no-useless-fragment': 'error',
+				'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
 				'react/jsx-one-expression-per-line': ['off', { allow: 'single-child' }], // @todo Doesn't work with something like "Text <a href="...">Link</a> More Text", which should be valid
 				'react/jsx-curly-brace-presence': ['error', { propElementValues: 'always' }],
 				'react/jsx-fragments': ['error', 'element'],
