@@ -40,15 +40,15 @@
 		"check-outdated": "npx --yes -- check-outdated --ignore-pre-releases"
 	},
 	"dependencies": {
-		"@typescript-eslint/eslint-plugin": "5.33.0",
-		"@typescript-eslint/parser": "5.33.0",
-		"eslint": "8.21.0",
-		"eslint-import-resolver-typescript": "3.4.0",
+		"@typescript-eslint/eslint-plugin": "5.33.1",
+		"@typescript-eslint/parser": "5.33.1",
+		"eslint": "8.22.0",
+		"eslint-import-resolver-typescript": "3.4.2",
 		"eslint-import-resolver-webpack": "0.13.2",
 		"eslint-plugin-eslint-comments": "3.2.0",
 		"eslint-plugin-functional": "4.2.2",
 		"eslint-plugin-import": "2.26.0",
-		"eslint-plugin-jest": "26.8.2",
+		"eslint-plugin-jest": "26.8.3",
 		"eslint-plugin-jsdoc": "39.3.6",
 		"eslint-plugin-jsx-a11y": "6.6.1",
 		"eslint-plugin-node": "11.1.0",
@@ -59,7 +59,7 @@
 		"markdownlint-cli": "0.32.1",
 		"micromatch": "4.0.5",
 		"postcss-scss": "4.0.4",
-		"stylelint": "14.9.1",
+		"stylelint": "14.10.0",
 		"stylelint-declaration-block-no-ignored-properties": "2.5.0",
 		"stylelint-order": "5.0.0",
 		"stylelint-scss": "4.3.0",
@@ -71,9 +71,9 @@
 		"typescript": "^4.0.0"
 	},
 	"devDependencies": {
-		"@types/eslint": "8.4.5",
+		"@types/eslint": "8.4.6",
 		"@types/micromatch": "4.0.2",
-		"@types/node": "18.6.5",
+		"@types/node": "18.7.6",
 		"stylelint-find-new-rules": "4.0.0",
 		"typescript": "4.7.4"
 	}
