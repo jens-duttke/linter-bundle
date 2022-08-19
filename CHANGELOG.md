@@ -6,19 +6,46 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.17.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.18.0...HEAD)
+
+## [2.18.0] - 2022.08.19
+
+### Changed
+
+- [eslint] Updated `@typescript-eslint/eslint-plugin` from `5.33.0` to `5.33.1`
+- [eslint] Updated `eslint` from `8.21.0` to `8.22.0`
+- [eslint] Updated `eslint-import-resolver-typescript` from `3.4.0` to `3.4.2`
+- [eslint] Updated `eslint-plugin-jest` from `26.8.2` to `26.8.3`
+- [stylelint] Updated `stylelint` from `14.9.1` to `14.10.0`
+- [eslint/overrides-react] Activate [`allowExpressions`](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-no-useless-fragment.md#allowexpressions) for
+  [`react/jsx-no-useless-fragment`](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-no-useless-fragment.md) rule, to fill the React type definitions
+  requirement that when a component returns only children (a ReactNode), the return value is a ReactElement by wrapping children in a React.Fragment
+
+### Added
+
+- [stylelint] Make use of [`annotation-no-unknown`](https://github.com/stylelint/stylelint/tree/main/lib/rules/annotation-no-unknown) rule
+- [stylelint] Make use of [`keyframe-selector-notation`](https://github.com/stylelint/stylelint/tree/main/lib/rules/keyframe-selector-notation) rule, with option `percentage`
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.17.0...v2.18.0)
 
 ## [2.17.0] - 2022.08.10
+
+### Changed
 
 - [eslint] Updated `@typescript-eslint/eslint-plugin` from `5.32.0` to `5.33.0`
 - [eslint] Updated `eslint-plugin-jest` from `26.7.0` to `26.8.2`
 - [eslint] Updated `eslint-plugin-jsdoc` from `39.3.4` to `39.3.6`
+
+### Fixed
+
 - [eslint/overrides-react] Disable [`react/jsx-no-leaked-render`](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-no-leaked-render.md) rule, as this should be covered by types in TypeScript to prevent unnecessary type castings from boolean to boolean
 - [stylelint] Add `except` for `"margin"` and `"padding"` in `stylelint-use-logical-spec` rule, to prevent [unnecessary warnings](https://github.com/Jordan-Hall/stylelint-use-logical-spec/issues/33) for usages like `margin: 10px 20px;`
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.16.0...v2.17.0)
 
 ## [2.16.0] - 2022.08.05
+
+### Changed
 
 - [eslint] Updated `eslint` from `8.14.0` to `8.21.0`
 - [eslint] Updated `eslint-import-resolver-typescript` from `2.7.1` to `3.4.0`
@@ -30,7 +57,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Updated `eslint-plugin-react-hooks` from `4.5.0` to `4.6.0`
 - [eslint] Updated `eslint-plugin-unicorn` from `42.0.0` to `43.0.2`
 - [eslint] Updated `@typescript-eslint` from `5.22.0` to `5.32.0`
-- [eslint] Remove deprecated `@typescript-eslint/no-duplicate-imports` rule
+- [markdownlint] Updated `markdownlint-cli` from `0.31.1` to `0.32.1`
+- [stylelint] Updated `stylelint` from `14.8.2` to `14.9.1`
+- [stylelint] Updated `stylelint-scss` from `4.2.0` to `4.3.0`
+- [stylelint] Updated `stylelint-selector-no-empty` from `1.0.8` to `1.0.9`
+- [stylelint] Updated `stylelint-use-logical-spec` from `3.2.2` to `4.1.0`
+
+### Added
+
 - [eslint] Make use of [`@typescript-eslint/no-restricted-imports`](https://typescript-eslint.io/rules/no-restricted-imports/) rule
 - [eslint] Make use of [`@typescript-eslint/space-infix-ops`](https://typescript-eslint.io/rules/space-infix-ops/) rule
 - [eslint] Make use of [`@typescript-eslint/consistent-generic-constructors`](https://typescript-eslint.io/rules/consistent-generic-constructors/) rule
@@ -40,13 +74,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint/overrides-react] Make use of [`react/jsx-no-leaked-render`](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-no-leaked-render.md) rule
 - [eslint] Added but disable [`unicorn/prefer-event-target`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-event-target.md) rule
 - [eslint] Make use of [`unicorn/prefer-logical-operator-over-ternary`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-logical-operator-over-ternary.md) rule
-- [eslint] Remove deprecated `unicorn/import-index` rule
-- [markdownlint] Updated `markdownlint-cli` from `0.31.1` to `0.32.1`
-- [stylelint] Updated `stylelint` from `14.8.2` to `14.9.1`
-- [stylelint] Updated `stylelint-scss` from `4.2.0` to `4.3.0`
-- [stylelint] Updated `stylelint-selector-no-empty` from `1.0.8` to `1.0.9`
-- [stylelint] Updated `stylelint-use-logical-spec` from `3.2.2` to `4.1.0`
 - [stylelint] Added but disable [`import-notation`](https://github.com/stylelint/stylelint/tree/main/lib/rules/import-notation) rule
+
+### Removed
+
+- [eslint] Remove deprecated `@typescript-eslint/no-duplicate-imports` rule
+- [eslint] Remove deprecated `unicorn/import-index` rule
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.15.0...v2.16.0)
 
@@ -54,7 +87,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [2.15.0] - 2022.05.05
 
-### Changed
+### Fixed
 
 - [stylelint] Disabled `declaration-property-max-values` rule because of false-positives.
 - [stylelint] Disabled `selector-not-notation` for now, because it depends on the project if modern Selectors Level 4 CSS can be used.
@@ -73,14 +106,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
-- [general] Remove files from npm package which are only necessary for development
 - [eslint] Updated `@typescript-eslint` from `5.21.0` to `5.22.0`
 - [eslint] Updated `eslint-plugin-jsdoc` from `39.2.8` to `39.2.9`
 - [eslint] Updated `eslint-plugin-react-hooks` from `4.4.0` to `4.5.0`
 - [stylelint] Updated `stylelint` from `14.7.1` to `14.8.2`
+
+### Added
+
 - [eslint] Make use of new [`@typescript-eslint/no-duplicate-enum-values`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-duplicate-enum-values.md) rule
 - [stylelint] Make use of new [`keyframe-block-no-duplicate-selectors`](https://github.com/stylelint/stylelint/blob/main/lib/rules/keyframe-block-no-duplicate-selectors/README.md) rule
 - [stylelint] In the deployment process, ensure that the used Stylelint options are valid
+
+### Fixed
+
+- [general] Remove files from npm package which are only necessary for development
 - [stylelint] Fix invalid configuration of [`declaration-property-max-values`](https://github.com/stylelint/stylelint/blob/main/lib/rules/declaration-property-max-values/README.md) rule
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.13.0...v2.14.0)
@@ -89,7 +128,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
-- [eslint] Activate `allowExpressions` option of [`@typescript-eslint/explicit-function-return-type`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/explicit-function-return-type.md) rule
 - [eslint] Updated `@typescript-eslint` from `5.17.0` to `5.21.0`
 - [eslint] Updated `eslint` from `8.12.0` to `8.14.0`
 - [eslint] Updated `eslint-import-resolver-typescript` from `2.7.0` to `2.7.1`
@@ -100,14 +138,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Updated `eslint-plugin-unicorn` from `41.0.1` to `42.0.0`
 - [stylelint] Updated `postcss-scss` from `4.0.3` to `4.0.4`
 - [stylelint] Updated `stylelint` from `14.6.1` to `14.7.1`
-- [eslint] Activate `allowExpressions` option of [`@typescript-eslint/explicit-function-return-type`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/explicit-function-return-type.md) rule
 - [eslint/overrides-jsdoc] Set [`minLineCount` option to 2](https://github.com/gajus/eslint-plugin-jsdoc/issues/870) for `require-jsdoc` rule
+- [stylelint] Set [`selector-not-notation`](https://github.com/stylelint/stylelint/blob/main/lib/rules/selector-not-notation/README.md) rule to `"complex"`
+
+### Added
+
+- [eslint] Activate `allowExpressions` option of [`@typescript-eslint/explicit-function-return-type`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/explicit-function-return-type.md) rule
 - [eslint] Reactivated the [`import/no-relative-packages`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/no-relative-packages.md) rule
 - [eslint] Make use of new [`unicorn/no-useless-switch-case`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-useless-switch-case.md) rule
 - [eslint] Make use of new [`unicorn/prefer-modern-math-apis`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-modern-math-apis.md) rule
 - [eslint] Make use of new [`unicorn/no-unreadable-iife`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-unreadable-iife.md) rule
 - [eslint] Add but disable [`unicorn/prefer-native-coercion-functions`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-native-coercion-functions.md) rule, because this would produce inconsistency in the code and is harder to read
-- [stylelint] Set [`selector-not-notation`](https://github.com/stylelint/stylelint/blob/main/lib/rules/selector-not-notation/README.md) rule to `"complex"`
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.12.0...v2.13.0)
 
@@ -126,9 +167,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [stylelint] Updated `stylelint` from `14.5.3` to `14.6.1`
 - [stylelint] Updated `stylelint-scss` from `4.1.0` to `4.2.0`
 - [general] Updated `micromatch` from `4.0.4` to `4.0.5`
+- [stylelint] Replace `function-no-unknown` by `scss/function-no-unknown`
+
+### Added
+
 - [eslint] Make use of [`destructuredArrayIgnorePattern`](https://eslint.org/docs/rules/no-unused-vars#destructuredarrayignorepattern) of `@typescript-eslint/no-unused-vars` rule, to ignore variables with leading underscore.
 - [stylelint] Make use of [`declaration-property-max-values`](https://stylelint.io/user-guide/rules/list/declaration-property-max-values/) rule, and set `unprefixed-property-name` to `4`
-- [stylelint] Replace `function-no-unknown` by `scss/function-no-unknown`
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.11.1...v2.12.0)
 
