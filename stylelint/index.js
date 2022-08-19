@@ -68,6 +68,7 @@ module.exports = {
 		 * @see https://github.com/stylelint/stylelint/tree/master/lib/rules
 		 */
 		'alpha-value-notation': 'number', // @todo change that to 'percentage'?
+		'annotation-no-unknown': true,
 		'at-rule-allowed-list': null,
 		'at-rule-disallowed-list': null,
 		'at-rule-empty-line-before': [
@@ -197,6 +198,7 @@ module.exports = {
 		'indentation': 'tab',
 		'keyframe-block-no-duplicate-selectors': true,
 		'keyframe-declaration-no-important': true,
+		'keyframe-selector-notation': 'percentage',
 		'keyframes-name-pattern': '^[a-z]+(-[a-z]+)*\\d*$',
 		'length-zero-no-unit': true,
 		'linebreaks': 'unix',
