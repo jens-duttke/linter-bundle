@@ -8,6 +8,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.18.0...HEAD)
 
+## [2.19.0] - 2022.08.28
+
+### Changed
+
+- [eslint] Updated `@typescript-eslint` from `5.33.1` to `5.35.1`
+- [eslint] Updated `eslint` from `8.22.0` to `8.23.0`
+- [eslint] Updated `eslint-import-resolver-typescript` from `3.4.2` to `3.5.0`
+- [eslint] Updated `eslint-plugin-jest` from `26.8.3` to `26.9.0`
+- [eslint] Updated `eslint-plugin-promise` from `6.0.0` to `6.0.1`
+- [eslint] Updated `eslint-plugin-react` from `7.30.1` to `7.31.1`
+- [markdownlint] Updated `markdownlint-cli` from `0.32.1` to `0.32.2`
+- [stylelint] Updated `stylelint` from `14.10.0` to `14.11.0`
+- [eslint] Activate [`allowEmptyCase`](https://github.com/eslint/eslint/blob/main/docs/src/rules/no-fallthrough.md#allowemptycase) option of `no-fallthrough` rule
+- [stylelint] Activate [`ignoreAfterCombinators: ['>', '+']`]https://stylelint.io/user-guide/rules/list/selector-max-universal/#ignoreaftercombinators-array-of-combinators) of `selector-max-universal` rule, see [this issue](https://github.com/stylelint/stylelint/issues/5792) for details
+
+### Added
+
+- [eslint/overrides-jest] Make use of [jest/prefer-each](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/prefer-each.md) rule
+
 ## [2.18.0] - 2022.08.19
 
 ### Changed
