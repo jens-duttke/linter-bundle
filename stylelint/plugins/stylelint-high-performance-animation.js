@@ -122,12 +122,12 @@ const propsThatCausePaint = [
 ];
 
 /**
- * Get blacklisted properties.
+ * Get disallowed properties.
  *
  * @param {string} ignore - Property name.
- * @returns {string[]} - Array of blacklisted properties.
+ * @returns {string[]} - Array of disallowed properties.
  */
-const getBlacklist = (ignore) => {
+const getDisallowedList = (ignore) => {
 	if (ignore === 'paint-properties') {
 		return propertiesThatCauseLayout;
 	}
@@ -146,128 +146,131 @@ const getBlacklist = (ignore) => {
  */
 const unprefixed = (property) => property.replace(/^-\w+-/u, '');
 
-module.exports = stylelint.createPlugin(
-	ruleName,
-	(actual, options) => (cssRoot, result) => {
-		const validOptions = stylelint.utils.validateOptions(
-			result,
-			ruleName,
-			{ actual },
-			{
-				actual: options,
-				possible: {
-					ignore: ['paint-properties'],
-					ignoreProperties: [isString]
-				},
-				optional: true
+/**
+ * Rule function.
+ *
+ * @param {Record<string, any>} actual - Primary options
+ * @param {Record<string, any>} options - Secondary options
+ * @returns {(root: import('postcss').Root, result: import('stylelint').PostcssResult) => Promise<void> | void} PostCSS plugin
+ */
+const ruleFunction = (actual, options) => (cssRoot, result) => {
+	const validOptions = stylelint.utils.validateOptions(
+		result,
+		ruleName,
+		{ actual },
+		{
+			actual: options,
+			possible: {
+				ignore: ['paint-properties'],
+				ignoreProperties: [isString]
+			},
+			optional: true
+		}
+	);
+
+	if (!validOptions) { return; }
+
+	const disallowedList = getDisallowedList(options['ignore']);
+	const ignored = options['ignoreProperties'] ?? [];
+
+	cssRoot.walkDecls('transition-property', (decl) => {
+		valueParser(decl.value).walk((node) => {
+			const value = unprefixed(node.value);
+
+			if (
+				node.type === 'word' &&
+				!ignored.includes(value) &&
+				(disallowedList.includes(value) || value === 'all')
+			) {
+				const index = declarationValueIndex(decl) + node.sourceIndex;
+
+				stylelint.utils.report({
+					ruleName,
+					result,
+					node: decl,
+					message: messages.rejected('transition', node.value),
+					index
+				});
 			}
-		);
+		});
+	});
 
-		if (!validOptions) { return; }
+	cssRoot.walkDecls('transition', (decl) => {
+		/** @type {{ index: number; value: string; }[]} */
+		const nodes = [];
 
-		// @ts-expect-error -- Property 'ignore' comes from an index signature, so it must be accessed with ['ignore'].
-		const blacklist = getBlacklist(options.ignore);
-		// @ts-expect-error -- Property 'ignoreProperties' comes from an index signature, so it must be accessed with ['ignoreProperties'].
-		const ignored = options.ignoreProperties ?? [];
+		valueParser(decl.value).walk((node) => {
+			if (node.type === 'word' || node.type === 'function') {
+				nodes.push({
+					index: node.sourceIndex,
+					value: node.value
+				});
+			}
 
-		cssRoot.walkDecls('transition-property', (decl) => {
-			valueParser(decl.value).walk((node) => {
-				const value = unprefixed(node.value);
-
-				if (
-					node.type === 'word' &&
-					!ignored.includes(value) &&
-					(blacklist.includes(value) || value === 'all')
-				) {
-					const index = declarationValueIndex(decl) + node.sourceIndex;
-
-					stylelint.utils.report({
-						ruleName,
-						result,
-						node: decl,
-						message: messages.rejected('transition', node.value),
-						index
-					});
-				}
-			});
+			return false;
 		});
 
-		cssRoot.walkDecls('transition', (decl) => {
-			/** @type {{ index: number; value: string; }[]} */
-			const nodes = [];
+		if (!ignored.includes('all')) {
+			const transitionProp = nodes.filter((node) => {
+				const isUnit = valueParser.unit(node.value);
+				const isTimingFunction = cssTimingFunctionsRE.test(node.value);
 
-			valueParser(decl.value).walk((node) => {
-				if (node.type === 'word' || node.type === 'function') {
-					nodes.push({
-						index: node.sourceIndex,
-						value: node.value
-					});
+				if (isUnit || isTimingFunction) {
+					return false;
 				}
 
-				return false;
+				return node;
 			});
 
-			if (!ignored.includes('all')) {
-				const transitionProp = nodes.filter((node) => {
-					const isUnit = valueParser.unit(node.value);
-					const isTimingFunction = cssTimingFunctionsRE.test(node.value);
-
-					if (isUnit || isTimingFunction) {
-						return false;
-					}
-
-					return node;
+			if (nodes.length > 0 && transitionProp.length === 0) {
+				stylelint.utils.report({
+					ruleName,
+					result,
+					node: decl,
+					message: messages.rejected('transition', 'all'),
+					index: declarationValueIndex(decl) + nodes[0].index
 				});
 
-				if (nodes.length > 0 && transitionProp.length === 0) {
-					stylelint.utils.report({
-						ruleName,
-						result,
-						node: decl,
-						message: messages.rejected('transition', 'all'),
-						index: declarationValueIndex(decl) + nodes[0].index
-					});
-
-					return;
-				}
+				return;
 			}
+		}
 
-			for (const property of nodes) {
-				const index = declarationValueIndex(decl) + property.index;
-				const value = unprefixed(property.value);
+		for (const property of nodes) {
+			const index = declarationValueIndex(decl) + property.index;
+			const value = unprefixed(property.value);
 
-				if (
-					!ignored.includes(value) &&
-					(blacklist.includes(value) || value === 'all')
-				) {
-					stylelint.utils.report({
-						ruleName,
-						result,
-						node: decl,
-						message: messages.rejected('transition', property.value),
-						index
-					});
-				}
+			if (
+				!ignored.includes(value) &&
+				(disallowedList.includes(value) || value === 'all')
+			) {
+				stylelint.utils.report({
+					ruleName,
+					result,
+					node: decl,
+					message: messages.rejected('transition', property.value),
+					index
+				});
+			}
+		}
+	});
+
+	cssRoot.walkAtRules(/^keyframes$/iu, (atRuleKeyframes) => {
+		atRuleKeyframes.walkDecls((decl) => {
+			const value = unprefixed(decl.prop);
+
+			if (!ignored.includes(value) && disallowedList.includes(value)) {
+				stylelint.utils.report({
+					ruleName,
+					result,
+					node: decl,
+					message: messages.rejected('animation', decl.prop)
+				});
 			}
 		});
+	});
+};
 
-		cssRoot.walkAtRules(/^keyframes$/iu, (atRuleKeyframes) => {
-			atRuleKeyframes.walkDecls((decl) => {
-				const value = unprefixed(decl.prop);
+ruleFunction.ruleName = ruleName;
+ruleFunction.messages = messages;
 
-				if (!ignored.includes(value) && blacklist.includes(value)) {
-					stylelint.utils.report({
-						ruleName,
-						result,
-						node: decl,
-						message: messages.rejected('animation', decl.prop)
-					});
-				}
-			});
-		});
-	}
-);
-
-// @ts-expect-error -- Cannot assign to 'ruleName' because it is a read-only property.
-module.exports.ruleName = ruleName;
-module.exports.messages = messages;
+module.exports = stylelint.createPlugin(ruleName, ruleFunction);
