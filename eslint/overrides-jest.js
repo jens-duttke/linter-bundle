@@ -97,6 +97,7 @@ module.exports = {
 				'jest/prefer-hooks-in-order': 'error',
 				'jest/prefer-hooks-on-top': 'error',
 				'jest/prefer-comparison-matcher': 'error',
+				'jest/prefer-each': 'error',
 				'jest/prefer-equality-matcher': 'error',
 				'jest/prefer-mock-promise-shorthand': 'error',
 				'jest/prefer-snapshot-hint': 'error',

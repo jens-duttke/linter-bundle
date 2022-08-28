@@ -173,7 +173,7 @@ module.exports = {
 		'no-extend-native': 'error',
 		'no-extra-bind': 'error',
 		'no-extra-label': 'error',
-		'no-fallthrough': 'error',
+		'no-fallthrough': ['error', { allowEmptyCase: true }],
 		'no-floating-decimal': 'error',
 		'no-global-assign': 'error',
 		'no-implicit-coercion': ['error', { disallowTemplateShorthand: true }],

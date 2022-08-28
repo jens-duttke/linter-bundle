@@ -290,7 +290,7 @@ module.exports = {
 			}
 		],
 		'selector-max-type': 6,
-		'selector-max-universal': 1,
+		'selector-max-universal': [1, { ignoreAfterCombinators: ['>', '+'] }],
 		'selector-nested-pattern': null,
 		'selector-no-qualifying-type': [true, { ignore: ['attribute', 'class'] }],
 		'selector-no-vendor-prefix': true,
