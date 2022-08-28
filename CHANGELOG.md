@@ -21,7 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [markdownlint] Updated `markdownlint-cli` from `0.32.1` to `0.32.2`
 - [stylelint] Updated `stylelint` from `14.10.0` to `14.11.0`
 - [eslint] Activate [`allowEmptyCase`](https://github.com/eslint/eslint/blob/main/docs/src/rules/no-fallthrough.md#allowemptycase) option of `no-fallthrough` rule
-- [stylelint] Activate [`ignoreAfterCombinators: ['>', '+']`]https://stylelint.io/user-guide/rules/list/selector-max-universal/#ignoreaftercombinators-array-of-combinators) of `selector-max-universal` rule, see [this issue](https://github.com/stylelint/stylelint/issues/5792) for details
+- [stylelint] Activate [`ignoreAfterCombinators: ['>', '+']`](https://stylelint.io/user-guide/rules/list/selector-max-universal/#ignoreaftercombinators-array-of-combinators) of `selector-max-universal` rule, see [this issue](https://github.com/stylelint/stylelint/issues/5792) for details
 
 ### Added
 
