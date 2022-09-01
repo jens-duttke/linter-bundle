@@ -6,9 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.18.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.20.0...HEAD)
 
-## [2.19.0] - 2022.08.28
+## [2.20.0] - 2022-09-01
+
+### Changed
+
+- [eslint] Updated `@typescript-eslint` from `5.35.1` to `5.36.1`
+- [eslint] Updated `eslint-plugin-jest` from `26.9.0` to `27.0.1`
+
+### Removed
+
+- [eslint/overrides-jest] Removed deprecated `jest/no-jest-import`
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.19.0...v2.20.0)
+
+## [2.19.0] - 2022-08-28
 
 ### Changed
 
@@ -27,7 +40,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - [eslint/overrides-jest] Make use of [jest/prefer-each](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/prefer-each.md) rule
 
-## [2.18.0] - 2022.08.19
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.18.0...v2.19.0)
+
+## [2.18.0] - 2022-08-19
 
 ### Changed
 
@@ -47,7 +62,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.17.0...v2.18.0)
 
-## [2.17.0] - 2022.08.10
+## [2.17.0] - 2022-08-10
 
 ### Changed
 
@@ -62,7 +77,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.16.0...v2.17.0)
 
-## [2.16.0] - 2022.08.05
+## [2.16.0] - 2022-08-05
 
 ### Changed
 
@@ -104,7 +119,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.15.0...v2.16.0)
 
-## [2.15.0] - 2022.05.05
+## [2.15.0] - 2022-05-05
 
 ### Fixed
 
@@ -113,7 +128,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.14.1...v2.15.0)
 
-## [2.14.1] - 2022.05.05
+## [2.14.1] - 2022-05-05
 
 ### Fixed
 
@@ -121,7 +136,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.14.0...v2.14.1)
 
-## [2.14.0] - 2022.05.05
+## [2.14.0] - 2022-05-05
 
 ### Changed
 
@@ -143,7 +158,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.13.0...v2.14.0)
 
-## [2.13.0] - 2022.04.25
+## [2.13.0] - 2022-04-25
 
 ### Changed
 
@@ -171,7 +186,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.12.0...v2.13.0)
 
-## [2.12.0] - 2022.03.30
+## [2.12.0] - 2022-03-30
 
 ### Changed
 
@@ -195,7 +210,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.11.1...v2.12.0)
 
-## [2.11.1] - 2022.03.13
+## [2.11.1] - 2022-03-13
 
 ### Changed
 
@@ -204,7 +219,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.11.0...v2.11.1)
 
-## [2.11.0] - 2022.03.12
+## [2.11.0] - 2022-03-12
 
 ### Added
 
@@ -219,7 +234,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.10.1...v2.11.0)
 
-## [2.10.1] - 2022.03.11
+## [2.10.1] - 2022-03-11
 
 ### Fixed
 
@@ -227,7 +242,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.10.0...v2.10.1)
 
-## [2.10.0] - 2022.03.10
+## [2.10.0] - 2022-03-10
 
 ### Changed
 
@@ -248,7 +263,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.9.0...v2.10.0)
 
-## [2.9.0] - 2022.02.23
+## [2.9.0] - 2022-02-23
 
 ### Changed
 
@@ -263,7 +278,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.8.4...v2.9.0)
 
-## [2.8.4] - 2022.02.19
+## [2.8.4] - 2022-02-19
 
 ### Changed
 
@@ -271,7 +286,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.8.3...v2.8.4)
 
-## [2.8.3] - 2022.02.19
+## [2.8.3] - 2022-02-19
 
 ### Changed
 
@@ -279,7 +294,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.8.2...v2.8.3)
 
-## [2.8.2] - 2022.02.19
+## [2.8.2] - 2022-02-19
 
 ### Changed
 
@@ -287,7 +302,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.8.1...v2.8.2)
 
-## [2.8.1] - 2022.02.19
+## [2.8.1] - 2022-02-19
 
 ### Changed
 
@@ -295,7 +310,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.8.0...v2.8.1)
 
-## [2.8.0] - 2022.02.18
+## [2.8.0] - 2022-02-18
 
 ### Changed
 
@@ -312,7 +327,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.7.0...v2.8.0)
 
-## [2.7.0] - 2022.02.16
+## [2.7.0] - 2022-02-16
 
 ### Changed
 
@@ -325,7 +340,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.6.0...v2.7.0)
 
-## [2.6.0] - 2022.02.14
+## [2.6.0] - 2022-02-14
 
 ### Changed
 
@@ -336,7 +351,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.5.0...v2.6.0)
 
-## [2.5.0] - 2022.02.11
+## [2.5.0] - 2022-02-11
 
 ### Changed
 
@@ -346,7 +361,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.4.0...v2.5.0)
 
-## [2.4.0] - 2022.02.09
+## [2.4.0] - 2022-02-09
 
 ### Changed
 
@@ -369,7 +384,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.3.1...v2.4.0)
 
-## [2.3.1] - 2022.01.28
+## [2.3.1] - 2022-01-28
 
 ### Fixed
 
@@ -385,7 +400,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.3.0...v2.3.1)
 
-## [2.3.0] - 2022.01.27
+## [2.3.0] - 2022-01-27
 
 ### Changed
 
@@ -429,7 +444,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.1.0...v2.3.0)
 
-## [2.1.0] - 2021.11.07
+## [2.1.0] - 2021-11-07
 
 ### Changed
 
@@ -438,7 +453,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.0.0...v2.1.0)
 
-## [2.0.0] - 2021.11.05
+## [2.0.0] - 2021-11-05
 
 ### Removed
 
@@ -492,7 +507,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.28.0...v2.0.0)
 
-## [1.28.0] - 2021.09.18
+## [1.28.0] - 2021-09-18
 
 ### Changed
 
@@ -505,7 +520,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.27.0...v1.28.0)
 
-## [1.27.0] - 2021.09.12
+## [1.27.0] - 2021-09-12
 
 ### Changed
 
@@ -523,7 +538,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.26.0...v1.27.0)
 
-## [1.26.0] - 2021.08.29
+## [1.26.0] - 2021-08-29
 
 ### Changed
 
@@ -537,13 +552,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.25.2...v1.26.0)
 
-## [1.25.2] - 2021.08.27
+## [1.25.2] - 2021-08-27
 
 - [eslint] Disabled `@typescript-eslint/no-implicit-any-catch` because of false-positive with the new TypeScript 4.4 option "useUnknownInCatchVariables"
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.25.1...v1.25.2)
 
-## [1.25.1] - 2021.08.25
+## [1.25.1] - 2021-08-25
 
 ### Fixed
 
@@ -556,7 +571,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.25.0...v1.25.1)
 
-## [1.25.0] - 2021.08.24
+## [1.25.0] - 2021-08-24
 
 ### Changed
 
@@ -580,7 +595,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.24.0...v1.25.0)
 
-## [1.24.0] - 2021.07.28
+## [1.24.0] - 2021-07-28
 
 ### Changed
 
@@ -604,7 +619,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.23.0...v1.24.0)
 
-## [1.23.0] - 2021.06.14
+## [1.23.0] - 2021-06-14
 
 ### Changed
 
@@ -613,7 +628,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.22.3...v1.23.0)
 
-## [1.22.3] - 2021.06.08
+## [1.22.3] - 2021-06-08
 
 ### Added
 
@@ -621,7 +636,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.22.2...v1.22.3)
 
-## [1.22.2] - 2021.06.08
+## [1.22.2] - 2021-06-08
 
 ### Changed
 
@@ -634,7 +649,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.22.1...v1.22.2)
 
-## [1.22.1] - 2021.06.07
+## [1.22.1] - 2021-06-07
 
 ### Changed
 
@@ -649,7 +664,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.22.0...v1.22.1)
 
-## [1.22.0] - 2021.06.02
+## [1.22.0] - 2021-06-02
 
 ### Changed
 
@@ -670,7 +685,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.21.0...v1.22.0)
 
-## [1.21.0] - 2021.05.27
+## [1.21.0] - 2021-05-27
 
 ### Changed
 
@@ -680,7 +695,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.20.0...v1.21.0)
 
-## [1.20.0] - 2021.05.22
+## [1.20.0] - 2021-05-22
 
 ### Changed
 
@@ -692,7 +707,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.19.0...v1.20.0)
 
-## [1.19.0] - 2021.05.18
+## [1.19.0] - 2021-05-18
 
 ### Changed
 
@@ -700,7 +715,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.18.0...v1.19.0)
 
-## [1.18.0] - 2021.05.17
+## [1.18.0] - 2021-05-17
 
 ### Added
 
@@ -716,7 +731,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.17.0...v1.18.0)
 
-## [1.17.0] - 2021.05.15
+## [1.17.0] - 2021-05-15
 
 ### Added
 
@@ -736,7 +751,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.16.0...v1.17.0)
 
-## [1.16.0] - 2021.05.12
+## [1.16.0] - 2021-05-12
 
 ### Added
 
