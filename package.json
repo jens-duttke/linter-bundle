@@ -40,15 +40,15 @@
 		"check-outdated": "npx --yes -- check-outdated --ignore-pre-releases"
 	},
 	"dependencies": {
-		"@typescript-eslint/eslint-plugin": "5.35.1",
-		"@typescript-eslint/parser": "5.35.1",
+		"@typescript-eslint/eslint-plugin": "5.36.1",
+		"@typescript-eslint/parser": "5.36.1",
 		"eslint": "8.23.0",
 		"eslint-import-resolver-typescript": "3.5.0",
 		"eslint-import-resolver-webpack": "0.13.2",
 		"eslint-plugin-eslint-comments": "3.2.0",
 		"eslint-plugin-functional": "4.2.2",
 		"eslint-plugin-import": "2.26.0",
-		"eslint-plugin-jest": "26.9.0",
+		"eslint-plugin-jest": "27.0.1",
 		"eslint-plugin-jsdoc": "39.3.6",
 		"eslint-plugin-jsx-a11y": "6.6.1",
 		"eslint-plugin-node": "11.1.0",
@@ -73,7 +73,7 @@
 	"devDependencies": {
 		"@types/eslint": "8.4.6",
 		"@types/micromatch": "4.0.2",
-		"@types/node": "18.7.13",
+		"@types/node": "18.7.14",
 		"stylelint-find-new-rules": "4.0.0",
 		"typescript": "4.8.2"
 	}
