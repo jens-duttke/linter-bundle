@@ -92,6 +92,11 @@ module.exports = {
 	reportUnusedDisableDirectives: true,
 	rules: {
 		/**
+		 * ./rules
+		 */
+		'no-unnecessary-typeof': 'error',
+
+		/**
 		 * eslint
 		 *
 		 * @see https://eslint.org/docs/rules/
