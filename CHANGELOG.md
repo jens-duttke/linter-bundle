@@ -6,7 +6,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.20.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.21.0...HEAD)
+
+## [2.21.0] - 2022-09-14
+
+### Added
+
+- [eslint] New rule [`no-unnecessary-typeof`](./eslint/rules/no-unnecessary-typeof.md), which prevents `typeof` checks at runtime, if a `typeof` operant has only one type in TypeScript.
+
+### Changed
+
+- [eslint] Updated `@typescript-eslint` from `5.36.1` to `5.37.0`
+- [eslint] Updated `eslint` from `8.23.0` to `8.23.1`
+- [eslint] Updated `eslint-import-resolver-typescript` from `3.5.0` to `3.5.1`
+- [eslint] Updated `eslint-plugin-functional` from `4.2.2` to `4.3.1`
+- [eslint] Updated `eslint-plugin-jest` from `27.0.1` to `27.0.4`
+- [eslint] Updated `eslint-plugin-react` from `7.31.1` to `7.31.8`
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.20.0...v2.21.0)
 
 ## [2.20.0] - 2022-09-01
 
@@ -969,7 +986,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 
-- [gatsby/overrides-gatsby] New rule `no-global-undefined-check`, which prevents `typeof window === 'undefined'` checks, which are often [the source of rehydration problems](https://www.joshwcomeau.com/react/the-perils-of-rehydration/) in Gatsby
+- [eslint/overrides-gatsby] New rule [`no-global-undefined-check`](./eslint/rules/no-global-undefined-check.md), which prevents `typeof window === 'undefined'` checks, which are often [the source of rehydration problems](https://www.joshwcomeau.com/react/the-perils-of-rehydration/) in Gatsby
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.1.0...v1.2.0)
 
