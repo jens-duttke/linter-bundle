@@ -425,3 +425,7 @@ If you get such an error message:
 the problem is most likely, that your `tsconfig.json` does not cover your JavaScript files and that you don't have a `jsconfig.json` file in your root directory. This is required by the `@typescript-eslint` to use TypeScript for linting of JavaScript files.
 
 To solve this problem, either `"include"` your JavaScript files in your `tsconfig.json` (don't forget to set the compiler option `"checkJs"` to `true`) or create a `jsconfig.json` file in your root directory (this can be a copy of your `tsconfig.json` with an `"include"` of your JavaScript files).
+
+### In VSCode, in every file, the first line shows the error `Definition for rule "no-unnecessary-typeof" was not found. eslint(no-unnecessary-typeof)`
+
+Please ensure that you've added the configuration options as described above ("VSCode setup" > "ESLint").
