@@ -6,7 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.21.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.22.0...HEAD)
+
+## [2.22.0] - 2022-09-19
+
+### Changed
+
+- [stylelint] Updated `postcss-scss` from `4.0.4` to `4.0.5`
+- [stylelint] Updated `stylelint` from `14.11.0` to `14.12.0`
+- [eslint] Improved [`no-unnecessary-typeof`](./eslint/rules/no-unnecessary-typeof.md) to cover more cases
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.21.0...v2.22.0)
 
 ## [2.21.0] - 2022-09-14
 
