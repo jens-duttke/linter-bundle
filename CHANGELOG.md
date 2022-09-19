@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
+- [eslint] Updated `@typescript-eslint` from `5.37.0` to `5.38.0`
+- [eslint] Updated `eslint-plugin-functional` from `4.3.1` to `4.3.2`
 - [stylelint] Updated `postcss-scss` from `4.0.4` to `4.0.5`
 - [stylelint] Updated `stylelint` from `14.11.0` to `14.12.0`
 - [eslint] Improved [`no-unnecessary-typeof`](./eslint/rules/no-unnecessary-typeof.md) to cover more cases
