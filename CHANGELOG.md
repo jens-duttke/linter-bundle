@@ -6,7 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.22.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.23.0...HEAD)
+
+## [2.23.0] - 2022-09-21
+
+### Added
+
+- [general] Add functionality to ensure that the installed dependencies match to the required dependency of the linter-bundle
+
+### Changed
+
+- [eslint] Updated `eslint-plugin-functional` from `4.3.2` to `4.4.0`
+- [stylelint] Updated `stylelint` from `14.12.0` to `14.12.1`
+- [eslint] Improved [`no-unnecessary-typeof`](./eslint/rules/no-unnecessary-typeof.md) to cover even more cases and fix false-positives
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.22.0...v2.23.0)
 
 ## [2.22.0] - 2022-09-19
 
