@@ -18,14 +18,13 @@ module.exports = {
 			recommended: true
 		},
 		messages: {
-			textWithType: 'Unnecessary `typeof`, because the only possible type of `{{ name }}` is `{{ type }}`.',
-			textWithoutType: 'Unnecessary `typeof`, because there is only one possible type of `{{ name }}`.'
+			text: 'Unnecessary `typeof`, because the only possible type of {{ variableName }} is `{{ typeName }}`.'
 		}
 	},
 	create (context) {
 		return {
 			UnaryExpression (node) {
-				if (node.operator !== 'typeof' || node.argument.type !== 'Identifier') {
+				if (node.operator !== 'typeof') {
 					return;
 				}
 
@@ -39,26 +38,18 @@ module.exports = {
 				/** @type {Type} */
 				const nodeType = checker.getTypeAtLocation(originalNode);
 
-				if (isSingleType(nodeType)) {
-					if (nodeType.intrinsicName) {
-						context.report({
-							node,
-							messageId: 'textWithType',
-							data: {
-								name: node.argument.name,
-								type: nodeType.intrinsicName
-							}
-						});
-					}
-					else {
-						context.report({
-							node,
-							messageId: 'textWithoutType',
-							data: {
-								name: node.argument.name
-							}
-						});
-					}
+				const variableName = checker.getSymbolAtLocation(originalNode)?.getName();
+				const typeName = getSingleType(checker, nodeType);
+
+				if (typeName !== null) {
+					context.report({
+						node,
+						messageId: 'text',
+						data: {
+							variableName: (variableName ? `\`${variableName}\`` : `the ${node.argument.type.replace(/[A-Z]/gu, (substring) => ` ${substring.toLowerCase()}`).trim()}`),
+							typeName
+						}
+					});
 				}
 			}
 		};
@@ -66,33 +57,64 @@ module.exports = {
 };
 
 /**
- * Check if the number of types equals one.
+ * Check if the number of types equals one, and returns the type.
  *
+ * @param {ts.TypeChecker} checker - TypeScript type checker.
  * @param {Type} type - TypeScript type node.
- * @returns {boolean} Returns `true` if the `type` is only one specific type.
+ * @returns {string | null} Type as string match the `typeof` string, or `null` if it's not a primitive type.
  */
-function isSingleType (type) {
+function getSingleType (checker, type) {
 	if (isAnyOrUnknown(type)) {
-		return false;
+		return null;
 	}
 
 	if (!type.types) {
-		return true;
+		return getTypeString(checker, type);
 	}
 
-	const firstType = type.types[0];
+	const firstType = getTypeString(checker, type.types[0]);
 
-	if (isAnyOrUnknown(firstType)) {
-		return false;
+	if (firstType === null) {
+		return null;
 	}
 
 	for (let i = 1; i < type.types.length; i++) {
-		if (isDifferentType(type.types[i], firstType)) {
-			return false;
+		if (getTypeString(checker, type.types[i]) !== firstType) {
+			return null;
 		}
 	}
 
-	return true;
+	return firstType;
+}
+
+/**
+ * Converts a TypeScript type into a `typeof` compatible string, or `null` if it's not a primitive type.
+ *
+ * @param {ts.TypeChecker} checker - TypeScript type checker.
+ * @param {Type} type - TypeScript type node.
+ * @returns {string | null} Type as string match the `typeof` string, or `null` if it's not a primitive type.
+ */
+function getTypeString (checker, type) {
+	if (isAnyOrUnknown(type)) {
+		return null;
+	}
+
+	const typeString = checker.typeToString(type);
+
+	if (['undefined', 'boolean', 'number', 'bigint', 'string', 'symbol', 'function', 'object'].includes(typeString)) {
+		return typeString;
+	}
+
+	if (isUndefined(type)) { return 'undefined'; }
+	if (isBoolean(type)) { return 'boolean'; }
+	if (isNumber(type)) { return 'number'; }
+	if (isBigInt(type)) { return 'bigint'; }
+	if (isString(type)) { return 'string'; }
+	if (isSymbol(type)) { return 'symbol'; }
+	if (isFunction(type)) { return 'function'; }
+	if (isObject(type)) { return 'object'; }
+
+	return null;
 }
 
 /**
@@ -104,35 +126,6 @@ function isSingleType (type) {
 function isAnyOrUnknown (type) {
 	// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- `symbol` on Object is `undefined` for `Omit<unknown, 'undefined'>`
 	return (type.flags === ts.TypeFlags.Any || type.flags === ts.TypeFlags.Unknown || (type.flags === ts.TypeFlags.Object && type.symbol === undefined));
-}
-
-/**
- * Check if two types are identical.
- *
- * @param {Type} type1 - TypeScript type node.
- * @param {Type} type2 - TypeScript type node.
- * @returns {boolean} Returns `true` if both types are identical.
- */
-function isDifferentType (type1, type2) {
-	if (isString(type1) && isString(type2)) { return false; }
-	if (isNumber(type1) && isNumber(type2)) { return false; }
-	if (isBigInt(type1) && isBigInt(type2)) { return false; }
-	if (isBoolean(type1) && isBoolean(type2)) { return false; }
-	if (isSymbol(type1) && isSymbol(type2)) { return false; }
-
-	if (type1.flags !== type2.flags) {
-		return true;
-	}
-
-	if (type1.flags === ts.TypeFlags.Object) {
-		if (isFunction(type1)) {
-			return !isFunction(type2);
-		}
-
-		return isFunction(type2);
-	}
-
-	return false;
 }
 
 /**
@@ -192,5 +185,27 @@ function isSymbol (type) {
  * @returns {boolean} Returns `true` if the type is a `function`.
  */
 function isFunction (type) {
-	return (type.objectFlags === ts.ObjectFlags.Anonymous);
+	return (type.flags === ts.TypeFlags.Object && type.objectFlags === ts.ObjectFlags.Anonymous);
+}
+
+/**
+ * Checks if the given `type` is a `undefined`.
+ *
+ * @param {Type} type - TypeScript type node.
+ * @returns {boolean} Returns `true` if the type is `undefined`.
+ */
+function isUndefined (type) {
+	return [ts.TypeFlags.Undefined].includes(type.flags);
+}
+
+/**
+ * Checks if the given `type` is a `object`.
+ *
+ * We don't check `ts.TypeFlags.Object`, because for TypeScript Object seems to be the fallback for everything - even unknown types.
+ *
+ * @param {Type} type - TypeScript type node.
+ * @returns {boolean} Returns `true` if the type is an `object`.
+ */
+function isObject (type) {
+	return [ts.TypeFlags.Null].includes(type.flags);
 }
