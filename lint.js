@@ -4,12 +4,13 @@
  * @file Entry point of the linter-bundle.
  */
 
-const fs = require('fs');
 const path = require('path');
 const tty = require('tty');
 
 const micromatch = require('micromatch');
 
+const { findMissingOverrides } = require('./helper/find-missing-overrides.js');
+const { isNpmOrYarn } = require('./helper/is-npm-or-yarn.js');
 const { runProcess } = require('./helper/run-process.js');
 const { validatePackageOverrides } = require('./helper/validate-package-overrides.js');
 
@@ -21,21 +22,9 @@ const { validatePackageOverrides } = require('./helper/validate-package-override
 const isTerminal = tty.isatty(1);
 
 void (async () => {
-	const outdatedOverrides = validatePackageOverrides();
+	const npmOrYarn = isNpmOrYarn();
 
-	if (outdatedOverrides.overrides.length > 0 || outdatedOverrides.resolutions.length > 0) {
-		if (outdatedOverrides.overrides.length > 0) {
-			process.stderr.write(`Outdated "overrides" in package.json detected:\n- ${outdatedOverrides.overrides.map((dependency) => `${dependency.name}: ${dependency.configuredVersion} is configured, but ${dependency.expectedVersion} is expected`).join('\n- ')}\n\n`);
-		}
-
-		if (outdatedOverrides.resolutions.length > 0) {
-			process.stderr.write(`Outdated "resolutions" in package.json detected:\n- ${outdatedOverrides.resolutions.map((dependency) => `${dependency.name}: ${dependency.configuredVersion} is configured, but ${dependency.expectedVersion} is expected`).join('\n- ')}\n\n`);
-		}
-
-		process.exitCode = 1;
-
-		return;
-	}
+	validateEnvironment(npmOrYarn);
 
 	/** @type {{ diff: Promise<ProcessResult>; modified: Promise<ProcessResult>; deleted: Promise<ProcessResult>; } | undefined} */
 	let gitFilesProcessPromise;
@@ -151,7 +140,7 @@ void (async () => {
 				// eslint-disable-next-line @typescript-eslint/no-dynamic-delete -- This is not a valid `audit` property, so  we need to remove it.
 				delete config['git'];
 
-				if (fs.existsSync('package-lock.json')) {
+				if (npmOrYarn === 'npm') {
 					return runTask({
 						taskName,
 						config,
@@ -167,7 +156,7 @@ void (async () => {
 						].filter((argument) => Boolean(argument)).join(' ')
 					});
 				}
-				else if (fs.existsSync('yarn.lock')) {
+				else if (npmOrYarn === 'yarn') {
 					return runTask({
 						taskName,
 						config,
@@ -245,6 +234,56 @@ void (async () => {
 
 	process.stdout.write('\n');
 })();
+
+/**
+ * Ensures that the environment in which the linter is running has the correct versions of the required dependencies.
+ *
+ * @param {ReturnType<isNpmOrYarn>} npmOrYarn - This should be the return value of `isNpmOrYarn()`.
+ * @returns {void}
+ */
+function validateEnvironment (npmOrYarn) {
+	const outdatedOverrides = validatePackageOverrides();
+
+	if (outdatedOverrides.overrides.length > 0 || outdatedOverrides.resolutions.length > 0) {
+		if (outdatedOverrides.overrides.length > 0) {
+			process.stderr.write(`Outdated "overrides" in package.json detected:\n- ${outdatedOverrides.overrides.map((dependency) => `${dependency.name}: ${dependency.configuredVersion} is configured, but ${dependency.expectedVersion} is expected`).join('\n- ')}\n\n`);
+		}
+
+		if (outdatedOverrides.resolutions.length > 0) {
+			process.stderr.write(`Outdated "resolutions" in package.json detected:\n- ${outdatedOverrides.resolutions.map((dependency) => `${dependency.name}: ${dependency.configuredVersion} is configured, but ${dependency.expectedVersion} is expected`).join('\n- ')}\n\n`);
+		}
+
+		process.exitCode = 1;
+
+		return;
+	}
+
+	const missingOverrides = findMissingOverrides().filter(({ name }) => !(npmOrYarn === 'npm' && outdatedOverrides.overrides.some((override) => name === override.name)) && !(npmOrYarn === 'yarn' && outdatedOverrides.resolutions.some((override) => name === override.name)));
+
+	if (missingOverrides.length > 0) {
+		let installCommand;
+		let propertyName;
+
+		if (npmOrYarn === 'yarn') {
+			installCommand = 'yarn install';
+			propertyName = 'resolutions';
+		}
+		else {
+			installCommand = 'npm install';
+			propertyName = 'overrides';
+		}
+
+		process.stderr.write(`The installed version of ${missingOverrides.length === 1 ? 'one dependency' : `${missingOverrides.length} dependencies`} does not match to the version required by the linter-bundle:\n`);
+		process.stderr.write(`- ${missingOverrides.map((dependency) => `${dependency.name}: ${dependency.configuredVersion} is installed, but ${dependency.expectedVersion} is expected`).join('\n- ')}\n\n`);
+		process.stderr.write(`This could be caused by forgetting to execute \`${installCommand}\` after changing a version number in the package.json, or by some other package shipping outdated versions of the ${missingOverrides.length === 1 ? 'dependency' : 'dependencies'}.\n`);
+		process.stderr.write('If another package is causing this problem, you can fix it by adding the following entry to your package.json:\n');
+		process.stderr.write(`{\n  "${propertyName}: {\n    ${missingOverrides.map((dependency) => `"${dependency.name}": "${dependency.expectedVersion}"`).join(',\n    ')}\n  }\n}\n\n`);
+
+		process.exitCode = 1;
+
+		return;
+	}
+}
 
 /**
  * Extracts the tasks which should be run from the command-line arguments passed in.
