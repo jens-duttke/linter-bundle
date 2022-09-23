@@ -3,7 +3,7 @@
  */
 
 /* eslint-disable max-lines -- The rules can be easier managed if they are all in one file */
-/* eslint-disable node/no-process-env -- `process.env` is required to inject configuration adjustments */
+/* eslint-disable n/no-process-env -- `process.env` is required to inject configuration adjustments */
 
 const fs = require('fs');
 const path = require('path');

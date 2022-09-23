@@ -6,7 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.23.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.24.0...HEAD)
+
+## [2.24.0] - 2022-09-23
+
+### Changed
+
+- [eslint/overrides-javascript] Replace [eslint-plugin-node](https://www.npmjs.com/package/eslint-plugin-node) by the fork [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n)
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.23.0...v2.24.0)
 
 ## [2.23.0] - 2022-09-21
 

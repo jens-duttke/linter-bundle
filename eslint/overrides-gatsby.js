@@ -105,11 +105,11 @@ module.exports = {
 			files: ['gatsby-browser.js'],
 			rules: {
 				/**
-				 * eslint-plugin-node
+				 * eslint-plugin-n
 				 *
-				 * @see https://github.com/mysticatea/eslint-plugin-node
+				 * @see https://github.com/eslint-community/eslint-plugin-n
 				 */
-				'node/no-unsupported-features/es-syntax': 'off'
+				'n/no-unsupported-features/es-syntax': 'off'
 			}
 		}
 	]

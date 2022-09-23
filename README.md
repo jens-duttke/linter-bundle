@@ -29,7 +29,7 @@ This setup is using the following additional plugins:
 - [eslint-plugin-jest](https://www.npmjs.com/package/eslint-plugin-jest)
 - [eslint-plugin-jsdoc](https://www.npmjs.com/package/eslint-plugin-jsdoc)
 - [eslint-plugin-jsx-a11y](https://www.npmjs.com/package/eslint-plugin-jsx-a11y)
-- [eslint-plugin-node](https://www.npmjs.com/package/eslint-plugin-node)
+- [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n) (fork of [eslint-plugin-node](https://www.npmjs.com/package/eslint-plugin-node))
 - [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise)
 - [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks)
 - [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)

@@ -10,7 +10,7 @@ module.exports = {
 				node: true,
 				es6: true
 			},
-			plugins: ['node'],
+			plugins: ['n'],
 			rules: {
 				/**
 				 * eslint
@@ -47,53 +47,53 @@ module.exports = {
 				'import/no-nodejs-modules': 'off',
 
 				/**
-				 * eslint-plugin-node
+				 * eslint-plugin-n
 				 *
-				 * @see https://github.com/mysticatea/eslint-plugin-node
+				 * @see https://github.com/eslint-community/eslint-plugin-n
 				 */
 
 				// Possible Errors
-				'node/handle-callback-err': 'error',
-				'node/no-callback-literal': 'error',
-				'node/no-exports-assign': 'error',
-				'node/no-extraneous-import': 'error',
-				'node/no-extraneous-require': 'error',
-				'node/no-missing-import': 'error',
-				'node/no-missing-require': 'error',
-				'node/no-new-require': 'error',
-				'node/no-path-concat': 'error',
-				'node/no-process-exit': 'error',
-				'node/no-unpublished-bin': 'error',
-				'node/no-unpublished-import': 'error',
-				'node/no-unpublished-require': 'off', // Since we use .js files only for the dev-environment, we don't need this rule
-				'node/no-unsupported-features/es-builtins': 'error',
-				'node/no-unsupported-features/es-syntax': 'error',
-				'node/no-unsupported-features/node-builtins': 'error',
-				'node/process-exit-as-throw': 'error',
-				'node/shebang': 'error',
+				'n/handle-callback-err': 'error',
+				'n/no-callback-literal': 'error',
+				'n/no-exports-assign': 'error',
+				'n/no-extraneous-import': 'error',
+				'n/no-extraneous-require': 'error',
+				'n/no-missing-import': 'error',
+				'n/no-missing-require': 'error',
+				'n/no-new-require': 'error',
+				'n/no-path-concat': 'error',
+				'n/no-process-exit': 'error',
+				'n/no-unpublished-bin': 'error',
+				'n/no-unpublished-import': 'error',
+				'n/no-unpublished-require': 'off', // Since we use .js files only for the dev-environment, we don't need this rule
+				'n/no-unsupported-features/es-builtins': 'error',
+				'n/no-unsupported-features/es-syntax': 'error',
+				'n/no-unsupported-features/node-builtins': 'error',
+				'n/process-exit-as-throw': 'error',
+				'n/shebang': 'error',
 
 				// Best Practices
-				'node/no-deprecated-api': 'error',
+				'n/no-deprecated-api': 'error',
 
 				// Stylistic Issues
-				'node/callback-return': 'error',
-				'node/exports-style': 'error',
-				'node/file-extension-in-import': 'error',
-				'node/global-require': 'off',
-				'node/no-mixed-requires': 'error',
-				'node/no-process-env': 'error',
-				'node/no-restricted-import': 'error',
-				'node/no-restricted-require': 'error',
-				'node/no-sync': 'off', // Since the .js files are used in the CLI, preventing the use of sync functions is not required
-				'node/prefer-global/buffer': 'error',
-				'node/prefer-global/console': 'error',
-				'node/prefer-global/process': 'error',
-				'node/prefer-global/text-decoder': 'error',
-				'node/prefer-global/text-encoder': 'error',
-				'node/prefer-global/url-search-params': 'error',
-				'node/prefer-global/url': 'error',
-				'node/prefer-promises/dns': 'error',
-				'node/prefer-promises/fs': 'error',
+				'n/callback-return': 'error',
+				'n/exports-style': 'error',
+				'n/file-extension-in-import': 'error',
+				'n/global-require': 'off',
+				'n/no-mixed-requires': 'error',
+				'n/no-process-env': 'error',
+				'n/no-restricted-import': 'error',
+				'n/no-restricted-require': 'error',
+				'n/no-sync': 'off', // Since the .js files are used in the CLI, preventing the use of sync functions is not required
+				'n/prefer-global/buffer': 'error',
+				'n/prefer-global/console': 'error',
+				'n/prefer-global/process': 'error',
+				'n/prefer-global/text-decoder': 'error',
+				'n/prefer-global/text-encoder': 'error',
+				'n/prefer-global/url-search-params': 'error',
+				'n/prefer-global/url': 'error',
+				'n/prefer-promises/dns': 'error',
+				'n/prefer-promises/fs': 'error',
 
 				/**
 				 * eslint-plugin-unicorn
@@ -105,7 +105,7 @@ module.exports = {
 						kebabCase: true
 					}
 				}],
-				'unicorn/no-process-exit': 'off', // node/no-process-exit
+				'unicorn/no-process-exit': 'off', // n/no-process-exit
 				'unicorn/prefer-module': 'off', // @todo Requires Node.js v13.2. Activate in 2023
 				'unicorn/prefer-node-protocol': 'off', // @todo Requires Node.js v16. Activate in 2025
 				'unicorn/prevent-abbreviations': ['error', { ignore: ['args', 'dev', 'env', 'i', 'j', 'i18n', 'pkg', 'ref', 'Ref', 'req', 'res', 'setupDevServerMiddleware'] }],

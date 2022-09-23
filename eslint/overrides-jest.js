@@ -13,7 +13,7 @@ module.exports = {
 				jest: {
 					version: (() => {
 						try {
-							// eslint-disable-next-line node/no-missing-require, import/no-dynamic-require -- If "overrides-jest" is used, "jest" should be installed, and it should be searched in the working directory of the process.
+							// eslint-disable-next-line n/no-missing-require, import/no-dynamic-require -- If "overrides-jest" is used, "jest" should be installed, and it should be searched in the working directory of the process.
 							const jestVersion = require(require.resolve('jest', { paths: [process.cwd()] })).getVersion().split('.')[0];
 
 							process.stdout.write(`Detected Jest version: ${jestVersion}\n\n`);
