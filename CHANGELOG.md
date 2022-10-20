@@ -6,7 +6,34 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.24.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.25.0...HEAD)
+
+## [2.25.0] - 2022-10-20
+
+### Changed
+
+- [eslint] Updated `@typescript-eslint` from `5.38.0` to `5.40.1`
+- [eslint] Updated `eslint` from `8.23.1` to `8.25.0`
+- [eslint] Updated `eslint-import-resolver-typescript` from `3.5.1` to `3.5.2`
+- [eslint] Updated `eslint-plugin-functional` from `4.4.0` to `4.4.1`
+- [eslint] Updated `eslint-plugin-jest` from `27.0.4` to `27.1.3`
+- [eslint] Updated `eslint-plugin-jsdoc` from `39.3.6` to `39.3.14`
+- [eslint] Updated `eslint-plugin-promise` from `6.0.1` to `6.1.1`
+- [eslint] Updated `eslint-plugin-react` from `7.31.8` to `7.31.10`
+- [eslint] Updated `eslint-plugin-unicorn` from `43.0.2` to `44.0.2`
+- [eslint] Moved `eslint-plugin-jsx-a11y` configuration to `eslint/overrides-react`
+- [eslint] Added new [`logical-assignment-operators`](https://eslint.org/docs/latest/rules/logical-assignment-operators) rule with option `"always"`
+- [eslint] Added new [`promise/no-multiple-resolved`](https://github.com/eslint-community/eslint-plugin-promise/blob/main/docs/rules/no-multiple-resolved.md) rule
+- [eslint] Make use of new [`unicorn/no-unnecessary-await`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-unnecessary-await.md) rule
+- [eslint] Make use of new [`unicorn/switch-case-braces`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/switch-case-braces.md) rule with option `"avoid"`
+- [eslint/overrides-jest] Added but disable new [`jest/no-restricted-jest-methods`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/no-restricted-jest-methods.md) rule
+- [eslint/overrides-react] Replaced deprecated `react/jsx-sort-default-props` rule by new [`react/sort-default-props`](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/sort-default-props.md) rule
+- [eslint/overrides-react] Activate `allowDestructuredState` option of [`react/hook-use-state`](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/hook-use-state.md) rule
+- [eslint/overrides-react] Added new [`react/no-object-type-as-default-prop`](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-object-type-as-default-prop.md) rule
+- [stylelint] Updated `stylelint` from `14.12.1` to `14.14.0`
+- [stylelint] Ignore `!default` annotation in [`annotation-no-unknown`](https://stylelint.io/user-guide/rules/annotation-no-unknown/) rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.24.0...v2.25.0)
 
 ## [2.24.0] - 2022-09-23
 
@@ -730,9 +757,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Make use of new [`unicorn/prefer-object-has-own`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-object-has-own.md) rule
 - [eslint] Activated [`import/no-import-module-exports`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/no-import-module-exports.md) rule
 - [eslint] Change `@typescript-eslint/method-signature-style` to `property`
-- [eslint/overrides-react] Activate options `forbidDefaultForRequired` and `ignoreFunctionalComponents` of `react/require-default-props` rule
 - [eslint] Make use of [`eslint-import-resolver-typescript`](https://www.npmjs.com/package/eslint-import-resolver-typescript) package
 - [eslint] Activated [`import/no-unresolved`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md) rule
+- [eslint/overrides-react] Activate options `forbidDefaultForRequired` and `ignoreFunctionalComponents` of `react/require-default-props` rule
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.21.0...v1.22.0)
 
@@ -742,7 +769,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - [eslint] Updated `@typescript-eslint` from v4.24.0 to v4.25.0
 - [eslint] Updated `eslint-plugin-jsdoc` from v34.8.2 to v35.0.0  
-- [eslint] Actived `ignoreNonDOM` option for `jsx-a11y/no-autofocus` rule
+- [eslint] Activated `ignoreNonDOM` option for `jsx-a11y/no-autofocus` rule
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.20.0...v1.21.0)
 
@@ -762,7 +789,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
-- [styleint] Enforce the `all` property to be the first property in `import/order`.
+- [stylelint] Enforce the `all` property to be the first property in `import/order`.
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.18.0...v1.19.0)
 
@@ -1078,7 +1105,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Fixed
 
-- [tsc] Changed the way how TypeScript is resolved to prevent compatility issues if multiple TypeScript versions are installed
+- [tsc] Changed the way how TypeScript is resolved to prevent compatibility issues if multiple TypeScript versions are installed
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v0.16.3...v0.16.4)
 
