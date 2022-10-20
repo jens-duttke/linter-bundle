@@ -80,6 +80,7 @@ module.exports = {
 				'jest/no-jasmine-globals': 'error',
 				'jest/no-large-snapshots': 'error',
 				'jest/no-mocks-import': 'error',
+				'jest/no-restricted-jest-methods': 'off', // Right now, there are no specific restrictions
 				'jest/no-restricted-matchers': ['error', {
 					resolves: 'Use `expect(await promise)` instead.',
 					toBeFalsy: 'Avoid `toBeFalsy`',

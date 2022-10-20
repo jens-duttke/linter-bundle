@@ -51,40 +51,32 @@ module.exports = {
 				 *
 				 * @see https://github.com/eslint-community/eslint-plugin-n
 				 */
-
-				// Possible Errors
+				'n/callback-return': 'error',
+				'n/exports-style': 'error',
+				'n/file-extension-in-import': 'error',
+				'n/global-require': 'off',
 				'n/handle-callback-err': 'error',
 				'n/no-callback-literal': 'error',
+				'n/no-deprecated-api': 'error',
 				'n/no-exports-assign': 'error',
 				'n/no-extraneous-import': 'error',
 				'n/no-extraneous-require': 'error',
 				'n/no-missing-import': 'error',
 				'n/no-missing-require': 'error',
+				'n/no-mixed-requires': 'error',
 				'n/no-new-require': 'error',
 				'n/no-path-concat': 'error',
+				'n/no-process-env': 'error',
 				'n/no-process-exit': 'error',
+				'n/no-restricted-import': 'error',
+				'n/no-restricted-require': 'error',
+				'n/no-sync': 'off', // Since the .js files are used in the CLI, preventing the use of sync functions is not required
 				'n/no-unpublished-bin': 'error',
 				'n/no-unpublished-import': 'error',
 				'n/no-unpublished-require': 'off', // Since we use .js files only for the dev-environment, we don't need this rule
 				'n/no-unsupported-features/es-builtins': 'error',
 				'n/no-unsupported-features/es-syntax': 'error',
 				'n/no-unsupported-features/node-builtins': 'error',
-				'n/process-exit-as-throw': 'error',
-				'n/shebang': 'error',
-
-				// Best Practices
-				'n/no-deprecated-api': 'error',
-
-				// Stylistic Issues
-				'n/callback-return': 'error',
-				'n/exports-style': 'error',
-				'n/file-extension-in-import': 'error',
-				'n/global-require': 'off',
-				'n/no-mixed-requires': 'error',
-				'n/no-process-env': 'error',
-				'n/no-restricted-import': 'error',
-				'n/no-restricted-require': 'error',
-				'n/no-sync': 'off', // Since the .js files are used in the CLI, preventing the use of sync functions is not required
 				'n/prefer-global/buffer': 'error',
 				'n/prefer-global/console': 'error',
 				'n/prefer-global/process': 'error',
@@ -94,6 +86,8 @@ module.exports = {
 				'n/prefer-global/url': 'error',
 				'n/prefer-promises/dns': 'error',
 				'n/prefer-promises/fs': 'error',
+				'n/process-exit-as-throw': 'error',
+				'n/shebang': 'error',
 
 				/**
 				 * eslint-plugin-unicorn

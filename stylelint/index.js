@@ -68,7 +68,7 @@ module.exports = {
 		 * @see https://github.com/stylelint/stylelint/tree/master/lib/rules
 		 */
 		'alpha-value-notation': 'number', // @todo change that to 'percentage'?
-		'annotation-no-unknown': true,
+		'annotation-no-unknown': [true, { ignoreAnnotations: 'default' }],
 		'at-rule-allowed-list': null,
 		'at-rule-disallowed-list': null,
 		'at-rule-empty-line-before': [
