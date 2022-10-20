@@ -164,7 +164,7 @@ module.exports = {
 				'react/no-is-mounted': 'error',
 				'react/no-multi-comp': 'error',
 				'react/no-namespace': 'error',
-				'react/no-object-type-as-default-prop': 'error',
+				// 'react/no-object-type-as-default-prop': 'error',
 				'react/no-redundant-should-component-update': 'error',
 				'react/no-render-return-value': 'error',
 				'react/no-set-state': 'off',
