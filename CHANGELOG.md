@@ -6,7 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.25.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.25.1...HEAD)
+
+## [2.25.1] - 2022-10-20
+
+### Removed
+
+- [eslint/overrides-react] Revert: Replaced deprecated `react/jsx-sort-default-props` rule by new [`react/sort-default-props`](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/sort-default-props.md) rule
+- [eslint/overrides-react] Revert: Activate `allowDestructuredState` option of [`react/hook-use-state`](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/hook-use-state.md) rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.25.0...v2.25.1)
 
 ## [2.25.0] - 2022-10-20
 
@@ -27,8 +36,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Make use of new [`unicorn/no-unnecessary-await`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-unnecessary-await.md) rule
 - [eslint] Make use of new [`unicorn/switch-case-braces`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/switch-case-braces.md) rule with option `"avoid"`
 - [eslint/overrides-jest] Added but disable new [`jest/no-restricted-jest-methods`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/no-restricted-jest-methods.md) rule
-- [eslint/overrides-react] Replaced deprecated `react/jsx-sort-default-props` rule by new [`react/sort-default-props`](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/sort-default-props.md) rule
-- [eslint/overrides-react] Activate `allowDestructuredState` option of [`react/hook-use-state`](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/hook-use-state.md) rule
 - [eslint/overrides-react] Added new [`react/no-object-type-as-default-prop`](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-object-type-as-default-prop.md) rule
 - [stylelint] Updated `stylelint` from `14.12.1` to `14.14.0`
 - [stylelint] Ignore `!default` annotation in [`annotation-no-unknown`](https://stylelint.io/user-guide/rules/annotation-no-unknown/) rule

@@ -103,7 +103,7 @@ module.exports = {
 					namedComponents: 'arrow-function',
 					unnamedComponents: 'arrow-function'
 				}],
-				'react/hook-use-state': ['error', { allowDestructuredState: true }],
+				'react/hook-use-state': 'error', // ['error', { allowDestructuredState: true }],
 				'react/jsx-boolean-value': ['error', 'always'],
 				'react/jsx-child-element-spacing': 'off', // @todo Why is this disabled? Could it be, that the faulty behaviour is fixed in the meantime?
 				'react/jsx-closing-bracket-location': 'error',
@@ -205,7 +205,7 @@ module.exports = {
 						'static-methods'
 					]
 				}],
-				'react/sort-default-props': 'error',
+				'react/jsx-sort-default-props': 'error', // sort-default-props
 				'react/sort-prop-types': 'error',
 				'react/state-in-constructor': 'error',
 				'react/static-property-placement': 'error',
