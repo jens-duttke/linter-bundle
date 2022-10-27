@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+- [stylelint] Grouped `hyphenate-character` below `hyphens` for `order/properties-order` rule
+
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.25.2...HEAD)
 
 ## [2.25.2] - 2022-10-20

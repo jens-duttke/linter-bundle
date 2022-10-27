@@ -800,6 +800,7 @@ module.exports = {
 						'white-space',
 						'word-spacing',
 						'hyphens',
+						'hyphenate-character',
 
 						'src'
 					]
