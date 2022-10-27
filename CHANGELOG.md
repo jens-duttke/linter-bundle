@@ -6,9 +6,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.26.0...HEAD)
+
+## [2.26.0] - 2022-10-27
+
+### Changed
+
+- [eslint] Updated `@typescript-eslint` from `5.40.1` to `5.41.0`
+- [eslint] Updated `eslint` from `8.25.0` to `8.26.0`
+- [eslint] Updated `eslint-plugin-jsdoc` from `39.3.14` to `39.3.25`
+- [stylelint] Updated `stylelint-declaration-block-no-ignored-properties` from `2.5.0` to `2.6.0`
 - [stylelint] Grouped `hyphenate-character` below `hyphens` for `order/properties-order` rule
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.25.2...HEAD)
+### Added
+
+- [general] Stop execution on outdated "overrides"/"resolutions" in package.json
+- [eslint] Make use of [`@typescript-eslint/no-unsafe-declaration-merging`](https://typescript-eslint.io/rules/no-unsafe-declaration-merging/) rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.25.2...v2.26.0)
 
 ## [2.25.2] - 2022-10-20
 
@@ -138,7 +153,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
-- [eslint] Updated `@typescript-eslint/eslint-plugin` from `5.33.0` to `5.33.1`
+- [eslint] Updated `@typescript-eslint` from `5.33.0` to `5.33.1`
 - [eslint] Updated `eslint` from `8.21.0` to `8.22.0`
 - [eslint] Updated `eslint-import-resolver-typescript` from `3.4.0` to `3.4.2`
 - [eslint] Updated `eslint-plugin-jest` from `26.8.2` to `26.8.3`
@@ -158,7 +173,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
-- [eslint] Updated `@typescript-eslint/eslint-plugin` from `5.32.0` to `5.33.0`
+- [eslint] Updated `@typescript-eslint` from `5.32.0` to `5.33.0`
 - [eslint] Updated `eslint-plugin-jest` from `26.7.0` to `26.8.2`
 - [eslint] Updated `eslint-plugin-jsdoc` from `39.3.4` to `39.3.6`
 

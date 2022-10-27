@@ -24,7 +24,9 @@ const isTerminal = tty.isatty(1);
 void (async () => {
 	const npmOrYarn = isNpmOrYarn();
 
-	validateEnvironment(npmOrYarn);
+	if (!validateEnvironment(npmOrYarn)) {
+		return;
+	}
 
 	/** @type {{ diff: Promise<ProcessResult>; modified: Promise<ProcessResult>; deleted: Promise<ProcessResult>; } | undefined} */
 	let gitFilesProcessPromise;
@@ -239,7 +241,7 @@ void (async () => {
  * Ensures that the environment in which the linter is running has the correct versions of the required dependencies.
  *
  * @param {ReturnType<isNpmOrYarn>} npmOrYarn - This should be the return value of `isNpmOrYarn()`.
- * @returns {void}
+ * @returns {boolean} Returns `true` if the environment is valid, otherwise `false` is returned.
  */
 function validateEnvironment (npmOrYarn) {
 	const outdatedOverrides = validatePackageOverrides();
@@ -255,7 +257,7 @@ function validateEnvironment (npmOrYarn) {
 
 		process.exitCode = 1;
 
-		return;
+		return false;
 	}
 
 	const missingOverrides = findMissingOverrides().filter(({ name }) => !(npmOrYarn === 'npm' && outdatedOverrides.overrides.some((override) => name === override.name)) && !(npmOrYarn === 'yarn' && outdatedOverrides.resolutions.some((override) => name === override.name)));
@@ -281,8 +283,10 @@ function validateEnvironment (npmOrYarn) {
 
 		process.exitCode = 1;
 
-		return;
+		return false;
 	}
+
+	return true;
 }
 
 /**
