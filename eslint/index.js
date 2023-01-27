@@ -795,7 +795,7 @@ module.exports = {
 		 */
 		'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
 		'import/default': 'error',
-		'import/dynamic-import-chunkname': ['off', { // Here an "ignore" option is missing, which allows to ignore "@json\/locales\/.+?\.json", because these are handled in the webpack configuration.
+		'import/dynamic-import-chunkname': ['error', {
 			webpackChunknameFormat: '[0-9a-zA-Z-_/.+]+'
 		}],
 		'import/export': 'error',

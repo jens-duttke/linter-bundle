@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Changed
+
+- [eslint] Activated [`react/destructuring-assignment`](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/destructuring-assignment.md) rule
+
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.27.0...HEAD)
 
 ## [2.27.0] - 2023-01-27
