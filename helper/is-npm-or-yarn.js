@@ -1,5 +1,5 @@
 /**
- * @file Check if the project is using npm or yarn by checking the existance of a `package-lock.json` or a `yarn.lock`.
+ * @file Check if the project is using npm or yarn by checking the existence of a `package-lock.json` or a `yarn.lock`.
  */
 
 const fs = require('fs');

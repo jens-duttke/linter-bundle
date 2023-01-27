@@ -109,7 +109,7 @@ global.linterBundleSettings = {
   overrides: {
     general: {
       'no-restricted-globals': {
-        additionalRestictions: [
+        additionalRestrictions: [
           {
             name: 'fetch',
             message: 'Use Utils.fetchWithTimeout() instead.'
@@ -117,7 +117,7 @@ global.linterBundleSettings = {
         ]
       },
       'no-restricted-properties': {
-        additionalRestictions: [
+        additionalRestrictions: [
           {
             object: 'localStorage',
             property: 'getItem',
@@ -136,7 +136,7 @@ global.linterBundleSettings = {
         ]
       },
       'no-restricted-syntax': {
-        additionalRestictions: [
+        additionalRestrictions: [
           {
             selector: 'NewExpression[callee.name="Blob"]',
             message: 'Use BlobHelper.create() instead of new Blob().'

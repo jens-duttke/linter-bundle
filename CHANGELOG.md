@@ -51,6 +51,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint/overrides-react] Make use of new `allowDestructuredState` option of [`react/hook-use-state`](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/hook-use-state.md) rule
 - [stylelint] Added new [`media-feature-range-notation`](https://stylelint.io/user-guide/rules/media-feature-range-notation/) rule, and used `"prefix"` option
 
+### Fixed
+
+- [general] Fix typo in `linterBundleSettings.overrides.general.additionalRest*r*ictions`
+
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.26.0...v2.27.0)
 
 ## [2.26.0] - 2022-10-27

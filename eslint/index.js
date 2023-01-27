@@ -270,16 +270,16 @@ module.exports = {
 				name: 'isNaN',
 				message: 'Use Number.isNaN() instead, and ensure that the input value is of type number. isNaN(undefined) !== Number.isNaN(undefined)'
 			},
-			...ensureType.array(global.linterBundleSettings?.overrides?.general?.['no-restricted-globals']?.additionalRestictions)
+			...ensureType.array(global.linterBundleSettings?.overrides?.general?.['no-restricted-globals']?.additionalRestrictions)
 		],
 		'no-restricted-imports': 'off', // Covered by @typescript-eslint/no-restricted-imports
 		'no-restricted-properties': [
 			'error',
-			...ensureType.array(global.linterBundleSettings?.overrides?.general?.['no-restricted-properties']?.additionalRestictions)
+			...ensureType.array(global.linterBundleSettings?.overrides?.general?.['no-restricted-properties']?.additionalRestrictions)
 		],
 		'no-restricted-syntax': [
 			'error',
-			...ensureType.array(global.linterBundleSettings?.overrides?.general?.['no-restricted-syntax']?.additionalRestictions)
+			...ensureType.array(global.linterBundleSettings?.overrides?.general?.['no-restricted-syntax']?.additionalRestrictions)
 		],
 		'no-return-assign': 'error',
 		'no-return-await': 'off', // Covered by @typescript-eslint/return-await
@@ -800,7 +800,7 @@ module.exports = {
 		}],
 		'import/export': 'error',
 		'import/exports-last': 'off', // Exports should be declared first; helper functions last
-		'import/extensions': 'off', // There is no check that it's really an extension or part of the file name. Misinterpretes 'JavaDateTime' as extension in 'DateTime.JavaDateTime' for 'DateTime.DOSDateTime.ts'. So, we disable this rule
+		'import/extensions': 'off', // There is no check that it's really an extension or part of the file name. Misinterprets 'JavaDateTime' as extension in 'DateTime.JavaDateTime' for 'DateTime.DOSDateTime.ts'. So, we disable this rule
 		'import/first': 'error',
 		'import/group-exports': 'off',
 		'import/max-dependencies': ['error', { max: 20, ignoreTypeImports: true }],

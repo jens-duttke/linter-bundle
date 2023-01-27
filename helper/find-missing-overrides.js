@@ -21,20 +21,20 @@ function findMissingOverrides () {
 	const result = [];
 
 	for (const [name, expectedVersion] of Object.entries(linterBundleDependencies)) {
-		let dependenyPackageJson;
+		let dependencyPackageJson;
 
 		try {
-			dependenyPackageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'node_modules', name, 'package.json'), 'utf8'));
+			dependencyPackageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'node_modules', name, 'package.json'), 'utf8'));
 		}
 		catch {
 			// If the file does not exist, we ignore it, because in this case it's most likely a linter-bundle-only dependency.
 			continue;
 		}
 
-		if (dependenyPackageJson.version !== expectedVersion) {
+		if (dependencyPackageJson.version !== expectedVersion) {
 			result.push({
 				name,
-				configuredVersion: dependenyPackageJson.version,
+				configuredVersion: dependencyPackageJson.version,
 				expectedVersion
 			});
 		}

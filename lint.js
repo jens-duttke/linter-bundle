@@ -38,11 +38,11 @@ void (async () => {
 		if (config['git']) {
 			if (!gitFilesProcessPromise) {
 				gitFilesProcessPromise = {
-					// Returns changed files, also stashed and commited
+					// Returns changed files, also stashed and committed
 					diff: runProcess('git diff --name-only -z @{upstream}'),
 					// Returns unstashed files (including deleted)
 					modified: runProcess('git ls-files -o -m --exclude-standard --full-name --deduplicate -z'),
-					// Returns unstashed, deleted files - @todo Is there a way to also get a list of deleted stashed/commited files?
+					// Returns unstashed, deleted files - @todo Is there a way to also get a list of deleted stashed/committed files?
 					deleted: runProcess('git ls-files -d --exclude-standard --full-name --deduplicate -z')
 				};
 			}
@@ -378,7 +378,7 @@ function getIncludes (list, pattern, config) {
 }
 
 /**
- * Exectues a task asynchronously.
+ * Executes a task asynchronously.
  *
  * @param {TaskSetup} setup - The task execution setup.
  * @returns {Job} Job
@@ -395,7 +395,7 @@ function runTask (setup) {
  * Returns a job configuration which does not run any task, but just returns the given `output`.
  *
  * @param {string} taskName - The name of the task.
- * @param {Partial<Record<string, (string | true)[]>>} config - The configuratino of the task.
+ * @param {Partial<Record<string, (string | true)[]>>} config - The configuration of the task.
  * @param {{ code?: number; stdout?: string; stderr?: string; }} output - The output which should be returned as result of the job.
  * @returns {Job} Job
  */
