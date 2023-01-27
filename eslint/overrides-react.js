@@ -35,6 +35,7 @@ module.exports = {
 				 * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y
 				 */
 				'jsx-a11y/alt-text': 'error',
+				'jsx-a11y/anchor-ambiguous-text': 'off',
 				'jsx-a11y/anchor-has-content': 'error',
 				'jsx-a11y/anchor-is-valid': 'error',
 				'jsx-a11y/aria-activedescendant-has-tabindex': 'error',
@@ -53,6 +54,7 @@ module.exports = {
 				'jsx-a11y/media-has-caption': 'error',
 				'jsx-a11y/mouse-events-have-key-events': 'error',
 				'jsx-a11y/no-access-key': 'off', // If you explicitly specify an access key, you usually have a reason for this, so it should not be prevented by a rule
+				'jsx-a11y/no-aria-hidden-on-focusable': 'error',
 				'jsx-a11y/no-autofocus': ['error', { ignoreNonDOM: true }],
 				'jsx-a11y/no-distracting-elements': 'error',
 				'jsx-a11y/no-interactive-element-to-noninteractive-role': 'error',
@@ -103,9 +105,9 @@ module.exports = {
 					namedComponents: 'arrow-function',
 					unnamedComponents: 'arrow-function'
 				}],
-				'react/hook-use-state': 'error', // ['error', { allowDestructuredState: true }],
+				'react/hook-use-state': ['error', { allowDestructuredState: true }],
 				'react/jsx-boolean-value': ['error', 'always'],
-				'react/jsx-child-element-spacing': 'off', // @todo Why is this disabled? Could it be, that the faulty behaviour is fixed in the meantime?
+				'react/jsx-child-element-spacing': 'off', // @todo Why is this disabled? Could it be, that the faulty behavior is fixed in the meantime?
 				'react/jsx-closing-bracket-location': 'error',
 				'react/jsx-closing-tag-location': 'error',
 				'react/jsx-curly-brace-presence': ['error', { propElementValues: 'always' }],
@@ -164,7 +166,7 @@ module.exports = {
 				'react/no-is-mounted': 'error',
 				'react/no-multi-comp': 'error',
 				'react/no-namespace': 'error',
-				// 'react/no-object-type-as-default-prop': 'error',
+				'react/no-object-type-as-default-prop': 'error',
 				'react/no-redundant-should-component-update': 'error',
 				'react/no-render-return-value': 'error',
 				'react/no-set-state': 'off',
@@ -205,7 +207,7 @@ module.exports = {
 						'static-methods'
 					]
 				}],
-				'react/jsx-sort-default-props': 'error', // sort-default-props
+				'react/sort-default-props': 'error',
 				'react/sort-prop-types': 'error',
 				'react/state-in-constructor': 'error',
 				'react/static-property-placement': 'error',

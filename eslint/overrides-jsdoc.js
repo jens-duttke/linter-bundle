@@ -13,7 +13,8 @@ module.exports = {
 			plugins: ['jsdoc'],
 			settings: {
 				jsdoc: {
-					mode: 'typescript'
+					mode: 'typescript',
+					exemptDestructuredRootsFromChecks: true
 				}
 			},
 			rules: {
@@ -75,6 +76,7 @@ module.exports = {
 					},
 					noEndLines: true
 				}],
+				'jsdoc/text-escaping': 'off', // Right now, there is no description of this rule available on the page. Only the discussion here: https://github.com/gajus/eslint-plugin-jsdoc/issues/864
 				'jsdoc/valid-types': 'off' // Checked by TypeScript
 			}
 		}

@@ -6,7 +6,52 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.26.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.27.0...HEAD)
+
+## [2.27.0] - 2023-01-27
+
+### Changed
+
+- [eslint] Updated `@typescript-eslint` from `5.41.0` to `5.49.0`
+- [eslint] Updated `eslint` from `8.26.0` to `8.32.0`
+- [eslint] Updated `eslint-import-resolver-typescript` from `3.5.2` to `3.5.3`
+- [eslint] Updated `eslint-plugin-import` from `2.26.0` to `2.27.5`
+- [eslint] Updated `eslint-plugin-jest` from `27.1.3` to `27.2.1`
+- [eslint] Updated `eslint-plugin-jsdoc` from `39.3.25` to `39.6.9`
+- [eslint] Updated `eslint-plugin-jsx-a11y` from `6.6.1` to `6.7.1`
+- [eslint] Updated `eslint-plugin-n` from `15.3.0` to `15.6.1`
+- [eslint] Updated `eslint-plugin-react` from `7.31.10` to `7.32.1`
+- [eslint] Updated `eslint-plugin-unicorn` from `44.0.2` to `45.0.2`
+- [markdownlint] Updated `markdownlint-cli` from `0.32.2` to `0.33.0`
+- [stylelint] Updated `postcss-scss` from `4.0.5` to `4.0.6`
+- [stylelint] Updated `stylelint` from `14.14.0` to `14.16.1`
+- [stylelint] Updated `stylelint-order` from `5.0.0` to `6.0.1`
+- [eslint] Define order for getters and setters and private fields of [`@typescript-eslint/member-ordering`](https://typescript-eslint.io/rules/member-ordering/) rule
+
+### Added
+
+- [eslint] Added new [`no-empty-static-block`](https://eslint.org/docs/latest/rules/no-empty-static-block) rule
+- [eslint] Added new [`no-new-native-nonconstructor`](https://eslint.org/docs/latest/rules/no-new-native-nonconstructor) rule
+- [eslint] Added new [`import/no-empty-named-blocks`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/no-empty-named-blocks.md) rule
+- [eslint] Added new [`import/consistent-type-specifier-style`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/consistent-type-specifier-style.md) rule, and used `"prefer-top-level"` option
+- [eslint] Make use of new `alphabetize.orderImportKind` option of [`import/order`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/order.md) rule, and set it to `"asc"`
+- [eslint] Make use of new `distinctGroup` option of [`import/order`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/order.md) rule, and set it to `false`
+- [eslint] Make use of new `considerComments` option of [`import/newline-after-import`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/newline-after-import.md) rule, and set it to `true`
+- [eslint] Added new [`unicorn/no-typeof-undefined`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-typeof-undefined.md) rule
+- [eslint] Added, but disabled new [`unicorn/no-negated-condition`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-negated-condition.md) rule
+- [eslint] Added new [`unicorn/prefer-set-size`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-set-size.md) rule
+- [eslint/overrides-jest] Added new [`jest/no-untyped-mock-factory`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/no-untyped-mock-factory.md) rule for TypeScript files
+- [eslint/overrides-jsdoc] Activate `exemptDestructuredRootsFromChecks` setting for the rules [`jsdoc/require-param-type`](https://github.com/gajus/eslint-plugin-jsdoc#eslint-plugin-jsdoc-rules-require-param-type) and
+  [`jsdoc/require-param-description`](https://github.com/gajus/eslint-plugin-jsdoc#eslint-plugin-jsdoc-rules-require-param-description)
+- [eslint/overrides-jsdoc] Added, but disabled new [`jsdoc/text-escaping`](https://github.com/gajus/eslint-plugin-jsdoc#eslint-plugin-jsdoc-rules-text-escaping) rule
+- [eslint/overrides-react] Added, but disabled new [`jsx-a11y/anchor-ambiguous-text`](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/anchor-ambiguous-text.md) rule
+- [eslint/overrides-react] Added new [`jsx-a11y/no-aria-hidden-on-focusable`](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/no-aria-hidden-on-focusable.md) rule
+- [eslint/overrides-react] Added new [`react/no-object-type-as-default-prop`](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-object-type-as-default-prop.md) rule
+- [eslint/overrides-react] Added new [`react/sort-default-props`](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/sort-default-props.md) rule
+- [eslint/overrides-react] Make use of new `allowDestructuredState` option of [`react/hook-use-state`](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/hook-use-state.md) rule
+- [stylelint] Added new [`media-feature-range-notation`](https://stylelint.io/user-guide/rules/media-feature-range-notation/) rule, and used `"prefix"` option
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.26.0...v2.27.0)
 
 ## [2.26.0] - 2022-10-27
 
@@ -54,13 +99,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Updated `eslint-plugin-react` from `7.31.8` to `7.31.10`
 - [eslint] Updated `eslint-plugin-unicorn` from `43.0.2` to `44.0.2`
 - [eslint] Moved `eslint-plugin-jsx-a11y` configuration to `eslint/overrides-react`
+- [stylelint] Updated `stylelint` from `14.12.1` to `14.14.0`
+- [stylelint] Ignore `!default` annotation in [`annotation-no-unknown`](https://stylelint.io/user-guide/rules/annotation-no-unknown/) rule
+
+### Added
+
 - [eslint] Added new [`logical-assignment-operators`](https://eslint.org/docs/latest/rules/logical-assignment-operators) rule with option `"always"`
 - [eslint] Added new [`promise/no-multiple-resolved`](https://github.com/eslint-community/eslint-plugin-promise/blob/main/docs/rules/no-multiple-resolved.md) rule
 - [eslint] Make use of new [`unicorn/no-unnecessary-await`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-unnecessary-await.md) rule
 - [eslint] Make use of new [`unicorn/switch-case-braces`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/switch-case-braces.md) rule with option `"avoid"`
 - [eslint/overrides-jest] Added but disable new [`jest/no-restricted-jest-methods`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/no-restricted-jest-methods.md) rule
-- [stylelint] Updated `stylelint` from `14.12.1` to `14.14.0`
-- [stylelint] Ignore `!default` annotation in [`annotation-no-unknown`](https://stylelint.io/user-guide/rules/annotation-no-unknown/) rule
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.24.0...v2.25.0)
 
@@ -798,7 +846,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - [eslint] Updated `@typescript-eslint` from v4.24.0 to v4.25.0
 - [eslint] Updated `eslint-plugin-jsdoc` from v34.8.2 to v35.0.0  
-- [eslint] Activated `ignoreNonDOM` option for `jsx-a11y/no-autofocus` rule
+- [eslint] Activated `ignoreNonDOM` option for [`jsx-a11y/no-autofocus`](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/no-autofocus.md) rule
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.20.0...v1.21.0)
 

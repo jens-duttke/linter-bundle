@@ -214,6 +214,7 @@ module.exports = {
 		'media-feature-name-no-vendor-prefix': null, // For Safari, we still need "-webkit-min-device-pixel-ratio": https://caniuse.com/css-media-resolution
 		'media-feature-name-value-allowed-list': null,
 		'media-feature-parentheses-space-inside': 'never',
+		'media-feature-range-notation': 'prefix',
 		'media-feature-range-operator-space-after': 'always',
 		'media-feature-range-operator-space-before': 'always',
 		'media-query-list-comma-newline-after': 'always-multi-line',

@@ -2,6 +2,22 @@
  * @file Settings for Jest based unit tests.
  */
 
+const jestVersion = (() => {
+	try {
+		// eslint-disable-next-line n/no-missing-require, import/no-dynamic-require -- If "overrides-jest" is used, "jest" should be installed, and it should be searched in the working directory of the process.
+		const version = require(require.resolve('jest', { paths: [process.cwd()] })).getVersion().split('.')[0];
+
+		process.stdout.write(`Detected Jest version: ${version}\n\n`);
+
+		return version;
+	}
+	catch {
+		process.stderr.write('No Jest version detected\n\n');
+
+		return 'detect';
+	}
+})();
+
 module.exports = {
 	overrides: [
 		{
@@ -11,21 +27,7 @@ module.exports = {
 			},
 			settings: {
 				jest: {
-					version: (() => {
-						try {
-							// eslint-disable-next-line n/no-missing-require, import/no-dynamic-require -- If "overrides-jest" is used, "jest" should be installed, and it should be searched in the working directory of the process.
-							const jestVersion = require(require.resolve('jest', { paths: [process.cwd()] })).getVersion().split('.')[0];
-
-							process.stdout.write(`Detected Jest version: ${jestVersion}\n\n`);
-
-							return jestVersion;
-						}
-						catch {
-							process.stderr.write('No Jest version detected\n\n');
-
-							return 'detect';
-						}
-					})()
+					version: jestVersion
 				}
 			},
 			plugins: ['jest'],
@@ -115,6 +117,26 @@ module.exports = {
 				'jest/valid-expect-in-promise': 'error',
 				'jest/valid-expect': 'error',
 				'jest/valid-title': 'error'
+			}
+		},
+		{
+			files: ['**/__tests__/**/*.ts', '**/?(*.)+(spec|test).ts'],
+			env: {
+				jest: true
+			},
+			settings: {
+				jest: {
+					version: jestVersion
+				}
+			},
+			plugins: ['jest'],
+			rules: {
+				/**
+				 * eslint-plugin-jest
+				 *
+				 * @see https://github.com/jest-community/eslint-plugin-jest/tree/master/docs/rules
+				 */
+				'jest/no-untyped-mock-factory': 'error'
 			}
 		}
 	]

@@ -205,6 +205,7 @@ module.exports = {
 		'no-empty-character-class': 'error',
 		'no-empty-function': 'off', // Covered by @typescript-eslint/no-empty-function
 		'no-empty-pattern': 'error',
+		'no-empty-static-block': 'error',
 		'no-empty': 'error',
 		'no-eq-null': 'error',
 		'no-eval': 'error',
@@ -246,6 +247,7 @@ module.exports = {
 		'no-negated-condition': 'off',
 		'no-nested-ternary': 'error',
 		'no-new-func': 'error',
+		'no-new-native-nonconstructor': 'error',
 		'no-new-object': 'error',
 		'no-new-symbol': 'error',
 		'no-new-wrappers': 'error',
@@ -470,6 +472,7 @@ module.exports = {
 				// Fields
 				'public-static-field',
 				'protected-static-field',
+				'#private-static-field',
 				'private-static-field',
 
 				'public-decorated-field',
@@ -478,32 +481,59 @@ module.exports = {
 
 				'public-instance-field',
 				'protected-instance-field',
+				'#private-instance-field',
 				'private-instance-field',
 
 				'public-abstract-field',
 				'protected-abstract-field',
-				'private-abstract-field',
 
 				// Constructors
 				'public-constructor',
 				'protected-constructor',
 				'private-constructor',
 
-				// Methods
+				// Methods / Getters / Setters
+				'public-decorated-set',
+				'public-decorated-get',
 				'public-decorated-method',
+				'public-instance-set',
+				'public-instance-get',
 				'public-instance-method',
+				'public-static-set',
+				'public-static-get',
 				'public-static-method',
+				'public-abstract-get',
+				'public-abstract-set',
 				'public-abstract-method',
 
+				'protected-decorated-set',
+				'protected-decorated-get',
 				'protected-decorated-method',
+				'protected-instance-set',
+				'protected-instance-get',
 				'protected-instance-method',
+				'protected-static-set',
+				'protected-static-get',
 				'protected-static-method',
+				'protected-abstract-get',
+				'protected-abstract-set',
 				'protected-abstract-method',
 
+				'private-decorated-set',
+				'private-decorated-get',
 				'private-decorated-method',
+				'#private-instance-set',
+				'#private-instance-get',
+				'#private-instance-method',
+				'private-instance-set',
+				'private-instance-get',
 				'private-instance-method',
-				'private-static-method',
-				'private-abstract-method'
+				'#private-static-set',
+				'#private-static-get',
+				'#private-static-method',
+				'private-static-set',
+				'private-static-get',
+				'private-static-method'
 			]
 		}],
 		'@typescript-eslint/method-signature-style': ['error', 'property'],
@@ -539,7 +569,7 @@ module.exports = {
 			// Function
 			{ selector: 'function', format: ['camelCase', 'PascalCase'] },
 
-			// Paramter
+			// Parameter
 			{ selector: 'parameter', format: ['camelCase', 'PascalCase'], leadingUnderscore: 'allow' },
 
 			// Property
@@ -574,7 +604,7 @@ module.exports = {
 				format: null
 			},
 			{
-				// Allow properties which which don't contain an underscore (to prevent usage of "UPPER_CASE") and contain atleast 4 characters
+				// Allow properties which which don't contain an underscore (to prevent usage of "UPPER_CASE") and contain at least 4 characters
 				selector: 'objectLiteralProperty',
 				filter: '^[^_]{4,}$',
 				format: null
@@ -644,6 +674,7 @@ module.exports = {
 		/* ['error', {
 			ignore: [-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 15, 16, 24, 32, 60, 63, 64, 100, 128, 250, 255, 256, 500, 1000, 4_294_967_296],
 			ignoreArrayIndexes: true,
+			ignoreClassFieldInitialValues: true,
 			enforceConst: true,
 			detectObjects: true
 		}], */
@@ -762,6 +793,7 @@ module.exports = {
 		 *
 		 * @see https://github.com/import-js/eslint-plugin-import
 		 */
+		'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
 		'import/default': 'error',
 		'import/dynamic-import-chunkname': ['off', { // Here an "ignore" option is missing, which allows to ignore "@json\/locales\/.+?\.json", because these are handled in the webpack configuration.
 			webpackChunknameFormat: '[0-9a-zA-Z-_/.+]+'
@@ -774,7 +806,7 @@ module.exports = {
 		'import/max-dependencies': ['error', { max: 20, ignoreTypeImports: true }],
 		'import/named': 'error',
 		'import/namespace': ['error', { allowComputed: true }],
-		'import/newline-after-import': 'error',
+		'import/newline-after-import': ['error', { considerComments: true }],
 		'import/no-absolute-path': 'error',
 		'import/no-amd': 'error',
 		'import/no-anonymous-default-export': 'error',
@@ -784,6 +816,7 @@ module.exports = {
 		'import/no-deprecated': 'error',
 		'import/no-duplicates': 'error',
 		'import/no-dynamic-require': 'error',
+		'import/no-empty-named-blocks': 'error',
 		'import/no-extraneous-dependencies': 'error',
 		'import/no-internal-modules': ['off', { // @todo Throws an "Cannot read property 'value' of null" error in src/help/scss/help.scss.d.ts:2 since the update to v2.21.1. If this issue does not get fixed in the next releases, report it!
 			allow: [
@@ -813,7 +846,7 @@ module.exports = {
 		'import/no-useless-path-segments': 'error',
 		'import/no-webpack-loader-syntax': 'off', // Indeed, you should avoid that, but if we do it, we have a reason for it
 		'import/order': ['error', {
-			'alphabetize': { order: 'asc', caseInsensitive: true },
+			'alphabetize': { order: 'asc', orderImportKind: 'asc', caseInsensitive: true },
 			'groups': ['builtin', 'unknown', 'external', 'internal', 'parent', 'sibling', 'index'],
 			'newlines-between': 'always',
 			'pathGroupsExcludedImportTypes': [],
@@ -830,7 +863,8 @@ module.exports = {
 				{ pattern: '@*', group: 'internal' },
 				{ pattern: '@*/**', group: 'internal' },
 				{ pattern: '*!*/**', group: 'internal', position: 'after' } // Webpack loaders, e.g. 'worker-ref-loader!@app/components/FileFormatIdentificationDialog/TypeDetection.worker'
-			]
+			],
+			'distinctGroup': false
 		}],
 		'import/prefer-default-export': 'off',
 		'import/unambiguous': 'off',
@@ -912,6 +946,7 @@ module.exports = {
 		'unicorn/no-instanceof-array': 'error',
 		'unicorn/no-keyword-prefix': 'off',
 		'unicorn/no-lonely-if': 'off', // Sometimes the code is clearer if-conditions are not combined
+		'unicorn/no-negated-condition': 'off',
 		'unicorn/no-nested-ternary': 'off', // We prefer no-nested-ternary of ESlint
 		'unicorn/no-new-array': 'off', // `new Array(length)` should be preferred over `Array.from({ length })` because it's much faster. @see https://jsben.ch/qTpYp
 		'unicorn/no-new-buffer': 'error',
@@ -921,6 +956,7 @@ module.exports = {
 		'unicorn/no-static-only-class': 'error',
 		'unicorn/no-thenable': 'error',
 		'unicorn/no-this-assignment': 'error',
+		'unicorn/no-typeof-undefined': 'error',
 		'unicorn/no-unnecessary-await': 'error',
 		'unicorn/no-unreadable-array-destructuring': 'error',
 		'unicorn/no-unreadable-iife': 'error',
@@ -970,8 +1006,9 @@ module.exports = {
 		'unicorn/prefer-query-selector': 'off', // document.getElementById() is much faster
 		'unicorn/prefer-reflect-apply': 'error',
 		'unicorn/prefer-set-has': 'error',
+		'unicorn/prefer-set-size': 'error',
 		'unicorn/prefer-spread': 'off', // @todo Disabled till there a solution for the warning, that `slice()` on Typed-Arrays should be replaced (which is not possible). @see https://github.com/sindresorhus/eslint-plugin-unicorn/issues/1064
-		'unicorn/prefer-string-replace-all': 'off',
+		'unicorn/prefer-string-replace-all': 'off', // @todo Available since 2020 in browsers. SHould this be preferred?
 		'unicorn/prefer-string-slice': 'off', // @todo As of today (2020.08.24) and since the last 9 years, substr() is three times faster than slice() in Firefox.
 		'unicorn/prefer-string-starts-ends-with': 'error',
 		'unicorn/prefer-string-trim-start-end': 'error',
