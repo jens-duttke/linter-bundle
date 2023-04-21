@@ -20,7 +20,6 @@ module.exports = {
 			rules: {
 				/**
 				 * "eslint-plugin-jsdoc" rules
-				 *
 				 * @see https://github.com/gajus/eslint-plugin-jsdoc
 				 */
 				'jsdoc/check-access': 'error',
@@ -38,7 +37,6 @@ module.exports = {
 				'jsdoc/match-description': 'error',
 				'jsdoc/match-name': 'off',
 				'jsdoc/multiline-blocks': ['error', { noSingleLineBlocks: true, singleLineTags: ['lends', 'type', 'typedef'], noFinalLineText: false }],
-				'jsdoc/newline-after-description': 'error',
 				'jsdoc/no-bad-blocks': 'error',
 				'jsdoc/no-defaults': 'off',
 				'jsdoc/no-missing-syntax': 'off',
@@ -64,17 +62,22 @@ module.exports = {
 				'jsdoc/require-throws': 'error',
 				'jsdoc/require-yields': 'error',
 				'jsdoc/require-yields-check': 'error',
-				'jsdoc/tag-lines': ['error', 'any', {
+				'jsdoc/tag-lines': ['error', 'always', {
 					tags: {
 						example: { lines: 'always' },
 						file: { lines: 'always' },
 						fileOverview: { lines: 'always' },
+						license: { lines: 'always' },
+						see: { lines: 'never' },
+						template: { lines: 'never' },
 						param: { lines: 'never' },
 						private: { lines: 'never' },
 						protected: { lines: 'never' },
 						public: { lines: 'never' }
 					},
-					noEndLines: true
+					startLines: null,
+					endLines: null,
+					applyToEndTag: false
 				}],
 				'jsdoc/text-escaping': 'off', // Right now, there is no description of this rule available on the page. Only the discussion here: https://github.com/gajus/eslint-plugin-jsdoc/issues/864
 				'jsdoc/valid-types': 'off' // Checked by TypeScript

@@ -1,5 +1,6 @@
 /**
  * @file Settings for Gatsby-based projects.
+ *
  */
 
 module.exports = {
@@ -14,10 +15,8 @@ module.exports = {
 
 				/**
 				 * eslint
-				 *
 				 * @see https://eslint.org/docs/rules/
 				 */
-
 				'no-restricted-imports': ['error', {
 					paths: [{
 						name: '@reach/router',
@@ -28,21 +27,18 @@ module.exports = {
 
 				/**
 				 * typescript-eslint
-				 *
 				 * @see https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules
 				 */
 				'@typescript-eslint/no-confusing-void-expression': 'off', // @todo Conflicts with graphql-template strings
 
 				/**
 				 * eslint-plugin-import
-				 *
 				 * @see https://github.com/import-js/eslint-plugin-import
 				 */
 				'import/no-unresolved': ['error', { caseSensitiveStrict: true, ignore: ['@reach/router'] }],
 
 				/**
 				 * eslint-plugin-unicorn
-				 *
 				 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
 				 */
 				'unicorn/string-content': ['error', {
@@ -64,7 +60,6 @@ module.exports = {
 			rules: {
 				/**
 				 * eslint-plugin-unicorn
-				 *
 				 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
 				 */
 				'unicorn/filename-case': ['error', {
@@ -83,7 +78,6 @@ module.exports = {
 			rules: {
 				/**
 				 * eslint-plugin-import
-				 *
 				 * @see https://github.com/import-js/eslint-plugin-import
 				 */
 				'import/no-default-export': 'off',
@@ -91,7 +85,6 @@ module.exports = {
 
 				/**
 				 * eslint-plugin-unicorn
-				 *
 				 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
 				 */
 				'unicorn/filename-case': ['error', {
@@ -106,7 +99,6 @@ module.exports = {
 			rules: {
 				/**
 				 * eslint-plugin-n
-				 *
 				 * @see https://github.com/eslint-community/eslint-plugin-n
 				 */
 				'n/no-unsupported-features/es-syntax': 'off'

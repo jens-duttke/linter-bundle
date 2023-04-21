@@ -171,6 +171,14 @@ module.exports = {
 		'declaration-property-unit-disallowed-list': null,
 		'declaration-property-value-allowed-list': null,
 		'declaration-property-value-disallowed-list': null,
+		'declaration-property-value-no-unknown': [
+			true,
+			{
+				ignoreProperties: {
+					'initial-value': '/.+/'
+				}
+			}
+		],
 		'font-family-name-quotes': 'always-where-recommended',
 		'font-family-no-duplicate-names': true,
 		'font-family-no-missing-generic-family-keyword': true,
@@ -212,6 +220,7 @@ module.exports = {
 		'media-feature-name-disallowed-list': null,
 		'media-feature-name-no-unknown': true,
 		'media-feature-name-no-vendor-prefix': null, // For Safari, we still need "-webkit-min-device-pixel-ratio": https://caniuse.com/css-media-resolution
+		'media-feature-name-unit-allowed-list': null,
 		'media-feature-name-value-allowed-list': null,
 		'media-feature-parentheses-space-inside': 'never',
 		'media-feature-range-notation': 'prefix',
@@ -234,6 +243,7 @@ module.exports = {
 		'no-irregular-whitespace': true,
 		'no-missing-end-of-source-newline': true,
 		'no-unknown-animations': true,
+		'no-unknown-custom-properties': null, // @todo Activate in 2025 as Firefox currently does not support "@property" and there is no way to specify which custom properties are available
 		'number-leading-zero': 'always',
 		'number-max-precision': 5,
 		'number-no-trailing-zeros': true,
@@ -258,6 +268,7 @@ module.exports = {
 				ignore: ['after-comment']
 			}
 		],
+		'selector-anb-no-unmatchable': true,
 		'selector-attribute-brackets-space-inside': 'never',
 		'selector-attribute-name-disallowed-list': null,
 		'selector-attribute-operator-allowed-list': null,

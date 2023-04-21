@@ -98,7 +98,6 @@ module.exports = {
 
 		/**
 		 * eslint
-		 *
 		 * @see https://eslint.org/docs/rules/
 		 */
 		'accessor-pairs': 'error',
@@ -149,7 +148,7 @@ module.exports = {
 		'indent': 'off', // Covered by @typescript-eslint/indent
 		'init-declarations': 'off', // @todo It should be possible to ignore predefined consts like MAX_RADIX
 		'jsx-quotes': 'error',
-		'key-spacing': 'error',
+		'key-spacing': 'off', // Covered by @typescript-eslint/key-spacing
 		'keyword-spacing': 'error',
 		'line-comment-position': 'off',
 		'linebreak-style': 'error',
@@ -188,6 +187,7 @@ module.exports = {
 		'no-confusing-arrow': ['error', { allowParens: true }],
 		'no-console': 'error',
 		'no-const-assign': 'error',
+		'no-constant-binary-expression': 'error',
 		'no-constant-condition': 'error',
 		'no-constructor-return': 'error',
 		'no-continue': 'off', // If it makes the code more readable, wer are using `continue`
@@ -387,7 +387,6 @@ module.exports = {
 
 		/**
 		 * typescript-eslint
-		 *
 		 * @see https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules
 		 */
 		'@typescript-eslint/adjacent-overload-signatures': 'error',
@@ -463,6 +462,7 @@ module.exports = {
 				ignoredNodes: ['ConditionalExpression']
 			}
 		],
+		'@typescript-eslint/key-spacing': 'error',
 		'@typescript-eslint/member-delimiter-style': ['error', { multiline: { delimiter: 'semi', requireLast: true }, singleline: { delimiter: 'semi', requireLast: true } }],
 		'@typescript-eslint/member-ordering': ['error', {
 			default: [
@@ -654,6 +654,7 @@ module.exports = {
 		'@typescript-eslint/no-confusing-void-expression': ['error', { ignoreArrowShorthand: true, ignoreVoidOperator: true }],
 		'@typescript-eslint/no-dupe-class-members': 'error',
 		'@typescript-eslint/no-duplicate-enum-values': 'error',
+		'@typescript-eslint/no-duplicate-type-constituents': 'error',
 		'@typescript-eslint/no-dynamic-delete': 'error',
 		'@typescript-eslint/no-empty-function': 'error',
 		'@typescript-eslint/no-empty-interface': 'off',
@@ -665,6 +666,7 @@ module.exports = {
 		'@typescript-eslint/no-floating-promises': 'error',
 		'@typescript-eslint/no-for-in-array': 'error',
 		'@typescript-eslint/no-implicit-any-catch': 'off', // Results into false-positive with the TS4.4 option "useUnknownInCatchVariables"
+		'@typescript-eslint/no-import-type-side-effects': 'error',
 		'@typescript-eslint/no-inferrable-types': 'off', // Sometimes an explicit type helps to understand the code better
 		'@typescript-eslint/no-invalid-this': 'error',
 		'@typescript-eslint/no-invalid-void-type': ['error', { allowInGenericTypeArguments: true }],
@@ -681,6 +683,7 @@ module.exports = {
 		'@typescript-eslint/no-meaningless-void-operator': 'error',
 		'@typescript-eslint/no-misused-new': 'error',
 		'@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: false }],
+		'@typescript-eslint/no-mixed-enums': 'error',
 		'@typescript-eslint/no-namespace': ['error', { allowDeclarations: true }],
 		'@typescript-eslint/no-non-null-assertion': 'error',
 		'@typescript-eslint/no-non-null-asserted-optional-chain': 'error',
@@ -714,6 +717,7 @@ module.exports = {
 		'@typescript-eslint/no-unsafe-assignment': 'error',
 		'@typescript-eslint/no-unsafe-call': 'error',
 		'@typescript-eslint/no-unsafe-declaration-merging': 'error',
+		'@typescript-eslint/no-unsafe-enum-comparison': 'error',
 		'@typescript-eslint/no-unsafe-member-access': 'error',
 		'@typescript-eslint/no-unsafe-return': 'error',
 		'@typescript-eslint/no-unused-expressions': 'error',
@@ -752,6 +756,7 @@ module.exports = {
 		}],
 		'@typescript-eslint/return-await': 'error',
 		'@typescript-eslint/semi': 'error',
+		'@typescript-eslint/sort-type-constituents': 'off', // Types should be sorted and grouped by priority and their meaning, not alphabetically
 		'@typescript-eslint/sort-type-union-intersection-members': 'off', // Types should be sorted and grouped by priority and their meaning, not alphabetically
 		'@typescript-eslint/space-before-function-paren': 'error',
 		'@typescript-eslint/space-infix-ops': 'error',
@@ -765,32 +770,32 @@ module.exports = {
 
 		/**
 		 * eslint-plugin-functional
-		 *
 		 * @see https://github.com/jonaskello/eslint-plugin-functional#supported-rules
 		 */
 		'functional/functional-parameters': 'off',
 		'functional/immutable-data': 'off', // This rule would require a lot of additional code and workarounds, which would make the result much more illegible.
-		'functional/no-class': 'off',
-		'functional/no-conditional-statement': 'off',
-		'functional/no-expression-statement': ['off', { ignoreVoid: true }], // Creates too much false-positives
+		'functional/no-classes': 'off',
+		'functional/no-conditional-statements': 'off',
+		'functional/no-expression-statements': ['off', { ignoreVoid: true }], // Creates too much false-positives
 		'functional/no-let': 'off', // This is better covered by the `prefer-const` rule
-		'functional/no-loop-statement': 'off',
-		'functional/no-method-signature': 'off', // Covered by @typescript-eslint/method-signature-style
-		'functional/no-mixed-type': ['error', {
+		'functional/no-loop-statements': 'off',
+		'functional/no-mixed-types': ['error', {
 			checkInterfaces: false,
 			checkTypeLiterals: true
 		}],
 		'functional/no-promise-reject': 'off',
 		'functional/no-return-void': 'off',
-		'functional/no-this-expression': 'off',
-		'functional/no-throw-statement': 'off',
-		'functional/no-try-statement': 'off',
-		'functional/prefer-readonly-type': ['error', { ignoreClass: true, allowLocalMutation: true, ignoreCollections: true, ignoreInterface: true }],
+		'functional/no-this-expressions': 'off',
+		'functional/no-throw-statements': 'off',
+		'functional/no-try-statements': 'off',
+		'functional/prefer-immutable-types': 'off',
+		'functional/prefer-property-signatures': 'off', // Covered by @typescript-eslint/method-signature-style
 		'functional/prefer-tacit': 'off', // @see https://github.com/jonaskello/eslint-plugin-functional/issues/263
+		'functional/readonly-type': ['error', 'keyword'],
+		'functional/type-declaration-immutability': 'off',
 
 		/**
 		 * eslint-plugin-import
-		 *
 		 * @see https://github.com/import-js/eslint-plugin-import
 		 */
 		'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
@@ -854,7 +859,6 @@ module.exports = {
 				...ensureType.array(global.linterBundleSettings?.overrides?.general?.['import/order']?.additionalExternalPatterns).map(
 					/**
 					 * Creates an "external" group using the additional external pattern configuration.
-					 *
 					 * @param {string} pattern - A given pattern
 					 * @returns {{ pattern: string; group: 'external'; }} An "external" path configuration object
 					 */
@@ -871,7 +875,6 @@ module.exports = {
 
 		/**
 		 * eslint-plugin-eslint-comments
-		 *
 		 * @see https://mysticatea.github.io/eslint-plugin-eslint-comments/
 		 */
 		'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }],
@@ -886,7 +889,6 @@ module.exports = {
 
 		/**
 		 * eslint-plugin-promise
-		 *
 		 * @see https://github.com/xjamundx/eslint-plugin-promise
 		 */
 		'promise/always-return': 'off', // If the result of an `.then()` is not used, there is no need to return something.
@@ -907,7 +909,6 @@ module.exports = {
 
 		/**
 		 * eslint-plugin-unicorn
-		 *
 		 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
 		 */
 		'unicorn/better-regex': 'error',
