@@ -6,11 +6,55 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.28.0...HEAD)
+
+## [2.28.0] - 2023-04-21
+
 ### Changed
 
+- [eslint] Updated `@typescript-eslint` from `5.49.0` to `5.59.0`
+- [eslint] Updated `eslint` from `8.32.0` to `8.38.0`
+- [eslint] Updated `eslint-import-resolver-typescript` from `3.5.3` to `3.5.5`
+- [eslint] Updated `eslint-plugin-functional` from `4.4.1` to `5.0.8`
+- [eslint] Updated `eslint-plugin-jsdoc` from `39.6.9` to `43.0.7`
+- [eslint] Updated `eslint-plugin-n` from `15.6.1` to `15.7.0`
+- [eslint] Updated `eslint-plugin-react` from `7.32.1` to `7.32.2`
+- [eslint] Updated `eslint-plugin-unicorn` from `45.0.2` to `46.0.0`
+- [stylelint] Updated `stylelint` from `14.16.1` to `15.5.0`
+- [stylelint] Updated `stylelint-declaration-block-no-ignored-properties` from `2.6.0` to `2.7.0`
+- [stylelint] Updated `stylelint-order` from `6.0.1` to `6.0.3`
+- [stylelint] Updated `stylelint-scss` from `4.3.0` to `4.6.0`
+- [stylelint] Updated `stylelint-use-logical-spec` from `4.1.0` to `5.0.0`
+- [eslint] Consider JavaScript files with the '.mjs' file extension (ECMAScript Modules)
 - [eslint] Activated [`react/destructuring-assignment`](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/destructuring-assignment.md) rule
+- [stylelint] Since all 76 stylistic Stylelint rules have been marked as deprecated, code to fork them has been implemented
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.27.0...HEAD)
+### Added
+
+- [eslint] Added new [`@typescript-eslint/key-spacing`](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/key-spacing.md) rule
+- [eslint] Added new [`@typescript-eslint/no-duplicate-type-constituents.md`](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-duplicate-type-constituents.md) rule
+- [eslint] Added new [`@typescript-eslint/no-import-type-side-effects`](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-import-type-side-effects.md) rule
+- [eslint] Added new [`@typescript-eslint/no-mixed-enums`](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-mixed-enums.md) rule
+- [eslint] Added new [`@typescript-eslint/no-unsafe-enum-comparison`](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-unsafe-enum-comparison.md) rule
+- [eslint] Added new [`@typescript-eslint/sort-type-constituents`](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/sort-type-constituents.md) rule
+- [eslint] Added new [`no-constant-binary-expression`](https://github.com/eslint/eslint/blob/main/docs/src/rules/no-constant-binary-expression.md) rule
+- [eslint] Added new [`functional/prefer-immutable-types`](https://github.com/eslint-functional/eslint-plugin-functional/blob/main/docs/rules/prefer-immutable-types.md) rule, but disabled it
+- [eslint] Added new [`functional/readonly-type`](https://github.com/eslint-functional/eslint-plugin-functional/blob/main/docs/rules/readonly-type.md) rule with option `keyword`
+- [eslint] Added new [`functional/type-declaration-immutability`](https://github.com/eslint-functional/eslint-plugin-functional/blob/main/docs/rules/type-declaration-immutability.md) rule, but disabled it
+- [stylelint] Added new [`declaration-property-value-no-unknown`](https://github.com/stylelint/stylelint/blob/main/lib/rules/declaration-property-value-no-unknown/README.md) rule
+- [stylelint] Added new [`media-feature-name-unit-allowed-list`](https://github.com/stylelint/stylelint/blob/main/lib/rules/media-feature-name-unit-allowed-list/README.md) rule, but disabled it
+- [stylelint] Added new [`no-unknown-custom-properties`](https://github.com/stylelint/stylelint/blob/main/lib/rules/no-unknown-custom-properties/README.md) rule, but disabled
+- [stylelint] Added new [`selector-anb-no-unmatchable`](https://github.com/stylelint/stylelint/blob/main/lib/rules/selector-anb-no-unmatchable/README.md) rule
+
+### Removed
+
+- [eslint] Removed deprecated rule `functional/prefer-readonly-type`
+- [eslint/overrides-jsdoc] Removed deprecated rule `jsdoc/newline-after-description`
+- [stylelint] Removed deprecated rule `at-rule-name-newline-after`
+- [stylelint] Removed deprecated rule `block-closing-brace-space-after`
+- [stylelint] Removed deprecated rule `block-opening-brace-newline-before`
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.27.0...v2.28.0)
 
 ## [2.27.0] - 2023-01-27
 
