@@ -21,7 +21,6 @@
 		"alwaysStrict": true,
 		"exactOptionalPropertyTypes": true,
 		"forceConsistentCasingInFileNames": true,
-		"keyofStringsOnly": false,
 		"noFallthroughCasesInSwitch": true,
 		"noImplicitAny": true,
 		"noImplicitReturns": true,
@@ -36,7 +35,6 @@
 		"strictNullChecks": true,
 		"strictPropertyInitialization": true,
 		"suppressExcessPropertyErrors": false,
-		"suppressImplicitAnyIndexErrors": true,
 		"useUnknownInCatchVariables": true
 	},
     "include": [
