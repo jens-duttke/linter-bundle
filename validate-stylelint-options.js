@@ -15,7 +15,7 @@ void (async () => {
 
 	const tempFilePath = path.join(folder, 'tmp.scss');
 
-	fs.writeFileSync(tempFilePath, '* {\n\tborder: 1px solid var(--color);\n\n\tcolor: var(--color);\n}\n', 'utf8');
+	fs.writeFileSync(tempFilePath, '@property --color {\n\tsyntax: "<color>";\n\tinherits: false;\n\tinitial-value: #f00; // stylelint-disable-line color-no-hex -- The initial value must be a hex-color\n}\n\n* {\n\tborder: 1px solid var(--color);\n\n\tcolor: var(--color);\n}\n', 'utf8');
 
 	const result = await runProcess(`stylelint -f json "${tempFilePath}"`);
 
@@ -35,7 +35,7 @@ void (async () => {
 	const { invalidOptionWarnings, warnings } = JSON.parse(result.stdout)[0];
 
 	if (warnings.length > 0) {
-		process.stderr.write(warnings.join('\n'));
+		process.stderr.write(`Warnings:\n\n- ${warnings.map(({ text }) => text).join('\n- ')}\n`);
 
 		process.exitCode = 1;
 
@@ -43,7 +43,7 @@ void (async () => {
 	}
 
 	if (invalidOptionWarnings.length > 0) {
-		process.stderr.write(`Invalid stylelint configuration:\n\n- ${invalidOptionWarnings.map(({ text }) => text).join('\n- ')}`);
+		process.stderr.write(`Invalid stylelint configuration:\n\n- ${invalidOptionWarnings.map(({ text }) => text).join('\n- ')}\n`);
 
 		process.exitCode = 1;
 
