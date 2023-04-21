@@ -397,6 +397,9 @@ To visualize the max line-length rules in VSCode, you can activate rulers, by ad
 
 ```json
 {
+  "[javascript]": {
+    "editor.rulers": [300]
+  },
   "[markdown]": {
     "editor.rulers": [300]
   },
