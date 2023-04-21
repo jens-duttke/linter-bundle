@@ -2,6 +2,7 @@
  * @file Fork of `stylelint-high-performance-animation` rule.
  *
  * @license MIT
+ *
  * @see https://github.com/kristerkari/stylelint-high-performance-animation
  */
 
