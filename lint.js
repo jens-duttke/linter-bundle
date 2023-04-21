@@ -77,7 +77,7 @@ void (async () => {
 			case 'ts': {
 				const tsconfig = config['tsconfig']?.[0];
 
-				const includes = getIncludes(gitFiles, './**/*.{js,jsx,ts,tsx}', config);
+				const includes = getIncludes(gitFiles, './**/*.{js,mjs,jsx,ts,tsx}', config);
 
 				if (!includes) {
 					return generateDummyJobOutput(taskName, config, {
@@ -142,43 +142,51 @@ void (async () => {
 				// eslint-disable-next-line @typescript-eslint/no-dynamic-delete -- This is not a valid `audit` property, so  we need to remove it.
 				delete config['git'];
 
-				if (npmOrYarn === 'npm') {
-					return runTask({
-						taskName,
-						config,
-						command: [
-							'npx',
-							'--yes',
-							'--',
-							'better-npm-audit@1.9.1',
-							'audit',
-							`-l ${config['min-severity'] ?? 'moderate'}`,
-							'-p',
-							config['exclude']?.map((exclude) => `-i ${exclude}`).join(' ')
-						].filter((argument) => Boolean(argument)).join(' ')
-					});
-				}
-				else if (npmOrYarn === 'yarn') {
-					return runTask({
-						taskName,
-						config,
-						command: [
-							'npx',
-							'--yes',
-							'--',
-							'improved-yarn-audit@2.3.3',
-							`--min-severity ${config['min-severity'] ?? 'moderate'}`,
-							'--fail-on-missing-exclusions',
-							'--ignore-dev-deps',
-							config['exclude']?.map((exclude) => `--exclude ${exclude}`).join(' ')
-						].filter((argument) => Boolean(argument)).join(' ')
-					});
-				}
+				switch (npmOrYarn) {
+					case 'npm':
+						return runTask({
+							taskName,
+							config,
+							command: [
+								'npx',
+								'--yes',
+								'--',
+								'better-npm-audit@1.9.1',
+								'audit',
+								`-l ${config['min-severity'] ?? 'moderate'}`,
+								'-p',
+								config['exclude']?.map((exclude) => `-i ${exclude}`).join(' ')
+							].filter((argument) => Boolean(argument)).join(' ')
+						});
 
-				return generateDummyJobOutput(taskName, config, {
-					code: 1,
-					stderr: 'Neither a "package-lock.json" nor a "yarn.lock" have need found.'
-				});
+					case 'yarn':
+						return runTask({
+							taskName,
+							config,
+							command: [
+								'npx',
+								'--yes',
+								'--',
+								'improved-yarn-audit@2.3.3',
+								`--min-severity ${config['min-severity'] ?? 'moderate'}`,
+								'--fail-on-missing-exclusions',
+								'--ignore-dev-deps',
+								config['exclude']?.map((exclude) => `--exclude ${exclude}`).join(' ')
+							].filter((argument) => Boolean(argument)).join(' ')
+						});
+
+					case 'both':
+						return generateDummyJobOutput(taskName, config, {
+							code: 1,
+							stderr: 'A "package-lock.json" and "yarn.lock" have been found. Use only one package manager within the project to avoid potential conflicts.'
+						});
+
+					default:
+						return generateDummyJobOutput(taskName, config, {
+							code: 1,
+							stderr: 'Neither a "package-lock.json" nor a "yarn.lock" have been found.'
+						});
+				}
 
 			default:
 		}
@@ -242,6 +250,7 @@ void (async () => {
  *
  * @param {ReturnType<isNpmOrYarn>} npmOrYarn - This should be the return value of `isNpmOrYarn()`.
  * @returns {boolean} Returns `true` if the environment is valid, otherwise `false` is returned.
+ *
  */
 function validateEnvironment (npmOrYarn) {
 	const outdatedOverrides = validatePackageOverrides();
@@ -294,6 +303,7 @@ function validateEnvironment (npmOrYarn) {
  *
  * @param {string[]} argv - Command-line arguments (usual `process.argv.splice(2)`)
  * @returns {TaskNameAndConfig[]} The task execution setup.
+ *
  * @throws {Error} If no task has be specified in the arguments.
  */
 function getTasksToRun (argv) {
@@ -360,6 +370,7 @@ function getTasksToRun (argv) {
  * @param {string} pattern - Glob pattern
  * @param {Partial<Record<string, (string | true)[]>>} config - Linter configuration
  * @returns {string} Space-separated file names in double-quotes to be used in the command-line, or an empty string if no file matches.
+ *
  */
 function getIncludes (list, pattern, config) {
 	const include = config['include']?.[0];
@@ -382,6 +393,7 @@ function getIncludes (list, pattern, config) {
  *
  * @param {TaskSetup} setup - The task execution setup.
  * @returns {Job} Job
+ *
  */
 function runTask (setup) {
 	return {
@@ -398,6 +410,7 @@ function runTask (setup) {
  * @param {Partial<Record<string, (string | true)[]>>} config - The configuration of the task.
  * @param {{ code?: number; stdout?: string; stderr?: string; }} output - The output which should be returned as result of the job.
  * @returns {Job} Job
+ *
  */
 function generateDummyJobOutput (taskName, config, output) {
 	return {
@@ -426,6 +439,7 @@ function generateDummyJobOutput (taskName, config, output) {
  *
  * @param {TaskSetup} setup - The task execution setup.
  * @returns {string} The title of the job with a leading line-break and two trailing line-breaks.
+ *
  */
 function getJobTitle (setup) {
 	/** @type {string} */

@@ -278,7 +278,7 @@ Argument | Description | Example
 Will execute:
 
 ```sh
-eslint "./**/*.{js,jsx,ts,tsx}" --format unix
+eslint "./**/*.{js,mjs,jsx,ts,tsx}" --format unix
 ```
 
 Additionally, the environment variable `TIMING` is set to `10`.
