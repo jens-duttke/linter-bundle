@@ -40,42 +40,42 @@
 		"check-outdated": "npx --yes -- check-outdated --ignore-pre-releases"
 	},
 	"dependencies": {
-		"@typescript-eslint/eslint-plugin": "5.49.0",
-		"@typescript-eslint/parser": "5.49.0",
-		"@typescript-eslint/utils": "5.49.0",
-		"eslint": "8.32.0",
-		"eslint-import-resolver-typescript": "3.5.3",
+		"@typescript-eslint/eslint-plugin": "5.59.0",
+		"@typescript-eslint/parser": "5.59.0",
+		"@typescript-eslint/utils": "5.59.0",
+		"eslint": "8.38.0",
+		"eslint-import-resolver-typescript": "3.5.5",
 		"eslint-import-resolver-webpack": "0.13.2",
 		"eslint-plugin-eslint-comments": "3.2.0",
-		"eslint-plugin-functional": "4.4.1",
+		"eslint-plugin-functional": "5.0.8",
 		"eslint-plugin-import": "2.27.5",
 		"eslint-plugin-jest": "27.2.1",
-		"eslint-plugin-jsdoc": "39.6.9",
+		"eslint-plugin-jsdoc": "43.0.6",
 		"eslint-plugin-jsx-a11y": "6.7.1",
-		"eslint-plugin-n": "15.6.1",
+		"eslint-plugin-n": "15.7.0",
 		"eslint-plugin-promise": "6.1.1",
-		"eslint-plugin-react": "7.32.1",
+		"eslint-plugin-react": "7.32.2",
 		"eslint-plugin-react-hooks": "4.6.0",
-		"eslint-plugin-unicorn": "45.0.2",
+		"eslint-plugin-unicorn": "46.0.0",
 		"markdownlint-cli": "0.33.0",
 		"micromatch": "4.0.5",
 		"postcss-scss": "4.0.6",
-		"stylelint": "14.16.1",
-		"stylelint-declaration-block-no-ignored-properties": "2.6.0",
-		"stylelint-order": "6.0.1",
-		"stylelint-scss": "4.3.0",
+		"stylelint": "15.5.0",
+		"stylelint-declaration-block-no-ignored-properties": "2.7.0",
+		"stylelint-order": "6.0.3",
+		"stylelint-scss": "4.6.0",
 		"stylelint-selector-no-empty": "1.0.9",
-		"stylelint-use-logical-spec": "4.1.0"
+		"stylelint-use-logical-spec": "5.0.0"
 	},
 	"peerDependencies": {
 		"postcss-value-parser": "*",
 		"typescript": "^4.0.0"
 	},
 	"devDependencies": {
-		"@types/eslint": "8.4.10",
+		"@types/eslint": "8.37.0",
 		"@types/micromatch": "4.0.2",
-		"@types/node": "18.11.18",
-		"stylelint-find-new-rules": "4.0.0",
-		"typescript": "4.9.4"
+		"@types/node": "18.15.12",
+		"stylelint-find-new-rules": "4.1.0",
+		"typescript": "5.0.4"
 	}
 }
