@@ -13,7 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - [eslint] Updated `@typescript-eslint` from `5.49.0` to `5.59.0`
-- [eslint] Updated `eslint` from `8.32.0` to `8.38.0`
+- [eslint] Updated `eslint` from `8.32.0` to `8.39.0`
 - [eslint] Updated `eslint-import-resolver-typescript` from `3.5.3` to `3.5.5`
 - [eslint] Updated `eslint-plugin-functional` from `4.4.1` to `5.0.8`
 - [eslint] Updated `eslint-plugin-jsdoc` from `39.6.9` to `43.0.7`
