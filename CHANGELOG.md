@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.28.0...HEAD)
 
-## [2.28.0] - 2023-04-21
+## [2.28.0] - 2023-04-22
 
 ### Changed
 
