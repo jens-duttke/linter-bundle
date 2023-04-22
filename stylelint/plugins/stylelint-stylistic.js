@@ -162,12 +162,26 @@ module.exports = [
 	'value-list-comma-space-after',
 	'value-list-comma-space-before',
 	'value-list-max-empty-lines'
-
 ].map((ruleName) => {
 	// eslint-disable-next-line import/no-dynamic-require -- Dynamic require reduces code complexity
 	const rule = require(`stylelint/lib/rules/${ruleName}`);
 
-	rule.meta.deprecated = false;
+	const forkedRule = Object.assign(
+		/**
+		 * Wrapper for the original rule, to be able to manipulate the additional properties.
+		 *
+		 * @param {Parameters<import('stylelint').RuleBase>} args - The arguments of the rule function
+		 * @returns {ReturnType<import('stylelint').RuleBase>} The return value of the rule function
+		 */
+		(...args) => rule(...args),
+		rule
+	);
 
-	return stylelint.createPlugin(`plugin/${ruleName}`, rule);
+	forkedRule.ruleName = `plugin/${ruleName}`;
+	forkedRule.meta = {
+		...rule.meta,
+		deprecated: false
+	};
+
+	return stylelint.createPlugin(`plugin/${ruleName}`, forkedRule);
 });
