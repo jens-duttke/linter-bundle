@@ -8,6 +8,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.28.0...HEAD)
 
+## [2.29.0] - 2023-05-05
+
+### Fixed
+
+- [stylelint] Fix `liberty/use-logical-spec` and `order/properties-order` issue with the `inset` property
+
+### Changed
+
+- [eslint] Updated `@typescript-eslint/utils` from `5.59.0` to `5.59.2`
+- [eslint] Updated `eslint-plugin-jsdoc` from `43.0.7` to `43.2.0`
+- [markdownlint] Updated `markdownlint-cli` from `0.33.0` to `0.34.0`
+- [stylelint] Updated `stylelint` from `15.5.0` to `15.6.1`
+- [stylelint] Updated `stylelint-scss` from `4.6.0` to `5.0.0`
+
+- [eslint/overrides-jsdoc] Make use of new rule [`jsdoc/no-blank-blocks`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/no-blank-blocks.md)
+- [stylelint] Reactivate [color-function-notation](https://github.com/stylelint/stylelint/blob/main/lib/rules/color-function-notation/README.md) with option `'modern'` and `ignore: ['with-var-inside']`
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.28.0...v2.29.0)
+
 ## [2.28.0] - 2023-04-22
 
 ### Changed
