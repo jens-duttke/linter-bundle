@@ -38,6 +38,7 @@ module.exports = {
 				'jsdoc/match-name': 'off',
 				'jsdoc/multiline-blocks': ['error', { noSingleLineBlocks: true, singleLineTags: ['lends', 'type', 'typedef'], noFinalLineText: false }],
 				'jsdoc/no-bad-blocks': 'error',
+				'jsdoc/no-blank-blocks': 'error',
 				'jsdoc/no-defaults': 'off',
 				'jsdoc/no-missing-syntax': 'off',
 				'jsdoc/no-multi-asterisks': ['error', { preventAtEnd: false }],

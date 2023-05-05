@@ -90,7 +90,11 @@ module.exports = {
 			'font-face': ['font-family', 'font-style', 'font-weight', 'src']
 		}],
 		'block-no-empty': true,
-		'color-function-notation': null, // @todo Doesn't work with variables like: hsl(var(--xyz)). Create issue. Later change that to 'modern'.
+		'color-function-notation': [
+			'modern', {
+				ignore: ['with-var-inside']
+			}
+		],
 		'color-hex-alpha': null, // @todo Not widely supported yet. Activate in 2024.
 		'color-hex-length': 'short',
 		'color-named': 'never',
@@ -439,6 +443,7 @@ module.exports = {
 					emptyLineBefore: 'always',
 					noEmptyLineBetween: true,
 					properties: [
+						'inset',
 						'top',
 						'right',
 						'bottom',
@@ -951,6 +956,7 @@ module.exports = {
 		'liberty/use-logical-spec': ['always', { except: [
 			'float',
 
+			'inset',
 			'top',
 			'bottom',
 
