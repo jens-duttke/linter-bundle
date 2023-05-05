@@ -1,6 +1,6 @@
 {
 	"name": "linter-bundle",
-	"version": "2.28.0",
+	"version": "2.29.0",
 	"description": "Ready-to use bundle of linting tools, containing configurations for ESLint, stylelint and markdownlint.",
 	"keywords": [
 		"eslint",
