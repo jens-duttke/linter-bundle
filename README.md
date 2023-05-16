@@ -61,7 +61,7 @@ If these plugins are maintained again, the plugins will also be used again.
 
 ## Install
 
-Ensure you are using atleast Node.js version 14.
+Ensure you are using atleast Node.js version 16.
 
 ```sh
 npm install linter-bundle --save-dev
