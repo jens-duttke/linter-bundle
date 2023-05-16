@@ -43,7 +43,7 @@ module.exports = {
 			}
 		},
 		{
-			files: ['.storybook/preview.{js,mjs,jsx,ts,tsx}'],
+			files: ['.storybook/preview.{js,cjs,mjs,jsx,ts,cts,mts,tsx}'],
 			rules: {
 				/**
 				 * eslint

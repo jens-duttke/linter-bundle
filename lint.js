@@ -77,7 +77,7 @@ void (async () => {
 			case 'ts': {
 				const tsconfig = config['tsconfig']?.[0];
 
-				const includes = getIncludes(gitFiles, './**/*.{js,mjs,jsx,ts,tsx}', config);
+				const includes = getIncludes(gitFiles, './**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}', config);
 
 				if (!includes) {
 					return generateDummyJobOutput(taskName, config, {

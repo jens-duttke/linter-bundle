@@ -5,7 +5,7 @@
 module.exports = {
 	overrides: [
 		{
-			files: ['*.js', '.mjs'],
+			files: ['*.js', '*.cjs', '*.mjs'],
 			env: {
 				node: true,
 				es6: true
