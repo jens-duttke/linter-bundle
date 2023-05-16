@@ -8,6 +8,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.28.0...HEAD)
 
+## [3.0.0] - 2023-05-16
+
+### Changed
+
+- [general] The minimum required Node.js version is v16 now
+- [eslint] Consider JavaScript files with the '.cjs' file extension (CommonJS Modules)
+- [eslint] Consider TypeScript files with the '.mts' file extension (TypeScript ES Modules)
+- [eslint] Consider TypeScript files with the '.cts' file extension (TypeScript CommonJS modules)
+- [eslint] Move root rules into `overrides` to limit them to the files with the extensions `js`, `cjs`, `mjs`, `jsx`, `ts`, `cts`, `mts`, `tsx`, and to prevent that they are applied to `overrides` for non-JavaScript files (e.g. GraphQL schema files)
+- [eslint] Updated `@typescript-eslint` from `5.59.2` to `5.59.6`
+- [eslint] Updated `eslint` from `8.39.0` to `8.40.0`
+- [eslint] Updated `eslint-plugin-jsdoc` from `43.2.0` to `44.2.4`
+- [eslint] Updated `eslint-plugin-n` from `15.7.0` to `16.0.0`
+- [eslint] Updated `eslint-plugin-unicorn` from `46.0.0` to `47.0.0`
+
+[`prefer-blob-reading-methods`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-blob-reading-methods.md)
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.29.0...v3.0.0)
+
 ## [2.29.0] - 2023-05-05
 
 ### Fixed
@@ -21,6 +40,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [markdownlint] Updated `markdownlint-cli` from `0.33.0` to `0.34.0`
 - [stylelint] Updated `stylelint` from `15.5.0` to `15.6.1`
 - [stylelint] Updated `stylelint-scss` from `4.6.0` to `5.0.0`
+
+### Added
 
 - [eslint/overrides-jsdoc] Make use of new rule [`jsdoc/no-blank-blocks`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/no-blank-blocks.md)
 - [stylelint] Reactivate [color-function-notation](https://github.com/stylelint/stylelint/blob/main/lib/rules/color-function-notation/README.md) with option `'modern'` and `ignore: ['with-var-inside']`
