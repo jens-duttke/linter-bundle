@@ -22,8 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Updated `eslint-plugin-jsdoc` from `43.2.0` to `44.2.4`
 - [eslint] Updated `eslint-plugin-n` from `15.7.0` to `16.0.0`
 - [eslint] Updated `eslint-plugin-unicorn` from `46.0.0` to `47.0.0`
-
-[`prefer-blob-reading-methods`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-blob-reading-methods.md)
+- [eslint] Make use of new [`unicorn/prefer-blob-reading-methods`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-blob-reading-methods.md) rule
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.29.0...v3.0.0)
 
