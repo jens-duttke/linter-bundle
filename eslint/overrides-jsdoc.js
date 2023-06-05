@@ -34,6 +34,7 @@ module.exports = {
 				'jsdoc/check-values': 'error',
 				'jsdoc/empty-tags': 'error',
 				'jsdoc/implements-on-classes': 'error',
+				'jsdoc/imports-as-dependencies': 'off', // @todo Doesn't cover `peerDependencies` and Node.js modules (like `child_process`) yet
 				'jsdoc/match-description': 'error',
 				'jsdoc/match-name': 'off',
 				'jsdoc/multiline-blocks': ['error', { noSingleLineBlocks: true, singleLineTags: ['lends', 'type', 'typedef'], noFinalLineText: false }],

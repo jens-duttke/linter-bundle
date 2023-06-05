@@ -992,7 +992,7 @@ module.exports = {
 				'unicorn/prefer-array-index-of': 'error',
 				'unicorn/prefer-array-some': 'error',
 				'unicorn/prefer-at': 'off', // @todo Disabled for now, since `at` is not supported by TypeScript type definitions yet.
-				'unicorn/prefer-blob-reading-methods': 'error',
+				'unicorn/prefer-blob-reading-methods': 'off', // @todo Disabled for now, since it's only supported in Safari 14+. Activate in 2025
 				'unicorn/prefer-code-point': 'error',
 				'unicorn/prefer-date-now': 'error',
 				'unicorn/prefer-default-parameters': 'error',
