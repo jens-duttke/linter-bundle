@@ -6,14 +6,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.1.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.2.0...HEAD)
+
+## [3.2.0] - 2023-06-06
+
+### Changed
+
+- [eslint] Updated `@typescript-eslint` from `5.59.8` to `5.59.9`
+- [stylelint] Updated `stylelint` from `15.6.3` to `15.7.0`
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.1.0...v3.2.0)
 
 ## [3.1.0] - 2023-06-05
 
 ### Changed
 
 - [eslint] Disabled [`unicorn/prefer-blob-reading-methods`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-blob-reading-methods.md) rule, as it's not widely supported yet
-- [eslint] Updated `@typescript-eslint/utils` from `5.59.6` to `5.59.8`
+- [eslint] Updated `@typescript-eslint` from `5.59.6` to `5.59.8`
 - [eslint] Updated `eslint` from `8.40.0` to `8.42.0`
 - [eslint] Updated `eslint-plugin-jsdoc` from `44.2.4` to `46.2.4`
 - [stylelint] Updated `stylelint` from `15.6.1` to `15.6.3`
@@ -47,7 +56,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
-- [eslint] Updated `@typescript-eslint/utils` from `5.59.0` to `5.59.2`
+- [eslint] Updated `@typescript-eslint` from `5.59.0` to `5.59.2`
 - [eslint] Updated `eslint-plugin-jsdoc` from `43.0.7` to `43.2.0`
 - [markdownlint] Updated `markdownlint-cli` from `0.33.0` to `0.34.0`
 - [stylelint] Updated `stylelint` from `15.5.0` to `15.6.1`
