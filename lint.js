@@ -288,7 +288,7 @@ function validateEnvironment (npmOrYarn) {
 		process.stderr.write(`- ${missingOverrides.map((dependency) => `${dependency.name}: ${dependency.configuredVersion} is installed, but ${dependency.expectedVersion} is expected`).join('\n- ')}\n\n`);
 		process.stderr.write(`This could be caused by forgetting to execute \`${installCommand}\` after changing a version number in the package.json, or by some other package shipping outdated versions of the ${missingOverrides.length === 1 ? 'dependency' : 'dependencies'}.\n`);
 		process.stderr.write('If another package is causing this problem, you can fix it by adding the following entry to your package.json:\n');
-		process.stderr.write(`{\n  "${propertyName}: {\n    ${missingOverrides.map((dependency) => `"${dependency.name}": "${dependency.expectedVersion}"`).join(',\n    ')}\n  }\n}\n\n`);
+		process.stderr.write(`{\n  "${propertyName}": {\n    ${missingOverrides.map((dependency) => `"${dependency.name}": "${dependency.expectedVersion}"`).join(',\n    ')}\n  }\n}\n\n`);
 
 		process.exitCode = 1;
 
