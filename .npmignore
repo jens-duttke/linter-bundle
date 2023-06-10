@@ -5,10 +5,13 @@ src/
 .editorconfig
 .eslintcache
 .eslintrc.js
+.gitattributes
+.gitignore
 .markdownlint.json
 *.log
 npm-debug.log*
 stylelint.config.js
 tsconfig.json
+validate-stylelint-options.js
 vscode-eslint-1.png
 vscode-eslint-2.png
