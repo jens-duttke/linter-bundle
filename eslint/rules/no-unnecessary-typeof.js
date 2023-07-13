@@ -6,6 +6,7 @@
 
 const ts = require('typescript');
 
+// @ts-expect-error -- TypeScript is not able to resolve the folder since @typescript-eslint v6.0.0
 const { ESLintUtils } = require('@typescript-eslint/utils');
 
 /**
@@ -28,11 +29,9 @@ module.exports = {
 					return;
 				}
 
-				// @ts-expect-error -- Different type definitions for `Rule.RuleContext` in ESLint and @typescript-eslint
 				const parserServices = ESLintUtils.getParserServices(context);
 				const checker = parserServices.program.getTypeChecker();
 
-				// @ts-expect-error -- ESLint `Identifier` is not recognized as `Node` by @typescript-eslint
 				const originalNode = parserServices.esTreeNodeToTSNodeMap.get(node.argument);
 
 				/** @type {Type} */
