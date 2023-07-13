@@ -187,7 +187,9 @@ module.exports = {
 		'media-feature-name-no-vendor-prefix': null, // For Safari, we still need "-webkit-min-device-pixel-ratio": https://caniuse.com/css-media-resolution
 		'media-feature-name-unit-allowed-list': null,
 		'media-feature-name-value-allowed-list': null,
+		'media-feature-name-value-no-unknown': true,
 		'media-feature-range-notation': 'prefix',
+		'media-query-no-invalid': true,
 		'named-grid-areas-no-invalid': true,
 		'no-descending-specificity': null, // doesn't work in many cases (e.g. while using the SCSS :global()-pseudo-class)
 		'no-duplicate-at-import-rules': true,
