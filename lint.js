@@ -280,7 +280,7 @@ function validateEnvironment (npmOrYarn) {
 			propertyName = 'resolutions';
 		}
 		else {
-			installCommand = 'npm install';
+			installCommand = 'npm install --no-package-lock';
 			propertyName = 'overrides';
 		}
 
