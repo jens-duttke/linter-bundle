@@ -32,8 +32,6 @@ module.exports = {
 				'@typescript-eslint/no-require-imports': 'off', // Requires type information
 				'@typescript-eslint/no-unsafe-assignment': 'off', // @todo Reactivate after bug in @typescript-eslint is fixed (@see https://github.com/typescript-eslint/typescript-eslint/issues/1943)
 				'@typescript-eslint/no-var-requires': 'off', // Requires type information
-				'@typescript-eslint/prefer-nullish-coalescing': 'off', // @todo `??` is not yet supported by NodeJS. Remove this like, as soon as it is supported.
-				'@typescript-eslint/prefer-optional-chain': 'off', // @todo `?.` is not yet supported by NodeJS. Remove this like, as soon as it is supported.
 				'@typescript-eslint/triple-slash-reference': 'off', // Required to make use of *.d.ts files
 
 				/**
