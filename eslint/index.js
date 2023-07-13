@@ -952,7 +952,7 @@ module.exports = {
 				'unicorn/no-await-expression-member': 'error',
 				'unicorn/no-console-spaces': 'error',
 				'unicorn/no-document-cookie': 'error',
-				'unicorn/no-empty-file': 'error',
+				'unicorn/no-empty-file': 'off', // @todo False-positives since @typescript-eslint v6.0.0. @see https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2175
 				'unicorn/no-for-loop': 'off', // @typescript-eslint/prefer-for-of
 				'unicorn/no-hex-escape': 'error',
 				'unicorn/no-instanceof-array': 'error',
