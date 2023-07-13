@@ -75,7 +75,8 @@ module.exports = {
 						param: { lines: 'never' },
 						private: { lines: 'never' },
 						protected: { lines: 'never' },
-						public: { lines: 'never' }
+						public: { lines: 'never' },
+						throws: { lines: 'never' }
 					},
 					startLines: null,
 					endLines: null,
