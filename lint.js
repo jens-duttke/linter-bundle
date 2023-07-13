@@ -118,7 +118,7 @@ void (async () => {
 				return runTask({
 					taskName,
 					config,
-					command: `node "${require.resolve('stylelint/bin/stylelint.js')}" ${includes} --formatter unix`
+					command: `node "${path.join(path.dirname(require.resolve('stylelint')), '../bin/stylelint.js')}" ${includes} --formatter unix`
 				});
 			}
 
