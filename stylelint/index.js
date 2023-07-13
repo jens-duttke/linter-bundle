@@ -15,9 +15,9 @@ module.exports = {
 		'stylelint-declaration-block-no-ignored-properties',
 		'stylelint-order',
 		'stylelint-scss',
-		'stylelint-selector-no-empty',
 		'stylelint-use-logical-spec',
 		path.join(__dirname, '/plugins/stylelint-high-performance-animation.js'),
+		path.join(__dirname, '/plugins/stylelint-selector-no-empty.js'),
 		path.join(__dirname, '/plugins/stylelint-selector-tag-no-without-class.js'),
 		path.join(__dirname, '/plugins/stylelint-stylistic.js')
 	],
