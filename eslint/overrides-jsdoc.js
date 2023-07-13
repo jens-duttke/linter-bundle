@@ -34,7 +34,7 @@ module.exports = {
 				'jsdoc/check-values': 'error',
 				'jsdoc/empty-tags': 'error',
 				'jsdoc/implements-on-classes': 'error',
-				'jsdoc/imports-as-dependencies': 'off', // @todo Doesn't cover `peerDependencies` and Node.js modules (like `child_process`) yet
+				'jsdoc/imports-as-dependencies': 'off', // @todo Doesn't cover `peerDependencies` yet. As of v46.2.5 it should cover Node.js modules (like `child_process`), which must be checked, before activation.
 				'jsdoc/match-description': 'error',
 				'jsdoc/match-name': 'off',
 				'jsdoc/multiline-blocks': ['error', { noSingleLineBlocks: true, singleLineTags: ['lends', 'type', 'typedef'], noFinalLineText: false }],
