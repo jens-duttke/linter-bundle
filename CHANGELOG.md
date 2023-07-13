@@ -6,7 +6,37 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.2.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.3.0...HEAD)
+
+## [3.3.0] - 2023-07-13
+
+### Changed
+
+- [general] Drop support for Node.js version v17 (v16 is still supported), as `@typescript-eslint` v6.0.0 doesn't support it anymore
+- [eslint] Updated `@typescript-eslint` from `5.59.9` to `6.0.0`
+- [eslint] Updated `eslint` from `8.42.0` to `8.44.0`
+- [eslint] Updated `eslint-plugin-jest` from `27.2.1` to `27.2.3`
+- [eslint] Updated `eslint-plugin-n` from `16.0.0` to `16.0.1`
+- [eslint/overrides-jsdoc] Updated `eslint-plugin-jsdoc` from `46.2.4` to `46.4.3`
+- [markdownlint] Updated `markdownlint-cli` from `0.34.0` to `0.35.0`
+- [stylelint] Updated `stylelint` from `15.7.0` to `15.10.1`
+- [stylelint] Updated `stylelint-scss` from `5.0.0` to `5.0.1`
+- [eslint/overrides-jsdoc] Don't enforce line-breaks before `@throws` by the [`jsdoc/tag-lines`](https://github.com/gajus/eslint-plugin-jsdoc#eslint-plugin-jsdoc-rules-tag-lines) rule
+- [stylelint] Forked [`stylelint-selector-no-empty`](https://github.com/ssivanatarajan/stylelint-selector-no-empty), because it seems not to be regularly maintained anymore
+
+### Added
+
+- [stylelint] Make use of new [`media-feature-name-value-no-unknown`](https://github.com/stylelint/stylelint/blob/main/lib/rules/media-feature-name-value-no-unknown/README.md) rule
+- [stylelint] Make use of new [`media-query-no-invalid`](https://github.com/stylelint/stylelint/blob/main/lib/rules/media-query-no-invalid/README.md) rule
+- [eslint/overrides-javascript] Activated `@typescript-eslint/prefer-nullish-coalescing` for JavaScript file, as it is now supported in Node.js for a while.
+- [eslint/overrides-javascript] Activated `@typescript-eslint/prefer-optional-chain` for JavaScript file, as it is now supported in Node.js for a while.
+
+### Removed
+
+- [eslint] Remove silently removed `@typescript-eslint/no-parameter-properties` rule
+- [eslint] Disabled `unicorn/no-empty-file`, because of [false-positives](https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2175) with `@typescript-eslint v6.0.0`
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.2.0...v3.3.0)
 
 ## [3.2.0] - 2023-06-06
 
@@ -26,6 +56,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Updated `eslint` from `8.40.0` to `8.42.0`
 - [eslint] Updated `eslint-plugin-jsdoc` from `44.2.4` to `46.2.4`
 - [stylelint] Updated `stylelint` from `15.6.1` to `15.6.3`
+
+### Added
+
 - [eslint/overrides-jsdoc] Added, but disabled new [`jsdoc/imports-as-dependencies`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/imports-as-dependencies.md) rule, as it doesn't cover `peerDependencies` and Node.js modules (like `child_process`)
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.0.0...v3.1.0)
