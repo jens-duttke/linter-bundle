@@ -10,6 +10,7 @@ const tty = require('tty');
 const micromatch = require('micromatch');
 
 const { findMissingOverrides } = require('./helper/find-missing-overrides.js');
+const { getStylelintPath } = require('./helper/get-stylelint-path.js');
 const { isNpmOrYarn } = require('./helper/is-npm-or-yarn.js');
 const { runProcess } = require('./helper/run-process.js');
 const { validatePackageOverrides } = require('./helper/validate-package-overrides.js');
@@ -115,10 +116,18 @@ void (async () => {
 					});
 				}
 
+				const stylelintBinPath = getStylelintPath();
+
+				if (stylelintBinPath === null) {
+					return generateDummyJobOutput(taskName, config, {
+						stderr: 'Stylelint CLI script not found.'
+					});
+				}
+
 				return runTask({
 					taskName,
 					config,
-					command: `node "${path.join(path.dirname(require.resolve('stylelint')), '../bin/stylelint.js')}" ${includes} --formatter unix`
+					command: `node "${stylelintBinPath}" ${includes} --formatter unix`
 				});
 			}
 
