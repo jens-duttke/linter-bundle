@@ -40,6 +40,7 @@
     "include": [
 		"./types.d.ts",
 		"**/*.js",
+		"**/*.mjs",
 		"./.eslintrc.js"
 	]
 }
