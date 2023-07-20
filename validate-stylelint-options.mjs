@@ -2,13 +2,13 @@
  * @file Ensures that stylelint options are valid by checking the `invalidOptionWarnings` property of the JSON response.
  */
 
-const fs = require('fs');
-const os = require('os');
-const path = require('path');
+import * as fs from 'fs';
+import * as os from 'os';
+import * as path from 'path';
 
-const { runProcess } = require('./helper/run-process.js');
+import { runProcess } from './helper/run-process.js';
 
-void (async () => {
+process.exitCode = await (async () => {
 	const temporaryPath = path.join(os.tmpdir(), 'linter-bundle-');
 
 	const folder = fs.mkdtempSync(temporaryPath);
@@ -36,9 +36,7 @@ void (async () => {
 	if (result.stderr) {
 		process.stderr.write(result.stderr);
 
-		process.exitCode = 1;
-
-		return;
+		return 1;
 	}
 
 	/**
@@ -49,16 +47,14 @@ void (async () => {
 	if (warnings.length > 0) {
 		process.stderr.write(`Warnings:\n\n- ${warnings.map(({ text, line }) => `[line ${line}] ${text}`).join('\n- ')}\n`);
 
-		process.exitCode = 1;
-
-		return;
+		return 1;
 	}
 
 	if (invalidOptionWarnings.length > 0) {
 		process.stderr.write(`Invalid stylelint configuration:\n\n- ${invalidOptionWarnings.map(({ text }) => text).join('\n- ')}\n`);
 
-		process.exitCode = 1;
-
-		return;
+		return 1;
 	}
+
+	return 0;
 })();

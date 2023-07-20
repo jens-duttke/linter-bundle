@@ -36,7 +36,7 @@
 		"preversion": "npm run check-outdated && npm run lint",
 		"postversion": "git push && git push --tags && npm publish",
 		"stylelint-find-rules": "stylelint-find-new-rules ./stylelint/index.js",
-		"validate-stylelint-options": "node ./validate-stylelint-options",
+		"validate-stylelint-options": "node ./validate-stylelint-options.mjs",
 		"check-outdated": "npx --yes -- check-outdated --ignore-pre-releases"
 	},
 	"dependencies": {

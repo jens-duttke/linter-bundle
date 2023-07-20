@@ -12,6 +12,6 @@ src/
 npm-debug.log*
 stylelint.config.js
 tsconfig.json
-validate-stylelint-options.js
+validate-stylelint-options.mjs
 vscode-eslint-1.png
 vscode-eslint-2.png
