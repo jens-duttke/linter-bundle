@@ -8,6 +8,7 @@ const path = require('path');
 /**
  * Returns if the project is using npm or yarn.
  *
+ * @public
  * @returns {'none' | 'npm' | 'yarn' | 'both'} Returns which package manager name.
  */
 function isNpmOrYarn () {

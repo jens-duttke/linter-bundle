@@ -9,6 +9,7 @@ const childProcess = require('child_process');
 /**
  * Executes a process asynchronously.
  *
+ * @public
  * @param {string} command - The process to execute.
  * @param {childProcess.ExecOptions | undefined} [options] - The options of the `childProcess.exec()` method.
  * @returns {Promise<ProcessResult>} An object containing the result of the process execution

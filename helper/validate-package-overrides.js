@@ -13,6 +13,7 @@ const path = require('path');
 /**
  * Detects outdated "overrides"/"resolutions" dependencies.
  *
+ * @public
  * @returns {{ overrides: Dependency[]; resolutions: Dependency[]; }} Either the input array, or an empty array, if the input array is not an array.
  */
 function validatePackageOverrides () {

@@ -13,6 +13,7 @@ const path = require('path');
 /**
  * Detects if installed versions of dependencies don't match to the required dependencies.
  *
+ * @public
  * @returns {Dependency[]} An array of missing overrides (=wrong versions).
  */
 function findMissingOverrides () {

@@ -5,6 +5,7 @@
 /**
  * Ensures that the input `value` is an array, otherwise an empty array is returned.
  *
+ * @public
  * @template T
  * @param {T} value - The value which should be checked.
  * @returns {T extends Array<any> ? T : []} Either the input array, or an empty array, if the input array is not an array.
