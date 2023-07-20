@@ -7,11 +7,10 @@ const overridesJavaScript = require('./overrides-javascript');
 module.exports = {
 	...overridesJavaScript,
 	overrides: [
+		...overridesJavaScript.overrides,
 		{
-			...overridesJavaScript.overrides[0],
+			files: ['*.js', '*.cjs', '*.mjs'],
 			rules: {
-				...overridesJavaScript.overrides[0].rules,
-
 				/**
 				 * typescript-eslint
 				 *
