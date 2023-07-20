@@ -6,7 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.3.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.4.0...HEAD)
+
+## [3.4.0] - 2023-07-20
+
+### Changed
+
+- [eslint] Updated `@typescript-eslint` from `6.0.0` to `6.1.0`
+- [eslint] Updated `eslint` from `8.44.0` to `8.45.0`
+- [eslint] Updated `eslint-plugin-jsdoc` from `46.4.3` to `46.4.4`
+- [eslint] Updated `eslint-plugin-unicorn` from `47.0.0` to `48.0.0`
+- [stylelint] Updated `stylelint` from `15.10.1` to `15.10.2`
+- [eslint] Moved `unicorn/import-style` configuration for `path` (unassigned: false, default: false, namespace: true, named: true) from `overrides-storybook` into the main configuration.
+- [eslint/overrides-javascript] Activated [`unicorn/prefer-top-level-await`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-top-level-await.md) rule for `*.mjs` files.
+
+### Fixed
+
+- [stylelint] Fixed `Cannot find module 'node_modules/stylelint/bin/stylelint.js'` issue, if the file is called `stylelint.mjs`
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.3.0...v3.4.0)
 
 ## [3.3.0] - 2023-07-13
 
