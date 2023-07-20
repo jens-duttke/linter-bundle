@@ -1021,13 +1021,13 @@ module.exports = {
 				'unicorn/prefer-set-has': 'error',
 				'unicorn/prefer-set-size': 'error',
 				'unicorn/prefer-spread': 'off', // @todo Disabled till there a solution for the warning, that `slice()` on Typed-Arrays should be replaced (which is not possible). @see https://github.com/sindresorhus/eslint-plugin-unicorn/issues/1064
-				'unicorn/prefer-string-replace-all': 'off', // @todo Available since 2020 in browsers. SHould this be preferred?
+				'unicorn/prefer-string-replace-all': 'off', // @todo Available since 2020 in browsers. Should this be preferred?
 				'unicorn/prefer-string-slice': 'off', // @todo As of today (2020.08.24) and since the last 9 years, substr() is three times faster than slice() in Firefox.
 				'unicorn/prefer-string-starts-ends-with': 'error',
 				'unicorn/prefer-string-trim-start-end': 'error',
 				'unicorn/prefer-switch': 'error',
 				'unicorn/prefer-ternary': 'off', // We prefer readability over saving a few chars
-				'unicorn/prefer-top-level-await': 'off', // @todo There should be a detection that this option is only activated on Node.js v14.8 environments and above (Check for "engine" property in package.json, and "node -v")
+				'unicorn/prefer-top-level-await': 'off', // @todo Available since 2021. Activate in 2024
 				'unicorn/prefer-regexp-test': 'error',
 				'unicorn/prefer-type-error': 'error',
 				'unicorn/prevent-abbreviations': ['error', { ignore: ['args', 'i', 'j', 'i18n', 'ref', 'Ref', 'params', 'props', 'Props'] }],
