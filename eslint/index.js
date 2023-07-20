@@ -941,7 +941,16 @@ module.exports = {
 						/([A-Za-z0-9]?[a-z0-9]+)*[A-Z]{2,4}([A-Za-z0-9]?[a-z0-9]+)*/u // Up to 4 Characters can be upper-case in a row (e.g. in `prepareDOM` or `SVGIcon`)
 					]
 				}],
-				'unicorn/import-style': 'error',
+				'unicorn/import-style': ['error', {
+					styles: {
+						path: {
+							unassigned: false,
+							default: false,
+							namespace: true,
+							named: true
+						}
+					}
+				}],
 				'unicorn/new-for-builtins': 'error',
 				'unicorn/no-abusive-eslint-disable': 'error',
 				'unicorn/no-array-callback-reference': 'off', // If I use functions, they are the best option for this use-case

@@ -23,23 +23,7 @@ module.exports = {
 				 *
 				 * @see https://github.com/import-js/eslint-plugin-import
 				 */
-				'import/no-nodejs-modules': 'off',
-
-				/**
-				 * eslint-plugin-unicorn
-				 *
-				 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
-				 */
-				'unicorn/import-style': ['error', {
-					styles: {
-						path: {
-							unassigned: false,
-							default: false,
-							namespace: true,
-							named: true
-						}
-					}
-				}]
+				'import/no-nodejs-modules': 'off'
 			}
 		},
 		{
