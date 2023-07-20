@@ -103,6 +103,12 @@ module.exports = {
 				'unicorn/prevent-abbreviations': ['error', { ignore: ['args', 'dev', 'env', 'i', 'j', 'i18n', 'pkg', 'ref', 'Ref', 'req', 'res', 'setupDevServerMiddleware'] }],
 				'unicorn/text-encoding-identifier-case': 'off'
 			}
+		},
+		{
+			files: ['*.mjs'],
+			rules: {
+				'unicorn/prefer-top-level-await': 'error'
+			}
 		}
 	]
 };
