@@ -155,7 +155,9 @@ module.exports = {
 			true,
 			{
 				ignoreProperties: {
-					'initial-value': '/.+/'
+					'initial-value': /.+/u,
+					'grid-template-areas': /^\([^\u0000]+\)$/u, // Whole block wrapped in parentheses.
+					'/.+/': /((^|\s)\$[a-z])|/ui // SCSS variables
 				}
 			}
 		],
@@ -901,7 +903,8 @@ module.exports = {
 		'scss/dollar-variable-empty-line-after': [
 			'always',
 			{
-				except: ['last-nested', 'before-dollar-variable']
+				except: ['last-nested', 'before-dollar-variable'],
+				ignore: ['before-comment', 'inside-single-line-block']
 			}
 		],
 		'scss/dollar-variable-first-in-block': [true, { ignore: ['comments', 'imports'] }],
@@ -918,7 +921,7 @@ module.exports = {
 		'scss/double-slash-comment-inline': null,
 		'scss/double-slash-comment-whitespace-inside': 'always',
 		'scss/function-color-relative': true,
-		'scss/function-no-unknown': true,
+		'scss/function-no-unknown': [true, { ignoreFunctions: [/^custom-/u] }],
 		'scss/function-quote-no-quoted-strings-inside': true,
 		'scss/function-unquote-no-unquoted-strings-inside': true,
 		'scss/map-keys-quotes': 'always',

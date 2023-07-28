@@ -125,7 +125,7 @@ module.exports = {
 				'brace-style': 'off', // Covered by @typescript-eslint/brace-style
 				'camelcase': 'off', // Covered by @typescript-eslint/naming-convention
 				'capitalized-comments': 'off',
-				'class-methods-use-this': ['error', { exceptMethods: ['componentDidMount', 'componentDidUpdate', 'componentWillUnmount', 'shouldComponentUpdate'] }],
+				'class-methods-use-this': 'off', // Covered by @typescript-eslint/class-methods-use-this
 				'comma-dangle': 'off', // Covered by @typescript-eslint/comma-dangle
 				'comma-spacing': 'off', // Covered by @typescript-eslint/comma-spacing
 				'comma-style': 'error',
@@ -423,9 +423,8 @@ module.exports = {
 				}],
 				'@typescript-eslint/brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
 				'@typescript-eslint/class-literal-property-style': 'error',
-				'@typescript-eslint/comma-dangle': ['error', {
-					generics: 'ignore'
-				}],
+				'@typescript-eslint/class-methods-use-this': ['error', { exceptMethods: ['componentDidMount', 'componentDidUpdate', 'componentWillUnmount', 'shouldComponentUpdate'] }],
+				'@typescript-eslint/comma-dangle': ['error', { generics: 'ignore' }],
 				'@typescript-eslint/comma-spacing': 'error',
 				'@typescript-eslint/consistent-generic-constructors': 'error',
 				'@typescript-eslint/consistent-indexed-object-style': 'error',
@@ -745,7 +744,7 @@ module.exports = {
 				'@typescript-eslint/prefer-includes': 'error',
 				'@typescript-eslint/prefer-literal-enum-member': 'error',
 				'@typescript-eslint/prefer-namespace-keyword': 'error',
-				'@typescript-eslint/prefer-nullish-coalescing': 'error',
+				'@typescript-eslint/prefer-nullish-coalescing': ['error', { ignoreConditionalTests: true, ignoreMixedLogicalExpressions: true }],
 				'@typescript-eslint/prefer-optional-chain': 'error',
 				'@typescript-eslint/prefer-readonly': 'error',
 				'@typescript-eslint/prefer-readonly-parameter-types': ['off', { ignoreInferredTypes: true }], // @todo An interface should ensure that it's properties are readonly, not every usage of it
@@ -961,7 +960,7 @@ module.exports = {
 				'unicorn/no-await-expression-member': 'error',
 				'unicorn/no-console-spaces': 'error',
 				'unicorn/no-document-cookie': 'error',
-				'unicorn/no-empty-file': 'off', // @todo False-positives since @typescript-eslint v6.0.0. @see https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2175
+				'unicorn/no-empty-file': 'error',
 				'unicorn/no-for-loop': 'off', // @typescript-eslint/prefer-for-of
 				'unicorn/no-hex-escape': 'error',
 				'unicorn/no-instanceof-array': 'error',
