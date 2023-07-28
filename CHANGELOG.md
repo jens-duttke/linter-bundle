@@ -6,7 +6,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.4.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.5.0...HEAD)
+
+## [3.5.0] - 2023-07-28
+
+### Changed
+
+- [eslint] Updated `@typescript-eslint/eslint-plugin` from `6.1.0` to `6.2.0`
+- [eslint] Updated `eslint-plugin-import` from `2.27.5` to `2.28.0`
+- [eslint] Updated `eslint-plugin-jsdoc` from `46.4.4` to `46.4.5`
+- [eslint] Updated `eslint-plugin-react` from `7.32.2` to `7.33.0`
+- [eslint] Updated `eslint-plugin-unicorn` from `48.0.0` to `48.0.1`
+- [eslint] Reactivated `unicorn/no-empty-file`
+- [eslint] Activated `ignoreConditionalTests` and `ignoreMixedLogicalExpressions` options of [@typescript-eslint/prefer-nullish-coalescing](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-nullish-coalescing.md) rule
+- [styleint] Set `ignoreFunctions` option to `/^custom-/u` of [`scss/function-no-unknown`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/function-no-unknown/README.md) rule
+- [stylelint] Ignore SCSS variables in [`declaration-property-value-no-unknown`](https://stylelint.io/user-guide/rules/declaration-property-value-no-unknown/) rule
+- [stylelint] Ignore wrapping parentheses for `grid-template-areas` values in [`declaration-property-value-no-unknown`](https://stylelint.io/user-guide/rules/declaration-property-value-no-unknown/) rule
+
+### Added
+
+- Replace the ESLint rule `class-methods-use-this` by the new [`@typescript-eslint/class-methods-use-this`](https://typescript-eslint.io/rules/class-methods-use-this/) rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.4.0...v3.5.0)
 
 ## [3.4.0] - 2023-07-20
 
