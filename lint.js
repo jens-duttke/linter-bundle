@@ -259,7 +259,6 @@ void (async () => {
  *
  * @param {ReturnType<isNpmOrYarn>} npmOrYarn - This should be the return value of `isNpmOrYarn()`.
  * @returns {boolean} Returns `true` if the environment is valid, otherwise `false` is returned.
- *
  */
 function validateEnvironment (npmOrYarn) {
 	const outdatedOverrides = validatePackageOverrides();
@@ -312,7 +311,6 @@ function validateEnvironment (npmOrYarn) {
  *
  * @param {string[]} argv - Command-line arguments (usual `process.argv.splice(2)`)
  * @returns {TaskNameAndConfig[]} The task execution setup.
- *
  * @throws {Error} If no task has be specified in the arguments.
  */
 function getTasksToRun (argv) {
@@ -379,7 +377,6 @@ function getTasksToRun (argv) {
  * @param {string} pattern - Glob pattern
  * @param {Partial<Record<string, (string | true)[]>>} config - Linter configuration
  * @returns {string} Space-separated file names in double-quotes to be used in the command-line, or an empty string if no file matches.
- *
  */
 function getIncludes (list, pattern, config) {
 	const include = config['include']?.[0];
@@ -402,7 +399,6 @@ function getIncludes (list, pattern, config) {
  *
  * @param {TaskSetup} setup - The task execution setup.
  * @returns {Job} Job
- *
  */
 function runTask (setup) {
 	return {
@@ -419,7 +415,6 @@ function runTask (setup) {
  * @param {Partial<Record<string, (string | true)[]>>} config - The configuration of the task.
  * @param {{ code?: number; stdout?: string; stderr?: string; }} output - The output which should be returned as result of the job.
  * @returns {Job} Job
- *
  */
 function generateDummyJobOutput (taskName, config, output) {
 	return {
@@ -448,7 +443,6 @@ function generateDummyJobOutput (taskName, config, output) {
  *
  * @param {TaskSetup} setup - The task execution setup.
  * @returns {string} The title of the job with a leading line-break and two trailing line-breaks.
- *
  */
 function getJobTitle (setup) {
 	/** @type {string} */

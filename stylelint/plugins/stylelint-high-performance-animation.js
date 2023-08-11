@@ -139,11 +139,11 @@ const getDisallowedList = (ignore) => {
 /**
  * Returns the input string stripped of its vendor prefix.
  *
- * @param {string} property - String with or without vendor prefix.
- * @returns {string} String name without vendor prefixes.
- *
  * @example
  * unprefixed('-moz-tab-size') //=> 'tab-size'
+ *
+ * @param {string} property - String with or without vendor prefix.
+ * @returns {string} String name without vendor prefixes.
  */
 const unprefixed = (property) => property.replace(/^-\w+-/u, '');
 
