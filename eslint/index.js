@@ -294,7 +294,6 @@ module.exports = {
 					...ensureType.array(global.linterBundleSettings?.overrides?.general?.['no-restricted-syntax']?.additionalRestrictions)
 				],
 				'no-return-assign': 'error',
-				'no-return-await': 'off', // Covered by @typescript-eslint/return-await
 				'no-script-url': 'error',
 				'no-self-assign': 'error',
 				'no-self-compare': 'error',
@@ -783,10 +782,10 @@ module.exports = {
 				 * @see https://github.com/jonaskello/eslint-plugin-functional#supported-rules
 				 */
 				'functional/functional-parameters': 'off',
-				'functional/immutable-data': 'off', // This rule would require a lot of additional code and workarounds, which would make the result much more illegible.
+				'functional/immutable-data': 'off', // This rule would require a lot of additional code and workarounds, which would make the result much more illegible // @todo is that resolved in v6.0.0?
 				'functional/no-classes': 'off',
 				'functional/no-conditional-statements': 'off',
-				'functional/no-expression-statements': ['off', { ignoreVoid: true }], // Creates too much false-positives
+				'functional/no-expression-statements': ['off', { ignoreVoid: true }], // Creates too much false-positives // @todo is that resolved in v6.0.0?
 				'functional/no-let': 'off', // This is better covered by the `prefer-const` rule
 				'functional/no-loop-statements': 'off',
 				'functional/no-mixed-types': ['error', {
