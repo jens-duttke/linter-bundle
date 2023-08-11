@@ -921,6 +921,7 @@ module.exports = {
 		'scss/double-slash-comment-inline': null,
 		'scss/double-slash-comment-whitespace-inside': 'always',
 		'scss/function-color-relative': true,
+		'scss/function-disallowed-list': null,
 		'scss/function-no-unknown': [true, { ignoreFunctions: [/^custom-/u] }],
 		'scss/function-quote-no-quoted-strings-inside': true,
 		'scss/function-unquote-no-unquoted-strings-inside': true,
