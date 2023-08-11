@@ -6,7 +6,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.5.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.6.0...HEAD)
+
+## [3.6.0] - 2023-08-11
+
+- [general] Change peer-dependency of `typescript` from `^4.0.0` to `>=4.0.0`
+- [eslint] Updated `@typescript-eslint` from `6.2.0` to `6.3.0`
+- [eslint] Updated `eslint` from `8.45.0` to `8.47.0`
+- [eslint] Updated `eslint-import-resolver-typescript` from `3.5.5` to `3.6.0`
+- [eslint] Updated `eslint-import-resolver-webpack` from `0.13.2` to `0.13.4`
+- [eslint] Updated `eslint-plugin-functional` from `5.0.8` to `6.0.0`
+- [eslint] Updated `eslint-plugin-jsdoc` from `46.4.5` to `46.4.6`
+- [eslint] Updated `eslint-plugin-react` from `7.33.0` to `7.33.1`
+- [stylelint] Updated `stylelint-scss` from `5.0.1` to `5.1.0`
+- [eslint] Removed deprecated (and currently disabled) `no-return-await` rule
+- [styleint] Added but disabled [`scss/function-disallowed-list`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/function-disallowed-list) rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.5.0...v3.6.0)
 
 ## [3.5.0] - 2023-07-28
 
