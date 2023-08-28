@@ -6,15 +6,39 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.7.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.8.0...HEAD)
+
+## [3.8.0] - 2023-08-28
+
+### Changed
+
+- [eslint] Updated `@typescript-eslint` from `6.3.0` to `6.4.1`
+- [eslint] Updated `eslint` from `8.47.0` to `8.48.0`
+- [eslint] Updated `eslint-import-resolver-webpack` from `0.13.4` to `0.13.7`
+- [eslint] Updated `eslint-plugin-import` from `2.28.0` to `2.28.1`
+- [eslint] Updated `eslint-plugin-jsdoc` from `46.4.6` to `46.5.0`
+- [eslint] Updated `eslint-plugin-n` from `16.0.1` to `16.0.2`
+- [eslint] Updated `eslint-plugin-react` from `7.33.1` to `7.33.2`
+- [stylelint] Updated `postcss-scss` from `4.0.6` to `4.0.7`
+- [stylelint] Updated `stylelint` from `15.10.2` to `15.10.3`
+
+### Added
+
+- [eslint] New rule [`restricted-filenames`](./eslint/rules/restricted-filenames.md), which restrict file and path names with given glob patterns.
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.7.0...v3.8.0)
 
 ## [3.7.0] - 2023-08-11
+
+### Changed
 
 - [eslint] Adjusted `jsdoc/tag-lines` configuration to enforce no empty like for `@typedef`, `@property` and `@returns`; and weakened line configuration for `@see`
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.6.0...v3.7.0)
 
 ## [3.6.0] - 2023-08-11
+
+### Changed
 
 - [general] Change peer-dependency of `typescript` from `^4.0.0` to `>=4.0.0`
 - [eslint] Updated `@typescript-eslint` from `6.2.0` to `6.3.0`
@@ -25,8 +49,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Updated `eslint-plugin-jsdoc` from `46.4.5` to `46.4.6`
 - [eslint] Updated `eslint-plugin-react` from `7.33.0` to `7.33.1`
 - [stylelint] Updated `stylelint-scss` from `5.0.1` to `5.1.0`
-- [eslint] Removed deprecated (and currently disabled) `no-return-await` rule
 - [styleint] Added but disabled [`scss/function-disallowed-list`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/function-disallowed-list) rule
+
+### Removed
+
+- [eslint] Removed deprecated (and currently disabled) `no-return-await` rule
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.5.0...v3.6.0)
 
