@@ -6,7 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.8.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.9.0...HEAD)
+
+## [3.9.0] - 2023-08-28
+
+### Changed
+
+- [general] Use users default shell for linting sub-processes
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.8.0...v3.9.0)
 
 ## [3.8.0] - 2023-08-28
 
