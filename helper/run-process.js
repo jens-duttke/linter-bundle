@@ -4,7 +4,8 @@
 
 /** @typedef {{ code: number; stdout: string; stderr: string; runtime: number; }} ProcessResult */
 
-const childProcess = require('child_process');
+const childProcess = require('node:child_process');
+const os = require('node:os');
 
 /**
  * Executes a process asynchronously.
@@ -24,7 +25,7 @@ async function runProcess (command, options) {
 		/** @type {string[]} */
 		const stderr = [];
 
-		const lintingProcess = childProcess.exec(command, options);
+		const lintingProcess = childProcess.exec(command, { ...options, shell: os.userInfo().shell });
 
 		lintingProcess.stdout?.on('data', (/** @type {string} */data) => {
 			stdout.push(data);
