@@ -39,6 +39,7 @@ Beside that, the following additional rules are part of this bundle:
 
 - [no-global-undefined-check](./eslint/rules/no-global-undefined-check.md)
 - [no-unnecessary-typeof](./eslint/rules/no-unnecessary-typeof.md)
+- [restricted-filenames](./eslint/rules/restricted-filenames.md)
 
 ### stylelint
 
