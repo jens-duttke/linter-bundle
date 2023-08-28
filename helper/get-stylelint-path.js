@@ -2,8 +2,8 @@
  * @file Returns the path to the Stylelint CLI script.
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 /**
  * Returns if the project is using npm or yarn.

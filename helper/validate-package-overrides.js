@@ -5,8 +5,8 @@
  * @see https://classic.yarnpkg.com/en/docs/selective-version-resolutions/
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 /** @typedef {{ name: string; configuredVersion: string; expectedVersion: string; }} Dependency */
 

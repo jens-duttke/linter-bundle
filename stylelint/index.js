@@ -4,7 +4,7 @@
 
 /* eslint-disable max-lines -- The rules can be easier managed if they are all in one file  */
 
-const path = require('path');
+const path = require('node:path');
 
 module.exports = {
 	reportNeedlessDisables: true,

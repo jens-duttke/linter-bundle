@@ -2,8 +2,8 @@
  * @file Check if the project is using npm or yarn by checking the existence of a `package-lock.json` or a `yarn.lock`.
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 /**
  * Returns if the project is using npm or yarn.

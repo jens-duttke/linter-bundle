@@ -2,7 +2,7 @@
  * @file ESLint rule which ensures that only files which match given glob patterns are part of your project.
  */
 
-const path = require('path');
+const path = require('node:path');
 
 const micromatch = require('micromatch');
 

@@ -4,8 +4,8 @@
  * @file Entry point of the linter-bundle.
  */
 
-const path = require('path');
-const tty = require('tty');
+const path = require('node:path');
+const tty = require('node:tty');
 
 const micromatch = require('micromatch');
 
