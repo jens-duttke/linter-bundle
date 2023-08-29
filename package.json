@@ -40,9 +40,9 @@
 		"_validate-stylelint-options": "node ./validate-stylelint-options.mjs"
 	},
 	"dependencies": {
-		"@typescript-eslint/eslint-plugin": "6.4.1",
-		"@typescript-eslint/parser": "6.4.1",
-		"@typescript-eslint/utils": "6.4.1",
+		"@typescript-eslint/eslint-plugin": "6.5.0",
+		"@typescript-eslint/parser": "6.5.0",
+		"@typescript-eslint/utils": "6.5.0",
 		"eslint": "8.48.0",
 		"eslint-import-resolver-typescript": "3.6.0",
 		"eslint-import-resolver-webpack": "0.13.7",
