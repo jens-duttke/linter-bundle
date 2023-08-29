@@ -46,52 +46,58 @@ module.exports = {
 			]
 		}
 	},
-	create: (context) => ({
-		Program: (node) => {
-			const filePath = context.getFilename();
-			/** @type {{ basePath: string, allowed?: string[]; disallowed?: string[]; }[]} */
-			const options = context.options;
+	create: (context) => {
+		const filePath = context.getFilename();
+		/** @type {{ basePath: string, allowed?: string[]; disallowed?: string[]; }[]} */
+		const options = context.options;
 
-			for (const { basePath, allowed, disallowed } of options) {
-				const normalizedName = path.relative(path.join(process.cwd(), basePath), filePath);
+		for (const { basePath, allowed, disallowed } of options) {
+			const normalizedName = path.relative(path.join(process.cwd(), basePath), filePath);
 
-				if (allowed && !disallowed) {
-					if (!micromatch.isMatch(normalizedName, allowed, { dot: true })) {
-						report();
-						return;
-					}
-				}
-				else if (!allowed && disallowed) {
-					if (micromatch.isMatch(normalizedName, disallowed, { dot: true })) {
-						report();
-						return;
-					}
-				}
-				else if (allowed && disallowed) {
-					if (
-						micromatch.isMatch(normalizedName, disallowed, { dot: true }) ||
-						!micromatch.isMatch(normalizedName, allowed, { dot: true })
-					) {
-						report();
-						return;
-					}
-				}
+			if (normalizedName.startsWith('..')) {
+				continue;
 			}
 
-			/**
-			 * Reports to ESLint.
-			 *
-			 * @returns {void}
-			 */
-			function report () {
-				context.report({
-					node,
-					messageId: 'text',
-					data: {
-						name: path.relative(process.cwd(), filePath).replace(/\\/gu, '/')
-					}
-				});
+			if (allowed && !disallowed) {
+				if (!micromatch.isMatch(normalizedName, allowed, { dot: true })) {
+					return report();
+				}
+			}
+			else if (!allowed && disallowed) {
+				if (micromatch.isMatch(normalizedName, disallowed, { dot: true })) {
+					return report();
+				}
+			}
+			else if (allowed && disallowed) {
+				if (
+					micromatch.isMatch(normalizedName, disallowed, { dot: true }) ||
+					!micromatch.isMatch(normalizedName, allowed, { dot: true })
+				) {
+					return report();
+				}
 			}
 		}
-	})
+
+		return {};
+
+		/**
+		 * Add rule listener which reports the error.
+		 *
+		 * @returns {import('eslint').Rule.RuleListener} Returns a `Program` rule lister which reports the error.
+		 */
+		function report () {
+			return {
+				Program: (node) => {
+					context.report({
+						node,
+						loc: { line: 1, column: 0 },
+						messageId: 'text',
+						data: {
+							name: path.relative(process.cwd(), filePath).replace(/\\/gu, '/')
+						}
+					});
+				}
+			};
+		}
+	}
 };
