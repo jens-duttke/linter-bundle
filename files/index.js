@@ -2,8 +2,6 @@
  * @file Ensures that only files which match given glob patterns are part of the project.
  */
 
-/* eslint-disable no-console -- We are using `console.error` to log errors into the terminal. */
-
 const fs = require('node:fs');
 const path = require('node:path');
 
@@ -25,7 +23,7 @@ if (Array.isArray(restrictions)) {
 	 * @returns {void}
 	 */
 	const report = (filePath) => {
-		console.error(`Disallowed filename "${filePath}"`);
+		process.stderr.write(`Disallowed filename "${filePath}"\n`);
 
 		noOfErrors++;
 	};
@@ -66,13 +64,13 @@ if (Array.isArray(restrictions)) {
 	}
 
 	if (noOfErrors > 0) {
-		console.error(`\nFound ${noOfErrors} disallowed file${(noOfErrors !== 0 ? 's' : '')}`);
+		process.stderr.write(`\nFound ${noOfErrors} disallowed file${(noOfErrors !== 0 ? 's' : '')}\n`);
 
 		process.exitCode = -1;
 	}
 }
 else {
-	console.error('\nNo file restrictions found');
+	process.stderr.write('No file restrictions found\n');
 
 	process.exitCode = -1;
 }
