@@ -112,6 +112,34 @@ void (async () => {
 })();
 
 /**
+ * Runs the `files` task.
+ *
+ * @param {TaskNameAndConfig['taskName']} taskName - Name of the task
+ * @param {TaskNameAndConfig['taskConfig']} taskConfig - Configuration of the task
+ * @returns {Promise<Job>} Job
+ */
+async function runFilesTask (taskName, taskConfig) {
+	const newTaskConfig = {
+		include: getConfigValue(taskName, taskConfig, 'include'),
+		git: getConfigValue(taskName, taskConfig, 'git')
+	};
+
+	const includes = await getIncludes(newTaskConfig, '**');
+
+	if (!includes) {
+		return generateDummyJobOutput(taskName, newTaskConfig, {
+			stderr: 'No relevant files changed.'
+		});
+	}
+
+	return runTask({
+		taskName,
+		taskConfig: newTaskConfig,
+		command: `node ./files ${includes}`
+	});
+}
+
+/**
  * Runs the `tsc` task.
  *
  * @param {TaskNames} taskName - Name of the task
@@ -319,34 +347,6 @@ async function runAuditTask (taskName, taskConfig) {
 				stderr: 'Neither a "package-lock.json" nor a "yarn.lock" have been found.'
 			});
 	}
-}
-
-/**
- * Runs the `files` task.
- *
- * @param {TaskNameAndConfig['taskName']} taskName - Name of the task
- * @param {TaskNameAndConfig['taskConfig']} taskConfig - Configuration of the task
- * @returns {Promise<Job>} Job
- */
-async function runFilesTask (taskName, taskConfig) {
-	const newTaskConfig = {
-		include: getConfigValue(taskName, taskConfig, 'include'),
-		git: getConfigValue(taskName, taskConfig, 'git')
-	};
-
-	const includes = await getIncludes(newTaskConfig, '**');
-
-	if (!includes) {
-		return generateDummyJobOutput(taskName, newTaskConfig, {
-			stderr: 'No relevant files changed.'
-		});
-	}
-
-	return runTask({
-		taskName,
-		taskConfig: newTaskConfig,
-		command: `node ./files ${includes}`
-	});
 }
 
 /**
