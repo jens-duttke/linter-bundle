@@ -25,7 +25,8 @@ async function runProcess (command, options) {
 		/** @type {string[]} */
 		const stderr = [];
 
-		const lintingProcess = childProcess.exec(command, { ...options, shell: os.userInfo().shell });
+		// eslint-disable-next-line n/no-process-env -- We need to access `process.env`, because this is the default value if `env` is not set.
+		const lintingProcess = childProcess.exec(command, { ...options, env: { ...process.env, ...options?.env, LINTER_BUNDLE: '1' }, shell: os.userInfo().shell });
 
 		lintingProcess.stdout?.on('data', (/** @type {string} */data) => {
 			stdout.push(data);
