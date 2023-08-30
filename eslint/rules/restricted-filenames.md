@@ -6,7 +6,7 @@ In projects in which several developers or even teams work together, it is impor
 
 Example configuration for this rule:
 
-```ts
+```js
 'restricted-filenames': ['error', {
   basePath: './src',
   allowed: [
@@ -66,7 +66,7 @@ Instead of defining the same complex patterns over and over again, e.g. for casi
 
 Example of `.eslintrc.js`:
 
-```ts
+```js
 const snippets = {
   lowerCase: '[a-z]*([a-z0-9])',
   upperCase: '[A-Z]*([A-Z0-9])',

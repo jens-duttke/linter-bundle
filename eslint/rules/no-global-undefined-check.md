@@ -6,7 +6,7 @@ Rendering different output, depending on whether it is SSR or CSR, can lead to h
 
 Examples of **incorrect** code for this rule:
 
-```ts
+```js
 if ('undefined' === typeof window) {}
 if ('undefined' == typeof window) {}
 if (typeof window !== 'undefined') {}
