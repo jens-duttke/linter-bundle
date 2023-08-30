@@ -9,160 +9,50 @@ const tty = require('node:tty');
 
 const micromatch = require('micromatch');
 
+const config = require('./helper/config.js');
 const { findMissingOverrides } = require('./helper/find-missing-overrides.js');
+const { getGitFiles } = require('./helper/get-git-files.js');
 const { getStylelintPath } = require('./helper/get-stylelint-path.js');
 const { isNpmOrYarn } = require('./helper/is-npm-or-yarn.js');
 const { runProcess } = require('./helper/run-process.js');
 const { validatePackageOverrides } = require('./helper/validate-package-overrides.js');
 
+/** @typedef {'files' | 'tsc' | 'ts' | 'sass' | 'md' | 'audit'} TaskNames */
+/** @typedef {Partial<Record<string, (string | boolean)[]>>} TaskConfig */
 /** @typedef {import('./helper/run-process').ProcessResult} ProcessResult */
-/** @typedef {{ taskName: string; config: Partial<Record<string, (string | true)[]>>; }} TaskNameAndConfig */
+/** @typedef {{ taskName: TaskNames; taskConfig: TaskConfig; }} TaskNameAndConfig */
 /** @typedef {TaskNameAndConfig & { command: string; options?: import('child_process').ExecOptions; }} TaskSetup */
 /** @typedef {{ jobTitle: string; taskSetup: TaskSetup; job: Promise<ProcessResult>; }} Job */
 
 const isTerminal = tty.isatty(1);
 
-void (async () => {
-	const npmOrYarn = isNpmOrYarn();
+const npmOrYarn = isNpmOrYarn();
 
-	if (!validateEnvironment(npmOrYarn)) {
+void (async () => {
+	if (!validateEnvironment()) {
 		return;
 	}
 
 	/** @type {Job[]} */
 	const jobs = await Promise.all(getTasksToRun(process.argv.splice(2)).map(async ({ taskName, taskConfig }) => {
 		switch (taskName) {
+			case 'files':
+				return runFilesTask(taskName, taskConfig);
+
 			case 'tsc':
-				// eslint-disable-next-line @typescript-eslint/no-dynamic-delete -- This is not a valid `tsc` property, so  we need to remove it.
-				delete config['git'];
+				return runTypeScriptCompilerTask(taskName, taskConfig);
 
-				return runTask({
-					taskName,
-					config,
-					command: [`node "${require.resolve('typescript/bin/tsc')}" --skipLibCheck --noEmit`, ...(config['tsconfig']?.[0] ? [`--project ${config['tsconfig'][0]}`] : [])].join(' ')
-				});
+			case 'ts':
+				return runESLintTask(taskName, taskConfig);
 
-			case 'ts': {
-				const tsconfig = config['tsconfig']?.[0];
+			case 'sass':
+				return runStylelintTask(taskName, taskConfig);
 
-				const includes = getIncludes(gitFiles, './**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}', config);
-
-				if (!includes) {
-					return generateDummyJobOutput(taskName, config, {
-						stderr: 'No relevant files for ESLint changed.'
-					});
-				}
-
-				return runTask({
-					taskName,
-					command: [
-						'node',
-						`"${path.join(path.dirname(require.resolve('eslint')), '../bin/eslint.js')}"`,
-						includes,
-						config['exclude']?.map((exclude) => `--ignore-pattern ${exclude}`).join(' '),
-						`--rulesdir "${path.resolve(__dirname, './eslint/rules/')}"`,
-						'--format unix',
-						`--resolve-plugins-relative-to "${__dirname}"`
-					].filter((argument) => Boolean(argument)).join(' '),
-					config,
-					options: {
-						env: {
-							TIMING: '10',
-							TSCONFIG: (typeof tsconfig === 'string' ? tsconfig : undefined)
-						}
-					}
-				});
-			}
-
-			case 'sass': {
-				const includes = getIncludes(gitFiles, 'src/**/*.scss', config);
-
-				if (!includes) {
-					return generateDummyJobOutput(taskName, config, {
-						stderr: 'No relevant files for Stylelint changed.'
-					});
-				}
-
-				const stylelintBinPath = getStylelintPath();
-
-				if (stylelintBinPath === null) {
-					return generateDummyJobOutput(taskName, config, {
-						stderr: 'Stylelint CLI script not found.'
-					});
-				}
-
-				return runTask({
-					taskName,
-					config,
-					command: `node "${stylelintBinPath}" ${includes} --formatter unix`
-				});
-			}
-
-			case 'md': {
-				const includes = getIncludes(gitFiles, '**/*.md', config);
-
-				if (!includes) {
-					return generateDummyJobOutput(taskName, config, {
-						stderr: 'No relevant files for Markdownlint changed.'
-					});
-				}
-
-				return runTask({
-					taskName,
-					config,
-					command: `node "${require.resolve('markdownlint-cli/markdownlint.js')}" ${includes} --ignore node_modules`
-				});
-			}
+			case 'md':
+				return runMarkdownTask(taskName, taskConfig);
 
 			case 'audit':
-				// eslint-disable-next-line @typescript-eslint/no-dynamic-delete -- This is not a valid `audit` property, so  we need to remove it.
-				delete config['git'];
-
-				switch (npmOrYarn) {
-					case 'npm':
-						return runTask({
-							taskName,
-							config,
-							command: [
-								'npx',
-								'--yes',
-								'--',
-								'better-npm-audit@1.9.1',
-								'audit',
-								`-l ${config['min-severity'] ?? 'moderate'}`,
-								'-p',
-								config['exclude']?.map((exclude) => `-i ${exclude}`).join(' ')
-							].filter((argument) => Boolean(argument)).join(' ')
-						});
-
-					case 'yarn':
-						return runTask({
-							taskName,
-							config,
-							command: [
-								'npx',
-								'--yes',
-								'--',
-								'improved-yarn-audit@2.3.3',
-								`--min-severity ${config['min-severity'] ?? 'moderate'}`,
-								'--fail-on-missing-exclusions',
-								'--ignore-dev-deps',
-								config['exclude']?.map((exclude) => `--exclude ${exclude}`).join(' ')
-							].filter((argument) => Boolean(argument)).join(' ')
-						});
-
-					case 'both':
-						return generateDummyJobOutput(taskName, config, {
-							code: 1,
-							stderr: 'A "package-lock.json" and "yarn.lock" have been found. Use only one package manager within the project to avoid potential conflicts.'
-						});
-
-					default:
-						return generateDummyJobOutput(taskName, config, {
-							code: 1,
-							stderr: 'Neither a "package-lock.json" nor a "yarn.lock" have been found.'
-						});
-				}
+				return runAuditTask(taskName, taskConfig);
 
 			default:
 		}
@@ -181,7 +71,7 @@ void (async () => {
 
 		const trimmedError = stderr.trim();
 
-		if (code !== 0 || trimmedError !== '' || taskSetup.config['verbose']) {
+		if (code !== 0 || trimmedError !== '' || getConfigValue(taskSetup.taskName, taskSetup.taskConfig, 'verbose')?.[0]) {
 			process.stdout.write('\n');
 
 			if (stdout) {
@@ -193,7 +83,7 @@ void (async () => {
 			}
 		}
 
-		if (code !== 0 && taskSetup.config['verbose']) {
+		if (code !== 0 && getConfigValue(taskSetup.taskName, taskSetup.taskConfig, 'verbose')?.[0]) {
 			if (isTerminal) {
 				process.stderr.write(`\n[lint ${taskSetup.taskName}] \u001B[31mProblems detected\u001B[39m\n`);
 			}
@@ -202,7 +92,7 @@ void (async () => {
 			}
 		}
 
-		if (taskSetup.config['timing']) {
+		if (getConfigValue(taskSetup.taskName, taskSetup.taskConfig, 'timing')?.[0]) {
 			process.stdout.write(`\nJob finished after ${((runtime) / 1000).toFixed(1)}s\n`);
 		}
 		else {
@@ -222,12 +112,249 @@ void (async () => {
 })();
 
 /**
+ * Runs the `tsc` task.
+ *
+ * @param {TaskNames} taskName - Name of the task
+ * @param {TaskNameAndConfig['taskConfig']} taskConfig - Configuration of the task
+ * @returns {Promise<Job>} Job
+ */
+async function runTypeScriptCompilerTask (taskName, taskConfig) {
+	const newTaskConfig = {
+		tsconfig: getConfigValue(taskName, taskConfig, 'tsconfig'),
+		verbose: getConfigValue(taskName, taskConfig, 'verbose')
+	};
+
+	return runTask({
+		taskName,
+		taskConfig: newTaskConfig,
+		command: [
+			'node',
+			`"${require.resolve('typescript/bin/tsc')}"`,
+			'--skipLibCheck',
+			'--noEmit',
+			(newTaskConfig.tsconfig?.[0] ? `--project ${newTaskConfig.tsconfig[0]}` : undefined),
+			(newTaskConfig.verbose?.[0] ? '--verbose' : undefined)
+		].filter((argument) => Boolean(argument)).join(' ')
+	});
+}
+
+/**
+ * Runs the `ts` task.
+ *
+ * @param {TaskNameAndConfig['taskName']} taskName - Name of the task
+ * @param {TaskNameAndConfig['taskConfig']} taskConfig - Configuration of the task
+ * @returns {Promise<Job>} Job
+ */
+async function runESLintTask (taskName, taskConfig) {
+	const newTaskConfig = {
+		tsconfig: getConfigValue(taskName, taskConfig, 'tsconfig'),
+		include: getConfigValue(taskName, taskConfig, 'include'),
+		exclude: getConfigValue(taskName, taskConfig, 'exclude'),
+		git: getConfigValue(taskName, taskConfig, 'git')
+	};
+
+	const includes = await getIncludes(newTaskConfig, './**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}');
+
+	if (!includes) {
+		return generateDummyJobOutput(taskName, newTaskConfig, {
+			stderr: 'No relevant files for ESLint changed.'
+		});
+	}
+
+	return runTask({
+		taskName,
+		command: [
+			'node',
+			`"${path.join(path.dirname(require.resolve('eslint')), '../bin/eslint.js')}"`,
+			includes,
+			newTaskConfig.exclude?.map((exclude) => `--ignore-pattern ${exclude}`).join(' '),
+			`--rulesdir "${path.resolve(__dirname, './eslint/rules/')}"`,
+			'--format unix',
+			`--resolve-plugins-relative-to "${__dirname}"`
+		].filter((argument) => Boolean(argument)).join(' '),
+		taskConfig: newTaskConfig,
+		options: {
+			env: {
+				TIMING: '10',
+				TSCONFIG: (typeof newTaskConfig.tsconfig?.[0] === 'string' ? newTaskConfig.tsconfig[0] : undefined)
+			}
+		}
+	});
+}
+
+/**
+ * Runs the `sass` task.
+ *
+ * @param {TaskNameAndConfig['taskName']} taskName - Name of the task
+ * @param {TaskNameAndConfig['taskConfig']} taskConfig - Configuration of the task
+ * @returns {Promise<Job>} Job
+ */
+async function runStylelintTask (taskName, taskConfig) {
+	const newTaskConfig = {
+		include: getConfigValue(taskName, taskConfig, 'include'),
+		git: getConfigValue(taskName, taskConfig, 'git'),
+		verbose: getConfigValue(taskName, taskConfig, 'verbose')
+	};
+
+	const includes = await getIncludes(newTaskConfig, 'src/**/*.scss');
+
+	if (!includes) {
+		return generateDummyJobOutput(taskName, newTaskConfig, {
+			stderr: 'No relevant files for Stylelint changed.'
+		});
+	}
+
+	const stylelintBinPath = getStylelintPath();
+
+	if (stylelintBinPath === null) {
+		return generateDummyJobOutput(taskName, newTaskConfig, {
+			stderr: 'Stylelint CLI script not found.'
+		});
+	}
+
+	return runTask({
+		taskName,
+		taskConfig: newTaskConfig,
+		command: [
+			'node',
+			`"${stylelintBinPath}"`,
+			includes,
+			(newTaskConfig.verbose?.[0] ? '--verbose' : undefined),
+			'--formatter unix'
+
+		].filter((argument) => Boolean(argument)).join(' ')
+	});
+}
+
+/**
+ * Runs the `md` task.
+ *
+ * @param {TaskNameAndConfig['taskName']} taskName - Name of the task
+ * @param {TaskNameAndConfig['taskConfig']} taskConfig - Configuration of the task
+ * @returns {Promise<Job>} Job
+ */
+async function runMarkdownTask (taskName, taskConfig) {
+	const newTaskConfig = {
+		include: getConfigValue(taskName, taskConfig, 'include'),
+		git: getConfigValue(taskName, taskConfig, 'git'),
+		verbose: getConfigValue(taskName, taskConfig, 'verbose')
+	};
+
+	const includes = await getIncludes(newTaskConfig, '**/*.md');
+
+	if (!includes) {
+		return generateDummyJobOutput(taskName, newTaskConfig, {
+			stderr: 'No relevant files for Markdownlint changed.'
+		});
+	}
+
+	return runTask({
+		taskName,
+		taskConfig: newTaskConfig,
+		command: [
+			'node',
+			`"${require.resolve('markdownlint-cli/markdownlint.js')}"`,
+			includes,
+			(newTaskConfig.verbose?.[0] ? '--verbose' : undefined),
+			'--ignore node_modules'
+		].filter((argument) => Boolean(argument)).join(' ')
+	});
+}
+
+/**
+ * Runs the `audit` task.
+ *
+ * @param {TaskNameAndConfig['taskName']} taskName - Name of the task
+ * @param {TaskNameAndConfig['taskConfig']} taskConfig - Configuration of the task
+ * @returns {Promise<Job>} Job
+ */
+async function runAuditTask (taskName, taskConfig) {
+	const newTaskConfig = {
+		minSeverity: getConfigValue(taskName, taskConfig, 'minSeverity'),
+		exclude: getConfigValue(taskName, taskConfig, 'exclude')
+	};
+
+	switch (npmOrYarn) {
+		case 'npm':
+			return runTask({
+				taskName,
+				taskConfig: newTaskConfig,
+				command: [
+					'npx',
+					'--yes',
+					'--',
+					'better-npm-audit@1.9.1',
+					'audit',
+					`-l ${newTaskConfig.minSeverity?.[0] ?? 'moderate'}`,
+					'-p',
+					newTaskConfig.exclude?.map((exclude) => `-i ${exclude}`).join(' ')
+				].filter((argument) => Boolean(argument)).join(' ')
+			});
+
+		case 'yarn':
+			return runTask({
+				taskName,
+				taskConfig: newTaskConfig,
+				command: [
+					'npx',
+					'--yes',
+					'--',
+					'improved-yarn-audit@2.3.3',
+					`--min-severity ${newTaskConfig.minSeverity?.[0] ?? 'moderate'}`,
+					'--fail-on-missing-exclusions',
+					'--ignore-dev-deps',
+					newTaskConfig.exclude?.map((exclude) => `--exclude ${exclude}`).join(' ')
+				].filter((argument) => Boolean(argument)).join(' ')
+			});
+
+		case 'both':
+			return generateDummyJobOutput(taskName, newTaskConfig, {
+				code: 1,
+				stderr: 'A "package-lock.json" and "yarn.lock" have been found. Use only one package manager within the project to avoid potential conflicts.'
+			});
+
+		default:
+			return generateDummyJobOutput(taskName, newTaskConfig, {
+				code: 1,
+				stderr: 'Neither a "package-lock.json" nor a "yarn.lock" have been found.'
+			});
+	}
+}
+
+/**
+ * Runs the `files` task.
+ *
+ * @param {TaskNameAndConfig['taskName']} taskName - Name of the task
+ * @param {TaskNameAndConfig['taskConfig']} taskConfig - Configuration of the task
+ * @returns {Promise<Job>} Job
+ */
+async function runFilesTask (taskName, taskConfig) {
+	const newTaskConfig = {
+		include: getConfigValue(taskName, taskConfig, 'include'),
+		git: getConfigValue(taskName, taskConfig, 'git')
+	};
+
+	const includes = await getIncludes(newTaskConfig, '**');
+
+	if (!includes) {
+		return generateDummyJobOutput(taskName, newTaskConfig, {
+			stderr: 'No relevant files changed.'
+		});
+	}
+
+	return runTask({
+		taskName,
+		taskConfig: newTaskConfig,
+		command: `node ./files ${includes}`
+	});
+}
+
+/**
  * Ensures that the environment in which the linter is running has the correct versions of the required dependencies.
  *
- * @param {ReturnType<isNpmOrYarn>} npmOrYarn - This should be the return value of `isNpmOrYarn()`.
  * @returns {boolean} Returns `true` if the environment is valid, otherwise `false` is returned.
  */
-function validateEnvironment (npmOrYarn) {
+function validateEnvironment () {
 	const outdatedOverrides = validatePackageOverrides();
 
 	if (outdatedOverrides.overrides.length > 0 || outdatedOverrides.resolutions.length > 0) {
@@ -281,7 +408,7 @@ function validateEnvironment (npmOrYarn) {
  * @throws {Error} If no task has be specified in the arguments.
  */
 function getTasksToRun (argv) {
-	const TASKS = new Set(['tsc', 'ts', 'sass', 'md', 'audit']);
+	const TASKS = new Set(['tsc', 'ts', 'sass', 'md', 'audit', 'files']);
 	const ARG_REGEXP = /^--([^=]+)(?:=(.+))?$/u;
 
 	/** @type {TaskNameAndConfig | null} */
@@ -290,14 +417,14 @@ function getTasksToRun (argv) {
 	/** @type {TaskNameAndConfig[]} */
 	const tasksToRun = [];
 
-	/** @type {Record<string, (string | true)[]>} */
+	/** @type {Record<string, (string | boolean)[]>} */
 	const generalConfig = {};
 
 	for (const argument of argv) {
 		if (TASKS.has(argument)) {
 			currentTask = {
-				taskName: argument,
-				config: { ...generalConfig }
+				taskName: /** @type {TaskNames} */(argument),
+				taskConfig: { ...generalConfig }
 			};
 
 			tasksToRun.push(currentTask);
@@ -311,27 +438,23 @@ function getTasksToRun (argv) {
 			throw new Error(`Unknown argument "${argument}"`);
 		}
 
-		const normalizedName = name.toLowerCase();
-
-		/** @type {(string | true)[]} */
-		let config;
+		// Converts e.g. "MIN-SEVERITY" into "minSeverity"
+		const normalizedName = name.toLowerCase().replace(/-./gu, (match) => match[1].toUpperCase());
 
 		if (currentTask === null) {
 			if (!(normalizedName in generalConfig)) {
 				generalConfig[normalizedName] = [];
 			}
 
-			config = generalConfig[normalizedName];
+			generalConfig[normalizedName].push(value);
 		}
 		else {
-			if (!(normalizedName in currentTask.config)) {
-				currentTask.config[normalizedName] = [];
+			if (!(normalizedName in currentTask.taskConfig)) {
+				currentTask.taskConfig[normalizedName] = [];
 			}
 
-			config = /** @type {(string | true)[]} */(currentTask.config[normalizedName]);
+			/** @type {(string | boolean)[]} */(currentTask.taskConfig[normalizedName]).push(value);
 		}
-
-		config.push(value);
 	}
 
 	return tasksToRun;
@@ -340,18 +463,19 @@ function getTasksToRun (argv) {
 /**
  * Returns a list of changed files, based on the Git-diff result and the glob pattern to be used in the command-line.
  *
- * @param {string[] | undefined} list - File list
+ * @param {TaskConfig} taskConfig - Linter configuration
  * @param {string} pattern - Glob pattern
- * @param {Partial<Record<string, (string | true)[]>>} config - Linter configuration
- * @returns {string} Space-separated file names in double-quotes to be used in the command-line, or an empty string if no file matches.
+ * @returns {Promise<string>} Space-separated file names in double-quotes to be used in the command-line, or an empty string if no file matches.
  */
-function getIncludes (list, pattern, config) {
-	const include = config['include']?.[0];
+async function getIncludes (taskConfig, pattern) {
+	const include = taskConfig['include'];
 
-	let includedFiles = [typeof include === 'string' ? include : pattern];
+	let includedFiles = (Array.isArray(include) && include.length > 0 ? /** @type {string[]} */(include.filter((item) => typeof item === 'string')) : [pattern]);
 
-	if (config['git'] && list) {
-		includedFiles = micromatch(list, includedFiles);
+	if (taskConfig['git']?.[0]) {
+		const gitFiles = await getGitFiles();
+
+		includedFiles = micromatch(gitFiles, includedFiles);
 
 		if (includedFiles.length === 0) {
 			return '';
@@ -378,21 +502,21 @@ function runTask (setup) {
 /**
  * Returns a job configuration which does not run any task, but just returns the given `output`.
  *
- * @param {string} taskName - The name of the task.
- * @param {Partial<Record<string, (string | true)[]>>} config - The configuration of the task.
+ * @param {TaskNames} taskName - The name of the task.
+ * @param {TaskConfig} taskConfig - The configuration of the task.
  * @param {{ code?: number; stdout?: string; stderr?: string; }} output - The output which should be returned as result of the job.
  * @returns {Job} Job
  */
-function generateDummyJobOutput (taskName, config, output) {
+function generateDummyJobOutput (taskName, taskConfig, output) {
 	return {
 		jobTitle: getJobTitle({
 			taskName,
-			config,
+			taskConfig,
 			command: ''
 		}),
 		taskSetup: {
 			taskName,
-			config,
+			taskConfig,
 			command: ''
 		},
 		job: Promise.resolve({
@@ -413,7 +537,50 @@ function generateDummyJobOutput (taskName, config, output) {
  */
 function getJobTitle (setup) {
 	/** @type {string} */
-	const additionalArgumentString = Object.entries(setup.config).map(([name, values]) => (Array.isArray(values) ? values.map((value) => (value === true ? `--${name}` : `--${name}="${value}"`)).join(' ') : '')).join(' ');
+	const additionalArgumentString = Object.entries(setup.taskConfig).filter(([, values]) => values !== undefined).map(([name, values]) => (Array.isArray(values) ? values.map((value) => (value === true ? `--${name}` : `--${name}="${value}"`)).join(' ') : '')).join(' ');
 
 	return `\n[lint ${setup.taskName}${(additionalArgumentString.length > 0 ? ` ${additionalArgumentString}` : '')}] ${setup.command}\n`;
+}
+
+/**
+ * Returns a configuration option value based on the command line arguments and the `.linter-bundle.js` configuration.
+ *
+ * @param {TaskNames} taskName - Name of the task
+ * @param {TaskConfig} taskConfig - Configuration of a task
+ * @param {string} optionName - Configuration option name
+ * @returns {(string | boolean)[] | undefined} Configuration option value
+ */
+function getConfigValue (taskName, taskConfig, optionName) {
+	if (optionName in taskConfig) {
+		return taskConfig[optionName];
+	}
+
+	if (taskName in config) {
+		const specificConfig = config[/** @type {keyof typeof config} */(taskName)];
+
+		if (typeof specificConfig === 'object' && optionName in specificConfig) {
+			// eslint-disable-next-line jsdoc/no-undefined-types -- False positive "The type 'specificConfig' is undefined."
+			const configValue = specificConfig[/** @type {keyof typeof specificConfig} */(optionName)];
+
+			if (Array.isArray(configValue)) {
+				return configValue;
+			}
+			else if (typeof configValue === 'boolean' || typeof configValue === 'string') {
+				return [configValue];
+			}
+		}
+	}
+
+	if (optionName in config) {
+		const configValue = config[/** @type {keyof typeof config} */(optionName)];
+
+		if (Array.isArray(configValue)) {
+			return configValue;
+		}
+		else if (typeof configValue === 'boolean' || typeof configValue === 'string') {
+			return [configValue];
+		}
+	}
+
+	return;
 }
