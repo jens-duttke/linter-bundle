@@ -83,8 +83,6 @@ npm install linter-bundle --save-dev
 
 #### .eslintrc.js
 
-##### Minimum configuration
-
 ```js
 module.exports = {
   extends: [
@@ -99,90 +97,6 @@ module.exports = {
     // require.resolve('linter-bundle/eslint/overrides-type-declarations'),
     // require.resolve('linter-bundle/eslint/overrides-worker')
   ]
-};
-```
-
-##### Maximum configuration
-
-```js
-// Sometimes it's required to adjust specific settings. These can be defined here:
-global.linterBundleSettings = {
-  overrides: {
-    general: {
-      'no-restricted-globals': {
-        additionalRestrictions: [
-          {
-            name: 'fetch',
-            message: 'Use Utils.fetchWithTimeout() instead.'
-          }
-        ]
-      },
-      'no-restricted-properties': {
-        additionalRestrictions: [
-          {
-            object: 'localStorage',
-            property: 'getItem',
-            message: 'Use StorageHelper.getItem() instead.'
-          },
-          {
-            object: 'localStorage',
-            property: 'setItem',
-            message: 'Use StorageHelper.setItem() instead.'
-          },
-          {
-            object: 'localStorage',
-            property: 'removeItem',
-            message: 'Use StorageHelper.removeItem() instead.'
-          }
-        ]
-      },
-      'no-restricted-syntax': {
-        additionalRestrictions: [
-          {
-            selector: 'NewExpression[callee.name="Blob"]',
-            message: 'Use BlobHelper.create() instead of new Blob().'
-          }
-        ]
-      },
-      'import/order': {
-        additionalExternalPatterns: ['@sentry/*']
-      }
-    },
-    react: {
-      'react/forbid-component-props': {
-        allowClassNameFor: ['Checkbox', 'Grid', 'GridItem', 'Button'],
-        allowStyleFor: []
-      }
-    }
-  }
-};
-
-module.exports = {
-  extends: [
-    require.resolve('linter-bundle/eslint'),
-    require.resolve('linter-bundle/eslint/overrides-gatsby'),
-    require.resolve('linter-bundle/eslint/overrides-javascript'),
-    // require.resolve('linter-bundle/eslint/overrides-javascript-lazy'),
-    require.resolve('linter-bundle/eslint/overrides-jest'),
-    require.resolve('linter-bundle/eslint/overrides-jsdoc'),
-    require.resolve('linter-bundle/eslint/overrides-react'),
-    require.resolve('linter-bundle/eslint/overrides-storybook'),
-    require.resolve('linter-bundle/eslint/overrides-type-declarations'),
-    require.resolve('linter-bundle/eslint/overrides-worker')
-  ],
-  ignorePatterns: [
-    // Define paths which should be ignored here. (The following paths are ignored by default: '.cache/', '.vscode/', 'coverage/', 'node_modules/')
-    'build/',
-    'etc/',
-    'private/'
-  ],
-  globals: {
-    // Define project-specific global variables. JavaScript built-in objects (like ArrayBuffer, typed arrays, Promise, Set/Map etc.) are automatically set to
-    // 'readonly', and don't need to be added here.
-    __DEV__: 'readonly',
-    APP_NAME: 'readonly',
-    APP_VERSION: 'readonly',
-  }
 };
 ```
 
@@ -204,11 +118,6 @@ Source | Description | Rules setup
 #### stylelint.config.js
 
 ```js
-global.linterBundleSettings = {
-  // The prefix used for the 'custom-media-pattern' (`@media (--my-prefix-foo)`) and 'custom-property-pattern' (`var(--my-prefix-bar)`) rule. If not defined, these rules are disabled.
-  propertyPrefix: 'my-prefix'
-};
-
 module.exports = {
   extends: 'linter-bundle/stylelint'
 };
@@ -229,13 +138,379 @@ module.exports = {
 .eslintcache
 ```
 
+### .linter-bundle.json / .linter-bundle.cjs / .linter-bundle.js
+
+`linter-bundle` supports a couple of additional options, which can be configured in the configuration file, in the root of your project.  
+Some of the options are also available as command line arguments (see below).  
+The file itself, and any of the options is optional.
+
+#### Minimum example configuration (`.linter-bundle.json`)
+
+```json
+{
+  "verbose": true,
+  "timing": true,
+  "git": true,
+  "tsc": {
+    "tsconfig": "./tsconfig.lint.json"
+  },
+  "ts": {
+    "tsconfig": "./tsconfig.lint.json",
+    "include": ["./included/*.ts"],
+    "exclude": ["./excluded/*.ts"],
+    "overrides": {
+      "general": {
+        "no-restricted-globals": {
+          "additionalRestrictions": [
+            {
+              "name": "fetch",
+              "message": "Use Utils.fetchWithTimeout() instead."
+            }
+          ]
+        },
+        "no-restricted-properties": {
+          "additionalRestrictions": [
+            {
+              "object": "localStorage",
+              "property": "getItem",
+              "message": "Use StorageHelper.getItem() instead."
+            }
+          ]
+        },
+        "no-restricted-syntax": {
+          "additionalRestrictions": [
+            {
+              "selector": "NewExpression[callee.name=\"Blob\"]",
+              "message": "Use BlobHelper.create() instead of new Blob()."
+            }
+          ]
+        },
+        "import/order": {
+          "additionalExternalPatterns": ["@sentry/*"]
+        }
+      },
+      "react": {
+        "react/forbid-component-props": {
+          "allowClassNameFor": ["Checkbox", "Grid", "GridItem", "Button"],
+          "allowStyleFor": ["Grid", "GridItem"]
+        }
+      }
+    }
+  },
+  "sass": {
+    "include": ["./included/*.ts"],
+    "patternPrefix": "--my-prefix"
+  },
+  "md": {
+    "include": ["./included/*.md"],
+  },
+  "audit": {
+    "minSeverity": "high",
+    "exclude": ["975", "1751"]
+  },
+  "files": {
+    "restrictions": [
+      {
+        "basePath": "./src",
+        "allow": [
+          "components/**/index.tsx",
+          "utils/{index.ts,lib/[a-z]+([a-zA-Z])?(.spec).ts}"
+        ],
+        "disallow": [
+          "components/NotAllowed/index.tsx"
+        ]
+      }
+    ]
+  }
+}
+```
+
+#### Maximum example configuration (`.linter-bundle.js`)
+
+<!-- markdownlint-disable-next-line MD033 -->
+<details><summary>Click here to see the example configuration with descriptions</summary>
+
+```js
+module.exports = {
+  /**
+   * Same as `--verbose` command line argument.
+   * 
+   * @type {boolean}
+   */
+  verbose: true,
+
+  /**
+   * Same as `--timing` command line argument.
+   * 
+   * @type {boolean}
+   */
+  timing: true,
+
+  /**
+   * Same as `--git` command line argument.
+   * 
+   * @type {boolean}
+   */
+  git: true,
+
+  /**
+   * Configuration, specific to the `tsc` command.
+   */
+  tsc: {
+    /**
+     * `verbose`, `timing` and `git` are the same as in the root node.
+     */
+    verbose: true,
+    timing: true,
+    git: true,
+
+    /**
+     * Same as `--tsconfig` command line argument.
+     * 
+     * @type {string}
+     */
+    tsconfig: './tsconfig.lint.json'
+  },
+
+  /**
+   * Configuration, specific to the `ts` command.
+   */
+  ts: {
+    /**
+     * `verbose`, `timing` and `git` are the same as in the root node.
+     */
+    verbose: true,
+    timing: true,
+    git: true,
+
+    /**
+     * Same as `--tsconfig` command line argument.
+     * 
+     * @type {string}
+     */
+    tsconfig: './tsconfig.lint.json',
+
+    /**
+     * Same as `--include` command line argument.
+     * 
+     * @type {string[]}
+     */
+    include: ['./included/*.ts'],
+
+    /**
+     * Same as `--exclude` command line argument.
+     * 
+     * @type {string[]}
+     */
+    exclude: ['./excluded/*.ts'],
+
+    /**
+     * Overrides and extensions for specific ESLint rules.
+     */
+    overrides: {
+      /**
+       * Rules that are applied to `linter-bundle/eslint`.
+       */
+      general: {
+        'no-restricted-globals': {
+          /**
+           * Extend the `restrictions` of the `no-restricted-globals` rule.
+           * 
+           * @type {{ name: string; message: string; }[]}
+           */
+          additionalRestrictions: [
+            {
+              name: 'fetch',
+              message: 'Use Utils.fetchWithTimeout() instead.'
+            }
+          ]
+        },
+        'no-restricted-properties': {
+          /**
+           * Extend the `restrictions` of the `no-restricted-properties` rule.
+           * 
+           * @type {{ object: string; property: string; message: string; }[]}
+           */
+          additionalRestrictions: [
+            {
+              object: 'localStorage',
+              property: 'getItem',
+              message: 'Use StorageHelper.getItem() instead.'
+            }
+          ]
+        },
+        'no-restricted-syntax': {
+          /**
+           * Extend the `restrictions` of the `no-restricted-syntax` rule.
+           * 
+           * @type {{ selector: string; message: string; }[]}
+           */
+          additionalRestrictions: [
+            {
+              selector: 'NewExpression[callee.name="Blob"]',
+              message: 'Use BlobHelper.create() instead of new Blob().'
+            }
+          ]
+        },
+        'import/order': {
+          /**
+           * Extend the `externalPatterns` of the `import/order` rule.
+           *
+           * @type {string[]}
+           */
+          additionalExternalPatterns: ['@sentry/*']
+        }
+      },
+
+      /**
+       * Rules that are applied to `linter-bundle/eslint/overrides-react`.
+       */
+      react: {
+        'react/forbid-component-props': {
+          /**
+           * Allows the `className` property for the specified components.
+           *
+           * @type {string[]}
+           */
+          allowClassNameFor: ['Checkbox', 'Grid', 'GridItem', 'Button'],
+
+          /**
+           * Allows the `style` property for the specified components.
+           *
+           * @type {string[]}
+           */
+          allowStyleFor: ['Grid', 'GridItem']
+        }
+      }
+    }
+  },
+
+  /**
+   * Configuration, specific to the `sass` command.
+   */
+  sass: {
+    /**
+     * `verbose`, `timing` and `git` are the same as in the root node.
+     */
+    verbose: true,
+    timing: true,
+    git: true,
+
+    /**
+     * Same as `--include` command line argument.
+     * 
+     * @type {string[]}
+     */
+    include: ['./included/*.ts'],
+
+    /**
+     * The prefix used for the 'custom-media-pattern' (`@media (--my-prefix-foo)`) and 'custom-property-pattern' (`var(--my-prefix-bar)`) rule.
+     *
+     * If not defined, these rules are disabled.
+     */
+    patternPrefix: '--my-prefix'
+  },
+
+  /**
+   * Configuration, specific to the `audit` command.
+   */
+  md: {
+    /**
+     * Same as `--include` command line argument.
+     * 
+     * @type {string[]}
+     */
+    include: ['./included/*.ts']
+  },
+
+  /**
+   * Configuration, specific to the `audit` command.
+   */
+  audit: {
+    /**
+     * `verbose`, `timing` and `git` are the same as in the root node.
+     */
+    verbose: true,
+    timing: true,
+    git: true,
+
+    /**
+     * Same as `--min-severity` command line argument.
+     * 
+     * @type {'info' | 'low' | 'moderate' | 'high' | 'critical'}
+     */
+    minSeverity: 'high',
+
+    /**
+     * Same as `--exclude` command line argument.
+     * 
+     * @type {string[]}
+     */
+    exclude: ['975', '1751']
+  },
+
+  /**
+   * Configuration, specific to the `files` command.
+   */
+  files: {
+    /**
+     * `verbose`, `timing` and `git` are the same as in the root node.
+     */
+    verbose: true,
+    timing: true,
+    git: true,
+
+    /**
+     * Array of restrictions for different base paths.
+     *
+     * The configuration is equal to the `restricted-filenames` ESLint plugin.
+     * This plugin is using the configuration here, if ESLint is used outside of `linter-bundle` (e.g. in VSCode).
+     *
+     * @see https://github.com/jens-duttke/linter-bundle/blob/main/eslint/rules/restricted-filenames.md
+     */
+    restrictions: [
+      {
+        /**
+         * Same as `--exclude` command line argument.
+         * 
+         * @type {string}
+         */
+        basePath: './src',
+
+        /**
+         * Glob pattern Same as `--exclude` command line argument.
+         * 
+         * @type {string[]}
+         */
+        allow: [
+          'components/**/index.tsx',
+          'utils/{index.ts,lib/[a-z]+([a-zA-Z])?(.spec).ts}'
+        ],
+
+        /**
+         * Same as `--exclude` command line argument.
+         * 
+         * @type {string[]}
+         * 
+         */
+        disallow: [
+          'components/NotAllowed/index.tsx'
+        ]
+      }
+    ]
+  }
+}
+```
+
+</details>
+
 ## Available commands
 
 The command line arguments are separated in groups. Here are some examples:
 
 ```sh
-# Run TypeScript compiler, ESLint, Stylelint, Markdownlint, and audit in the given order, using the default configuration
-lint tsc ts sass md audit
+# Run File restrictions, TypeScript compiler, ESLint, Stylelint, Markdownlint, and audit in the given order, using the default configuration
+lint files tsc ts sass md audit
 
 # Run ESLint and Audit, and show their terminal output even on success
 lint --verbose ts audit
@@ -259,6 +534,10 @@ Argument | Description | Example
 `--verbose` | By default, the terminal output of linters is only shown if an error occurs. Use this option to show their terminal output even on success. | `--verbose`
 `--timing` | Show information how long each linting process was running. | `--timing`
 `--git` | **Experimental** Only lint (ESLint, Stylelint and Markdownlint) files which have been detected as changed (compared to the upstream branch) by Git. This can result into massive performance improvements on large code bases, but also lead to undetected issues with cross-file rules. | `--git`
+
+### `lint files`
+
+Will check if the files in the project match the restrictions defined in the linter-bundle configuration file.
 
 ### `lint tsc`
 
