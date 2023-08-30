@@ -6,7 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.10.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v4.0.0...HEAD)
+
+## [4.0.0] - 2023-08-30
+
+### Breaking change
+
+- [general] The global configuration variable `global.linterBundleSettings` has been replaced by a `.linter-bundle.json` / `.linter-bundle.cjs` / `.linter-bundle.js` configuration file in the projects root directory
+
+### Changed
+
+- [eslint] Updated `eslint-plugin-jsdoc` from `46.5.0` to `46.5.1`
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v3.10.0...v4.0.0)
 
 ## [3.10.0] - 2023-08-29
 
