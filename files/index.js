@@ -71,6 +71,11 @@ if (Array.isArray(restrictions)) {
 		process.exitCode = -1;
 	}
 }
+else {
+	console.error('\nNo file restrictions found');
+
+	process.exitCode = -1;
+}
 
 /**
  * Returns a list of all files within a given directory.
