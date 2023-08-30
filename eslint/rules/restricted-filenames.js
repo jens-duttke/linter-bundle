@@ -6,6 +6,8 @@ const path = require('node:path');
 
 const micromatch = require('micromatch');
 
+const config = require('../../helper/config.js');
+
 /**
  * @type {import('eslint').Rule.RuleModule}
  */
@@ -50,7 +52,8 @@ module.exports = {
 	create: (context) => {
 		const filePath = context.getFilename();
 		/** @type {{ basePath: string, allowed?: string[]; disallowed?: string[]; }[]} */
-		const options = context.options;
+		// eslint-disable-next-line n/no-process-env -- Only merge the linter-bundle config, if the linting is not started by the linter-bundle CLI tool (e.g. if ESlint is running separately in VSCode), to get warnings shown there too
+		const options = (!process.env['LINTER_BUNDLE'] && config.files?.restrictions ? [...config.files.restrictions, ...context.options] : context.options);
 
 		for (const { basePath, allowed, disallowed } of options) {
 			const normalizedName = path.relative(path.join(process.cwd(), basePath), filePath);

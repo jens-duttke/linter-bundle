@@ -8,6 +8,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 
+const config = require('../helper/config.js');
 const ensureType = require('../helper/ensure-type');
 
 module.exports = {
@@ -282,16 +283,16 @@ module.exports = {
 						name: 'isNaN',
 						message: 'Use Number.isNaN() instead, and ensure that the input value is of type number. isNaN(undefined) !== Number.isNaN(undefined)'
 					},
-					...ensureType.array(global.linterBundleSettings?.overrides?.general?.['no-restricted-globals']?.additionalRestrictions)
+					...ensureType.array(config.ts?.overrides?.general?.['no-restricted-globals']?.additionalRestrictions)
 				],
 				'no-restricted-imports': 'off', // Covered by @typescript-eslint/no-restricted-imports
 				'no-restricted-properties': [
 					'error',
-					...ensureType.array(global.linterBundleSettings?.overrides?.general?.['no-restricted-properties']?.additionalRestrictions)
+					...ensureType.array(config.ts?.overrides?.general?.['no-restricted-properties']?.additionalRestrictions)
 				],
 				'no-restricted-syntax': [
 					'error',
-					...ensureType.array(global.linterBundleSettings?.overrides?.general?.['no-restricted-syntax']?.additionalRestrictions)
+					...ensureType.array(config.ts?.overrides?.general?.['no-restricted-syntax']?.additionalRestrictions)
 				],
 				'no-return-assign': 'error',
 				'no-script-url': 'error',
@@ -865,7 +866,7 @@ module.exports = {
 					'newlines-between': 'always',
 					'pathGroupsExcludedImportTypes': [],
 					'pathGroups': [
-						...ensureType.array(global.linterBundleSettings?.overrides?.general?.['import/order']?.additionalExternalPatterns).map(
+						...ensureType.array(config.ts?.overrides?.general?.['import/order']?.additionalExternalPatterns).map(
 							/**
 							 * Creates an "external" group using the additional external pattern configuration.
 							 * @param {string} pattern - A given pattern

@@ -48,15 +48,17 @@ If only `disallowed` is set, all unspecified files are allowed.
 
 If both are set, `disallowed` wins over `allowed` and all unspecified files are disallowed.
 
-## Glob patterns for different casings
+## Useful reusable code snippets in Glob patterns
 
 | Name | Example | Glob pattern |
 |-|-|-|
-Snake case | number_of_donuts | `[a-z]*(*([a-z0-9])_+([a-z0-9]))` |
-Screaming snake case | NUMBER_OF_DONUTS | `[A-Z]*(*([A-Z0-9])_+([A-Z0-9]))` |
-Kebab case | number-of-donuts | `[a-z]*(*([a-z0-9])-+([a-z0-9]))` |
-Camel case | numberOfDonuts | `[a-z]*([a-zA-Z0-9])` |
-Pascal case | NumberOfDonuts | `[A-Z]*([a-zA-Z0-9])` |
+| Lower case | DONUTS | `[a-z]*([a-z0-9])` |
+| Upper case | donuts | `[A-Z]*([A-Z0-9])` |
+| Snake case | number_of_donuts | `[a-z]*(*([a-z0-9]-)+([a-z0-9]))` |
+| Screaming snake case | NUMBER_OF_DONUTS | `[A-Z]*(*([A-Z0-9]_)+([A-Z0-9]))` |
+| Kebab case | number-of-donuts | `[a-z]*(*([a-z0-9]-)+([a-z0-9]))` |
+| Camel case | numberOfDonuts | `[a-z]*([a-zA-Z0-9])` |
+| Pascal case | NumberOfDonuts | `[A-Z]*([a-zA-Z0-9])` |
 
 ## Glob pattern templates
 
@@ -65,12 +67,14 @@ Instead of defining the same complex patterns over and over again, e.g. for casi
 Example of `.eslintrc.js`:
 
 ```ts
-const casing = {
-  snake: '[a-z]*(*([a-z0-9])_+([a-z0-9]))',
-  screamingSnake: '[A-Z]*(*([A-Z0-9])_+([A-Z0-9]))',
-  kebab: '[a-z]*(*([a-z0-9])-+([a-z0-9]))',
-  camel: '[a-z]*([a-zA-Z0-9])',
-  pascal: '[A-Z]*([a-zA-Z0-9])'
+const snippets = {
+  lowerCase: '[a-z]*([a-z0-9])',
+  upperCase: '[A-Z]*([A-Z0-9])',
+  snakeCase: '[a-z]*(*([a-z0-9]_)+([a-z0-9]))',
+  screamingSnakeCase: '[A-Z]*(*([A-Z0-9]_)+([A-Z0-9]))',
+  kebabCase: '[a-z]*(*([a-z0-9]-)+([a-z0-9]))',
+  camelCase: '[a-z]*([a-zA-Z0-9])',
+  pascalCase: '[A-Z]*([a-zA-Z0-9])'
 };
 
 module.exports = {
@@ -78,8 +82,8 @@ module.exports = {
     'restricted-filenames': ['error', {
       basePath: './src',
       allowed: [
-        `components/${casing.pascal}/index.tsx`,
-        `utils/{index.ts,lib/${casing.camel}?(.spec).ts}`
+        `components/${snippets.pascalCase}/index.tsx`,
+        `utils/{index.ts,lib/${snippets.camelCase}?(.spec).ts}`
       ]
     }]
   }

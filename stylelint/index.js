@@ -6,6 +6,8 @@
 
 const path = require('node:path');
 
+const config = require('../helper/config.js');
+
 module.exports = {
 	reportNeedlessDisables: true,
 	reportInvalidScopeDisables: true,
@@ -111,10 +113,10 @@ module.exports = {
 		'comment-pattern': /^[^\s].+[^\s]$/u,
 		'comment-whitespace-inside': 'always',
 		'comment-word-disallowed-list': null,
-		'custom-media-pattern': (global.linterBundleSettings?.patternPrefix ? `${global.linterBundleSettings.patternPrefix}-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)+` : null),
+		'custom-media-pattern': (config.sass?.patternPrefix ? `${config.sass.patternPrefix}-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)+` : null),
 		'custom-property-empty-line-before': null, // Empty lines between custom properties are optional
 		'custom-property-no-missing-var-function': true,
-		'custom-property-pattern': (global.linterBundleSettings?.patternPrefix ? `${global.linterBundleSettings.patternPrefix}-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)*` : null),
+		'custom-property-pattern': (config.sass?.patternPrefix ? `${config.sass.patternPrefix}-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)*` : null),
 		'declaration-block-no-duplicate-custom-properties': true,
 		'declaration-block-no-duplicate-properties': [
 			true,
