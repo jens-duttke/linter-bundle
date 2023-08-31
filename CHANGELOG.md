@@ -6,13 +6,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v4.0.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v4.0.1...HEAD)
+
+## [4.0.1] - 2023-08-31
+
+### Changed
+
+- [eslint] Disabled `unicorn/filename-case` in favour of the new linter-bundle `files` task
+- [files] Fixed path to `files` task
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v4.0.0...v4.0.1)
 
 ## [4.0.0] - 2023-08-30
 
 ### Breaking change
 
 - [general] The global configuration variable `global.linterBundleSettings` has been replaced by a `.linter-bundle.json` / `.linter-bundle.cjs` / `.linter-bundle.js` configuration file in the projects root directory
+
+### Added
+
+- [general] New `files` task which ensures that files in the project match the restrictions defined in the linter-bundle configuration file.
 
 ### Changed
 
