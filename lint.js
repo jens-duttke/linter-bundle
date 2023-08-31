@@ -124,7 +124,7 @@ async function runFilesTask (taskName, taskConfig) {
 		git: getConfigValue(taskName, taskConfig, 'git')
 	};
 
-	const includes = await getIncludes(newTaskConfig, '**');
+	const includes = await getIncludes(newTaskConfig);
 
 	if (!includes) {
 		return generateDummyJobOutput(taskName, newTaskConfig, {
@@ -181,7 +181,7 @@ async function runESLintTask (taskName, taskConfig) {
 		git: getConfigValue(taskName, taskConfig, 'git')
 	};
 
-	const includes = await getIncludes(newTaskConfig, './**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}');
+	const includes = await getIncludes(newTaskConfig, '**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}');
 
 	if (!includes) {
 		return generateDummyJobOutput(taskName, newTaskConfig, {
@@ -464,22 +464,34 @@ function getTasksToRun (argv) {
  * Returns a list of changed files, based on the Git-diff result and the glob pattern to be used in the command-line.
  *
  * @param {TaskConfig} taskConfig - Linter configuration
- * @param {string} pattern - Glob pattern
+ * @param {string | undefined} [pattern] - Glob pattern
  * @returns {Promise<string>} Space-separated file names in double-quotes to be used in the command-line, or an empty string if no file matches.
  */
 async function getIncludes (taskConfig, pattern) {
 	const include = taskConfig['include'];
 
-	let includedFiles = (Array.isArray(include) && include.length > 0 ? /** @type {string[]} */(include.filter((item) => typeof item === 'string')) : [pattern]);
+	let includedFiles = (Array.isArray(include) && include.length > 0 ? /** @type {string[]} */(include.filter((item) => typeof item === 'string')) : undefined);
 
 	if (taskConfig['git']?.[0]) {
 		const gitFiles = await getGitFiles();
 
-		includedFiles = micromatch(gitFiles, includedFiles);
+		if (includedFiles) {
+			includedFiles = micromatch(gitFiles, includedFiles);
+		}
+		else if (pattern) {
+			includedFiles = micromatch(gitFiles, [pattern]);
+		}
+		else {
+			includedFiles = gitFiles;
+		}
 
 		if (includedFiles.length === 0) {
 			return '';
 		}
+	}
+
+	if (!includedFiles) {
+		return (pattern ? `"${pattern}"` : '');
 	}
 
 	return `"${includedFiles.join('" "')}"`;
