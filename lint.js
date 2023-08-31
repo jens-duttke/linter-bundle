@@ -135,7 +135,7 @@ async function runFilesTask (taskName, taskConfig) {
 	return runTask({
 		taskName,
 		taskConfig: newTaskConfig,
-		command: `node ./files ${includes}`
+		command: `node "${path.resolve(__dirname, './files/index.js')}" ${includes}`
 	});
 }
 
