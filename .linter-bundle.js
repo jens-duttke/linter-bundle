@@ -10,7 +10,6 @@ const snippets = {
 
 module.exports = {
 	files: {
-		git: true,
 		restrictions: [
 			{
 				basePath: '.',
