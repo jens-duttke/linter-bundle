@@ -62,7 +62,7 @@ module.exports = {
 				 * eslint-plugin-unicorn
 				 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
 				 */
-				'unicorn/filename-case': ['error', {
+				'unicorn/filename-case': ['off', { // Disabled in favour of the linter-bundle `files` task
 					cases: {
 						camelCase: true,
 						pascalCase: true
@@ -87,7 +87,7 @@ module.exports = {
 				 * eslint-plugin-unicorn
 				 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
 				 */
-				'unicorn/filename-case': ['error', {
+				'unicorn/filename-case': ['off', { // Disabled in favour of the linter-bundle `files` task
 					cases: {
 						kebabCase: true
 					}
