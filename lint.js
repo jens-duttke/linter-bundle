@@ -126,7 +126,7 @@ async function runFilesTask (taskName, taskConfig) {
 
 	const includes = await getIncludes(newTaskConfig);
 
-	if (!includes) {
+	if (!includes && taskConfig['git']?.[0]) {
 		return generateDummyJobOutput(taskName, newTaskConfig, {
 			stderr: 'No relevant files changed.'
 		});
