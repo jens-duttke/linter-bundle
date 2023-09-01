@@ -31,7 +31,7 @@
 	},
 	"git.inputValidationSubjectLength": 72,
 	"javascript.preferences.quoteStyle": "single",
-	"javascript.validate.enable": false,
+	"javascript.validate.enable": true,
 	"search.exclude": {
 		".eslintcache": true,
 		"node_modules": true,
@@ -49,7 +49,7 @@
 	"todo-tree.regex.regex": "((//|#|<!--|/\\*|^\\s*\\*)\\s*($TAGS))|(\"\\?(\\\\.|[^\"])+\")",
 	"typescript.format.insertSpaceBeforeFunctionParenthesis": true,
 	"typescript.preferences.quoteStyle": "single",
-	"typescript.tsdk": "node_modules\\typescript\\lib",
+	"typescript.tsdk": "./node_modules/typescript/lib",
 	"workbench.iconTheme": "material-icon-theme",
 	"workbench.tree.indent": 22,
 	"[markdown]": {
