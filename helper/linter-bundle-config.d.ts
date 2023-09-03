@@ -6,6 +6,13 @@ export interface LinterBundleConfig {
 	verbose?: boolean;
 	timing?: boolean;
 	git?: boolean;
+	files?: {
+		restrictions: {
+			basePath: string;
+			allowed?: string[];
+			disallowed?: string[];
+		}[];
+	};
 	tsc?: {
 		tsconfig?: string;
 	};
@@ -33,13 +40,6 @@ export interface LinterBundleConfig {
 	audit?: {
 		minSeverity?: 'info' | 'low' | 'moderate' | 'high' | 'critical';
 		exclude?: string[];
-	};
-	files?: {
-		restrictions: {
-			basePath: string;
-			allowed?: string[];
-			disallowed?: string[];
-		}[];
 	};
 }
 
