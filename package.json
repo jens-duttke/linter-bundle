@@ -1,6 +1,7 @@
 {
 	"name": "linter-bundle",
 	"version": "4.0.3",
+	"type": "module",
 	"description": "Ready-to use bundle of linting tools, containing configurations for ESLint, stylelint and markdownlint.",
 	"keywords": [
 		"eslint",
@@ -36,7 +37,7 @@
 		"preversion": "npm run check-outdated && npm run lint",
 		"postversion": "git push && git push --tags && npm publish",
 		"check-outdated": "npx --yes -- check-outdated --ignore-pre-releases",
-		"_stylelint-find-rules": "stylelint-find-new-rules ./stylelint/index.js",
+		"_stylelint-find-rules": "stylelint-find-new-rules ./stylelint/index.cjs",
 		"_test-stylelint": "node ./test-stylelint.js"
 	},
 	"dependencies": {
