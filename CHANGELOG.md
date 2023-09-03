@@ -6,7 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v5.0.1...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v5.1.0...HEAD)
+
+## [5.1.0] - 2023-09-03
+
+### Added
+
+- [general] Added basic schema for `.linter-bundle.json` configuration file
+
+### Fixed
+
+- [general] Fix support for `.linter-bundle.json`
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v5.0.1...v5.1.0)
 
 ## [5.0.1] - 2023-09-03
 
@@ -37,7 +49,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [4.0.3] - 2023-08-31
 
-### Changed
+### Fixed
 
 - [files] Don't show "No relevant files changed." if the `--git`` option was not used
 
@@ -45,7 +57,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [4.0.2] - 2023-08-31
 
-### Changed
+### Fixed
 
 - [files] Don't append `"**"` as fallback argument to the command line
 
@@ -56,6 +68,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - [eslint] Disabled `unicorn/filename-case` in favour of the new linter-bundle `files` task
+
+### Fixed
+
 - [files] Fixed path to `files` task
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v4.0.0...v4.0.1)
