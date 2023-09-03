@@ -39,6 +39,7 @@ export default {
 					'lint.js',
 					'package-lock.json',
 					'package.json',
+					'stylelint.cjs',
 					'stylelint.config.cjs',
 					'test-stylelint.js',
 					'tsconfig.json',
