@@ -8,7 +8,7 @@ const snippets = {
 	pascalCase: '[A-Z]*([a-zA-Z0-9])'
 };
 
-module.exports = {
+export default {
 	files: {
 		restrictions: [
 			{
@@ -17,16 +17,17 @@ module.exports = {
 					'.git/**',
 					'.github/FUNDING.yml',
 					'.vscode/settings.json',
+					`eslint/rules/package.json`,
 					`eslint/rules/${snippets.kebabCase}.{js,md}`,
-					`eslint/{index.js,overrides-${snippets.kebabCase}.js}`,
+					`eslint/{index.cjs,overrides-${snippets.kebabCase}.cjs}`,
 					'files/index.js',
-					`helper/${snippets.kebabCase}.js`,
+					`helper/${snippets.kebabCase}.{js,cjs,d.ts}`,
 					'markdownlint/base.json',
 					'node_modules/**',
-					'stylelint/index.js',
+					'stylelint/index.cjs',
 					`stylelint/plugins/stylelint-${snippets.kebabCase}.js`,
 					'.editorconfig',
-					'.eslintrc.js',
+					'.eslintrc.cjs',
 					'.gitattributes',
 					'.gitignore',
 					'.linter-bundle.js',
@@ -37,10 +38,9 @@ module.exports = {
 					'lint.js',
 					'package-lock.json',
 					'package.json',
-					'stylelint.config.js',
+					'stylelint.config.cjs',
+					'test-stylelint.js',
 					'tsconfig.json',
-					'types.d.ts',
-					'validate-stylelint-options.mjs',
 					'vscode-eslint-1.png',
 					'vscode-eslint-2.png'
 				]

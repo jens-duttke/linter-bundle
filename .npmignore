@@ -4,14 +4,14 @@ src/
 
 .editorconfig
 .eslintcache
-.eslintrc.js
+.eslintrc.cjs
 .gitattributes
 .gitignore
 .markdownlint.json
 *.log
 npm-debug.log*
-stylelint.config.js
+stylelint.config.cjs
+test-stylelint.js
 tsconfig.json
-validate-stylelint-options.mjs
 vscode-eslint-1.png
 vscode-eslint-2.png
