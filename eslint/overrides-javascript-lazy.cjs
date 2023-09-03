@@ -2,7 +2,7 @@
  * @file Extends `./overrides-javascript` but ignores unsafe types.
  */
 
-const overridesJavaScript = require('./overrides-javascript');
+const overridesJavaScript = require('./overrides-javascript.cjs');
 
 module.exports = {
 	...overridesJavaScript,

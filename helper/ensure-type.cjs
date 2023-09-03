@@ -1,5 +1,7 @@
 /**
  * @file Ensures that a value is of a specific type, if not it converts the value into that type.
+ *
+ * This module has to be CommonJS as it is only used by `eslint` which does not support ESModules.
  */
 
 /**

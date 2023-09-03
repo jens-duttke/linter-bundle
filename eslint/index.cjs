@@ -8,8 +8,8 @@
 const fs = require('node:fs');
 const path = require('node:path');
 
-const config = require('../helper/config.js');
-const ensureType = require('../helper/ensure-type');
+const ensureType = require('../helper/ensure-type.cjs');
+const { linterBundleConfig } = require('../helper/linter-bundle-config.cjs');
 
 module.exports = {
 	ignorePatterns: [
@@ -283,16 +283,16 @@ module.exports = {
 						name: 'isNaN',
 						message: 'Use Number.isNaN() instead, and ensure that the input value is of type number. isNaN(undefined) !== Number.isNaN(undefined)'
 					},
-					...ensureType.array(config.ts?.overrides?.general?.['no-restricted-globals']?.additionalRestrictions)
+					...ensureType.array(linterBundleConfig.ts?.overrides?.general?.['no-restricted-globals']?.additionalRestrictions)
 				],
 				'no-restricted-imports': 'off', // Covered by @typescript-eslint/no-restricted-imports
 				'no-restricted-properties': [
 					'error',
-					...ensureType.array(config.ts?.overrides?.general?.['no-restricted-properties']?.additionalRestrictions)
+					...ensureType.array(linterBundleConfig.ts?.overrides?.general?.['no-restricted-properties']?.additionalRestrictions)
 				],
 				'no-restricted-syntax': [
 					'error',
-					...ensureType.array(config.ts?.overrides?.general?.['no-restricted-syntax']?.additionalRestrictions)
+					...ensureType.array(linterBundleConfig.ts?.overrides?.general?.['no-restricted-syntax']?.additionalRestrictions)
 				],
 				'no-return-assign': 'error',
 				'no-script-url': 'error',
@@ -821,7 +821,7 @@ module.exports = {
 				'import/max-dependencies': ['error', { max: 20, ignoreTypeImports: true }],
 				'import/named': 'error',
 				'import/namespace': ['error', { allowComputed: true }],
-				'import/newline-after-import': ['error', { considerComments: true }],
+				'import/newline-after-import': ['error', { considerComments: false }],
 				'import/no-absolute-path': 'error',
 				'import/no-amd': 'error',
 				'import/no-anonymous-default-export': 'error',
@@ -866,7 +866,7 @@ module.exports = {
 					'newlines-between': 'always',
 					'pathGroupsExcludedImportTypes': [],
 					'pathGroups': [
-						...ensureType.array(config.ts?.overrides?.general?.['import/order']?.additionalExternalPatterns).map(
+						...ensureType.array(linterBundleConfig.ts?.overrides?.general?.['import/order']?.additionalExternalPatterns).map(
 							/**
 							 * Creates an "external" group using the additional external pattern configuration.
 							 * @param {string} pattern - A given pattern

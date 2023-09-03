@@ -43,6 +43,7 @@ module.exports = {
 				'import/no-import-module-exports': 'error',
 				'import/no-internal-modules': 'off',
 				'import/no-nodejs-modules': 'off',
+				'import/dynamic-import-chunkname': 'off',
 
 				/**
 				 * eslint-plugin-n

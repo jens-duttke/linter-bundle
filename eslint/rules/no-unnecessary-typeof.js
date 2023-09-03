@@ -6,7 +6,6 @@
 
 const ts = require('typescript');
 
-// @ts-expect-error -- TypeScript is not able to resolve the folder since @typescript-eslint v6.0.0
 const { ESLintUtils } = require('@typescript-eslint/utils');
 
 /**
@@ -22,8 +21,20 @@ module.exports = {
 			text: 'Unnecessary `typeof`, because the only possible type of {{ variableName }} is `{{ typeName }}`.'
 		}
 	},
+	/**
+	 * Create a new rule.
+	 *
+	 * @param {Readonly<import('@typescript-eslint/utils/ts-eslint').RuleContext<'text', []>>} context - RuleContext of @typescript-eslint instead of ESlint
+	 * @returns {import('@typescript-eslint/utils/ts-eslint').RuleListener} RuleListener of @typescript-eslint, instead of ESlint
+	 */
 	create (context) {
 		return {
+			/**
+			 * Rule function to handle unary expressions.
+			 *
+			 * @param {import('@typescript-eslint/typescript-estree').TSESTree.UnaryExpression} node - UnaryExpression of @typescript-eslint instead of ESlint
+			 * @returns {import('@typescript-eslint/utils/ts-eslint').RuleFunction<import('@typescript-eslint/typescript-estree').TSESTree.UnaryExpression> | void} RuleFunction of @typescript-eslint instead of ESlint
+			 */
 			UnaryExpression (node) {
 				if (node.operator !== 'typeof') {
 					return;

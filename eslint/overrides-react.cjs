@@ -2,8 +2,8 @@
  * @file Settings for React code in TypeScript (TSX) files.
  */
 
-const config = require('../helper/config.js');
-const ensureType = require('../helper/ensure-type');
+const ensureType = require('../helper/ensure-type.cjs');
+const { linterBundleConfig } = require('../helper/linter-bundle-config.cjs');
 
 module.exports = {
 	overrides: [
@@ -91,11 +91,11 @@ module.exports = {
 				'react/forbid-component-props': ['error', { forbid: [
 					{
 						propName: 'className',
-						allowedFor: ensureType.array(config.ts?.overrides?.react?.['react/forbid-component-props']?.allowClassNameFor)
+						allowedFor: ensureType.array(linterBundleConfig.ts?.overrides?.react?.['react/forbid-component-props']?.allowClassNameFor)
 					},
 					{
 						propName: 'style',
-						allowedFor: ensureType.array(config.ts?.overrides?.react?.['react/forbid-component-props']?.allowStyleFor)
+						allowedFor: ensureType.array(linterBundleConfig.ts?.overrides?.react?.['react/forbid-component-props']?.allowStyleFor)
 					}
 				] }],
 				'react/forbid-dom-props': 'error',
