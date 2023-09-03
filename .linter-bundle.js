@@ -9,6 +9,7 @@ const snippets = {
 };
 
 export default {
+	timing: true,
 	files: {
 		restrictions: [
 			{
