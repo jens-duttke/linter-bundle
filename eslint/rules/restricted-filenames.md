@@ -64,7 +64,7 @@ If both are set, `disallowed` wins over `allowed` and all unspecified files are 
 
 Instead of defining the same complex patterns over and over again, e.g. for casing, you can write them into a variable and use them within the pattern, for example by using template strings.
 
-Example of `.eslintrc.js`:
+Example of `.eslintrc.cjs`:
 
 ```js
 const snippets = {
