@@ -2,6 +2,7 @@
  * @file Returns the `.linter-bundle.js` configuration result.
  */
 
+import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 
 export const linterBundleConfig = (
@@ -19,9 +20,15 @@ export const linterBundleConfig = (
  * @returns {Promise<import('./linter-bundle-config.js').LinterBundleConfig | undefined>} - Either the file content for `undefined` if the file does not exist.
  * */
 async function loadConfig (fileName) {
-	const filePath = path.join('file://', process.cwd(), fileName);
-
 	try {
+		if (fileName.endsWith('.json')) {
+			const content = await fs.readFile(path.join(process.cwd(), fileName), 'utf8');
+
+			return JSON.parse(content);
+		}
+
+		const filePath = path.join('file://', process.cwd(), fileName);
+
 		const config = await import(filePath);
 
 		if ('default' in config) {
