@@ -6,7 +6,7 @@
  * @see https://www.npmjs.com/package/stylelint-selector-no-empty
  */
 
-const stylelint = require('stylelint');
+import stylelint from 'stylelint';
 
 const ruleName = 'plugin/stylelint-selector-no-empty';
 
@@ -23,7 +23,7 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
 });
 
 // @ts-expect-error -- Parameter 'enabled' implicitly has an 'any' type.
-module.exports = stylelint.createPlugin(ruleName, (enabled) => {
+export default stylelint.createPlugin(ruleName, (enabled) => {
 	if (!enabled) {
 		return;
 	}

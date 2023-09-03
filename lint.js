@@ -4,32 +4,37 @@
  * @file Entry point of the linter-bundle.
  */
 
-const path = require('node:path');
-const tty = require('node:tty');
+import { createRequire } from 'node:module';
+import * as path from 'node:path';
+import * as tty from 'node:tty';
+import { fileURLToPath } from 'node:url';
 
-const micromatch = require('micromatch');
+import micromatch from 'micromatch';
 
-const config = require('./helper/config.js');
-const { findMissingOverrides } = require('./helper/find-missing-overrides.js');
-const { getGitFiles } = require('./helper/get-git-files.js');
-const { getStylelintPath } = require('./helper/get-stylelint-path.js');
-const { isNpmOrYarn } = require('./helper/is-npm-or-yarn.js');
-const { runProcess } = require('./helper/run-process.js');
-const { validatePackageOverrides } = require('./helper/validate-package-overrides.js');
+import { getGitFiles } from './helper/get-git-files.js';
+import { getOutdatedDependencies } from './helper/get-outdated-dependencies.js';
+import { getOutdatedOverrides } from './helper/get-outdated-overrides.js';
+import { getStylelintPath } from './helper/get-stylelint-path.js';
+import { isNpmOrYarn } from './helper/is-npm-or-yarn.js';
+import { linterBundleConfig } from './helper/linter-bundle-config.js';
+import { runProcess } from './helper/run-process.js';
+
+const require = createRequire(import.meta.url);
+const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /** @typedef {'files' | 'tsc' | 'ts' | 'sass' | 'md' | 'audit'} TaskNames */
 /** @typedef {Partial<Record<string, (string | boolean)[]>>} TaskConfig */
-/** @typedef {import('./helper/run-process').ProcessResult} ProcessResult */
+/** @typedef {import('./helper/run-process.js').ProcessResult} ProcessResult */
 /** @typedef {{ taskName: TaskNames; taskConfig: TaskConfig; }} TaskNameAndConfig */
 /** @typedef {TaskNameAndConfig & { command: string; options?: import('child_process').ExecOptions; }} TaskSetup */
 /** @typedef {{ jobTitle: string; taskSetup: TaskSetup; job: Promise<ProcessResult>; }} Job */
 
 const isTerminal = tty.isatty(1);
 
-const npmOrYarn = isNpmOrYarn();
+const npmOrYarn = await isNpmOrYarn();
 
 void (async () => {
-	if (!validateEnvironment()) {
+	if (!await validateEnvironment()) {
 		return;
 	}
 
@@ -135,7 +140,7 @@ async function runFilesTask (taskName, taskConfig) {
 	return runTask({
 		taskName,
 		taskConfig: newTaskConfig,
-		command: `node "${path.resolve(__dirname, './files/index.js')}" ${includes}`
+		command: `node "${path.resolve(dirname, './files/index.js')}" ${includes}`
 	});
 }
 
@@ -196,9 +201,9 @@ async function runESLintTask (taskName, taskConfig) {
 			`"${path.join(path.dirname(require.resolve('eslint')), '../bin/eslint.js')}"`,
 			includes,
 			newTaskConfig.exclude?.map((exclude) => `--ignore-pattern ${exclude}`).join(' '),
-			`--rulesdir "${path.resolve(__dirname, './eslint/rules/')}"`,
+			`--rulesdir "${path.resolve(dirname, './eslint/rules/')}"`,
 			'--format unix',
-			`--resolve-plugins-relative-to "${__dirname}"`
+			`--resolve-plugins-relative-to "${dirname}"`
 		].filter((argument) => Boolean(argument)).join(' '),
 		taskConfig: newTaskConfig,
 		options: {
@@ -232,7 +237,7 @@ async function runStylelintTask (taskName, taskConfig) {
 		});
 	}
 
-	const stylelintBinPath = getStylelintPath();
+	const stylelintBinPath = await getStylelintPath();
 
 	if (stylelintBinPath === null) {
 		return generateDummyJobOutput(taskName, newTaskConfig, {
@@ -352,10 +357,10 @@ async function runAuditTask (taskName, taskConfig) {
 /**
  * Ensures that the environment in which the linter is running has the correct versions of the required dependencies.
  *
- * @returns {boolean} Returns `true` if the environment is valid, otherwise `false` is returned.
+ * @returns {Promise<boolean>} Returns `true` if the environment is valid, otherwise `false` is returned.
  */
-function validateEnvironment () {
-	const outdatedOverrides = validatePackageOverrides();
+async function validateEnvironment () {
+	const outdatedOverrides = await getOutdatedOverrides();
 
 	if (outdatedOverrides.overrides.length > 0 || outdatedOverrides.resolutions.length > 0) {
 		if (outdatedOverrides.overrides.length > 0) {
@@ -371,7 +376,8 @@ function validateEnvironment () {
 		return false;
 	}
 
-	const missingOverrides = findMissingOverrides().filter(({ name }) => !(npmOrYarn === 'npm' && outdatedOverrides.overrides.some((override) => name === override.name)) && !(npmOrYarn === 'yarn' && outdatedOverrides.resolutions.some((override) => name === override.name)));
+	const outdatedDependencies = await getOutdatedDependencies();
+	const missingOverrides = outdatedDependencies.filter(({ name }) => !(npmOrYarn === 'npm' && outdatedOverrides.overrides.some((override) => name === override.name)) && !(npmOrYarn === 'yarn' && outdatedOverrides.resolutions.some((override) => name === override.name)));
 
 	if (missingOverrides.length > 0) {
 		let installCommand;
@@ -567,8 +573,8 @@ function getConfigValue (taskName, taskConfig, optionName) {
 		return taskConfig[optionName];
 	}
 
-	if (taskName in config) {
-		const specificConfig = config[/** @type {keyof typeof config} */(taskName)];
+	if (taskName in linterBundleConfig) {
+		const specificConfig = linterBundleConfig[/** @type {keyof typeof linterBundleConfig} */(taskName)];
 
 		if (typeof specificConfig === 'object' && optionName in specificConfig) {
 			// eslint-disable-next-line jsdoc/no-undefined-types -- False positive "The type 'specificConfig' is undefined."
@@ -583,8 +589,8 @@ function getConfigValue (taskName, taskConfig, optionName) {
 		}
 	}
 
-	if (optionName in config) {
-		const configValue = config[/** @type {keyof typeof config} */(optionName)];
+	if (optionName in linterBundleConfig) {
+		const configValue = linterBundleConfig[/** @type {keyof typeof linterBundleConfig} */(optionName)];
 
 		if (Array.isArray(configValue)) {
 			return configValue;

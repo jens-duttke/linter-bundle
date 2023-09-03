@@ -8,16 +8,15 @@
 
 /* eslint-disable jsdoc/require-jsdoc -- Unfortunately, this is not given in the original code. */
 
+import stylelint from 'stylelint';
 // @ts-expect-error -- No declaration file.
-const isStandardSyntaxRule = require('stylelint/lib/utils/isStandardSyntaxRule');
+import isStandardSyntaxRule from 'stylelint/lib/utils/isStandardSyntaxRule.js';
 // @ts-expect-error -- No declaration file.
-const isStandardSyntaxSelector = require('stylelint/lib/utils/isStandardSyntaxSelector');
+import isStandardSyntaxSelector from 'stylelint/lib/utils/isStandardSyntaxSelector.js';
 // @ts-expect-error -- No declaration file.
-const matchesStringOrRegExp = require('stylelint/lib/utils/matchesStringOrRegExp');
+import matchesStringOrRegExp from 'stylelint/lib/utils/matchesStringOrRegExp.js';
 // @ts-expect-error -- No declaration file.
-const parseSelector = require('stylelint/lib/utils/parseSelector');
-
-const stylelint = require('stylelint');
+import parseSelector from 'stylelint/lib/utils/parseSelector.js';
 
 const ruleName = 'plugin/selector-tag-no-without-class';
 const messages = stylelint.utils.ruleMessages(ruleName, {
@@ -109,4 +108,4 @@ rule.primaryOptionArray = true;
 rule.ruleName = ruleName;
 rule.messages = messages;
 
-module.exports = stylelint.createPlugin(ruleName, rule);
+export default stylelint.createPlugin(ruleName, rule);

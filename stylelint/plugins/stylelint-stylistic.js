@@ -86,9 +86,11 @@
  * @see https://stylelint.io/user-guide/rules/value-list-max-empty-lines
  */
 
-const stylelint = require('stylelint');
+import stylelint from 'stylelint';
+// @ts-expect-error -- There's no type definition for this file.
+import rules from 'stylelint/lib/rules/index.js';
 
-module.exports = [
+export default await Promise.all([
 	'at-rule-name-case',
 	'at-rule-name-space-after',
 	'at-rule-semicolon-newline-after',
@@ -162,9 +164,8 @@ module.exports = [
 	'value-list-comma-space-after',
 	'value-list-comma-space-before',
 	'value-list-max-empty-lines'
-].map((ruleName) => {
-	// eslint-disable-next-line import/no-dynamic-require -- Dynamic require reduces code complexity
-	const rule = require(`stylelint/lib/rules/${ruleName}`);
+].map(async (ruleName) => {
+	const rule = rules[ruleName];
 
 	const forkedRule = Object.assign(
 		/**
@@ -184,4 +185,4 @@ module.exports = [
 	};
 
 	return stylelint.createPlugin(`plugin/${ruleName}`, forkedRule);
-});
+}));

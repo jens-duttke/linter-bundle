@@ -2,9 +2,9 @@
  * @file Handling of changed files from Git.
  */
 
-const { runProcess } = require('./run-process.js');
+import { runProcess } from './run-process.js';
 
-/** @typedef {import('./run-process').ProcessResult} ProcessResult */
+/** @typedef {import('./run-process.js').ProcessResult} ProcessResult */
 
 /** @type {{ diff: Promise<ProcessResult>; modified: Promise<ProcessResult>; deleted: Promise<ProcessResult>; } | undefined} */
 let gitFilesProcessPromise;
@@ -17,7 +17,7 @@ let gitFiles;
  * @public
  * @returns {Promise<string[]>} The list of changed files.
  */
-async function getGitFiles () {
+export async function getGitFiles () {
 	if (!gitFilesProcessPromise) {
 		gitFilesProcessPromise = {
 			// Returns changed files, also stashed and committed
@@ -46,7 +46,3 @@ async function getGitFiles () {
 
 	return gitFiles;
 }
-
-module.exports = {
-	getGitFiles
-};

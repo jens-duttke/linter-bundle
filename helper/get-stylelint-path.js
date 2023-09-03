@@ -2,31 +2,34 @@
  * @file Returns the path to the Stylelint CLI script.
  */
 
-const fs = require('node:fs');
-const path = require('node:path');
+import * as fs from 'node:fs/promises';
+import { createRequire } from 'node:module';
+import * as path from 'node:path';
+
+const require = createRequire(import.meta.url);
 
 /**
  * Returns if the project is using npm or yarn.
  *
  * @public
- * @returns {string | null} Return the path to the Stylelint CLI script, or `null` if it can't be found.
+ * @returns {Promise<string | null>} Return the path to the Stylelint CLI script, or `null` if it can't be found.
  */
-function getStylelintPath () {
+export async function getStylelintPath () {
 	const stylelintLibPath = path.dirname(require.resolve('stylelint'));
 
-	for (const stylelintBinPath of [
+	for await (const stylelintBinPath of [
 		path.join(stylelintLibPath, '../bin/stylelint.mjs'),
 		path.join(stylelintLibPath, '../bin/stylelint.js')
 	]) {
-		if (fs.existsSync(stylelintBinPath)) {
-			return stylelintBinPath;
+		try {
+			const stat = await fs.stat(stylelintBinPath);
+
+			if (stat.isFile()) {
+				return stylelintBinPath;
+			}
 		}
+		catch { /* Do nothing */ }
 	}
 
 	return null;
 }
-
-module.exports = {
-	getStylelintPath
-};
-

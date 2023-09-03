@@ -2,30 +2,34 @@
  * @file Check if the project is using npm or yarn by checking the existence of a `package-lock.json` or a `yarn.lock`.
  */
 
-const fs = require('node:fs');
-const path = require('node:path');
+import * as fs from 'node:fs/promises';
+import * as path from 'node:path';
 
 /**
  * Returns if the project is using npm or yarn.
  *
  * @public
- * @returns {'none' | 'npm' | 'yarn' | 'both'} Returns which package manager name.
+ * @returns {Promise<'none' | 'npm' | 'yarn' | 'both'>} Returns which package manager name.
  */
-function isNpmOrYarn () {
+export async function isNpmOrYarn () {
 	let npm = false;
 	let yarn = false;
 
 	try {
-		fs.accessSync(path.join(process.cwd(), 'package-lock.json'), fs.constants.R_OK);
+		const stat = await fs.stat(path.join(process.cwd(), 'package-lock.json'));
 
-		npm = true;
+		if (stat.isFile()) {
+			npm = true;
+		}
 	}
 	catch { /* `package-lock.json` cannot be accessed. */ }
 
 	try {
-		fs.accessSync(path.join(process.cwd(), 'yarn.lock'), fs.constants.R_OK);
+		const stat = await fs.stat(path.join(process.cwd(), 'yarn.lock'));
 
-		yarn = true;
+		if (stat.isFile()) {
+			yarn = true;
+		}
 	}
 	catch { /* `yarn.lock` cannot be accessed. */ }
 
@@ -43,7 +47,3 @@ function isNpmOrYarn () {
 
 	return 'none';
 }
-
-module.exports = {
-	isNpmOrYarn
-};

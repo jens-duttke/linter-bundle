@@ -6,12 +6,11 @@
  * @see https://github.com/kristerkari/stylelint-high-performance-animation
  */
 
-const valueParser = require('postcss-value-parser');
+import valueParser from 'postcss-value-parser';
 /** @type {(declaration: import('postcss').Declaration) => number} */
+import stylelint from 'stylelint';
 // @ts-expect-error -- No declaration file.
-const declarationValueIndex = require('stylelint/lib/utils/declarationValueIndex');
-
-const stylelint = require('stylelint');
+import declarationValueIndex from 'stylelint/lib/utils/declarationValueIndex.js';
 
 const ruleName = 'plugin/no-low-performance-animation-properties';
 
@@ -274,4 +273,4 @@ const ruleFunction = (actual, options) => (cssRoot, result) => {
 ruleFunction.ruleName = ruleName;
 ruleFunction.messages = messages;
 
-module.exports = stylelint.createPlugin(ruleName, ruleFunction);
+export default stylelint.createPlugin(ruleName, ruleFunction);
