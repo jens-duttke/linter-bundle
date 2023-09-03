@@ -86,16 +86,16 @@ npm install linter-bundle --save-dev
 ```js
 module.exports = {
   extends: [
-    require.resolve('linter-bundle/eslint'),
-    // require.resolve('linter-bundle/eslint/overrides-gatsby'),
-    // require.resolve('linter-bundle/eslint/overrides-javascript'),
-    require.resolve('linter-bundle/eslint/overrides-javascript-lazy'),
-    // require.resolve('linter-bundle/eslint/overrides-jest'),
-    require.resolve('linter-bundle/eslint/overrides-jsdoc'),
-    // require.resolve('linter-bundle/eslint/overrides-react'),
-    // require.resolve('linter-bundle/eslint/overrides-storybook'),
-    // require.resolve('linter-bundle/eslint/overrides-type-declarations'),
-    // require.resolve('linter-bundle/eslint/overrides-worker')
+    require.resolve('linter-bundle/eslint.cjs'),
+    // require.resolve('linter-bundle/eslint/overrides-gatsby.cjs'),
+    // require.resolve('linter-bundle/eslint/overrides-javascript.cjs'),
+    require.resolve('linter-bundle/eslint/overrides-javascript-lazy.cjs'),
+    // require.resolve('linter-bundle/eslint/overrides-jest.cjs'),
+    require.resolve('linter-bundle/eslint/overrides-jsdoc.cjs'),
+    // require.resolve('linter-bundle/eslint/overrides-react.cjs'),
+    // require.resolve('linter-bundle/eslint/overrides-storybook.cjs'),
+    // require.resolve('linter-bundle/eslint/overrides-type-declarations.cjs'),
+    // require.resolve('linter-bundle/eslint/overrides-worker.cjs')
   ]
 };
 ```
@@ -104,22 +104,22 @@ module.exports = {
 
 Source | Description | Rules setup
 -|-|-
-`linter-bundle/eslint` | General rule setup. This is also the base for the following **overrides**. | [View](./eslint/index.js)
-`linter-bundle/eslint/overrides-gatsby` | Settings for Gatsby-based projects. | [View](./eslint/overrides-gatsby.js)
-`linter-bundle/eslint/overrides-javascript` |  Strict settings for JavaScript files, which enforces correct types everywhere. | [View](./eslint/overrides-javascript.js)
-`linter-bundle/eslint/overrides-javascript-lazy` | Can be used instead of `overrides-javascript`. It's less strict and allows the `any` type. | [View](./eslint/overrides-javascript-lazy.js)
-`linter-bundle/eslint/overrides-jest` | Settings for projects using Jest. | [View](./eslint/overrides-jest.js)
-`linter-bundle/eslint/overrides-jsdoc` | Settings for projects using JSDoc comments. | [View](./eslint/overrides-jsdoc.js)
-`linter-bundle/eslint/overrides-react` | Settings for projects using React comments. | [View](./eslint/overrides-react.js)
-`linter-bundle/eslint/overrides-storybook` | Settings for projects using Storybook comments. | [View](./eslint/overrides-storybook.js)
-`linter-bundle/eslint/overrides-type-declarations` | Settings for type declaration files (.d.ts). | [View](./eslint/overrides-type-declarations.js)
-`linter-bundle/eslint/overrides-worker` | Settings for projects using Web Workers. | [View](./eslint/overrides-worker.js)
+`linter-bundle/eslint.cjs` | General rule setup. This is also the base for the following **overrides**. | [View](./eslint/index.cjs)
+`linter-bundle/eslint/overrides-gatsby.cjs` | Settings for Gatsby-based projects. | [View](./eslint/overrides-gatsby.js)
+`linter-bundle/eslint/overrides-javascript.cjs` |  Strict settings for JavaScript files, which enforces correct types everywhere. | [View](./eslint/overrides-javascript.cjs)
+`linter-bundle/eslint/overrides-javascript-lazy.cjs` | Can be used instead of `overrides-javascript`. It's less strict and allows the `any` type. | [View](./eslint/overrides-javascript-lazy.cjs)
+`linter-bundle/eslint/overrides-jest.cjs` | Settings for projects using Jest. | [View](./eslint/overrides-jest.cjs)
+`linter-bundle/eslint/overrides-jsdoc.cjs` | Settings for projects using JSDoc comments. | [View](./eslint/overrides-jsdoc.cjs)
+`linter-bundle/eslint/overrides-react.cjs` | Settings for projects using React comments. | [View](./eslint/overrides-react.cjs)
+`linter-bundle/eslint/overrides-storybook.cjs` | Settings for projects using Storybook comments. | [View](./eslint/overrides-storybook.cjs)
+`linter-bundle/eslint/overrides-type-declarations.cjs` | Settings for type declaration files (.d.ts). | [View](./eslint/overrides-type-declarations.cjs)
+`linter-bundle/eslint/overrides-worker.cjs` | Settings for projects using Web Workers. | [View](./eslint/overrides-worker.cjs)
 
 #### stylelint.config.js
 
 ```js
 module.exports = {
-  extends: 'linter-bundle/stylelint'
+  extends: 'linter-bundle/stylelint.cjs'
 };
 
 ```
@@ -309,7 +309,7 @@ module.exports = {
      */
     overrides: {
       /**
-       * Rules that are applied to `linter-bundle/eslint`.
+       * Rules that are applied to `linter-bundle/eslint.cjs`.
        */
       general: {
         'no-restricted-globals': {
@@ -363,7 +363,7 @@ module.exports = {
       },
 
       /**
-       * Rules that are applied to `linter-bundle/eslint/overrides-react`.
+       * Rules that are applied to `linter-bundle/eslint/overrides-react.cjs`.
        */
       react: {
         'react/forbid-component-props': {
