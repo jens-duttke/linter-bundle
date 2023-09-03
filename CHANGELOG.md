@@ -6,7 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v4.0.3...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v5.0.0...HEAD)
+
+## [5.0.0] - 2023-09-03
+
+## Changed
+
+- [general] Migrated the code base from CommonJS to ESModules (as far as possible, because ESLint currently does not support ESModules)
+- [general] The linter-bundle configuration can now be a ESModule (`.linter-bundle.mjs` is supported)
+- [files] Report unmatched `allowed` pattern
+- [markdownlint] Updated `markdownlint-cli` from `0.35.0` to `0.36.0`
+- [eslint] Disabled `considerComments` option of [`import/new-after-import`](https://github.com/import-js/eslint-plugin-import/blob/v2.28.1/docs/rules/newline-after-import.md) rule
+  as it conflicts with the [`import/order`](https://github.com/import-js/eslint-plugin-import/blob/v2.28.1/docs/rules/order.md) rule
+- [eslint/overrides-javascript] Disable [`import/dynamic-import-chunkname`](https://github.com/import-js/eslint-plugin-import/blob/v2.28.1/docs/rules/dynamic-import-chunkname.md) for JavaScript files
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v4.0.3...v5.0.0)
 
 ## [4.0.3] - 2023-08-31
 
