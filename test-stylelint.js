@@ -1,5 +1,5 @@
 /**
- * @file Ensures that stylelint options are valid by checking the `invalidOptionWarnings` property of the JSON response.
+ * @file Ensures that the Stylelint configuration is valid.
  */
 
 import * as fs from 'fs';
@@ -8,7 +8,16 @@ import * as path from 'path';
 
 import { runProcess } from './helper/run-process.js';
 
-process.exitCode = await (async () => {
+process.exitCode = (await runTest() ? 0 : 1);
+
+/**
+ * Run some tests against the Stylelint configuration, to ensure that everything works as expected.
+ *
+ * Beside that it ensures that stylelint options are valid by checking the `invalidOptionWarnings` property of the JSON response.
+ *
+ * @returns {Promise<boolean>} `true` if everything works as expected, `false` if an error occurred.
+ */
+async function runTest () {
 	const temporaryPath = path.join(os.tmpdir(), 'linter-bundle-');
 
 	const folder = fs.mkdtempSync(temporaryPath);
@@ -60,7 +69,7 @@ $box-shadow-size: 2px;
 	if (result.stderr) {
 		process.stderr.write(result.stderr);
 
-		return 1;
+		return false;
 	}
 
 	/**
@@ -71,14 +80,14 @@ $box-shadow-size: 2px;
 	if (warnings.length > 0) {
 		process.stderr.write(`Warnings:\n\n- ${warnings.map(({ text, line }) => `[line ${line}] ${text}`).join('\n- ')}\n`);
 
-		return 1;
+		return false;
 	}
 
 	if (invalidOptionWarnings.length > 0) {
 		process.stderr.write(`Invalid stylelint configuration:\n\n- ${invalidOptionWarnings.map(({ text }) => text).join('\n- ')}\n`);
 
-		return 1;
+		return false;
 	}
 
-	return 0;
-})();
+	return true;
+}
