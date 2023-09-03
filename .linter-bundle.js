@@ -32,6 +32,7 @@ export default {
 					'.gitattributes',
 					'.gitignore',
 					'.linter-bundle.js',
+					'.linter-bundle.schema.json',
 					'.markdownlint.json',
 					'.npmignore',
 					'*.md',
