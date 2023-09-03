@@ -33,7 +33,7 @@ const isTerminal = tty.isatty(1);
 
 const npmOrYarn = await isNpmOrYarn();
 
-void (async () => {
+await (async () => {
 	if (!await validateEnvironment()) {
 		return;
 	}
