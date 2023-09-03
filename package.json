@@ -57,7 +57,7 @@
 		"eslint-plugin-react": "7.33.2",
 		"eslint-plugin-react-hooks": "4.6.0",
 		"eslint-plugin-unicorn": "48.0.1",
-		"markdownlint-cli": "0.35.0",
+		"markdownlint-cli": "0.36.0",
 		"micromatch": "4.0.5",
 		"postcss-scss": "4.0.7",
 		"stylelint": "15.10.3",
@@ -73,8 +73,8 @@
 	"devDependencies": {
 		"@types/eslint": "8.44.2",
 		"@types/micromatch": "4.0.2",
-		"@types/node": "20.5.7",
-		"stylelint-find-new-rules": "4.1.1",
+		"@types/node": "20.5.9",
+		"stylelint-find-new-rules": "4.1.2",
 		"typescript": "5.2.2"
 	}
 }
