@@ -1,0 +1,125 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"type": "object",
+	"properties": {
+		"verbose": {
+			"type": "boolean"
+		},
+		"timing": {
+			"type": "boolean"
+		},
+		"git": {
+			"type": "boolean"
+		},
+		"files": {
+			"type": "object",
+			"properties": {
+				"restrictions": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"basePath": {
+								"type": "string"
+							},
+							"allowed": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"disallowed": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						},
+						"required": [
+							"restrictions"
+						],
+						"additionalProperties": false
+					}
+				}
+			},
+			"required": [
+				"restrictions"
+			],
+			"additionalProperties": false
+		},
+		"tsc": {
+			"type": "object",
+			"properties": {
+				"tsconfig": {
+					"type": "string"
+				}
+			},
+			"additionalProperties": false
+		},
+		"ts": {
+			"type": "object",
+			"properties": {
+				"tsconfig": {
+					"type": "string"
+				},
+				"include": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"exclude": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"overrides": {
+					"type": "object",
+					"properties": {
+						"general": {
+							"type": "object"
+						},
+						"react": {
+							"type": "object"
+						}
+					},
+					"additionalProperties": false
+				}
+			},
+			"additionalProperties": false
+		},
+		"sass": {
+			"type": "object",
+			"properties": {
+				"patternPrefix": {
+					"type": "string"
+				}
+			},
+			"additionalProperties": false
+		},
+		"audit": {
+			"type": "object",
+			"properties": {
+				"minSeverity": {
+					"type": "string",
+					"enum": [
+						"info",
+						"low",
+						"moderate",
+						"high",
+						"critical"
+					]
+				},
+				"exclude": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"additionalProperties": false
+		}
+	},
+	"additionalProperties": false
+}

@@ -32,6 +32,14 @@
 	"git.inputValidationSubjectLength": 72,
 	"javascript.preferences.quoteStyle": "single",
 	"javascript.validate.enable": true,
+	"json.schemas": [
+		{
+			"fileMatch": [
+				"/.linter-bundle.json"
+			],
+			"url": "./.linter-bundle.schema.json"
+		}
+	],
 	"search.exclude": {
 		".eslintcache": true,
 		"node_modules": true,
