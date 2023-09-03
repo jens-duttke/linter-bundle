@@ -34,6 +34,7 @@ export default {
 					'.markdownlint.json',
 					'.npmignore',
 					'*.md',
+					'eslint.cjs',
 					'LICENSE',
 					'lint.js',
 					'package-lock.json',
