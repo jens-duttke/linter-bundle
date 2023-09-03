@@ -3,5 +3,5 @@
  */
 
 module.exports = {
-	extends: './stylelint/index.cjs'
+	extends: './stylelint.cjs'
 };

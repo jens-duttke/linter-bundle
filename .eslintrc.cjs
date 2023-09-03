@@ -5,7 +5,7 @@
 module.exports = {
 	root: true,
 	extends: [
-		require.resolve('./eslint/index.cjs'),
+		require.resolve('./eslint.cjs'),
 		require.resolve('./eslint/overrides-javascript-lazy.cjs'),
 		require.resolve('./eslint/overrides-jsdoc.cjs')
 	],
