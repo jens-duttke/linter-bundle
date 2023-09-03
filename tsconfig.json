@@ -2,7 +2,7 @@
 	"compilerOptions": {
 		// General settings for code interpretation
 		"target": "esnext",
-		"module": "commonjs",
+		"module": "node16",
 		"resolveJsonModule": true,
 		"checkJs": true,
 		"noEmit": true,
@@ -40,7 +40,7 @@
     "include": [
 		"./types.d.ts",
 		"**/*.js",
-		"**/*.mjs",
-		"./.eslintrc.js"
+		"**/*.cjs",
+		".eslintrc.cjs"
 	]
 }
