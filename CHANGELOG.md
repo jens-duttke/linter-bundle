@@ -6,14 +6,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v5.0.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v5.0.1...HEAD)
+
+## [5.0.1] - 2023-09-03
+
+### Changed
+
+- [general] Updated [README.md](./README.md) to reflect breaking changes in v5.0.0.
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v5.0.0...v5.0.1)
 
 ## [5.0.0] - 2023-09-03
 
-## Changed
+### Breaking change
 
 - [general] Migrated the code base from CommonJS to ESModules (as far as possible, because ESLint currently does not support ESModules)
 - [general] The linter-bundle configuration can now be a ESModule (`.linter-bundle.mjs` is supported)
+- [general] `"extends"` in the .eslintrc.js needs to be suffixed with the ".cjs" file extension (e.g. `require.resolve('linter-bundle/eslint.cjs')`)
+- [general] `"extends"` in the stylelint.config.js needs to be suffixed with the ".cjs" file extension (e.g. `require.resolve('linter-bundle/stylelint.cjs')`)
+
+### Changed
+
 - [files] Report unmatched `allowed` pattern
 - [markdownlint] Updated `markdownlint-cli` from `0.35.0` to `0.36.0`
 - [eslint] Disabled `considerComments` option of [`import/new-after-import`](https://github.com/import-js/eslint-plugin-import/blob/v2.28.1/docs/rules/newline-after-import.md) rule
