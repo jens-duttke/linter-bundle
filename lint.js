@@ -153,8 +153,7 @@ async function runFilesTask (taskName, taskConfig) {
  */
 async function runTypeScriptCompilerTask (taskName, taskConfig) {
 	const newTaskConfig = {
-		tsconfig: getConfigValue(taskName, taskConfig, 'tsconfig'),
-		verbose: getConfigValue(taskName, taskConfig, 'verbose')
+		tsconfig: getConfigValue(taskName, taskConfig, 'tsconfig')
 	};
 
 	return runTask({
@@ -165,8 +164,7 @@ async function runTypeScriptCompilerTask (taskName, taskConfig) {
 			`"${require.resolve('typescript/bin/tsc')}"`,
 			'--skipLibCheck',
 			'--noEmit',
-			(newTaskConfig.tsconfig?.[0] ? `--project ${newTaskConfig.tsconfig[0]}` : undefined),
-			(newTaskConfig.verbose?.[0] ? '--verbose' : undefined)
+			(newTaskConfig.tsconfig?.[0] ? `--project ${newTaskConfig.tsconfig[0]}` : undefined)
 		].filter((argument) => Boolean(argument)).join(' ')
 	});
 }
@@ -208,7 +206,7 @@ async function runESLintTask (taskName, taskConfig) {
 		taskConfig: newTaskConfig,
 		options: {
 			env: {
-				TIMING: '10',
+				TIMING: '10', // Show timing information about the 10 slowest rules
 				TSCONFIG: (typeof newTaskConfig.tsconfig?.[0] === 'string' ? newTaskConfig.tsconfig[0] : undefined)
 			}
 		}
@@ -269,8 +267,7 @@ async function runStylelintTask (taskName, taskConfig) {
 async function runMarkdownTask (taskName, taskConfig) {
 	const newTaskConfig = {
 		include: getConfigValue(taskName, taskConfig, 'include'),
-		git: getConfigValue(taskName, taskConfig, 'git'),
-		verbose: getConfigValue(taskName, taskConfig, 'verbose')
+		git: getConfigValue(taskName, taskConfig, 'git')
 	};
 
 	const includes = await getIncludes(newTaskConfig, '**/*.md');
@@ -288,7 +285,6 @@ async function runMarkdownTask (taskName, taskConfig) {
 			'node',
 			`"${require.resolve('markdownlint-cli/markdownlint.js')}"`,
 			includes,
-			(newTaskConfig.verbose?.[0] ? '--verbose' : undefined),
 			'--ignore node_modules'
 		].filter((argument) => Boolean(argument)).join(' ')
 	});
