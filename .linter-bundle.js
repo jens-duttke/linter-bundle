@@ -9,6 +9,7 @@ const snippets = {
 };
 
 export default {
+	verbose: true,
 	timing: true,
 	files: {
 		restrictions: [
