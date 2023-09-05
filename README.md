@@ -561,7 +561,7 @@ Will execute:
 eslint "./**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}" --format unix
 ```
 
-Additionally, the environment variable `TIMING` is set to `10`.
+Additionally, the environment variable `TIMING` is set to `10`, to show timing information about the 10 slowest rules.
 
 #### Optional command line arguments for `lint ts`
 
