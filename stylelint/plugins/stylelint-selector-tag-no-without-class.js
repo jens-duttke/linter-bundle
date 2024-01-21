@@ -10,13 +10,13 @@
 
 import stylelint from 'stylelint';
 // @ts-expect-error -- No declaration file.
-import isStandardSyntaxRule from 'stylelint/lib/utils/isStandardSyntaxRule.js';
+import isStandardSyntaxRule from 'stylelint/lib/utils/isStandardSyntaxRule.mjs';
 // @ts-expect-error -- No declaration file.
-import isStandardSyntaxSelector from 'stylelint/lib/utils/isStandardSyntaxSelector.js';
+import isStandardSyntaxSelector from 'stylelint/lib/utils/isStandardSyntaxSelector.mjs';
 // @ts-expect-error -- No declaration file.
-import matchesStringOrRegExp from 'stylelint/lib/utils/matchesStringOrRegExp.js';
+import matchesStringOrRegExp from 'stylelint/lib/utils/matchesStringOrRegExp.mjs';
 // @ts-expect-error -- No declaration file.
-import parseSelector from 'stylelint/lib/utils/parseSelector.js';
+import parseSelector from 'stylelint/lib/utils/parseSelector.mjs';
 
 const ruleName = 'plugin/selector-tag-no-without-class';
 const messages = stylelint.utils.ruleMessages(ruleName, {

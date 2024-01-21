@@ -53,9 +53,9 @@ export default stylelint.createPlugin(ruleName, (enabled) => {
 /**
  * Splits the selectors based on a specified delimiter and filters out empty selectors.
  *
- * @param {string[]} splittedSelectors - The selectors to be split.
- * @param {string} splitBy - The delimiter to split the selectors.
- * @returns {string[]} The split and filtered selectors.
+ * @param {string[]} splittedSelectors - The selectors to be split
+ * @param {string} splitBy - The delimiter to split the selectors
+ * @returns {string[]} The split and filtered selectors
  */
 function getSplittedSelectors (splittedSelectors, splitBy) {
 	const res = [];
@@ -77,9 +77,9 @@ function getSplittedSelectors (splittedSelectors, splitBy) {
 /**
  * Checks for empty selectors within the space-split selectors.
  *
- * @param {string[]} spaceSplittedSelectors - The space-split selectors.
- * @param {stylelint.PostcssResult} result - The result object.
- * @param {import('postcss').Rule} rule - The current rule.
+ * @param {string[]} spaceSplittedSelectors - The space-split selectors
+ * @param {stylelint.PostcssResult} result - The result object
+ * @param {import('postcss').Rule} rule - The current rule
  */
 function checkEmptySelector (spaceSplittedSelectors, result, rule) {
 	for (let sp of spaceSplittedSelectors) {
@@ -101,8 +101,8 @@ function checkEmptySelector (spaceSplittedSelectors, result, rule) {
 /**
  * Reports an error for an empty selector.
  *
- * @param {import('postcss').Rule} rule - The current rule.
- * @param {stylelint.PostcssResult} result - The result object.
+ * @param {import('postcss').Rule} rule - The current rule
+ * @param {stylelint.PostcssResult} result - The result object
  */
 function reportError (rule, result) {
 	stylelint.utils.report({

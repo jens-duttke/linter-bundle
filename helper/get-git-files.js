@@ -15,7 +15,7 @@ let gitFiles;
  * Returns a list of changed files based on Git.
  *
  * @public
- * @returns {Promise<string[]>} The list of changed files.
+ * @returns {Promise<string[]>} The list of changed files
  */
 export async function getGitFiles () {
 	if (!gitFilesProcessPromise) {

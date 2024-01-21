@@ -119,9 +119,9 @@ await (async () => {
 /**
  * Runs the `files` task.
  *
- * @param {TaskNameAndConfig['taskName']} taskName - Name of the task
+ * @param {TaskNameAndConfig['taskName']} taskName - Name of the task as used in the command line
  * @param {TaskNameAndConfig['taskConfig']} taskConfig - Configuration of the task
- * @returns {Promise<Job>} Job
+ * @returns {Promise<Job>} Shell job
  */
 async function runFilesTask (taskName, taskConfig) {
 	const newTaskConfig = {
@@ -147,9 +147,9 @@ async function runFilesTask (taskName, taskConfig) {
 /**
  * Runs the `tsc` task.
  *
- * @param {TaskNames} taskName - Name of the task
+ * @param {TaskNames} taskName - Name of the task as used in the command line
  * @param {TaskNameAndConfig['taskConfig']} taskConfig - Configuration of the task
- * @returns {Promise<Job>} Job
+ * @returns {Promise<Job>} Shell job
  */
 async function runTypeScriptCompilerTask (taskName, taskConfig) {
 	const newTaskConfig = {
@@ -172,9 +172,9 @@ async function runTypeScriptCompilerTask (taskName, taskConfig) {
 /**
  * Runs the `ts` task.
  *
- * @param {TaskNameAndConfig['taskName']} taskName - Name of the task
+ * @param {TaskNameAndConfig['taskName']} taskName - Name of the task as used in the command line
  * @param {TaskNameAndConfig['taskConfig']} taskConfig - Configuration of the task
- * @returns {Promise<Job>} Job
+ * @returns {Promise<Job>} Shell job
  */
 async function runESLintTask (taskName, taskConfig) {
 	const newTaskConfig = {
@@ -216,9 +216,9 @@ async function runESLintTask (taskName, taskConfig) {
 /**
  * Runs the `sass` task.
  *
- * @param {TaskNameAndConfig['taskName']} taskName - Name of the task
+ * @param {TaskNameAndConfig['taskName']} taskName - Name of the task as used in the command line
  * @param {TaskNameAndConfig['taskConfig']} taskConfig - Configuration of the task
- * @returns {Promise<Job>} Job
+ * @returns {Promise<Job>} Shell job
  */
 async function runStylelintTask (taskName, taskConfig) {
 	const newTaskConfig = {
@@ -260,9 +260,9 @@ async function runStylelintTask (taskName, taskConfig) {
 /**
  * Runs the `md` task.
  *
- * @param {TaskNameAndConfig['taskName']} taskName - Name of the task
+ * @param {TaskNameAndConfig['taskName']} taskName - Name of the task as used in the command line
  * @param {TaskNameAndConfig['taskConfig']} taskConfig - Configuration of the task
- * @returns {Promise<Job>} Job
+ * @returns {Promise<Job>} Shell job
  */
 async function runMarkdownTask (taskName, taskConfig) {
 	const newTaskConfig = {
@@ -293,9 +293,9 @@ async function runMarkdownTask (taskName, taskConfig) {
 /**
  * Runs the `audit` task.
  *
- * @param {TaskNameAndConfig['taskName']} taskName - Name of the task
+ * @param {TaskNameAndConfig['taskName']} taskName - Name of the task as used in the command line
  * @param {TaskNameAndConfig['taskConfig']} taskConfig - Configuration of the task
- * @returns {Promise<Job>} Job
+ * @returns {Promise<Job>} Shell job
  */
 async function runAuditTask (taskName, taskConfig) {
 	const newTaskConfig = {
@@ -312,7 +312,7 @@ async function runAuditTask (taskName, taskConfig) {
 					'npx',
 					'--yes',
 					'--',
-					'better-npm-audit@1.9.1',
+					'better-npm-audit@3.7.3',
 					'audit',
 					`-l ${newTaskConfig.minSeverity?.[0] ?? 'moderate'}`,
 					'-p',
@@ -328,7 +328,7 @@ async function runAuditTask (taskName, taskConfig) {
 					'npx',
 					'--yes',
 					'--',
-					'improved-yarn-audit@2.3.3',
+					'improved-yarn-audit@3.0.0',
 					`--min-severity ${newTaskConfig.minSeverity?.[0] ?? 'moderate'}`,
 					'--fail-on-missing-exclusions',
 					'--ignore-dev-deps',
@@ -353,7 +353,7 @@ async function runAuditTask (taskName, taskConfig) {
 /**
  * Ensures that the environment in which the linter is running has the correct versions of the required dependencies.
  *
- * @returns {Promise<boolean>} Returns `true` if the environment is valid, otherwise `false` is returned.
+ * @returns {Promise<boolean>} Returns `true` if the environment is valid, otherwise `false` is returned
  */
 async function validateEnvironment () {
 	const outdatedOverrides = await getOutdatedOverrides();
@@ -406,8 +406,8 @@ async function validateEnvironment () {
  * Extracts the tasks which should be run from the command-line arguments passed in.
  *
  * @param {string[]} argv - Command-line arguments (usual `process.argv.splice(2)`)
- * @returns {TaskNameAndConfig[]} The task execution setup.
- * @throws {Error} If no task has be specified in the arguments.
+ * @returns {TaskNameAndConfig[]} The task execution setup
+ * @throws {Error} If no task has be specified in the arguments
  */
 function getTasksToRun (argv) {
 	const TASKS = new Set(['tsc', 'ts', 'sass', 'md', 'audit', 'files']);
@@ -467,7 +467,7 @@ function getTasksToRun (argv) {
  *
  * @param {TaskConfig} taskConfig - Linter configuration
  * @param {string | undefined} [pattern] - Glob pattern
- * @returns {Promise<string>} Space-separated file names in double-quotes to be used in the command-line, or an empty string if no file matches.
+ * @returns {Promise<string>} Space-separated file names in double-quotes to be used in the command-line, or an empty string if no file matches
  */
 async function getIncludes (taskConfig, pattern) {
 	const include = taskConfig['include'];
@@ -502,8 +502,8 @@ async function getIncludes (taskConfig, pattern) {
 /**
  * Executes a task asynchronously.
  *
- * @param {TaskSetup} setup - The task execution setup.
- * @returns {Job} Job
+ * @param {TaskSetup} setup - The task execution setup
+ * @returns {Job} Shell job
  */
 function runTask (setup) {
 	return {
@@ -516,10 +516,10 @@ function runTask (setup) {
 /**
  * Returns a job configuration which does not run any task, but just returns the given `output`.
  *
- * @param {TaskNames} taskName - The name of the task.
- * @param {TaskConfig} taskConfig - The configuration of the task.
- * @param {{ code?: number; stdout?: string; stderr?: string; }} output - The output which should be returned as result of the job.
- * @returns {Job} Job
+ * @param {TaskNames} taskName - Name of the task as used in the command line
+ * @param {TaskConfig} taskConfig - The configuration of the task
+ * @param {{ code?: number; stdout?: string; stderr?: string; }} output - The output which should be returned as result of the job
+ * @returns {Job} Shell job
  */
 function generateDummyJobOutput (taskName, taskConfig, output) {
 	return {
@@ -546,8 +546,8 @@ function generateDummyJobOutput (taskName, taskConfig, output) {
 /**
  * Returns the title (command line string) of a specific job.
  *
- * @param {TaskSetup} setup - The task execution setup.
- * @returns {string} The title of the job with a leading line-break and two trailing line-breaks.
+ * @param {TaskSetup} setup - The task execution setup
+ * @returns {string} The title of the job with a leading line-break and two trailing line-breaks
  */
 function getJobTitle (setup) {
 	/** @type {string} */
@@ -559,7 +559,7 @@ function getJobTitle (setup) {
 /**
  * Returns a configuration option value based on the command line arguments and the `.linter-bundle.js` configuration.
  *
- * @param {TaskNames} taskName - Name of the task
+ * @param {TaskNames} taskName - Name of the task as used in the command line
  * @param {TaskConfig} taskConfig - Configuration of a task
  * @param {string} optionName - Configuration option name
  * @returns {(string | boolean)[] | undefined} Configuration option value

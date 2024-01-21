@@ -44,12 +44,14 @@ Beside that, the following additional rules are part of this bundle:
 ### stylelint
 
 - [stylelint-declaration-block-no-ignored-properties](https://www.npmjs.com/package/stylelint-declaration-block-no-ignored-properties)
-- [stylelint-high-performance-animation](https://www.npmjs.com/package/stylelint-high-performance-animation) (Forked version)
+- [stylelint-high-performance-animation](https://www.npmjs.com/package/stylelint-high-performance-animation)
 - [stylelint-order](https://www.npmjs.com/package/stylelint-order)
 - [stylelint-scss](https://www.npmjs.com/package/stylelint-scss)
 - [stylelint-selector-no-empty](https://www.npmjs.com/package/stylelint-selector-no-empty) (Forked version)
 - [stylelint-selector-tag-no-without-class](https://www.npmjs.com/package/stylelint-selector-tag-no-without-class) (Forked version)
 - [stylelint-use-logical-spec](https://www.npmjs.com/package/stylelint-use-logical-spec)
+
+Beside that [73 stylistic rules](https://github.com/jens-duttke/linter-bundle/tree/main/stylelint/plugins/stylelint-15.11.0-stylistic/rules) has been forked from `stylelint@15.11.0`, which have been removed in `stylelint@16.0.0`, are part of this bundle.
 
 ### Previously used, but now unmaintained plugins
 
@@ -62,7 +64,7 @@ If these plugins are maintained again, the plugins will also be used again.
 
 ## Install
 
-Ensure you are using atleast Node.js version 16.
+Ensure you are using atleast Node.js version 18.2.0.
 
 ```sh
 npm install linter-bundle --save-dev

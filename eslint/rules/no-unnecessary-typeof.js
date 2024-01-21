@@ -2,6 +2,8 @@
  * @file ESLint rule which ensures that a `typeof` operant has more than one type in TypeScript, to prevent unnecessary checks of types at runtime.
  */
 
+/* eslint-disable unicorn/prefer-module -- For ESLint, we still need to rely on CommonJS modules */
+
 /** @typedef {ts.Type & { intrinsicName?: string; types?: ts.Type[]; objectFlags?: ts.ObjectFlags; }} Type */
 
 const ts = require('typescript');
@@ -69,9 +71,9 @@ module.exports = {
 /**
  * Check if the number of types equals one, and returns the type.
  *
- * @param {ts.TypeChecker} checker - TypeScript type checker.
- * @param {Type} type - TypeScript type node.
- * @returns {string | null} Type as string match the `typeof` string, or `null` if it's not a primitive type.
+ * @param {ts.TypeChecker} checker - TypeScript type checker
+ * @param {Type} type - TypeScript type node
+ * @returns {string | null} Type as string match the `typeof` string, or `null` if it's not a primitive type
  */
 function getSingleType (checker, type) {
 	if (isAnyOrUnknown(type)) {
@@ -100,9 +102,9 @@ function getSingleType (checker, type) {
 /**
  * Converts a TypeScript type into a `typeof` compatible string, or `null` if it's not a primitive type.
  *
- * @param {ts.TypeChecker} checker - TypeScript type checker.
- * @param {Type} type - TypeScript type node.
- * @returns {string | null} Type as string match the `typeof` string, or `null` if it's not a primitive type.
+ * @param {ts.TypeChecker} checker - TypeScript type checker
+ * @param {Type} type - TypeScript type node
+ * @returns {string | null} Type as string match the `typeof` string, or `null` if it's not a primitive type
  */
 function getTypeString (checker, type) {
 	if (isAnyOrUnknown(type)) {
@@ -130,8 +132,8 @@ function getTypeString (checker, type) {
 /**
  * Check if the type is either `any` or `unknown`, which represents multiple types.
  *
- * @param {ts.Type} type - TypeScript type node.
- * @returns {boolean} Returns `true` if the type is either `any` or `unknown`, or an object which is based on `unknown`.
+ * @param {ts.Type} type - TypeScript type node
+ * @returns {boolean} Returns `true` if the type is either `any` or `unknown`, or an object which is based on `unknown`
  */
 function isAnyOrUnknown (type) {
 	// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- `symbol` on Object is `undefined` for `Omit<unknown, 'undefined'>`
@@ -141,8 +143,8 @@ function isAnyOrUnknown (type) {
 /**
  * Checks if the given `type` is a `string`.
  *
- * @param {Type} type - TypeScript type node.
- * @returns {boolean} Returns `true` if the type is a `string`.
+ * @param {Type} type - TypeScript type node
+ * @returns {boolean} Returns `true` if the type is a `string`
  */
 function isString (type) {
 	return [ts.TypeFlags.String, ts.TypeFlags.StringLiteral, ts.TypeFlags.StringMapping].includes(type.flags);
@@ -151,8 +153,8 @@ function isString (type) {
 /**
  * Checks if the given `type` is a `number`.
  *
- * @param {Type} type - TypeScript type node.
- * @returns {boolean} Returns `true` if the type is a `number`.
+ * @param {Type} type - TypeScript type node
+ * @returns {boolean} Returns `true` if the type is a `number`
  */
 function isNumber (type) {
 	return [ts.TypeFlags.Number, ts.TypeFlags.NumberLiteral].includes(type.flags);
@@ -161,8 +163,8 @@ function isNumber (type) {
 /**
  * Checks if the given `type` is a `bigint`.
  *
- * @param {Type} type - TypeScript type node.
- * @returns {boolean} Returns `true` if the type is a `bigint`.
+ * @param {Type} type - TypeScript type node
+ * @returns {boolean} Returns `true` if the type is a `bigint`
  */
 function isBigInt (type) {
 	return [ts.TypeFlags.BigInt, ts.TypeFlags.BigIntLiteral].includes(type.flags);
@@ -171,8 +173,8 @@ function isBigInt (type) {
 /**
  * Checks if the given `type` is a `boolean`.
  *
- * @param {Type} type - TypeScript type node.
- * @returns {boolean} Returns `true` if the type is a `boolean`.
+ * @param {Type} type - TypeScript type node
+ * @returns {boolean} Returns `true` if the type is a `boolean`
  */
 function isBoolean (type) {
 	return [ts.TypeFlags.Boolean, ts.TypeFlags.BooleanLiteral].includes(type.flags);
@@ -181,8 +183,8 @@ function isBoolean (type) {
 /**
  * Checks if the given `type` is a `symbol`.
  *
- * @param {Type} type - TypeScript type node.
- * @returns {boolean} Returns `true` if the type is a `symbol`.
+ * @param {Type} type - TypeScript type node
+ * @returns {boolean} Returns `true` if the type is a `symbol`
  */
 function isSymbol (type) {
 	return [ts.TypeFlags.ESSymbol, ts.TypeFlags.UniqueESSymbol].includes(type.flags);
@@ -191,8 +193,8 @@ function isSymbol (type) {
 /**
  * Checks if the given `type` is a `function`.
  *
- * @param {Type} type - TypeScript type node.
- * @returns {boolean} Returns `true` if the type is a `function`.
+ * @param {Type} type - TypeScript type node
+ * @returns {boolean} Returns `true` if the type is a `function`
  */
 function isFunction (type) {
 	return (type.flags === ts.TypeFlags.Object && type.objectFlags === ts.ObjectFlags.Anonymous);
@@ -201,8 +203,8 @@ function isFunction (type) {
 /**
  * Checks if the given `type` is a `undefined`.
  *
- * @param {Type} type - TypeScript type node.
- * @returns {boolean} Returns `true` if the type is `undefined`.
+ * @param {Type} type - TypeScript type node
+ * @returns {boolean} Returns `true` if the type is `undefined`
  */
 function isUndefined (type) {
 	return [ts.TypeFlags.Undefined].includes(type.flags);
@@ -213,8 +215,8 @@ function isUndefined (type) {
  *
  * We don't check `ts.TypeFlags.Object`, because for TypeScript Object seems to be the fallback for everything - even unknown types.
  *
- * @param {Type} type - TypeScript type node.
- * @returns {boolean} Returns `true` if the type is an `object`.
+ * @param {Type} type - TypeScript type node
+ * @returns {boolean} Returns `true` if the type is an `object`
  */
 function isObject (type) {
 	return [ts.TypeFlags.Null].includes(type.flags);

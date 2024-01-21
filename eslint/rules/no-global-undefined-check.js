@@ -4,6 +4,8 @@
  * @see https://www.joshwcomeau.com/react/the-perils-of-rehydration/
  */
 
+/* eslint-disable unicorn/prefer-module -- For ESLint, we still need to rely on CommonJS modules */
+
 const DISALLOWED_OBJECTS = new Set(['globalThis', 'window', 'self']);
 
 /**
@@ -58,8 +60,8 @@ module.exports = {
 /**
  * Get the name (identifier) of a global scope of an BinaryExpression operator.
  *
- * @param {import('estree').Expression} node - The node to check.
- * @returns {string | null} Returns the name of the `node`, or null if not compared with a global scope identifier.
+ * @param {import('estree').Expression} node - The node to check
+ * @returns {string | null} Returns the name of the `node`, or null if not compared with a global scope identifier
  */
 function getExpressionValue (node) {
 	if (node.type === 'UnaryExpression' && node.operator === 'typeof' && node.argument.type === 'Identifier' && DISALLOWED_OBJECTS.has(node.argument.name)) {
@@ -73,7 +75,7 @@ function getExpressionValue (node) {
  * Check if a given `node` is a literal expression consisting of the text "undefined".
  *
  * @param {import('estree').Expression} node - The node to check
- * @returns {boolean} `true` if the node is a literal expression consisting of the text "undefined", otherwise `false`.
+ * @returns {boolean} `true` if the node is a literal expression consisting of the text "undefined", otherwise `false`
  */
 function checkLiteral (node) {
 	return (

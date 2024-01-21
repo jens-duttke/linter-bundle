@@ -12,7 +12,7 @@ const require = createRequire(import.meta.url);
  * Returns if the project is using npm or yarn.
  *
  * @public
- * @returns {Promise<string | null>} Return the path to the Stylelint CLI script, or `null` if it can't be found.
+ * @returns {Promise<string | null>} Return the path to the Stylelint CLI script, or `null` if it can't be found
  */
 export async function getStylelintPath () {
 	const stylelintLibPath = path.dirname(require.resolve('stylelint'));

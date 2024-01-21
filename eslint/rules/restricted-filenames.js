@@ -2,6 +2,8 @@
  * @file ESLint rule which ensures that only files which match given glob patterns are part of your project.
  */
 
+/* eslint-disable unicorn/prefer-module -- For ESLint, we still need to rely on CommonJS modules */
+
 const path = require('node:path');
 
 const micromatch = require('micromatch');
@@ -87,7 +89,7 @@ module.exports = {
 		/**
 		 * Add rule listener which reports the error.
 		 *
-		 * @returns {import('eslint').Rule.RuleListener} Returns a `Program` rule lister which reports the error.
+		 * @returns {import('eslint').Rule.RuleListener} Returns a `Program` rule lister which reports the error
 		 */
 		function report () {
 			return {

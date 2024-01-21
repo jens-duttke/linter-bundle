@@ -11,8 +11,8 @@ import * as os from 'node:os';
  * Executes a process asynchronously.
  *
  * @public
- * @param {string} command - The process to execute.
- * @param {childProcess.ExecOptions | undefined} [options] - The options of the `childProcess.exec()` method.
+ * @param {string} command - The process to execute
+ * @param {childProcess.ExecOptions | undefined} [options] - The options of the `childProcess.exec()` method
  * @returns {Promise<ProcessResult>} An object containing the result of the process execution
  */
 export async function runProcess (command, options) {
@@ -33,7 +33,7 @@ export async function runProcess (command, options) {
 				...options?.env,
 				LINTER_BUNDLE: '1'
 			},
-			shell: os.userInfo().shell
+			shell: os.userInfo().shell ?? undefined
 		});
 
 		lintingProcess.stdout?.on('data', (/** @type {string} */data) => {

@@ -15,7 +15,7 @@ process.exitCode = (await runTest() ? 0 : 1);
  *
  * Beside that it ensures that stylelint options are valid by checking the `invalidOptionWarnings` property of the JSON response.
  *
- * @returns {Promise<boolean>} `true` if everything works as expected, `false` if an error occurred.
+ * @returns {Promise<boolean>} `true` if everything works as expected, `false` if an error occurred
  */
 async function runTest () {
 	const temporaryPath = path.join(os.tmpdir(), 'linter-bundle-');
@@ -66,25 +66,27 @@ $box-shadow-size: 2px;
 
 	fs.unlinkSync(tempFilePath);
 
-	if (result.stderr) {
+	try {
+		/**
+		 * @type {import('stylelint').LintResult}
+		 */
+		const { invalidOptionWarnings, warnings } = JSON.parse(result.stderr)[0];
+
+		if (warnings.length > 0) {
+			process.stderr.write(`Warnings:\n\n- ${warnings.map(({ text, line }) => `[line ${line}] ${text}`).join('\n- ')}\n`);
+
+			return false;
+		}
+
+		if (invalidOptionWarnings.length > 0) {
+			process.stderr.write(`Invalid stylelint configuration:\n\n- ${invalidOptionWarnings.map(({ text }) => text).join('\n- ')}\n`);
+
+			return false;
+		}
+	}
+	catch {
+		process.stdout.write(result.stdout);
 		process.stderr.write(result.stderr);
-
-		return false;
-	}
-
-	/**
-	 * @type {import('stylelint').LintResult}
-	 */
-	const { invalidOptionWarnings, warnings } = JSON.parse(result.stdout)[0];
-
-	if (warnings.length > 0) {
-		process.stderr.write(`Warnings:\n\n- ${warnings.map(({ text, line }) => `[line ${line}] ${text}`).join('\n- ')}\n`);
-
-		return false;
-	}
-
-	if (invalidOptionWarnings.length > 0) {
-		process.stderr.write(`Invalid stylelint configuration:\n\n- ${invalidOptionWarnings.map(({ text }) => text).join('\n- ')}\n`);
 
 		return false;
 	}

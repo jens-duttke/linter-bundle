@@ -17,7 +17,7 @@ const dirname = path.dirname(fileURLToPath(import.meta.url));
  * Detects outdated "overrides"/"resolutions" dependencies.
  *
  * @public
- * @returns {Promise<{ overrides: Dependency[]; resolutions: Dependency[]; }>} Either the input array, or an empty array, if the input array is not an array.
+ * @returns {Promise<{ overrides: Dependency[]; resolutions: Dependency[]; }>} Either the input array, or an empty array, if the input array is not an array
  */
 export async function getOutdatedOverrides () {
 	const linterBundleDependencies = JSON.parse(await fs.readFile(path.resolve(dirname, '../package.json'), 'utf8')).dependencies;

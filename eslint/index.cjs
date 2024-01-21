@@ -261,12 +261,12 @@ module.exports = {
 				'no-nested-ternary': 'error',
 				'no-new-func': 'error',
 				'no-new-native-nonconstructor': 'error',
-				'no-new-object': 'error',
 				'no-new-symbol': 'error',
 				'no-new-wrappers': 'error',
 				'no-new': 'error',
 				'no-nonoctal-decimal-escape': 'error',
 				'no-obj-calls': 'error',
+				'no-object-constructor': 'error',
 				'no-octal-escape': 'error',
 				'no-octal': 'error',
 				'no-param-reassign': 'off', // Parameter reassignment used wisely makes the code more readable
@@ -423,7 +423,7 @@ module.exports = {
 				}],
 				'@typescript-eslint/brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
 				'@typescript-eslint/class-literal-property-style': 'error',
-				'@typescript-eslint/class-methods-use-this': ['error', { exceptMethods: ['componentDidMount', 'componentDidUpdate', 'componentWillUnmount', 'shouldComponentUpdate'] }],
+				'@typescript-eslint/class-methods-use-this': ['error', { exceptMethods: ['componentDidMount', 'componentDidUpdate', 'componentWillUnmount', 'shouldComponentUpdate'], ignoreOverrideMethods: true, ignoreClassesThatImplementAnInterface: true }],
 				'@typescript-eslint/comma-dangle': ['error', { generics: 'ignore' }],
 				'@typescript-eslint/comma-spacing': 'error',
 				'@typescript-eslint/consistent-generic-constructors': 'error',
@@ -730,10 +730,12 @@ module.exports = {
 				'@typescript-eslint/no-unsafe-enum-comparison': 'error',
 				'@typescript-eslint/no-unsafe-member-access': 'error',
 				'@typescript-eslint/no-unsafe-return': 'error',
+				'@typescript-eslint/no-unsafe-unary-minus': 'error',
 				'@typescript-eslint/no-unused-expressions': 'error',
 				'@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', destructuredArrayIgnorePattern: '^_' }],
 				'@typescript-eslint/no-use-before-define': ['error', { functions: false }],
 				'@typescript-eslint/no-useless-constructor': 'error',
+				'@typescript-eslint/no-useless-empty-export': 'error',
 				'@typescript-eslint/no-var-requires': 'error',
 				'@typescript-eslint/non-nullable-type-assertion-style': 'off', // Conflicts with `no-non-null-assertion`, which we prefer
 				'@typescript-eslint/object-curly-spacing': ['error', 'always'],
@@ -832,7 +834,7 @@ module.exports = {
 				'import/no-duplicates': 'error',
 				'import/no-dynamic-require': 'error',
 				'import/no-empty-named-blocks': 'error',
-				'import/no-extraneous-dependencies': 'error',
+				'import/no-extraneous-dependencies': ['error', { includeTypes: true }],
 				'import/no-internal-modules': ['off', { // @todo Throws an "Cannot read property 'value' of null" error in src/help/scss/help.scss.d.ts:2 since the update to v2.21.1. If this issue does not get fixed in the next releases, report it!
 					allow: [
 						'workbox-window/utils/WorkboxEvent'
@@ -978,6 +980,7 @@ module.exports = {
 				'unicorn/no-this-assignment': 'error',
 				'unicorn/no-typeof-undefined': 'error',
 				'unicorn/no-unnecessary-await': 'error',
+				'unicorn/no-unnecessary-polyfills': 'error',
 				'unicorn/no-unreadable-array-destructuring': 'error',
 				'unicorn/no-unreadable-iife': 'error',
 				'unicorn/no-unused-properties': 'error',

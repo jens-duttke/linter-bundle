@@ -9,7 +9,7 @@ import * as path from 'node:path';
  * Returns if the project is using npm or yarn.
  *
  * @public
- * @returns {Promise<'none' | 'npm' | 'yarn' | 'both'>} Returns which package manager name.
+ * @returns {Promise<'none' | 'npm' | 'yarn' | 'both'>} Returns which package manager name
  */
 export async function isNpmOrYarn () {
 	let npm = false;

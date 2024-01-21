@@ -17,7 +17,7 @@ const dirname = path.dirname(fileURLToPath(import.meta.url));
  * Detects if installed versions of dependencies don't match to the required dependencies.
  *
  * @public
- * @returns {Promise<Dependency[]>} An array of missing overrides (=wrong versions).
+ * @returns {Promise<Dependency[]>} An array of missing overrides (=wrong versions)
  */
 export async function getOutdatedDependencies () {
 	const linterBundleDependencies = JSON.parse(await fs.readFile(path.resolve(dirname, '../package.json'), 'utf8')).dependencies;

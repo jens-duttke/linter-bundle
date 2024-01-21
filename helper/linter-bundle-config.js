@@ -16,20 +16,26 @@ export const linterBundleConfig = (
 /**
  * Load a config file if it exist.
  *
- * @param {string} fileName - The name of the config file
- * @returns {Promise<import('./linter-bundle-config.js').LinterBundleConfig | undefined>} - Either the file content for `undefined` if the file does not exist.
+ * @param {string} fileName - The name of the config file in the current working directory
+ * @returns {Promise<import('./linter-bundle-config.js').LinterBundleConfig | undefined>} Either the file content for `undefined` if the file does not exist
  * */
 async function loadConfig (fileName) {
+	const filePath = path.join(process.cwd(), fileName);
+
+	if (!await fs.access(filePath, fs.constants.F_OK).then(() => true).catch(() => false)) {
+		return;
+	}
+
 	try {
 		if (fileName.endsWith('.json')) {
-			const content = await fs.readFile(path.join(process.cwd(), fileName), 'utf8');
+			const content = await fs.readFile(filePath, 'utf8');
 
 			return JSON.parse(content);
 		}
 
-		const filePath = path.join('file://', process.cwd(), fileName);
+		const fileUri = path.join('file://', filePath);
 
-		const config = await import(filePath);
+		const config = await import(fileUri);
 
 		if ('default' in config) {
 			return config.default;
@@ -37,7 +43,16 @@ async function loadConfig (fileName) {
 
 		return config;
 	}
-	catch {
-		return;
+	catch (error) {
+		process.stderr.write(`Error reading ${filePath}\n`);
+
+		if (error instanceof Error) {
+			process.stderr.write(`${error.stack}\n`);
+		}
+		else {
+			process.stderr.write(`${error}\n`);
+		}
 	}
+
+	return;
 }

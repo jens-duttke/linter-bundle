@@ -3,6 +3,7 @@
  */
 
 /* eslint-disable max-lines -- The rules can be easier managed if they are all in one file  */
+/* eslint-disable import/max-dependencies -- As we have to import the different plugins, we can't have a limit here */
 
 module.exports = (async () => {
 	const { linterBundleConfig } = await import('../helper/linter-bundle-config.js');
@@ -17,10 +18,82 @@ module.exports = (async () => {
 			'stylelint-order',
 			'stylelint-scss',
 			'stylelint-use-logical-spec',
-			await import('./plugins/stylelint-high-performance-animation.js'),
+			'stylelint-high-performance-animation',
 			await import('./plugins/stylelint-selector-no-empty.js'),
 			await import('./plugins/stylelint-selector-tag-no-without-class.js'),
-			await import('./plugins/stylelint-stylistic.js')
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/at-rule-name-case/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/at-rule-name-space-after/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/at-rule-semicolon-newline-after/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/at-rule-semicolon-space-before/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/block-closing-brace-empty-line-before/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/block-closing-brace-newline-after/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/block-closing-brace-newline-before/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/block-closing-brace-space-before/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/block-opening-brace-newline-after/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/block-opening-brace-space-after/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/block-opening-brace-space-before/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/color-hex-case/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/declaration-bang-space-after/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/declaration-bang-space-before/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/declaration-block-semicolon-newline-after/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/declaration-block-semicolon-newline-before/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/declaration-block-semicolon-space-after/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/declaration-block-semicolon-space-before/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/declaration-block-trailing-semicolon/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/declaration-colon-newline-after/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/declaration-colon-space-after/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/declaration-colon-space-before/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/function-comma-newline-after/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/function-comma-newline-before/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/function-comma-space-after/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/function-comma-space-before/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/function-max-empty-lines/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/function-parentheses-newline-inside/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/function-parentheses-space-inside/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/function-whitespace-after/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/indentation/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/linebreaks/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/max-empty-lines/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/max-line-length/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/media-feature-colon-space-after/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/media-feature-colon-space-before/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/media-feature-name-case/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/media-feature-parentheses-space-inside/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/media-feature-range-operator-space-after/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/media-feature-range-operator-space-before/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/media-query-list-comma-newline-after/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/media-query-list-comma-newline-before/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/media-query-list-comma-space-after/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/media-query-list-comma-space-before/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/no-empty-first-line/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/no-eol-whitespace/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/no-extra-semicolons/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/no-missing-end-of-source-newline/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/number-leading-zero/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/number-no-trailing-zeros/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/property-case/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/selector-attribute-brackets-space-inside/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/selector-attribute-operator-space-after/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/selector-attribute-operator-space-before/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/selector-combinator-space-after/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/selector-combinator-space-before/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/selector-descendant-combinator-no-non-space/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/selector-list-comma-newline-after/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/selector-list-comma-newline-before/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/selector-list-comma-space-after/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/selector-list-comma-space-before/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/selector-max-empty-lines/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/selector-pseudo-class-case/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/selector-pseudo-class-parentheses-space-inside/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/selector-pseudo-element-case/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/string-quotes/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/unicode-bom/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/unit-case/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/value-list-comma-newline-after/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/value-list-comma-newline-before/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/value-list-comma-space-after/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/value-list-comma-space-before/index.cjs'),
+			await import('./plugins/stylelint-15.11.0-stylistic/rules/value-list-max-empty-lines/index.cjs')
 		],
 		overrides: [
 			{
@@ -178,6 +251,7 @@ module.exports = (async () => {
 			'function-url-scheme-allowed-list': null,
 			'hue-degree-notation': 'number', // @todo change that to 'angle'?
 			'import-notation': null, // This rule, does not make sense. `node_modules` dependencies need to use `url("css_bundle")`, while project files are using only a string.
+			'lightness-notation': 'percentage',
 			'keyframe-block-no-duplicate-selectors': true,
 			'keyframe-declaration-no-important': true,
 			'keyframe-selector-notation': 'percentage',
@@ -214,7 +288,7 @@ module.exports = (async () => {
 				'inset-inline-start', // That's not widely supported and there is no fallback. @see https://caniuse.com/mdn-css_properties_inset-inline-start
 				'inset-inline-end' // That's not widely supported and there is no fallback. @see https://caniuse.com/mdn-css_properties_inset-inline-end
 			],
-			'property-no-unknown': true,
+			'property-no-unknown': null, // Covered by scss/property-no-unknown
 			'property-no-vendor-prefix': true,
 			'rule-selector-property-disallowed-list': null,
 			'rule-empty-line-before': [
@@ -293,8 +367,13 @@ module.exports = (async () => {
 			}],
 
 			/**
-			 * stylelint-stylistic rules
+			 * stylelint-15.11.0-stylistic rules
 			 */
+			/*
+			'plugin/at-rule-name-newline-after': null,
+			'plugin/block-closing-brace-space-after': null,
+			'plugin/block-opening-brace-newline-before': null,
+			*/
 			'plugin/at-rule-name-case': 'lower',
 			'plugin/at-rule-name-space-after': 'always-single-line',
 			'plugin/at-rule-semicolon-newline-after': 'always',
@@ -869,13 +948,13 @@ module.exports = (async () => {
 			'scss/at-else-empty-line-before': 'never',
 			'scss/at-else-if-parentheses-space-before': 'always',
 			'scss/at-extend-no-missing-placeholder': true,
+			'scss/function-calculation-no-interpolation': true,
 			'scss/at-function-named-arguments': ['never', { ignoreFunctions: ['scale-color', 'color.scale'] }],
 			'scss/at-function-parentheses-space-before': 'always',
 			'scss/at-function-pattern': '^[a-z]+(-[a-z]+)*$',
 			'scss/at-if-closing-brace-newline-after': 'always-last-in-chain',
 			'scss/at-if-closing-brace-space-after': 'never-intermediate',
 			'scss/at-if-no-null': true,
-			'scss/at-import-no-partial-leading-underscore': null,
 			'scss/at-import-partial-extension-blacklist': null,
 			'scss/at-import-partial-extension-whitelist': null,
 			'scss/at-import-partial-extension': 'always',
@@ -883,9 +962,12 @@ module.exports = (async () => {
 			'scss/at-mixin-named-arguments': ['always', { ignore: ['single-argument'] }],
 			'scss/at-mixin-parentheses-space-before': 'always',
 			'scss/at-mixin-pattern': '^[a-z]+(-[a-z]+)*$',
+			'scss/at-root-no-redundant': true,
 			'scss/at-rule-conditional-no-parentheses': true,
 			'scss/at-rule-no-unknown': true,
 			'scss/at-use-no-unnamespaced': true,
+			'scss/at-use-no-redundant-alias': null,
+			'scss/block-no-redundant-nesting': null,
 			'scss/comment-no-empty': true,
 			'scss/comment-no-loud': true,
 			'scss/declaration-nested-properties-no-divided-groups': true,
@@ -926,6 +1008,7 @@ module.exports = (async () => {
 			'scss/function-no-unknown': [true, { ignoreFunctions: [/^custom-/u] }],
 			'scss/function-quote-no-quoted-strings-inside': true,
 			'scss/function-unquote-no-unquoted-strings-inside': true,
+			'scss/load-no-partial-leading-underscore': null,
 			'scss/map-keys-quotes': 'always',
 			'scss/media-feature-value-dollar-variable': 'never',
 			'scss/no-dollar-variables': null,
@@ -937,6 +1020,7 @@ module.exports = (async () => {
 			'scss/operator-no-unspaced': true,
 			'scss/partial-no-import': null,
 			'scss/percent-placeholder-pattern': '^[a-z]+(-[a-z]+)*$',
+			'scss/property-no-unknown': true,
 			'scss/selector-nest-combinators': null, // Sometimes nesting does not make sense
 			'scss/selector-no-redundant-nesting-selector': true,
 			'scss/selector-no-union-class-name': true,
