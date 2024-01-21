@@ -1,0 +1,91 @@
+/* eslint-disable -- We want to keep as much of the original code as possible */
+// @ts-nocheck
+
+const stylelint = require('stylelint');
+const atRuleParamIndex = require('stylelint/lib/utils/atRuleParamIndex.cjs');
+const ruleMessages = require('stylelint/lib/utils/ruleMessages.cjs');
+const validateOptions = require('stylelint/lib/utils/validateOptions.cjs');
+
+const whitespaceChecker = require('../../utils/whitespaceChecker.cjs');
+const mediaFeatureColonSpaceChecker = require('../mediaFeatureColonSpaceChecker.cjs');
+
+const ruleName = 'plugin/media-feature-colon-space-before';
+
+const messages = ruleMessages(ruleName, {
+	expectedBefore: () => 'Expected single space before ":"',
+	rejectedBefore: () => 'Unexpected whitespace before ":"'
+});
+
+const meta = {
+	url: 'https://github.com/jens-duttke/linter-bundle/blob/main/stylelint/plugins/stylelint-15.11.0-stylistic/rules/media-feature-colon-space-before/README.md',
+	fixable: true
+};
+
+/** @type {import('stylelint').Rule} */
+const rule = (primary, _secondaryOptions, context) => {
+	const checker = whitespaceChecker('space', primary, messages);
+
+	return (root, result) => {
+		const validOptions = validateOptions(result, ruleName, {
+			actual: primary,
+			possible: ['always', 'never']
+		});
+
+		if (!validOptions) {
+			return;
+		}
+
+		/** @type {Map<import('postcss').AtRule, number[]> | undefined} */
+		let fixData;
+
+		mediaFeatureColonSpaceChecker({
+			root,
+			result,
+			locationChecker: checker.before,
+			checkedRuleName: ruleName,
+			fix: context.fix ?
+				(atRule, index) => {
+					const parameterColonIndex = index - atRuleParamIndex(atRule);
+
+					fixData ||= new Map();
+					const colonIndices = fixData.get(atRule) || [];
+
+					colonIndices.push(parameterColonIndex);
+					fixData.set(atRule, colonIndices);
+
+					return true;
+				  }
+				: null
+		});
+
+		if (fixData) {
+			for (const [atRule, colonIndices] of fixData.entries()) {
+				let parameters = atRule.raws.params ? atRule.raws.params.raw : atRule.params;
+
+				for (const index of colonIndices.sort((a, b) => b - a)) {
+					const beforeColon = parameters.slice(0, index);
+					const afterColon = parameters.slice(index);
+
+					if (primary === 'always') {
+						parameters = beforeColon.replace(/\s*$/, ' ') + afterColon;
+					}
+					else if (primary === 'never') {
+						parameters = beforeColon.replace(/\s*$/, '') + afterColon;
+					}
+				}
+
+				if (atRule.raws.params) {
+					atRule.raws.params.raw = parameters;
+				}
+				else {
+					atRule.params = parameters;
+				}
+			}
+		}
+	};
+};
+
+rule.ruleName = ruleName;
+rule.messages = messages;
+rule.meta = meta;
+module.exports = stylelint.createPlugin(ruleName, rule);

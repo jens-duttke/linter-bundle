@@ -28,6 +28,7 @@ export default {
 					'node_modules/**',
 					'stylelint/index.cjs',
 					`stylelint/plugins/stylelint-${snippets.kebabCase}.js`,
+					`stylelint/plugins/stylelint-15.11.0-stylistic/**/{${snippets.camelCase}.cjs,README.md,LICENSE}`,
 					'.editorconfig',
 					'.eslintrc.cjs',
 					'.gitattributes',
