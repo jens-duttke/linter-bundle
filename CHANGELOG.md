@@ -6,7 +6,68 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v5.1.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v6.0.0...HEAD)
+
+## [6.0.0] - 2024-01-21
+
+### Added
+
+- [eslint] Make use of new [`@typescript-eslint/no-useless-empty-export`](https://typescript-eslint.io/rules/no-useless-empty-export) rule
+- [eslint] Make use of new [`@typescript-eslint/no-unsafe-unary-minus`](https://typescript-eslint.io/rules/no-unsafe-unary-minus/) rule
+- [eslint] Make use of new [`no-object-constructor`](https://eslint.org/docs/latest/rules/no-object-constructor) rule
+- [eslint] Make use of new [`unicorn/no-unnecessary-polyfills`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-unnecessary-polyfills.md) rule
+- [markdownlint] Make use of new [`MD054`/link-image-style](https://github.com/DavidAnson/markdownlint/blob/main/doc/md054.md) rule
+- [eslint/overrides-jest] Make use of new [`jest/no-confusing-set-time`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/no-confusing-set-timeout.md) rule
+- [eslint/overrides-jsdoc] Make use of [`jsdoc/informative-docs`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/informative-docs.md) rule
+- [stylelint] Make use of new [`lightness-notation`](https://stylelint.io/user-guide/rules/lightness-notation/) rule with option "percentage"
+- [stylelint] Make use of new [`scss/at-root-no-redundant`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-root-no-redundant/README.md) rule
+- [stylelint] Make use of new [`scss/property-no-unknown`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/property-no-unknown/README.md) rule, replacing [`property-no-unknown`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/property-no-unknown/) rule
+- [stylelint] Make use of new [`scss/function-calculation-no-interpolation`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/function-calculation-no-interpolation/README.md) rule
+- [stylelint] Added, but disabled new [`scss/block-no-redundant-nesting`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/block-no-redundant-nesting/README.md) rule
+- [stylelint] Added, but disabled new [`scss/load-no-partial-leading-underscore`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/load-no-partial-leading-underscore/README.md) rule
+- [stylelint] Added, but disabled [`scss/at-use-no-redundant-alias`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-use-no-redundant-alias/README.md) rule
+
+### Fixed
+
+- [general] Removed '--verbose' argument for `tsc` and `markdownlint`, which don't support it
+- [general] Show errors in linter-bundle configuration file
+
+### Changed
+
+- [general] Drop support for Node.js version less than v18.12.0 as `stylelint@16.0.0` doesn't support them anymore
+- [eslint] Updated `@typescript-eslint` from `6.5.0` to `6.19.0`
+- [eslint] Updated `eslint` from `8.48.0` to `8.56.0`
+- [eslint] Updated `eslint-import-resolver-typescript` from `3.6.0` to `3.6.1`
+- [eslint] Updated `eslint-import-resolver-webpack` from `0.13.7` to `0.13.8`
+- [eslint] Updated `eslint-plugin-import` from `2.28.1` to `2.29.1`
+- [eslint] Updated `eslint-plugin-jest` from `27.2.3` to `27.6.3`
+- [eslint] Updated `eslint-plugin-jsdoc` from `46.5.1` to `48.0.2`
+- [eslint] Updated `eslint-plugin-jsx-a11y` from `6.7.1` to `6.8.0`
+- [eslint] Updated `eslint-plugin-n` from `16.0.2` to `16.6.2`
+- [eslint] Updated `eslint-plugin-unicorn` from `48.0.1` to `50.0.1`
+- [markdownlint] Updated `markdownlint-cli` from `0.36.0` to `0.38.0`
+- [stylelint] Updated `postcss-scss` from `4.0.7` to `4.0.9`
+- [stylelint] Updated `stylelint` from `15.10.3` to `16.2.0`
+- [stylelint] Updated `stylelint-declaration-block-no-ignored-properties` from `2.7.0` to `2.8.0`
+- [stylelint] Updated `stylelint-order` from `6.0.3` to `6.0.4`
+- [stylelint] Updated `stylelint-scss` from `5.1.0` to `6.0.0`
+- [stylelint] Updated `stylelint-use-logical-spec` from `5.0.0` to `5.0.1`
+- [stylelint] Forked 73 stylistic rules from `stylelint@15.11.0` which have been removed in `stylelint@16.0.0`
+- [audit] Updated `better-npm-audit` from `1.9.1` to `3.7.3`
+- [audit] Updated `improved-yarn-audit` from `2.3.3` to `3.0.0`
+- [eslint] Enable `ignoreOverrideMethods` and `ignoreClassesThatImplementAnInterface` of [`@typescript-eslint/class-methods-use-this`](https://typescript-eslint.io/rules/class-methods-use-this/) rule
+- [eslint] Enable `includeTypes` option of [`import/no-extraneous-dependencies`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-extraneous-dependencies.md) rule
+- [eslint/overrides-javascript] Activated rule [`unicorn/prefer-module`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-module.md) rule
+- [stylelint] Re-use [`stylelint-high-performance-animation`](https://www.npmjs.com/package/stylelint-high-performance-animation) instead of the fork, as it seems to be maintained again
+
+### Removed
+
+- [eslint] Remove deprecated `no-new-object` rule
+- [markdownlint] Update removed the deprecated `MD002`/`MD006` rules
+- [markdownlint] Update removed rule aliases for "header"
+- [stylelint] Removed deprecated `scss/at-import-no-partial-leading-underscore` rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v5.1.0...v6.0.0)
 
 ## [5.1.0] - 2023-09-03
 
