@@ -38,7 +38,6 @@
 		"useUnknownInCatchVariables": true
 	},
     "include": [
-		"./types.d.ts",
 		"**/*.js",
 		"**/*.cjs",
 		".eslintrc.cjs"
