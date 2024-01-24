@@ -15,7 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Updated `@typescript-eslint` from `6.19.0` to `6.19.1`
 - [stylelint] Updated `stylelint-scss` from `6.0.0` to `6.1.0`
 - [eslint] Activate `allowConstantLoopConditions` of [`@typescript-eslint/no-unnecessary-condition`](https://typescript-eslint.io/rules/no-unnecessary-condition/) rule, as this is covered by [`no-constant-condition`](https://archive.eslint.org/docs/rules/no-constant-condition)
-- [eslint] Allow "camelCase" and "PascalCase" style in [`@typescript-eslint/naming-convention`](https://typescript-eslint.io/rules/naming-convention/) for imports in 
+- [eslint] Allow "camelCase" and "PascalCase" style in [`@typescript-eslint/naming-convention`](https://typescript-eslint.io/rules/naming-convention/) rule for imports
 - [eslint/overrides-javascript] Disable [`unicorn/prefer-module`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-module.md) for *.js files in the root directory (so that configuration files are ignored)
 - [stylelint] Make use of new [`scss/no-unused-private-members`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/no-unused-private-members/README.md) rule
 
