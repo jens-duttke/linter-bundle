@@ -650,6 +650,9 @@ module.exports = {
 					// Interface
 					{ selector: 'interface', format: ['PascalCase'] },
 
+					// Import
+					{ selector: 'import', format: ['camelCase', 'PascalCase'] },
+
 					// Type alias
 					{ selector: 'typeAlias', format: ['PascalCase'] },
 
@@ -718,7 +721,7 @@ module.exports = {
 					allowTupleTypes: 'in-unions-and-intersections'
 				}],
 				'@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
-				'@typescript-eslint/no-unnecessary-condition': 'error',
+				'@typescript-eslint/no-unnecessary-condition': ['error', { allowConstantLoopConditions: true }],
 				'@typescript-eslint/no-unnecessary-qualifier': 'error',
 				'@typescript-eslint/no-unnecessary-type-arguments': 'error',
 				'@typescript-eslint/no-unnecessary-type-assertion': 'error',

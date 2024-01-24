@@ -110,6 +110,12 @@ module.exports = {
 			rules: {
 				'unicorn/prefer-top-level-await': 'error'
 			}
+		},
+		{
+			files: ['./*.js'],
+			rules: {
+				'unicorn/prefer-module': 'off'
+			}
 		}
 	]
 };
