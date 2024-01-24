@@ -41,9 +41,9 @@
 		"_test-stylelint": "node ./test-stylelint.js"
 	},
 	"dependencies": {
-		"@typescript-eslint/eslint-plugin": "6.19.0",
-		"@typescript-eslint/parser": "6.19.0",
-		"@typescript-eslint/utils": "6.19.0",
+		"@typescript-eslint/eslint-plugin": "6.19.1",
+		"@typescript-eslint/parser": "6.19.1",
+		"@typescript-eslint/utils": "6.19.1",
 		"eslint": "8.56.0",
 		"eslint-import-resolver-typescript": "3.6.1",
 		"eslint-import-resolver-webpack": "0.13.8",
@@ -65,7 +65,7 @@
 		"stylelint-declaration-block-no-ignored-properties": "2.8.0",
 		"stylelint-high-performance-animation": "1.10.0",
 		"stylelint-order": "6.0.4",
-		"stylelint-scss": "6.0.0",
+		"stylelint-scss": "6.1.0",
 		"stylelint-use-logical-spec": "5.0.1"
 	},
 	"peerDependencies": {
@@ -75,7 +75,7 @@
 	"devDependencies": {
 		"@types/eslint": "8.56.2",
 		"@types/micromatch": "4.0.6",
-		"@types/node": "20.11.5",
+		"@types/node": "20.11.6",
 		"stylelint-find-new-rules": "5.0.0",
 		"typescript": "5.3.3"
 	}
