@@ -6,7 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v6.0.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v6.1.0...HEAD)
+
+## [6.1.0] - 2024-01-24
+
+### Changed
+
+- [eslint] Updated `@typescript-eslint` from `6.19.0` to `6.19.1`
+- [stylelint] Updated `stylelint-scss` from `6.0.0` to `6.1.0`
+- [eslint] Activate `allowConstantLoopConditions` of [`@typescript-eslint/no-unnecessary-condition`](https://typescript-eslint.io/rules/no-unnecessary-condition/) rule, as this is covered by [`no-constant-condition`](https://archive.eslint.org/docs/rules/no-constant-condition)
+- [eslint] Allow "camelCase" and "PascalCase" style in [`@typescript-eslint/naming-convention`](https://typescript-eslint.io/rules/naming-convention/) for imports in 
+- [eslint/overrides-javascript] Disable [`unicorn/prefer-module`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-module.md) for *.js files in the root directory (so that configuration files are ignored)
+- [stylelint] Make use of new [`scss/no-unused-private-members`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/no-unused-private-members/README.md) rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v6.0.0...v6.1.0)
 
 ## [6.0.0] - 2024-01-21
 
@@ -231,7 +244,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Updated `eslint-plugin-react` from `7.32.2` to `7.33.0`
 - [eslint] Updated `eslint-plugin-unicorn` from `48.0.0` to `48.0.1`
 - [eslint] Reactivated `unicorn/no-empty-file`
-- [eslint] Activated `ignoreConditionalTests` and `ignoreMixedLogicalExpressions` options of [@typescript-eslint/prefer-nullish-coalescing](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-nullish-coalescing.md) rule
+- [eslint] Activated `ignoreConditionalTests` and `ignoreMixedLogicalExpressions` options of [@typescript-eslint/prefer-nullish-coalescing](https://typescript-eslint.io/rules/prefer-nullish-coalescing.md) rule
 - [styleint] Set `ignoreFunctions` option to `/^custom-/u` of [`scss/function-no-unknown`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/function-no-unknown/README.md) rule
 - [stylelint] Ignore SCSS variables in [`declaration-property-value-no-unknown`](https://stylelint.io/user-guide/rules/declaration-property-value-no-unknown/) rule
 - [stylelint] Ignore wrapping parentheses for `grid-template-areas` values in [`declaration-property-value-no-unknown`](https://stylelint.io/user-guide/rules/declaration-property-value-no-unknown/) rule
@@ -377,12 +390,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 
-- [eslint] Added new [`@typescript-eslint/key-spacing`](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/key-spacing.md) rule
-- [eslint] Added new [`@typescript-eslint/no-duplicate-type-constituents.md`](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-duplicate-type-constituents.md) rule
-- [eslint] Added new [`@typescript-eslint/no-import-type-side-effects`](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-import-type-side-effects.md) rule
-- [eslint] Added new [`@typescript-eslint/no-mixed-enums`](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-mixed-enums.md) rule
-- [eslint] Added new [`@typescript-eslint/no-unsafe-enum-comparison`](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-unsafe-enum-comparison.md) rule
-- [eslint] Added new [`@typescript-eslint/sort-type-constituents`](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/sort-type-constituents.md) rule
+- [eslint] Added new [`@typescript-eslint/key-spacing`](https://typescript-eslint.io/rules/key-spacing.md) rule
+- [eslint] Added new [`@typescript-eslint/no-duplicate-type-constituents.md`](https://typescript-eslint.io/rules/no-duplicate-type-constituents.md) rule
+- [eslint] Added new [`@typescript-eslint/no-import-type-side-effects`](https://typescript-eslint.io/rules/no-import-type-side-effects.md) rule
+- [eslint] Added new [`@typescript-eslint/no-mixed-enums`](https://typescript-eslint.io/rules/no-mixed-enums.md) rule
+- [eslint] Added new [`@typescript-eslint/no-unsafe-enum-comparison`](https://typescript-eslint.io/rules/no-unsafe-enum-comparison.md) rule
+- [eslint] Added new [`@typescript-eslint/sort-type-constituents`](https://typescript-eslint.io/rules/sort-type-constituents.md) rule
 - [eslint] Added new [`no-constant-binary-expression`](https://github.com/eslint/eslint/blob/main/docs/src/rules/no-constant-binary-expression.md) rule
 - [eslint] Added new [`functional/prefer-immutable-types`](https://github.com/eslint-functional/eslint-plugin-functional/blob/main/docs/rules/prefer-immutable-types.md) rule, but disabled it
 - [eslint] Added new [`functional/readonly-type`](https://github.com/eslint-functional/eslint-plugin-functional/blob/main/docs/rules/readonly-type.md) rule with option `keyword`
@@ -900,7 +913,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Updated `@typescript-eslint` from v5.11.0 to v5.12.0
 - [eslint] Updated `eslint` from v8.8.0 to v8.9.0
 - [eslint] Updated `eslint-plugin-jsdoc` from v37.8.2 to v37.9.1
-- [eslint] Ignore `generics` in [`@typescript-eslint/comma-dangle`](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/comma-dangle.md) to allow [generic component definitions for function components](https://wanago.io/2020/03/09/functional-react-components-with-generic-props-in-typescript/#crayon-620a96e97d44a141656396)
+- [eslint] Ignore `generics` in [`@typescript-eslint/comma-dangle`](https://typescript-eslint.io/rules/comma-dangle.md) to allow [generic component definitions for function components](https://wanago.io/2020/03/09/functional-react-components-with-generic-props-in-typescript/#crayon-620a96e97d44a141656396)
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v2.5.0...v2.6.0)
 
