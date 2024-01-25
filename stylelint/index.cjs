@@ -528,12 +528,12 @@ module.exports = (async () => {
 							'bottom',
 							'left',
 
-							'inset-inline',
-							'inset-inline-start',
-							'inset-inline-end',
 							'inset-block',
 							'inset-block-start',
 							'inset-block-end',
+							'inset-inline',
+							'inset-inline-start',
+							'inset-inline-end',
 
 							'box-sizing'
 						]
@@ -633,12 +633,12 @@ module.exports = (async () => {
 							'margin-bottom',
 							'margin-left',
 
-							'margin-inline',
-							'margin-inline-start',
-							'margin-inline-end',
 							'margin-block',
 							'margin-block-start',
-							'margin-block-end'
+							'margin-block-end',
+							'margin-inline',
+							'margin-inline-start',
+							'margin-inline-end'
 						]
 					},
 					{
@@ -652,12 +652,12 @@ module.exports = (async () => {
 							'padding-bottom',
 							'padding-left',
 
-							'padding-inline',
-							'padding-inline-start',
-							'padding-inline-end',
 							'padding-block',
 							'padding-block-start',
-							'padding-block-end'
+							'padding-block-end',
+							'padding-inline',
+							'padding-inline-start',
+							'padding-inline-end'
 						]
 					},
 					{
