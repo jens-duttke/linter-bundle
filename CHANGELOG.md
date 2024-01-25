@@ -6,7 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v6.2.1...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v6.2.2...HEAD)
+
+## [6.2.2] - 2024-01-25
+
+### Fixed
+
+- [eslint/overrides-jest] Changed `jest/no-confusing-set-time` to correct rule name [`jest/no-confusing-set-timeout`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/no-confusing-set-timeout.md)
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v6.2.1...v6.2.2)
 
 ## [6.2.1] - 2024-01-25
 
@@ -49,7 +57,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Make use of new [`no-object-constructor`](https://eslint.org/docs/latest/rules/no-object-constructor) rule
 - [eslint] Make use of new [`unicorn/no-unnecessary-polyfills`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-unnecessary-polyfills.md) rule
 - [markdownlint] Make use of new [`MD054`/link-image-style](https://github.com/DavidAnson/markdownlint/blob/main/doc/md054.md) rule
-- [eslint/overrides-jest] Make use of new [`jest/no-confusing-set-time`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/no-confusing-set-timeout.md) rule
+- [eslint/overrides-jest] Make use of new [`jest/no-confusing-set-timeout`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/no-confusing-set-timeout.md) rule
 - [eslint/overrides-jsdoc] Make use of [`jsdoc/informative-docs`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/informative-docs.md) rule
 - [stylelint] Make use of new [`lightness-notation`](https://stylelint.io/user-guide/rules/lightness-notation/) rule with option "percentage"
 - [stylelint] Make use of new [`scss/at-root-no-redundant`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-root-no-redundant/README.md) rule
