@@ -281,12 +281,7 @@ module.exports = (async () => {
 			'property-allowed-list': null,
 			'property-disallowed-list': [
 				'font', // Shorthand property is to complex
-				'grid-gap', // @deprecated Use gap.
-				'padding-inline', // That's not widely supported and there is no fallback. @see https://caniuse.com/mdn-css_properties_padding-inline
-				'margin-inline', // That's not widely supported and there is no fallback. @see https://caniuse.com/mdn-css_properties_margin-inline
-				'inset-inline', // That's not widely supported and there is no fallback. @see https://caniuse.com/mdn-css_properties_inset-inline
-				'inset-inline-start', // That's not widely supported and there is no fallback. @see https://caniuse.com/mdn-css_properties_inset-inline-start
-				'inset-inline-end' // That's not widely supported and there is no fallback. @see https://caniuse.com/mdn-css_properties_inset-inline-end
+				'grid-gap' // @deprecated Use gap.
 			],
 			'property-no-unknown': null, // Covered by scss/property-no-unknown
 			'property-no-vendor-prefix': true,
@@ -533,6 +528,13 @@ module.exports = (async () => {
 							'bottom',
 							'left',
 
+							'inset-inline',
+							'inset-inline-start',
+							'inset-inline-end',
+							'inset-block',
+							'inset-block-start',
+							'inset-block-end',
+
 							'box-sizing'
 						]
 					},
@@ -630,8 +632,13 @@ module.exports = (async () => {
 							'margin-right',
 							'margin-bottom',
 							'margin-left',
+
+							'margin-inline',
 							'margin-inline-start',
-							'margin-inline-end'
+							'margin-inline-end',
+							'margin-block',
+							'margin-block-start',
+							'margin-block-end'
 						]
 					},
 					{
@@ -644,8 +651,13 @@ module.exports = (async () => {
 							'padding-right',
 							'padding-bottom',
 							'padding-left',
+
+							'padding-inline',
 							'padding-inline-start',
-							'padding-inline-end'
+							'padding-inline-end',
+							'padding-block',
+							'padding-block-start',
+							'padding-block-end'
 						]
 					},
 					{
@@ -1075,8 +1087,8 @@ module.exports = (async () => {
 				'padding-top',
 				'padding-bottom',
 
-				'left', // "inset-inline" is not supported by any browser, expect Firefox. @see https://caniuse.com/mdn-css_properties_inset-inline
-				'right', // "inset-inline-end" is not supported by any browser, expect Firefox. @see https://caniuse.com/mdn-css_properties_inset-inline
+				'left',
+				'right',
 
 				'text-align', // @todo Should only be disabled for "right", since numbers should be always aligned right, for any direction.
 
