@@ -6,7 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v6.2.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v6.2.1...HEAD)
+
+## [6.2.1] - 2024-01-25
+
+### Changed
+
+- [stylelint] Change order of `(inset/margin/padding)-block` and `(inset/margin/padding)-inset`
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v6.2.0...v6.2.1)
 
 ## [6.2.0] - 2024-01-25
 
