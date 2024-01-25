@@ -14,7 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - [eslint/overrides-jsdoc] Updated `eslint-plugin-jsdoc` from `48.0.2` to `48.0.3`
 - [stylelint] Remove `padding-inline`, `margin-inline`, `inset-inline`, `inset-inline-start` and `inset-inline-end` from [`property-disallowed-list`](https://stylelint.io/user-guide/rules/property-disallowed-list/) rule, as it is supported in all main browsers since at least 3 years
-- [stylelint] Add `inset-block(-start/-end)`, `inset-inline(-start/-end)`, `padding-block(-start/-end)`, `padding-inline(-start/-end)` and `margin-block(-start/-end)`, `margin-inline(-start/-end)` to [`order/properties-order`](https://github.com/hudochenkov/stylelint-order/blob/master/rules/properties-order/README.md) configuration
+- [stylelint] Add `inset-block(-start/-end)`, `inset-inline(-start/-end)`, `padding-block(-start/-end)`, `padding-inline(-start/-end)` and `margin-block(-start/-end)`, `margin-inline(-start/-end)`
+  to [`order/properties-order`](https://github.com/hudochenkov/stylelint-order/blob/master/rules/properties-order/README.md) configuration
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v6.1.0...v6.2.0)
 
