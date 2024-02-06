@@ -6,7 +6,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v6.2.2...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v6.3.0...HEAD)
+
+## [6.3.0] - 2024-02-06
+
+### Changed
+
+- [eslint] Updated `@typescript-eslint/eslint-plugin` from `6.19.1` to `6.21.0`
+- [eslint] Updated `eslint-plugin-unicorn` from `50.0.1` to `51.0.0`
+- [eslint/overrides-jsdoc] Updated `eslint-plugin-jsdoc` from `48.0.3` to `48.0.5`
+- [markdownlint] Updated `markdownlint-cli` from `0.38.0` to `0.39.0`
+- [stylelint] Updated `stylelint` from `16.2.0` to `16.2.1`
+- [eslint] Make use of [`@typescript-eslint/no-array-delete`](https://typescript-eslint.io/rules/no-array-delete/) rule
+- [eslint] Make use of [`@typescript-eslint/no-useless-template-literals`](https://typescript-eslint.io/rules/no-useless-template-literals/) rule
+- [eslint] Make use of [`@typescript-eslint/prefer-find`](https://typescript-eslint.io/rules/prefer-find/) rule
+- [eslint] Make use of [`@typescript-eslint/prefer-promise-reject-errors`](https://typescript-eslint.io/rules/prefer-promise-reject-errors/) rule
+- [markdownlint] Make use of new [`MD054`/link-image-style](https://github.com/DavidAnson/markdownlint/blob/main/doc/md054.md) rule
+- [markdownlint] Make use of new [`MD056`/table-column-count](https://github.com/DavidAnson/markdownlint/blob/main/doc/md056.md) rule
+
+### Added
+
+- [eslint] Added "Params" to the [unicorn/prevent-abbreviations](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v32.0.1/docs/rules/prevent-abbreviations.md) `ignore` list.
+- [eslint] Added the possibility to configure additional options for the [`@typescript-eslint/naming-convention`](https://typescript-eslint.io/rules/naming-convention/) rule in the `overrides.general` linter-bundle configuration
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v6.2.2...v6.3.0)
 
 ## [6.2.2] - 2024-01-25
 
@@ -1333,7 +1356,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Make use of new [`jsdoc/no-multi-asterisks`](https://github.com/gajus/eslint-plugin-jsdoc#eslint-plugin-jsdoc-rules-no-multi-asterisks) rule
 - [eslint] Added but disabled the [`jsdoc/tag-lines`](https://github.com/gajus/eslint-plugin-jsdoc#eslint-plugin-jsdoc-rules-tag-lines) rule
 - [eslint] Added but disabled the [`import/no-import-module-exports`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/no-import-module-exports.md) rule
-- [eslint/overrides-javascript(-lazy)] Added "args" the the [unicorn/prevent-abbreviations](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v32.0.1/docs/rules/prevent-abbreviations.md) `allowList`.
+- [eslint/overrides-javascript(-lazy)] Added "args" to the [unicorn/prevent-abbreviations](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v32.0.1/docs/rules/prevent-abbreviations.md) `ignore` list.
 
 ### Changed
 
