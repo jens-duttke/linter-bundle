@@ -358,7 +358,7 @@ module.exports = {
 				'prefer-named-capture-group': 'off', // ES2018+, not supported in most browsers yet
 				'prefer-numeric-literals': 'error',
 				'prefer-object-spread': 'error',
-				'prefer-promise-reject-errors': 'error',
+				'prefer-promise-reject-errors': 'off', // Covered by @typescript-eslint/prefer-promise-reject-errors
 				'prefer-regex-literals': 'error',
 				'prefer-rest-params': 'error',
 				'prefer-spread': 'error',
@@ -665,6 +665,7 @@ module.exports = {
 					{ selector: 'typeParameter', format: ['PascalCase'] }
 				],
 				'@typescript-eslint/no-array-constructor': 'error',
+				'@typescript-eslint/no-array-delete': 'error',
 				'@typescript-eslint/no-base-to-string': 'error',
 				'@typescript-eslint/no-confusing-non-null-assertion': 'error',
 				'@typescript-eslint/no-confusing-void-expression': ['error', { ignoreArrowShorthand: true, ignoreVoidOperator: true }],
@@ -741,11 +742,13 @@ module.exports = {
 				'@typescript-eslint/no-use-before-define': ['error', { functions: false }],
 				'@typescript-eslint/no-useless-constructor': 'error',
 				'@typescript-eslint/no-useless-empty-export': 'error',
+				'@typescript-eslint/no-useless-template-literals': 'error',
 				'@typescript-eslint/no-var-requires': 'error',
 				'@typescript-eslint/non-nullable-type-assertion-style': 'off', // Conflicts with `no-non-null-assertion`, which we prefer
 				'@typescript-eslint/object-curly-spacing': ['error', 'always'],
 				'@typescript-eslint/prefer-as-const': 'error',
 				'@typescript-eslint/prefer-enum-initializers': 'off',
+				'@typescript-eslint/prefer-find': 'error',
 				'@typescript-eslint/prefer-for-of': 'error',
 				'@typescript-eslint/prefer-function-type': 'error',
 				'@typescript-eslint/prefer-includes': 'error',
@@ -753,6 +756,7 @@ module.exports = {
 				'@typescript-eslint/prefer-namespace-keyword': 'error',
 				'@typescript-eslint/prefer-nullish-coalescing': ['error', { ignoreConditionalTests: true, ignoreMixedLogicalExpressions: true }],
 				'@typescript-eslint/prefer-optional-chain': 'error',
+				'@typescript-eslint/prefer-promise-reject-errors': 'error',
 				'@typescript-eslint/prefer-readonly': 'error',
 				'@typescript-eslint/prefer-readonly-parameter-types': ['off', { ignoreInferredTypes: true }], // @todo An interface should ensure that it's properties are readonly, not every usage of it
 				'@typescript-eslint/prefer-reduce-type-parameter': 'error',
@@ -1045,7 +1049,7 @@ module.exports = {
 				'unicorn/prefer-top-level-await': 'off', // @todo Available since 2021. Activate in 2024
 				'unicorn/prefer-regexp-test': 'error',
 				'unicorn/prefer-type-error': 'error',
-				'unicorn/prevent-abbreviations': ['error', { ignore: ['args', 'i', 'j', 'i18n', 'ref', 'Ref', 'params', 'props', 'Props'] }],
+				'unicorn/prevent-abbreviations': ['error', { ignore: ['args', 'i', 'j', 'i18n', /[Rr]ef/u, /[Pp]arams/u, /[Pp]rops/u] }],
 				'unicorn/relative-url-style': 'error',
 				'unicorn/require-array-join-separator': 'error',
 				'unicorn/require-number-to-fixed-digits-argument': 'error',
