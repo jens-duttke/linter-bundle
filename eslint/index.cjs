@@ -551,6 +551,8 @@ module.exports = {
 				'@typescript-eslint/naming-convention': [
 					'error',
 
+					...ensureType.array(linterBundleConfig.ts?.overrides?.general?.['@typescript-eslint/naming-convention']?.additionalOptions),
+
 					{ selector: 'default', format: ['camelCase'] },
 
 					// Variable

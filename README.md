@@ -189,6 +189,15 @@ The file itself, and any of the options is optional.
         },
         "import/order": {
           "additionalExternalPatterns": ["@sentry/*"]
+        },
+        "@typescript-eslint/naming-convention": {
+          "additionalOptions": [
+            {
+              "selector": "variable",
+              "modifiers": ["const"],
+              "format": ["camelCase"]
+            }
+          ]
         }
       },
       "react": {

@@ -2,6 +2,29 @@
  * @file Type definition of `.linter-bundle.js` configuration.
  */
 
+interface NamingConventionOption {
+	// format options
+	format: ('camelCase' | 'strictCamelCase' | 'PascalCase' | 'StrictPascalCase' | 'snake_case' | 'UPPER_CASE')[] | null;
+	custom?: {
+		regex: string;
+		match: boolean;
+	};
+	leadingUnderscore?: 'forbid' | 'require' | 'requireDouble' | 'allow' | 'allowDouble' | 'allowSingleOrDouble';
+	trailingUnderscore?: 'forbid' | 'require' | 'requireDouble' | 'allow' | 'allowDouble' | 'allowSingleOrDouble';
+	prefix?: string[];
+	suffix?: string[];
+
+	// selector options
+	selector: string | string[];
+	filter?: string | {
+		regex: string;
+		match: boolean;
+	};
+	// the allowed values for these are dependent on the selector - see below
+	modifiers?: string[];
+	types?: string[];
+}
+
 export interface LinterBundleConfig {
 	verbose?: boolean;
 	timing?: boolean;
@@ -27,6 +50,7 @@ export interface LinterBundleConfig {
 				'no-restricted-properties'?: { additionalRestrictions?: { object: string; property: string; message: string; }[]; };
 				'no-restricted-syntax'?: { additionalRestrictions?: { selector: string; message: string; }[]; };
 				'import/order'?: { additionalExternalPatterns?: string[]; };
+				'@typescript-eslint/naming-convention'?: { additionalOptions?: NamingConventionOption[]; };
 			};
 			react?: {
 				'react/forbid-component-props'?: { allowClassNameFor?: string[]; allowStyleFor?: string[]; };
