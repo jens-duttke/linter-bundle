@@ -155,7 +155,7 @@ module.exports = {
 				'grouped-accessor-pairs': 'error',
 				'guard-for-in': 'error',
 				'id-denylist': 'error',
-				'id-length': ['error', { exceptions: ['a', 'b', 'i', 'j', 'n', 'x', 'y', 'z'] }],
+				'id-length': ['error', { exceptions: ['a', 'b', 'c', 'i', 'j', 'n', 'x', 'y', 'z', '_'] }],
 				'id-match': 'error',
 				'implicit-arrow-linebreak': 'error',
 				'indent': 'off', // Covered by @typescript-eslint/indent
