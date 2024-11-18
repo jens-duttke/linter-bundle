@@ -163,7 +163,6 @@ module.exports = {
 				'jsx-quotes': 'error',
 				'key-spacing': 'off', // Covered by @typescript-eslint/key-spacing
 				'keyword-spacing': 'error',
-				'line-comment-position': 'off',
 				'linebreak-style': 'error',
 				'lines-around-comment': 'off', // Doesn't work with interfaces; sometimes doesn't make sense if the comment is related to the code above it
 				'lines-between-class-members': 'off', // @todo Deactivated till we have a JSDoc description for all class members
@@ -182,7 +181,6 @@ module.exports = {
 				'max-params': ['error', { max: 5 }],
 				'max-statements-per-line': ['error', { max: 3 }],
 				'max-statements': ['error', 50, { ignoreTopLevelFunctions: true }],
-				'multiline-comment-style': 'off', // Comment style must be decided from case to case
 				'multiline-ternary': 'off', // I would prefer this style: `(a === b ? (\ntrue\n) : {\notherwise: false\n})`, which means line-breaks should be only allowed, if the operand is wrapped into `(`, `{` or `[`.
 				'new-cap': ['error', { properties: false }],
 				'new-parens': 'error',
@@ -248,7 +246,7 @@ module.exports = {
 				'no-lone-blocks': 'error',
 				'no-lonely-if': 'off', // Covered by unicorn/no-lonely-if
 				'no-loop-func': 'off', // Covered by @typescript-eslint/no-loop-func
-				'no-loss-of-precision': 'off', // Covered by @typescript-eslint/no-loss-of-precision
+				'no-loss-of-precision': 'error',
 				'no-magic-numbers': 'off', // Covered by @typescript-eslint/no-magic-numbers
 				'no-misleading-character-class': 'error',
 				'no-mixed-operators': 'error',
@@ -261,7 +259,6 @@ module.exports = {
 				'no-nested-ternary': 'error',
 				'no-new-func': 'error',
 				'no-new-native-nonconstructor': 'error',
-				'no-new-symbol': 'error',
 				'no-new-wrappers': 'error',
 				'no-new': 'error',
 				'no-nonoctal-decimal-escape': 'error',
@@ -326,6 +323,7 @@ module.exports = {
 				'no-unused-private-class-members': 'error',
 				'no-unused-vars': 'off', // Covered by @typescript-eslint/no-unused-vars
 				'no-use-before-define': 'off', // Covered by @typescript-eslint/no-use-before-define
+				'no-useless-assignment': 'error',
 				'no-useless-backreference': 'error',
 				'no-useless-call': 'off', // @todo Produces into false-positives for CharsetConverter → `internalMap.encoder.call(encoding, str.toLowerCase())`
 				'no-useless-catch': 'error',
@@ -428,6 +426,7 @@ module.exports = {
 				'@typescript-eslint/comma-spacing': 'error',
 				'@typescript-eslint/consistent-generic-constructors': 'error',
 				'@typescript-eslint/consistent-indexed-object-style': 'error',
+				'@typescript-eslint/consistent-return': 'error',
 				'@typescript-eslint/consistent-type-assertions': 'error',
 				'@typescript-eslint/consistent-type-definitions': 'error',
 				'@typescript-eslint/consistent-type-exports': 'error',
@@ -675,6 +674,7 @@ module.exports = {
 				'@typescript-eslint/no-dynamic-delete': 'error',
 				'@typescript-eslint/no-empty-function': 'error',
 				'@typescript-eslint/no-empty-interface': 'off',
+				'@typescript-eslint/no-empty-object-type': 'error',
 				'@typescript-eslint/no-explicit-any': 'off',
 				'@typescript-eslint/no-extra-non-null-assertion': 'error',
 				'@typescript-eslint/no-extra-parens': ['off', 'all', { nestedBinaryExpressions: true, enforceForArrowConditionals: true }], // @todo There should be a option to enforce parens for IIFs + This has to be activated if all other linting errors are resolved
@@ -688,7 +688,6 @@ module.exports = {
 				'@typescript-eslint/no-invalid-this': 'error',
 				'@typescript-eslint/no-invalid-void-type': ['error', { allowInGenericTypeArguments: true }],
 				'@typescript-eslint/no-loop-func': 'error',
-				'@typescript-eslint/no-loss-of-precision': 'error',
 				'@typescript-eslint/no-magic-numbers': 'off', // @todo There should be an option that numbers in arrays are ok like `const MaxSizes = [4, 8, 16, 32, 64];`
 				/* ['error', {
 					ignore: [-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 15, 16, 24, 32, 60, 63, 64, 100, 128, 250, 255, 256, 500, 1000, 4_294_967_296],
@@ -710,10 +709,6 @@ module.exports = {
 				'@typescript-eslint/no-restricted-imports': 'error',
 				'@typescript-eslint/no-shadow': 'error',
 				'@typescript-eslint/no-this-alias': 'error',
-				'@typescript-eslint/no-throw-literal': ['error', {
-					allowThrowingAny: false,
-					allowThrowingUnknown: true
-				}],
 				'@typescript-eslint/no-type-alias': ['off', { // @todo There should be an option like 'sub-in-unions-and-intersections', which allows `type A = (string | number)[];`
 					allowAliases: 'always',
 					allowCallbacks: 'always',
@@ -724,11 +719,14 @@ module.exports = {
 					allowTupleTypes: 'in-unions-and-intersections'
 				}],
 				'@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
-				'@typescript-eslint/no-unnecessary-condition': ['error', { allowConstantLoopConditions: true }],
+				'@typescript-eslint/no-unnecessary-condition': ['error', { allowConstantLoopConditions: true, checkTypePredicates: true }],
+				'@typescript-eslint/no-unnecessary-parameter-property-assignment': 'error',
 				'@typescript-eslint/no-unnecessary-qualifier': 'error',
+				'@typescript-eslint/no-unnecessary-template-expression': 'error',
 				'@typescript-eslint/no-unnecessary-type-arguments': 'error',
 				'@typescript-eslint/no-unnecessary-type-assertion': 'error',
 				'@typescript-eslint/no-unnecessary-type-constraint': 'error',
+				'@typescript-eslint/no-unnecessary-type-parameters': 'error',
 				'@typescript-eslint/no-unsafe-argument': 'error',
 				'@typescript-eslint/no-unsafe-assignment': 'error',
 				'@typescript-eslint/no-unsafe-call': 'error',
@@ -742,10 +740,10 @@ module.exports = {
 				'@typescript-eslint/no-use-before-define': ['error', { functions: false }],
 				'@typescript-eslint/no-useless-constructor': 'error',
 				'@typescript-eslint/no-useless-empty-export': 'error',
-				'@typescript-eslint/no-useless-template-literals': 'error',
 				'@typescript-eslint/no-var-requires': 'error',
 				'@typescript-eslint/non-nullable-type-assertion-style': 'off', // Conflicts with `no-non-null-assertion`, which we prefer
 				'@typescript-eslint/object-curly-spacing': ['error', 'always'],
+				'@typescript-eslint/only-throw-error': 'error',
 				'@typescript-eslint/prefer-as-const': 'error',
 				'@typescript-eslint/prefer-enum-initializers': 'off',
 				'@typescript-eslint/prefer-find': 'error',
@@ -763,7 +761,6 @@ module.exports = {
 				'@typescript-eslint/prefer-regexp-exec': 'error',
 				'@typescript-eslint/prefer-return-this-type': 'error',
 				'@typescript-eslint/prefer-string-starts-ends-with': 'error',
-				'@typescript-eslint/prefer-ts-expect-error': 'error',
 				'@typescript-eslint/promise-function-async': 'error',
 				'@typescript-eslint/quotes': ['error', 'single', { avoidEscape: true }],
 				'@typescript-eslint/require-array-sort-compare': ['error', { ignoreStringArrays: true }],
@@ -786,8 +783,9 @@ module.exports = {
 				'@typescript-eslint/triple-slash-reference': 'error',
 				'@typescript-eslint/type-annotation-spacing': 'error',
 				'@typescript-eslint/typedef': 'off', // We are using "noImplicitAny" in tsconfig.json instead
-				'@typescript-eslint/unbound-method': 'off', // @todo This doesn't work with the Utils.bind decorator. Is it possible to work around that?
+				'@typescript-eslint/unbound-method': 'error',
 				'@typescript-eslint/unified-signatures': 'error',
+				'@typescript-eslint/use-unknown-in-catch-callback-variable': 'error',
 
 				/**
 				 * eslint-plugin-functional
@@ -795,6 +793,7 @@ module.exports = {
 				 */
 				'functional/functional-parameters': 'off',
 				'functional/immutable-data': 'off', // This rule would require a lot of additional code and workarounds, which would make the result much more illegible // @todo is that resolved in v6.0.0?
+				'functional/no-class-inheritance': 'off',
 				'functional/no-classes': 'off',
 				'functional/no-conditional-statements': 'off',
 				'functional/no-expression-statements': ['off', { ignoreVoid: true }], // Creates too much false-positives // @todo is that resolved in v6.0.0?
@@ -927,6 +926,7 @@ module.exports = {
 				'promise/prefer-await-to-callbacks': 'off', // It's not always possible to use avoid callbacks.
 				'promise/prefer-await-to-then': 'off', // Depending on the use-case `.then()`/`.catch()` might be easier to understand
 				'promise/valid-params': 'off', // TypeScript ensures that
+				'promise/spec-only': 'true',
 
 				/**
 				 * eslint-plugin-unicorn
@@ -935,6 +935,8 @@ module.exports = {
 				'unicorn/better-regex': 'error',
 				'unicorn/catch-error-name': 'error',
 				'unicorn/consistent-destructuring': 'off', // Depending on the usage, it makes sense to destructure e.g. `props` only partial.
+				'unicorn/consistent-empty-array-spread': 'error',
+				'unicorn/consistent-existence-index-check': 'error',
 				'unicorn/consistent-function-scoping': 'error',
 				'unicorn/custom-error-definition': 'off',
 				'unicorn/empty-brace-spaces': 'error',
@@ -976,8 +978,11 @@ module.exports = {
 				'unicorn/no-hex-escape': 'error',
 				'unicorn/no-instanceof-array': 'error',
 				'unicorn/no-keyword-prefix': 'off',
+				'unicorn/no-length-as-slice-end': 'error',
 				'unicorn/no-lonely-if': 'off', // Sometimes the code is clearer if-conditions are not combined
+				'unicorn/no-magic-array-flat-depth': 'error',
 				'unicorn/no-negated-condition': 'off',
+				'unicorn/no-negation-in-equality-check': 'error',
 				'unicorn/no-nested-ternary': 'off', // We prefer no-nested-ternary of ESlint
 				'unicorn/no-new-array': 'off', // `new Array(length)` should be preferred over `Array.from({ length })` because it's much faster. @see https://jsben.ch/qTpYp
 				'unicorn/no-new-buffer': 'error',
@@ -995,6 +1000,7 @@ module.exports = {
 				'unicorn/no-unused-properties': 'error',
 				'unicorn/no-useless-fallback-in-spread': 'error',
 				'unicorn/no-useless-promise-resolve-reject': 'error',
+				'unicorn/no-invalid-fetch-options': 'error',
 				'unicorn/no-invalid-remove-event-listener': 'error',
 				'unicorn/no-useless-length-check': 'error',
 				'unicorn/no-useless-spread': 'error',
@@ -1020,10 +1026,12 @@ module.exports = {
 				'unicorn/prefer-dom-node-text-content': 'error',
 				'unicorn/prefer-event-target': 'off', // @todo Disabled for now, since `EventTarget` requires Node.js 16. Activate in 2025
 				'unicorn/prefer-export-from': ['error', { ignoreUsedVariables: true }],
+				'unicorn/prefer-global-this': 'error',
 				'unicorn/prefer-includes': 'error',
 				'unicorn/prefer-json-parse-buffer': 'off', // TypeScript states that string needs to be used as of the ES specification. @see https://github.com/microsoft/TypeScript/issues/11842
 				'unicorn/prefer-keyboard-event-key': 'error',
 				'unicorn/prefer-logical-operator-over-ternary': 'error',
+				'unicorn/prefer-math-min-max': 'error',
 				'unicorn/prefer-math-trunc': 'error',
 				'unicorn/prefer-modern-dom-apis': 'error',
 				'unicorn/prefer-modern-math-apis': 'error',
@@ -1040,10 +1048,12 @@ module.exports = {
 				'unicorn/prefer-set-has': 'error',
 				'unicorn/prefer-set-size': 'error',
 				'unicorn/prefer-spread': 'off', // @todo Disabled till there a solution for the warning, that `slice()` on Typed-Arrays should be replaced (which is not possible). @see https://github.com/sindresorhus/eslint-plugin-unicorn/issues/1064
+				'unicorn/prefer-string-raw': 'error',
 				'unicorn/prefer-string-replace-all': 'off', // @todo Available since 2020 in browsers. Should this be preferred?
 				'unicorn/prefer-string-slice': 'off', // @todo As of today (2020.08.24) and since the last 9 years, substr() is three times faster than slice() in Firefox.
 				'unicorn/prefer-string-starts-ends-with': 'error',
 				'unicorn/prefer-string-trim-start-end': 'error',
+				'unicorn/prefer-structured-clone': 'error',
 				'unicorn/prefer-switch': 'error',
 				'unicorn/prefer-ternary': 'off', // We prefer readability over saving a few chars
 				'unicorn/prefer-top-level-await': 'off', // @todo Available since 2021. Activate in 2024

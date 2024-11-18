@@ -85,9 +85,10 @@ module.exports = {
 				 */
 				'react/boolean-prop-naming': 'error',
 				'react/button-has-type': 'error',
+				'react/checked-requires-onchange-or-readonly': 'error',
 				'react/default-props-match-prop-types': 'error',
 				'react/destructuring-assignment': 'off', // Sometimes destructuring makes sense, sometimes it doesn't - that depends on the context.
-				'react/display-name': 'error',
+				'react/display-name': ['error', { ignoreTranspilerName: true }],
 				'react/forbid-component-props': ['error', { forbid: [
 					{
 						propName: 'className',
@@ -117,6 +118,7 @@ module.exports = {
 				'react/jsx-equals-spacing': 'error',
 				'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
 				'react/jsx-first-prop-new-line': 'error',
+				'react/forward-ref-uses-ref': 'error',
 				'react/jsx-fragments': ['error', 'element'],
 				'react/jsx-handler-names': 'off', // @todo There should be an option which checks if the function is used multiple times in a class (like this.closeTooltip()) - in that case, the 'handle' prefix should not be mandatory
 				'react/jsx-indent-props': ['error', 'tab'],
@@ -138,6 +140,7 @@ module.exports = {
 				'react/jsx-one-expression-per-line': ['off', { allow: 'single-child' }], // @todo Doesn't work with something like "Text <a href="...">Link</a> More Text", which should be valid
 				'react/jsx-pascal-case': ['error', { allowAllCaps: true }],
 				'react/jsx-props-no-multi-spaces': 'error',
+				'react/jsx-props-no-spread-multi': 'error',
 				'react/jsx-props-no-spreading': 'off',
 				'react/jsx-sort-props': ['error', {
 					ignoreCase: true,

@@ -100,7 +100,7 @@ module.exports = {
 				}],
 				'unicorn/no-process-exit': 'off', // n/no-process-exit
 				'unicorn/prefer-module': 'error',
-				'unicorn/prefer-node-protocol': 'off', // @todo Requires Node.js v16. Activate in 2025
+				'unicorn/prefer-node-protocol': 'error',
 				'unicorn/prevent-abbreviations': ['error', { ignore: ['args', 'dev', 'env', 'i', 'j', 'i18n', 'pkg', /[Rr]ef/u, 'req', 'res', 'setupDevServerMiddleware'] }],
 				'unicorn/text-encoding-identifier-case': 'off'
 			}

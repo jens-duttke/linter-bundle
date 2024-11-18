@@ -9,11 +9,6 @@ module.exports = {
 			files: ['*.ts', '*.tsx'],
 			rules: {
 				/**
-				 * ./rules
-				 */
-				'no-global-undefined-check': 'error',
-
-				/**
 				 * eslint
 				 * @see https://eslint.org/docs/rules/
 				 */

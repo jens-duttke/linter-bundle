@@ -102,6 +102,8 @@ module.exports = {
 				'jest/prefer-comparison-matcher': 'error',
 				'jest/prefer-each': 'error',
 				'jest/prefer-equality-matcher': 'error',
+				'jest/prefer-importing-jest-globals': 'error',
+				'jest/prefer-jest-mocked': 'error',
 				'jest/prefer-mock-promise-shorthand': 'error',
 				'jest/prefer-snapshot-hint': 'error',
 				'jest/prefer-spy-on': 'error',
