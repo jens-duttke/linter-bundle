@@ -23,7 +23,7 @@
 		"lint": "lint.js"
 	},
 	"engines": {
-		"node": ">=18.12.0"
+		"node": "^20.9.0 || >=21.1.0"
 	},
 	"repository": {
 		"type": "git",
@@ -37,35 +37,35 @@
 		"preversion": "npm run check-outdated && npm run lint",
 		"postversion": "git push && git push --tags && npm publish",
 		"check-outdated": "npx --yes -- check-outdated --ignore-pre-releases",
-		"_stylelint-find-rules": "stylelint-find-new-rules ./stylelint/index.cjs",
+		"_stylelint-find-rules": "stylelint-find-new-rules ./stylelint/index.mjs",
 		"_test-stylelint": "node ./test-stylelint.js"
 	},
 	"dependencies": {
-		"@typescript-eslint/eslint-plugin": "6.21.0",
-		"@typescript-eslint/parser": "6.21.0",
-		"@typescript-eslint/utils": "6.21.0",
-		"eslint": "8.56.0",
-		"eslint-import-resolver-typescript": "3.6.1",
-		"eslint-import-resolver-webpack": "0.13.8",
+		"@typescript-eslint/eslint-plugin": "8.14.0",
+		"@typescript-eslint/parser": "8.14.0",
+		"@typescript-eslint/utils": "8.14.0",
+		"eslint": "9.15.0",
+		"eslint-import-resolver-typescript": "3.6.3",
+		"eslint-import-resolver-webpack": "0.13.9",
 		"eslint-plugin-eslint-comments": "3.2.0",
-		"eslint-plugin-functional": "6.0.0",
-		"eslint-plugin-import": "2.29.1",
-		"eslint-plugin-jest": "27.6.3",
-		"eslint-plugin-jsdoc": "48.0.5",
-		"eslint-plugin-jsx-a11y": "6.8.0",
-		"eslint-plugin-n": "16.6.2",
-		"eslint-plugin-promise": "6.1.1",
-		"eslint-plugin-react": "7.33.2",
-		"eslint-plugin-react-hooks": "4.6.0",
-		"eslint-plugin-unicorn": "51.0.0",
-		"markdownlint-cli": "0.39.0",
-		"micromatch": "4.0.5",
+		"eslint-plugin-functional": "7.1.0",
+		"eslint-plugin-import": "2.31.0",
+		"eslint-plugin-jest": "28.9.0",
+		"eslint-plugin-jsdoc": "50.5.0",
+		"eslint-plugin-jsx-a11y": "6.10.2",
+		"eslint-plugin-n": "17.13.2",
+		"eslint-plugin-promise": "7.1.0",
+		"eslint-plugin-react": "7.37.2",
+		"eslint-plugin-react-hooks": "5.0.0",
+		"eslint-plugin-unicorn": "56.0.0",
+		"markdownlint-cli": "0.42.0",
+		"micromatch": "4.0.8",
 		"postcss-scss": "4.0.9",
-		"stylelint": "16.2.1",
+		"stylelint": "16.10.0",
 		"stylelint-declaration-block-no-ignored-properties": "2.8.0",
 		"stylelint-high-performance-animation": "1.10.0",
 		"stylelint-order": "6.0.4",
-		"stylelint-scss": "6.1.0",
+		"stylelint-scss": "6.9.0",
 		"stylelint-use-logical-spec": "5.0.1"
 	},
 	"peerDependencies": {
@@ -73,10 +73,10 @@
 		"typescript": ">=4.0.0"
 	},
 	"devDependencies": {
-		"@types/eslint": "8.56.2",
-		"@types/micromatch": "4.0.6",
-		"@types/node": "20.11.16",
+		"@types/eslint": "9.6.1",
+		"@types/micromatch": "4.0.7",
+		"@types/node": "20.14.2",
 		"stylelint-find-new-rules": "5.0.0",
-		"typescript": "5.3.3"
+		"typescript": "5.4.5"
 	}
 }
