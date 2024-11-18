@@ -39,6 +39,7 @@
 	},
     "include": [
 		"**/*.js",
+		"**/*.mjs",
 		"**/*.cjs",
 		".eslintrc.cjs"
 	]

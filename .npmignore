@@ -10,7 +10,7 @@ src/
 .markdownlint.json
 *.log
 npm-debug.log*
-stylelint.config.cjs
+stylelint.config.js
 test-stylelint.js
 tsconfig.json
 vscode-eslint-1.png
