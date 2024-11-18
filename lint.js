@@ -104,7 +104,7 @@ await (async () => {
 			showTimingForAllJobs = false;
 		}
 
-		if (process.exitCode === undefined || code > process.exitCode) {
+		if (process.exitCode === undefined || code > Number.parseInt(String(process.exitCode), 10)) {
 			process.exitCode = code;
 		}
 	}
