@@ -1,9 +1,8 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import valueParser from 'postcss-value-parser';
 import stylelint from 'stylelint';
-import declarationValueIndex from 'stylelint/lib/utils/declarationValueIndex.mjs';
+import { declarationValueIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
 import getDeclarationValue from 'stylelint/lib/utils/getDeclarationValue.mjs';
 import isSingleLineString from 'stylelint/lib/utils/isSingleLineString.mjs';
 import isStandardSyntaxFunction from 'stylelint/lib/utils/isStandardSyntaxFunction.mjs';

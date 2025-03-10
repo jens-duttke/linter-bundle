@@ -6,8 +6,6 @@
  * @see https://github.com/Moxio/stylelint-selector-tag-no-without-class
  */
 
-/* eslint-disable jsdoc/require-jsdoc -- Unfortunately, this is not given in the original code. */
-
 import stylelint from 'stylelint';
 // @ts-expect-error -- No declaration file.
 import isStandardSyntaxRule from 'stylelint/lib/utils/isStandardSyntaxRule.mjs';

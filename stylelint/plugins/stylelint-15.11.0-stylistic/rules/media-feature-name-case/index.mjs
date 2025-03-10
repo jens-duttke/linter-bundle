@@ -1,8 +1,7 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
-import atRuleParamIndex from 'stylelint/lib/utils/atRuleParamIndex.mjs';
+import { atRuleParamIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
 import findMediaFeatureNames from 'stylelint/lib/utils/findMediaFeatureNames.mjs';
 import isCustomMediaQuery from 'stylelint/lib/utils/isCustomMediaQuery.mjs';
 import report from 'stylelint/lib/utils/report.mjs';

@@ -1,9 +1,7 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
-import atRuleParamIndex from 'stylelint/lib/utils/atRuleParamIndex.mjs';
-import declarationValueIndex from 'stylelint/lib/utils/declarationValueIndex.mjs';
+import { atRuleParamIndex, declarationValueIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
 import getDeclarationValue from 'stylelint/lib/utils/getDeclarationValue.mjs';
 import isWhitespace from 'stylelint/lib/utils/isWhitespace.mjs';
 import report from 'stylelint/lib/utils/report.mjs';

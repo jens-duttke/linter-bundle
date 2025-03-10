@@ -1,7 +1,6 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
-import atRuleParamIndex from 'stylelint/lib/utils/atRuleParamIndex.mjs';
+import { atRuleParamIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
 import report from 'stylelint/lib/utils/report.mjs';
 import { assertString } from 'stylelint/lib/utils/validateTypes.mjs';
 

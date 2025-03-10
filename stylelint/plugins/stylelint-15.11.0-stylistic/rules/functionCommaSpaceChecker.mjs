@@ -2,7 +2,7 @@
 // @ts-nocheck
 
 import valueParser from 'postcss-value-parser';
-import declarationValueIndex from 'stylelint/lib/utils/declarationValueIndex.mjs';
+import { declarationValueIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
 import getDeclarationValue from 'stylelint/lib/utils/getDeclarationValue.mjs';
 import isStandardSyntaxFunction from 'stylelint/lib/utils/isStandardSyntaxFunction.mjs';
 import report from 'stylelint/lib/utils/report.mjs';

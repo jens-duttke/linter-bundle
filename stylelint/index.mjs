@@ -2,9 +2,6 @@
  * @file Global Stylelint settings
  */
 
-/* eslint-disable max-lines -- The rules can be easier managed if they are all in one file  */
-/* eslint-disable import/max-dependencies -- As we have to import the different plugins, we can't have a limit here */
-
 export default (async () => {
 	const { linterBundleConfig } = await import('../helper/linter-bundle-config.js');
 
@@ -12,6 +9,7 @@ export default (async () => {
 		reportNeedlessDisables: true,
 		reportInvalidScopeDisables: true,
 		reportDescriptionlessDisables: true,
+		reportUnscopedDisables: true,
 		customSyntax: 'postcss-scss',
 		plugins: [
 			'stylelint-declaration-block-no-ignored-properties',
@@ -145,6 +143,8 @@ export default (async () => {
 			'alpha-value-notation': 'number', // @todo change that to 'percentage'?
 			'annotation-no-unknown': [true, { ignoreAnnotations: 'default' }],
 			'at-rule-allowed-list': null,
+			'at-rule-descriptor-no-unknown': true,
+			'at-rule-descriptor-value-no-unknown': true,
 			'at-rule-disallowed-list': null,
 			'at-rule-empty-line-before': [
 				'always',
@@ -158,8 +158,10 @@ export default (async () => {
 					]
 				}
 			],
+			'at-rule-no-deprecated': true,
 			'at-rule-no-unknown': null, // scss/at-rule-no-unknown
 			'at-rule-no-vendor-prefix': true,
+			'at-rule-prelude-no-invalid': true,
 			'at-rule-property-required-list': [{
 				'font-face': ['font-family', 'font-style', 'font-weight', 'src']
 			}],
@@ -212,10 +214,10 @@ export default (async () => {
 					]
 				}
 			],
-			'declaration-property-max-values': null, // { '/.*/': 4 }, @todo disabled because of false-positive with `padding-inline-start: #{24px + $i * 16px};` and `transition: transform, background-color, color, border-color, box-shadow;`
 			'declaration-no-important': [true, {
 				severity: 'warning'
 			}],
+			'declaration-property-max-values': null, // { '/.*/': 4 }, @todo disabled because of false-positive with `padding-inline-start: #{24px + $i * 16px};` and `transition: transform, background-color, color, border-color, box-shadow;`
 			'declaration-property-unit-allowed-list': [{
 				'font-size': ['px', 'em'],
 				'line-height': ['px', 'em'],
@@ -225,6 +227,7 @@ export default (async () => {
 			'declaration-property-unit-disallowed-list': null,
 			'declaration-property-value-allowed-list': null,
 			'declaration-property-value-disallowed-list': null,
+			'declaration-property-value-keyword-no-deprecated': true,
 			'declaration-property-value-no-unknown': null, // Covered by scss/declaration-property-value-no-unknown
 			'font-family-name-quotes': 'always-where-recommended',
 			'font-family-no-duplicate-names': true,
@@ -324,6 +327,7 @@ export default (async () => {
 			'selector-type-no-unknown': true,
 			'shorthand-property-no-redundant-values': true,
 			'string-no-newline': true,
+			'syntax-string-no-invalid': true,
 			'time-min-milliseconds': 40, // @todo For the delay of transitions 40ms should be the minimum, for the duration 150ms should be the minimum (change it, as soon as https://github.com/stylelint/stylelint/issues/4552 got implemented)
 			'unit-allowed-list': null,
 			'unit-disallowed-list': null,
@@ -1029,6 +1033,7 @@ export default (async () => {
 			'scss/media-feature-value-dollar-variable': 'never',
 			'scss/no-dollar-variables': null,
 			'scss/no-duplicate-dollar-variables': true,
+			'scss/no-duplicate-load-rules': true,
 			'scss/no-duplicate-mixins': true,
 			'scss/no-global-function-names': true,
 			'scss/no-unused-private-members': true,
