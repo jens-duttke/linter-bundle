@@ -51,5 +51,16 @@ export default {
 				]
 			}
 		]
+	},
+	ts: {
+		overrides: {
+			general: {
+				'import/order': {
+					additionalExternalPatterns: [
+						'@stylistic/**'
+					]
+				}
+			}
+		}
 	}
 };
