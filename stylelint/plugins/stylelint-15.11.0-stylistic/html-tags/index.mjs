@@ -1,3 +1,5 @@
+/* eslint-disable -- We want to keep as much of the original code as possible */
+
 export default [
 	'a',
 	'abbr',

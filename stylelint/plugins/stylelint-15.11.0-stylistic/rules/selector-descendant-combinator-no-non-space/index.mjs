@@ -1,3 +1,4 @@
+/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -59,7 +60,8 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 						ruleName,
 						message: messages.rejected(value),
 						node: ruleNode,
-						index: combinatorNode.sourceIndex
+						index: combinatorNode.sourceIndex,
+						endIndex: combinatorNode.sourceIndex
 					});
 				}
 			});

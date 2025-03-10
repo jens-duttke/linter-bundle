@@ -1,3 +1,4 @@
+/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import { declarationValueIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
@@ -53,6 +54,7 @@ export default function declarationBangSpaceChecker (options) {
 					message,
 					node: decl,
 					index,
+					endIndex: index,
 					result: options.result,
 					ruleName: options.checkedRuleName
 				});

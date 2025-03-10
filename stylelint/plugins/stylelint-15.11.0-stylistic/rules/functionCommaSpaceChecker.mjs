@@ -108,6 +108,7 @@ export default function functionCommaSpaceChecker (options) {
 
 						report({
 							index,
+							endIndex: index,
 							message,
 							node: decl,
 							result: options.result,

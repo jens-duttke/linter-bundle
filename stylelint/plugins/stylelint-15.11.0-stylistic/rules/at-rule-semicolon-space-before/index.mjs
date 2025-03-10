@@ -1,3 +1,4 @@
+/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -54,6 +55,7 @@ const rule = (primary) => {
 						message: m,
 						node: atRule,
 						index: nodeString.length - 1,
+						endIndex: nodeString.length - 1,
 						result,
 						ruleName
 					});

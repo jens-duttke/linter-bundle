@@ -1,3 +1,4 @@
+/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import valueParser from 'postcss-value-parser';
@@ -108,6 +109,7 @@ const rule = (primary, secondaryOptions, context) => {
 								message: messages.expected(primary === 'single' ? 'double' : primary),
 								node: ruleNode,
 								index: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
+								endIndex: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
 								result,
 								ruleName
 							});
@@ -125,6 +127,7 @@ const rule = (primary, secondaryOptions, context) => {
 									message: messages.expected(primary),
 									node: ruleNode,
 									index: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
+									endIndex: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
 									result,
 									ruleName
 								});
@@ -141,6 +144,7 @@ const rule = (primary, secondaryOptions, context) => {
 							message: messages.expected(primary),
 							node: ruleNode,
 							index: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
+							endIndex: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
 							result,
 							ruleName
 						});
@@ -195,6 +199,7 @@ const rule = (primary, secondaryOptions, context) => {
 						message: messages.expected(primary),
 						node,
 						index: getIndex(node) + openIndex,
+						endIndex: getIndex(node) + openIndex,
 						result,
 						ruleName
 					});

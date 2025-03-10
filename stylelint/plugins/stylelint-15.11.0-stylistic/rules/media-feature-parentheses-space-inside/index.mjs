@@ -1,3 +1,4 @@
+/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import valueParser from 'postcss-value-parser';
@@ -83,6 +84,7 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 					message: error.message,
 					node: atRule,
 					index: error.index,
+					endIndex: error.index,
 					result,
 					ruleName
 				});

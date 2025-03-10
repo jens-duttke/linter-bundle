@@ -1,3 +1,5 @@
+/* eslint-disable -- We want to keep as much of the original code as possible */
+
 /**
  * @file Fork of `stylelint-selector-tag-no-without-class` rule.
  *

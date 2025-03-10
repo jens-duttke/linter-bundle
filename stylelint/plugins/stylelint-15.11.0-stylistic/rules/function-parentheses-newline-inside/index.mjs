@@ -1,3 +1,4 @@
+/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import valueParser from 'postcss-value-parser';
@@ -109,7 +110,8 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 				result,
 				message,
 				node: decl,
-				index: declarationValueIndex(decl) + offset
+				index: declarationValueIndex(decl) + offset,
+				endIndex: declarationValueIndex(decl) + offset
 			});
 		}
 	});

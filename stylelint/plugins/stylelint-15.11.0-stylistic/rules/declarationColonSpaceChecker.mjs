@@ -1,3 +1,4 @@
+/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import { declarationValueIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
@@ -46,6 +47,7 @@ export default function declarationColonSpaceChecker(opts) {
 						message,
 						node: decl,
 						index: decl.prop.toString().length + 1,
+						endIndex: index,
 						result: opts.result,
 						ruleName: opts.checkedRuleName,
 					});

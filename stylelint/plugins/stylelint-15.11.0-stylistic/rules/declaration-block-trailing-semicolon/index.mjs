@@ -1,3 +1,4 @@
+/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -115,6 +116,7 @@ const rule = (primary, secondaryOptions, context) => (root, result) => {
 			message,
 			node,
 			index: node.toString().trim().length - 1,
+			endIndex: node.toString().trim().length - 1,
 			result,
 			ruleName
 		});

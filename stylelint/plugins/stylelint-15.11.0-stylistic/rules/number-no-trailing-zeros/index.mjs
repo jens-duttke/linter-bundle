@@ -1,3 +1,4 @@
+/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import valueParser from 'postcss-value-parser';
@@ -91,6 +92,7 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 				node,
 				// this is the index of the _first_ trailing zero
 				index: baseIndex + index,
+				endIndex: baseIndex + index,
 				result,
 				ruleName
 			});

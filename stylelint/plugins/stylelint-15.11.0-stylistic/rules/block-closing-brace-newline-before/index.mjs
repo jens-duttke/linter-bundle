@@ -1,3 +1,4 @@
+/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -90,7 +91,8 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 				result,
 				ruleName,
 				node: statement,
-				index
+				index,
+				endIndex: index,
 			});
 		}
 	}

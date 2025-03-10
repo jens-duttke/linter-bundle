@@ -1,3 +1,4 @@
+/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import isStandardSyntaxAtRule from 'stylelint/lib/utils/isStandardSyntaxAtRule.mjs';
@@ -45,6 +46,7 @@ export default function atRuleNameSpaceChecker (options) {
 					message: m,
 					node,
 					index,
+					endIndex: index,
 					result: options.result,
 					ruleName: options.checkedRuleName
 				});

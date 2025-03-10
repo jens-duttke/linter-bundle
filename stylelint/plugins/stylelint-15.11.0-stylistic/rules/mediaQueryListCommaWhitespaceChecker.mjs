@@ -1,3 +1,4 @@
+/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import { atRuleParamIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
@@ -63,6 +64,7 @@ export default function mediaQueryListCommaWhitespaceChecker (options) {
 					message,
 					node,
 					index: commaIndex,
+					endIndex: commaIndex,
 					result: options.result,
 					ruleName: options.checkedRuleName
 				});

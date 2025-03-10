@@ -1,3 +1,4 @@
+/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import isStandardSyntaxDeclaration from 'stylelint/lib/utils/isStandardSyntaxDeclaration.mjs';
@@ -64,6 +65,7 @@ export default function valueListCommaWhitespaceChecker (options) {
 					message,
 					node,
 					index,
+					endIndex: index,
 					result: options.result,
 					ruleName: options.checkedRuleName
 				});

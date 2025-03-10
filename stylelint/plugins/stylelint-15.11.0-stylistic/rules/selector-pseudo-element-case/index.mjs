@@ -1,3 +1,4 @@
+/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -69,6 +70,7 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 					message: messages.expected(pseudoElement, expectedPseudoElement),
 					node: ruleNode,
 					index: pseudoNode.sourceIndex,
+					endIndex: pseudoNode.sourceIndex,
 					ruleName,
 					result
 				});
