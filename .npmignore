@@ -9,6 +9,7 @@ eslint.config.mjs
 .gitignore
 .markdownlint.json
 *.log
+*.tgz
 npm-debug.log*
 stylelint.config.js
 test-stylelint.js
