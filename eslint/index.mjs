@@ -120,14 +120,14 @@ export default [
 	},
 	{
 		files: [
-			'*.js',
-			'*.ts',
-			'*.mjs',
-			'*.mts',
-			'*.cjs',
-			'*.cts',
-			'*.jsx',
-			'*.tsx'
+			'**/*.js',
+			'**/*.ts',
+			'**/*.mjs',
+			'**/*.mts',
+			'**/*.cjs',
+			'**/*.cts',
+			'**/*.jsx',
+			'**/*.tsx'
 		],
 		rules: {
 			/**

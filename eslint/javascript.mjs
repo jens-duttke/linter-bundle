@@ -8,7 +8,7 @@ import nPlugin from 'eslint-plugin-n';
 
 export default [
 	{
-		files: ['*.js', '*.cjs', '*.mjs'],
+		files: ['**/*.js', '**/*.cjs', '**/*.mjs'],
 		languageOptions: {
 			globals: {
 				...globals.es2015,
@@ -113,13 +113,13 @@ export default [
 		}
 	},
 	{
-		files: ['*.mjs'],
+		files: ['**/*.mjs'],
 		rules: {
 			'unicorn/prefer-top-level-await': 'error'
 		}
 	},
 	{
-		files: ['./*.js'],
+		files: ['**/*.js'],
 		rules: {
 			'unicorn/prefer-module': 'off'
 		}

@@ -18,7 +18,7 @@ export default [
 		}
 	},
 	{
-		files: ['*.tsx'],
+		files: ['**/*.tsx'],
 		rules: {
 			/**
 			 * typescript-eslint

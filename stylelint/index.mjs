@@ -249,7 +249,7 @@ export default (async () => {
 			'keyframe-block-no-duplicate-selectors': true,
 			'keyframe-declaration-no-important': true,
 			'keyframe-selector-notation': 'percentage',
-			'keyframes-name-pattern': '^[a-z]+(-[a-z]+)*\\d*$',
+			'keyframes-name-pattern': String.raw`^[a-z]+(-[a-z]+)*\d*$`,
 			'length-zero-no-unit': true,
 			'max-nesting-depth': 6,
 			'media-feature-name-allowed-list': null,

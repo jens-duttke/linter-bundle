@@ -4,7 +4,7 @@
 
 export default [
 	{
-		files: ['*.stories.[jt]s?(x)'],
+		files: ['**/*.stories.[jt]s?(x)'],
 		rules: {
 			/**
 			 * eslint-plugin-import

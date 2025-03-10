@@ -8,7 +8,7 @@ import jsdocPlugin from 'eslint-plugin-jsdoc';
 
 export default [
 	{
-		files: ['*.js', '*.cjs', '*.mjs'],
+		files: ['**/*.js', '**/*.cjs', '**/*.mjs'],
 		languageOptions: {
 			globals: {
 				...globals.es2015,

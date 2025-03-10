@@ -7,7 +7,7 @@ import javascriptExtends from './javascript.mjs';
 export default [
 	...javascriptExtends,
 	{
-		files: ['*.js', '*.cjs', '*.mjs'],
+		files: ['**/*.js', '**/*.cjs', '**/*.mjs'],
 		rules: {
 			/**
 			 * typescript-eslint

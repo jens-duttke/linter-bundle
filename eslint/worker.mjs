@@ -10,7 +10,7 @@
 
 export default [
 	{
-		files: ['*.worker.ts'],
+		files: ['**/*.worker.ts'],
 		rules: {
 			/**
 			 * eslint-plugin-import

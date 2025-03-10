@@ -5,7 +5,7 @@
 
 export default [
 	{
-		files: ['*.ts', '*.tsx'],
+		files: ['**/*.ts', '**/*.tsx'],
 		rules: {
 			/**
 			 * eslint
@@ -44,7 +44,7 @@ export default [
 		}
 	},
 	{
-		files: ['*.tsx'],
+		files: ['**/*.tsx'],
 		settings: {
 			linkComponents: [
 				{ name: 'Link', linkAttribute: 'to' }

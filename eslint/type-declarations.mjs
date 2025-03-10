@@ -4,7 +4,7 @@
 
 export default [
 	{
-		files: ['*.d.ts'],
+		files: ['**/*.d.ts'],
 		rules: {
 			/**
 			 * eslint
@@ -36,7 +36,7 @@ export default [
 		}
 	},
 	{
-		files: ['*.scss.d.ts'],
+		files: ['**/*.scss.d.ts'],
 		rules: {
 			/**
 			 * eslint
