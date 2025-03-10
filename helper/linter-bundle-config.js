@@ -33,9 +33,11 @@ async function loadConfig (fileName) {
 			return JSON.parse(content);
 		}
 
-		const fileUri = path.join('file://', filePath);
+		const fileUrl = new URL('file:');
 
-		const config = await import(fileUri);
+		fileUrl.pathname = filePath;
+
+		const config = await import(fileUrl.toString());
 
 		if ('default' in config) {
 			return config.default;
@@ -44,14 +46,7 @@ async function loadConfig (fileName) {
 		return config;
 	}
 	catch (error) {
-		process.stderr.write(`Error reading ${filePath}\n`);
-
-		if (error instanceof Error) {
-			process.stderr.write(`${error.stack}\n`);
-		}
-		else {
-			process.stderr.write(`${error}\n`);
-		}
+		process.stderr.write(`Error reading ${filePath}\n${error}\n`);
 	}
 
 	return;
