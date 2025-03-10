@@ -77,7 +77,7 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 				}
 
 				// The regexp above consists of 2 capturing groups (or capturing parentheses).
-				// We need the index of the second group. This makes sanse when we have "-.5" as an input
+				// We need the index of the second group. This makes sense when we have "-.5" as an input
 				// for regex. And we need the index of ".5".
 				const capturingGroupIndex = match[0].length - match[1].length;
 
@@ -96,7 +96,7 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 				}
 
 				// The regexp above consists of 3 capturing groups (or capturing parentheses).
-				// We need the index of the second group. This makes sanse when we have "-00.5"
+				// We need the index of the second group. This makes sense when we have "-00.5"
 				// as an input for regex. And we need the index of "00".
 				const capturingGroupIndex = match[0].length - (match[1].length + match[2].length);
 

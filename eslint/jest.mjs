@@ -2,24 +2,12 @@
  * @file Settings for Jest based unit tests.
  */
 
-import globals from "globals";
+import { createRequire } from 'node:module';
 
 import jestPlugin from 'eslint-plugin-jest';
+import globals from 'globals';
 
-const jestVersion = (() => {
-	try {
-		const version = require(require.resolve('jest', { paths: [process.cwd()] })).getVersion().split('.')[0];
-
-		process.stdout.write(`Detected Jest version: ${version}\n\n`);
-
-		return version;
-	}
-	catch {
-		process.stderr.write('No Jest version detected\n\n');
-
-		return 'detect';
-	}
-})();
+const jestVersion = await getJestVersion();
 
 export default [
 	{
@@ -35,7 +23,7 @@ export default [
 			}
 		},
 		plugins: {
-			'jest': jestPlugin
+			jest: jestPlugin
 		},
 		rules: {
 			/**
@@ -141,7 +129,7 @@ export default [
 			}
 		},
 		plugins: {
-			'jest': jestPlugin
+			jest: jestPlugin
 		},
 		rules: {
 			/**
@@ -153,3 +141,32 @@ export default [
 		}
 	}
 ];
+
+/**
+ * Detects and retrieves the major version number of Jest installed in the project.
+ *
+ * This function attempts to dynamically import Jest using Node.js's module resolution
+ * system. It extracts just the major version number (e.g., "29" from "29.3.1") and
+ * logs the detected version to stdout. If Jest cannot be found or an error occurs,
+ * it returns the fallback value "detect".
+ *
+ * @returns {Promise<string>} A promise that resolves to the major version number of Jest
+ */
+async function getJestVersion () {
+	try {
+		const require = createRequire(import.meta.url);
+
+		const jestModule = await import(require.resolve('jest', { paths: [process.cwd()] }));
+
+		const version = jestModule.getVersion().split('.')[0];
+
+		process.stdout.write(`Detected Jest version: ${version}\n\n`);
+
+		return version;
+	}
+	catch {
+		process.stderr.write('No Jest version detected\n\n');
+
+		return 'detect';
+	}
+}

@@ -2,8 +2,8 @@
  * @file Check if the project is using npm or yarn by checking the existence of a `package-lock.json` or a `yarn.lock`.
  */
 
-import * as fs from 'node:fs/promises';
-import * as path from 'node:path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 /**
  * Returns if the project is using npm or yarn.

@@ -13,6 +13,7 @@ export default [
 	{
 		files: [
 			'eslint.mjs',
+			'eslint/*.mjs',
 			'stylelint.mjs',
 			'stylelint/plugins/*.js'
 		],

@@ -2,9 +2,9 @@
  * @file Settings for React code in TypeScript (TSX) files.
  */
 
-import reactHooksPlugin from 'eslint-plugin-react-hooks';
-import reactPlugin from 'eslint-plugin-react';
 import stylisticJSXPlugin from '@stylistic/eslint-plugin-jsx';
+import reactPlugin from 'eslint-plugin-react';
+import * as reactHooksPlugin from 'eslint-plugin-react-hooks';
 
 import * as ensureType from '../helper/ensure-type.mjs';
 import { linterBundleConfig } from '../helper/linter-bundle-config.js';

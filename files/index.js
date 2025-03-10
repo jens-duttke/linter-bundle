@@ -2,8 +2,8 @@
  * @file Ensures that only files which match given glob patterns are part of the project.
  */
 
-import * as fs from 'node:fs';
-import * as path from 'node:path';
+import fs from 'node:fs';
+import path from 'node:path';
 
 import micromatch from 'micromatch';
 
@@ -43,7 +43,7 @@ if (Array.isArray(restrictions)) {
 			}
 		}
 
-		return;
+		return undefined;
 	};
 
 	for (const { basePath, allowed, disallowed } of restrictions) {

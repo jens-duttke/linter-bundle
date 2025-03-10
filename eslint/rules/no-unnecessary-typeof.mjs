@@ -4,7 +4,7 @@
 
 /** @typedef {ts.Type & { intrinsicName?: string; types?: ts.Type[]; objectFlags?: ts.ObjectFlags; }} Type */
 
-import ts from 'typescript';
+import * as ts from 'typescript';
 
 import { ESLintUtils } from '@typescript-eslint/utils';
 
@@ -18,6 +18,7 @@ export default {
 			text: 'Unnecessary `typeof`, because the only possible type of {{ variableName }} is `{{ typeName }}`.'
 		}
 	},
+
 	/**
 	 * Create a new rule.
 	 *
@@ -131,6 +132,7 @@ function getTypeString (checker, type) {
  * @returns {boolean} Returns `true` if the type is either `any` or `unknown`, or an object which is based on `unknown`
  */
 function isAnyOrUnknown (type) {
+	// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- @todo I've seen `symbol` to be undefined. Is that an issue in the TypeScript type definition?
 	return (type.flags === ts.TypeFlags.Any || type.flags === ts.TypeFlags.Unknown || (type.flags === ts.TypeFlags.Object && type.symbol === undefined));
 }
 

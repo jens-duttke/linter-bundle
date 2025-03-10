@@ -2,9 +2,9 @@
  * @file Returns the path to the Stylelint CLI script.
  */
 
-import * as fs from 'node:fs/promises';
+import fs from 'node:fs/promises';
 import { createRequire } from 'node:module';
-import * as path from 'node:path';
+import path from 'node:path';
 
 const require = createRequire(import.meta.url);
 
@@ -17,11 +17,12 @@ const require = createRequire(import.meta.url);
 export async function getStylelintPath () {
 	const stylelintLibPath = path.dirname(require.resolve('stylelint'));
 
-	for await (const stylelintBinPath of [
+	for (const stylelintBinPath of [
 		path.join(stylelintLibPath, '../bin/stylelint.mjs'),
 		path.join(stylelintLibPath, '../bin/stylelint.js')
 	]) {
 		try {
+			// eslint-disable-next-line no-await-in-loop -- As we return from the method on the first file which exist, we cannot run the promises in parallel.
 			const stat = await fs.stat(stylelintBinPath);
 
 			if (stat.isFile()) {

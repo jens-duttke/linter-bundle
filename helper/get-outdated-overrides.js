@@ -5,8 +5,8 @@
  * @see https://classic.yarnpkg.com/en/docs/selective-version-resolutions/
  */
 
-import * as fs from 'node:fs/promises';
-import * as path from 'node:path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));

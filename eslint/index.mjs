@@ -4,24 +4,23 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import globals from "globals";
 
-import typescriptEslint from 'typescript-eslint';
+import stylisticPlugin from '@stylistic/eslint-plugin';
+// @ts-expect-error -- There are no type definitions for this plugin
+import eslintCommentsPlugin from 'eslint-plugin-eslint-comments';
+import functionalPlugin from 'eslint-plugin-functional';
+// @ts-expect-error -- There are no type definitions for this plugin
+import importPlugin from 'eslint-plugin-import';
+// @ts-expect-error -- There are no type definitions for this plugin
+import jsxA11YPlugin from 'eslint-plugin-jsx-a11y';
+// @ts-expect-error -- There are no type definitions for this plugin
+import promisePlugin from 'eslint-plugin-promise';
+import unicornPlugin from 'eslint-plugin-unicorn';
+import globals from 'globals';
+import * as typescriptEslint from 'typescript-eslint';
 
 import * as ensureType from '../helper/ensure-type.mjs';
 import { linterBundleConfig } from '../helper/linter-bundle-config.js';
-
-// @ts-expect-error
-import eslintCommentsPlugin from 'eslint-plugin-eslint-comments';
-import functionalPlugin from 'eslint-plugin-functional';
-// @ts-expect-error
-import importPlugin from  'eslint-plugin-import';
-// @ts-expect-error
-import jsxA11YPlugin from 'eslint-plugin-jsx-a11y';
-// @ts-expect-error
-import promisePlugin from 'eslint-plugin-promise';
-import unicornPlugin from 'eslint-plugin-unicorn';
-import stylisticPlugin from '@stylistic/eslint-plugin';
 
 import noUnnecessaryTypeofRule from './rules/no-unnecessary-typeof.mjs';
 import restrictedFilenamesRule from './rules/restricted-filenames.mjs';
@@ -62,6 +61,7 @@ export default [
 					jsx: true
 				},
 				project: [
+					// eslint-disable-next-line n/no-process-env -- We need to read the environment variable here, because it may contain the configuration.
 					(process.env['TSCONFIG'] ?? './tsconfig.json'),
 					'./jsconfig.json'
 				].filter((fileName) => {
@@ -110,7 +110,7 @@ export default [
 						};
 					}
 
-					return;
+					return undefined;
 				})()
 			},
 			'react': {
@@ -422,9 +422,8 @@ export default [
 			'yoda': 'error',
 
 			/**
-			 * @stylistic
+			 * stylistic
 			 * @see https://eslint.style/rules
-			 *
 			 */
 			'@stylistic/brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
 			'@stylistic/comma-dangle': ['error', { generics: 'ignore' }],
@@ -609,7 +608,7 @@ export default [
 					selector: ['variable'],
 					filter: '^_',
 					modifiers: ['unused'],
-					format: null,
+					format: null
 				},
 
 				// Function
@@ -640,7 +639,7 @@ export default [
 				{
 					// Allow properties which only contain digits
 					selector: 'objectLiteralProperty',
-					filter: '^\\d+$',
+					filter: String.raw`^\d+$`,
 					format: null
 				},
 				{
@@ -771,13 +770,13 @@ export default [
 			'@typescript-eslint/no-unused-expressions': 'error',
 			'@typescript-eslint/no-unsafe-type-assertion': 'error',
 			'@typescript-eslint/no-unused-vars': ['error', {
-				'args': 'all',
-				'argsIgnorePattern': '^_',
-				'caughtErrors': 'all',
-				'caughtErrorsIgnorePattern': '^_',
-				'destructuredArrayIgnorePattern': '^_',
-				'varsIgnorePattern': '^_',
-				'ignoreRestSiblings': true
+				args: 'all',
+				argsIgnorePattern: '^_',
+				caughtErrors: 'all',
+				caughtErrorsIgnorePattern: '^_',
+				destructuredArrayIgnorePattern: '^_',
+				varsIgnorePattern: '^_',
+				ignoreRestSiblings: true
 			}],
 			'@typescript-eslint/no-use-before-define': ['error', { functions: false }],
 			'@typescript-eslint/no-useless-constructor': 'error',
@@ -913,6 +912,7 @@ export default [
 				'pathGroupsExcludedImportTypes': [],
 				'pathGroups': [
 					...ensureType.array(linterBundleConfig.ts?.overrides?.general?.['import/order']?.additionalExternalPatterns).map(
+
 						/**
 						 * Creates an "external" group using the additional external pattern configuration.
 						 * @param {string} pattern - A given pattern
@@ -1108,7 +1108,7 @@ export default [
 			'unicorn/string-content': ['error', {
 				patterns: {
 					'\\.\\.\\.': '…',
-					'->': '→'
+					'->': '→' // eslint-disable-line unicorn/string-content -- This rule complains about its own settings
 				}
 			}],
 			'unicorn/switch-case-braces': ['error', 'avoid'],

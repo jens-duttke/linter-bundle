@@ -39,9 +39,9 @@
 	},
     "include": [
 		".linter-bundle.js",
+		"eslint.config.mjs",
 		"**/*.js",
 		"**/*.mjs",
-		"**/*.cjs",
-		"eslint.config.mjs"
+		"**/*.cjs"
 	]
 }

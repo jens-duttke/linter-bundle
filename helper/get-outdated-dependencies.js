@@ -5,8 +5,8 @@
  * @see https://classic.yarnpkg.com/en/docs/selective-version-resolutions/
  */
 
-import * as fs from 'node:fs/promises';
-import * as path from 'node:path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -30,7 +30,7 @@ export async function getOutdatedDependencies () {
 		}
 		catch {
 			// If the file does not exist, we ignore it, because in this case it's most likely a linter-bundle-only dependency.
-			return;
+			return undefined;
 		}
 
 		if (dependencyPackageJson.version !== expectedVersion) {
@@ -41,7 +41,7 @@ export async function getOutdatedDependencies () {
 			};
 		}
 
-		return;
+		return undefined;
 	}));
 
 	return /** @type {Dependency[]} */(outdatedDependencies.filter((dependency) => dependency !== undefined));

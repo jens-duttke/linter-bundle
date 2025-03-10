@@ -2,8 +2,8 @@
  * @file Returns the `.linter-bundle.js` configuration result.
  */
 
-import * as fs from 'node:fs/promises';
-import * as path from 'node:path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 export const linterBundleConfig = (
 	await loadConfig('.linter-bundle.json') ??
@@ -23,7 +23,7 @@ async function loadConfig (fileName) {
 	const filePath = path.join(process.cwd(), fileName);
 
 	if (!await fs.access(filePath, fs.constants.F_OK).then(() => true).catch(() => false)) {
-		return;
+		return undefined;
 	}
 
 	try {
@@ -49,5 +49,5 @@ async function loadConfig (fileName) {
 		process.stderr.write(`Error reading ${filePath}\n${error}\n`);
 	}
 
-	return;
+	return undefined;
 }

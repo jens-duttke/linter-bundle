@@ -6,7 +6,11 @@ import path from 'node:path';
 
 import micromatch from 'micromatch';
 
-const linterBundleConfig = (!process.env['LINTER_BUNDLE'] ? (await import('../../helper/linter-bundle-config.js')).linterBundleConfig : undefined);
+// eslint-disable-next-line n/no-process-env -- If the ESLint sub-process is running from within the linter-bundle, we make use of its configuration.
+const isInLinterBundle = !process.env['LINTER_BUNDLE'];
+
+// eslint-disable-next-line n/no-unpublished-import -- @todo Is that a false-positive?
+const { linterBundleConfig } = (isInLinterBundle ? await import('../../helper/linter-bundle-config.js') : {});
 
 /**
  * @type {import('eslint').Rule.RuleModule}

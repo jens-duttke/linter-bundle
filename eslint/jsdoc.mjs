@@ -2,9 +2,8 @@
  * @file Settings for JSDoc comments in JavaScript (Node.js) files.
  */
 
-import globals from "globals";
-
 import jsdocPlugin from 'eslint-plugin-jsdoc';
+import globals from 'globals';
 
 export default [
 	{
@@ -12,11 +11,11 @@ export default [
 		languageOptions: {
 			globals: {
 				...globals.es2015,
-				...globals.node,
+				...globals.node
 			}
 		},
 		plugins: {
-			'jsdoc': jsdocPlugin
+			jsdoc: jsdocPlugin
 		},
 		settings: {
 			jsdoc: {
@@ -45,7 +44,7 @@ export default [
 			'jsdoc/implements-on-classes': 'error',
 			'jsdoc/imports-as-dependencies': 'off', // @todo Doesn't cover `peerDependencies` yet. As of v46.2.5 it should cover Node.js modules (like `child_process`), which must be checked, before activation.
 			'jsdoc/informative-docs': 'error',
-			'jsdoc/lines-before-block': ['error', { ignoreSameLine : false }],
+			'jsdoc/lines-before-block': ['error', { ignoreSameLine: false }],
 			'jsdoc/match-description': 'error',
 			'jsdoc/match-name': 'off',
 			'jsdoc/multiline-blocks': ['error', { noSingleLineBlocks: true, singleLineTags: ['lends', 'type', 'typedef'], noFinalLineText: false }],

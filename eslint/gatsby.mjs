@@ -38,7 +38,7 @@ export default [
 			'unicorn/string-content': ['error', {
 				patterns: {
 					// '\\.\\.\\.': '…', // @todo Does not support graphql-template strings. Report that as bug!
-					'->': '→'
+					'->': '→' // eslint-disable-line unicorn/string-content -- This rule complains about its own settings
 				}
 			}]
 		}

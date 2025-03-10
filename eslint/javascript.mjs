@@ -2,9 +2,8 @@
  * @file Settings for JavaScript (Node.js) files.
  */
 
-import globals from "globals";
-
 import nPlugin from 'eslint-plugin-n';
+import globals from 'globals';
 
 export default [
 	{
@@ -12,11 +11,11 @@ export default [
 		languageOptions: {
 			globals: {
 				...globals.es2015,
-				...globals.node,
+				...globals.node
 			}
 		},
 		plugins: {
-			'n': nPlugin
+			n: nPlugin
 		},
 		rules: {
 			/**

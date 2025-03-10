@@ -262,26 +262,26 @@ const rule = (primary, secondaryOptions = {}, context) => (root, result) => {
 		// Sass maps are ignored to allow for arbitrary indentation
 		let parentheticalDepth = 0;
 
-		const ignoreInsideParans = optionsMatches(secondaryOptions, 'ignore', 'inside-parens');
+		const ignoreInsideParams = optionsMatches(secondaryOptions, 'ignore', 'inside-parens');
 
 		styleSearch(
 			{
 				source,
 				target: '\n',
 				// @ts-expect-error -- The `outsideParens` option is unsupported. Why?
-				outsideParens: ignoreInsideParans
+				outsideParens: ignoreInsideParams
 			},
 			(match, matchCount) => {
 				const precedesClosingParenthesis = (/^[\t ]*\)/).test(source.slice(match.startIndex + 1));
 
-				if (ignoreInsideParans && (precedesClosingParenthesis || match.insideParens)) {
+				if (ignoreInsideParams && (precedesClosingParenthesis || match.insideParens)) {
 					return;
 				}
 
 				let expectedIndentLevel = newlineIndentLevel;
 
-				// Modififications for parenthetical content
-				if (!ignoreInsideParans && match.insideParens) {
+				// Modifications for parenthetical content
+				if (!ignoreInsideParams && match.insideParens) {
 					// If the first match in is within parentheses, reduce the parenthesis penalty
 					if (matchCount === 1) { parentheticalDepth -= 1; }
 
