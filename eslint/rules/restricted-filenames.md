@@ -7,7 +7,7 @@ In projects in which several developers or even teams work together, it is impor
 Example configuration for this rule:
 
 ```js
-'restricted-filenames': ['error', {
+'linter-bundle/restricted-filenames': ['error', {
   basePath: './src',
   allowed: [
     'components/**/index.tsx',
@@ -64,7 +64,7 @@ If both are set, `disallowed` wins over `allowed` and all unspecified files are 
 
 Instead of defining the same complex patterns over and over again, e.g. for casing, you can write them into a variable and use them within the pattern, for example by using template strings.
 
-Example of `.eslintrc.cjs`:
+Example of `eslint.config.mjs`:
 
 ```js
 const snippets = {
@@ -77,9 +77,9 @@ const snippets = {
   pascalCase: '[A-Z]*([a-zA-Z0-9])'
 };
 
-module.exports = {
+export default {
   rules: {
-    'restricted-filenames': ['error', {
+    'linter-bundle/restricted-filenames': ['error', {
       basePath: './src',
       allowed: [
         `components/${snippets.pascalCase}/index.tsx`,

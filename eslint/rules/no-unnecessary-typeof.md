@@ -1,4 +1,4 @@
-# Disallow unnecessary `typeof` checks (`no-unnecessary-typeof`)
+# Disallow unnecessary `typeof` checks (`linter-bundle/no-unnecessary-typeof`)
 
 ## Rule Details
 

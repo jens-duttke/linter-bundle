@@ -5,8 +5,8 @@
  */
 
 import { createRequire } from 'node:module';
-import * as path from 'node:path';
-import * as tty from 'node:tty';
+import path from 'node:path';
+import tty from 'node:tty';
 import { fileURLToPath } from 'node:url';
 
 import micromatch from 'micromatch';
@@ -22,12 +22,14 @@ import { runProcess } from './helper/run-process.js';
 const require = createRequire(import.meta.url);
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
-/** @typedef {'files' | 'tsc' | 'ts' | 'sass' | 'md' | 'audit'} TaskNames */
-/** @typedef {Partial<Record<string, (string | boolean)[]>>} TaskConfig */
-/** @typedef {import('./helper/run-process.js').ProcessResult} ProcessResult */
-/** @typedef {{ taskName: TaskNames; taskConfig: TaskConfig; }} TaskNameAndConfig */
-/** @typedef {TaskNameAndConfig & { command: string; options?: import('child_process').ExecOptions; }} TaskSetup */
-/** @typedef {{ jobTitle: string; taskSetup: TaskSetup; job: Promise<ProcessResult>; }} Job */
+/**
+ * @typedef {'files' | 'tsc' | 'ts' | 'sass' | 'md' | 'audit'} TaskNames
+ * @typedef {Partial<Record<string, (string | boolean)[]>>} TaskConfig
+ * @typedef {import('./helper/run-process.js').ProcessResult} ProcessResult
+ * @typedef {{ taskName: TaskNames; taskConfig: TaskConfig; }} TaskNameAndConfig
+ * @typedef {TaskNameAndConfig & { command: string; options?: import('child_process').ExecOptions; }} TaskSetup
+ * @typedef {{ jobTitle: string; taskSetup: TaskSetup; job: Promise<ProcessResult>; }} Job
+ */
 
 const isTerminal = tty.isatty(1);
 
@@ -199,9 +201,7 @@ async function runESLintTask (taskName, taskConfig) {
 			`"${path.join(path.dirname(require.resolve('eslint')), '../bin/eslint.js')}"`,
 			includes,
 			newTaskConfig.exclude?.map((exclude) => `--ignore-pattern ${exclude}`).join(' '),
-			`--rulesdir "${path.resolve(dirname, './eslint/rules/')}"`,
-			'--format unix',
-			`--resolve-plugins-relative-to "${dirname}"`
+			'--format unix'
 		].filter((argument) => Boolean(argument)).join(' '),
 		taskConfig: newTaskConfig,
 		options: {
@@ -253,7 +253,12 @@ async function runStylelintTask (taskName, taskConfig) {
 			(newTaskConfig.verbose?.[0] ? '--verbose' : undefined),
 			'--formatter unix'
 
-		].filter((argument) => Boolean(argument)).join(' ')
+		].filter((argument) => Boolean(argument)).join(' '),
+		options: {
+			env: {
+				TIMING: '10' // Show timing information about the 10 slowest rules
+			}
+		}
 	});
 }
 
@@ -312,7 +317,7 @@ async function runAuditTask (taskName, taskConfig) {
 					'npx',
 					'--yes',
 					'--',
-					'better-npm-audit@3.7.3',
+					'better-npm-audit@3.11.0',
 					'audit',
 					`-l ${newTaskConfig.minSeverity?.[0] ?? 'moderate'}`,
 					'-p',
@@ -596,5 +601,5 @@ function getConfigValue (taskName, taskConfig, optionName) {
 		}
 	}
 
-	return;
+	return undefined;
 }

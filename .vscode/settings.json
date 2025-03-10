@@ -13,9 +13,7 @@
 	"errorLens.gutterIconSet": "circle",
 	"errorLens.followCursor": "activeLine",
 	"eslint.options": {
-		"overrideConfigFile": "./.eslintrc.cjs",
-		"rulePaths": ["./eslint/rules"],
-		"reportUnusedDisableDirectives": "error",
+		"overrideConfigFile": "./eslint.config.mjs"
 	},
 	"files.associations": {
 		"*.json": "jsonc",

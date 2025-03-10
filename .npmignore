@@ -4,7 +4,7 @@ src/
 
 .editorconfig
 .eslintcache
-.eslintrc.cjs
+eslint.config.mjs
 .gitattributes
 .gitignore
 .markdownlint.json

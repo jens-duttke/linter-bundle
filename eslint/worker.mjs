@@ -8,18 +8,16 @@
  * export default undefined as unknown as WebpackWorker;
  */
 
-module.exports = {
-	overrides: [
-		{
-			files: ['*.worker.ts'],
-			rules: {
-				/**
-				 * eslint-plugin-import
-				 *
-				 * @see https://github.com/import-js/eslint-plugin-import
-				 */
-				'import/no-default-export': 'off'
-			}
+export default [
+	{
+		files: ['*.worker.ts'],
+		rules: {
+			/**
+			 * eslint-plugin-import
+			 *
+			 * @see https://github.com/import-js/eslint-plugin-import
+			 */
+			'import/no-default-export': 'off'
 		}
-	]
-};
+	}
+];

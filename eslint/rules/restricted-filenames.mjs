@@ -2,19 +2,16 @@
  * @file ESLint rule which ensures that only files which match given glob patterns are part of your project.
  */
 
-/* eslint-disable unicorn/prefer-module -- For ESLint, we still need to rely on CommonJS modules */
+import path from 'node:path';
 
-const path = require('node:path');
+import micromatch from 'micromatch';
 
-const micromatch = require('micromatch');
-
-// eslint-disable-next-line n/no-process-env -- Only merge the linter-bundle config, if the linting is not started by the linter-bundle CLI tool (e.g. if ESlint is running separately in VSCode), to get warnings shown there too
-const linterBundleConfig = (!process.env['LINTER_BUNDLE'] ? require('../../helper/linter-bundle-config.cjs').linterBundleConfig : undefined);
+const linterBundleConfig = (!process.env['LINTER_BUNDLE'] ? (await import('../../helper/linter-bundle-config.js')).linterBundleConfig : undefined);
 
 /**
  * @type {import('eslint').Rule.RuleModule}
  */
-module.exports = {
+export default {
 	meta: {
 		docs: {
 			description: 'Restrict file and path names with given glob patterns.',

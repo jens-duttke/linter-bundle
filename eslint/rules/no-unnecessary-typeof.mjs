@@ -2,18 +2,13 @@
  * @file ESLint rule which ensures that a `typeof` operant has more than one type in TypeScript, to prevent unnecessary checks of types at runtime.
  */
 
-/* eslint-disable unicorn/prefer-module -- For ESLint, we still need to rely on CommonJS modules */
-
 /** @typedef {ts.Type & { intrinsicName?: string; types?: ts.Type[]; objectFlags?: ts.ObjectFlags; }} Type */
 
-const ts = require('typescript');
+import ts from 'typescript';
 
-const { ESLintUtils } = require('@typescript-eslint/utils');
+import { ESLintUtils } from '@typescript-eslint/utils';
 
-/**
- * @type {import('eslint').Rule.RuleModule}
- */
-module.exports = {
+export default {
 	meta: {
 		docs: {
 			description: 'If a `typeof` operant has only one type in TypeScript, it\'s unnecessary to check it\'s type at runtime.',
@@ -26,7 +21,7 @@ module.exports = {
 	/**
 	 * Create a new rule.
 	 *
-	 * @param {Readonly<import('@typescript-eslint/utils/ts-eslint').RuleContext<'text', []>>} context - RuleContext of @typescript-eslint instead of ESlint
+	 * @param {import('@typescript-eslint/utils/ts-eslint').RuleContext<any, any>} context - RuleContext of @typescript-eslint instead of ESlint
 	 * @returns {import('@typescript-eslint/utils/ts-eslint').RuleListener} RuleListener of @typescript-eslint, instead of ESlint
 	 */
 	create (context) {
@@ -136,7 +131,6 @@ function getTypeString (checker, type) {
  * @returns {boolean} Returns `true` if the type is either `any` or `unknown`, or an object which is based on `unknown`
  */
 function isAnyOrUnknown (type) {
-	// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- `symbol` on Object is `undefined` for `Omit<unknown, 'undefined'>`
 	return (type.flags === ts.TypeFlags.Any || type.flags === ts.TypeFlags.Unknown || (type.flags === ts.TypeFlags.Object && type.symbol === undefined));
 }
 

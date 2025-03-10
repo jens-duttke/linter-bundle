@@ -38,9 +38,10 @@
 		"useUnknownInCatchVariables": true
 	},
     "include": [
+		".linter-bundle.js",
 		"**/*.js",
 		"**/*.mjs",
 		"**/*.cjs",
-		".eslintrc.cjs"
+		"eslint.config.mjs"
 	]
 }

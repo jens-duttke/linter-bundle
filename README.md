@@ -22,6 +22,9 @@ This setup is using the following additional plugins:
 
 ### ESLint
 
+The `linter-bundle` is using the Flat Configuration Format which was introduced in ESLint v8.
+
+- [@stylistic/eslint-plugin](https://eslint.style/)
 - [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin)
 - [eslint-plugin-eslint-comments](https://www.npmjs.com/package/eslint-plugin-eslint-comments)
 - [eslint-plugin-functional](https://www.npmjs.com/package/eslint-plugin-functional)
@@ -37,9 +40,8 @@ This setup is using the following additional plugins:
 
 Beside that, the following additional rules are part of this bundle:
 
-- [no-global-undefined-check](./eslint/rules/no-global-undefined-check.md)
-- [no-unnecessary-typeof](./eslint/rules/no-unnecessary-typeof.md)
-- [restricted-filenames](./eslint/rules/restricted-filenames.md)
+- [linter-bundle/no-unnecessary-typeof](./eslint/rules/no-unnecessary-typeof.md)
+- [linter-bundle/restricted-filenames](./eslint/rules/restricted-filenames.md)
 
 ### stylelint
 
@@ -64,7 +66,7 @@ If these plugins are maintained again, the plugins will also be used again.
 
 ## Install
 
-Ensure you are using atleast Node.js version 18.2.0.
+Ensure you are using atleast Node.js version 20.9.0/21.1.0.
 
 ```sh
 npm install linter-bundle --save-dev
@@ -83,45 +85,43 @@ npm install linter-bundle --save-dev
 }
 ```
 
-#### .eslintrc.js
+#### eslint.config.mjs
 
 ```js
-module.exports = {
-  extends: [
-    require.resolve('linter-bundle/eslint.cjs'),
-    // require.resolve('linter-bundle/eslint/overrides-gatsby.cjs'),
-    // require.resolve('linter-bundle/eslint/overrides-javascript.cjs'),
-    require.resolve('linter-bundle/eslint/overrides-javascript-lazy.cjs'),
-    // require.resolve('linter-bundle/eslint/overrides-jest.cjs'),
-    require.resolve('linter-bundle/eslint/overrides-jsdoc.cjs'),
-    // require.resolve('linter-bundle/eslint/overrides-react.cjs'),
-    // require.resolve('linter-bundle/eslint/overrides-storybook.cjs'),
-    // require.resolve('linter-bundle/eslint/overrides-type-declarations.cjs'),
-    // require.resolve('linter-bundle/eslint/overrides-worker.cjs')
-  ]
-};
+export default [
+  (await import('linter-bundle/eslint.mjs')).default,
+  // (await import('linter-bundle/eslint/gatsby.mjs')).default,
+  // (await import('linter-bundle/eslint/javascript.mjs')).default,
+  (await import('linter-bundle/eslint/javascript-lazy.mjs')).default,
+  // (await import('linter-bundle/eslint/jest.mjs')).default,
+  (await import('linter-bundle/eslint/jsdoc.mjs')).default,
+  // (await import('linter-bundle/eslint/react.mjs')).default,
+  // (await import('linter-bundle/eslint/storybook.mjs')).default,
+  // (await import('linter-bundle/eslint/type-declarations.mjs')).default,
+  // (await import('linter-bundle/eslint/worker.mjs')).default
+]
 ```
 
 ##### Available `extends`
 
 Source | Description | Rules setup
 -|-|-
-`linter-bundle/eslint.cjs` | General rule setup. This is also the base for the following **overrides**. | [View](./eslint/index.cjs)
-`linter-bundle/eslint/overrides-gatsby.cjs` | Settings for Gatsby-based projects. | [View](./eslint/overrides-gatsby.js)
-`linter-bundle/eslint/overrides-javascript.cjs` |  Strict settings for JavaScript files, which enforces correct types everywhere. | [View](./eslint/overrides-javascript.cjs)
-`linter-bundle/eslint/overrides-javascript-lazy.cjs` | Can be used instead of `overrides-javascript`. It's less strict and allows the `any` type. | [View](./eslint/overrides-javascript-lazy.cjs)
-`linter-bundle/eslint/overrides-jest.cjs` | Settings for projects using Jest. | [View](./eslint/overrides-jest.cjs)
-`linter-bundle/eslint/overrides-jsdoc.cjs` | Settings for projects using JSDoc comments. | [View](./eslint/overrides-jsdoc.cjs)
-`linter-bundle/eslint/overrides-react.cjs` | Settings for projects using React comments. | [View](./eslint/overrides-react.cjs)
-`linter-bundle/eslint/overrides-storybook.cjs` | Settings for projects using Storybook comments. | [View](./eslint/overrides-storybook.cjs)
-`linter-bundle/eslint/overrides-type-declarations.cjs` | Settings for type declaration files (.d.ts). | [View](./eslint/overrides-type-declarations.cjs)
-`linter-bundle/eslint/overrides-worker.cjs` | Settings for projects using Web Workers. | [View](./eslint/overrides-worker.cjs)
+`linter-bundle/eslint.mjs` | General rule setup. This is also the base for the following specialized rule sets. | [View](./eslint/index.mjs)
+`linter-bundle/eslint/gatsby.mjs` | Settings for Gatsby-based projects. | [View](./eslint/gatsby.mjs)
+`linter-bundle/eslint/javascript.mjs` |  Strict settings for JavaScript files, which enforces correct types everywhere. | [View](./eslint/javascript.mjs)
+`linter-bundle/eslint/javascript-lazy.mjs` | Can be used instead of `javascript`. It's less strict and allows the `any` type. | [View](./eslint/javascript-lazy.mjs)
+`linter-bundle/eslint/jest.mjs` | Settings for projects using Jest. | [View](./eslint/jest.mjs)
+`linter-bundle/eslint/jsdoc.mjs` | Settings for projects using JSDoc comments. | [View](./eslint/jsdoc.mjs)
+`linter-bundle/eslint/react.mjs` | Settings for projects using React comments. | [View](./eslint/react.mjs)
+`linter-bundle/eslint/storybook.mjs` | Settings for projects using Storybook comments. | [View](./eslint/storybook.mjs)
+`linter-bundle/eslint/type-declarations.mjs` | Settings for type declaration files (.d.ts). | [View](./eslint/type-declarations.mjs)
+`linter-bundle/eslint/worker.mjs` | Settings for projects using Web Workers. | [View](./eslint/worker.mjs)
 
 #### stylelint.config.js
 
 ```js
-module.exports = {
-  extends: 'linter-bundle/stylelint.cjs'
+export default {
+  extends: 'linter-bundle/stylelint.mjs'
 };
 
 ```
@@ -140,7 +140,7 @@ module.exports = {
 .eslintcache
 ```
 
-### .linter-bundle.json / .linter-bundle.cjs / .linter-bundle.js
+### .linter-bundle.json / .linter-bundle.mjs / .linter-bundle.js
 
 `linter-bundle` supports a couple of additional options, which can be configured in the configuration file, in the root of your project.  
 Some of the options are also available as command line arguments (see below).  
@@ -242,7 +242,7 @@ The file itself, and any of the options is optional.
 <details><summary>Click here to see the example configuration with descriptions</summary>
 
 ```js
-module.exports = {
+export default {
   /**
    * Same as `--verbose` command line argument.
    * 
@@ -320,7 +320,7 @@ module.exports = {
      */
     overrides: {
       /**
-       * Rules that are applied to `linter-bundle/eslint.cjs`.
+       * Rules that are applied to `linter-bundle/eslint.mjs`.
        */
       general: {
         'no-restricted-globals': {
@@ -374,7 +374,7 @@ module.exports = {
       },
 
       /**
-       * Rules that are applied to `linter-bundle/eslint/overrides-react.cjs`.
+       * Rules that are applied to `linter-bundle/eslint/react.mjs`.
        */
       react: {
         'react/forbid-component-props': {
@@ -633,10 +633,7 @@ This can be done by adding these options to your `.vscode/settings.json`:
 {
   "eslint.nodePath": "./node_modules/linter-bundle/node_modules/eslint",
   "eslint.options": {
-    "overrideConfigFile": "./.eslintrc.js", // or "./.eslintrc.cjs" or "./eslintrc.json"
-    "resolvePluginsRelativeTo": "./node_modules/linter-bundle",
-    "rulePaths": ["./node_modules/linter-bundle/eslint/rules"],
-    "reportUnusedDisableDirectives": "error",
+    "overrideConfigFile": "./eslint.config.mjs"
   }
 }
 ```
@@ -719,7 +716,3 @@ If you get such an error message:
 the problem is most likely, that your `tsconfig.json` does not cover your JavaScript files and that you don't have a `jsconfig.json` file in your root directory. This is required by the `@typescript-eslint` to use TypeScript for linting of JavaScript files.
 
 To solve this problem, either `"include"` your JavaScript files in your `tsconfig.json` (don't forget to set the compiler option `"checkJs"` to `true`) or create a `jsconfig.json` file in your root directory (this can be a copy of your `tsconfig.json` with an `"include"` of your JavaScript files).
-
-### In VSCode, in every file, the first line shows the error `Definition for rule "no-unnecessary-typeof" was not found. eslint(no-unnecessary-typeof)`
-
-Please ensure that you've added the configuration options as described above ("VSCode setup" > "ESLint").

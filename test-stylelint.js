@@ -2,9 +2,9 @@
  * @file Ensures that the Stylelint configuration is valid.
  */
 
-import * as fs from 'fs';
-import * as os from 'os';
-import * as path from 'path';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 
 import { runProcess } from './helper/run-process.js';
 
