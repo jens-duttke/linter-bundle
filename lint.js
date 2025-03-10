@@ -206,7 +206,7 @@ async function runESLintTask (taskName, taskConfig) {
 		taskConfig: newTaskConfig,
 		options: {
 			env: {
-				TIMING: '10', // Show timing information about the 10 slowest rules
+				TIMING: (getConfigValue(taskName, taskConfig, 'timing')?.[0] ? '10' : undefined), // Show timing information about the 10 slowest rules
 				TSCONFIG: (typeof newTaskConfig.tsconfig?.[0] === 'string' ? newTaskConfig.tsconfig[0] : undefined)
 			}
 		}
@@ -256,7 +256,7 @@ async function runStylelintTask (taskName, taskConfig) {
 		].filter((argument) => Boolean(argument)).join(' '),
 		options: {
 			env: {
-				TIMING: '10' // Show timing information about the 10 slowest rules
+				TIMING: (getConfigValue(taskName, taskConfig, 'timing')?.[0] ? '10' : undefined) // Show timing information about the 10 slowest rules
 			}
 		}
 	});

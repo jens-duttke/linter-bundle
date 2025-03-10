@@ -269,13 +269,6 @@ export default {
    */
   tsc: {
     /**
-     * `verbose`, `timing` and `git` are the same as in the root node.
-     */
-    verbose: true,
-    timing: true,
-    git: true,
-
-    /**
      * Same as `--tsconfig` command line argument.
      * 
      * @type {string}
@@ -288,9 +281,8 @@ export default {
    */
   ts: {
     /**
-     * `verbose`, `timing` and `git` are the same as in the root node.
+     * `timing` and `git` are the same as in the root node.
      */
-    verbose: true,
     timing: true,
     git: true,
 
@@ -427,6 +419,11 @@ export default {
    */
   md: {
     /**
+     * `git` is the same as in the root node.
+     */
+    git: true,
+
+    /**
      * Same as `--include` command line argument.
      * 
      * @type {string[]}
@@ -438,13 +435,6 @@ export default {
    * Configuration, specific to the `audit` command.
    */
   audit: {
-    /**
-     * `verbose`, `timing` and `git` are the same as in the root node.
-     */
-    verbose: true,
-    timing: true,
-    git: true,
-
     /**
      * Same as `--min-severity` command line argument.
      * 
@@ -465,11 +455,16 @@ export default {
    */
   files: {
     /**
-     * `verbose`, `timing` and `git` are the same as in the root node.
+     * `git` is the same as in the root node.
      */
-    verbose: true,
-    timing: true,
     git: true,
+
+    /**
+     * Same as `--include` command line argument.
+     * 
+     * @type {string[]}
+     */
+    include: ['./included/*.ts'],
 
     /**
      * Array of restrictions for different base paths.

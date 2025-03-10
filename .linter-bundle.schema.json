@@ -14,6 +14,15 @@
 		"files": {
 			"type": "object",
 			"properties": {
+				"git": {
+					"type": "boolean"
+				},
+				"include": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
 				"restrictions": {
 					"type": "array",
 					"items": {
@@ -59,6 +68,12 @@
 		"ts": {
 			"type": "object",
 			"properties": {
+				"timing": {
+					"type": "boolean"
+				},
+				"git": {
+					"type": "boolean"
+				},
 				"tsconfig": {
 					"type": "string"
 				},
@@ -92,8 +107,38 @@
 		"sass": {
 			"type": "object",
 			"properties": {
+				"verbose": {
+					"type": "boolean"
+				},
+				"timing": {
+					"type": "boolean"
+				},
+				"git": {
+					"type": "boolean"
+				},
+				"include": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
 				"patternPrefix": {
 					"type": "string"
+				}
+			},
+			"additionalProperties": false
+		},
+		"md": {
+			"type": "object",
+			"properties": {
+				"git": {
+					"type": "boolean"
+				},
+				"include": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
 				}
 			},
 			"additionalProperties": false
