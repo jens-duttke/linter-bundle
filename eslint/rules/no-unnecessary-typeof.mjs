@@ -10,9 +10,11 @@ import { ESLintUtils } from '@typescript-eslint/utils';
 
 export default {
 	meta: {
+		type: 'problem',
 		docs: {
 			description: 'If a `typeof` operant has only one type in TypeScript, it\'s unnecessary to check it\'s type at runtime.',
-			recommended: true
+			recommended: true,
+			requiresTypeChecking: true
 		},
 		messages: {
 			text: 'Unnecessary `typeof`, because the only possible type of {{ variableName }} is `{{ typeName }}`.'
