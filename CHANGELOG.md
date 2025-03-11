@@ -32,13 +32,13 @@ Beside these changes:
 
 - [general] `"extends"` in the .eslintrc.js needs to be suffixed with the ".mjs" file extension (e.g. `require.resolve('linter-bundle/eslint.mjs')`)
 - [general] `"extends"` in the stylelint.config.js needs to be suffixed with the ".mjs" file extension (e.g. `require.resolve('linter-bundle/stylelint.mjs')`)
-- [eslint] Updated `@typescript-eslint` from `6.21.0` to `8.26.0`
+- [eslint] Updated `@typescript-eslint` from `6.21.0` to `8.26.1`
 - [eslint] Updated `eslint` from `8.56.0` to `9.22.0`
-- [eslint] Updated `eslint-import-resolver-typescript` from `3.6.1` to `3.8.3`
+- [eslint] Updated `eslint-import-resolver-typescript` from `3.6.1` to `3.8.4`
 - [eslint] Updated `eslint-import-resolver-webpack` from `0.13.8` to `0.13.10`
 - [eslint] Updated `eslint-plugin-functional` from `6.0.0` to `9.0.1`
 - [eslint] Updated `eslint-plugin-jest` from `27.6.3` to `28.11.0`
-- [eslint] Updated `eslint-plugin-jsdoc` from `48.0.5` to `50.6.3`
+- [eslint] Updated `eslint-plugin-jsdoc` from `48.0.5` to `50.6.6`
 - [eslint] Updated `eslint-plugin-jsx-a11y` from `6.8.0` to `6.10.2`
 - [eslint] Updated `eslint-plugin-n` from `16.6.2` to `17.16.2`
 - [eslint] Updated `eslint-plugin-promise` from `6.1.1` to `7.2.1`
