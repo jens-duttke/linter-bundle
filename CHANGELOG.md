@@ -6,7 +6,129 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v6.3.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.0.0...HEAD)
+
+## [7.0.0] - 2025-03-11
+
+### Breaking Changes
+
+- [general] All configuration files have been migrated from CommonJS to ESModules
+- [general] The global configuration variable `global.linterBundleSettings` has been replaced by a `.linter-bundle.json` / `.linter-bundle.mjs` / `.linter-bundle.cjs` / `.linter-bundle.js` configuration file in the projects root directory
+- [eslint] It's now using the ESLint Flat Config format
+- [eslint] `.eslintrc.js` needs to be renamed to `eslint.config.mjs`, `module.exports =` needs to be replaced by `export default [`. See [eslint.org](https://eslint.org/docs/latest/use/configure/migration-guide#key-differences-between-configuration-formats) website additional required changes
+- [eslint] The VSCode configuration needs to be adapted. See [README.md](./README.md)
+- [eslint] The prefixes "override-" has been removed from the specialized rule files and the suffix `.cjs` has been replaced by `.mjs`
+- [stylelint] The stylelint configuration has been renamed from `linter-bundle/stylelint.cjs` to  `linter-bundle/stylelint.mjs`
+- [stylelint] As the interface for rules changed slightly, I had to remove some auto-fixes for the previously forked stylistic rules.
+- [general] Drop support for Node.js version less than v20.9.0 and v21.1.0 as a lot of ESLint plugins are not supporting them
+
+### Fixed
+
+- [eslint] Fixed "Error reading .linter-bundle.js" in VSCode in some conditions
+
+Beside these changes:
+
+### Changed
+
+- [general] `"extends"` in the .eslintrc.js needs to be suffixed with the ".mjs" file extension (e.g. `require.resolve('linter-bundle/eslint.mjs')`)
+- [general] `"extends"` in the stylelint.config.js needs to be suffixed with the ".mjs" file extension (e.g. `require.resolve('linter-bundle/stylelint.mjs')`)
+- [eslint] Updated `@typescript-eslint` from `6.21.0` to `8.26.0`
+- [eslint] Updated `eslint` from `8.56.0` to `9.22.0`
+- [eslint] Updated `eslint-import-resolver-typescript` from `3.6.1` to `3.8.3`
+- [eslint] Updated `eslint-import-resolver-webpack` from `0.13.8` to `0.13.10`
+- [eslint] Updated `eslint-plugin-functional` from `6.0.0` to `9.0.1`
+- [eslint] Updated `eslint-plugin-jest` from `27.6.3` to `28.11.0`
+- [eslint] Updated `eslint-plugin-jsdoc` from `48.0.5` to `50.6.3`
+- [eslint] Updated `eslint-plugin-jsx-a11y` from `6.8.0` to `6.10.2`
+- [eslint] Updated `eslint-plugin-n` from `16.6.2` to `17.16.2`
+- [eslint] Updated `eslint-plugin-promise` from `6.1.1` to `7.2.1`
+- [eslint] Updated `eslint-plugin-react` from `7.33.2` to `7.37.4`
+- [eslint] Updated `eslint-plugin-react-hooks` from `4.6.0` to `5.2.0`
+- [eslint] Updated `eslint-plugin-unicorn` from `51.0.0` to `57.0.0`
+- [eslint] Updated `@stylistic/eslint-plugin` from `2.11.0` to `4.2.0`
+- [markdownlint] Updated `markdownlint-cli` from `0.39.0` to `0.44.0`
+- [stylelint] Updated `stylelint` from `16.2.1` to `16.15.0`
+- [stylelint] Updated `stylelint-scss` from `6.1.0` to `6.11.1`
+- [stylelint] Updated `stylelint-high-performance-animation` from `1.10.0` to `1.11.0`
+- [audit] Updated `better-npm-audit` from `3.7.3` to `3.11.0`
+- [eslint] Activate `checkTypePredicates` of [`@typescript-eslint/no-unnecessary-condition`](https://typescript-eslint.io/rules/no-unnecessary-condition/) rule
+- [eslint] Adjusted `@typescript-eslint/naming-convention` rule configuration to allow constant names starting with "_" if they are unused
+- [eslint] Renamed the rule `no-unnecessary-typeof` to `linter-bundle/no-unnecessary-typeof`
+- [eslint] Renamed the rule `restricted-filenames` to `linter-bundle/restricted-filenames`
+- [eslint] Increase `max` of `import/max-dependencies` rule from 20 to 25
+- [eslint] Disabled `unicorn/string-content` as it sometimes breaks code (e.g. imports with `...` in Next.js or GraphQL template strings)
+
+### Added
+
+- [eslint] Added "_" and "c" to allowed id names in [`id-length`] rule
+- [eslint] Added [`@typescript-eslint/no-unnecessary-template-expression`](https://typescript-eslint.io/rules/no-unnecessary-template-expression/) rule (replaces `@typescript-eslint/no-useless-template-literals`)
+- [eslint] Added but disabled new [`functional/no-class-inheritance`](https://github.com/eslint-functional/eslint-plugin-functional/blob/main/docs/rules/no-class-inheritance.md) rule
+- [eslint] Added new [`@typescript-eslint/consistent-return`](https://typescript-eslint.io/rules/consistent-return/) rule
+- [eslint] Added new [`@typescript-eslint/no-unnecessary-parameter-property-assignment`](https://typescript-eslint.io/rules/no-unnecessary-parameter-property-assignment/) rule
+- [eslint] Added new [`@typescript-eslint/no-unnecessary-type-parameters`](https://typescript-eslint.io/rules/no-unnecessary-type-parameters/) rule
+- [eslint] Added new [`@typescript-eslint/no-unsafe-type-assertion`](https://typescript-eslint.io/rules/no-unsafe-type-assertion/) rule
+- [eslint] Added new [`@typescript-eslint/no-useless-assignment`](https://eslint.org/docs/latest/rules/no-useless-assignment) rule
+- [eslint] Added new [`@typescript-eslint/only-throw-error`](https://typescript-eslint.io/rules/only-throw-error/) rule
+- [eslint] Added new [`@typescript-eslint/use-unknown-in-catch-callback-variable`](https://typescript-eslint.io/rules/use-unknown-in-catch-callback-variable/) rule
+- [eslint] Added new [`no-empty-object-type`](https://typescript-eslint.io/rules/no-empty-object-type/) rule
+- [eslint] Added new [`promise/spec-only`](https://github.com/eslint-community/eslint-plugin-promise/blob/main/docs/rules/spec-only.md) rule
+- [eslint] Added new [`unicorn/consistent-empty-array-spread`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/consistent-empty-array-spread.md) rule
+- [eslint] Added new [`unicorn/consistent-existence-index-check`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/consistent-existence-index-check.md) rule
+- [eslint] Added new [`unicorn/no-invalid-fetch-options`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-invalid-fetch-options.md) rule
+- [eslint] Added new [`unicorn/no-length-as-slice-end`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-length-as-slice-end.md) rule
+- [eslint] Added new [`unicorn/no-magic-array-flat-depth`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-magic-array-flat-depth.md) rule
+- [eslint] Added new [`unicorn/no-negation-in-equality-check`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-negation-in-equality-check.md) rule
+- [eslint] Added new [`unicorn/prefer-global-this`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-global-this.md) rule
+- [eslint] Added new [`unicorn/prefer-math-min-max`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-math-min-max.md) rule
+- [eslint] Added new [`unicorn/prefer-string-raw`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-string-raw.md) rule
+- [eslint] Added new [`unicorn/prefer-structured-clone`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-structured-clone.md) rule
+- [eslint] Added new [`unicorn/consistent-date-clone`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/consistent-date-clone.md) rule
+- [eslint] Added new [`unicorn/consistent-assert`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/consistent-assert.md) rule
+- [eslint] Added new [`unicorn/no-accessor-recursion`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-accessor-recursion.md) rule
+- [eslint] Added new [`unicorn/no-instanceof-builtins`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-instanceof-builtins.md) rule
+- [eslint] Added new [`unicorn/no-named-default`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-named-default.md) rule
+- [eslint] Replaced deprecated `unicorn/no-instanceof-array` by new [`unicorn/no-instanceof-builtins`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-instanceof-builtins.md) rule
+- [eslint] Activate `linterOptions.reportUnusedInlineConfigs` setting
+- [eslint/jsdoc] Added [`jsdoc/require-template`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-template.md) rule
+- [eslint/jsdoc] Added but disabled new [jsdoc/convert-to-jsdoc-comments`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/convert-to-jsdoc-comments.md) rule
+- [eslint/jsdoc] Added new [`jsdoc/check-template-names`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/check-template-names.md) rule
+- [eslint/jsdoc] Added new [`jsdoc/lines-before-block`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/lines-before-block.md) rule with disabled `ignoreSameLine`
+- [eslint/react] Added new [`react/forward-ref-uses-ref`](https://github.com/jsx-eslint/eslint-plugin-react/blob/v7.36.0/docs/rules/forward-ref-uses-ref.md) rule
+- [eslint/react] Activate `ignoreTranspilerName` for  [`react/display-name`](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/display-name.md)
+- [eslint/react] Activate `unicorn/prefer-node-protocol` rule
+- [eslint/react] Added new [`react/checked-requires-onchange-or-readonly`](https://github.com/jsx-eslint/eslint-plugin-react/blob/v7.34.0/docs/rules/checked-requires-onchange-or-readonly.md) rule
+- [eslint/react] Added new [`react/jsx-props-no-spread-multi`](https://github.com/jsx-eslint/eslint-plugin-react/blob/v7.35.0/docs/rules/jsx-props-no-spread-multi.md) rule
+- [eslint/jest] Added but disabled new[`jest/prefer-importing-jest-globals`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/prefer-importing-jest-globals.md) rule
+- [eslint/jest] Added new [`jest/prefer-jest-mocked`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/prefer-jest-mocked.md) rule
+- [eslint/promise] Added new [`promise/prefer-catch`](https://github.com/eslint-community/eslint-plugin-promise/blob/main/docs/rules/prefer-catch.md) rule
+- [markdownlint] Added new [`MD058/blanks-around-tables`](https://github.com/DavidAnson/markdownlint/blob/main/doc/md058.md) rule
+- [stylelint] Added and disabled new [`scss/at-import-partial-extension-allowed-list`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-import-partial-extension-allowed-list/README.md) rule, and removed deprecated `at-import-partial-extension-whitelist` rule
+- [stylelint] Added and disabled new [`scss/at-import-partial-extension-disallowed-list`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-import-partial-extension-disallowed-list/README.md) rule, and removed deprecated `at-import-partial-extension-blacklist rule` rule
+- [stylelint] Added new [`no-unknown-custom-media`](https://stylelint.io/user-guide/rules/no-unknown-custom-media/) rule
+- [stylelint] Added new [`scss/at-mixin-no-risky-nesting-selector`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-mixin-no-risky-nesting-selector/README.md) rule
+- [stylelint] Added new [`scss/declaration-property-value-no-unknown`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/declaration-property-value-no-unknown/README.md) rule, which disabled `declaration-property-value-no-unknown`
+- [stylelint] Added new [`scss/function-color-channel`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/function-color-channel/README.md) rule
+- [stylelint] Added new [`scss/load-partial-extension`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/load-partial-extension/README.md) rule, and removed deprecated `at-import-partial-extension` rule
+- [stylelint] Added new [`scss/no-duplicate-load-rules`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/no-duplicate-load-rules) rule
+- [stylelint] Added new [`at-rule-descriptor-no-unknown`](https://stylelint.io/user-guide/rules/at-rule-descriptor-no-unknown/) rule
+- [stylelint] Added new [`at-rule-descriptor-value-no-unknown`](https://stylelint.io/user-guide/rules/at-rule-descriptor-value-no-unknown/) rule
+- [stylelint] Added new [`at-rule-no-deprecated`](https://stylelint.io/user-guide/rules/at-rule-no-deprecated/) rule
+- [stylelint] Added new [`at-rule-prelude-no-invalid`](https://stylelint.io/user-guide/rules/at-rule-prelude-no-invalid/) rule
+- [stylelint] Added new [`declaration-property-value-keyword-no-deprecated`](https://stylelint.io/user-guide/rules/declaration-property-value-keyword-no-deprecated/) rule
+- [stylelint] Added new [`syntax-string-no-invalid`](https://stylelint.io/user-guide/rules/syntax-string-no-invalid/) rule
+- [stylelint] Show rule performance information
+- [stylelint] Activated [`reportUnscopedDisables`] setting
+
+### Removed
+
+- [eslint] Removed deprecated `@typescript-eslint/ban-types` rule
+- [eslint] Removed deprecated `@typescript-eslint/no-throw-literal` rule
+- [eslint] Removed deprecated `no-new-symbol` rule
+- [eslint] Removed deprecated `prefer-ts-expect-error` rule
+- [eslint] Replaced deprecated `@typescript-eslint/no-loss-of-precision` rule by ESLint `no-loss-of-precision`
+- [eslint/gatsby] Removed `no-global-undefined-check` rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v6.3.0...v7.0.0)
 
 ## [6.3.0] - 2024-02-06
 
@@ -716,7 +838,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 
 - [eslint] Make use of [`@typescript-eslint/no-restricted-imports`](https://typescript-eslint.io/rules/no-restricted-imports/) rule
-- [eslint] Make use of [`@typescript-eslint/space-infix-ops`](https://typescript-eslint.io/rules/space-infix-ops/) rule
+- [eslint] Make use of [`@stylistic/space-infix-ops`](https://typescript-eslint.io/rules/space-infix-ops/) rule
 - [eslint] Make use of [`@typescript-eslint/consistent-generic-constructors`](https://typescript-eslint.io/rules/consistent-generic-constructors/) rule
 - [eslint/overrides-jest] Make use of [`jest/prefer-hooks-in-order`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/prefer-hooks-in-order.md) rule
 - [eslint/overrides-jest] Make use of [`jest/max-expects`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/max-expects.md) rule
@@ -1497,7 +1619,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Updated `eslint-plugin-jest` from v24.3.2 to v24.3.5
 - [eslint] Updated `eslint-plugin-react` from v7.22.0 to v7.23.2
 - [eslint] Make use of new [`react/no-unstable-nested-components`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md) rule
-- [sass] Updated `stylelint-selector-no-empty` from v1.0.7 to v1.0.8
+- [stylelint] Updated `stylelint-selector-no-empty` from v1.0.7 to v1.0.8
 - [audit] Updated `better-npm-audit` from v1.0.7 to v1.0.8
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.9.0...v1.10.0)
