@@ -89,16 +89,16 @@ npm install linter-bundle --save-dev
 
 ```js
 export default [
-  (await import('linter-bundle/eslint.mjs')).default,
-  // (await import('linter-bundle/eslint/gatsby.mjs')).default,
-  // (await import('linter-bundle/eslint/javascript.mjs')).default,
-  (await import('linter-bundle/eslint/javascript-lazy.mjs')).default,
-  // (await import('linter-bundle/eslint/jest.mjs')).default,
-  (await import('linter-bundle/eslint/jsdoc.mjs')).default,
-  // (await import('linter-bundle/eslint/react.mjs')).default,
-  // (await import('linter-bundle/eslint/storybook.mjs')).default,
-  // (await import('linter-bundle/eslint/type-declarations.mjs')).default,
-  // (await import('linter-bundle/eslint/worker.mjs')).default
+  ...(await import('linter-bundle/eslint.mjs')).default,
+  // ...(await import('linter-bundle/eslint/gatsby.mjs')).default,
+  // ...(await import('linter-bundle/eslint/javascript.mjs')).default,
+  ...(await import('linter-bundle/eslint/javascript-lazy.mjs')).default,
+  // ...(await import('linter-bundle/eslint/jest.mjs')).default,
+  ...(await import('linter-bundle/eslint/jsdoc.mjs')).default,
+  // ...(await import('linter-bundle/eslint/react.mjs')).default,
+  // ...(await import('linter-bundle/eslint/storybook.mjs')).default,
+  // ...(await import('linter-bundle/eslint/type-declarations.mjs')).default,
+  // ...(await import('linter-bundle/eslint/worker.mjs')).default
 ]
 ```
 
@@ -210,7 +210,7 @@ The file itself, and any of the options is optional.
   },
   "sass": {
     "include": ["./included/*.ts"],
-    "patternPrefix": "--my-prefix"
+    "patternPrefix": "(my-prefix|another-prefix)"
   },
   "md": {
     "include": ["./included/*.md"],
