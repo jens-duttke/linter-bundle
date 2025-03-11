@@ -1105,12 +1105,7 @@ export default [
 			'unicorn/require-array-join-separator': 'error',
 			'unicorn/require-number-to-fixed-digits-argument': 'error',
 			'unicorn/require-post-message-target-origin': 'off', // False-positive with Workers which don't support a `targetOrigin`
-			'unicorn/string-content': ['error', {
-				patterns: {
-					'\\.\\.\\.': '…',
-					'->': '→' // eslint-disable-line unicorn/string-content -- This rule complains about its own settings
-				}
-			}],
+			'unicorn/string-content': 'off', // Breaks code (e.g. imports with `...` in Next.js or GraphQL template strings),
 			'unicorn/switch-case-braces': ['error', 'avoid'],
 			'unicorn/template-indent': 'error',
 			'unicorn/text-encoding-identifier-case': 'off',

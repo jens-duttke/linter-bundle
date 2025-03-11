@@ -35,12 +35,7 @@ export default [
 			 * eslint-plugin-unicorn
 			 * @see https://github.com/sindresorhus/eslint-plugin-unicorn
 			 */
-			'unicorn/string-content': ['error', {
-				patterns: {
-					// '\\.\\.\\.': '…', // @todo Does not support graphql-template strings. Report that as bug!
-					'->': '→' // eslint-disable-line unicorn/string-content -- This rule complains about its own settings
-				}
-			}]
+			'unicorn/string-content': 'off' // Breaks code (e.g. imports with `...` in Next.js or GraphQL template strings)
 		}
 	},
 	{
