@@ -31,7 +31,8 @@ export async function runProcess (command, options) {
 				// eslint-disable-next-line n/no-process-env -- Pass all environment variables to the child process
 				...process.env,
 				...options?.env,
-				LINTER_BUNDLE: '1'
+				LINTER_BUNDLE: '1',
+				FORCE_COLOR: 'true'
 			},
 			shell: os.userInfo().shell ?? undefined
 		});
