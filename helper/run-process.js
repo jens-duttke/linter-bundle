@@ -32,7 +32,8 @@ export async function runProcess (command, options) {
 				...process.env,
 				...options?.env,
 				LINTER_BUNDLE: '1',
-				FORCE_COLOR: 'true'
+				FORCE_COLOR: 'true',
+				NODE_NO_WARNINGS: '1'
 			},
 			shell: os.userInfo().shell ?? undefined
 		});
