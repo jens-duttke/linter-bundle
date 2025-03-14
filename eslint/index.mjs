@@ -22,7 +22,8 @@ import * as typescriptEslint from 'typescript-eslint';
 import * as ensureType from '../helper/ensure-type.mjs';
 import { linterBundleConfig } from '../helper/linter-bundle-config.js';
 
-import noExtraSpacesInGenerics from './rules/no-extra-spaces-in-generics.mjs';
+import enforceTernaryParensRule from './rules/enforce-ternary-parens.mjs';
+import noExtraSpacesInGenericsRule from './rules/no-extra-spaces-in-generics.mjs';
 import noUnnecessaryTypeofRule from './rules/no-unnecessary-typeof.mjs';
 import restrictedFilenamesRule from './rules/restricted-filenames.mjs';
 
@@ -48,7 +49,8 @@ export default [
 
 			'linter-bundle': {
 				rules: {
-					'no-extra-spaces-in-generics': noExtraSpacesInGenerics,
+					'enforce-ternary-parens': enforceTernaryParensRule,
+					'no-extra-spaces-in-generics': noExtraSpacesInGenericsRule,
 					'no-unnecessary-typeof': noUnnecessaryTypeofRule,
 					'restricted-filenames': restrictedFilenamesRule
 				}
@@ -135,6 +137,7 @@ export default [
 			/**
 			 * ./rules
 			 */
+			'linter-bundle/enforce-ternary-parens': 'error',
 			'linter-bundle/no-extra-spaces-in-generics': 'error',
 			'linter-bundle/no-unnecessary-typeof': 'error',
 
