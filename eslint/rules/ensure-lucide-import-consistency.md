@@ -33,10 +33,6 @@ import { Home } from 'lucide-react';
 
 - **JavaScript Usage**: For non-JSX usage (e.g., when components are referenced via `React.createElement` or directly as identifiers), the rule will also ensure the correct `Lucide` prefix is applied.
 
-## Options
-
-This rule does not take any options.
-
 ## Fixable
 
 This rule is fixable. It will automatically rename components and their usages to ensure they follow the `Lucide` prefix convention.

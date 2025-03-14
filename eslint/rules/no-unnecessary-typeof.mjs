@@ -8,6 +8,11 @@ import * as ts from 'typescript';
 
 import { ESLintUtils } from '@typescript-eslint/utils';
 
+/**
+ * @typedef {'text'} MessageIds
+ */
+
+/** @type {import('@typescript-eslint/utils/ts-eslint').RuleModule<MessageIds>} */
 export default {
 	meta: {
 		type: 'problem',
@@ -18,23 +23,13 @@ export default {
 		},
 		messages: {
 			text: 'Unnecessary `typeof`, because the only possible type of {{ variableName }} is `{{ typeName }}`.'
-		}
+		},
+		schema: []
 	},
+	defaultOptions: [],
 
-	/**
-	 * Create a new rule.
-	 *
-	 * @param {import('@typescript-eslint/utils/ts-eslint').RuleContext<any, any>} context - RuleContext of @typescript-eslint instead of ESlint
-	 * @returns {import('@typescript-eslint/utils/ts-eslint').RuleListener} RuleListener of @typescript-eslint, instead of ESlint
-	 */
 	create (context) {
 		return {
-			/**
-			 * Rule function to handle unary expressions.
-			 *
-			 * @param {import('@typescript-eslint/typescript-estree').TSESTree.UnaryExpression} node - UnaryExpression of @typescript-eslint instead of ESlint
-			 * @returns {import('@typescript-eslint/utils/ts-eslint').RuleFunction<import('@typescript-eslint/typescript-estree').TSESTree.UnaryExpression> | void} RuleFunction of @typescript-eslint instead of ESlint
-			 */
 			UnaryExpression (node) {
 				if (node.operator !== 'typeof') {
 					return;
