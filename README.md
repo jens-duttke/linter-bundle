@@ -40,6 +40,8 @@ The `linter-bundle` is using the Flat Configuration Format which was introduced 
 
 Beside that, the following additional rules are part of this bundle:
 
+- [linter-bundle/ensure-lucide-import-consistency](./eslint/rules/ensure-lucide-import-consistency.md)
+- [linter-bundle/no-extra-spaces-in-generics](./eslint/rules/no-extra-spaces-in-generics.md)
 - [linter-bundle/no-unnecessary-typeof](./eslint/rules/no-unnecessary-typeof.md)
 - [linter-bundle/restricted-filenames](./eslint/rules/restricted-filenames.md)
 
