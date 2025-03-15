@@ -22,6 +22,7 @@ import * as typescriptEslint from 'typescript-eslint';
 import * as ensureType from '../helper/ensure-type.mjs';
 import { linterBundleConfig } from '../helper/linter-bundle-config.js';
 
+import enforceLogicalExpressionParens from './rules/enforce-logical-expression-parens.mjs';
 import enforceTernaryParensRule from './rules/enforce-ternary-parens.mjs';
 import noExtraSpacesInGenericsRule from './rules/no-extra-spaces-in-generics.mjs';
 import noUnnecessaryTypeofRule from './rules/no-unnecessary-typeof.mjs';
@@ -49,6 +50,7 @@ export default [
 
 			'linter-bundle': {
 				rules: {
+					'enforce-logical-expression-parens': enforceLogicalExpressionParens,
 					'enforce-ternary-parens': enforceTernaryParensRule,
 					'no-extra-spaces-in-generics': noExtraSpacesInGenericsRule,
 					'no-unnecessary-typeof': noUnnecessaryTypeofRule,
