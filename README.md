@@ -93,17 +93,28 @@ npm install linter-bundle --save-dev
 #### eslint.config.mjs
 
 ```js
+import gatsbyConfig from './eslint/gatsby.mjs';
+import javascriptConfig from './eslint/javascript.mjs';
+// import javascriptLazyConfig from './eslint/javascript-lazy.mjs';
+import jestConfig from './eslint/jest.mjs';
+import jsdocConfig from './eslint/jsdoc.mjs';
+import reactConfig from './eslint/react.mjs';
+import storybookConfig from './eslint/storybook.mjs';
+import typeDeclarationsConfig from './eslint/type-declarations.mjs';
+import workerConfig from './eslint/worker.mjs';
+import eslintConfig from './eslint.mjs';
+
 export default [
-  ...(await import('linter-bundle/eslint.mjs')).default,
-  // ...(await import('linter-bundle/eslint/gatsby.mjs')).default,
-  // ...(await import('linter-bundle/eslint/javascript.mjs')).default,
-  ...(await import('linter-bundle/eslint/javascript-lazy.mjs')).default,
-  // ...(await import('linter-bundle/eslint/jest.mjs')).default,
-  ...(await import('linter-bundle/eslint/jsdoc.mjs')).default,
-  // ...(await import('linter-bundle/eslint/react.mjs')).default,
-  // ...(await import('linter-bundle/eslint/storybook.mjs')).default,
-  // ...(await import('linter-bundle/eslint/type-declarations.mjs')).default,
-  // ...(await import('linter-bundle/eslint/worker.mjs')).default
+  ...eslintConfig,
+  ...gatsbyConfig,
+  ...javascriptConfig,
+  // ...javascriptLazyConfig,
+  ...jsdocConfig,
+  ...reactConfig,
+  ...storybookConfig,
+  ...typeDeclarationsConfig,
+  ...workerConfig
+  ...jestConfig,
 ]
 ```
 
