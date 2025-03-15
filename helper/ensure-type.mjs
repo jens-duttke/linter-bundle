@@ -13,6 +13,11 @@
  * @returns {T extends Array<any> ? T : []} Either the input array, or an empty array, if the input array is not an array
  */
 export function array (value) {
+	if (Array.isArray(value)) {
+		// @ts-expect-error -- Right now the type definition of `Array.isArray()` is incorrect since it uses `arg is any[]` instead of the correct type of `arg`.
+		return value;
+	}
+
 	// @ts-expect-error -- Right now the type definition of `Array.isArray()` is incorrect since it uses `arg is any[]` instead of the correct type of `arg`.
-	return (Array.isArray(value) ? value : []);
+	return [];
 }

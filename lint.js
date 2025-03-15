@@ -319,7 +319,7 @@ async function runAuditTask (taskName, taskConfig) {
 					'--',
 					'better-npm-audit@3.11.0',
 					'audit',
-					`-l ${newTaskConfig.minSeverity?.[0] ?? 'moderate'}`,
+					`-l ${(newTaskConfig.minSeverity?.[0] ?? 'moderate')}`,
 					'-p',
 					newTaskConfig.exclude?.map((exclude) => `-i ${exclude}`).join(' ')
 				].filter((argument) => Boolean(argument)).join(' ')
@@ -334,7 +334,7 @@ async function runAuditTask (taskName, taskConfig) {
 					'--yes',
 					'--',
 					'improved-yarn-audit@3.0.0',
-					`--min-severity ${newTaskConfig.minSeverity?.[0] ?? 'moderate'}`,
+					`--min-severity ${(newTaskConfig.minSeverity?.[0] ?? 'moderate')}`,
 					'--fail-on-missing-exclusions',
 					'--ignore-dev-deps',
 					newTaskConfig.exclude?.map((exclude) => `--exclude ${exclude}`).join(' ')
@@ -378,7 +378,7 @@ async function validateEnvironment () {
 	}
 
 	const outdatedDependencies = await getOutdatedDependencies();
-	const missingOverrides = outdatedDependencies.filter(({ name }) => !(npmOrYarn === 'npm' && outdatedOverrides.overrides.some((override) => name === override.name)) && !(npmOrYarn === 'yarn' && outdatedOverrides.resolutions.some((override) => name === override.name)));
+	const missingOverrides = outdatedDependencies.filter(({ name }) => (!(npmOrYarn === 'npm' && outdatedOverrides.overrides.some((override) => name === override.name)) && !(npmOrYarn === 'yarn' && outdatedOverrides.resolutions.some((override) => name === override.name))));
 
 	if (missingOverrides.length > 0) {
 		let installCommand;
@@ -393,9 +393,9 @@ async function validateEnvironment () {
 			propertyName = 'overrides';
 		}
 
-		process.stderr.write(`The installed version of ${missingOverrides.length === 1 ? 'one dependency' : `${missingOverrides.length} dependencies`} does not match to the version required by the linter-bundle:\n`);
+		process.stderr.write(`The installed version of ${(missingOverrides.length === 1 ? 'one dependency' : `${missingOverrides.length} dependencies`)} does not match to the version required by the linter-bundle:\n`);
 		process.stderr.write(`- ${missingOverrides.map((dependency) => `${dependency.name}: ${dependency.configuredVersion} is installed, but ${dependency.expectedVersion} is expected`).join('\n- ')}\n\n`);
-		process.stderr.write(`This could be caused by forgetting to execute \`${installCommand}\` after changing a version number in the package.json, or by some other package shipping outdated versions of the ${missingOverrides.length === 1 ? 'dependency' : 'dependencies'}.\n`);
+		process.stderr.write(`This could be caused by forgetting to execute \`${installCommand}\` after changing a version number in the package.json, or by some other package shipping outdated versions of the ${(missingOverrides.length === 1 ? 'dependency' : 'dependencies')}.\n`);
 		process.stderr.write('If another package is causing this problem, you can fix it by adding the following entry to your package.json:\n');
 		process.stderr.write(`{\n  "${propertyName}": {\n    ${missingOverrides.map((dependency) => `"${dependency.name}": "${dependency.expectedVersion}"`).join(',\n    ')}\n  }\n}\n\n`);
 
@@ -477,7 +477,7 @@ function getTasksToRun (argv) {
 async function getIncludes (taskConfig, pattern) {
 	const include = taskConfig['include'];
 
-	let includedFiles = (Array.isArray(include) && include.length > 0 ? /** @type {string[]} */(include.filter((item) => typeof item === 'string')) : undefined);
+	let includedFiles = ((Array.isArray(include) && include.length > 0) ? /** @type {string[]} */(include.filter((item) => typeof item === 'string')) : undefined);
 
 	if (taskConfig['git']?.[0]) {
 		const gitFiles = await getGitFiles();
@@ -498,7 +498,11 @@ async function getIncludes (taskConfig, pattern) {
 	}
 
 	if (!includedFiles) {
-		return (pattern ? `"${pattern}"` : '');
+		if (pattern) {
+			return `"${pattern}"`;
+		}
+
+		return '';
 	}
 
 	return `"${includedFiles.join('" "')}"`;

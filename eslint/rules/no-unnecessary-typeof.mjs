@@ -110,14 +110,37 @@ function getTypeString (checker, type) {
 		return typeString;
 	}
 
-	if (isUndefined(type)) { return 'undefined'; }
-	if (isBoolean(type)) { return 'boolean'; }
-	if (isNumber(type)) { return 'number'; }
-	if (isBigInt(type)) { return 'bigint'; }
-	if (isString(type)) { return 'string'; }
-	if (isSymbol(type)) { return 'symbol'; }
-	if (isFunction(type)) { return 'function'; }
-	if (isObject(type)) { return 'object'; }
+	if (isUndefined(type)) {
+		return 'undefined';
+	}
+
+	if (isBoolean(type)) {
+		return 'boolean';
+	}
+
+	if (isNumber(type)) {
+		return 'number';
+	}
+
+	if (isBigInt(type)) {
+		return 'bigint';
+	}
+
+	if (isString(type)) {
+		return 'string';
+	}
+
+	if (isSymbol(type)) {
+		return 'symbol';
+	}
+
+	if (isFunction(type)) {
+		return 'function';
+	}
+
+	if (isObject(type)) {
+		return 'object';
+	}
 
 	return null;
 }

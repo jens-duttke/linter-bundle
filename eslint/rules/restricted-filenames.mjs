@@ -9,7 +9,6 @@ import micromatch from 'micromatch';
 // eslint-disable-next-line n/no-process-env -- If the ESLint sub-process is running from within the linter-bundle, we make use of its configuration.
 const isInLinterBundle = !process.env['LINTER_BUNDLE'];
 
-// eslint-disable-next-line n/no-unpublished-import -- @todo Is that a false-positive?
 const { linterBundleConfig } = (isInLinterBundle ? await import('../../helper/linter-bundle-config.js') : {});
 
 /**
@@ -56,7 +55,7 @@ export default {
 	create: (context) => {
 		const filePath = context.filename;
 		/** @type {{ basePath: string, allowed?: string[]; disallowed?: string[]; }[]} */
-		const options = linterBundleConfig?.files?.restrictions ? [...linterBundleConfig.files.restrictions, ...context.options] : context.options;
+		const options = (linterBundleConfig?.files?.restrictions ? [...linterBundleConfig.files.restrictions, ...context.options] : context.options);
 
 		for (const { basePath, allowed, disallowed } of options) {
 			const normalizedName = path.relative(path.join(process.cwd(), basePath), filePath);

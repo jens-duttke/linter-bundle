@@ -35,7 +35,7 @@ export async function runProcess (command, options) {
 				FORCE_COLOR: 'true',
 				NODE_NO_WARNINGS: '1'
 			},
-			shell: os.userInfo().shell ?? undefined
+			shell: (os.userInfo().shell ?? undefined)
 		});
 
 		lintingProcess.stdout?.on('data', (/** @type {string} */data) => {
@@ -47,7 +47,7 @@ export async function runProcess (command, options) {
 		});
 
 		lintingProcess.on('exit', (code) => resolve({
-			code: code ?? 0,
+			code: (code ?? 0),
 			stdout: stdout.join(''),
 			stderr: stderr.join(''),
 			runtime: performance.now() - startTimestamp
