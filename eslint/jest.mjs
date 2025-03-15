@@ -155,10 +155,13 @@ export default [
 async function getJestVersion () {
 	try {
 		const require = createRequire(import.meta.url);
+		const fileUrl = new URL('file:');
 
-		const jestModule = await import(require.resolve('jest', { paths: [process.cwd()] }));
+		fileUrl.pathname = require.resolve('jest', { paths: [process.cwd()] });
 
-		const version = jestModule.getVersion().split('.')[0];
+		const jestModule = await import(fileUrl.toString());
+		const jest = ('default' in jestModule ? jestModule.default : jestModule);
+		const version = jest.getVersion().split('.')[0];
 
 		process.stdout.write(`Detected Jest version: ${version}\n\n`);
 
