@@ -17,8 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Added custom linter rule [`linter-bundle/enforce-ternary-parens`](./eslint/rules/enforce-ternary-parens.md) which ensures ternary expressions are wrapped in parentheses
 - [eslint] Added custom linter rule [`linter-bundle/no-extra-spaces-in-generics`](./eslint/rules/no-extra-spaces-in-generics.md) to disallows spaces after the `<` and before the `>` in TypeScript generics
 - [eslint] Added custom linter rule [`linter-bundle/no-ternary-return`](./eslint/rules/no-ternary-return.md) which disallows ternary expressions as return values for better readability
-- [eslint] Added custom linter rule [`linter-bundle/newline-before-after-if`](./eslint/rules/newline-before-after-if.md) which enforces blank lines before and after if statements with specific exceptions
-- [eslint] Added custom linter rule [`linter-bundle/newline-before-after-variable-declarations`](./eslint/rules/newline-before-after-variable-declarations.md) which enforce newlines before and after variable declarations
+- [eslint] Configure [`padding-line-between-statements`](https://eslint.org/docs/latest/rules/padding-line-between-statements) to enforce line-breaks before `return`, `throw`, `break`, `continue`, around multi-line block statements and around `const`, `let`, `var` groups
 - [eslint/react] Added custom linter rule [`linter-bundle/ensure-lucide-import-consistency`](./eslint/rules/ensure-lucide-import-consistency.md) to enforces using [Lucide](https://lucide.dev/guide/packages/lucide-react) prefix for lucide-react imports and their usage
 - [eslint] Updated `eslint-import-resolver-typescript` from `3.8.4` to `3.9.0`
 - [stylelint] Updated `stylelint` from `16.15.0` to `16.16.0`
