@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [7.1.0] - 2025-03-15
 
+### Fixed
+
+- [eslint/jest] Fix code for Jest Version detection
+
 ### Changed
 
 - [general] Suppress Node.js warnings, such as 'ExperimentalWarning: Importing JSON modules is an experimental feature and might change at any time' (which is triggered by ESLint)
@@ -161,6 +165,7 @@ Beside these changes:
 - [eslint] Make use of [`@typescript-eslint/prefer-promise-reject-errors`](https://typescript-eslint.io/rules/prefer-promise-reject-errors/) rule
 - [markdownlint] Make use of new [`MD054`/link-image-style](https://github.com/DavidAnson/markdownlint/blob/main/doc/md054.md) rule
 - [markdownlint] Make use of new [`MD056`/table-column-count](https://github.com/DavidAnson/markdownlint/blob/main/doc/md056.md) rule
+- [audit] Updated `improved-yarn-audit` from `3.0.0` to `3.0.3`
 
 ### Added
 
