@@ -1,6 +1,6 @@
 {
 	"name": "linter-bundle",
-	"version": "7.1.1",
+	"version": "7.1.2",
 	"type": "module",
 	"description": "Ready-to use bundle of linting tools, containing configurations for ESLint, stylelint and markdownlint.",
 	"keywords": [
