@@ -24,6 +24,7 @@ import { linterBundleConfig } from '../helper/linter-bundle-config.js';
 
 import enforceLogicalExpressionParens from './rules/enforce-logical-expression-parens.mjs';
 import enforceTernaryParensRule from './rules/enforce-ternary-parens.mjs';
+import ensureLucideImportConsistencyRule from './rules/ensure-lucide-import-consistency.mjs';
 import noExtraSpacesInGenericsRule from './rules/no-extra-spaces-in-generics.mjs';
 import noTernaryReturnRule from './rules/no-ternary-return.mjs';
 import noUnnecessaryTypeofRule from './rules/no-unnecessary-typeof.mjs';
@@ -53,6 +54,7 @@ export default [
 				rules: {
 					'enforce-logical-expression-parens': enforceLogicalExpressionParens,
 					'enforce-ternary-parens': enforceTernaryParensRule,
+					'ensure-lucide-import-consistency': ensureLucideImportConsistencyRule,
 					'no-extra-spaces-in-generics': noExtraSpacesInGenericsRule,
 					'no-ternary-return': noTernaryReturnRule,
 					'no-unnecessary-typeof': noUnnecessaryTypeofRule,

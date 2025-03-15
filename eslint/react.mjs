@@ -9,19 +9,12 @@ import * as reactHooksPlugin from 'eslint-plugin-react-hooks';
 import * as ensureType from '../helper/ensure-type.mjs';
 import { linterBundleConfig } from '../helper/linter-bundle-config.js';
 
-import ensureLucideImportConsistencyRule from './rules/ensure-lucide-import-consistency.mjs';
-
 export default [
 	{
 		plugins: {
 			'react-hooks': reactHooksPlugin,
 			'react': reactPlugin,
-			'@stylistic/jsx': stylisticJSXPlugin,
-			'linter-bundle': {
-				rules: {
-					'ensure-lucide-import-consistency': ensureLucideImportConsistencyRule
-				}
-			}
+			'@stylistic/jsx': stylisticJSXPlugin
 		}
 	},
 	{
