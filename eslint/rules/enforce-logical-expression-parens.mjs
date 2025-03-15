@@ -25,12 +25,21 @@ export default {
 					return; // Do not add parentheses if they are already present
 				}
 
-				// If no parentheses are present, add parentheses around the logical operation
 				context.report({
 					node,
 					message: 'Add parentheses around the logical operation.',
 					fix (fixer) {
-						return fixer.replaceText(node, `(${context.getSourceCode().getText(node)})`);
+						const nodeBefore = context.sourceCode.getTokenBefore(node, { includeComments: true });
+						const nodeAfter = context.sourceCode.getTokenAfter(node, { includeComments: true });
+
+						if (!nodeBefore || !nodeAfter) {
+							return fixer.replaceText(node, `(${context.sourceCode.getText(node)})`);
+						}
+
+						return [
+							fixer.insertTextAfter(nodeBefore, '('),
+							fixer.insertTextBefore(nodeAfter, ')')
+						];
 					}
 				});
 			}

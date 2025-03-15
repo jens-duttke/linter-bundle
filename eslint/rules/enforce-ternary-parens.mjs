@@ -29,8 +29,17 @@ export default {
 					node,
 					message: 'Ternary expressions must be wrapped in parentheses.',
 					fix (fixer) {
-						// Wrap the entire ternary expression in parentheses.
-						return fixer.replaceText(node, `(${context.sourceCode.getText(node)})`);
+						const nodeBefore = context.sourceCode.getTokenBefore(node, { includeComments: true });
+						const nodeAfter = context.sourceCode.getTokenAfter(node, { includeComments: true });
+
+						if (!nodeBefore || !nodeAfter) {
+							return fixer.replaceText(node, `(${context.sourceCode.getText(node)})`);
+						}
+
+						return [
+							fixer.insertTextAfter(nodeBefore, '('),
+							fixer.insertTextBefore(nodeAfter, ')')
+						];
 					}
 				});
 			}
