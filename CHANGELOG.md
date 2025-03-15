@@ -6,7 +6,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.0.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.1.0...HEAD)
+
+## [7.1.0] - 2025-03-15
+
+### Changed
+
+- [general] Suppress Node.js warnings, such as 'ExperimentalWarning: Importing JSON modules is an experimental feature and might change at any time' (which is triggered by ESLint)
+- [eslint] Added custom linter rule [`linter-bundle/enforce-logical-expression-parens`](./eslint/rules/enforce-logical-expression-parens.md) which enforces parentheses around logical operations
+- [eslint] Added custom linter rule [`linter-bundle/enforce-ternary-parens`](./eslint/rules/enforce-ternary-parens.md) which ensures ternary expressions are wrapped in parentheses
+- [eslint] Added custom linter rule [`linter-bundle/no-extra-spaces-in-generics`](./eslint/rules/no-extra-spaces-in-generics.md) to disallows spaces after the `<` and before the `>` in TypeScript generics
+- [eslint] Added custom linter rule [`linter-bundle/no-ternary-return`](./eslint/rules/no-ternary-return.md) which disallows ternary expressions as return values for better readability
+- [eslint] Added custom linter rule [`linter-bundle/newline-before-after-if`](./eslint/rules/newline-before-after-if.md) which enforces blank lines before and after if statements with specific exceptions
+- [eslint] Added custom linter rule [`linter-bundle/newline-before-after-variable-declarations`](./eslint/rules/newline-before-after-variable-declarations.md) which enforce newlines before and after variable declarations
+- [eslint/react] Added custom linter rule [`linter-bundle/ensure-lucide-import-consistency`](./eslint/rules/ensure-lucide-import-consistency.md) to enforces using [Lucide](https://lucide.dev/guide/packages/lucide-react) prefix for lucide-react imports and their usage
+- [eslint] Updated `eslint-import-resolver-typescript` from `3.8.4` to `3.9.0`
+- [stylelint] Updated `stylelint` from `16.15.0` to `16.16.0`
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.0.0...v7.1.0)
 
 ## [7.0.0] - 2025-03-11
 
