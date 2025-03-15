@@ -333,7 +333,7 @@ async function runAuditTask (taskName, taskConfig) {
 					'npx',
 					'--yes',
 					'--',
-					'improved-yarn-audit@3.0.0',
+					'improved-yarn-audit@3.0.3',
 					`--min-severity ${(newTaskConfig.minSeverity?.[0] ?? 'moderate')}`,
 					'--fail-on-missing-exclusions',
 					'--ignore-dev-deps',
