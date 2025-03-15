@@ -42,8 +42,6 @@
 		"eslint.config.mjs",
 		"**/*.js",
 		"**/*.mjs",
-		"**/*.cjs",
-		"**/*.ts",
-		"**/*.tsx"
+		"**/*.cjs"
 	]
 }
