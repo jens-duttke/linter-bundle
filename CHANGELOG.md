@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - [eslint] Add line-break before variable declarations groups
 
+### Changed
+
+- [eslint] Optimize parens position of `enforce-logical-expression-parens` and `enforce-ternary-parens`
+- [eslint] Improve `eslint.config.mjs` code example in [README.md](./README.md)
+
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.1.1...v7.1.2)
 
 
