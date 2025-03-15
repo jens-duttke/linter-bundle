@@ -45,7 +45,7 @@
 		"@stylistic/eslint-plugin-jsx": "4.2.0",
 		"eslint": "9.22.0",
 		"eslint-formatter-unix": "8.40.0",
-		"eslint-import-resolver-typescript": "3.8.4",
+		"eslint-import-resolver-typescript": "3.9.0",
 		"eslint-import-resolver-webpack": "0.13.10",
 		"eslint-plugin-eslint-comments": "3.2.0",
 		"eslint-plugin-functional": "9.0.1",
@@ -62,7 +62,7 @@
 		"markdownlint-cli": "0.44.0",
 		"micromatch": "4.0.8",
 		"postcss-scss": "4.0.9",
-		"stylelint": "16.15.0",
+		"stylelint": "16.16.0",
 		"stylelint-declaration-block-no-ignored-properties": "2.8.0",
 		"stylelint-high-performance-animation": "1.11.0",
 		"stylelint-order": "6.0.4",
@@ -71,6 +71,7 @@
 		"typescript-eslint": "8.26.1"
 	},
 	"peerDependencies": {
+		"@typescript-eslint/utils": "*",
 		"postcss-value-parser": "*",
 		"typescript": ">=4.0.0"
 	},
