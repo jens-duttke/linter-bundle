@@ -392,6 +392,7 @@ export default [
 				'error',
 				{ blankLine: 'always', prev: '*', next: ['return', 'throw', 'break', 'continue'] },
 				{ blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
+				{ blankLine: 'always', prev: '*', next: ['const', 'let', 'var'] },
 				{ blankLine: 'any', prev: ['const', 'let', 'var'], next: ['const', 'let', 'var'] },
 				{ blankLine: 'always', prev: '*', next: 'multiline-block-like' },
 				{ blankLine: 'always', prev: 'multiline-block-like', next: '*' }
