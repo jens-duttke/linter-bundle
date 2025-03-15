@@ -41,6 +41,14 @@ The `linter-bundle` is using the Flat Configuration Format which was introduced 
 Beside that, the following additional rules are part of this bundle:
 
 - [`linter-bundle/enforce-logical-expression-parens`](./eslint/rules/enforce-logical-expression-parens.md)
+- [`linter-bundle/enforce-ternary-parens`](./eslint/rules/enforce-ternary-parens.md)
+- [`linter-bundle/ensure-lucide-import-consistency`](./eslint/rules/ensure-lucide-import-consistency.md)
+- [`linter-bundle/newline-before-after-if`](./eslint/rules/newline-before-after-if.md)
+- [`linter-bundle/newline-before-after-variable-declarations`](./eslint/rules/newline-before-after-variable-declarations.md)
+- [`linter-bundle/no-extra-spaces-in-generics`](./eslint/rules/no-extra-spaces-in-generics.md)
+- [`linter-bundle/no-ternary-return`](./eslint/rules/no-ternary-return.md)
+- [`linter-bundle/no-unnecessary-typeof`](./eslint/rules/no-unnecessary-typeof.md)
+- [`linter-bundle/restricted-filenames`](./eslint/rules/restricted-filenames.md)
 
 ### stylelint
 

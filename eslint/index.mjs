@@ -24,7 +24,10 @@ import { linterBundleConfig } from '../helper/linter-bundle-config.js';
 
 import enforceLogicalExpressionParens from './rules/enforce-logical-expression-parens.mjs';
 import enforceTernaryParensRule from './rules/enforce-ternary-parens.mjs';
+import newlineBeforeAfterIfRule from './rules/newline-before-after-if.mjs';
+import newlineBeforeAfterVariableDeclarationsRule from './rules/newline-before-after-variable-declarations.mjs';
 import noExtraSpacesInGenericsRule from './rules/no-extra-spaces-in-generics.mjs';
+import noTernaryReturnRule from './rules/no-ternary-return.mjs';
 import noUnnecessaryTypeofRule from './rules/no-unnecessary-typeof.mjs';
 import restrictedFilenamesRule from './rules/restricted-filenames.mjs';
 
@@ -52,7 +55,10 @@ export default [
 				rules: {
 					'enforce-logical-expression-parens': enforceLogicalExpressionParens,
 					'enforce-ternary-parens': enforceTernaryParensRule,
+					'newline-before-after-if': newlineBeforeAfterIfRule,
+					'newline-before-after-variable-declarations': newlineBeforeAfterVariableDeclarationsRule,
 					'no-extra-spaces-in-generics': noExtraSpacesInGenericsRule,
+					'no-ternary-return': noTernaryReturnRule,
 					'no-unnecessary-typeof': noUnnecessaryTypeofRule,
 					'restricted-filenames': restrictedFilenamesRule
 				}
@@ -139,8 +145,12 @@ export default [
 			/**
 			 * ./rules
 			 */
+			'linter-bundle/enforce-logical-expression-parens': 'error',
 			'linter-bundle/enforce-ternary-parens': 'error',
+			'linter-bundle/newline-before-after-if': 'error',
+			'linter-bundle/newline-before-after-variable-declarations': 'error',
 			'linter-bundle/no-extra-spaces-in-generics': 'error',
+			'linter-bundle/no-ternary-return': 'error',
 			'linter-bundle/no-unnecessary-typeof': 'error',
 
 			/**
