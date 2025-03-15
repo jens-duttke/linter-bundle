@@ -1,8 +1,0 @@
-{
-	"type": "commonjs",
-	"peerDependencies": {
-		"@typescript-eslint/utils": "*",
-		"micromatch": "*",
-		"typescript": "*"
-	}
-}
