@@ -13,7 +13,7 @@ export default {
 		docs: {
 			description: 'Add parentheses around logical operations if not already present',
 			category: 'Best Practices',
-			recommended: false
+			recommended: true
 		},
 		fixable: 'code'
 	},

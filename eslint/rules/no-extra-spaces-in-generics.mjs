@@ -13,7 +13,7 @@ export default {
 		docs: {
 			description: "Disallow spaces after '<' and before '>' in TypeScript generics.",
 			category: 'Stylistic Issues',
-			recommended: false
+			recommended: true
 		},
 		fixable: 'whitespace',
 		schema: [],
