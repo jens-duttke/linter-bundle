@@ -44,6 +44,9 @@ export default [
 					'shouldComponentUpdate'
 				]
 			}],
+			'@typescript-eslint/no-empty-object-type': ['error', { // Empty interfaces for Component props should be allowed to make it directly visible, that a component has no props.
+				allowWithName: 'Props$'
+			}],
 
 			/**
 			 * eslint-plugin-jsx-a11y
