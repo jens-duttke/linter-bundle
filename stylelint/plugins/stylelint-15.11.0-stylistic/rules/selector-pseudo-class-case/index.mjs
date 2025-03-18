@@ -70,6 +70,12 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 							return;
 						}
 
+						if (context.fix) {
+							pseudoNode.value = expectedPseudo;
+
+							return;
+						}
+
 						report({
 							message: messages.expected(pseudo, expectedPseudo),
 							node: ruleNode,
@@ -81,6 +87,15 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 					});
 				}
 		);
+
+		if (context.fix && fixedSelector) {
+			if (ruleNode.raws.selector) {
+				ruleNode.raws.selector.raw = fixedSelector;
+			}
+			else {
+				ruleNode.selector = fixedSelector;
+			}
+		}
 	});
 };
 

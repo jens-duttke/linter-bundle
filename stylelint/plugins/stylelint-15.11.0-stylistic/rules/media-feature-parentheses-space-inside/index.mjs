@@ -47,6 +47,8 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 
 				if (primary === 'never') {
 					if ((/[\t ]/).test(node.before)) {
+						if (context.fix) { node.before = ''; }
+
 						problems.push({
 							message: messages.rejectedOpening,
 							index: node.sourceIndex + 1 + indexBoost
@@ -54,6 +56,8 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 					}
 
 					if ((/[\t ]/).test(node.after)) {
+						if (context.fix) { node.after = ''; }
+
 						problems.push({
 							message: messages.rejectedClosing,
 							index: node.sourceIndex - 2 + length_ + indexBoost
@@ -62,6 +66,8 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 				}
 				else if (primary === 'always') {
 					if (node.before === '') {
+						if (context.fix) { node.before = ' '; }
+
 						problems.push({
 							message: messages.expectedOpening,
 							index: node.sourceIndex + 1 + indexBoost
@@ -69,6 +75,8 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 					}
 
 					if (node.after === '') {
+						if (context.fix) { node.after = ' '; }
+
 						problems.push({
 							message: messages.expectedClosing,
 							index: node.sourceIndex - 2 + length_ + indexBoost
@@ -79,6 +87,12 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 		});
 
 		if (problems.length > 0) {
+			if (context.fix) {
+				atRule.params = parsedParameters.toString();
+
+				return;
+			}
+
 			for (const error of problems) {
 				report({
 					message: error.message,

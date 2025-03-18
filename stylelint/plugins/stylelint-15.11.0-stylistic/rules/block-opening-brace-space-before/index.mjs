@@ -108,6 +108,20 @@ const rule = (primary, secondaryOptions, context) => {
 				index: source.length,
 				lineCheckStr: blockString(statement),
 				err: (m) => {
+					if (context.fix) {
+						if (primary.startsWith('always')) {
+							statement.raws.between = ' ';
+
+							return;
+						}
+
+						if (primary.startsWith('never')) {
+							statement.raws.between = '';
+
+							return;
+						}
+					}
+
 					report({
 						message: m,
 						node: statement,

@@ -67,15 +67,33 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 			const checkBefore = getCheckBefore(valueNode);
 
 			if (primary === 'always' && !containsNewline(checkBefore)) {
-				complain(messages.expectedOpening, openingIndex);
+				if (context.fix) {
+					hasFixed = true;
+					fixBeforeForAlways(valueNode, context.newline || '');
+				}
+				else {
+					complain(messages.expectedOpening, openingIndex);
+				}
 			}
 
 			if (isMultiLine && primary === 'always-multi-line' && !containsNewline(checkBefore)) {
-				complain(messages.expectedOpeningMultiLine, openingIndex);
+				if (context.fix) {
+					hasFixed = true;
+					fixBeforeForAlways(valueNode, context.newline || '');
+				}
+				else {
+					complain(messages.expectedOpeningMultiLine, openingIndex);
+				}
 			}
 
 			if (isMultiLine && primary === 'never-multi-line' && checkBefore !== '') {
-				complain(messages.rejectedOpeningMultiLine, openingIndex);
+				if (context.fix) {
+					hasFixed = true;
+					fixBeforeForNever(valueNode);
+				}
+				else {
+					complain(messages.rejectedOpeningMultiLine, openingIndex);
+				}
 			}
 
 			// Check closing ...
@@ -84,15 +102,33 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 			const checkAfter = getCheckAfter(valueNode);
 
 			if (primary === 'always' && !containsNewline(checkAfter)) {
-				complain(messages.expectedClosing, closingIndex);
+				if (context.fix) {
+					hasFixed = true;
+					fixAfterForAlways(valueNode, context.newline || '');
+				}
+				else {
+					complain(messages.expectedClosing, closingIndex);
+				}
 			}
 
 			if (isMultiLine && primary === 'always-multi-line' && !containsNewline(checkAfter)) {
-				complain(messages.expectedClosingMultiLine, closingIndex);
+				if (context.fix) {
+					hasFixed = true;
+					fixAfterForAlways(valueNode, context.newline || '');
+				}
+				else {
+					complain(messages.expectedClosingMultiLine, closingIndex);
+				}
 			}
 
 			if (isMultiLine && primary === 'never-multi-line' && checkAfter !== '') {
-				complain(messages.rejectedClosingMultiLine, closingIndex);
+				if (context.fix) {
+					hasFixed = true;
+					fixAfterForNever(valueNode);
+				}
+				else {
+					complain(messages.rejectedClosingMultiLine, closingIndex);
+				}
 			}
 		});
 

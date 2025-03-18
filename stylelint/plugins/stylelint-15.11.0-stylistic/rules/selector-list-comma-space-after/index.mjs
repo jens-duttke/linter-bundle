@@ -44,7 +44,7 @@ const rule = (primary, _secondaryOptions, context) => {
 			result,
 			locationChecker: checker.after,
 			checkedRuleName: ruleName,
-			fix:
+			fix: context.fix ?
 				(ruleNode, index) => {
 					fixData ||= new Map();
 					const commaIndices = fixData.get(ruleNode) || [];
@@ -54,6 +54,7 @@ const rule = (primary, _secondaryOptions, context) => {
 
 					return true;
 				  }
+				  : null
 		});
 
 		if (fixData) {

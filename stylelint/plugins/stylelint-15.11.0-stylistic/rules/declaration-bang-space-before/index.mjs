@@ -43,7 +43,7 @@ const rule = (primary, _secondaryOptions, context) => {
 			locationChecker: checker.before,
 			checkedRuleName: ruleName,
 			fix:
-				(decl, index) => {
+			context.fix ? (decl, index) => {
 					let bangIndex = index - declarationValueIndex(decl);
 					const value = getDeclarationValue(decl);
 					let target;
@@ -71,7 +71,6 @@ const rule = (primary, _secondaryOptions, context) => {
 					const targetAfter = target.slice(bangIndex);
 
 					if (primary === 'always') {
-
 						setFixed(targetBefore.replace(/\s*$/, '') + ' ' + targetAfter);
 
 						return true;
@@ -84,7 +83,7 @@ const rule = (primary, _secondaryOptions, context) => {
 					}
 
 					return false;
-				  }
+				  } : null
 		});
 	};
 };

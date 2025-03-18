@@ -27,13 +27,27 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 		return;
 	}
 
-	const rootString = (root.source?.input.css) || '';
+	const rootString = context.fix ? root.toString() : (root.source?.input.css) || '';
 
 	if (!rootString.trim()) {
 		return;
 	}
 
 	if (noEmptyFirstLineTest.test(rootString)) {
+		if (context.fix) {
+			if (root.first == null) {
+				throw new Error('The root node must have the first node.');
+			}
+
+			if (root.first.raws.before == null) {
+				throw new Error('The first node must have spaces before.');
+			}
+
+			root.first.raws.before = root.first.raws.before.trimStart();
+
+			return;
+		}
+
 		report({
 			message: messages.rejected,
 			node: root,

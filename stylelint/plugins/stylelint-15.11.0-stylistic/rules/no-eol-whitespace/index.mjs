@@ -88,7 +88,11 @@ const rule = (primary, secondaryOptions, context) => (root, result) => {
 
 	const ignoreEmptyLines = optionsMatches(secondaryOptions, 'ignore', 'empty-lines');
 
-	const rootString = (root.source?.input.css) || '';
+	if (context.fix) {
+		fix(root);
+	}
+
+	const rootString = context.fix ? root.toString() : (root.source?.input.css) || '';
 
 	/**
 	 * @param {number} index

@@ -84,18 +84,34 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 					value: value_
 				}));
 			}
+
+			needFix = processValue(valueNode);
+
+			if (needFix && context.fix) {
+				valueNode.value = primary === 'lower' ? value.toLowerCase() : value.toUpperCase();
+			}
 		});
 
 		if (problems.length > 0) {
-			for (const error of problems) {
-				report({
-					index: error.index,
-					endIndex: error.endIndex,
-					message: error.message,
-					node,
-					result,
-					ruleName
-				});
+			if (context.fix) {
+				if ('name' in node && node.name === 'media') {
+					node.params = parsedValue.toString();
+				}
+				else if ('value' in node) {
+					node.value = parsedValue.toString();
+				}
+			}
+			else {
+				for (const error of problems) {
+					report({
+						index: error.index,
+						endIndex: error.endIndex,
+						message: error.message,
+						node,
+						result,
+						ruleName
+					});
+				}
 			}
 		}
 	}

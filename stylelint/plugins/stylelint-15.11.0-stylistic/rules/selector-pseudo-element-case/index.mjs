@@ -66,6 +66,12 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 					return;
 				}
 
+				if (context.fix) {
+					pseudoNode.value = expectedPseudoElement;
+
+					return;
+				}
+
 				report({
 					message: messages.expected(pseudoElement, expectedPseudoElement),
 					node: ruleNode,

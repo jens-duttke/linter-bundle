@@ -53,6 +53,13 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 				return;
 			}
 
+			if (context.fix) {
+				mutateIdent(mediaFeatureNameToken, expectedFeatureName);
+				hasFixes = true;
+
+				return;
+			}
+
 			const atRuleIndex = atRuleParamIndex(atRule);
 
 			report({

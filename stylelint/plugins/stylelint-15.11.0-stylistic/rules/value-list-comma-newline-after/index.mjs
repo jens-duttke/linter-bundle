@@ -46,7 +46,7 @@ const rule = (primary, _secondaryOptions, context) => {
 			result,
 			locationChecker: checker.afterOneOnly,
 			checkedRuleName: ruleName,
-			fix:
+			fix: context.fix ?
 				(declNode, index) => {
 					const valueIndex = declarationValueIndex(declNode);
 
@@ -61,7 +61,8 @@ const rule = (primary, _secondaryOptions, context) => {
 					fixData.set(declNode, commaIndices);
 
 					return true;
-				  },
+				  }
+				  : null,
 			determineIndex: (declString, match) => {
 				const nextChars = declString.substring(match.endIndex, declString.length);
 

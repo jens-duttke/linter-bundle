@@ -53,6 +53,13 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 
 			if (value === expected) { return; }
 
+			if (context.fix) {
+				node.value = expected;
+				needsFix = true;
+
+				return;
+			}
+
 			report({
 				message: messages.expected(value, expected),
 				node: decl,

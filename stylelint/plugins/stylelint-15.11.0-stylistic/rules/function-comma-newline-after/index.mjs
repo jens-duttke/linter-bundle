@@ -41,7 +41,7 @@ const rule = (primary, _secondaryOptions, context) => {
 			result,
 			locationChecker: checker.afterOneOnly,
 			checkedRuleName: ruleName,
-			fix:
+			fix: context.fix ?
 				(div, index, nodes) => fixer({
 					div,
 					index,
@@ -50,6 +50,7 @@ const rule = (primary, _secondaryOptions, context) => {
 					position: 'after',
 					symb: context.newline || ''
 				})
+				: null
 		});
 	};
 };

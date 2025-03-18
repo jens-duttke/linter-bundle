@@ -55,22 +55,46 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 				const openIndex = pseudoNode.sourceIndex + pseudoNode.value.length + 1;
 
 				if (nextCharIsSpace && primary === 'never') {
-					complain(messages.rejectedOpening, openIndex);
+					if (context.fix) {
+						hasFixed = true;
+						setFirstNodeSpaceBefore(pseudoNode, '');
+					}
+					else {
+						complain(messages.rejectedOpening, openIndex);
+					}
 				}
 
 				if (!nextCharIsSpace && primary === 'always') {
-					complain(messages.expectedOpening, openIndex);
+					if (context.fix) {
+						hasFixed = true;
+						setFirstNodeSpaceBefore(pseudoNode, ' ');
+					}
+					else {
+						complain(messages.expectedOpening, openIndex);
+					}
 				}
 
 				const previousCharIsSpace = paramString.endsWith(' ');
 				const closeIndex = openIndex + paramString.length - 1;
 
 				if (previousCharIsSpace && primary === 'never') {
-					complain(messages.rejectedClosing, closeIndex);
+					if (context.fix) {
+						hasFixed = true;
+						setLastNodeSpaceAfter(pseudoNode, '');
+					}
+					else {
+						complain(messages.rejectedClosing, closeIndex);
+					}
 				}
 
 				if (!previousCharIsSpace && primary === 'always') {
-					complain(messages.expectedClosing, closeIndex);
+					if (context.fix) {
+						hasFixed = true;
+						setLastNodeSpaceAfter(pseudoNode, ' ');
+					}
+					else {
+						complain(messages.expectedClosing, closeIndex);
+					}
 				}
 			});
 		});

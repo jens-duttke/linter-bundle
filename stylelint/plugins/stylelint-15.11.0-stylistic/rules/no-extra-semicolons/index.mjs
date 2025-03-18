@@ -80,6 +80,12 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 		const fixSemiIndices = [];
 
 		styleSearch({ source: rawAfterRoot, target: ';' }, (match) => {
+			if (context.fix) {
+				fixSemiIndices.push(match.startIndex);
+
+				return;
+			}
+
 			if (!root.source) { throw new Error('The root node must have a source'); }
 
 			complain(root.source.input.css.length - rawAfterRoot.length + match.startIndex);
@@ -114,6 +120,12 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 					return;
 				}
 
+				if (context.fix) {
+					fixSemiIndices.push(match.startIndex - rawBeforeIndexStart);
+
+					return;
+				}
+
 				complain(getOffsetByNode(node) - rawBeforeNode.length + match.startIndex);
 			});
 
@@ -144,6 +156,12 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 			const fixSemiIndices = [];
 
 			styleSearch({ source: rawAfterNode, target: ';' }, (match) => {
+				if (context.fix) {
+					fixSemiIndices.push(match.startIndex);
+
+					return;
+				}
+
 				const index =
 						getOffsetByNode(node) +
 						node.toString().length -
@@ -169,6 +187,12 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 
 			styleSearch({ source: rawOwnSemicolon, target: ';' }, (match, count) => {
 				if (count === allowedSemi) {
+					return;
+				}
+
+				if (context.fix) {
+					fixSemiIndices.push(match.startIndex);
+
 					return;
 				}
 

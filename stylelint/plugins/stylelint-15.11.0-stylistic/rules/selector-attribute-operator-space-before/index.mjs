@@ -40,7 +40,7 @@ const rule = (primary, _secondaryOptions, context) => {
 			locationChecker: checker.before,
 			checkedRuleName: ruleName,
 			checkBeforeOperator: true,
-			fix:
+			fix: context.fix ?
 				(attributeNode) => {
 					const rawAttribute = attributeNode.raws.spaces?.attribute;
 					const rawAttributeAfter = rawAttribute?.after;
@@ -77,6 +77,7 @@ const rule = (primary, _secondaryOptions, context) => {
 
 					return false;
 				  }
+				: null
 		});
 	};
 };

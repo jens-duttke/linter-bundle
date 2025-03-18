@@ -54,7 +54,7 @@ const rule = (primary, secondaryOptions, context) => (root, result) => {
 
 	const ignoreNonComments = optionsMatches(secondaryOptions, 'ignore', 'non-comments');
 	const ignoreComments = optionsMatches(secondaryOptions, 'ignore', 'comments');
-	const rootString = root.source.input.css;
+	const rootString = context.fix ? root.toString() : root.source.input.css;
 	// Array of skipped sub strings, i.e `url(...)`, `@import "..."`
 	/** @type {Array<[number, number]>} */
 	let skippedSubStrings = [];

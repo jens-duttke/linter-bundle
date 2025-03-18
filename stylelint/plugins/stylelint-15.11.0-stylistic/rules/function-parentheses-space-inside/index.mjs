@@ -72,19 +72,43 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 			const openingIndex = valueNode.sourceIndex + valueNode.value.length + 1;
 
 			if (primary === 'always' && valueNode.before !== ' ') {
-				complain(messages.expectedOpening, openingIndex);
+				if (context.fix) {
+					hasFixed = true;
+					valueNode.before = ' ';
+				}
+				else {
+					complain(messages.expectedOpening, openingIndex);
+				}
 			}
 
 			if (primary === 'never' && valueNode.before !== '') {
-				complain(messages.rejectedOpening, openingIndex);
+				if (context.fix) {
+					hasFixed = true;
+					valueNode.before = '';
+				}
+				else {
+					complain(messages.rejectedOpening, openingIndex);
+				}
 			}
 
 			if (isSingleLine && primary === 'always-single-line' && valueNode.before !== ' ') {
-				complain(messages.expectedOpeningSingleLine, openingIndex);
+				if (context.fix) {
+					hasFixed = true;
+					valueNode.before = ' ';
+				}
+				else {
+					complain(messages.expectedOpeningSingleLine, openingIndex);
+				}
 			}
 
 			if (isSingleLine && primary === 'never-single-line' && valueNode.before !== '') {
-				complain(messages.rejectedOpeningSingleLine, openingIndex);
+				if (context.fix) {
+					hasFixed = true;
+					valueNode.before = '';
+				}
+				else {
+					complain(messages.rejectedOpeningSingleLine, openingIndex);
+				}
 			}
 
 			// Check closing ...
@@ -92,19 +116,43 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 			const closingIndex = valueNode.sourceIndex + functionString.length - 2;
 
 			if (primary === 'always' && valueNode.after !== ' ') {
-				complain(messages.expectedClosing, closingIndex);
+				if (context.fix) {
+					hasFixed = true;
+					valueNode.after = ' ';
+				}
+				else {
+					complain(messages.expectedClosing, closingIndex);
+				}
 			}
 
 			if (primary === 'never' && valueNode.after !== '') {
-				complain(messages.rejectedClosing, closingIndex);
+				if (context.fix) {
+					hasFixed = true;
+					valueNode.after = '';
+				}
+				else {
+					complain(messages.rejectedClosing, closingIndex);
+				}
 			}
 
 			if (isSingleLine && primary === 'always-single-line' && valueNode.after !== ' ') {
-				complain(messages.expectedClosingSingleLine, closingIndex);
+				if (context.fix) {
+					hasFixed = true;
+					valueNode.after = ' ';
+				}
+				else {
+					complain(messages.expectedClosingSingleLine, closingIndex);
+				}
 			}
 
 			if (isSingleLine && primary === 'never-single-line' && valueNode.after !== '') {
-				complain(messages.rejectedClosingSingleLine, closingIndex);
+				if (context.fix) {
+					hasFixed = true;
+					valueNode.after = '';
+				}
+				else {
+					complain(messages.rejectedClosingSingleLine, closingIndex);
+				}
 			}
 		});
 

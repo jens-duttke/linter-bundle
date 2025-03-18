@@ -36,13 +36,20 @@ const rule = (primary, _secondaryOptions, context) => {
 
 		const violatedCRLFNewLinesRegex = new RegExp(`(?:\r\n){${maxAdjacentNewlines + 1},}`);
 		const violatedLFNewLinesRegex = new RegExp(`\n{${maxAdjacentNewlines + 1},}`);
-		const allowedLFNewLinesString = '';
-		const allowedCRLFNewLinesString = '';
+		const allowedLFNewLinesString = context.fix ? '\n'.repeat(maxAdjacentNewlines) : '';
+		const allowedCRLFNewLinesString = context.fix ? '\r\n'.repeat(maxAdjacentNewlines) : '';
 
 		root.walkDecls((decl) => {
 			const value = getDeclarationValue(decl);
 
-			if (violatedLFNewLinesRegex.test(value) || violatedCRLFNewLinesRegex.test(value)) {
+			if (context.fix) {
+				const newValueString = value
+					.replace(new RegExp(violatedLFNewLinesRegex, 'gm'), allowedLFNewLinesString)
+					.replace(new RegExp(violatedCRLFNewLinesRegex, 'gm'), allowedCRLFNewLinesString);
+
+				setDeclarationValue(decl, newValueString);
+			}
+			else if (violatedLFNewLinesRegex.test(value) || violatedCRLFNewLinesRegex.test(value)) {
 				report({
 					message: messages.expected(primary),
 					node: decl,

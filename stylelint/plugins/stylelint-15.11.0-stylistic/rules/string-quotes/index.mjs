@@ -105,14 +105,20 @@ const rule = (primary, secondaryOptions, context) => {
 						}
 
 						if (needsCorrectEscape) {
-							report({
-								message: messages.expected(primary === 'single' ? 'double' : primary),
-								node: ruleNode,
-								index: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
-								endIndex: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
-								result,
-								ruleName
-							});
+							if (context.fix) {
+								selectorFixed = true;
+								attributeNode.quoteMark = erroneousQuote;
+							}
+							else {
+								report({
+									message: messages.expected(primary === 'single' ? 'double' : primary),
+									node: ruleNode,
+									index: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
+									endIndex: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
+									result,
+									ruleName
+								});
+							}
 						}
 					}
 
@@ -123,14 +129,20 @@ const rule = (primary, secondaryOptions, context) => {
 							const needsOtherEscape = attributeNode.value.includes(erroneousQuote);
 
 							if (needsOtherEscape) {
-								report({
-									message: messages.expected(primary),
-									node: ruleNode,
-									index: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
-									endIndex: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
-									result,
-									ruleName
-								});
+								if (context.fix) {
+									selectorFixed = true;
+									attributeNode.quoteMark = correctQuote;
+								}
+								else {
+									report({
+										message: messages.expected(primary),
+										node: ruleNode,
+										index: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
+										endIndex: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
+										result,
+										ruleName
+									});
+								}
 
 								return;
 							}
@@ -140,14 +152,20 @@ const rule = (primary, secondaryOptions, context) => {
 							}
 						}
 
-						report({
-							message: messages.expected(primary),
-							node: ruleNode,
-							index: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
-							endIndex: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
-							result,
-							ruleName
-						});
+						if (context.fix) {
+							selectorFixed = true;
+							attributeNode.quoteMark = correctQuote;
+						}
+						else {
+							report({
+								message: messages.expected(primary),
+								node: ruleNode,
+								index: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
+								endIndex: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
+								result,
+								ruleName
+							});
+						}
 					}
 				});
 
@@ -195,14 +213,21 @@ const rule = (primary, secondaryOptions, context) => {
 					const openIndex = valueNode.sourceIndex;
 
 					// we currently don't fix escapes
-					report({
-						message: messages.expected(primary),
-						node,
-						index: getIndex(node) + openIndex,
-						endIndex: getIndex(node) + openIndex,
-						result,
-						ruleName
-					});
+					if (context.fix && !needsEscape) {
+						const closeIndex = openIndex + valueNode.value.length + erroneousQuote.length;
+
+						fixPositions.push(openIndex, closeIndex);
+					}
+					else {
+						report({
+							message: messages.expected(primary),
+							node,
+							index: getIndex(node) + openIndex,
+							endIndex: getIndex(node) + openIndex,
+							result,
+							ruleName
+						});
+					}
 				}
 			});
 

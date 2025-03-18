@@ -31,20 +31,50 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 
 	const shouldHaveCR = primary === 'windows';
 
-	if (root.source == null) { throw new Error('The root node must have a source'); }
+	if (context.fix) {
+		root.walk((node) => {
+			if ('selector' in node) {
+				node.selector = fixData(node.selector);
+			}
 
-	const lines = root.source.input.css.split('\n');
+			if ('value' in node) {
+				node.value = fixData(node.value);
+			}
 
-	for (let [i, line] of lines.entries()) {
-		if (i < lines.length - 1 && !line.includes('\r')) {
-			line += '\n';
+			if ('text' in node) {
+				node.text = fixData(node.text);
+			}
+
+			if (node.raws.before) {
+				node.raws.before = fixData(node.raws.before);
+			}
+
+			if (typeof node.raws.after === 'string') {
+				node.raws.after = fixData(node.raws.after);
+			}
+		});
+
+		if (typeof root.raws.after === 'string') {
+			root.raws.after = fixData(root.raws.after);
+
 		}
+	}
+	else {
+		if (root.source == null) { throw new Error('The root node must have a source'); }
 
-		if (hasError(line)) {
-			const lineNum = i + 1;
-			const colNumber = line.length;
+		const lines = root.source.input.css.split('\n');
 
-			reportNewlineError(lineNum, colNumber);
+		for (let [i, line] of lines.entries()) {
+			if (i < lines.length - 1 && !line.includes('\r')) {
+				line += '\n';
+			}
+
+			if (hasError(line)) {
+				const lineNum = i + 1;
+				const colNumber = line.length;
+
+				reportNewlineError(lineNum, colNumber);
+			}
 		}
 	}
 

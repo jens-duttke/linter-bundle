@@ -74,6 +74,12 @@ const rule = (primary, _secondaryOptions, context) => {
 						source: selector,
 						index: indextoCheckAfter,
 						err: (m) => {
+							if (context.fix) {
+								fixIndices.push(indextoCheckAfter + 1);
+
+								return;
+							}
+
 							report({
 								message: m,
 								node: ruleNode,

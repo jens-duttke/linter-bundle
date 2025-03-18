@@ -45,6 +45,12 @@ const rule = (primary, _secondary, context) => (root, result) => {
 			return;
 		}
 
+		if (context.fix) {
+			atRule.name = expectedName;
+
+			return;
+		}
+
 		report({
 			message: messages.expected(name, expectedName),
 			node: atRule,

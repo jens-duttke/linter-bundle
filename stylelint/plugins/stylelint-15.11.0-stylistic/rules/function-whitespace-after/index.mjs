@@ -131,7 +131,6 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 
 		if (primary === 'always') {
 			applyFix = (index) => {
-
 				fixed += value.slice(lastIndex, index) + ' ';
 				lastIndex = index;
 			};
@@ -168,12 +167,28 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 
 	root.walkAtRules(/^import$/i, (atRule) => {
 		const parameter = (atRule.raws.params?.raw) || atRule.params;
+		const fixer = context.fix && createFixer(parameter);
 
-		check(atRule, parameter, atRuleParamIndex(atRule), undefined);
+		check(atRule, parameter, atRuleParamIndex(atRule), fixer ? fixer.applyFix : undefined);
+
+		if (fixer && fixer.hasFixed) {
+			if (atRule.raws.params) {
+				atRule.raws.params.raw = fixer.fixed;
+			}
+			else {
+				atRule.params = fixer.fixed;
+			}
+		}
 	});
 	root.walkDecls((decl) => {
 		const value = getDeclarationValue(decl);
-		check(decl, value, declarationValueIndex(decl), undefined);
+		const fixer = context.fix && createFixer(value);
+
+		check(decl, value, declarationValueIndex(decl), fixer ? fixer.applyFix : undefined);
+
+		if (fixer && fixer.hasFixed) {
+			setDeclarationValue(decl, fixer.fixed);
+		}
 	});
 };
 

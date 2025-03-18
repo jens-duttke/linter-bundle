@@ -50,6 +50,47 @@ const rule = (primary, secondaryOptions, context) => {
 		const ignoreComments = optionsMatches(secondaryOptions, 'ignore', 'comments');
 		const getChars = replaceEmptyLines.bind(null, primary);
 
+		/**
+		 * 1. walk nodes & replace enterchar
+		 * 2. deal with special case.
+		 */
+		if (context.fix) {
+			root.walk((node) => {
+				if (node.type === 'comment' && !ignoreComments) {
+					node.raws.left = getChars(node.raws.left);
+					node.raws.right = getChars(node.raws.right);
+				}
+
+				if (node.raws.before) {
+					node.raws.before = getChars(node.raws.before);
+				}
+			});
+
+			// first node
+			const firstNodeRawsBefore = root.first?.raws.before;
+			// root raws
+			const rootRawsAfter = root.raws.after;
+
+			// not document node
+			// @ts-expect-error -- TS2339: Property 'document' does not exist on type 'Root'.
+			if ((root.document?.constructor.name) !== 'Document') {
+				if (firstNodeRawsBefore) {
+					root.first.raws.before = getChars(firstNodeRawsBefore, true);
+				}
+
+				if (rootRawsAfter) {
+					// when max set 0, should be treated as 1 in this situation.
+					root.raws.after = replaceEmptyLines(primary === 0 ? 1 : primary, rootRawsAfter, true);
+				}
+			}
+			else if (rootRawsAfter) {
+				// `css in js` or `html`
+				root.raws.after = replaceEmptyLines(primary === 0 ? 1 : primary, rootRawsAfter);
+			}
+
+			return;
+		}
+
 		emptyLines = 0;
 		lastIndex = -1;
 		const rootString = root.toString();

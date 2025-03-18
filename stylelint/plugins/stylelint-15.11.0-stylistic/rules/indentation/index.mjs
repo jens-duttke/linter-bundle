@@ -105,12 +105,24 @@ const rule = (primary, secondaryOptions = {}, context) => (root, result) => {
 							(parent.raws.codeBefore?.endsWith('\n'))))) &&
 				before.slice(lastIndexOfNewline + 1) !== expectedOpeningBraceIndentation
 		) {
-			report({
-				message: messages.expected(legibleExpectation(nodeLevel)),
-				node,
-				result,
-				ruleName
-			});
+			if (context.fix) {
+				if (isFirstChild && isString(node.raws.before)) {
+					node.raws.before = node.raws.before.replace(
+						/^[\t ]*(?=\S|$)/,
+						expectedOpeningBraceIndentation
+					);
+				}
+
+				node.raws.before = fixIndentation(node.raws.before, expectedOpeningBraceIndentation);
+			}
+			else {
+				report({
+					message: messages.expected(legibleExpectation(nodeLevel)),
+					node,
+					result,
+					ruleName
+				});
+			}
 		}
 
 		// Only blocks have the `after` string to check.
@@ -127,14 +139,19 @@ const rule = (primary, secondaryOptions = {}, context) => (root, result) => {
 				after.includes('\n') &&
 				after.slice(after.lastIndexOf('\n') + 1) !== expectedClosingBraceIndentation
 		) {
-			report({
-				message: messages.expected(legibleExpectation(closingBraceLevel)),
-				node,
-				index: node.toString().length - 1,
-				endIndex: node.toString().length - 1,
-				result,
-				ruleName
-			});
+			if (context.fix) {
+				node.raws.after = fixIndentation(node.raws.after, expectedClosingBraceIndentation);
+			}
+			else {
+				report({
+					message: messages.expected(legibleExpectation(closingBraceLevel)),
+					node,
+					index: node.toString().length - 1,
+					endIndex: node.toString().length - 1,
+					result,
+					ruleName
+				});
+			}
 		}
 
 		// If this is a declaration, check the value
@@ -361,14 +378,24 @@ const rule = (primary, secondaryOptions = {}, context) => (root, result) => {
 				);
 
 				if (afterNewlineSpace !== expectedIndentation) {
-					report({
-						message: messages.expected(legibleExpectation(expectedIndentLevel)),
-						node,
-						index: match.startIndex + afterNewlineSpace.length + 1,
-						endIndex: match.startIndex + afterNewlineSpace.length + 1,
-						result,
-						ruleName
-					});
+					if (context.fix) {
+						// Adding fixes position in reverse order, because if we change indent in the beginning of the string it will break all following fixes for that string
+						fixPositions.unshift({
+							expectedIndentation,
+							currentIndentation: afterNewlineSpace,
+							startIndex: match.startIndex
+						});
+					}
+					else {
+						report({
+							message: messages.expected(legibleExpectation(expectedIndentLevel)),
+							node,
+							index: match.startIndex + afterNewlineSpace.length + 1,
+							endIndex: match.startIndex + afterNewlineSpace.length + 1,
+							result,
+							ruleName
+						});
+					}
 				}
 			}
 		);

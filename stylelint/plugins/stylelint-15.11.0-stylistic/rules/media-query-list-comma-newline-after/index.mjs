@@ -47,7 +47,7 @@ const rule = (primary, _secondaryOptions, context) => {
 			locationChecker: checker.afterOneOnly,
 			checkedRuleName: ruleName,
 			allowTrailingComments: primary.startsWith('always'),
-			fix:
+			fix: context.fix ?
 				(atRule, index) => {
 					const parameterCommaIndex = index - atRuleParamIndex(atRule);
 
@@ -59,6 +59,7 @@ const rule = (primary, _secondaryOptions, context) => {
 
 					return true;
 				  }
+				  : null
 		});
 
 		if (fixData) {

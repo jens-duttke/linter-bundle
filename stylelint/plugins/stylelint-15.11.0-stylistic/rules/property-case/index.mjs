@@ -73,6 +73,12 @@ const rule = (primary, secondaryOptions, context) => (root, result) => {
 			return;
 		}
 
+		if (context.fix) {
+			decl.prop = expectedProperty;
+
+			return;
+		}
+
 		report({
 			message: messages.expected(property, expectedProperty),
 			word: property,

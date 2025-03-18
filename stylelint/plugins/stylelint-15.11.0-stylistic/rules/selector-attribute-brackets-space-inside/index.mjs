@@ -57,10 +57,24 @@ const rule = (primary, _secondaryOptions, context) => {
 						const index = attributeNode.sourceIndex + match.startIndex + 1;
 
 						if (nextCharIsSpace && primary === 'never') {
+							if (context.fix) {
+								hasFixed = true;
+								fixBefore(attributeNode);
+
+								return;
+							}
+
 							complain(messages.rejectedOpening, index);
 						}
 
 						if (!nextCharIsSpace && primary === 'always') {
+							if (context.fix) {
+								hasFixed = true;
+								fixBefore(attributeNode);
+
+								return;
+							}
+
 							complain(messages.expectedOpening, index);
 						}
 					});
@@ -70,10 +84,24 @@ const rule = (primary, _secondaryOptions, context) => {
 						const index = attributeNode.sourceIndex + match.startIndex - 1;
 
 						if (previousCharIsSpace && primary === 'never') {
+							if (context.fix) {
+								hasFixed = true;
+								fixAfter(attributeNode);
+
+								return;
+							}
+
 							complain(messages.rejectedClosing, index);
 						}
 
 						if (!previousCharIsSpace && primary === 'always') {
+							if (context.fix) {
+								hasFixed = true;
+								fixAfter(attributeNode);
+
+								return;
+							}
+
 							complain(messages.expectedClosing, index);
 						}
 					});

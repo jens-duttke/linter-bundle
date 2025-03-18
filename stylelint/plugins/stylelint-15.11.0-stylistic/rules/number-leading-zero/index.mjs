@@ -83,6 +83,14 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 
 				const index = valueNode.sourceIndex + match.index + capturingGroupIndex;
 
+				if (context.fix) {
+					alwaysFixPositions.unshift({
+						index
+					});
+
+					return;
+				}
+
 				const baseIndex = isAtRule(node) ? atRuleParamIndex(node) : declarationValueIndex(node);
 
 				complain(messages.expected, node, baseIndex + index);
@@ -101,6 +109,16 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 				const capturingGroupIndex = match[0].length - (match[1].length + match[2].length);
 
 				const index = valueNode.sourceIndex + match.index + capturingGroupIndex;
+
+				if (context.fix) {
+					neverFixPositions.unshift({
+						startIndex: index,
+						// match[1].length is the length of our matched zero(s)
+						endIndex: index + match[1].length
+					});
+
+					return;
+				}
 
 				const baseIndex = isAtRule(node) ? atRuleParamIndex(node) : declarationValueIndex(node);
 
@@ -159,7 +177,6 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
  * @returns {string}
  */
 function addLeadingZero (input, index) {
-
 	return input.slice(0, index) + '0' + input.slice(index);
 }
 

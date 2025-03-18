@@ -86,6 +86,36 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 		 * @param {string} message
 		 */
 		function complain (message) {
+			if (context.fix) {
+				const statementRaws = statement.raws;
+
+				if (typeof statementRaws.after !== 'string') { return; }
+
+				if (primary.startsWith('always')) {
+					const firstWhitespaceIndex = statementRaws.after.search(/\s/);
+					const newlineBefore =
+							firstWhitespaceIndex >= 0 ?
+								statementRaws.after.slice(0, firstWhitespaceIndex)
+								: statementRaws.after;
+					const newlineAfter =
+							firstWhitespaceIndex >= 0 ? statementRaws.after.slice(firstWhitespaceIndex) : '';
+					const newlineIndex = newlineAfter.search(/\r?\n/);
+
+					statementRaws.after =
+							newlineIndex >= 0 ?
+								newlineBefore + newlineAfter.slice(newlineIndex)
+								: newlineBefore + context.newline + newlineAfter;
+
+					return;
+				}
+
+				if (primary === 'never-multi-line') {
+					statementRaws.after = statementRaws.after.replace(/\s/g, '');
+
+					return;
+				}
+			}
+
 			report({
 				message,
 				result,

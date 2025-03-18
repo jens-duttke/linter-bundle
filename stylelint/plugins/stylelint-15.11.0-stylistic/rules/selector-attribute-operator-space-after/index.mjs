@@ -38,7 +38,7 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 		locationChecker: checker.after,
 		checkedRuleName: ruleName,
 		checkBeforeOperator: false,
-		fix:
+		fix: context.fix ?
 				(attributeNode) => {
 					/** @type {{ operatorAfter: string, setOperatorAfter: (fixed: string) => void }} */
 					const { operatorAfter, setOperatorAfter } = (() => {
@@ -99,6 +99,7 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 
 					return false;
 				  }
+				  : null
 	});
 };
 

@@ -40,7 +40,7 @@ const rule = (primary, _secondaryOptions, context) => {
 			result,
 			locationChecker: checker.before,
 			checkedRuleName: ruleName,
-			fix:
+			fix: context.fix ?
 				(decl, index) => {
 					const colonIndex = index - declarationValueIndex(decl);
 					const between = decl.raws.between;
@@ -62,7 +62,7 @@ const rule = (primary, _secondaryOptions, context) => {
 					}
 
 					return false;
-				  }
+				  } : null
 		});
 	};
 };

@@ -43,7 +43,7 @@ const rule = (primary, _secondaryOptions, context) => {
 			result,
 			locationChecker: checker.before,
 			checkedRuleName: ruleName,
-			fix:
+			fix: context.fix ?
 				(atRule, index) => {
 					const parameterColonIndex = index - atRuleParamIndex(atRule);
 
@@ -55,6 +55,7 @@ const rule = (primary, _secondaryOptions, context) => {
 
 					return true;
 				  }
+				  : null
 		});
 
 		if (fixData) {

@@ -41,7 +41,7 @@ const rule = (primary, _secondaryOptions, context) => {
 			result,
 			locationChecker: checker.beforeAllowingIndentation,
 			checkedRuleName: ruleName,
-			fix:
+			fix: context.fix ?
 				(div, index, nodes) => fixer({
 					div,
 					index,
@@ -50,6 +50,7 @@ const rule = (primary, _secondaryOptions, context) => {
 					position: 'before',
 					symb: context.newline || ''
 				})
+				: null
 		});
 	};
 };

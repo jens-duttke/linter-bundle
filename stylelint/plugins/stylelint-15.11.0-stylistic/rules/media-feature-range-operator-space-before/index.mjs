@@ -39,9 +39,11 @@ const rule = (primary, _secondaryOptions, context) => {
 		root.walkAtRules(/^media$/i, (atRule) => {
 			/** @type {number[]} */
 			const fixOperatorIndices = [];
+			/** @type {((index: number) => void) | null} */
+			const fix = context.fix ? (index) => fixOperatorIndices.push(index) : null;
 
 			findMediaOperator(atRule, (match, parameters, node) => {
-				checkBeforeOperator(match, parameters, node, null);
+				checkBeforeOperator(match, parameters, node, fix);
 			});
 
 			if (fixOperatorIndices.length > 0) {

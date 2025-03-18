@@ -64,6 +64,20 @@ const rule = (primary, _secondaryOptions, context) => {
 				index: -1,
 				lineCheckStr: blockString(parentRule),
 				err: (m) => {
+					if (context.fix) {
+						if (primary.startsWith('always')) {
+							nextDecl.raws.before = ' ';
+
+							return;
+						}
+
+						if (primary.startsWith('never')) {
+							nextDecl.raws.before = '';
+
+							return;
+						}
+					}
+
 					report({
 						message: m,
 						node: decl,

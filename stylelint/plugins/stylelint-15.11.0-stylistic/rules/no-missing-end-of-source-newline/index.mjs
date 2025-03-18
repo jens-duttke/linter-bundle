@@ -34,9 +34,16 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 		return;
 	}
 
-	const rootString = root.source.input.css;
+	const rootString = context.fix ? root.toString() : root.source.input.css;
 
 	if (!rootString.trim() || rootString.endsWith('\n')) {
+		return;
+	}
+
+	// Fix
+	if (context.fix) {
+		root.raws.after = context.newline;
+
 		return;
 	}
 

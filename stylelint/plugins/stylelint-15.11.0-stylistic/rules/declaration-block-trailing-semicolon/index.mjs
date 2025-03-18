@@ -99,10 +99,29 @@ const rule = (primary, secondaryOptions, context) => (root, result) => {
 				return;
 			}
 
+			// auto-fix
+			if (context.fix) {
+				node.parent.raws.semicolon = true;
+
+				if (isAtRule(node)) {
+					node.raws.between = '';
+					node.parent.raws.after = ' ';
+				}
+
+				return;
+			}
+
 			message = messages.expected;
 		}
 		else if (primary === 'never') {
 			if (!hasSemicolon) {
+				return;
+			}
+
+			// auto-fix
+			if (context.fix) {
+				node.parent.raws.semicolon = false;
+
 				return;
 			}
 

@@ -63,14 +63,19 @@ const rule = (primary, _secondary, context) => {
 				source: rawNodeString(nodeToCheck),
 				index: -1,
 				err: (message) => {
-					report({
-						message,
-						node: atRule,
-						index: atRule.toString().length + 1,
-						endIndex: atRule.toString().length + 1,
-						result,
-						ruleName
-					});
+					if (context.fix) {
+						nodeToCheck.raws.before = context.newline + nodeToCheck.raws.before;
+					}
+					else {
+						report({
+							message,
+							node: atRule,
+							index: atRule.toString().length + 1,
+							endIndex: atRule.toString().length + 1,
+							result,
+							ruleName
+						});
+					}
 				}
 			});
 		});

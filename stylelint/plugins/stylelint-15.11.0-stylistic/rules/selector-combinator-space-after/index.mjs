@@ -40,7 +40,7 @@ const rule = (primary, _secondaryOptions, context) => {
 			locationChecker: checker.after,
 			locationType: 'after',
 			checkedRuleName: ruleName,
-			fix:
+			fix: context.fix ?
 				(combinator) => {
 					if (primary === 'always') {
 						combinator.spaces.after = ' ';
@@ -56,6 +56,7 @@ const rule = (primary, _secondaryOptions, context) => {
 
 					return false;
 				  }
+				  : null
 		});
 	};
 };
