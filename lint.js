@@ -582,7 +582,6 @@ function getConfigValue (taskName, taskConfig, optionName) {
 		const specificConfig = linterBundleConfig[/** @type {keyof typeof linterBundleConfig} */(taskName)];
 
 		if (typeof specificConfig === 'object' && optionName in specificConfig) {
-			// eslint-disable-next-line jsdoc/no-undefined-types -- False positive "The type 'specificConfig' is undefined."
 			const configValue = specificConfig[/** @type {keyof typeof specificConfig} */(optionName)];
 
 			if (Array.isArray(configValue)) {
