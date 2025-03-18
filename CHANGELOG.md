@@ -8,6 +8,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.1.2...HEAD)
 
+## [7.2.0] - 2025-03-18
+
+### Changed
+
+- [eslint] Updated `eslint-import-resolver-typescript` from `3.9.0` to `4.2.0`
+- [eslint] Updated `eslint-plugin-jsdoc` from `50.6.6` to `50.6.8`
+- [eslint/jest] Disabled `import/dynamic-import-chunkname` rule for tests
+- [eslint] Adjusted `padding-line-between-statements` rule, to enforce empty line around directives (like `"use client";`)
+- [eslint/react] Adjusted `@typescript-eslint/no-empty-object-type` rule, to allow empty interfaces with the suffix `Props` in TSX files
+- [eslint] Optimized position of closing parenthesis in `enforce-logical-expression-parens` and `enforce-ternary-parens` rule
+
+### Added
+
+- Re-added fixers of the mocked stylistic Stylelint rule.
+
 ## [7.1.2] - 2025-03-15
 
 ### Fixed
