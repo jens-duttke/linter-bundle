@@ -48,6 +48,7 @@ export default [
 			 *
 			 * @see https://github.com/import-js/eslint-plugin-import
 			 */
+			'import/dynamic-import-chunkname': 'off',
 			'import/no-unassigned-import': 'error',
 
 			/**
