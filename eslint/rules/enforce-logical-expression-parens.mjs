@@ -32,7 +32,7 @@ export default {
 						const nodeBefore = context.sourceCode.getTokenBefore(node, { includeComments: true });
 						const nodeAfter = context.sourceCode.getTokenAfter(node, { includeComments: true });
 
-						if (!nodeBefore || !nodeAfter) {
+						if (!nodeBefore || !nodeAfter || nodeBefore.loc?.end.line === node.loc?.start.line) {
 							return fixer.replaceText(node, `(${context.sourceCode.getText(node)})`);
 						}
 
