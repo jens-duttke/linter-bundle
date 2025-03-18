@@ -395,7 +395,9 @@ export default [
 				{ blankLine: 'always', prev: '*', next: ['const', 'let', 'var'] },
 				{ blankLine: 'any', prev: ['const', 'let', 'var'], next: ['const', 'let', 'var'] },
 				{ blankLine: 'always', prev: '*', next: 'multiline-block-like' },
-				{ blankLine: 'always', prev: 'multiline-block-like', next: '*' }
+				{ blankLine: 'always', prev: 'multiline-block-like', next: '*' },
+				{ blankLine: 'always', prev: '*', next: 'directive' },
+				{ blankLine: 'always', prev: 'directive', next: '*' }
 			],
 			'prefer-arrow-callback': ['error', { allowNamedFunctions: true }],
 			'prefer-const': 'error',
@@ -1016,11 +1018,23 @@ export default [
 			}],
 			'unicorn/import-style': ['error', {
 				styles: {
-					path: {
+					'lucide-react': {
+						unassigned: false,
+						default: false,
+						namespace: false,
+						named: true
+					},
+					'react': {
 						unassigned: false,
 						default: false,
 						namespace: true,
-						named: true
+						named: false
+					},
+					'./styles.module.scss': {
+						unassigned: false,
+						default: false,
+						namespace: true,
+						named: false
 					}
 				}
 			}],
