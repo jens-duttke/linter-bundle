@@ -1,5 +1,5 @@
 /**
- * @file ESLint rule which enforces using Lucide prefix for lucide-react imports and their usage.
+ * @file ESLint rule that enforces using Lucide prefix for lucide-react imports and their usage.
  */
 
 import { AST_NODE_TYPES } from '@typescript-eslint/utils';

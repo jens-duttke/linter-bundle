@@ -1,5 +1,5 @@
 /**
- * @file ESLint rule which ensures that a `typeof` operant has more than one type in TypeScript, to prevent unnecessary checks of types at runtime.
+ * @file ESLint rule that ensures that a `typeof` operant has more than one type in TypeScript, to prevent unnecessary checks of types at runtime.
  */
 
 /** @typedef {ts.Type & { intrinsicName?: string; types?: ts.Type[]; objectFlags?: ts.ObjectFlags; }} Type */

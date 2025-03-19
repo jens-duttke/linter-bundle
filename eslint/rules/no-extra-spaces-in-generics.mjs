@@ -1,5 +1,5 @@
 /**
- * @file ESLint rule which disallows spaces after '<' and before '>' in TypeScript generics.
+ * @file ESLint rule that disallows spaces after '<' and before '>' in TypeScript generics.
  */
 
 /**

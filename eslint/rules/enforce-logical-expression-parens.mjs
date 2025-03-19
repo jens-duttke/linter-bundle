@@ -1,5 +1,5 @@
 /**
- * @file ESLint rule which ensures logical operations are wrapped in parentheses.
+ * @file ESLint rule that ensures logical operations are wrapped in parentheses.
  */
 
 import { isParenthesized } from './helper/is-parenthesized.mjs';

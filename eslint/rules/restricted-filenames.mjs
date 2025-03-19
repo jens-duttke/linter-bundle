@@ -1,5 +1,5 @@
 /**
- * @file ESLint rule which ensures that only files which match given glob patterns are part of your project.
+ * @file ESLint rule that ensures that only files which match given glob patterns are part of your project.
  */
 
 import path from 'node:path';

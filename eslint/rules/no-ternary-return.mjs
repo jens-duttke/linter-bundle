@@ -1,5 +1,5 @@
 /**
- * @file ESLint rule which disallows ternary expressions as return values for better readability.
+ * @file ESLint rule that disallows ternary expressions as return values for better readability.
  */
 
 /**
