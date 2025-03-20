@@ -58,7 +58,7 @@ Beside that, the following additional rules are part of this bundle:
 - [stylelint-selector-tag-no-without-class](https://www.npmjs.com/package/stylelint-selector-tag-no-without-class) (Forked version)
 - [stylelint-use-logical-spec](https://www.npmjs.com/package/stylelint-use-logical-spec)
 
-Beside that [73 stylistic rules](https://github.com/jens-duttke/linter-bundle/tree/main/stylelint/plugins/stylelint-15.11.0-stylistic/rules) has been forked from `stylelint@15.11.0`, which have been removed in `stylelint@16.0.0`, are part of this bundle.
+Beside that [72 stylistic rules](https://github.com/jens-duttke/linter-bundle/tree/main/stylelint/plugins/stylelint-15.11.0-stylistic/rules) has been forked from `stylelint@15.11.0`, which have been removed in `stylelint@16.0.0`, are part of this bundle.
 
 ### Previously used, but now unmaintained plugins
 
@@ -93,16 +93,16 @@ npm install linter-bundle --save-dev
 #### eslint.config.mjs
 
 ```js
-import gatsbyConfig from './eslint/gatsby.mjs';
-import javascriptConfig from './eslint/javascript.mjs';
-// import javascriptLazyConfig from './eslint/javascript-lazy.mjs';
-import jestConfig from './eslint/jest.mjs';
-import jsdocConfig from './eslint/jsdoc.mjs';
-import reactConfig from './eslint/react.mjs';
-import storybookConfig from './eslint/storybook.mjs';
-import typeDeclarationsConfig from './eslint/type-declarations.mjs';
-import workerConfig from './eslint/worker.mjs';
-import eslintConfig from './eslint.mjs';
+import gatsbyConfig from 'linter-bundle/eslint/gatsby.mjs';
+import javascriptConfig from 'linter-bundle/eslint/javascript.mjs';
+// import javascriptLazyConfig from 'linter-bundle/eslint/javascript-lazy.mjs';
+import jestConfig from 'linter-bundle/eslint/jest.mjs';
+import jsdocConfig from 'linter-bundle/eslint/jsdoc.mjs';
+import reactConfig from 'linter-bundle/eslint/react.mjs';
+import storybookConfig from 'linter-bundle/eslint/storybook.mjs';
+import typeDeclarationsConfig from 'linter-bundle/eslint/type-declarations.mjs';
+import workerConfig from 'linter-bundle/eslint/worker.mjs';
+import eslintConfig from 'linter-bundle/eslint.mjs';
 
 export default [
   ...eslintConfig,
