@@ -24,7 +24,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, secondaryOptions = {}, context) => (root, result) => {
+const rule = (primary, secondaryOptions = {}) => (root, result) => {
 	const validOptions = validateOptions(
 		result,
 		ruleName,
@@ -105,24 +105,22 @@ const rule = (primary, secondaryOptions = {}, context) => (root, result) => {
 							(parent.raws.codeBefore?.endsWith('\n'))))) &&
 				before.slice(lastIndexOfNewline + 1) !== expectedOpeningBraceIndentation
 		) {
-			if (context.fix) {
-				if (isFirstChild && isString(node.raws.before)) {
-					node.raws.before = node.raws.before.replace(
-						/^[\t ]*(?=\S|$)/,
-						expectedOpeningBraceIndentation
-					);
-				}
+			report({
+				message: messages.expected(legibleExpectation(nodeLevel)),
+				node,
+				result,
+				ruleName,
+				fix: () => {
+					if (isFirstChild && isString(node.raws.before)) {
+						node.raws.before = node.raws.before.replace(
+							/^[\t ]*(?=\S|$)/,
+							expectedOpeningBraceIndentation
+						);
+					}
 
-				node.raws.before = fixIndentation(node.raws.before, expectedOpeningBraceIndentation);
-			}
-			else {
-				report({
-					message: messages.expected(legibleExpectation(nodeLevel)),
-					node,
-					result,
-					ruleName
-				});
-			}
+					node.raws.before = fixIndentation(node.raws.before, expectedOpeningBraceIndentation);
+				}
+			});
 		}
 
 		// Only blocks have the `after` string to check.
@@ -139,19 +137,17 @@ const rule = (primary, secondaryOptions = {}, context) => (root, result) => {
 				after.includes('\n') &&
 				after.slice(after.lastIndexOf('\n') + 1) !== expectedClosingBraceIndentation
 		) {
-			if (context.fix) {
-				node.raws.after = fixIndentation(node.raws.after, expectedClosingBraceIndentation);
-			}
-			else {
-				report({
-					message: messages.expected(legibleExpectation(closingBraceLevel)),
-					node,
-					index: node.toString().length - 1,
-					endIndex: node.toString().length - 1,
-					result,
-					ruleName
-				});
-			}
+			report({
+				message: messages.expected(legibleExpectation(closingBraceLevel)),
+				node,
+				index: node.toString().length - 1,
+				endIndex: node.toString().length - 1,
+				result,
+				ruleName,
+				fix: () => {
+					node.raws.after = fixIndentation(node.raws.after, expectedClosingBraceIndentation);
+				}
+			});
 		}
 
 		// If this is a declaration, check the value
@@ -378,24 +374,22 @@ const rule = (primary, secondaryOptions = {}, context) => (root, result) => {
 				);
 
 				if (afterNewlineSpace !== expectedIndentation) {
-					if (context.fix) {
-						// Adding fixes position in reverse order, because if we change indent in the beginning of the string it will break all following fixes for that string
-						fixPositions.unshift({
-							expectedIndentation,
-							currentIndentation: afterNewlineSpace,
-							startIndex: match.startIndex
-						});
-					}
-					else {
-						report({
-							message: messages.expected(legibleExpectation(expectedIndentLevel)),
-							node,
-							index: match.startIndex + afterNewlineSpace.length + 1,
-							endIndex: match.startIndex + afterNewlineSpace.length + 1,
-							result,
-							ruleName
-						});
-					}
+					report({
+						message: messages.expected(legibleExpectation(expectedIndentLevel)),
+						node,
+						index: match.startIndex + afterNewlineSpace.length + 1,
+						endIndex: match.startIndex + afterNewlineSpace.length + 1,
+						result,
+						ruleName,
+						fix: () => {
+							// Adding fixes position in reverse order, because if we change indent in the beginning of the string it will break all following fixes for that string
+							fixPositions.unshift({
+								expectedIndentation,
+								currentIndentation: afterNewlineSpace,
+								startIndex: match.startIndex
+							});
+						}
+					});
 				}
 			}
 		);

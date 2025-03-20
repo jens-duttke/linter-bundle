@@ -22,7 +22,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => {
+const rule = (primary, _secondaryOptions) => {
 	const checker = whitespaceChecker('space', primary, messages);
 
 	return (root, result) => {
@@ -43,19 +43,17 @@ const rule = (primary, _secondaryOptions, context) => {
 			result,
 			locationChecker: checker.before,
 			checkedRuleName: ruleName,
-			fix: context.fix ?
-				(atRule, index) => {
-					const parameterColonIndex = index - atRuleParamIndex(atRule);
+			fix: (atRule, index) => {
+				const parameterColonIndex = index - atRuleParamIndex(atRule);
 
-					fixData ||= new Map();
-					const colonIndices = fixData.get(atRule) || [];
+				fixData ||= new Map();
+				const colonIndices = fixData.get(atRule) || [];
 
-					colonIndices.push(parameterColonIndex);
-					fixData.set(atRule, colonIndices);
+				colonIndices.push(parameterColonIndex);
+				fixData.set(atRule, colonIndices);
 
-					return true;
-				  }
-				  : null
+				return true;
+			}
 		});
 
 		if (fixData) {

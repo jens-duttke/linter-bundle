@@ -36,19 +36,14 @@ export default function atRuleNameSpaceChecker (options) {
 			source,
 			index,
 			err: (m) => {
-				if (options.fix) {
-					options.fix(node);
-
-					return;
-				}
-
 				report({
 					message: m,
 					node,
 					index,
 					endIndex: index,
 					result: options.result,
-					ruleName: options.checkedRuleName
+					ruleName: options.checkedRuleName,
+					fix: (options.fix ? () => options.fix(node) : undefined)
 				});
 			},
 			errTarget: `@${node.name}`

@@ -70,12 +70,6 @@ export default function selectorAttributeOperatorSpaceChecker (options) {
 				source,
 				index,
 				err: (message) => {
-					if (options.fix && options.fix(attributeNode)) {
-						hasFixed = true;
-
-						return;
-					}
-
 					report({
 						message: message.replace(
 							options.checkBeforeOperator ?
@@ -87,7 +81,12 @@ export default function selectorAttributeOperatorSpaceChecker (options) {
 						index: attributeNode.sourceIndex + index,
 						endIndex: attributeNode.sourceIndex + index,
 						result: options.result,
-						ruleName: options.checkedRuleName
+						ruleName: options.checkedRuleName,
+						fix: (options.fix ? () => {
+							if (options.fix(attributeNode)) {
+								hasFixed = true;
+							}
+						} : undefined)
 					});
 				}
 			});

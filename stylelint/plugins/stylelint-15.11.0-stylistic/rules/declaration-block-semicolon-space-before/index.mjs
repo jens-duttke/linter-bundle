@@ -27,7 +27,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => {
+const rule = (primary, _secondaryOptions) => {
 	const checker = whitespaceChecker('space', primary, messages);
 
 	return (root, result) => {
@@ -61,39 +61,38 @@ const rule = (primary, _secondaryOptions, context) => {
 				index: declString.length,
 				lineCheckStr: blockString(parentRule),
 				err: (m) => {
-					if (context.fix) {
-						const value = getDeclarationValue(decl);
-
-						if (primary.startsWith('always')) {
-							if (decl.important) {
-								decl.raws.important = ' !important ';
-							}
-							else {
-								setDeclarationValue(decl, value.replace(/\s*$/, ' '));
-							}
-
-							return;
-						}
-
-						if (primary.startsWith('never')) {
-							if (decl.raws.important) {
-								decl.raws.important = decl.raws.important.replace(/\s*$/, '');
-							}
-							else {
-								setDeclarationValue(decl, value.replace(/\s*$/, ''));
-							}
-
-							return;
-						}
-					}
-
 					report({
 						message: m,
 						node: decl,
 						index: decl.toString().length - 1,
 						endIndex: decl.toString().length - 1,
 						result,
-						ruleName
+						ruleName,
+						fix: () => {
+							const value = getDeclarationValue(decl);
+
+							if (primary.startsWith('always')) {
+								if (decl.important) {
+									decl.raws.important = ' !important ';
+								}
+								else {
+									setDeclarationValue(decl, value.replace(/\s*$/, ' '));
+								}
+
+								return;
+							}
+
+							if (primary.startsWith('never')) {
+								if (decl.raws.important) {
+									decl.raws.important = decl.raws.important.replace(/\s*$/, '');
+								}
+								else {
+									setDeclarationValue(decl, value.replace(/\s*$/, ''));
+								}
+
+								return;
+							}
+						}
 					});
 				}
 			});

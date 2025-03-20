@@ -31,7 +31,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => (root, result) => {
+const rule = (primary, _secondaryOptions) => (root, result) => {
 	const validOptions = validateOptions(result, ruleName, {
 		actual: primary,
 		possible: ['always', 'never', 'always-single-line', 'never-single-line']
@@ -72,43 +72,63 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 			const openingIndex = valueNode.sourceIndex + valueNode.value.length + 1;
 
 			if (primary === 'always' && valueNode.before !== ' ') {
-				if (context.fix) {
-					hasFixed = true;
-					valueNode.before = ' ';
-				}
-				else {
-					complain(messages.expectedOpening, openingIndex);
-				}
+				report({
+					ruleName,
+					result,
+					message: messages.expectedOpening,
+					node: decl,
+					index: declarationValueIndex(decl) + openingIndex,
+					endIndex: declarationValueIndex(decl) + openingIndex,
+					fix: () => {
+						hasFixed = true;
+						valueNode.before = ' ';
+					}
+				});
 			}
 
 			if (primary === 'never' && valueNode.before !== '') {
-				if (context.fix) {
-					hasFixed = true;
-					valueNode.before = '';
-				}
-				else {
-					complain(messages.rejectedOpening, openingIndex);
-				}
+				report({
+					ruleName,
+					result,
+					message: messages.rejectedOpening,
+					node: decl,
+					index: declarationValueIndex(decl) + openingIndex,
+					endIndex: declarationValueIndex(decl) + openingIndex,
+					fix: () => {
+						hasFixed = true;
+						valueNode.before = '';
+					}
+				});
 			}
 
 			if (isSingleLine && primary === 'always-single-line' && valueNode.before !== ' ') {
-				if (context.fix) {
-					hasFixed = true;
-					valueNode.before = ' ';
-				}
-				else {
-					complain(messages.expectedOpeningSingleLine, openingIndex);
-				}
+				report({
+					ruleName,
+					result,
+					message: messages.expectedOpeningSingleLine,
+					node: decl,
+					index: declarationValueIndex(decl) + openingIndex,
+					endIndex: declarationValueIndex(decl) + openingIndex,
+					fix: () => {
+						hasFixed = true;
+						valueNode.before = ' ';
+					}
+				});
 			}
 
 			if (isSingleLine && primary === 'never-single-line' && valueNode.before !== '') {
-				if (context.fix) {
-					hasFixed = true;
-					valueNode.before = '';
-				}
-				else {
-					complain(messages.rejectedOpeningSingleLine, openingIndex);
-				}
+				report({
+					ruleName,
+					result,
+					message: messages.rejectedOpeningSingleLine,
+					node: decl,
+					index: declarationValueIndex(decl) + openingIndex,
+					endIndex: declarationValueIndex(decl) + openingIndex,
+					fix: () => {
+						hasFixed = true;
+						valueNode.before = '';
+					}
+				});
 			}
 
 			// Check closing ...
@@ -116,63 +136,68 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 			const closingIndex = valueNode.sourceIndex + functionString.length - 2;
 
 			if (primary === 'always' && valueNode.after !== ' ') {
-				if (context.fix) {
-					hasFixed = true;
-					valueNode.after = ' ';
-				}
-				else {
-					complain(messages.expectedClosing, closingIndex);
-				}
+				report({
+					ruleName,
+					result,
+					message: messages.expectedClosing,
+					node: decl,
+					index: declarationValueIndex(decl) + closingIndex,
+					endIndex: declarationValueIndex(decl) + closingIndex,
+					fix: () => {
+						hasFixed = true;
+						valueNode.after = ' ';
+					}
+				});
 			}
 
 			if (primary === 'never' && valueNode.after !== '') {
-				if (context.fix) {
-					hasFixed = true;
-					valueNode.after = '';
-				}
-				else {
-					complain(messages.rejectedClosing, closingIndex);
-				}
+				report({
+					ruleName,
+					result,
+					message: messages.rejectedClosing,
+					node: decl,
+					index: declarationValueIndex(decl) + closingIndex,
+					endIndex: declarationValueIndex(decl) + closingIndex,
+					fix: () => {
+						hasFixed = true;
+						valueNode.after = '';
+					}
+				});
 			}
 
 			if (isSingleLine && primary === 'always-single-line' && valueNode.after !== ' ') {
-				if (context.fix) {
-					hasFixed = true;
-					valueNode.after = ' ';
-				}
-				else {
-					complain(messages.expectedClosingSingleLine, closingIndex);
-				}
+				report({
+					ruleName,
+					result,
+					message: messages.expectedClosingSingleLine,
+					node: decl,
+					index: declarationValueIndex(decl) + closingIndex,
+					endIndex: declarationValueIndex(decl) + closingIndex,
+					fix: () => {
+						hasFixed = true;
+						valueNode.after = ' ';
+					}
+				});
 			}
 
 			if (isSingleLine && primary === 'never-single-line' && valueNode.after !== '') {
-				if (context.fix) {
-					hasFixed = true;
-					valueNode.after = '';
-				}
-				else {
-					complain(messages.rejectedClosingSingleLine, closingIndex);
-				}
+				report({
+					ruleName,
+					result,
+					message: messages.rejectedClosingSingleLine,
+					node: decl,
+					index: declarationValueIndex(decl) + closingIndex,
+					endIndex: declarationValueIndex(decl) + closingIndex,
+					fix: () => {
+						hasFixed = true;
+						valueNode.after = '';
+					}
+				});
 			}
 		});
 
 		if (hasFixed) {
 			setDeclarationValue(decl, parsedValue.toString());
-		}
-
-		/**
-		 * @param {string} message
-		 * @param {number} offset
-		 */
-		function complain (message, offset) {
-			report({
-				ruleName,
-				result,
-				message,
-				node: decl,
-				index: declarationValueIndex(decl) + offset,
-				endIndex: declarationValueIndex(decl) + offset
-			});
 		}
 	});
 };

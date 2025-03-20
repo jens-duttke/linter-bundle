@@ -23,7 +23,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => {
+const rule = (primary, _secondaryOptions) => {
 	const checker = whitespaceChecker('space', primary, messages);
 
 	return (root, result) => {
@@ -37,37 +37,9 @@ const rule = (primary, _secondaryOptions, context) => {
 		}
 
 		root.walkAtRules(/^media$/i, (atRule) => {
-			/** @type {number[]} */
-			const fixOperatorIndices = [];
-			/** @type {((index: number) => void) | null} */
-			const fix = context.fix ? (index) => fixOperatorIndices.push(index) : null;
-
 			findMediaOperator(atRule, (match, parameters, node) => {
-				checkAfterOperator(match, parameters, node, fix);
+				checkAfterOperator(match, parameters, node);
 			});
-
-			if (fixOperatorIndices.length > 0) {
-				let parameters = atRule.raws.params ? atRule.raws.params.raw : atRule.params;
-
-				for (const index of fixOperatorIndices.sort((a, b) => b - a)) {
-					const beforeOperator = parameters.slice(0, index + 1);
-					const afterOperator = parameters.slice(index + 1);
-
-					if (primary === 'always') {
-						parameters = beforeOperator + afterOperator.replace(/^\s*/, ' ');
-					}
-					else if (primary === 'never') {
-						parameters = beforeOperator + afterOperator.replace(/^\s*/, '');
-					}
-				}
-
-				if (atRule.raws.params) {
-					atRule.raws.params.raw = parameters;
-				}
-				else {
-					atRule.params = parameters;
-				}
-			}
 		});
 
 		/**
@@ -75,28 +47,40 @@ const rule = (primary, _secondaryOptions, context) => {
 		 * @param {string} params
 		 * @param parameters
 		 * @param {import('postcss').AtRule} node
-		 * @param {((index: number) => void) | null} fix
 		 */
-		function checkAfterOperator (match, parameters, node, fix) {
+		function checkAfterOperator(match, parameters, node) {
 			const endIndex = match.startIndex + match.target.length - 1;
 
 			checker.after({
 				source: parameters,
 				index: endIndex,
 				err: (m) => {
-					if (fix) {
-						fix(endIndex);
-
-						return;
-					}
-
 					report({
 						message: m,
 						node,
 						index: endIndex + atRuleParamIndex(node) + 1,
 						endIndex: endIndex + atRuleParamIndex(node) + 1,
 						result,
-						ruleName
+						ruleName,
+						fix: (fixer) => {
+							let parameters = node.raws.params ? node.raws.params.raw : node.params;
+							const beforeOperator = parameters.slice(0, endIndex + 1);
+							const afterOperator = parameters.slice(endIndex + 1);
+
+							if (primary === 'always') {
+								parameters = beforeOperator + afterOperator.replace(/^\s*/, ' ');
+							} else if (primary === 'never') {
+								parameters = beforeOperator + afterOperator.replace(/^\s*/, '');
+							}
+
+							if (node.raws.params) {
+								node.raws.params.raw = parameters;
+							} else {
+								node.params = parameters;
+							}
+
+							return fixer;
+						}
 					});
 				}
 			});

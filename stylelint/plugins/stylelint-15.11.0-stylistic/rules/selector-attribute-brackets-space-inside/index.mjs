@@ -25,7 +25,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => {
+const rule = (primary, _secondaryOptions) => {
 	return (root, result) => {
 		const validOptions = validateOptions(result, ruleName, {
 			actual: primary,
@@ -57,25 +57,34 @@ const rule = (primary, _secondaryOptions, context) => {
 						const index = attributeNode.sourceIndex + match.startIndex + 1;
 
 						if (nextCharIsSpace && primary === 'never') {
-							if (context.fix) {
-								hasFixed = true;
-								fixBefore(attributeNode);
-
-								return;
-							}
-
-							complain(messages.rejectedOpening, index);
+							report({
+								message: messages.rejectedOpening,
+								index,
+								endIndex: index,
+								result,
+								ruleName,
+								node: ruleNode,
+								fix: () => {
+									hasFixed = true;
+									fixBefore(attributeNode);
+								}
+							});
 						}
 
 						if (!nextCharIsSpace && primary === 'always') {
-							if (context.fix) {
-								hasFixed = true;
-								fixBefore(attributeNode);
+							report({
+								message: messages.expectedOpening,
+								index,
+								endIndex: index,
+								result,
+								ruleName,
+								node: ruleNode,
+								fix: () => {
+									hasFixed = true;
+									fixBefore(attributeNode);
+								}
+							});
 
-								return;
-							}
-
-							complain(messages.expectedOpening, index);
 						}
 					});
 
@@ -84,25 +93,35 @@ const rule = (primary, _secondaryOptions, context) => {
 						const index = attributeNode.sourceIndex + match.startIndex - 1;
 
 						if (previousCharIsSpace && primary === 'never') {
-							if (context.fix) {
-								hasFixed = true;
-								fixAfter(attributeNode);
+							report({
+								message: messages.rejectedClosing,
+								index,
+								endIndex: index,
+								result,
+								ruleName,
+								node: ruleNode,
+								fix: () => {
+									hasFixed = true;
+									fixAfter(attributeNode);
+								}
+							});
 
-								return;
-							}
-
-							complain(messages.rejectedClosing, index);
 						}
 
 						if (!previousCharIsSpace && primary === 'always') {
-							if (context.fix) {
-								hasFixed = true;
-								fixAfter(attributeNode);
+							report({
+								message: messages.expectedClosing,
+								index,
+								endIndex: index,
+								result,
+								ruleName,
+								node: ruleNode,
+								fix: () => {
+									hasFixed = true;
+									fixAfter(attributeNode);
+								}
+							});
 
-								return;
-							}
-
-							complain(messages.expectedClosing, index);
 						}
 					});
 				});
@@ -115,21 +134,6 @@ const rule = (primary, _secondaryOptions, context) => {
 				else {
 					ruleNode.raws.selector.raw = fixedSelector;
 				}
-			}
-
-			/**
-			 * @param {string} message
-			 * @param {number} index
-			 */
-			function complain (message, index) {
-				report({
-					message,
-					index,
-					endIndex: index,
-					result,
-					ruleName,
-					node: ruleNode
-				});
 			}
 		});
 	};

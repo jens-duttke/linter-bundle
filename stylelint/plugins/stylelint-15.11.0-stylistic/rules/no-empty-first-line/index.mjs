@@ -19,7 +19,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => (root, result) => {
+const rule = (primary, _secondaryOptions) => (root, result) => {
 	const validOptions = validateOptions(result, ruleName, { actual: primary });
 
 	// @ts-expect-error -- TS2339: Property 'inline' does not exist on type 'Source'. Property 'lang' does not exist on type 'Source'.
@@ -27,32 +27,29 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 		return;
 	}
 
-	const rootString = context.fix ? root.toString() : (root.source?.input.css) || '';
+	const rootString = root.toString();
 
 	if (!rootString.trim()) {
 		return;
 	}
 
 	if (noEmptyFirstLineTest.test(rootString)) {
-		if (context.fix) {
-			if (root.first == null) {
-				throw new Error('The root node must have the first node.');
-			}
-
-			if (root.first.raws.before == null) {
-				throw new Error('The first node must have spaces before.');
-			}
-
-			root.first.raws.before = root.first.raws.before.trimStart();
-
-			return;
-		}
-
 		report({
 			message: messages.rejected,
 			node: root,
 			result,
-			ruleName
+			ruleName,
+			fix: () => {
+				if (root.first == null) {
+					throw new Error('The root node must have the first node.');
+				}
+
+				if (root.first.raws.before == null) {
+					throw new Error('The first node must have spaces before.');
+				}
+
+				root.first.raws.before = root.first.raws.before.trimStart();
+			}
 		});
 	}
 };

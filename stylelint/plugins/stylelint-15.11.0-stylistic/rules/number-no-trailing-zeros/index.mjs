@@ -21,7 +21,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => (root, result) => {
+const rule = (primary, _secondaryOptions) => (root, result) => {
 	const validOptions = validateOptions(result, ruleName, { actual: primary });
 
 	if (!validOptions) {
@@ -85,15 +85,6 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 			// our end index is our original index + the length of our trailing zeros
 			const endIndex = index + match[2].length;
 
-			if (context.fix) {
-				fixPositions.unshift({
-					startIndex,
-					endIndex
-				});
-
-				return;
-			}
-
 			const baseIndex = isAtRule(node) ? atRuleParamIndex(node) : declarationValueIndex(node);
 
 			report({
@@ -103,7 +94,13 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 				index: baseIndex + index,
 				endIndex: baseIndex + index,
 				result,
-				ruleName
+				ruleName,
+				fix: () => {
+					fixPositions.unshift({
+						startIndex,
+						endIndex
+					});
+				}
 			});
 		});
 

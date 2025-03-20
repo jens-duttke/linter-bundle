@@ -23,7 +23,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => (root, result) => {
+const rule = (primary, _secondaryOptions) => (root, result) => {
 	const validOptions = validateOptions(result, ruleName, {
 		actual: primary,
 		possible: ['lower', 'upper']
@@ -44,51 +44,50 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 			return;
 		}
 
+		let hasFixed = false;
 		const fixedSelector = parseSelector(
-				ruleNode.raws.selector ? ruleNode.raws.selector.raw : ruleNode.selector,
-				result,
-				ruleNode,
-				(selectorTree) => {
-					selectorTree.walkPseudos((pseudoNode) => {
-						const pseudo = pseudoNode.value;
+			ruleNode.raws.selector ? ruleNode.raws.selector.raw : ruleNode.selector,
+			result,
+			ruleNode,
+			(selectorTree) => {
+				selectorTree.walkPseudos((pseudoNode) => {
+					const pseudo = pseudoNode.value;
 
-						if (!isStandardSyntaxSelector(pseudo)) {
-							return;
-						}
+					if (!isStandardSyntaxSelector(pseudo)) {
+						return;
+					}
 
-						if (
-							pseudo.includes('::') ||
-							levelOneAndTwoPseudoElements.has(pseudo.toLowerCase().slice(1))
-						) {
-							return;
-						}
+					if (
+						pseudo.includes('::') ||
+						levelOneAndTwoPseudoElements.has(pseudo.toLowerCase().slice(1))
+					) {
+						return;
+					}
 
-						const expectedPseudo =
-							primary === 'lower' ? pseudo.toLowerCase() : pseudo.toUpperCase();
+					const expectedPseudo =
+						primary === 'lower' ? pseudo.toLowerCase() : pseudo.toUpperCase();
 
-						if (pseudo === expectedPseudo) {
-							return;
-						}
+					if (pseudo === expectedPseudo) {
+						return;
+					}
 
-						if (context.fix) {
+					report({
+						message: messages.expected(pseudo, expectedPseudo),
+						node: ruleNode,
+						index: pseudoNode.sourceIndex,
+						endIndex: pseudoNode.sourceIndex,
+						ruleName,
+						result,
+						fix: () => {
+							hasFixed = true;
 							pseudoNode.value = expectedPseudo;
-
-							return;
 						}
-
-						report({
-							message: messages.expected(pseudo, expectedPseudo),
-							node: ruleNode,
-							index: pseudoNode.sourceIndex,
-							endIndex: pseudoNode.sourceIndex,
-							ruleName,
-							result
-						});
 					});
-				}
+				});
+			}
 		);
 
-		if (context.fix && fixedSelector) {
+		if (fixedSelector) {
 			if (ruleNode.raws.selector) {
 				ruleNode.raws.selector.raw = fixedSelector;
 			}

@@ -47,7 +47,8 @@ export default function mediaFeatureColonSpaceChecker (options) {
 					index: colonIndex,
 					endIndex: colonIndex,
 					result: options.result,
-					ruleName: options.checkedRuleName
+					ruleName: options.checkedRuleName,
+					fix: (options.fix ? () => options.fix(node, colonIndex) : undefined)
 				});
 			}
 		});

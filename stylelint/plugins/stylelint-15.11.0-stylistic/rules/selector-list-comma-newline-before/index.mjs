@@ -43,17 +43,15 @@ const rule = (primary, _secondaryOptions, context) => {
 			result,
 			locationChecker: checker.beforeAllowingIndentation,
 			checkedRuleName: ruleName,
-			fix: context.fix ?
-				(ruleNode, index) => {
-					fixData ||= new Map();
-					const commaIndices = fixData.get(ruleNode) || [];
+			fix: (ruleNode, index) => {
+				fixData ||= new Map();
+				const commaIndices = fixData.get(ruleNode) || [];
 
-					commaIndices.push(index);
-					fixData.set(ruleNode, commaIndices);
+				commaIndices.push(index);
+				fixData.set(ruleNode, commaIndices);
 
-					return true;
-				  }
-				  : null
+				return true;
+			}
 		});
 
 		if (fixData) {

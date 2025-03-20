@@ -26,7 +26,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => {
+const rule = (primary, _secondaryOptions) => {
 	const checker = whitespaceChecker('space', primary, messages);
 
 	return (root, result) => {
@@ -64,27 +64,26 @@ const rule = (primary, _secondaryOptions, context) => {
 				index: -1,
 				lineCheckStr: blockString(parentRule),
 				err: (m) => {
-					if (context.fix) {
-						if (primary.startsWith('always')) {
-							nextDecl.raws.before = ' ';
-
-							return;
-						}
-
-						if (primary.startsWith('never')) {
-							nextDecl.raws.before = '';
-
-							return;
-						}
-					}
-
 					report({
 						message: m,
 						node: decl,
 						index: decl.toString().length + 1,
 						endIndex: decl.toString().length + 1,
 						result,
-						ruleName
+						ruleName,
+						fix: () => {
+							if (primary.startsWith('always')) {
+								nextDecl.raws.before = ' ';
+
+								return;
+							}
+
+							if (primary.startsWith('never')) {
+								nextDecl.raws.before = '';
+
+								return;
+							}
+						}
 					});
 				}
 			});

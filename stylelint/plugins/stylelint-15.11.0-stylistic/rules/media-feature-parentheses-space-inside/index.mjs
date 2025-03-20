@@ -23,7 +23,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => (root, result) => {
+const rule = (primary, _secondaryOptions) => (root, result) => {
 	const validOptions = validateOptions(result, ruleName, {
 		actual: primary,
 		possible: ['always', 'never']
@@ -38,69 +38,110 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 		// will be at atRule.raws.params.raw
 		const parameters = (atRule.raws.params?.raw) || atRule.params;
 		const indexBoost = atRuleParamIndex(atRule);
-		/** @type {Array<{ message: string, index: number }>} */
-		const problems = [];
 
-		const parsedParameters = valueParser(parameters).walk((node) => {
+		// Parse the parameters once, and create a static copy for reporting
+		const originalParsedParams = valueParser(parameters);
+		let fixCount = 0;
+
+		// First pass - only detect problems
+		const problems = [];
+		originalParsedParams.walk((node) => {
 			if (node.type === 'function') {
 				const length_ = valueParser.stringify(node).length;
 
 				if (primary === 'never') {
 					if ((/[\t ]/).test(node.before)) {
-						if (context.fix) { node.before = ''; }
-
 						problems.push({
 							message: messages.rejectedOpening,
-							index: node.sourceIndex + 1 + indexBoost
+							index: node.sourceIndex + 1 + indexBoost,
+							functionIndex: node.sourceIndex,
+							type: 'opening'
 						});
 					}
 
 					if ((/[\t ]/).test(node.after)) {
-						if (context.fix) { node.after = ''; }
-
 						problems.push({
 							message: messages.rejectedClosing,
-							index: node.sourceIndex - 2 + length_ + indexBoost
+							index: node.sourceIndex - 2 + length_ + indexBoost,
+							functionIndex: node.sourceIndex,
+							type: 'closing'
 						});
 					}
 				}
 				else if (primary === 'always') {
 					if (node.before === '') {
-						if (context.fix) { node.before = ' '; }
-
 						problems.push({
 							message: messages.expectedOpening,
-							index: node.sourceIndex + 1 + indexBoost
+							index: node.sourceIndex + 1 + indexBoost,
+							functionIndex: node.sourceIndex,
+							type: 'opening'
 						});
 					}
 
 					if (node.after === '') {
-						if (context.fix) { node.after = ' '; }
-
 						problems.push({
 							message: messages.expectedClosing,
-							index: node.sourceIndex - 2 + length_ + indexBoost
+							index: node.sourceIndex - 2 + length_ + indexBoost,
+							functionIndex: node.sourceIndex,
+							type: 'closing'
 						});
 					}
 				}
 			}
 		});
 
+		// Report each problem with a fix function
 		if (problems.length > 0) {
-			if (context.fix) {
-				atRule.params = parsedParameters.toString();
-
-				return;
-			}
-
-			for (const error of problems) {
+			for (const problem of problems) {
 				report({
-					message: error.message,
+					message: problem.message,
 					node: atRule,
-					index: error.index,
-					endIndex: error.index,
+					index: problem.index,
+					endIndex: problem.index,
 					result,
-					ruleName
+					ruleName,
+					fix: () => {
+						// Create a fresh copy for fixing each time to avoid mixing fixes
+						const parsedParams = valueParser(parameters);
+						let fixed = false;
+
+						parsedParams.walk((node) => {
+							if (node.type === 'function' && node.sourceIndex === problem.functionIndex) {
+								if (problem.type === 'opening') {
+									if (primary === 'never' && (/[\t ]/).test(node.before)) {
+										node.before = '';
+										fixed = true;
+									}
+									else if (primary === 'always' && node.before === '') {
+										node.before = ' ';
+										fixed = true;
+									}
+								} else if (problem.type === 'closing') {
+									if (primary === 'never' && (/[\t ]/).test(node.after)) {
+										node.after = '';
+										fixed = true;
+									}
+									else if (primary === 'always' && node.after === '') {
+										node.after = ' ';
+										fixed = true;
+									}
+								}
+							}
+						});
+
+						if (fixed) {
+							const fixedParams = parsedParams.toString();
+
+							if (atRule.raws.params?.raw) {
+								atRule.raws.params.raw = fixedParams;
+							} else {
+								atRule.params = fixedParams;
+							}
+							return true;
+						}
+
+						return false;
+					}
 				});
 			}
 		}

@@ -24,7 +24,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => {
+const rule = (primary, _secondaryOptions) => {
 	const checker = whitespaceChecker('space', primary, messages);
 
 	return (root, result) => {
@@ -45,19 +45,17 @@ const rule = (primary, _secondaryOptions, context) => {
 			result,
 			locationChecker: checker.after,
 			checkedRuleName: ruleName,
-			fix: context.fix ?
-				(atRule, index) => {
-					const parameterCommaIndex = index - atRuleParamIndex(atRule);
+			fix: (atRule, index) => {
+				const parameterCommaIndex = index - atRuleParamIndex(atRule);
 
-					fixData ||= new Map();
-					const commaIndices = fixData.get(atRule) || [];
+				fixData ||= new Map();
+				const commaIndices = fixData.get(atRule) || [];
 
-					commaIndices.push(parameterCommaIndex);
-					fixData.set(atRule, commaIndices);
+				commaIndices.push(parameterCommaIndex);
+				fixData.set(atRule, commaIndices);
 
-					return true;
-				  }
-				  : null
+				return true;
+			}
 		});
 
 		if (fixData) {

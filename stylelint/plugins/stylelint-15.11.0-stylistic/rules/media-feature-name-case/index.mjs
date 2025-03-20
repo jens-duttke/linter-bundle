@@ -23,7 +23,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => (root, result) => {
+const rule = (primary, _secondaryOptions) => (root, result) => {
 	const validOptions = validateOptions(result, ruleName, {
 		actual: primary,
 		possible: ['lower', 'upper']
@@ -53,13 +53,6 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 				return;
 			}
 
-			if (context.fix) {
-				mutateIdent(mediaFeatureNameToken, expectedFeatureName);
-				hasFixes = true;
-
-				return;
-			}
-
 			const atRuleIndex = atRuleParamIndex(atRule);
 
 			report({
@@ -68,7 +61,11 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 				index: atRuleIndex + startIndex,
 				endIndex: atRuleIndex + endIndex + 1,
 				ruleName,
-				result
+				result,
+				fix: () => {
+					mutateIdent(mediaFeatureNameToken, expectedFeatureName);
+					hasFixes = true;
+				}
 			});
 		}).stringify();
 

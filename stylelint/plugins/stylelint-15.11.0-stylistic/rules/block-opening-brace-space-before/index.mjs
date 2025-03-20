@@ -9,7 +9,7 @@ import optionsMatches from 'stylelint/lib/utils/optionsMatches.mjs';
 import report from 'stylelint/lib/utils/report.mjs';
 import ruleMessages from 'stylelint/lib/utils/ruleMessages.mjs';
 import validateOptions from 'stylelint/lib/utils/validateOptions.mjs';
-import { isRegExp, isString } from  'stylelint/lib/utils/validateTypes.mjs';
+import { isRegExp, isString } from 'stylelint/lib/utils/validateTypes.mjs';
 
 import hasEmptyBlock from '../../utils/hasEmptyBlock.mjs';
 import whitespaceChecker from '../../utils/whitespaceChecker.mjs';
@@ -31,7 +31,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, secondaryOptions, context) => {
+const rule = (primary, secondaryOptions) => {
 	const checker = whitespaceChecker('space', primary, messages);
 
 	return (root, result) => {
@@ -108,27 +108,24 @@ const rule = (primary, secondaryOptions, context) => {
 				index: source.length,
 				lineCheckStr: blockString(statement),
 				err: (m) => {
-					if (context.fix) {
-						if (primary.startsWith('always')) {
-							statement.raws.between = ' ';
-
-							return;
-						}
-
-						if (primary.startsWith('never')) {
-							statement.raws.between = '';
-
-							return;
-						}
-					}
-
 					report({
 						message: m,
 						node: statement,
 						index,
 						endIndex: index,
 						result,
-						ruleName
+						ruleName,
+						fix: () => {
+							if (primary.startsWith('always')) {
+								statement.raws.between = ' ';
+								return;
+							}
+
+							if (primary.startsWith('never')) {
+								statement.raws.between = '';
+								return;
+							}
+						}
 					});
 				}
 			});

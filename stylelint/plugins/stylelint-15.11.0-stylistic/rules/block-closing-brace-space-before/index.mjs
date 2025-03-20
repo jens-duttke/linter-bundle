@@ -28,7 +28,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => {
+const rule = (primary, _secondaryOptions) => {
 	const checker = whitespaceChecker('space', primary, messages);
 
 	return (root, result) => {
@@ -74,31 +74,30 @@ const rule = (primary, _secondaryOptions, context) => {
 				source,
 				index: source.length - 1,
 				err: (message) => {
-					if (context.fix) {
-						const statementRaws = statement.raws;
-
-						if (typeof statementRaws.after !== 'string') { return; }
-
-						if (primary.startsWith('always')) {
-							statementRaws.after = statementRaws.after.replace(/\s*$/, ' ');
-
-							return;
-						}
-
-						if (primary.startsWith('never')) {
-							statementRaws.after = statementRaws.after.replace(/\s*$/, '');
-
-							return;
-						}
-					}
-
 					report({
 						message,
 						node: statement,
 						index,
 						endIndex: index,
 						result,
-						ruleName
+						ruleName,
+						fix: () => {
+							const statementRaws = statement.raws;
+
+							if (typeof statementRaws.after !== 'string') { return; }
+
+							if (primary.startsWith('always')) {
+								statementRaws.after = statementRaws.after.replace(/\s*$/, ' ');
+
+								return;
+							}
+
+							if (primary.startsWith('never')) {
+								statementRaws.after = statementRaws.after.replace(/\s*$/, '');
+
+								return;
+							}
+						}
 					});
 				}
 			});

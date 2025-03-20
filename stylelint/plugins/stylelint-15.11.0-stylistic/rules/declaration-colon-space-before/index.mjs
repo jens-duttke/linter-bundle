@@ -22,7 +22,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => {
+const rule = (primary, _secondaryOptions) => {
 	const checker = whitespaceChecker('space', primary, messages);
 
 	return (root, result) => {
@@ -40,29 +40,28 @@ const rule = (primary, _secondaryOptions, context) => {
 			result,
 			locationChecker: checker.before,
 			checkedRuleName: ruleName,
-			fix: context.fix ?
-				(decl, index) => {
-					const colonIndex = index - declarationValueIndex(decl);
-					const between = decl.raws.between;
+			fix: (decl, index) => {
+				const colonIndex = index - declarationValueIndex(decl);
+				const between = decl.raws.between;
 
-					if (between == null) { throw new Error('`between` must be present'); }
+				if (between == null) { throw new Error('`between` must be present'); }
 
-					if (primary === 'always') {
-						decl.raws.between =
-								between.slice(0, colonIndex).replace(/\s*$/, ' ') + between.slice(colonIndex);
+				if (primary === 'always') {
+					decl.raws.between =
+							between.slice(0, colonIndex).replace(/\s*$/, ' ') + between.slice(colonIndex);
 
-						return true;
-					}
+					return true;
+				}
 
-					if (primary === 'never') {
-						decl.raws.between =
-								between.slice(0, colonIndex).replace(/\s*$/, '') + between.slice(colonIndex);
+				if (primary === 'never') {
+					decl.raws.between =
+							between.slice(0, colonIndex).replace(/\s*$/, '') + between.slice(colonIndex);
 
-						return true;
-					}
+					return true;
+				}
 
-					return false;
-				  } : null
+				return false;
+			}
 		});
 	};
 };

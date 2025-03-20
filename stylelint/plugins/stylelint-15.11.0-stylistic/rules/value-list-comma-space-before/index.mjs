@@ -26,7 +26,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => {
+const rule = (primary, _secondaryOptions) => {
 	const checker = whitespaceChecker('space', primary, messages);
 
 	return (root, result) => {
@@ -47,23 +47,21 @@ const rule = (primary, _secondaryOptions, context) => {
 			result,
 			locationChecker: checker.before,
 			checkedRuleName: ruleName,
-			fix: context.fix ?
-				(declNode, index) => {
-					const valueIndex = declarationValueIndex(declNode);
+			fix: (declNode, index) => {
+				const valueIndex = declarationValueIndex(declNode);
 
-					if (index <= valueIndex) {
-						return false;
-					}
+				if (index <= valueIndex) {
+					return false;
+				}
 
-					fixData ||= new Map();
-					const commaIndices = fixData.get(declNode) || [];
+				fixData ||= new Map();
+				const commaIndices = fixData.get(declNode) || [];
 
-					commaIndices.push(index);
-					fixData.set(declNode, commaIndices);
+				commaIndices.push(index);
+				fixData.set(declNode, commaIndices);
 
-					return true;
-				  }
-				  : null
+				return true;
+			}
 		});
 
 		if (fixData) {

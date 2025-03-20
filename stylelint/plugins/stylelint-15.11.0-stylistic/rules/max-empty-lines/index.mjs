@@ -22,7 +22,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, secondaryOptions, context) => {
+const rule = (primary, secondaryOptions) => {
 	let emptyLines = 0;
 	let lastIndex = -1;
 
@@ -50,11 +50,8 @@ const rule = (primary, secondaryOptions, context) => {
 		const ignoreComments = optionsMatches(secondaryOptions, 'ignore', 'comments');
 		const getChars = replaceEmptyLines.bind(null, primary);
 
-		/**
-		 * 1. walk nodes & replace enterchar
-		 * 2. deal with special case.
-		 */
-		if (context.fix) {
+		const fixFn = () => {
+			// Erst alle Nodes durchgehen und Zeilenumbrüche ersetzen
 			root.walk((node) => {
 				if (node.type === 'comment' && !ignoreComments) {
 					node.raws.left = getChars(node.raws.left);
@@ -87,9 +84,9 @@ const rule = (primary, secondaryOptions, context) => {
 				// `css in js` or `html`
 				root.raws.after = replaceEmptyLines(primary === 0 ? 1 : primary, rootRawsAfter);
 			}
+		};
 
-			return;
-		}
+		let problemFound = false;
 
 		emptyLines = 0;
 		lastIndex = -1;
@@ -105,6 +102,10 @@ const rule = (primary, secondaryOptions, context) => {
 				checkMatch(rootString, match.startIndex, match.endIndex, root);
 			}
 		);
+
+		if (problemFound) {
+			fixFn();
+		}
 
 		/**
 		 * @param {string} source
@@ -131,6 +132,8 @@ const rule = (primary, secondaryOptions, context) => {
 			if (!eof && !problem) { return; }
 
 			if (problem) {
+				problemFound = true;
+
 				report({
 					message: messages.expected(primary),
 					node,
@@ -146,6 +149,8 @@ const rule = (primary, secondaryOptions, context) => {
 				emptyLines++;
 
 				if (emptyLines > primary && isEofNode(result.root, node)) {
+					problemFound = true;
+
 					report({
 						message: messages.expected(primary),
 						node,

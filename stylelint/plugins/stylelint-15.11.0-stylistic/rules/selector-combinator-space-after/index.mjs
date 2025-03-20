@@ -21,7 +21,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => {
+const rule = (primary, _secondaryOptions) => {
 	const checker = whitespaceChecker('space', primary, messages);
 
 	return (root, result) => {
@@ -40,23 +40,21 @@ const rule = (primary, _secondaryOptions, context) => {
 			locationChecker: checker.after,
 			locationType: 'after',
 			checkedRuleName: ruleName,
-			fix: context.fix ?
-				(combinator) => {
-					if (primary === 'always') {
-						combinator.spaces.after = ' ';
+			fix: (combinator) => {
+				if (primary === 'always') {
+					combinator.spaces.after = ' ';
 
-						return true;
-					}
+					return true;
+				}
 
-					if (primary === 'never') {
-						combinator.spaces.after = '';
+				if (primary === 'never') {
+					combinator.spaces.after = '';
 
-						return true;
-					}
+					return true;
+				}
 
-					return false;
-				  }
-				  : null
+				return false;
+			}
 		});
 	};
 };

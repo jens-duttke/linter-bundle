@@ -41,16 +41,14 @@ const rule = (primary, _secondaryOptions, context) => {
 			result,
 			locationChecker: checker.afterOneOnly,
 			checkedRuleName: ruleName,
-			fix: context.fix ?
-				(div, index, nodes) => fixer({
-					div,
-					index,
-					nodes,
-					expectation: primary,
-					position: 'after',
-					symb: context.newline || ''
-				})
-				: null
+			fix: (div, index, nodes) => fixer({
+				div,
+				index,
+				nodes,
+				expectation: primary,
+				position: 'after',
+				symb: context.newline || ''
+			})
 		});
 	};
 };

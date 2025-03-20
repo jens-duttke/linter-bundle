@@ -97,21 +97,6 @@ const rule = (primary, secondaryOptions, context) => (root, result) => {
 			return;
 		}
 
-		if (context.fix) {
-			const { newline } = context;
-
-			if (typeof newline !== 'string') { return; }
-
-			if (expectEmptyLineBefore) {
-				addEmptyLineAfter(statement, newline);
-			}
-			else {
-				removeEmptyLinesAfter(statement, newline);
-			}
-
-			return;
-		}
-
 		const message = expectEmptyLineBefore ? messages.expected : messages.rejected;
 
 		report({
@@ -120,7 +105,19 @@ const rule = (primary, secondaryOptions, context) => (root, result) => {
 			ruleName,
 			node: statement,
 			index,
-			endIndex: index
+			endIndex: index,
+			fix: () => {
+				const { newline } = context;
+
+				if (typeof newline !== 'string') { return; }
+
+				if (expectEmptyLineBefore) {
+					addEmptyLineAfter(statement, newline);
+				}
+				else {
+					removeEmptyLinesAfter(statement, newline);
+				}
+			}
 		});
 	}
 };

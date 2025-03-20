@@ -94,19 +94,18 @@ export default function selectorCombinatorSpaceChecker (options) {
 			index,
 			errTarget: combinator.value,
 			err: (message) => {
-				if (options.fix?.(combinator)) {
-					hasFixed = true;
-
-					return;
-				}
-
 				report({
 					message,
 					node,
 					index: sourceIndex,
 					endIndex: sourceIndex,
 					result: options.result,
-					ruleName: options.checkedRuleName
+					ruleName: options.checkedRuleName,
+					fix: (options.fix ? () => {
+						if (options.fix(combinator)) {
+							hasFixed = true;
+						}
+					} : undefined)
 				});
 			}
 		});

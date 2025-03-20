@@ -47,17 +47,14 @@ export default function selectorListCommaWhitespaceChecker (options) {
 			source,
 			index,
 			err: (message) => {
-				if (options.fix?.(node, index)) {
-					return;
-				}
-
 				report({
 					message,
 					node,
 					index,
 					endIndex: index,
 					result: options.result,
-					ruleName: options.checkedRuleName
+					ruleName: options.checkedRuleName,
+					fix: (options.fix ? () => options.fix(node, index) : undefined)
 				});
 			}
 		});

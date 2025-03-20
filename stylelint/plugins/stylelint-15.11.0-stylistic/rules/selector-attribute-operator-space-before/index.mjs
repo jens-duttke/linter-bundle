@@ -21,7 +21,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => {
+const rule = (primary, _secondaryOptions) => {
 	const checker = whitespaceChecker('space', primary, messages);
 
 	return (root, result) => {
@@ -40,44 +40,42 @@ const rule = (primary, _secondaryOptions, context) => {
 			locationChecker: checker.before,
 			checkedRuleName: ruleName,
 			checkBeforeOperator: true,
-			fix: context.fix ?
-				(attributeNode) => {
-					const rawAttribute = attributeNode.raws.spaces?.attribute;
-					const rawAttributeAfter = rawAttribute?.after;
+			fix: (attributeNode) => {
+				const rawAttribute = attributeNode.raws.spaces?.attribute;
+				const rawAttributeAfter = rawAttribute?.after;
 
-					/** @type {{ attrAfter: string, setAttrAfter: (fixed: string) => void }} */
-					const { attrAfter, setAttrAfter } = rawAttributeAfter ?
-							{
-								attrAfter: rawAttributeAfter,
-								setAttrAfter (fixed) {
-									rawAttribute.after = fixed;
-								}
-							  }
-							: {
-								attrAfter:
-										(attributeNode.spaces.attribute?.after) || '',
-								setAttrAfter (fixed) {
-									if (!attributeNode.spaces.attribute) { attributeNode.spaces.attribute = {}; }
+				/** @type {{ attrAfter: string, setAttrAfter: (fixed: string) => void }} */
+				const { attrAfter, setAttrAfter } = rawAttributeAfter ?
+						{
+							attrAfter: rawAttributeAfter,
+							setAttrAfter (fixed) {
+								rawAttribute.after = fixed;
+							}
+							}
+						: {
+							attrAfter:
+									(attributeNode.spaces.attribute?.after) || '',
+							setAttrAfter (fixed) {
+								if (!attributeNode.spaces.attribute) { attributeNode.spaces.attribute = {}; }
 
-									attributeNode.spaces.attribute.after = fixed;
-								}
-							  };
+								attributeNode.spaces.attribute.after = fixed;
+							}
+							};
 
-					if (primary === 'always') {
-						setAttrAfter(attrAfter.replace(/\s*$/, ' '));
+				if (primary === 'always') {
+					setAttrAfter(attrAfter.replace(/\s*$/, ' '));
 
-						return true;
-					}
+					return true;
+				}
 
-					if (primary === 'never') {
-						setAttrAfter(attrAfter.replace(/\s*$/, ''));
+				if (primary === 'never') {
+					setAttrAfter(attrAfter.replace(/\s*$/, ''));
 
-						return true;
-					}
+					return true;
+				}
 
-					return false;
-				  }
-				: null
+				return false;
+			}
 		});
 	};
 };

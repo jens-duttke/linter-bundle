@@ -92,6 +92,7 @@ const rule = (primary, secondaryOptions, context) => (root, result) => {
 			return;
 		}
 
+		let fix;
 		let message;
 
 		if (primary === 'always') {
@@ -100,15 +101,13 @@ const rule = (primary, secondaryOptions, context) => (root, result) => {
 			}
 
 			// auto-fix
-			if (context.fix) {
+			fix = () => {
 				node.parent.raws.semicolon = true;
 
 				if (isAtRule(node)) {
 					node.raws.between = '';
 					node.parent.raws.after = ' ';
 				}
-
-				return;
 			}
 
 			message = messages.expected;
@@ -119,11 +118,9 @@ const rule = (primary, secondaryOptions, context) => (root, result) => {
 			}
 
 			// auto-fix
-			if (context.fix) {
+			fix = () => {
 				node.parent.raws.semicolon = false;
-
-				return;
-			}
+			};
 
 			message = messages.rejected;
 		}
@@ -137,7 +134,8 @@ const rule = (primary, secondaryOptions, context) => (root, result) => {
 			index: node.toString().trim().length - 1,
 			endIndex: node.toString().trim().length - 1,
 			result,
-			ruleName
+			ruleName,
+			fix
 		});
 	}
 };

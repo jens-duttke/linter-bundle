@@ -23,7 +23,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, secondaryOptions, context) => (root, result) => {
+const rule = (primary, secondaryOptions) => (root, result) => {
 	const validOptions = validateOptions(
 		result,
 		ruleName,
@@ -73,18 +73,15 @@ const rule = (primary, secondaryOptions, context) => (root, result) => {
 			return;
 		}
 
-		if (context.fix) {
-			decl.prop = expectedProperty;
-
-			return;
-		}
-
 		report({
 			message: messages.expected(property, expectedProperty),
 			word: property,
 			node: decl,
 			ruleName,
-			result
+			result,
+			fix: () => {
+				decl.prop = expectedProperty;
+			}
 		});
 	});
 };

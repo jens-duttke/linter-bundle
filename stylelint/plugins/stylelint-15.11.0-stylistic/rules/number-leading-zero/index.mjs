@@ -22,7 +22,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => (root, result) => {
+const rule = (primary, _secondaryOptions) => (root, result) => {
 	const validOptions = validateOptions(result, ruleName, {
 		actual: primary,
 		possible: ['always', 'never']
@@ -47,11 +47,6 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 	 * @param {string} value
 	 */
 	function check (node, value) {
-		/** @type {Array<{ startIndex: number, endIndex: number }>} */
-		const neverFixPositions = [];
-		/** @type {Array<{ index: number }>} */
-		const alwaysFixPositions = [];
-
 		// Get out quickly if there are no periods
 		if (!value.includes('.')) {
 			return;
@@ -82,18 +77,16 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 				const capturingGroupIndex = match[0].length - match[1].length;
 
 				const index = valueNode.sourceIndex + match.index + capturingGroupIndex;
-
-				if (context.fix) {
-					alwaysFixPositions.unshift({
-						index
-					});
-
-					return;
-				}
-
 				const baseIndex = isAtRule(node) ? atRuleParamIndex(node) : declarationValueIndex(node);
 
-				complain(messages.expected, node, baseIndex + index);
+				complain(messages.expected, node, baseIndex + index, () => {
+					if (isAtRule(node)) {
+						node.params = addLeadingZero(node.params, index);
+					}
+					else {
+						node.value = addLeadingZero(node.value, index);
+					}
+				});
 			}
 
 			if (primary === 'never') {
@@ -109,64 +102,37 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 				const capturingGroupIndex = match[0].length - (match[1].length + match[2].length);
 
 				const index = valueNode.sourceIndex + match.index + capturingGroupIndex;
-
-				if (context.fix) {
-					neverFixPositions.unshift({
-						startIndex: index,
-						// match[1].length is the length of our matched zero(s)
-						endIndex: index + match[1].length
-					});
-
-					return;
-				}
-
 				const baseIndex = isAtRule(node) ? atRuleParamIndex(node) : declarationValueIndex(node);
+				const startIndex = index;
+				const endIndex = index + match[1].length;
 
-				complain(messages.rejected, node, baseIndex + index);
+				complain(messages.rejected, node, baseIndex + index, () => {
+					if (isAtRule(node)) {
+						node.params = removeLeadingZeros(node.params, startIndex, endIndex);
+					}
+					else {
+						node.value = removeLeadingZeros(node.value, startIndex, endIndex);
+					}
+				});
 			}
 		});
-
-		if (alwaysFixPositions.length > 0) {
-			for (const fixPosition of alwaysFixPositions) {
-				const index = fixPosition.index;
-
-				if (isAtRule(node)) {
-					node.params = addLeadingZero(node.params, index);
-				}
-				else {
-					node.value = addLeadingZero(node.value, index);
-				}
-			}
-		}
-
-		if (neverFixPositions.length > 0) {
-			for (const fixPosition of neverFixPositions) {
-				const startIndex = fixPosition.startIndex;
-				const endIndex = fixPosition.endIndex;
-
-				if (isAtRule(node)) {
-					node.params = removeLeadingZeros(node.params, startIndex, endIndex);
-				}
-				else {
-					node.value = removeLeadingZeros(node.value, startIndex, endIndex);
-				}
-			}
-		}
 	}
 
 	/**
 	 * @param {string} message
 	 * @param {import('postcss').Node} node
 	 * @param {number} index
+	 * @param {function(): void} [fixFunction]
 	 */
-	function complain (message, node, index) {
+	function complain (message, node, index, fixFunction) {
 		report({
 			result,
 			ruleName,
 			message,
 			node,
 			index,
-			endIndex: index
+			endIndex: index,
+			fix: fixFunction
 		});
 	}
 };

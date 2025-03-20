@@ -27,7 +27,7 @@ const singleQuote = '\'';
 const doubleQuote = '"';
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, secondaryOptions, context) => {
+const rule = (primary, secondaryOptions) => {
 	const correctQuote = primary === 'single' ? singleQuote : doubleQuote;
 	const erroneousQuote = primary === 'single' ? doubleQuote : singleQuote;
 
@@ -105,20 +105,18 @@ const rule = (primary, secondaryOptions, context) => {
 						}
 
 						if (needsCorrectEscape) {
-							if (context.fix) {
-								selectorFixed = true;
-								attributeNode.quoteMark = erroneousQuote;
-							}
-							else {
-								report({
-									message: messages.expected(primary === 'single' ? 'double' : primary),
-									node: ruleNode,
-									index: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
-									endIndex: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
-									result,
-									ruleName
-								});
-							}
+							report({
+								message: messages.expected(primary === 'single' ? 'double' : primary),
+								node: ruleNode,
+								index: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
+								endIndex: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
+								result,
+								ruleName,
+								fix: () => {
+									selectorFixed = true;
+									attributeNode.quoteMark = erroneousQuote;
+								}
+							});
 						}
 					}
 
@@ -129,20 +127,18 @@ const rule = (primary, secondaryOptions, context) => {
 							const needsOtherEscape = attributeNode.value.includes(erroneousQuote);
 
 							if (needsOtherEscape) {
-								if (context.fix) {
-									selectorFixed = true;
-									attributeNode.quoteMark = correctQuote;
-								}
-								else {
-									report({
-										message: messages.expected(primary),
-										node: ruleNode,
-										index: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
-										endIndex: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
-										result,
-										ruleName
-									});
-								}
+								report({
+									message: messages.expected(primary),
+									node: ruleNode,
+									index: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
+									endIndex: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
+									result,
+									ruleName,
+									fix: () => {
+										selectorFixed = true;
+										attributeNode.quoteMark = correctQuote;
+									}
+								});
 
 								return;
 							}
@@ -152,20 +148,18 @@ const rule = (primary, secondaryOptions, context) => {
 							}
 						}
 
-						if (context.fix) {
-							selectorFixed = true;
-							attributeNode.quoteMark = correctQuote;
-						}
-						else {
-							report({
-								message: messages.expected(primary),
-								node: ruleNode,
-								index: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
-								endIndex: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
-								result,
-								ruleName
-							});
-						}
+						report({
+							message: messages.expected(primary),
+							node: ruleNode,
+							index: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
+							endIndex: attributeNode.sourceIndex + attributeNode.offsetOf('value'),
+							result,
+							ruleName,
+							fix: () => {
+								selectorFixed = true;
+								attributeNode.quoteMark = correctQuote;
+							}
+						});
 					}
 				});
 
@@ -212,22 +206,20 @@ const rule = (primary, secondaryOptions, context) => {
 
 					const openIndex = valueNode.sourceIndex;
 
-					// we currently don't fix escapes
-					if (context.fix && !needsEscape) {
-						const closeIndex = openIndex + valueNode.value.length + erroneousQuote.length;
+					report({
+						message: messages.expected(primary),
+						node,
+						index: getIndex(node) + openIndex,
+						endIndex: getIndex(node) + openIndex,
+						result,
+						ruleName,
+						// we currently don't fix escapes
+						fix: (!needsEscape ? () => {
+							const closeIndex = openIndex + valueNode.value.length + erroneousQuote.length;
 
-						fixPositions.push(openIndex, closeIndex);
-					}
-					else {
-						report({
-							message: messages.expected(primary),
-							node,
-							index: getIndex(node) + openIndex,
-							endIndex: getIndex(node) + openIndex,
-							result,
-							ruleName
-						});
-					}
+							fixPositions.push(openIndex, closeIndex);
+						} : undefined)
+					});
 				}
 			});
 

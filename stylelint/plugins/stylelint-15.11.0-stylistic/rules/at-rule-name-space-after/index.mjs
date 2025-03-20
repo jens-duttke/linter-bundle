@@ -20,7 +20,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondary, context) => {
+const rule = (primary, _secondary) => {
 	const checker = whitespaceChecker('space', primary, messages);
 
 	return (root, result) => {

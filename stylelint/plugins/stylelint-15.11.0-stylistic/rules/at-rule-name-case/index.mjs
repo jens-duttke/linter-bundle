@@ -19,7 +19,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondary, context) => (root, result) => {
+const rule = (primary, _secondary) => (root, result) => {
 	const validOptions = validateOptions(result, ruleName, {
 		actual: primary,
 		possible: ['lower', 'upper']
@@ -38,16 +38,9 @@ const rule = (primary, _secondary, context) => (root, result) => {
 		}
 
 		const name = atRule.name;
-
 		const expectedName = expectation === 'lower' ? name.toLowerCase() : name.toUpperCase();
 
 		if (name === expectedName) {
-			return;
-		}
-
-		if (context.fix) {
-			atRule.name = expectedName;
-
 			return;
 		}
 
@@ -55,7 +48,10 @@ const rule = (primary, _secondary, context) => (root, result) => {
 			message: messages.expected(name, expectedName),
 			node: atRule,
 			ruleName,
-			result
+			result,
+			fix: () => {
+				atRule.name = expectedName;
+			}
 		});
 	});
 };

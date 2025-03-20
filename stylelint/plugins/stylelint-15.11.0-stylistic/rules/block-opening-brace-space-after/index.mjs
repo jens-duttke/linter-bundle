@@ -30,7 +30,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, secondaryOptions, context) => {
+const rule = (primary, secondaryOptions) => {
 	const checker = whitespaceChecker('space', primary, messages);
 
 	return (root, result) => {
@@ -81,31 +81,30 @@ const rule = (primary, secondaryOptions, context) => {
 				source: blockString(statement),
 				index: 0,
 				err: (m) => {
-					if (context.fix) {
-						const statementFirst = statement.first;
-
-						if (statementFirst == null) { return; }
-
-						if (primary.startsWith('always')) {
-							statementFirst.raws.before = ' ';
-
-							return;
-						}
-
-						if (primary.startsWith('never')) {
-							statementFirst.raws.before = '';
-
-							return;
-						}
-					}
-
 					report({
 						message: m,
 						node: statement,
 						index: beforeBlockString(statement, { noRawBefore: true }).length + 1,
 						endIndex: beforeBlockString(statement, { noRawBefore: true }).length + 1,
 						result,
-						ruleName
+						ruleName,
+						fix: () => {
+							const statementFirst = statement.first;
+
+							if (statementFirst == null) { return; }
+
+							if (primary.startsWith('always')) {
+								statementFirst.raws.before = ' ';
+
+								return;
+							}
+
+							if (primary.startsWith('never')) {
+								statementFirst.raws.before = '';
+
+								return;
+							}
+						}
 					});
 				}
 			});

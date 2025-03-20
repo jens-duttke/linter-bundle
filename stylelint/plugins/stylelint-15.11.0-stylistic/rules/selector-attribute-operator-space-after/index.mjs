@@ -21,7 +21,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => (root, result) => {
+const rule = (primary, _secondaryOptions) => (root, result) => {
 	const checker = whitespaceChecker('space', primary, messages);
 	const validOptions = validateOptions(result, ruleName, {
 		actual: primary,
@@ -38,68 +38,66 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 		locationChecker: checker.after,
 		checkedRuleName: ruleName,
 		checkBeforeOperator: false,
-		fix: context.fix ?
-				(attributeNode) => {
-					/** @type {{ operatorAfter: string, setOperatorAfter: (fixed: string) => void }} */
-					const { operatorAfter, setOperatorAfter } = (() => {
-						const rawOperator = attributeNode.raws.operator;
+		fix: (attributeNode) => {
+			/** @type {{ operatorAfter: string, setOperatorAfter: (fixed: string) => void }} */
+			const { operatorAfter, setOperatorAfter } = (() => {
+				const rawOperator = attributeNode.raws.operator;
 
-						if (rawOperator) {
-							return {
-								operatorAfter: rawOperator.slice(
-										attributeNode.operator ? attributeNode.operator.length : 0
-								),
-								setOperatorAfter (fixed) {
-									delete attributeNode.raws.operator;
+				if (rawOperator) {
+					return {
+						operatorAfter: rawOperator.slice(
+								attributeNode.operator ? attributeNode.operator.length : 0
+						),
+						setOperatorAfter (fixed) {
+							delete attributeNode.raws.operator;
 
-									if (!attributeNode.raws.spaces) { attributeNode.raws.spaces = {}; }
+							if (!attributeNode.raws.spaces) { attributeNode.raws.spaces = {}; }
 
-									if (!attributeNode.raws.spaces.operator) { attributeNode.raws.spaces.operator = {}; }
+							if (!attributeNode.raws.spaces.operator) { attributeNode.raws.spaces.operator = {}; }
 
-									attributeNode.raws.spaces.operator.after = fixed;
-								}
-							};
+							attributeNode.raws.spaces.operator.after = fixed;
 						}
+					};
+				}
 
-						const rawSpacesOperator =
-								attributeNode.raws.spaces?.operator;
-						const rawOperatorAfter = rawSpacesOperator?.after;
+				const rawSpacesOperator =
+						attributeNode.raws.spaces?.operator;
+				const rawOperatorAfter = rawSpacesOperator?.after;
 
-						if (rawOperatorAfter) {
-							return {
-								operatorAfter: rawOperatorAfter,
-								setOperatorAfter (fixed) {
-									rawSpacesOperator.after = fixed;
-								}
-							};
+				if (rawOperatorAfter) {
+					return {
+						operatorAfter: rawOperatorAfter,
+						setOperatorAfter (fixed) {
+							rawSpacesOperator.after = fixed;
 						}
+					};
+				}
 
-						return {
-							operatorAfter:
-									(attributeNode.spaces.operator?.after) || '',
-							setOperatorAfter (fixed) {
-								if (!attributeNode.spaces.operator) { attributeNode.spaces.operator = {}; }
+				return {
+					operatorAfter:
+							(attributeNode.spaces.operator?.after) || '',
+					setOperatorAfter (fixed) {
+						if (!attributeNode.spaces.operator) { attributeNode.spaces.operator = {}; }
 
-								attributeNode.spaces.operator.after = fixed;
-							}
-						};
-					})();
-
-					if (primary === 'always') {
-						setOperatorAfter(operatorAfter.replace(/^\s*/, ' '));
-
-						return true;
+						attributeNode.spaces.operator.after = fixed;
 					}
+				};
+			})();
 
-					if (primary === 'never') {
-						setOperatorAfter(operatorAfter.replace(/^\s*/, ''));
+			if (primary === 'always') {
+				setOperatorAfter(operatorAfter.replace(/^\s*/, ' '));
 
-						return true;
-					}
+				return true;
+			}
 
-					return false;
-				  }
-				  : null
+			if (primary === 'never') {
+				setOperatorAfter(operatorAfter.replace(/^\s*/, ''));
+
+				return true;
+			}
+
+			return false;
+		}
 	});
 };
 

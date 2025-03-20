@@ -39,17 +39,14 @@ export default function declarationColonSpaceChecker(opts) {
 				index: i,
 				lineCheckStr: decl.value,
 				err: (message) => {
-					if (opts.fix && opts.fix(decl, i)) {
-						return;
-					}
-
 					report({
 						message,
 						node: decl,
 						index: decl.prop.toString().length + 1,
-						endIndex: index,
+						endIndex: decl.prop.toString().length + 1,
 						result: opts.result,
 						ruleName: opts.checkedRuleName,
+						fix: (opts.fix ? () => opts.fix(decl, i) : undefined)
 					});
 				},
 			});

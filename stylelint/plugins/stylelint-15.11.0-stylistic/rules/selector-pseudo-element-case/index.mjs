@@ -23,7 +23,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => (root, result) => {
+const rule = (primary, _secondaryOptions) => (root, result) => {
 	const validOptions = validateOptions(result, ruleName, {
 		actual: primary,
 		possible: ['lower', 'upper']
@@ -66,19 +66,16 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 					return;
 				}
 
-				if (context.fix) {
-					pseudoNode.value = expectedPseudoElement;
-
-					return;
-				}
-
 				report({
 					message: messages.expected(pseudoElement, expectedPseudoElement),
 					node: ruleNode,
 					index: pseudoNode.sourceIndex,
 					endIndex: pseudoNode.sourceIndex,
 					ruleName,
-					result
+					result,
+					fix: () => {
+						pseudoNode.value = expectedPseudoElement;
+					}
 				});
 			});
 		});

@@ -112,36 +112,35 @@ const rule = (primary, secondaryOptions, context) => {
 				index: -1,
 				lineCheckStr: blockString(statement),
 				err: (message) => {
-					if (context.fix) {
-						const nodeToCheckRaws = nodeToCheck.raws;
-
-						if (typeof nodeToCheckRaws.before !== 'string') { return; }
-
-						if (primary.startsWith('always')) {
-							const index = nodeToCheckRaws.before.search(/\r?\n/);
-
-							nodeToCheckRaws.before =
-								index >= 0 ?
-									nodeToCheckRaws.before.slice(index)
-									: context.newline + nodeToCheckRaws.before;
-
-							return;
-						}
-
-						if (primary.startsWith('never')) {
-							nodeToCheckRaws.before = '';
-
-							return;
-						}
-					}
-
 					report({
 						message,
 						node: statement,
 						index: reportIndex,
 						endIndex: reportIndex,
 						result,
-						ruleName
+						ruleName,
+						fix: () => {
+							const nodeToCheckRaws = nodeToCheck.raws;
+
+							if (typeof nodeToCheckRaws.before !== 'string') { return; }
+
+							if (primary.startsWith('always')) {
+								const index = nodeToCheckRaws.before.search(/\r?\n/);
+
+								nodeToCheckRaws.before =
+									index >= 0 ?
+										nodeToCheckRaws.before.slice(index)
+										: context.newline + nodeToCheckRaws.before;
+
+								return;
+							}
+
+							if (primary.startsWith('never')) {
+								nodeToCheckRaws.before = '';
+
+								return;
+							}
+						}
 					});
 				}
 			});

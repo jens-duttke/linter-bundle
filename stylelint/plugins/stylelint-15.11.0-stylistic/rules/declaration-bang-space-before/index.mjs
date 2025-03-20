@@ -24,7 +24,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => {
+const rule = (primary, _secondaryOptions) => {
 	const checker = whitespaceChecker('space', primary, messages);
 
 	return (root, result) => {
@@ -42,48 +42,47 @@ const rule = (primary, _secondaryOptions, context) => {
 			result,
 			locationChecker: checker.before,
 			checkedRuleName: ruleName,
-			fix:
-			context.fix ? (decl, index) => {
-					let bangIndex = index - declarationValueIndex(decl);
-					const value = getDeclarationValue(decl);
-					let target;
-					/** @type {(val: string) => void} */
-					let setFixed;
+			fix: (decl, index) => {
+				let bangIndex = index - declarationValueIndex(decl);
+				const value = getDeclarationValue(decl);
+				let target;
+				/** @type {(val: string) => void} */
+				let setFixed;
 
-					if (bangIndex < value.length) {
-						target = value;
-						setFixed = (value_) => {
-							setDeclarationValue(decl, value_);
-						};
-					}
-					else if (decl.important) {
-						target = (decl.raws.important ? decl.raws.important : ' !important');
-						bangIndex -= value.length;
-						setFixed = (value_) => {
-							decl.raws.important = value_;
-						};
-					}
-					else {
-						return false; // not standard
-					}
+				if (bangIndex < value.length) {
+					target = value;
+					setFixed = (value_) => {
+						setDeclarationValue(decl, value_);
+					};
+				}
+				else if (decl.important) {
+					target = (decl.raws.important ? decl.raws.important : ' !important');
+					bangIndex -= value.length;
+					setFixed = (value_) => {
+						decl.raws.important = value_;
+					};
+				}
+				else {
+					return false; // not standard
+				}
 
-					const targetBefore = target.slice(0, bangIndex);
-					const targetAfter = target.slice(bangIndex);
+				const targetBefore = target.slice(0, bangIndex);
+				const targetAfter = target.slice(bangIndex);
 
-					if (primary === 'always') {
-						setFixed(targetBefore.replace(/\s*$/, '') + ' ' + targetAfter);
+				if (primary === 'always') {
+					setFixed(targetBefore.replace(/\s*$/, '') + ' ' + targetAfter);
 
-						return true;
-					}
+					return true;
+				}
 
-					if (primary === 'never') {
-						setFixed(targetBefore.replace(/\s*$/, '') + targetAfter);
+				if (primary === 'never') {
+					setFixed(targetBefore.replace(/\s*$/, '') + targetAfter);
 
-						return true;
-					}
+					return true;
+				}
 
-					return false;
-				  } : null
+				return false;
+			}
 		});
 	};
 };

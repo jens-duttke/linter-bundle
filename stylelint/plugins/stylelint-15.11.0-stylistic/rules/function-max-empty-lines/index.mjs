@@ -31,7 +31,7 @@ function placeIndexOnValueStart (decl) {
 }
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => {
+const rule = (primary, _secondaryOptions) => {
 	const maxAdjacentNewlines = primary + 1;
 
 	return (root, result) => {
@@ -46,8 +46,8 @@ const rule = (primary, _secondaryOptions, context) => {
 
 		const violatedCRLFNewLinesRegex = new RegExp(`(?:\r\n){${maxAdjacentNewlines + 1},}`);
 		const violatedLFNewLinesRegex = new RegExp(`\n{${maxAdjacentNewlines + 1},}`);
-		const allowedLFNewLinesString = context.fix ? '\n'.repeat(maxAdjacentNewlines) : '';
-		const allowedCRLFNewLinesString = context.fix ? '\r\n'.repeat(maxAdjacentNewlines) : '';
+		const allowedLFNewLinesString = '\n'.repeat(maxAdjacentNewlines);
+		const allowedCRLFNewLinesString = '\r\n'.repeat(maxAdjacentNewlines);
 
 		root.walkDecls((decl) => {
 			if (!decl.value.includes('(')) {
@@ -76,30 +76,28 @@ const rule = (primary, _secondaryOptions, context) => {
 					return;
 				}
 
-				if (context.fix) {
-					const newNodeString = stringifiedNode
-						.replace(new RegExp(violatedLFNewLinesRegex, 'gm'), allowedLFNewLinesString)
-						.replace(new RegExp(violatedCRLFNewLinesRegex, 'gm'), allowedCRLFNewLinesString);
+				report({
+					message: messages.expected(primary),
+					node: decl,
+					index: placeIndexOnValueStart(decl) + node.sourceIndex,
+					endIndex: placeIndexOnValueStart(decl) + node.sourceIndex,
+					result,
+					ruleName,
+					fix: () => {
+						const newNodeString = stringifiedNode
+							.replace(new RegExp(violatedLFNewLinesRegex, 'gm'), allowedLFNewLinesString)
+							.replace(new RegExp(violatedCRLFNewLinesRegex, 'gm'), allowedCRLFNewLinesString);
 
-					splittedValue.push([
-						stringValue.slice(sourceIndexStart, node.sourceIndex),
-						newNodeString
-					]);
-					sourceIndexStart = node.sourceIndex + stringifiedNode.length;
-				}
-				else {
-					report({
-						message: messages.expected(primary),
-						node: decl,
-						index: placeIndexOnValueStart(decl) + node.sourceIndex,
-						endIndex: placeIndexOnValueStart(decl) + node.sourceIndex,
-						result,
-						ruleName
-					});
-				}
+						splittedValue.push([
+							stringValue.slice(sourceIndexStart, node.sourceIndex),
+							newNodeString
+						]);
+						sourceIndexStart = node.sourceIndex + stringifiedNode.length;
+					}
+				});
 			});
 
-			if (context.fix && splittedValue.length > 0) {
+			if (splittedValue.length > 0) {
 				const updatedValue =
 					splittedValue.reduce((accumulator, current) => accumulator + current[0] + current[1], '') +
 					stringValue.slice(sourceIndexStart);

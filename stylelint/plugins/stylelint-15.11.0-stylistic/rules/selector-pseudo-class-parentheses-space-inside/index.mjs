@@ -23,7 +23,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => (root, result) => {
+const rule = (primary, _secondaryOptions) => (root, result) => {
 	const validOptions = validateOptions(result, ruleName, {
 		actual: primary,
 		possible: ['always', 'never']
@@ -55,46 +55,66 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 				const openIndex = pseudoNode.sourceIndex + pseudoNode.value.length + 1;
 
 				if (nextCharIsSpace && primary === 'never') {
-					if (context.fix) {
-						hasFixed = true;
-						setFirstNodeSpaceBefore(pseudoNode, '');
-					}
-					else {
-						complain(messages.rejectedOpening, openIndex);
-					}
+					report({
+						message: messages.rejectedOpening,
+						index: openIndex,
+						endIndex: openIndex,
+						result,
+						ruleName,
+						node: ruleNode,
+						fix: () => {
+							hasFixed = true;
+							setFirstNodeSpaceBefore(pseudoNode, '');
+						}
+					});
 				}
 
 				if (!nextCharIsSpace && primary === 'always') {
-					if (context.fix) {
-						hasFixed = true;
-						setFirstNodeSpaceBefore(pseudoNode, ' ');
-					}
-					else {
-						complain(messages.expectedOpening, openIndex);
-					}
+					report({
+						message: messages.expectedOpening,
+						index: openIndex,
+						endIndex: openIndex,
+						result,
+						ruleName,
+						node: ruleNode,
+						fix: () => {
+							hasFixed = true;
+							setFirstNodeSpaceBefore(pseudoNode, ' ');
+						}
+					});
 				}
 
 				const previousCharIsSpace = paramString.endsWith(' ');
 				const closeIndex = openIndex + paramString.length - 1;
 
 				if (previousCharIsSpace && primary === 'never') {
-					if (context.fix) {
-						hasFixed = true;
-						setLastNodeSpaceAfter(pseudoNode, '');
-					}
-					else {
-						complain(messages.rejectedClosing, closeIndex);
-					}
+					report({
+						message: messages.rejectedClosing,
+						index: closeIndex,
+						endIndex: closeIndex,
+						result,
+						ruleName,
+						node: ruleNode,
+						fix: () => {
+							hasFixed = true;
+							setLastNodeSpaceAfter(pseudoNode, '');
+						}
+					});
 				}
 
 				if (!previousCharIsSpace && primary === 'always') {
-					if (context.fix) {
-						hasFixed = true;
-						setLastNodeSpaceAfter(pseudoNode, ' ');
-					}
-					else {
-						complain(messages.expectedClosing, closeIndex);
-					}
+					report({
+						message: messages.expectedClosing,
+						index: closeIndex,
+						endIndex: closeIndex,
+						result,
+						ruleName,
+						node: ruleNode,
+						fix: () => {
+							hasFixed = true;
+							setLastNodeSpaceAfter(pseudoNode, ' ');
+						}
+					});
 				}
 			});
 		});
@@ -106,21 +126,6 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 			else {
 				ruleNode.raws.selector.raw = fixedSelector;
 			}
-		}
-
-		/**
-		 * @param {string} message
-		 * @param {number} index
-		 */
-		function complain (message, index) {
-			report({
-				message,
-				index,
-				endIndex: index,
-				result,
-				ruleName,
-				node: ruleNode
-			});
 		}
 	});
 };

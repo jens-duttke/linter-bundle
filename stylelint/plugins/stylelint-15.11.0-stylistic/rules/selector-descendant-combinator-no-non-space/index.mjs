@@ -20,7 +20,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => (root, result) => {
+const rule = (primary, _secondaryOptions) => (root, result) => {
 	const validOptions = validateOptions(result, ruleName, {
 		actual: primary
 	});
@@ -55,25 +55,22 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 						value.includes('\n') ||
 						value.includes('\r')
 				) {
-					if (context.fix && (/^\s+$/).test(value)) {
-						hasFixed = true;
-
-						if (!combinatorNode.raws) { combinatorNode.raws = {}; }
-
-						combinatorNode.raws.value = ' ';
-						combinatorNode.rawSpaceBefore = combinatorNode.rawSpaceBefore.replace(/^\s+/, '');
-						combinatorNode.rawSpaceAfter = combinatorNode.rawSpaceAfter.replace(/\s+$/, '');
-
-						return;
-					}
-
 					report({
 						result,
 						ruleName,
 						message: messages.rejected(value),
 						node: ruleNode,
 						index: combinatorNode.sourceIndex,
-						endIndex: combinatorNode.sourceIndex
+						endIndex: combinatorNode.sourceIndex,
+						fix: ((/^\s+$/).test(value) ? () => {
+							hasFixed = true;
+
+							if (!combinatorNode.raws) { combinatorNode.raws = {}; }
+
+							combinatorNode.raws.value = ' ';
+							combinatorNode.rawSpaceBefore = combinatorNode.rawSpaceBefore.replace(/^\s+/, '');
+							combinatorNode.rawSpaceAfter = combinatorNode.rawSpaceAfter.replace(/\s+$/, '');
+						}: undefined)
 					});
 				}
 			});

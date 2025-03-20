@@ -26,7 +26,7 @@ const CONTAINS_HEX = /#[\da-z]+/i;
 const IGNORED_FUNCTIONS = new Set(['url']);
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => (root, result) => {
+const rule = (primary, _secondaryOptions) => (root, result) => {
 	const validOptions = validateOptions(result, ruleName, {
 		actual: primary,
 		possible: ['lower', 'upper']
@@ -53,20 +53,17 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 
 			if (value === expected) { return; }
 
-			if (context.fix) {
-				node.value = expected;
-				needsFix = true;
-
-				return;
-			}
-
 			report({
 				message: messages.expected(value, expected),
 				node: decl,
 				index: declarationValueIndex(decl) + node.sourceIndex,
 				endIndex: declarationValueIndex(decl) + node.sourceIndex,
 				result,
-				ruleName
+				ruleName,
+				fix: () => {
+					node.value = expected;
+					needsFix = true;
+				}
 			});
 		});
 

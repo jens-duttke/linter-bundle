@@ -66,7 +66,7 @@ function findErrorStartIndex (lastEOLIndex, string, { ignoreEmptyLines, isRootFi
 }
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, secondaryOptions, context) => (root, result) => {
+const rule = (primary, secondaryOptions) => (root, result) => {
 	const validOptions = validateOptions(
 		result,
 		ruleName,
@@ -88,11 +88,7 @@ const rule = (primary, secondaryOptions, context) => (root, result) => {
 
 	const ignoreEmptyLines = optionsMatches(secondaryOptions, 'ignore', 'empty-lines');
 
-	if (context.fix) {
-		fix(root);
-	}
-
-	const rootString = context.fix ? root.toString() : (root.source?.input.css) || '';
+	const rootString = root.toString();
 
 	/**
 	 * @param {number} index
@@ -104,7 +100,10 @@ const rule = (primary, secondaryOptions, context) => (root, result) => {
 			index,
 			endIndex: index,
 			result,
-			ruleName
+			ruleName,
+			fix: () => {
+				fix(root);
+			}
 		});
 	};
 

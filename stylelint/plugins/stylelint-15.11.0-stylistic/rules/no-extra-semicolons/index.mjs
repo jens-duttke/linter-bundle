@@ -66,7 +66,7 @@ function getOffsetByNode (node) {
 }
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => (root, result) => {
+const rule = (primary, _secondaryOptions) => (root, result) => {
 	const validOptions = validateOptions(result, ruleName, { actual: primary });
 
 	if (!validOptions) {
@@ -80,15 +80,19 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 		const fixSemiIndices = [];
 
 		styleSearch({ source: rawAfterRoot, target: ';' }, (match) => {
-			if (context.fix) {
-				fixSemiIndices.push(match.startIndex);
-
-				return;
-			}
-
 			if (!root.source) { throw new Error('The root node must have a source'); }
 
-			complain(root.source.input.css.length - rawAfterRoot.length + match.startIndex);
+			report({
+				message: messages.rejected,
+				node: root,
+				index: root.source.input.css.length - rawAfterRoot.length + match.startIndex,
+				endIndex: root.source.input.css.length - rawAfterRoot.length + match.startIndex,
+				result,
+				ruleName,
+				fix: () => {
+					fixSemiIndices.push(match.startIndex);
+				}
+			});
 		});
 
 		// fix
@@ -120,13 +124,17 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 					return;
 				}
 
-				if (context.fix) {
-					fixSemiIndices.push(match.startIndex - rawBeforeIndexStart);
-
-					return;
-				}
-
-				complain(getOffsetByNode(node) - rawBeforeNode.length + match.startIndex);
+				report({
+					message: messages.rejected,
+					node: root,
+					index: getOffsetByNode(node) - rawBeforeNode.length + match.startIndex,
+					endIndex: getOffsetByNode(node) - rawBeforeNode.length + match.startIndex,
+					result,
+					ruleName,
+					fix: () => {
+						fixSemiIndices.push(match.startIndex - rawBeforeIndexStart);
+					}
+				});
 			});
 
 			// fix
@@ -156,12 +164,6 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 			const fixSemiIndices = [];
 
 			styleSearch({ source: rawAfterNode, target: ';' }, (match) => {
-				if (context.fix) {
-					fixSemiIndices.push(match.startIndex);
-
-					return;
-				}
-
 				const index =
 						getOffsetByNode(node) +
 						node.toString().length -
@@ -169,7 +171,17 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 						rawAfterNode.length +
 						match.startIndex;
 
-				complain(index);
+				report({
+					message: messages.rejected,
+					node: root,
+					index,
+					endIndex: index,
+					result,
+					ruleName,
+					fix: () => {
+						fixSemiIndices.push(match.startIndex);
+					}
+				});
 			});
 
 			// fix
@@ -190,19 +202,23 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 					return;
 				}
 
-				if (context.fix) {
-					fixSemiIndices.push(match.startIndex);
-
-					return;
-				}
-
 				const index =
 						getOffsetByNode(node) +
 						node.toString().length -
 						rawOwnSemicolon.length +
 						match.startIndex;
 
-				complain(index);
+				report({
+					message: messages.rejected,
+					node: root,
+					index,
+					endIndex: index,
+					result,
+					ruleName,
+					fix: () => {
+						fixSemiIndices.push(match.startIndex);
+					}
+				});
 			});
 
 			// fix
@@ -211,20 +227,6 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 			}
 		}
 	});
-
-	/**
-	 * @param {number} index
-	 */
-	function complain (index) {
-		report({
-			message: messages.rejected,
-			node: root,
-			index,
-			endIndex: index,
-			result,
-			ruleName
-		});
-	}
 
 	/**
 	 * @param {string} str

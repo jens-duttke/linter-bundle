@@ -67,33 +67,48 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 			const checkBefore = getCheckBefore(valueNode);
 
 			if (primary === 'always' && !containsNewline(checkBefore)) {
-				if (context.fix) {
-					hasFixed = true;
-					fixBeforeForAlways(valueNode, context.newline || '');
-				}
-				else {
-					complain(messages.expectedOpening, openingIndex);
-				}
+				report({
+					ruleName,
+					result,
+					message: messages.expectedOpening,
+					node: decl,
+					index: declarationValueIndex(decl) + openingIndex,
+					endIndex: declarationValueIndex(decl) + openingIndex,
+					fix: () => {
+						hasFixed = true;
+						fixBeforeForAlways(valueNode, context.newline || '');
+					}
+				});
 			}
 
 			if (isMultiLine && primary === 'always-multi-line' && !containsNewline(checkBefore)) {
-				if (context.fix) {
-					hasFixed = true;
-					fixBeforeForAlways(valueNode, context.newline || '');
-				}
-				else {
-					complain(messages.expectedOpeningMultiLine, openingIndex);
-				}
+				report({
+					ruleName,
+					result,
+					message: messages.expectedOpeningMultiLine,
+					node: decl,
+					index: declarationValueIndex(decl) + openingIndex,
+					endIndex: declarationValueIndex(decl) + openingIndex,
+					fix: () => {
+						hasFixed = true;
+						fixBeforeForAlways(valueNode, context.newline || '');
+					}
+				});
 			}
 
 			if (isMultiLine && primary === 'never-multi-line' && checkBefore !== '') {
-				if (context.fix) {
-					hasFixed = true;
-					fixBeforeForNever(valueNode);
-				}
-				else {
-					complain(messages.rejectedOpeningMultiLine, openingIndex);
-				}
+				report({
+					ruleName,
+					result,
+					message: messages.rejectedOpeningMultiLine,
+					node: decl,
+					index: declarationValueIndex(decl) + openingIndex,
+					endIndex: declarationValueIndex(decl) + openingIndex,
+					fix: () => {
+						hasFixed = true;
+						fixBeforeForNever(valueNode);
+					}
+				});
 			}
 
 			// Check closing ...
@@ -102,53 +117,53 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 			const checkAfter = getCheckAfter(valueNode);
 
 			if (primary === 'always' && !containsNewline(checkAfter)) {
-				if (context.fix) {
-					hasFixed = true;
-					fixAfterForAlways(valueNode, context.newline || '');
-				}
-				else {
-					complain(messages.expectedClosing, closingIndex);
-				}
+				report({
+					ruleName,
+					result,
+					message: messages.expectedClosing,
+					node: decl,
+					index: declarationValueIndex(decl) + closingIndex,
+					endIndex: declarationValueIndex(decl) + closingIndex,
+					fix: () => {
+						hasFixed = true;
+						fixAfterForAlways(valueNode, context.newline || '');
+					}
+				});
 			}
 
 			if (isMultiLine && primary === 'always-multi-line' && !containsNewline(checkAfter)) {
-				if (context.fix) {
-					hasFixed = true;
-					fixAfterForAlways(valueNode, context.newline || '');
-				}
-				else {
-					complain(messages.expectedClosingMultiLine, closingIndex);
-				}
+				report({
+					ruleName,
+					result,
+					message,
+					node: decl,
+					index: declarationValueIndex(decl) + messages.expectedClosingMultiLine,
+					endIndex: declarationValueIndex(decl) + closingIndex,
+					fix: () => {
+						hasFixed = true;
+						fixAfterForAlways(valueNode, context.newline || '');
+					}
+				});
 			}
 
 			if (isMultiLine && primary === 'never-multi-line' && checkAfter !== '') {
-				if (context.fix) {
-					hasFixed = true;
-					fixAfterForNever(valueNode);
-				}
-				else {
-					complain(messages.rejectedClosingMultiLine, closingIndex);
-				}
+				report({
+					ruleName,
+					result,
+					message: messages.rejectedClosingMultiLine,
+					node: decl,
+					index: declarationValueIndex(decl) + closingIndex,
+					endIndex: declarationValueIndex(decl) + closingIndex,
+					fix: () => {
+						hasFixed = true;
+						fixAfterForNever(valueNode);
+					}
+				});
 			}
 		});
 
 		if (hasFixed) {
 			setDeclarationValue(decl, parsedValue.toString());
-		}
-
-		/**
-		 * @param {string} message
-		 * @param {number} offset
-		 */
-		function complain (message, offset) {
-			report({
-				ruleName,
-				result,
-				message,
-				node: decl,
-				index: declarationValueIndex(decl) + offset,
-				endIndex: declarationValueIndex(decl) + offset
-			});
 		}
 	});
 };

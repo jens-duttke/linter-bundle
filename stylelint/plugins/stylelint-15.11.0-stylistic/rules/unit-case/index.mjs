@@ -21,7 +21,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => (root, result) => {
+const rule = (primary, _secondaryOptions) => (root, result) => {
 	const validOptions = validateOptions(result, ruleName, {
 		actual: primary,
 		possible: ['lower', 'upper']
@@ -87,31 +87,29 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 
 			needFix = processValue(valueNode);
 
-			if (needFix && context.fix) {
+			if (needFix) {
 				valueNode.value = primary === 'lower' ? value.toLowerCase() : value.toUpperCase();
 			}
 		});
 
 		if (problems.length > 0) {
-			if (context.fix) {
-				if ('name' in node && node.name === 'media') {
-					node.params = parsedValue.toString();
-				}
-				else if ('value' in node) {
-					node.value = parsedValue.toString();
-				}
-			}
-			else {
-				for (const error of problems) {
-					report({
-						index: error.index,
-						endIndex: error.endIndex,
-						message: error.message,
-						node,
-						result,
-						ruleName
-					});
-				}
+			for (const error of problems) {
+				report({
+					index: error.index,
+					endIndex: error.endIndex,
+					message: error.message,
+					node,
+					result,
+					ruleName,
+					fix: () => {
+						if ('name' in node && node.name === 'media') {
+							node.params = parsedValue.toString();
+						}
+						else if ('value' in node) {
+							node.value = parsedValue.toString();
+						}
+					}
+				});
 			}
 		}
 	}

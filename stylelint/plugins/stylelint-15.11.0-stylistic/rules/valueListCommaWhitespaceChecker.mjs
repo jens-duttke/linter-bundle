@@ -67,7 +67,8 @@ export default function valueListCommaWhitespaceChecker (options) {
 					index,
 					endIndex: index,
 					result: options.result,
-					ruleName: options.checkedRuleName
+					ruleName: options.checkedRuleName,
+					fix: (options.fix ? () => options.fix(node, index) : undefined)
 				});
 			}
 		});

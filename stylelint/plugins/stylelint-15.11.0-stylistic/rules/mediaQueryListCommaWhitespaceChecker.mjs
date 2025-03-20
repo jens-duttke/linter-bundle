@@ -56,17 +56,14 @@ export default function mediaQueryListCommaWhitespaceChecker (options) {
 			err: (message) => {
 				const commaIndex = index + atRuleParamIndex(node);
 
-				if (options.fix?.(node, commaIndex)) {
-					return;
-				}
-
 				report({
 					message,
 					node,
 					index: commaIndex,
 					endIndex: commaIndex,
 					result: options.result,
-					ruleName: options.checkedRuleName
+					ruleName: options.checkedRuleName,
+					fix: (options.fix ? () => options.fix(node, commaIndex) : undefined)
 				});
 			}
 		});

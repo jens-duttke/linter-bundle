@@ -23,7 +23,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => {
+const rule = (primary, _secondaryOptions) => {
 	const checker = whitespaceChecker('space', primary, messages);
 
 	return (root, result) => {
@@ -39,11 +39,8 @@ const rule = (primary, _secondaryOptions, context) => {
 		root.walkAtRules(/^media$/i, (atRule) => {
 			/** @type {number[]} */
 			const fixOperatorIndices = [];
-			/** @type {((index: number) => void) | null} */
-			const fix = context.fix ? (index) => fixOperatorIndices.push(index) : null;
-
 			findMediaOperator(atRule, (match, parameters, node) => {
-				checkBeforeOperator(match, parameters, node, fix);
+				checkBeforeOperator(match, parameters, node, (index) => fixOperatorIndices.push(index));
 			});
 
 			if (fixOperatorIndices.length > 0) {
@@ -84,19 +81,16 @@ const rule = (primary, _secondaryOptions, context) => {
 				source: parameters,
 				index: match.startIndex,
 				err: (m) => {
-					if (fix) {
-						fix(match.startIndex);
-
-						return;
-					}
-
 					report({
 						message: m,
 						node,
 						index: match.startIndex - 1 + atRuleParamIndex(node),
 						endIndex: match.startIndex - 1 + atRuleParamIndex(node),
 						result,
-						ruleName
+						ruleName,
+						fix: (fix ? () => {
+							fix(match.startIndex);
+						}: undefined)
 					});
 				}
 			});

@@ -87,35 +87,29 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 				return;
 			}
 
-			if (fix) {
-				fix(index);
-
-				return;
-			}
-
 			report({
 				message: messages.expected,
 				node,
 				index: nodeIndex + index,
 				endIndex: nodeIndex + index,
 				result,
-				ruleName
+				ruleName,
+				fix: () => {
+					fix(index);
+				}
 			});
 		}
 		else if (primary === 'never' && isWhitespace(nextChar)) {
-			if (fix) {
-				fix(index);
-
-				return;
-			}
-
 			report({
 				message: messages.rejected,
 				node,
 				index: nodeIndex + index,
 				endIndex: nodeIndex + index,
 				result,
-				ruleName
+				ruleName,
+				fix: () => {
+					fix(index);
+				}
 			});
 		}
 	}
@@ -167,7 +161,7 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 
 	root.walkAtRules(/^import$/i, (atRule) => {
 		const parameter = (atRule.raws.params?.raw) || atRule.params;
-		const fixer = context.fix && createFixer(parameter);
+		const fixer = createFixer(parameter);
 
 		check(atRule, parameter, atRuleParamIndex(atRule), fixer ? fixer.applyFix : undefined);
 
@@ -182,7 +176,7 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 	});
 	root.walkDecls((decl) => {
 		const value = getDeclarationValue(decl);
-		const fixer = context.fix && createFixer(value);
+		const fixer = createFixer(value);
 
 		check(decl, value, declarationValueIndex(decl), fixer ? fixer.applyFix : undefined);
 

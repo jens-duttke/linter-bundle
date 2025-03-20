@@ -97,14 +97,7 @@ export default function functionCommaSpaceChecker (options) {
 					source: functionArguments,
 					index: checkIndex,
 					err: (message) => {
-						const index =
-							declarationValueIndex(decl) + commaNode.sourceIndex + commaNode.before.length;
-
-						if (options.fix?.(commaNode, nodeIndex, valueNode.nodes)) {
-							hasFixed = true;
-
-							return;
-						}
+						const index = declarationValueIndex(decl) + commaNode.sourceIndex + commaNode.before.length;
 
 						report({
 							index,
@@ -112,7 +105,12 @@ export default function functionCommaSpaceChecker (options) {
 							message,
 							node: decl,
 							result: options.result,
-							ruleName: options.checkedRuleName
+							ruleName: options.checkedRuleName,
+							fix: (options.fix ? () => {
+								if (options.fix(commaNode, nodeIndex, valueNode.nodes)) {
+									hasFixed = true;
+								}
+							} : undefined)
 						});
 					}
 				});

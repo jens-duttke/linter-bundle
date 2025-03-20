@@ -24,7 +24,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => {
+const rule = (primary, _secondaryOptions) => {
 	const checker = whitespaceChecker('space', primary, messages);
 
 	return (root, result) => {
@@ -42,16 +42,14 @@ const rule = (primary, _secondaryOptions, context) => {
 			result,
 			locationChecker: checker.after,
 			checkedRuleName: ruleName,
-			fix: context.fix ?
-				(div, index, nodes) => fixer({
-					div,
-					index,
-					nodes,
-					expectation: primary,
-					position: 'after',
-					symb: ' '
-				})
-				: null
+			fix: (div, index, nodes) => fixer({
+				div,
+				index,
+				nodes,
+				expectation: primary,
+				position: 'after',
+				symb: ' '
+			})
 		});
 	};
 };

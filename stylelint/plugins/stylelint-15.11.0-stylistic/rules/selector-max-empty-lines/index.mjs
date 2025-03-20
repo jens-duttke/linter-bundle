@@ -19,7 +19,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondaryOptions, context) => {
+const rule = (primary, _secondaryOptions) => {
 	const maxAdjacentNewlines = primary + 1;
 
 	return (root, result) => {
@@ -34,25 +34,13 @@ const rule = (primary, _secondaryOptions, context) => {
 
 		const violatedCRLFNewLinesRegex = new RegExp(`(?:\r\n){${maxAdjacentNewlines + 1},}`);
 		const violatedLFNewLinesRegex = new RegExp(`\n{${maxAdjacentNewlines + 1},}`);
-		const allowedLFNewLinesString = context.fix ? '\n'.repeat(maxAdjacentNewlines) : '';
-		const allowedCRLFNewLinesString = context.fix ? '\r\n'.repeat(maxAdjacentNewlines) : '';
+		const allowedLFNewLinesString = '\n'.repeat(maxAdjacentNewlines);
+		const allowedCRLFNewLinesString = '\r\n'.repeat(maxAdjacentNewlines);
 
 		root.walkRules((ruleNode) => {
 			const selector = ruleNode.raws.selector ? ruleNode.raws.selector.raw : ruleNode.selector;
 
-			if (context.fix) {
-				const newSelectorString = selector
-					.replace(new RegExp(violatedLFNewLinesRegex, 'gm'), allowedLFNewLinesString)
-					.replace(new RegExp(violatedCRLFNewLinesRegex, 'gm'), allowedCRLFNewLinesString);
-
-				if (ruleNode.raws.selector) {
-					ruleNode.raws.selector.raw = newSelectorString;
-				}
-				else {
-					ruleNode.selector = newSelectorString;
-				}
-			}
-			else if (
+			if (
 				violatedLFNewLinesRegex.test(selector) ||
 				violatedCRLFNewLinesRegex.test(selector)
 			) {
@@ -62,7 +50,19 @@ const rule = (primary, _secondaryOptions, context) => {
 					index: 0,
 					endIndex: 0,
 					result,
-					ruleName
+					ruleName,
+					fix: () => {
+						const newSelectorString = selector
+							.replace(new RegExp(violatedLFNewLinesRegex, 'gm'), allowedLFNewLinesString)
+							.replace(new RegExp(violatedCRLFNewLinesRegex, 'gm'), allowedCRLFNewLinesString);
+
+						if (ruleNode.raws.selector) {
+							ruleNode.raws.selector.raw = newSelectorString;
+						}
+						else {
+							ruleNode.selector = newSelectorString;
+						}
+					}
 				});
 			}
 		});

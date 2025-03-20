@@ -41,16 +41,14 @@ const rule = (primary, _secondaryOptions, context) => {
 			result,
 			locationChecker: checker.beforeAllowingIndentation,
 			checkedRuleName: ruleName,
-			fix: context.fix ?
-				(div, index, nodes) => fixer({
-					div,
-					index,
-					nodes,
-					expectation: primary,
-					position: 'before',
-					symb: context.newline || ''
-				})
-				: null
+			fix: (div, index, nodes) => fixer({
+				div,
+				index,
+				nodes,
+				expectation: primary,
+				position: 'before',
+				symb: context.newline || ''
+			})
 		});
 	};
 };

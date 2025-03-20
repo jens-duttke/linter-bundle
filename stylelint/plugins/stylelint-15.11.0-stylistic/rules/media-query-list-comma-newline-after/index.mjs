@@ -47,19 +47,17 @@ const rule = (primary, _secondaryOptions, context) => {
 			locationChecker: checker.afterOneOnly,
 			checkedRuleName: ruleName,
 			allowTrailingComments: primary.startsWith('always'),
-			fix: context.fix ?
-				(atRule, index) => {
-					const parameterCommaIndex = index - atRuleParamIndex(atRule);
+			fix: (atRule, index) => {
+				const parameterCommaIndex = index - atRuleParamIndex(atRule);
 
-					fixData ||= new Map();
-					const commaIndices = fixData.get(atRule) || [];
+				fixData ||= new Map();
+				const commaIndices = fixData.get(atRule) || [];
 
-					commaIndices.push(parameterCommaIndex);
-					fixData.set(atRule, commaIndices);
+				commaIndices.push(parameterCommaIndex);
+				fixData.set(atRule, commaIndices);
 
-					return true;
-				  }
-				  : null
+				return true;
+			}
 		});
 
 		if (fixData) {

@@ -24,7 +24,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, _secondary, context) => {
+const rule = (primary, _secondary) => {
 	const checker = whitespaceChecker('newline', primary, messages);
 
 	return (root, result) => {
@@ -63,19 +63,17 @@ const rule = (primary, _secondary, context) => {
 				source: rawNodeString(nodeToCheck),
 				index: -1,
 				err: (message) => {
-					if (context.fix) {
-						nodeToCheck.raws.before = context.newline + nodeToCheck.raws.before;
-					}
-					else {
-						report({
-							message,
-							node: atRule,
-							index: atRule.toString().length + 1,
-							endIndex: atRule.toString().length + 1,
-							result,
-							ruleName
-						});
-					}
+					report({
+						message,
+						node: atRule,
+						index: atRule.toString().length + 1,
+						endIndex: atRule.toString().length + 1,
+						result,
+						ruleName,
+						fix: () => {
+							nodeToCheck.raws.before = '\n' + nodeToCheck.raws.before;
+						}
+					});
 				}
 			});
 		});

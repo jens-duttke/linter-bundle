@@ -46,17 +46,14 @@ export default function declarationBangSpaceChecker (options) {
 			source,
 			index,
 			err: (message) => {
-				if (options.fix?.(decl, index)) {
-					return;
-				}
-
 				report({
 					message,
 					node: decl,
 					index,
 					endIndex: index,
 					result: options.result,
-					ruleName: options.checkedRuleName
+					ruleName: options.checkedRuleName,
+					fix: (options.fix ? () => options.fix(decl, index) : undefined)
 				});
 			}
 		});
