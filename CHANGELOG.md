@@ -6,7 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.1.2...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.3.0...HEAD)
+
+## [7.3.0] - 2025-03-20
+
+### Changed
+
+- [eslint] Updated `eslint-import-resolver-typescript` from `4.2.0` to `4.2.2`
+- [eslint] Updated `typescript-eslint` from `8.26.1` to `8.27.0`
+- [stylelint] Refactored all mocked stylistic Stylelint rule, to get rid of the deprecated `context.fix`
+
+### Removed
+
+- [stylelint] Removed the stylistic `linebreaks` plugin, as this can be achieved using the `.editorconfig` file
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.2.0...v7.3.0)
 
 ## [7.2.0] - 2025-03-18
 
@@ -21,7 +35,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 
-- Re-added fixers of the mocked stylistic Stylelint rule.
+- [stylelint] Re-added fixers of the mocked stylistic Stylelint rule.
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.1.2...v7.2.0)
 
 ## [7.1.2] - 2025-03-15
 
