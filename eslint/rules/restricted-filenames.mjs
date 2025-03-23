@@ -54,8 +54,12 @@ export default {
 	},
 	create: (context) => {
 		const filePath = context.filename;
+
+		// The type is ensured by `meta.schema`
+		const contextOptions = /** @type {{ basePath: string, allowed?: string[]; disallowed?: string[]; }[]} */(context.options);
+
 		/** @type {{ basePath: string, allowed?: string[]; disallowed?: string[]; }[]} */
-		const options = (linterBundleConfig?.files?.restrictions ? [...linterBundleConfig.files.restrictions, ...context.options] : context.options);
+		const options = (linterBundleConfig?.files?.restrictions ? [...linterBundleConfig.files.restrictions, ...contextOptions] : contextOptions);
 
 		for (const { basePath, allowed, disallowed } of options) {
 			const normalizedName = path.relative(path.join(process.cwd(), basePath), filePath);
