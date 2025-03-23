@@ -43,7 +43,7 @@
 	"dependencies": {
 		"@stylistic/eslint-plugin": "4.2.0",
 		"@stylistic/eslint-plugin-jsx": "4.2.0",
-		"eslint": "9.22.0",
+		"eslint": "9.23.0",
 		"eslint-formatter-unix": "8.40.0",
 		"eslint-import-resolver-typescript": "4.2.2",
 		"eslint-import-resolver-webpack": "0.13.10",
@@ -78,7 +78,7 @@
 	"devDependencies": {
 		"@types/eslint": "9.6.1",
 		"@types/micromatch": "4.0.9",
-		"@types/node": "22.13.10",
+		"@types/node": "22.13.11",
 		"stylelint-find-new-rules": "5.0.0",
 		"typescript": "5.8.2"
 	}
