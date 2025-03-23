@@ -42,7 +42,8 @@ export default [
 					'getSnapshotBeforeUpdate',
 					'render',
 					'shouldComponentUpdate'
-				]
+				],
+				allowExpressions: true
 			}],
 			'@typescript-eslint/no-empty-object-type': ['error', { // Empty interfaces for Component props should be allowed to make it directly visible, that a component has no props.
 				allowWithName: 'Props$'
