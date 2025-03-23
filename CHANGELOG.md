@@ -6,7 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.3.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.4.0...HEAD)
+
+## [7.4.0] - 2025-03-23
+
+### Changed
+
+- [eslint] Updated `eslint` from `9.22.0` to `9.23.0`
+- [eslint/react] Activated `allowExpressions` of the `@typescript-eslint/explicit-function-return-type`rule also for the React overrides
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.3.0...v7.4.0)
 
 ## [7.3.0] - 2025-03-20
 
