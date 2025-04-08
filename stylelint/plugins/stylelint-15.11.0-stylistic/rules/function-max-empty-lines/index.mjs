@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import valueParser from 'postcss-value-parser';
@@ -8,7 +7,7 @@ import report from 'stylelint/lib/utils/report.mjs';
 import ruleMessages from 'stylelint/lib/utils/ruleMessages.mjs';
 import setDeclarationValue from 'stylelint/lib/utils/setDeclarationValue.mjs';
 import validateOptions from 'stylelint/lib/utils/validateOptions.mjs';
-import{ isNumber } from 'stylelint/lib/utils/validateTypes.mjs';
+import { isNumber } from 'stylelint/lib/utils/validateTypes.mjs';
 
 const ruleName = 'plugin/function-max-empty-lines';
 
@@ -44,8 +43,8 @@ const rule = (primary, _secondaryOptions) => {
 			return;
 		}
 
-		const violatedCRLFNewLinesRegex = new RegExp(`(?:\r\n){${maxAdjacentNewlines + 1},}`);
-		const violatedLFNewLinesRegex = new RegExp(`\n{${maxAdjacentNewlines + 1},}`);
+		const violatedCRLFNewLinesRegex = new RegExp(`(?:\r\n){${maxAdjacentNewlines + 1},}`, 'u');
+		const violatedLFNewLinesRegex = new RegExp(`\n{${maxAdjacentNewlines + 1},}`, 'u');
 		const allowedLFNewLinesString = '\n'.repeat(maxAdjacentNewlines);
 		const allowedCRLFNewLinesString = '\r\n'.repeat(maxAdjacentNewlines);
 
@@ -85,8 +84,8 @@ const rule = (primary, _secondaryOptions) => {
 					ruleName,
 					fix: () => {
 						const newNodeString = stringifiedNode
-							.replace(new RegExp(violatedLFNewLinesRegex, 'gm'), allowedLFNewLinesString)
-							.replace(new RegExp(violatedCRLFNewLinesRegex, 'gm'), allowedCRLFNewLinesString);
+							.replace(new RegExp(violatedLFNewLinesRegex, 'gmu'), allowedLFNewLinesString)
+							.replace(new RegExp(violatedCRLFNewLinesRegex, 'gmu'), allowedCRLFNewLinesString);
 
 						splittedValue.push([
 							stringValue.slice(sourceIndexStart, node.sourceIndex),

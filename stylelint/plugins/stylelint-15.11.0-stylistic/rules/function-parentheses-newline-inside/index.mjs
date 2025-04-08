@@ -1,12 +1,11 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import valueParser from 'postcss-value-parser';
 import stylelint from 'stylelint';
-import { declarationValueIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
 import getDeclarationValue from 'stylelint/lib/utils/getDeclarationValue.mjs';
 import isSingleLineString from 'stylelint/lib/utils/isSingleLineString.mjs';
 import isStandardSyntaxFunction from 'stylelint/lib/utils/isStandardSyntaxFunction.mjs';
+import { declarationValueIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
 import report from 'stylelint/lib/utils/report.mjs';
 import ruleMessages from 'stylelint/lib/utils/ruleMessages.mjs';
 import setDeclarationValue from 'stylelint/lib/utils/setDeclarationValue.mjs';
@@ -135,9 +134,9 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 				report({
 					ruleName,
 					result,
-					message,
+					message: messages.expectedClosingMultiLine,
 					node: decl,
-					index: declarationValueIndex(decl) + messages.expectedClosingMultiLine,
+					index: declarationValueIndex(decl) + closingIndex,
 					endIndex: declarationValueIndex(decl) + closingIndex,
 					fix: () => {
 						hasFixed = true;

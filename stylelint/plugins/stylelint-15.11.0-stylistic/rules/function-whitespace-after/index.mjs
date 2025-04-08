@@ -1,10 +1,9 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
-import { atRuleParamIndex, declarationValueIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
 import getDeclarationValue from 'stylelint/lib/utils/getDeclarationValue.mjs';
 import isWhitespace from 'stylelint/lib/utils/isWhitespace.mjs';
+import { atRuleParamIndex, declarationValueIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
 import report from 'stylelint/lib/utils/report.mjs';
 import ruleMessages from 'stylelint/lib/utils/ruleMessages.mjs';
 import setDeclarationValue from 'stylelint/lib/utils/setDeclarationValue.mjs';
@@ -159,7 +158,7 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 		};
 	}
 
-	root.walkAtRules(/^import$/i, (atRule) => {
+	root.walkAtRules(/^import$/iu, (atRule) => {
 		const parameter = (atRule.raws.params?.raw) || atRule.params;
 		const fixer = createFixer(parameter);
 
