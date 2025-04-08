@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 /**
@@ -19,12 +18,12 @@ export default function addEmptyLineAfter (node, newline) {
 	const spaces = raws.after.split(';');
 	const after = spaces[spaces.length - 1] || '';
 
-	if (!(/\r?\n/).test(after)) {
+	if (!(/\r?\n/u).test(after)) {
 		raws.after += newline.repeat(2);
 	}
 	else {
-		raws.after = raws.after.replace(/(\r?\n)/, `${newline}$1`);
+		raws.after = raws.after.replace(/(\r?\n)/u, `${newline}$1`);
 	}
 
 	return node;
-};
+}

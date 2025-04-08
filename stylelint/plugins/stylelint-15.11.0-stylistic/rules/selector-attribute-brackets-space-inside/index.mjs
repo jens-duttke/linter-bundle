@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -84,7 +83,6 @@ const rule = (primary, _secondaryOptions) => {
 									fixBefore(attributeNode);
 								}
 							});
-
 						}
 					});
 
@@ -105,7 +103,6 @@ const rule = (primary, _secondaryOptions) => {
 									fixAfter(attributeNode);
 								}
 							});
-
 						}
 
 						if (!previousCharIsSpace && primary === 'always') {
@@ -121,7 +118,6 @@ const rule = (primary, _secondaryOptions) => {
 									fixAfter(attributeNode);
 								}
 							});
-
 						}
 					});
 				});
@@ -152,7 +148,7 @@ const rule = (primary, _secondaryOptions) => {
 				setAttrBefore (fixed) {
 					spacesAttribute.before = fixed;
 				}
-			  }
+			}
 			: {
 				attrBefore:
 						(attributeNode.spaces.attribute?.before) || '',
@@ -161,13 +157,13 @@ const rule = (primary, _secondaryOptions) => {
 
 					attributeNode.spaces.attribute.before = fixed;
 				}
-			  };
+			};
 
 		if (primary === 'always') {
-			setAttrBefore(attrBefore.replace(/^\s*/, ' '));
+			setAttrBefore(attrBefore.replace(/^\s*/u, ' '));
 		}
 		else if (primary === 'never') {
-			setAttrBefore(attrBefore.replace(/^\s*/, ''));
+			setAttrBefore(attrBefore.replace(/^\s*/u, ''));
 		}
 	}
 
@@ -193,7 +189,7 @@ const rule = (primary, _secondaryOptions) => {
 				setAfter (fixed) {
 					rawSpaces.after = fixed;
 				}
-			  }
+			}
 			: {
 				after: (spaces?.after) || '',
 				setAfter (fixed) {
@@ -202,13 +198,13 @@ const rule = (primary, _secondaryOptions) => {
 					// @ts-expect-error -- TS2532: Object is possibly 'undefined'.
 					attributeNode.spaces[key].after = fixed;
 				}
-			  };
+			};
 
 		if (primary === 'always') {
-			setAfter(after.replace(/\s*$/, ' '));
+			setAfter(after.replace(/\s*$/u, ' '));
 		}
 		else if (primary === 'never') {
-			setAfter(after.replace(/\s*$/, ''));
+			setAfter(after.replace(/\s*$/u, ''));
 		}
 	}
 };

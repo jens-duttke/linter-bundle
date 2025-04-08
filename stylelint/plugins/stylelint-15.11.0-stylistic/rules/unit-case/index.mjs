@@ -1,10 +1,9 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import valueParser from 'postcss-value-parser';
 import stylelint from 'stylelint';
-import { atRuleParamIndex, declarationValueIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
 import getDimension from 'stylelint/lib/utils/getDimension.mjs';
+import { atRuleParamIndex, declarationValueIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
 import report from 'stylelint/lib/utils/report.mjs';
 import ruleMessages from 'stylelint/lib/utils/ruleMessages.mjs';
 import validateOptions from 'stylelint/lib/utils/validateOptions.mjs';
@@ -115,7 +114,7 @@ const rule = (primary, _secondaryOptions) => (root, result) => {
 	}
 
 	root.walkAtRules((atRule) => {
-		if (!(/^media$/i).test(atRule.name) && !('variable' in atRule)) {
+		if (!(/^media$/iu).test(atRule.name) && !('variable' in atRule)) {
 			return;
 		}
 

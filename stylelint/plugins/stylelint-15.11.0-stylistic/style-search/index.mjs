@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 const SKIP = 'skip';
@@ -166,7 +165,7 @@ export default function (options, callback) {
 			insideParens = true;
 			// Only inside a function if there is a function name
 			// before the opening paren
-			if ((/[A-Za-z]/).test(source[i - 1])) {
+			if ((/[A-Za-z]/u).test(source[i - 1])) {
 				insideFunctionArguments = true;
 			}
 
@@ -188,7 +187,7 @@ export default function (options, callback) {
 			}
 		}
 
-		const isFunctionName = (/^[A-Za-z]*\(/).test(source.slice(i));
+		const isFunctionName = (/^[A-Za-z]*\(/u).test(source.slice(i));
 		if (skipFunctionNames && isFunctionName) { continue; }
 		if (onlyFunctionNames && !isFunctionName) { continue; }
 
@@ -213,4 +212,4 @@ export default function (options, callback) {
 		matchCount++;
 		callback(match, matchCount);
 	}
-};
+}

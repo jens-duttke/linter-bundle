@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -61,12 +60,12 @@ const rule = (primary, _secondaryOptions, context) => {
 
 					// If there's a // comment, that means there has to be a newline
 					// ending the comment so we're fine
-					if ((/^\s+\/\//).test(nextChars)) {
+					if ((/^\s+\/\//u).test(nextChars)) {
 						return;
 					}
 
 					// If there are spaces and then a comment begins, look for the newline
-					const indextoCheckAfter = (/^\s+\/\*/).test(nextChars) ?
+					const indextoCheckAfter = (/^\s+\/\*/u).test(nextChars) ?
 						selector.indexOf('*/', match.endIndex) + 1
 						: match.startIndex;
 
@@ -101,7 +100,7 @@ const rule = (primary, _secondaryOptions, context) => {
 						afterSelector = context.newline + afterSelector;
 					}
 					else if (primary.startsWith('never-multi-line')) {
-						afterSelector = afterSelector.replace(/^\s*/, '');
+						afterSelector = afterSelector.replace(/^\s*/u, '');
 					}
 
 					fixedSelector = beforeSelector + afterSelector;

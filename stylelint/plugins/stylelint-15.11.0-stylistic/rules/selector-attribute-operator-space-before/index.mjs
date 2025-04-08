@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -51,7 +50,7 @@ const rule = (primary, _secondaryOptions) => {
 							setAttrAfter (fixed) {
 								rawAttribute.after = fixed;
 							}
-							}
+						}
 						: {
 							attrAfter:
 									(attributeNode.spaces.attribute?.after) || '',
@@ -60,16 +59,16 @@ const rule = (primary, _secondaryOptions) => {
 
 								attributeNode.spaces.attribute.after = fixed;
 							}
-							};
+						};
 
 				if (primary === 'always') {
-					setAttrAfter(attrAfter.replace(/\s*$/, ' '));
+					setAttrAfter(attrAfter.replace(/\s*$/u, ' '));
 
 					return true;
 				}
 
 				if (primary === 'never') {
-					setAttrAfter(attrAfter.replace(/\s*$/, ''));
+					setAttrAfter(attrAfter.replace(/\s*$/u, ''));
 
 					return true;
 				}

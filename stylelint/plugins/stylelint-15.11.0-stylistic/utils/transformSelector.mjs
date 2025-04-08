@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 
 import selectorParser from 'postcss-selector-parser';
 
@@ -8,10 +7,11 @@ import selectorParser from 'postcss-selector-parser';
  * @param {(root: import('postcss-selector-parser').Root) => void} callback
  * @returns {string | undefined}
  */
-export default function transformSelector(result, node, callback) {
+export default function transformSelector (result, node, callback) {
 	try {
 		return selectorParser(callback).processSync(node, { updateSelector: true });
-	} catch {
+	}
+	catch {
 		result.warn('Cannot parse selector', { node, stylelintType: 'parseError' });
 
 		return undefined;

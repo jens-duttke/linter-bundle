@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -230,16 +229,15 @@ const rule = (primary, _secondaryOptions) => (root, result) => {
 
 	/**
 	 * @param {string} str
-	 * @param string_
 	 * @param {number[]} indices
 	 * @returns {string}
 	 */
-	function removeIndices (string_, indices) {
+	function removeIndices (str, indices) {
 		for (const index of indices.reverse()) {
-			string_ = string_.slice(0, index) + string_.slice(index + 1);
+			str = str.slice(0, index) + str.slice(index + 1);
 		}
 
-		return string_;
+		return str;
 	}
 };
 

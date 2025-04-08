@@ -1,10 +1,9 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import valueParser from 'postcss-value-parser';
 import stylelint from 'stylelint';
-import { atRuleParamIndex, declarationValueIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
 import isStandardSyntaxRule from 'stylelint/lib/utils/isStandardSyntaxRule.mjs';
+import { atRuleParamIndex, declarationValueIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
 import parseSelector from 'stylelint/lib/utils/parseSelector.mjs';
 import report from 'stylelint/lib/utils/report.mjs';
 import ruleMessages from 'stylelint/lib/utils/ruleMessages.mjs';
@@ -191,7 +190,7 @@ const rule = (primary, secondaryOptions) => {
 
 			if (isAtRule(node) && node.name === 'charset') {
 				// allow @charset rules to have double quotes, in spite of the configuration
-				// TODO: @charset should always use double-quotes, see https://github.com/stylelint/stylelint/issues/2788
+				// @todo @charset should always use double-quotes, see https://github.com/stylelint/stylelint/issues/2788
 				return;
 			}
 

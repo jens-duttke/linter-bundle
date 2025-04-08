@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -6,10 +5,10 @@ import isStandardSyntaxRule from 'stylelint/lib/utils/isStandardSyntaxRule.mjs';
 import isStandardSyntaxSelector from 'stylelint/lib/utils/isStandardSyntaxSelector.mjs';
 import report from 'stylelint/lib/utils/report.mjs';
 import ruleMessages from 'stylelint/lib/utils/ruleMessages.mjs';
-import transformSelector from '../../utils/transformSelector.mjs';
 import validateOptions from 'stylelint/lib/utils/validateOptions.mjs';
 
 import { levelOneAndTwoPseudoElements } from '../../reference/selectors.mjs';
+import transformSelector from '../../utils/transformSelector.mjs';
 
 const ruleName = 'plugin/selector-pseudo-element-case';
 

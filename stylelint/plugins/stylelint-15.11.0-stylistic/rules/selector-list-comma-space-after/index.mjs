@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -64,10 +63,10 @@ const rule = (primary, _secondaryOptions) => {
 					let afterSelector = selector.slice(index + 1);
 
 					if (primary.startsWith('always')) {
-						afterSelector = afterSelector.replace(/^\s*/, ' ');
+						afterSelector = afterSelector.replace(/^\s*/u, ' ');
 					}
 					else if (primary.startsWith('never')) {
-						afterSelector = afterSelector.replace(/^\s*/, '');
+						afterSelector = afterSelector.replace(/^\s*/u, '');
 					}
 
 					selector = beforeSelector + afterSelector;

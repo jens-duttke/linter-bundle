@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import configurationError from 'stylelint/lib/utils/configurationError.mjs';
@@ -358,4 +357,4 @@ export default function whitespaceChecker (targetWhitespace, expectation, messag
 		after,
 		afterOneOnly
 	};
-};
+}

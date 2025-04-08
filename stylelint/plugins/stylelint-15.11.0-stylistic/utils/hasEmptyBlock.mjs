@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import hasBlock from 'stylelint/lib/utils/hasBlock.mjs';
@@ -11,4 +10,4 @@ import hasBlock from 'stylelint/lib/utils/hasBlock.mjs';
  */
 export default function hasEmptyBlock (statement) {
 	return hasBlock(statement) && statement.nodes.length === 0;
-};
+}

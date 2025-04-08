@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -85,13 +84,13 @@ const rule = (primary, _secondaryOptions) => (root, result) => {
 			})();
 
 			if (primary === 'always') {
-				setOperatorAfter(operatorAfter.replace(/^\s*/, ' '));
+				setOperatorAfter(operatorAfter.replace(/^\s*/u, ' '));
 
 				return true;
 			}
 
 			if (primary === 'never') {
-				setOperatorAfter(operatorAfter.replace(/^\s*/, ''));
+				setOperatorAfter(operatorAfter.replace(/^\s*/u, ''));
 
 				return true;
 			}

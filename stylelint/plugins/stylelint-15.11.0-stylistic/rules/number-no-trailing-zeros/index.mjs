@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import valueParser from 'postcss-value-parser';
@@ -62,7 +61,7 @@ const rule = (primary, _secondaryOptions) => (root, result) => {
 				return;
 			}
 
-			const match = (/\.(\d{0,100}?)(0+)(?:\D|$)/).exec(valueNode.value);
+			const match = (/\.(\d{0,100}?)(0+)(?:\D|$)/u).exec(valueNode.value);
 
 			// match[1] is any numbers between the decimal and our trailing zero, could be empty
 			// match[2] is our trailing zero(s)

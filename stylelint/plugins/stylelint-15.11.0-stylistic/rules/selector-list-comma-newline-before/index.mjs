@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -63,7 +62,7 @@ const rule = (primary, _secondaryOptions, context) => {
 					const afterSelector = selector.slice(index);
 
 					if (primary.startsWith('always')) {
-						const spaceIndex = beforeSelector.search(/\s+$/);
+						const spaceIndex = beforeSelector.search(/\s+$/u);
 
 						if (spaceIndex >= 0) {
 							beforeSelector =
@@ -76,7 +75,7 @@ const rule = (primary, _secondaryOptions, context) => {
 						}
 					}
 					else if (primary === 'never-multi-line') {
-						beforeSelector = beforeSelector.replace(/\s*$/, '');
+						beforeSelector = beforeSelector.replace(/\s*$/u, '');
 					}
 
 					selector = beforeSelector + afterSelector;

@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -38,7 +37,7 @@ const rule = (primary, _secondaryOptions) => (root, result) => {
 		const selector = ruleNode.raws.selector ? ruleNode.raws.selector.raw : ruleNode.selector;
 
 		// Return early for selectors containing comments
-		// TODO: re-enable when parser and stylelint are compatible
+		// @todo re-enable when parser and stylelint are compatible
 		if (selector.includes('/*')) { return; }
 
 		const fixedSelector = parseSelector(selector, result, ruleNode, (fullSelector) => {
@@ -62,15 +61,15 @@ const rule = (primary, _secondaryOptions) => (root, result) => {
 						node: ruleNode,
 						index: combinatorNode.sourceIndex,
 						endIndex: combinatorNode.sourceIndex,
-						fix: ((/^\s+$/).test(value) ? () => {
+						fix: ((/^\s+$/u).test(value) ? () => {
 							hasFixed = true;
 
 							if (!combinatorNode.raws) { combinatorNode.raws = {}; }
 
 							combinatorNode.raws.value = ' ';
-							combinatorNode.rawSpaceBefore = combinatorNode.rawSpaceBefore.replace(/^\s+/, '');
-							combinatorNode.rawSpaceAfter = combinatorNode.rawSpaceAfter.replace(/\s+$/, '');
-						}: undefined)
+							combinatorNode.rawSpaceBefore = combinatorNode.rawSpaceBefore.replace(/^\s+/u, '');
+							combinatorNode.rawSpaceAfter = combinatorNode.rawSpaceAfter.replace(/\s+$/u, '');
+						} : undefined)
 					});
 				}
 			});

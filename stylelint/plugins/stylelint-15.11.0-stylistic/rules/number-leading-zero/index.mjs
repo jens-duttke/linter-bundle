@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import valueParser from 'postcss-value-parser';
@@ -65,7 +64,7 @@ const rule = (primary, _secondaryOptions) => (root, result) => {
 
 			// Check leading zero
 			if (primary === 'always') {
-				const match = (/(?:\D|^)(\.\d+)/).exec(valueNode.value);
+				const match = (/(?:\D|^)(\.\d+)/u).exec(valueNode.value);
 
 				if (match?.[0] == null || match[1] == null) {
 					return;
@@ -90,7 +89,7 @@ const rule = (primary, _secondaryOptions) => (root, result) => {
 			}
 
 			if (primary === 'never') {
-				const match = (/(?:\D|^)(0+)(\.\d+)/).exec(valueNode.value);
+				const match = (/(?:\D|^)(0+)(\.\d+)/u).exec(valueNode.value);
 
 				if (match?.[0] == null || match[1] == null || match[2] == null) {
 					return;

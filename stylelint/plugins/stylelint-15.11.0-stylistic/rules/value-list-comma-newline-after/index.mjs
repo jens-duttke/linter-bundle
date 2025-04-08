@@ -1,9 +1,8 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
-import { declarationValueIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
 import getDeclarationValue from 'stylelint/lib/utils/getDeclarationValue.mjs';
+import { declarationValueIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
 import ruleMessages from 'stylelint/lib/utils/ruleMessages.mjs';
 import setDeclarationValue from 'stylelint/lib/utils/setDeclarationValue.mjs';
 import validateOptions from 'stylelint/lib/utils/validateOptions.mjs';
@@ -66,12 +65,12 @@ const rule = (primary, _secondaryOptions, context) => {
 
 				// If there's a // comment, that means there has to be a newline
 				// ending the comment so we're fine
-				if ((/^[\t ]*\/\//).test(nextChars)) {
+				if ((/^[\t ]*\/\//u).test(nextChars)) {
 					return false;
 				}
 
 				// If there are spaces and then a comment begins, look for the newline
-				return (/^[\t ]*\/\*/).test(nextChars) ?
+				return (/^[\t ]*\/\*/u).test(nextChars) ?
 					declString.indexOf('*/', match.endIndex) + 1
 					: match.startIndex;
 			}
@@ -89,7 +88,7 @@ const rule = (primary, _secondaryOptions, context) => {
 						afterValue = context.newline + afterValue;
 					}
 					else if (primary.startsWith('never-multi-line')) {
-						afterValue = afterValue.replace(/^\s*/, '');
+						afterValue = afterValue.replace(/^\s*/u, '');
 					}
 
 					setDeclarationValue(decl, beforeValue + afterValue);

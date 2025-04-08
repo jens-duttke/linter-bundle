@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -27,11 +26,10 @@ const whitespacesToReject = new Set([' ', '\t']);
 
 /**
  * @param {string} str
- * @param string_
  * @returns {string}
  */
-function fixString (string_) {
-	return string_.replace(/[\t ]+$/, '');
+function fixString (str) {
+	return str.replace(/[\t ]+$/u, '');
 }
 
 /**
