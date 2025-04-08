@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -48,8 +47,8 @@ const rule = (primary, secondaryOptions) => (root, result) => {
 	}
 
 	const EXCLUDED_PATTERNS = [
-		/url\(\s*(\S.*\S)\s*\)/gi, // allow tab, whitespace in url content
-		/@import\s+(["'].*["'])/gi
+		/url\(\s*(\S.*\S)\s*\)/giu, // allow tab, whitespace in url content
+		/@import\s+(["'].*["'])/giu
 	];
 
 	const ignoreNonComments = optionsMatches(secondaryOptions, 'ignore', 'non-comments');
@@ -187,7 +186,7 @@ const rule = (primary, secondaryOptions) => (root, result) => {
 		// If there are no spaces besides initial (indent) spaces, ignore it
 		const lineString = rootString.slice(match.endIndex, nextNewlineIndex);
 
-		if (!lineString.replace(/^\s+/, '').includes(' ')) {
+		if (!lineString.replace(/^\s+/u, '').includes(' ')) {
 			return;
 		}
 

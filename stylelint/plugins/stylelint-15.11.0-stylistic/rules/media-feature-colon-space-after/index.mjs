@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -65,10 +64,10 @@ const rule = (primary, _secondaryOptions) => {
 					const afterColon = parameters.slice(index + 1);
 
 					if (primary === 'always') {
-						parameters = beforeColon + afterColon.replace(/^\s*/, ' ');
+						parameters = beforeColon + afterColon.replace(/^\s*/u, ' ');
 					}
 					else if (primary === 'never') {
-						parameters = beforeColon + afterColon.replace(/^\s*/, '');
+						parameters = beforeColon + afterColon.replace(/^\s*/u, '');
 					}
 				}
 

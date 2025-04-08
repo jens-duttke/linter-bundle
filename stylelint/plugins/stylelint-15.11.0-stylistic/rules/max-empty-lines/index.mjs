@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -6,7 +5,7 @@ import optionsMatches from 'stylelint/lib/utils/optionsMatches.mjs';
 import report from 'stylelint/lib/utils/report.mjs';
 import ruleMessages from 'stylelint/lib/utils/ruleMessages.mjs';
 import validateOptions from 'stylelint/lib/utils/validateOptions.mjs';
-import{ isNumber } from 'stylelint/lib/utils/validateTypes.mjs';
+import { isNumber } from 'stylelint/lib/utils/validateTypes.mjs';
 
 import styleSearch from '../../style-search/index.mjs';
 
@@ -166,34 +165,33 @@ const rule = (primary, secondaryOptions) => {
 		/**
 		 * @param {number} maxLines
 		 * @param {unknown} str
-		 * @param string_
 		 * @param {boolean?} isSpecialCase
 		 */
-		function replaceEmptyLines (maxLines, string_, isSpecialCase = false) {
+		function replaceEmptyLines (maxLines, str, isSpecialCase = false) {
 			const repeatTimes = isSpecialCase ? maxLines : maxLines + 1;
 
-			if (repeatTimes === 0 || typeof string_ !== 'string') {
+			if (repeatTimes === 0 || typeof str !== 'string') {
 				return '';
 			}
 
 			const emptyLFLines = '\n'.repeat(repeatTimes);
 			const emptyCRLFLines = '\r\n'.repeat(repeatTimes);
 
-			return (/(?:\r\n)+/).test(string_) ?
-				string_.replace(/(\r\n)+/g, ($1) => {
+			return (/(?:\r\n)+/u).test(str) ?
+				str.replace(/(\r\n)+/gu, ($1) => {
 					if ($1.length / 2 > repeatTimes) {
 						return emptyCRLFLines;
 					}
 
 					return $1;
-				  })
-				: string_.replace(/(\n)+/g, ($1) => {
+				})
+				: str.replace(/(\n)+/gu, ($1) => {
 					if ($1.length > repeatTimes) {
 						return emptyLFLines;
 					}
 
 					return $1;
-				  });
+				});
 		}
 	};
 };
