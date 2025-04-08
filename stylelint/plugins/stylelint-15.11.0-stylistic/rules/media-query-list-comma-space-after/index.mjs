@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -67,10 +66,10 @@ const rule = (primary, _secondaryOptions) => {
 					const afterComma = parameters.slice(index + 1);
 
 					if (primary.startsWith('always')) {
-						parameters = beforeComma + afterComma.replace(/^\s*/, ' ');
+						parameters = beforeComma + afterComma.replace(/^\s*/u, ' ');
 					}
 					else if (primary.startsWith('never')) {
-						parameters = beforeComma + afterComma.replace(/^\s*/, '');
+						parameters = beforeComma + afterComma.replace(/^\s*/u, '');
 					}
 				}
 

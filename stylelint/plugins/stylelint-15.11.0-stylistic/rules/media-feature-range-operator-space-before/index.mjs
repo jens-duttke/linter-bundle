@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -36,7 +35,7 @@ const rule = (primary, _secondaryOptions) => {
 			return;
 		}
 
-		root.walkAtRules(/^media$/i, (atRule) => {
+		root.walkAtRules(/^media$/iu, (atRule) => {
 			/** @type {number[]} */
 			const fixOperatorIndices = [];
 			findMediaOperator(atRule, (match, parameters, node) => {
@@ -51,10 +50,10 @@ const rule = (primary, _secondaryOptions) => {
 					const afterOperator = parameters.slice(index);
 
 					if (primary === 'always') {
-						parameters = beforeOperator.replace(/\s*$/, ' ') + afterOperator;
+						parameters = beforeOperator.replace(/\s*$/u, ' ') + afterOperator;
 					}
 					else if (primary === 'never') {
-						parameters = beforeOperator.replace(/\s*$/, '') + afterOperator;
+						parameters = beforeOperator.replace(/\s*$/u, '') + afterOperator;
 					}
 				}
 
@@ -70,15 +69,14 @@ const rule = (primary, _secondaryOptions) => {
 		/**
 		 * @param {import('style-search').StyleSearchMatch} match
 		 * @param {string} params
-		 * @param parameters
 		 * @param {import('postcss').AtRule} node
 		 * @param {((index: number) => void) | null} fix
 		 */
-		function checkBeforeOperator (match, parameters, node, fix) {
+		function checkBeforeOperator (match, params, node, fix) {
 			// The extra `+ 1` is because the match itself contains
 			// the character before the operator
 			checker.before({
-				source: parameters,
+				source: params,
 				index: match.startIndex,
 				err: (m) => {
 					report({
@@ -90,7 +88,7 @@ const rule = (primary, _secondaryOptions) => {
 						ruleName,
 						fix: (fix ? () => {
 							fix(match.startIndex);
-						}: undefined)
+						} : undefined)
 					});
 				}
 			});

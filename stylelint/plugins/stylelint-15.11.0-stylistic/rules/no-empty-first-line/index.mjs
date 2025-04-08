@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -7,7 +6,7 @@ import ruleMessages from 'stylelint/lib/utils/ruleMessages.mjs';
 import validateOptions from 'stylelint/lib/utils/validateOptions.mjs';
 
 const ruleName = 'plugin/no-empty-first-line';
-const noEmptyFirstLineTest = /^\s*[\n\r]/;
+const noEmptyFirstLineTest = /^\s*[\n\r]/u;
 
 const messages = ruleMessages(ruleName, {
 	rejected: 'Unexpected empty line'

@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import valueParser from 'postcss-value-parser';
@@ -33,7 +32,7 @@ const rule = (primary, _secondaryOptions) => (root, result) => {
 		return;
 	}
 
-	root.walkAtRules(/^media$/i, (atRule) => {
+	root.walkAtRules(/^media$/iu, (atRule) => {
 		// If there are comments in the params, the complete string
 		// will be at atRule.raws.params.raw
 		const parameters = (atRule.raws.params?.raw) || atRule.params;
@@ -41,16 +40,15 @@ const rule = (primary, _secondaryOptions) => (root, result) => {
 
 		// Parse the parameters once, and create a static copy for reporting
 		const originalParsedParams = valueParser(parameters);
-		let fixCount = 0;
 
 		// First pass - only detect problems
 		const problems = [];
 		originalParsedParams.walk((node) => {
 			if (node.type === 'function') {
-				const length_ = valueParser.stringify(node).length;
+				const len = valueParser.stringify(node).length;
 
 				if (primary === 'never') {
-					if ((/[\t ]/).test(node.before)) {
+					if ((/[\t ]/u).test(node.before)) {
 						problems.push({
 							message: messages.rejectedOpening,
 							index: node.sourceIndex + 1 + indexBoost,
@@ -59,10 +57,10 @@ const rule = (primary, _secondaryOptions) => (root, result) => {
 						});
 					}
 
-					if ((/[\t ]/).test(node.after)) {
+					if ((/[\t ]/u).test(node.after)) {
 						problems.push({
 							message: messages.rejectedClosing,
-							index: node.sourceIndex - 2 + length_ + indexBoost,
+							index: node.sourceIndex - 2 + len + indexBoost,
 							functionIndex: node.sourceIndex,
 							type: 'closing'
 						});
@@ -81,7 +79,7 @@ const rule = (primary, _secondaryOptions) => (root, result) => {
 					if (node.after === '') {
 						problems.push({
 							message: messages.expectedClosing,
-							index: node.sourceIndex - 2 + length_ + indexBoost,
+							index: node.sourceIndex - 2 + len + indexBoost,
 							functionIndex: node.sourceIndex,
 							type: 'closing'
 						});
@@ -108,7 +106,7 @@ const rule = (primary, _secondaryOptions) => (root, result) => {
 						parsedParams.walk((node) => {
 							if (node.type === 'function' && node.sourceIndex === problem.functionIndex) {
 								if (problem.type === 'opening') {
-									if (primary === 'never' && (/[\t ]/).test(node.before)) {
+									if (primary === 'never' && (/[\t ]/u).test(node.before)) {
 										node.before = '';
 										fixed = true;
 									}
@@ -116,8 +114,9 @@ const rule = (primary, _secondaryOptions) => (root, result) => {
 										node.before = ' ';
 										fixed = true;
 									}
-								} else if (problem.type === 'closing') {
-									if (primary === 'never' && (/[\t ]/).test(node.after)) {
+								}
+								else if (problem.type === 'closing') {
+									if (primary === 'never' && (/[\t ]/u).test(node.after)) {
 										node.after = '';
 										fixed = true;
 									}
@@ -134,7 +133,8 @@ const rule = (primary, _secondaryOptions) => (root, result) => {
 
 							if (atRule.raws.params?.raw) {
 								atRule.raws.params.raw = fixedParams;
-							} else {
+							}
+							else {
 								atRule.params = fixedParams;
 							}
 							return true;

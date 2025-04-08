@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -36,7 +35,7 @@ const rule = (primary, _secondaryOptions) => {
 			return;
 		}
 
-		root.walkAtRules(/^media$/i, (atRule) => {
+		root.walkAtRules(/^media$/iu, (atRule) => {
 			findMediaOperator(atRule, (match, parameters, node) => {
 				checkAfterOperator(match, parameters, node);
 			});
@@ -44,11 +43,10 @@ const rule = (primary, _secondaryOptions) => {
 
 		/**
 		 * @param {import('style-search').StyleSearchMatch} match
-		 * @param {string} params
-		 * @param parameters
+		 * @param {string} parameters
 		 * @param {import('postcss').AtRule} node
 		 */
-		function checkAfterOperator(match, parameters, node) {
+		function checkAfterOperator (match, parameters, node) {
 			const endIndex = match.startIndex + match.target.length - 1;
 
 			checker.after({
@@ -68,14 +66,16 @@ const rule = (primary, _secondaryOptions) => {
 							const afterOperator = parameters.slice(endIndex + 1);
 
 							if (primary === 'always') {
-								parameters = beforeOperator + afterOperator.replace(/^\s*/, ' ');
-							} else if (primary === 'never') {
-								parameters = beforeOperator + afterOperator.replace(/^\s*/, '');
+								parameters = beforeOperator + afterOperator.replace(/^\s*/u, ' ');
+							}
+							else if (primary === 'never') {
+								parameters = beforeOperator + afterOperator.replace(/^\s*/u, '');
 							}
 
 							if (node.raws.params) {
 								node.raws.params.raw = parameters;
-							} else {
+							}
+							else {
 								node.params = parameters;
 							}
 

@@ -1,10 +1,9 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
-import { atRuleParamIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
 import findMediaFeatureNames from 'stylelint/lib/utils/findMediaFeatureNames.mjs';
 import isCustomMediaQuery from 'stylelint/lib/utils/isCustomMediaQuery.mjs';
+import { atRuleParamIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
 import report from 'stylelint/lib/utils/report.mjs';
 import ruleMessages from 'stylelint/lib/utils/ruleMessages.mjs';
 import validateOptions from 'stylelint/lib/utils/validateOptions.mjs';
@@ -33,7 +32,7 @@ const rule = (primary, _secondaryOptions) => (root, result) => {
 		return;
 	}
 
-	root.walkAtRules(/^media$/i, (atRule) => {
+	root.walkAtRules(/^media$/iu, (atRule) => {
 		const hasComments = atRule.raws.params?.raw;
 		let mediaRule = hasComments ? hasComments : atRule.params;
 
