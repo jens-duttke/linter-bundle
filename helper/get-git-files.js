@@ -18,16 +18,14 @@ let gitFiles;
  * @returns {Promise<string[]>} The list of changed files
  */
 export async function getGitFiles () {
-	if (!gitFilesProcessPromise) {
-		gitFilesProcessPromise = {
-			// Returns changed files, also stashed and committed
-			diff: runProcess('git diff --name-only -z @{upstream}'),
-			// Returns unstashed files (including deleted)
-			modified: runProcess('git ls-files -o -m --exclude-standard --full-name --deduplicate -z'),
-			// Returns unstashed, deleted files - @todo Is there a way to also get a list of deleted stashed/committed files?
-			deleted: runProcess('git ls-files -d --exclude-standard --full-name --deduplicate -z')
-		};
-	}
+	gitFilesProcessPromise ??= {
+		// Returns changed files, also stashed and committed
+		diff: runProcess('git diff --name-only -z @{upstream}'),
+		// Returns unstashed files (including deleted)
+		modified: runProcess('git ls-files -o -m --exclude-standard --full-name --deduplicate -z'),
+		// Returns unstashed, deleted files - @todo Is there a way to also get a list of deleted stashed/committed files?
+		deleted: runProcess('git ls-files -d --exclude-standard --full-name --deduplicate -z')
+	};
 
 	const gitProcessResult = {
 		diff: await gitFilesProcessPromise.diff,
