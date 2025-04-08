@@ -164,6 +164,7 @@ export default {
 			'font-face': ['font-family', 'font-style', 'font-weight', 'src']
 		}],
 		'block-no-empty': true,
+		'color-function-alias-notation': 'without-alpha',
 		'color-function-notation': [
 			'modern', {
 				ignore: ['with-var-inside']
@@ -185,6 +186,7 @@ export default {
 		'comment-pattern': /^[^\s].+[^\s]$/u,
 		'comment-whitespace-inside': 'always',
 		'comment-word-disallowed-list': null,
+		'container-name-pattern': (linterBundleConfig.sass?.patternPrefix ? `${linterBundleConfig.sass.patternPrefix}-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)+` : null),
 		'custom-media-pattern': (linterBundleConfig.sass?.patternPrefix ? `${linterBundleConfig.sass.patternPrefix}-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)+` : null),
 		'custom-property-empty-line-before': null, // Empty lines between custom properties are optional
 		'custom-property-no-missing-var-function': true,
@@ -248,6 +250,7 @@ export default {
 		'keyframe-declaration-no-important': true,
 		'keyframe-selector-notation': 'percentage',
 		'keyframes-name-pattern': String.raw`^[a-z]+(-[a-z]+)*\d*$`,
+		'layer-name-pattern': (linterBundleConfig.sass?.patternPrefix ? `${linterBundleConfig.sass.patternPrefix}-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)+` : null),
 		'length-zero-no-unit': true,
 		'max-nesting-depth': 6,
 		'media-feature-name-allowed-list': null,
