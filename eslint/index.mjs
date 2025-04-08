@@ -1103,7 +1103,7 @@ export default [
 			'unicorn/prefer-dom-node-text-content': 'error',
 			'unicorn/prefer-event-target': 'off', // @todo Disabled for now, since `EventTarget` requires Node.js 16. Activate in 2025
 			'unicorn/prefer-export-from': ['error', { ignoreUsedVariables: true }],
-			'unicorn/prefer-global-this': 'error',
+			'unicorn/prefer-global-this': 'off', // This makes only sense if the same code may run on the server-side. Often the auto-fixing of this rule doesn't make sense
 			'unicorn/prefer-includes': 'error',
 			'unicorn/prefer-json-parse-buffer': 'off', // TypeScript states that string needs to be used as of the ES specification. @see https://github.com/microsoft/TypeScript/issues/11842
 			'unicorn/prefer-keyboard-event-key': 'error',
@@ -1125,7 +1125,7 @@ export default [
 			'unicorn/prefer-set-has': 'error',
 			'unicorn/prefer-set-size': 'error',
 			'unicorn/prefer-spread': 'off', // @todo Disabled till there a solution for the warning, that `slice()` on Typed-Arrays should be replaced (which is not possible). @see https://github.com/sindresorhus/eslint-plugin-unicorn/issues/1064
-			'unicorn/prefer-string-raw': 'error',
+			'unicorn/prefer-string-raw': 'off', // The overhead of writing String.raw`...` is not worth the inconsistency in writing strings
 			'unicorn/prefer-string-replace-all': 'off', // @todo Available since 2020 in browsers. Should this be preferred?
 			'unicorn/prefer-string-slice': 'off', // @todo As of today (2020.08.24) and since the last 9 years, substr() is three times faster than slice() in Firefox.
 			'unicorn/prefer-string-starts-ends-with': 'error',
