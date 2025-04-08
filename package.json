@@ -43,32 +43,32 @@
 	"dependencies": {
 		"@stylistic/eslint-plugin": "4.2.0",
 		"@stylistic/eslint-plugin-jsx": "4.2.0",
-		"eslint": "9.23.0",
+		"eslint": "9.24.0",
 		"eslint-formatter-unix": "8.40.0",
-		"eslint-import-resolver-typescript": "4.2.2",
+		"eslint-import-resolver-typescript": "4.3.2",
 		"eslint-import-resolver-webpack": "0.13.10",
 		"eslint-plugin-eslint-comments": "3.2.0",
 		"eslint-plugin-functional": "9.0.1",
 		"eslint-plugin-import": "2.31.0",
 		"eslint-plugin-jest": "28.11.0",
-		"eslint-plugin-jsdoc": "50.6.8",
+		"eslint-plugin-jsdoc": "50.6.9",
 		"eslint-plugin-jsx-a11y": "6.10.2",
-		"eslint-plugin-n": "17.16.2",
+		"eslint-plugin-n": "17.17.0",
 		"eslint-plugin-promise": "7.2.1",
-		"eslint-plugin-react": "7.37.4",
+		"eslint-plugin-react": "7.37.5",
 		"eslint-plugin-react-hooks": "5.2.0",
-		"eslint-plugin-unicorn": "57.0.0",
+		"eslint-plugin-unicorn": "58.0.0",
 		"globals": "16.0.0",
 		"markdownlint-cli": "0.44.0",
 		"micromatch": "4.0.8",
 		"postcss-scss": "4.0.9",
-		"stylelint": "16.16.0",
+		"stylelint": "16.18.0",
 		"stylelint-declaration-block-no-ignored-properties": "2.8.0",
 		"stylelint-high-performance-animation": "1.11.0",
 		"stylelint-order": "6.0.4",
 		"stylelint-scss": "6.11.1",
 		"stylelint-use-logical-spec": "5.0.1",
-		"typescript-eslint": "8.27.0"
+		"typescript-eslint": "8.29.1"
 	},
 	"peerDependencies": {
 		"@typescript-eslint/utils": "*",
@@ -78,8 +78,8 @@
 	"devDependencies": {
 		"@types/eslint": "9.6.1",
 		"@types/micromatch": "4.0.9",
-		"@types/node": "22.13.11",
+		"@types/node": "22.14.0",
 		"stylelint-find-new-rules": "5.0.0",
-		"typescript": "5.8.2"
+		"typescript": "5.8.3"
 	}
 }
