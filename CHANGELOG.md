@@ -6,7 +6,32 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.4.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.5.0...HEAD)
+
+## [7.5.0] - 2025-04-08
+
+- [eslint] Updated `eslint` from `9.23.0` to `9.24.0`
+- [eslint] Updated `eslint-import-resolver-typescript` from `4.2.2` to `4.3.2`
+- [eslint] Updated `eslint-plugin-jsdoc` from `50.6.8` to `50.6.9`
+- [eslint] Updated `eslint-plugin-n` from `17.16.2` to `17.17.0`
+- [eslint] Updated `eslint-plugin-react` from `7.37.4` to `7.37.5`
+- [eslint] Updated `eslint-plugin-unicorn` from `57.0.0` to `58.0.0`
+- [eslint] Updated `typescript-eslint` from `8.27.0` to `8.29.1`
+- [stylelint] Updated `stylelint` from `16.16.0` to `16.18.0`
+- [eslint] Disabled [`unicorn/prefer-global-this`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-global-this.md) rule
+- [eslint] Disabled [`unicorn/prefer-string-raw`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-string-raw.md) rule
+- [stylelint] Added new [`color-function-alias-notation`](https://github.com/stylelint/stylelint/blob/main/lib/rules/color-function-alias-notation/README.md) rule and set it to `without-alpha`
+- [stylelint] Added new [`container-name-pattern`](https://github.com/stylelint/stylelint/blob/main/lib/rules/container-name-pattern/README.md) rule and apply `sass` > `patternPrefix` from the linter-bundle configuration, if set
+- [stylelint] Added new [`layer-name-pattern`](https://github.com/stylelint/stylelint/blob/main/lib/rules/layer-name-pattern/README.md) rule and apply `sass` > `patternPrefix` from the linter-bundle configuration, if set
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.4.0...v7.5.0)
+
+### Changed
+
+- [eslint] Updated `eslint` from `9.22.0` to `9.23.0`
+- [eslint/react] Activated `allowExpressions` of the `@typescript-eslint/explicit-function-return-type`rule also for the React overrides
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.3.0...v7.4.0)
 
 ## [7.4.0] - 2025-03-23
 
