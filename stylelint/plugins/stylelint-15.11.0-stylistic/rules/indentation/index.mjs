@@ -1,4 +1,5 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
+/* eslint-disable require-unicode-regexp -- There is to be bug which triggers `Cannot require() ES Module D:\WebDev\linter-bundle\stylelint.mjs in a cycle.` if this rule is activated here */
+
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -78,7 +79,7 @@ const rule = (primary, secondaryOptions = {}) => (root, result) => {
 		const nodeLevel = indentationLevel(node);
 
 		// Cut out any * and _ hacks from `before`
-		const before = (node.raws.before || '').replace(/[*_]$/, '');
+		const before = (node.raws.before || '').replace(/[*_]$/u, '');
 		const after = typeof node.raws.after === 'string' ? node.raws.after : '';
 		const parent = node.parent;
 
@@ -113,7 +114,7 @@ const rule = (primary, secondaryOptions = {}) => (root, result) => {
 				fix: () => {
 					if (isFirstChild && isString(node.raws.before)) {
 						node.raws.before = node.raws.before.replace(
-							/^[\t ]*(?=\S|$)/,
+							/^[\t ]*(?=\S|$)/u,
 							expectedOpeningBraceIndentation
 						);
 					}
@@ -285,7 +286,7 @@ const rule = (primary, secondaryOptions = {}) => (root, result) => {
 				outsideParens: ignoreInsideParams
 			},
 			(match, matchCount) => {
-				const precedesClosingParenthesis = (/^[\t ]*\)/).test(source.slice(match.startIndex + 1));
+				const precedesClosingParenthesis = (/^[\t ]*\)/u).test(source.slice(match.startIndex + 1));
 
 				if (ignoreInsideParams && (precedesClosingParenthesis || match.insideParens)) {
 					return;
@@ -305,7 +306,7 @@ const rule = (primary, secondaryOptions = {}) => (root, result) => {
 						newlineIndex--;
 					}
 
-					const followsOpeningParenthesis = (/\([\t ]*$/).test(source.slice(0, newlineIndex));
+					const followsOpeningParenthesis = (/\([\t ]*$/u).test(source.slice(0, newlineIndex));
 
 					if (followsOpeningParenthesis) {
 						parentheticalDepth += 1;
@@ -519,9 +520,8 @@ function getDocument (node) {
 
 /**
  * @param {import('postcss').Document} document
- * @param {string} space- -
- * returns {number}
- * @param space
+ * @param {string} space
+ * @returns {number}
  */
 function inferDocIndentSize (document, space) {
 	if (!document.source) { throw new Error('The document node must have a source'); }
@@ -708,15 +708,14 @@ function inferRootIndentLevel (root, baseIndentLevel, indentSize) {
 
 /**
  * @param {string | undefined} str
- * @param string_
  * @param {string} whitespace
  */
-function fixIndentation (string_, whitespace) {
-	if (!isString(string_)) {
-		return string_;
+function fixIndentation (str, whitespace) {
+	if (!isString(str)) {
+		return str;
 	}
 
-	return string_.replace(/\n[\t ]*(?=\S|$)/g, `\n${whitespace}`);
+	return str.replace(/\n[\t ]*(?=\S|$)/g, `\n${whitespace}`);
 }
 
 /**
