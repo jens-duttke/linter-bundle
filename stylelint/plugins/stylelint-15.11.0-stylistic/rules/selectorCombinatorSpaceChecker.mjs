@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import isStandardSyntaxCombinator from 'stylelint/lib/utils/isStandardSyntaxCombinator.mjs';
@@ -8,21 +7,14 @@ import report from 'stylelint/lib/utils/report.mjs';
 
 /**
  * @typedef {(args: { source: string, index: number, errTarget: string, err: (message: string) => void }) => void} LocationChecker
- * @param - - {{
+ * @param {{
  * root: import('postcss').Root,
  * result: import('stylelint').PostcssResult,
  * locationChecker: LocationChecker,
  * locationType: 'before' | 'after',
  * checkedRuleName: string,
- * fix: ((combinator: import('postcss-selector-parser').Combinator) => boolean) | null,
- * @param options-
- * @param options-
- * @param options-
- * @param options-
- * @param options-
- * @param options-
- * @param options
- * }} opts
+ * fix: ((combinator: import('postcss-selector-parser').Combinator) => boolean) | null
+ * }} options
  * @returns {void}
  */
 export default function selectorCombinatorSpaceChecker (options) {
@@ -44,7 +36,7 @@ export default function selectorCombinatorSpaceChecker (options) {
 				}
 
 				// Ignore spaced descendant combinator
-				if ((/\s/).test(node.value)) {
+				if ((/\s/u).test(node.value)) {
 					return;
 				}
 
@@ -110,4 +102,4 @@ export default function selectorCombinatorSpaceChecker (options) {
 			}
 		});
 	}
-};
+}

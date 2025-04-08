@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import { atRuleParamIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
@@ -13,11 +12,10 @@ import styleSearch from '../style-search/index.mjs';
  *   fix: ((node: import('postcss').AtRule, index: number) => boolean) | null,
  *   result: import('stylelint').PostcssResult,
  *   checkedRuleName: string,
- * }} opts
- * @param options
+ * }} options
  */
 export default function mediaFeatureColonSpaceChecker (options) {
-	options.root.walkAtRules(/^media$/i, (atRule) => {
+	options.root.walkAtRules(/^media$/ui, (atRule) => {
 		const parameters = atRule.raws.params ? atRule.raws.params.raw : atRule.params;
 
 		styleSearch({ source: parameters, target: ':' }, (match) => {
@@ -53,4 +51,4 @@ export default function mediaFeatureColonSpaceChecker (options) {
 			}
 		});
 	}
-};
+}

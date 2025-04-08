@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import { atRuleParamIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
@@ -15,11 +14,10 @@ import styleSearch from '../style-search/index.mjs';
  *   checkedRuleName: string,
  *   fix?: ((atRule: import('postcss').AtRule, index: number) => boolean) | null | undefined,
  *   allowTrailingComments?: boolean,
- * }} opts
- * @param options
+ * }} options
  */
 export default function mediaQueryListCommaWhitespaceChecker (options) {
-	options.root.walkAtRules(/^media$/i, (atRule) => {
+	options.root.walkAtRules(/^media$/iu, (atRule) => {
 		const parameters = atRule.raws.params ? atRule.raws.params.raw : atRule.params;
 
 		styleSearch({ source: parameters, target: ',' }, (match) => {
@@ -29,12 +27,12 @@ export default function mediaQueryListCommaWhitespaceChecker (options) {
 				// if there is a comment on the same line at after the comma, check the space after the comment.
 				let execResult;
 
-				while ((execResult = (/^[^\S\n\r]*\/\*([\S\s]*?)\*\//).exec(parameters.slice(index + 1)))) {
+				while ((execResult = (/^[^\S\n\r]*\/\*([\S\s]*?)\*\//u).exec(parameters.slice(index + 1)))) {
 					assertString(execResult[0]);
 					index += execResult[0].length;
 				}
 
-				if ((execResult = (/^([^\S\n\r]*\/\/[\S\s]*?)\r?\n/).exec(parameters.slice(index + 1)))) {
+				if ((execResult = (/^([^\S\n\r]*\/\/[\S\s]*?)\r?\n/u).exec(parameters.slice(index + 1)))) {
 					assertString(execResult[1]);
 					index += execResult[1].length;
 				}
@@ -68,4 +66,4 @@ export default function mediaQueryListCommaWhitespaceChecker (options) {
 			}
 		});
 	}
-};
+}

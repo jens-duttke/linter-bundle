@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -76,7 +75,7 @@ const rule = (primary, _secondaryOptions) => {
 									decl.raws.important = ' !important ';
 								}
 								else {
-									setDeclarationValue(decl, value.replace(/\s*$/, ' '));
+									setDeclarationValue(decl, value.replace(/\s*$/u, ' '));
 								}
 
 								return;
@@ -84,10 +83,10 @@ const rule = (primary, _secondaryOptions) => {
 
 							if (primary.startsWith('never')) {
 								if (decl.raws.important) {
-									decl.raws.important = decl.raws.important.replace(/\s*$/, '');
+									decl.raws.important = decl.raws.important.replace(/\s*$/u, '');
 								}
 								else {
-									setDeclarationValue(decl, value.replace(/\s*$/, ''));
+									setDeclarationValue(decl, value.replace(/\s*$/u, ''));
 								}
 
 								return;

@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -49,14 +48,14 @@ const rule = (primary, _secondaryOptions) => {
 
 				if (primary.startsWith('always')) {
 					decl.raws.between =
-							between.slice(0, colonIndex) + between.slice(colonIndex).replace(/^:\s*/, ': ');
+							between.slice(0, colonIndex) + between.slice(colonIndex).replace(/^:\s*/u, ': ');
 
 					return true;
 				}
 
 				if (primary === 'never') {
 					decl.raws.between =
-							between.slice(0, colonIndex) + between.slice(colonIndex).replace(/^:\s*/, ':');
+							between.slice(0, colonIndex) + between.slice(colonIndex).replace(/^:\s*/u, ':');
 
 					return true;
 				}

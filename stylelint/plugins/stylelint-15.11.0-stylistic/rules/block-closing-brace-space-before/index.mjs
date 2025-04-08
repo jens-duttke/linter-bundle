@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -87,13 +86,13 @@ const rule = (primary, _secondaryOptions) => {
 							if (typeof statementRaws.after !== 'string') { return; }
 
 							if (primary.startsWith('always')) {
-								statementRaws.after = statementRaws.after.replace(/\s*$/, ' ');
+								statementRaws.after = statementRaws.after.replace(/\s*$/u, ' ');
 
 								return;
 							}
 
 							if (primary.startsWith('never')) {
-								statementRaws.after = statementRaws.after.replace(/\s*$/, '');
+								statementRaws.after = statementRaws.after.replace(/\s*$/u, '');
 
 								return;
 							}

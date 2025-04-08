@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -49,7 +48,7 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 		}
 
 		// Ignore extra semicolon
-		const after = (statement.raws.after || '').replace(/;+/, '');
+		const after = (statement.raws.after || '').replace(/;+/u, '');
 
 		if (after === undefined) {
 			return;
@@ -99,14 +98,14 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 					if (typeof statementRaws.after !== 'string') { return; }
 
 					if (primary.startsWith('always')) {
-						const firstWhitespaceIndex = statementRaws.after.search(/\s/);
+						const firstWhitespaceIndex = statementRaws.after.search(/\s/u);
 						const newlineBefore =
 								firstWhitespaceIndex >= 0 ?
 									statementRaws.after.slice(0, firstWhitespaceIndex)
 									: statementRaws.after;
 						const newlineAfter =
 								firstWhitespaceIndex >= 0 ? statementRaws.after.slice(firstWhitespaceIndex) : '';
-						const newlineIndex = newlineAfter.search(/\r?\n/);
+						const newlineIndex = newlineAfter.search(/\r?\n/u);
 
 						statementRaws.after =
 								newlineIndex >= 0 ?
@@ -117,7 +116,7 @@ const rule = (primary, _secondaryOptions, context) => (root, result) => {
 					}
 
 					if (primary === 'never-multi-line') {
-						statementRaws.after = statementRaws.after.replace(/\s/g, '');
+						statementRaws.after = statementRaws.after.replace(/\s/gu, '');
 
 						return;
 					}

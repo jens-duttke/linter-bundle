@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import isStandardSyntaxRule from 'stylelint/lib/utils/isStandardSyntaxRule.mjs';
@@ -92,4 +91,4 @@ export default function selectorAttributeOperatorSpaceChecker (options) {
 			});
 		}
 	});
-};
+}

@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -80,7 +79,7 @@ const rule = (primary, secondaryOptions, context) => {
 				if (!startNode?.next) { return; }
 
 				if (startNode.type === 'comment') {
-					const reNewLine = /\r?\n/;
+					const reNewLine = /\r?\n/u;
 					const newLineMatch = reNewLine.test(startNode.raws.before || '');
 
 					const next = startNode.next();
@@ -121,7 +120,7 @@ const rule = (primary, secondaryOptions, context) => {
 							if (typeof nodeToCheckRaws.before !== 'string') { return; }
 
 							if (primary.startsWith('always')) {
-								const index = nodeToCheckRaws.before.search(/\r?\n/);
+								const index = nodeToCheckRaws.before.search(/\r?\n/u);
 
 								nodeToCheckRaws.before =
 									index >= 0 ?
@@ -142,7 +141,7 @@ const rule = (primary, secondaryOptions, context) => {
 								backupCommentNextBefores.clear();
 
 								// Fix
-								const reNewLine = /\r?\n/;
+								const reNewLine = /\r?\n/u;
 								let fixTarget = statement.first;
 
 								while (fixTarget) {
@@ -151,7 +150,7 @@ const rule = (primary, secondaryOptions, context) => {
 									if (typeof fixTargetRaws.before !== 'string') { continue; }
 
 									if (reNewLine.test(fixTargetRaws.before || '')) {
-										fixTargetRaws.before = fixTargetRaws.before.replace(/\r?\n/g, '');
+										fixTargetRaws.before = fixTargetRaws.before.replace(/\r?\n/gu, '');
 									}
 
 									if (fixTarget.type !== 'comment') {

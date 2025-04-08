@@ -1,9 +1,8 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
-import { declarationValueIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
 import isStandardSyntaxDeclaration from 'stylelint/lib/utils/isStandardSyntaxDeclaration.mjs';
+import { declarationValueIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
 import report from 'stylelint/lib/utils/report.mjs';
 import ruleMessages from 'stylelint/lib/utils/ruleMessages.mjs';
 import validateOptions from 'stylelint/lib/utils/validateOptions.mjs';
@@ -53,7 +52,7 @@ const rule = (primary, _secondaryOptions, context) => {
 					continue;
 				}
 
-				const indexToCheck = (/^[^\S\n\r]*\/\*/).test(propertyPlusColon.slice(i + 1)) ?
+				const indexToCheck = (/^[^\S\n\r]*\/\*/u).test(propertyPlusColon.slice(i + 1)) ?
 					propertyPlusColon.indexOf('*/', i) + 1
 					: i;
 
@@ -79,8 +78,8 @@ const rule = (primary, _secondaryOptions, context) => {
 								const betweenBefore = between.slice(0, sliceIndex);
 								const betweenAfter = between.slice(sliceIndex);
 
-								decl.raws.between = (/^\s*\n/).test(betweenAfter) ?
-									betweenBefore + betweenAfter.replace(/^[^\S\n\r]*/, '')
+								decl.raws.between = (/^\s*\n/u).test(betweenAfter) ?
+									betweenBefore + betweenAfter.replace(/^[^\S\n\r]*/u, '')
 									: betweenBefore + context.newline + betweenAfter;
 
 								return;

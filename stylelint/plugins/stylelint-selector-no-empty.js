@@ -1,5 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
-
 /**
  * @file Fork of `stylelint-selector-no-empty` rule.
  *

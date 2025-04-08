@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import isStandardSyntaxDeclaration from 'stylelint/lib/utils/isStandardSyntaxDeclaration.mjs';
@@ -15,8 +14,7 @@ import styleSearch from '../style-search/index.mjs';
  *   checkedRuleName: string,
  *   fix?: ((node: import('postcss').Declaration, index: number) => boolean) | null,
  *   determineIndex?: (declString: string, match: import('style-search').StyleSearchMatch) => number | false,
- * }} opts
- * @param options
+ * }} options
  */
 export default function valueListCommaWhitespaceChecker (options) {
 	options.root.walkDecls((decl) => {
@@ -73,4 +71,4 @@ export default function valueListCommaWhitespaceChecker (options) {
 			}
 		});
 	}
-};
+}

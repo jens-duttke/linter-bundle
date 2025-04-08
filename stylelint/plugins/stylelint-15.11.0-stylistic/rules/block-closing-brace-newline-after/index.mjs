@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -87,7 +86,7 @@ const rule = (primary, secondaryOptions, context) => {
 			// Allow an end-of-line comment x spaces after the brace
 			const nextNodeIsSingleLineComment =
 				nextNode.type === 'comment' &&
-				!(/[^ ]/).test(nextNode.raws.before || '') &&
+				!(/[^ ]/u).test(nextNode.raws.before || '') &&
 				!nextNode.toString().includes('\n');
 
 			const nodeToCheck = nextNodeIsSingleLineComment ? nextNode.next() : nextNode;
@@ -125,7 +124,7 @@ const rule = (primary, secondaryOptions, context) => {
 							if (typeof nodeToCheckRaws.before !== 'string') { return; }
 
 							if (primary.startsWith('always')) {
-								const index = nodeToCheckRaws.before.search(/\r?\n/);
+								const index = nodeToCheckRaws.before.search(/\r?\n/u);
 
 								nodeToCheckRaws.before =
 									index >= 0 ?

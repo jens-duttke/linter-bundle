@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -40,7 +39,7 @@ const rule = (primary, _secondary) => {
 			checkedRuleName: ruleName,
 			fix: (atRule) => {
 				if (typeof atRule.raws.afterName === 'string') {
-					atRule.raws.afterName = atRule.raws.afterName.replace(/^\s*/, ' ');
+					atRule.raws.afterName = atRule.raws.afterName.replace(/^\s*/u, ' ');
 				}
 			}
 		});

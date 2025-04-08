@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 /**
@@ -9,8 +8,7 @@
  *   expectation: string,
  *   position: 'before' | 'after',
  *   symb: string,
- * }} params
- * @param parameters
+ * }} parameters
  * @returns {boolean}
  */
 export default function functionCommaSpaceFix (parameters) {
@@ -48,4 +46,4 @@ export default function functionCommaSpaceFix (parameters) {
 	}
 
 	return false;
-};
+}

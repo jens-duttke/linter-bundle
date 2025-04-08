@@ -1,10 +1,9 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import valueParser from 'postcss-value-parser';
-import { declarationValueIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
 import getDeclarationValue from 'stylelint/lib/utils/getDeclarationValue.mjs';
 import isStandardSyntaxFunction from 'stylelint/lib/utils/isStandardSyntaxFunction.mjs';
+import { declarationValueIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
 import report from 'stylelint/lib/utils/report.mjs';
 import setDeclarationValue from 'stylelint/lib/utils/setDeclarationValue.mjs';
 
@@ -19,8 +18,7 @@ import setDeclarationValue from 'stylelint/lib/utils/setDeclarationValue.mjs';
  *   fix: ((node: ValueParserDivNode, index: number, nodes: ValueParserNode[]) => boolean) | null,
  *   result: import('stylelint').PostcssResult,
  *   checkedRuleName: string,
- * }} opts
- * @param options
+ * }} options
  */
 export default function functionCommaSpaceChecker (options) {
 	options.root.walkDecls((decl) => {
@@ -51,8 +49,7 @@ export default function functionCommaSpaceChecker (options) {
 
 				// 1. Remove comments including preceding whitespace (when only succeeded by whitespace)
 				// 2. Remove all other comments, but leave adjacent whitespace intact
-				// eslint-disable-next-line regexp/no-dupe-disjunctions -- TODO: Possible to simplify the regex.
-				result = result.replace(/( *\/(\*.*\*\/(?!\S)|\/.*)|(\/(\*.*\*\/|\/.*)))/, '');
+				result = result.replace(/( *\/(\*.*\*\/(?!\S)|\/.*)|(\/(\*.*\*\/|\/.*)))/u, '');
 
 				return result;
 			})();
@@ -69,8 +66,7 @@ export default function functionCommaSpaceChecker (options) {
 
 				// 1. Remove comments including preceding whitespace (when only succeeded by whitespace)
 				// 2. Remove all other comments, but leave adjacent whitespace intact
-				// eslint-disable-next-line regexp/no-dupe-disjunctions -- TODO: Possible to simplify the regex.
-				commaBefore = commaBefore.replace(/( *\/(\*.*\*\/(?!\S)|\/.*)|(\/(\*.*\*\/|\/.*)))/, '');
+				commaBefore = commaBefore.replace(/( *\/(\*.*\*\/(?!\S)|\/.*)|(\/(\*.*\*\/|\/.*)))/u, '');
 
 				return commaBefore.length;
 			};
@@ -121,4 +117,4 @@ export default function functionCommaSpaceChecker (options) {
 			setDeclarationValue(decl, parsedValue.toString());
 		}
 	});
-};
+}

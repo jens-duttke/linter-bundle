@@ -1,9 +1,8 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
-import { declarationValueIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
 import getDeclarationValue from 'stylelint/lib/utils/getDeclarationValue.mjs';
+import { declarationValueIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
 import ruleMessages from 'stylelint/lib/utils/ruleMessages.mjs';
 import setDeclarationValue from 'stylelint/lib/utils/setDeclarationValue.mjs';
 import validateOptions from 'stylelint/lib/utils/validateOptions.mjs';
@@ -70,13 +69,13 @@ const rule = (primary, _secondaryOptions) => {
 				const targetAfter = target.slice(bangIndex);
 
 				if (primary === 'always') {
-					setFixed(targetBefore.replace(/\s*$/, '') + ' ' + targetAfter);
+					setFixed(targetBefore.replace(/\s*$/u, '') + ' ' + targetAfter);
 
 					return true;
 				}
 
 				if (primary === 'never') {
-					setFixed(targetBefore.replace(/\s*$/, '') + targetAfter);
+					setFixed(targetBefore.replace(/\s*$/u, '') + targetAfter);
 
 					return true;
 				}

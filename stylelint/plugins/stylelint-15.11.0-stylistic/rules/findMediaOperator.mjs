@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import styleSearch from '../style-search/index.mjs';
@@ -10,8 +9,7 @@ const rangeOperators = ['>=', '<=', '>', '<', '='];
 /**
  * @template {import('postcss').AtRule} T
  * @param {T} atRule
- * @param callback
- * @param {(match: StyleSearchMatch, params: string, atRule: T) => void} cb
+ * @param {(match: StyleSearchMatch, params: string, atRule: T) => void} callback
  */
 export default function findMediaOperator (atRule, callback) {
 	if (atRule.name.toLowerCase() !== 'media') {
@@ -29,4 +27,4 @@ export default function findMediaOperator (atRule, callback) {
 
 		callback(match, parameters, atRule);
 	});
-};
+}

@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import isStandardSyntaxRule from 'stylelint/lib/utils/isStandardSyntaxRule.mjs';
@@ -13,8 +12,7 @@ import styleSearch from '../style-search/index.mjs';
  *   locationChecker: (opts: { source: string, index: number, err: (msg: string) => void }) => void,
  *   checkedRuleName: string,
  *   fix: ((rule: import('postcss').Rule, index: number) => boolean) | null,
- * }} opts
- * @param options
+ * }} options
  * @returns {void}
  */
 export default function selectorListCommaWhitespaceChecker (options) {
@@ -59,4 +57,4 @@ export default function selectorListCommaWhitespaceChecker (options) {
 			}
 		});
 	}
-};
+}

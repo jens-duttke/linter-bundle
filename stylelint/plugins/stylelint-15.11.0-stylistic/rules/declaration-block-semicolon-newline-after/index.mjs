@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -80,7 +79,7 @@ const rule = (primary, _secondaryOptions, context) => {
 						ruleName,
 						fix: () => {
 							if (primary.startsWith('always')) {
-								const index = nodeToCheck.raws.before.search(/\r?\n/);
+								const index = nodeToCheck.raws.before.search(/\r?\n/u);
 
 								nodeToCheck.raws.before =
 									index >= 0 ?

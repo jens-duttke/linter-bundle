@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import { declarationValueIndex } from 'stylelint/lib/utils/nodeFieldIndices.mjs';
@@ -17,8 +16,7 @@ import styleSearch from '../style-search/index.mjs';
  *   result: import('stylelint').PostcssResult,
  *   checkedRuleName: string,
  *   fix: ((decl: Declaration, index: number) => boolean) | null,
- * }} opts
- * @param options
+ * }} options
  * @returns {void}
  */
 export default function declarationBangSpaceChecker (options) {
@@ -58,4 +56,4 @@ export default function declarationBangSpaceChecker (options) {
 			}
 		});
 	}
-};
+}

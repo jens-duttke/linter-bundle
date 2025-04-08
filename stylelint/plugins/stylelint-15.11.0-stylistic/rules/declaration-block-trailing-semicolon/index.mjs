@@ -1,4 +1,3 @@
-/* eslint-disable -- We want to keep as much of the original code as possible */
 // @ts-nocheck
 
 import stylelint from 'stylelint';
@@ -22,7 +21,7 @@ const meta = {
 };
 
 /** @type {import('stylelint').Rule} */
-const rule = (primary, secondaryOptions, context) => (root, result) => {
+const rule = (primary, secondaryOptions, _context) => (root, result) => {
 	const validOptions = validateOptions(
 		result,
 		ruleName,
@@ -108,7 +107,7 @@ const rule = (primary, secondaryOptions, context) => (root, result) => {
 					node.raws.between = '';
 					node.parent.raws.after = ' ';
 				}
-			}
+			};
 
 			message = messages.expected;
 		}
