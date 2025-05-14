@@ -782,6 +782,7 @@ export default [
 			'@typescript-eslint/no-unnecessary-type-arguments': 'error',
 			'@typescript-eslint/no-unnecessary-type-assertion': 'error',
 			'@typescript-eslint/no-unnecessary-type-constraint': 'error',
+			'@typescript-eslint/no-unnecessary-type-conversion': 'error',
 			'@typescript-eslint/no-unnecessary-type-parameters': 'error',
 			'@typescript-eslint/no-unsafe-argument': 'error',
 			'@typescript-eslint/no-unsafe-assignment': 'error',
@@ -921,6 +922,7 @@ export default [
 			'import/no-self-import': 'error',
 			'import/no-unassigned-import': ['error', {
 				allow: [
+					'**/*.css',
 					'**/*.scss',
 					'jest-extended'
 				]
@@ -1030,6 +1032,12 @@ export default [
 						namespace: true,
 						named: false
 					},
+					'./styles.module.css': {
+						unassigned: false,
+						default: false,
+						namespace: true,
+						named: false
+					},
 					'./styles.module.scss': {
 						unassigned: false,
 						default: false,
@@ -1044,7 +1052,6 @@ export default [
 			'unicorn/no-array-callback-reference': 'off', // If I use functions, they are the best option for this use-case
 			'unicorn/no-array-for-each': 'error',
 			'unicorn/no-array-method-this-argument': 'error',
-			'unicorn/no-array-push-push': 'error',
 			'unicorn/no-array-reduce': ['error', { allowSimpleOperations: true }],
 			'unicorn/no-await-expression-member': 'error',
 			'unicorn/no-console-spaces': 'error',
@@ -1056,7 +1063,6 @@ export default [
 			'unicorn/no-invalid-fetch-options': 'error',
 			'unicorn/no-invalid-remove-event-listener': 'error',
 			'unicorn/no-keyword-prefix': 'off',
-			'unicorn/no-length-as-slice-end': 'error',
 			'unicorn/no-lonely-if': 'off', // Sometimes the code is clearer if-conditions are not combined
 			'unicorn/no-magic-array-flat-depth': 'error',
 			'unicorn/no-named-default': 'error',
@@ -1072,8 +1078,11 @@ export default [
 			'unicorn/no-thenable': 'error',
 			'unicorn/no-this-assignment': 'error',
 			'unicorn/no-typeof-undefined': 'error',
+			'unicorn/no-unnecessary-array-flat-depth': 'error',
+			'unicorn/no-unnecessary-array-splice-count': 'error',
 			'unicorn/no-unnecessary-await': 'error',
 			'unicorn/no-unnecessary-polyfills': 'error',
+			'unicorn/no-unnecessary-slice-end': 'error',
 			'unicorn/no-unreadable-array-destructuring': 'error',
 			'unicorn/no-unreadable-iife': 'error',
 			'unicorn/no-unused-properties': 'error',
@@ -1101,9 +1110,10 @@ export default [
 			'unicorn/prefer-dom-node-dataset': 'off', // `setAttribute` is faster than `dataset`. See https://www.measurethat.net/Benchmarks/Show/7740/0/classname-vs-setattribute-vs-classlist-vs-dataset
 			'unicorn/prefer-dom-node-remove': 'error',
 			'unicorn/prefer-dom-node-text-content': 'error',
-			'unicorn/prefer-event-target': 'off', // @todo Disabled for now, since `EventTarget` requires Node.js 16. Activate in 2025
+			'unicorn/prefer-event-target': 'error',
 			'unicorn/prefer-export-from': ['error', { ignoreUsedVariables: true }],
 			'unicorn/prefer-global-this': 'off', // This makes only sense if the same code may run on the server-side. Often the auto-fixing of this rule doesn't make sense
+			'unicorn/prefer-import-meta-properties': 'off', // @todo Regarding `n/no-unsupported-features/node-builtins` it's still an experimental feature, so check back in 2026
 			'unicorn/prefer-includes': 'error',
 			'unicorn/prefer-json-parse-buffer': 'off', // TypeScript states that string needs to be used as of the ES specification. @see https://github.com/microsoft/TypeScript/issues/11842
 			'unicorn/prefer-keyboard-event-key': 'error',
@@ -1116,7 +1126,6 @@ export default [
 			'unicorn/prefer-native-coercion-functions': 'off',
 			'unicorn/prefer-negative-index': 'error',
 			'unicorn/prefer-number-properties': 'error',
-			'unicorn/prefer-object-has-own': 'off', // Not widely supported yet. Can be activated in 2024
 			'unicorn/prefer-object-from-entries': 'error',
 			'unicorn/prefer-optional-catch-binding': 'error',
 			'unicorn/prefer-prototype-methods': 'error',
@@ -1124,6 +1133,7 @@ export default [
 			'unicorn/prefer-reflect-apply': 'error',
 			'unicorn/prefer-set-has': 'error',
 			'unicorn/prefer-set-size': 'error',
+			'unicorn/prefer-single-call': 'error',
 			'unicorn/prefer-spread': 'off', // @todo Disabled till there a solution for the warning, that `slice()` on Typed-Arrays should be replaced (which is not possible). @see https://github.com/sindresorhus/eslint-plugin-unicorn/issues/1064
 			'unicorn/prefer-string-raw': 'off', // The overhead of writing String.raw`...` is not worth the inconsistency in writing strings
 			'unicorn/prefer-string-replace-all': 'off', // @todo Available since 2020 in browsers. Should this be preferred?
@@ -1133,7 +1143,7 @@ export default [
 			'unicorn/prefer-structured-clone': 'error',
 			'unicorn/prefer-switch': 'error',
 			'unicorn/prefer-ternary': 'off', // We prefer readability over saving a few chars
-			'unicorn/prefer-top-level-await': 'off', // @todo Available since 2021. Activate in 2024
+			'unicorn/prefer-top-level-await': 'error',
 			'unicorn/prefer-regexp-test': 'error',
 			'unicorn/prefer-type-error': 'error',
 			'unicorn/prevent-abbreviations': ['error', { ignore: ['args', 'i', 'j', 'i18n', /[Rr]ef/u, /[Pp]arams/u, /[Pp]rops/u] }],
