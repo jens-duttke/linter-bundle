@@ -41,8 +41,8 @@ export default function declarationColonSpaceChecker (options) {
 					report({
 						message,
 						node: decl,
-						index: decl.prop.toString().length + 1,
-						endIndex: decl.prop.toString().length + 1,
+						index: decl.prop.length + 1,
+						endIndex: decl.prop.length + 1,
 						result: options.result,
 						ruleName: options.checkedRuleName,
 						fix: (options.fix ? () => options.fix(decl, i) : undefined)
