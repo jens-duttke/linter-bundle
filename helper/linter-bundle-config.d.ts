@@ -58,6 +58,10 @@ export interface LinterBundleConfig {
 			/* eslint-enable @typescript-eslint/naming-convention */
 		};
 	};
+	css?: {
+		patternPrefix?: string;
+	};
+	/** @deprecated */
 	sass?: {
 		patternPrefix?: string;
 	};

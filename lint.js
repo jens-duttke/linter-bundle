@@ -23,7 +23,7 @@ const require = createRequire(import.meta.url);
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /**
- * @typedef {'files' | 'tsc' | 'ts' | 'sass' | 'md' | 'audit'} TaskNames
+ * @typedef {'files' | 'tsc' | 'ts' | 'css' | 'sass' | 'md' | 'audit'} TaskNames
  * @typedef {Partial<Record<string, (string | boolean)[]>>} TaskConfig
  * @typedef {import('./helper/run-process.js').ProcessResult} ProcessResult
  * @typedef {{ taskName: TaskNames; taskConfig: TaskConfig; }} TaskNameAndConfig
@@ -52,6 +52,7 @@ await (async () => {
 			case 'ts':
 				return runESLintTask(taskName, taskConfig);
 
+			case 'css':
 			case 'sass':
 				return runStylelintTask(taskName, taskConfig);
 
@@ -214,7 +215,7 @@ async function runESLintTask (taskName, taskConfig) {
 }
 
 /**
- * Runs the `sass` task.
+ * Runs the `css` task.
  *
  * @param {TaskNameAndConfig['taskName']} taskName - Name of the task as used in the command line
  * @param {TaskNameAndConfig['taskConfig']} taskConfig - Configuration of the task
@@ -227,7 +228,7 @@ async function runStylelintTask (taskName, taskConfig) {
 		verbose: getConfigValue(taskName, taskConfig, 'verbose')
 	};
 
-	const includes = await getIncludes(newTaskConfig, 'src/**/*.scss');
+	const includes = await getIncludes(newTaskConfig, 'src/**/*.{css,scss}');
 
 	if (!includes) {
 		return generateDummyJobOutput(taskName, newTaskConfig, {
@@ -415,7 +416,7 @@ async function validateEnvironment () {
  * @throws {Error} If no task has be specified in the arguments
  */
 function getTasksToRun (argv) {
-	const TASKS = new Set(['tsc', 'ts', 'sass', 'md', 'audit', 'files']);
+	const TASKS = new Set(['tsc', 'ts', 'css', 'sass', 'md', 'audit', 'files']);
 	const ARG_REGEXP = /^--([^=]+)(?:=(.+))?$/u;
 
 	/** @type {TaskNameAndConfig | null} */

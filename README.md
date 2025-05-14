@@ -9,7 +9,7 @@
 Ready-to use bundle of linting tools, containing configurations for
 
 - [ESLint](https://eslint.org/): JavaScript (Node.js); TypeScript, React (Browser)
-- [stylelint](https://stylelint.io/): SCSS (Browser)
+- [stylelint](https://stylelint.io/): CSS, SCSS (Browser)
 - [markdownlint](https://github.com/DavidAnson/markdownlint): Markdown
 - [better-npm-audit](https://www.npmjs.com/package/better-npm-audit): Security audit using `npm`
 - [improved-yarn-audit](https://www.npmjs.com/package/improved-yarn-audit): Security audit using `yarn`
@@ -84,8 +84,8 @@ npm install linter-bundle --save-dev
 ```json
 {
   "scripts": {
-    "lint": "lint tsc ts sass md audit",
-    "lint-different-configurations": "lint tsc --tsconfig=./path1/tsconfig.json tsc --tsconfig=./path2/tsconfig.json ts sass md audit"
+    "lint": "lint tsc ts css md audit",
+    "lint-different-configurations": "lint tsc --tsconfig=./path1/tsconfig.json tsc --tsconfig=./path2/tsconfig.json ts css md audit"
   }
 }
 ```
@@ -224,8 +224,8 @@ The file itself, and any of the options is optional.
       }
     }
   },
-  "sass": {
-    "include": ["./included/*.ts"],
+  "css": {
+    "include": ["./included/*.css"],
     "patternPrefix": "(my-prefix|another-prefix)"
   },
   "md": {
@@ -405,9 +405,9 @@ export default {
   },
 
   /**
-   * Configuration, specific to the `sass` command.
+   * Configuration, specific to the `css` command.
    */
-  sass: {
+  css: {
     /**
      * `verbose`, `timing` and `git` are the same as in the root node.
      */
@@ -420,7 +420,7 @@ export default {
      * 
      * @type {string[]}
      */
-    include: ['./included/*.ts'],
+    include: ['./included/*.css'],
 
     /**
      * The prefix used for the 'custom-media-pattern' (`@media (--my-prefix-foo)`) and 'custom-property-pattern' (`var(--my-prefix-bar)`) rule.
@@ -444,7 +444,7 @@ export default {
      * 
      * @type {string[]}
      */
-    include: ['./included/*.ts']
+    include: ['./included/*.md']
   },
 
   /**
@@ -532,7 +532,7 @@ The command line arguments are separated in groups. Here are some examples:
 
 ```sh
 # Run File restrictions, TypeScript compiler, ESLint, Stylelint, Markdownlint, and audit in the given order, using the default configuration
-lint files tsc ts sass md audit
+lint files tsc ts css md audit
 
 # Run ESLint and Audit, and show their terminal output even on success
 lint --verbose ts audit
@@ -593,12 +593,12 @@ Argument | Description | Example
 `--include` | Patterns with files which should be considered | `--include="./cypress/**/*.ts"`
 `--exclude` | Patterns with files which should not be considered. Can be used multiple times for different patterns. Used as `--ignore-pattern` argument for ESLint. | `--exclude="cypress" --exclude=".storybook"`
 
-### `lint sass`
+### `lint css`
 
 Will execute:
 
 ```sh
-stylelint "src/**/*.scss" --formatter unix --report-needless-disables --report-invalid-scope-disables --report-descriptionless-disables
+stylelint "src/**/*.{css,scss}" --formatter unix --report-needless-disables --report-invalid-scope-disables --report-descriptionless-disables
 ```
 
 ### `lint md`
@@ -668,7 +668,8 @@ To ensure the stylelint plugins are correctly loaded, you need to adjust the set
 ```json
 {
   "stylelint.enable": true,
-  "stylelint.validate": [
+  "stylelint.validate": [,
+    "css",
     "scss"
   ],
   "css.validate": false,
@@ -701,6 +702,9 @@ To visualize the max line-length rules in VSCode, you can activate rulers, by ad
   },
   "[markdown]": {
     "editor.rulers": [300]
+  },
+  "[css]": {
+    "editor.rulers": [160]
   },
   "[scss]": {
     "editor.rulers": [160]

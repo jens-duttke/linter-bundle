@@ -4,6 +4,8 @@
 
 const { linterBundleConfig } = await import('../helper/linter-bundle-config.js');
 
+linterBundleConfig.css = (linterBundleConfig.sass ?? linterBundleConfig.css ?? {});
+
 export default {
 	reportNeedlessDisables: true,
 	reportInvalidScopeDisables: true,
@@ -130,6 +132,95 @@ export default {
 				 */
 				'plugin/selector-tag-no-without-class': ['/./']
 			}
+		},
+		{
+			files: ['**/*.scss'],
+			rules: {
+				/**
+				 * stylelint
+				 *
+				 * @see https://github.com/stylelint/stylelint/tree/master/lib/rules
+				 */
+				'at-rule-no-unknown': null, // scss/at-rule-no-unknown
+				'declaration-property-value-no-unknown': null, // Covered by scss/declaration-property-value-no-unknown
+				'function-no-unknown': null, // Implemented by scss/function-no-unknown
+				'property-no-unknown': null, // Covered by scss/property-no-unknown
+
+				/**
+				 * stylelint-scss
+				 *
+				 * @see https://www.npmjs.com/package/stylelint-scss
+				 */
+				'scss/at-each-key-value-single-line': true,
+				'scss/at-else-closing-brace-newline-after': 'always-last-in-chain',
+				'scss/at-else-closing-brace-space-after': 'never-intermediate',
+				'scss/at-else-empty-line-before': 'never',
+				'scss/at-else-if-parentheses-space-before': 'always',
+				'scss/at-extend-no-missing-placeholder': true,
+				'scss/function-calculation-no-interpolation': true,
+				'scss/at-function-named-arguments': ['never', { ignoreFunctions: ['scale-color', 'color.scale'] }],
+				'scss/at-function-parentheses-space-before': 'always',
+				'scss/at-function-pattern': '^[a-z]+(-[a-z]+)*$',
+				'scss/at-if-closing-brace-newline-after': 'always-last-in-chain',
+				'scss/at-if-closing-brace-space-after': 'never-intermediate',
+				'scss/at-if-no-null': true,
+				'scss/at-mixin-argumentless-call-parentheses': 'never',
+				'scss/at-mixin-named-arguments': ['always', { ignore: ['single-argument'] }],
+				'scss/at-mixin-no-risky-nesting-selector': true,
+				'scss/at-mixin-parentheses-space-before': 'always',
+				'scss/at-mixin-pattern': '^[a-z]+(-[a-z]+)*$',
+				'scss/at-root-no-redundant': true,
+				'scss/at-rule-conditional-no-parentheses': true,
+				'scss/at-rule-no-unknown': true,
+				'scss/at-use-no-unnamespaced': true,
+				'scss/comment-no-loud': true,
+				'scss/declaration-nested-properties-no-divided-groups': true,
+				'scss/declaration-nested-properties': 'never',
+				'scss/declaration-property-value-no-unknown': [
+					true,
+					{
+						ignoreProperties: {
+							'initial-value': /.+/u,
+							'grid-template-areas': /^\([^\u0000]+\)$/u, // Whole block wrapped in parentheses.
+							'/.+/': /((^|\s)\$[a-z])|/ui // SCSS variables
+						}
+					}
+				],
+				'scss/dimension-no-non-numeric-values': true,
+				'scss/dollar-variable-colon-space-after': 'always',
+				'scss/dollar-variable-colon-space-before': 'never',
+				'scss/dollar-variable-empty-line-before': [
+					'always',
+					{
+						except: ['first-nested', 'after-comment', 'after-dollar-variable']
+					}
+				],
+				'scss/dollar-variable-empty-line-after': [
+					'always',
+					{
+						except: ['last-nested', 'before-dollar-variable'],
+						ignore: ['before-comment', 'inside-single-line-block']
+					}
+				],
+				'scss/dollar-variable-first-in-block': [true, { ignore: ['comments', 'imports'] }],
+				'scss/dollar-variable-no-missing-interpolation': true,
+				'scss/dollar-variable-no-namespaced-assignment': true,
+				'scss/dollar-variable-pattern': '^[a-z]+(-[a-z]+)*$',
+				'scss/function-color-channel': true,
+				'scss/function-color-relative': true,
+				'scss/function-no-unknown': [true, { ignoreFunctions: [/^custom-/u] }],
+				'scss/function-quote-no-quoted-strings-inside': true,
+				'scss/function-unquote-no-unquoted-strings-inside': true,
+				'scss/load-partial-extension': 'always',
+				'scss/map-keys-quotes': 'always',
+				'scss/media-feature-value-dollar-variable': 'never',
+				'scss/no-duplicate-dollar-variables': true,
+				'scss/no-duplicate-mixins': true,
+				'scss/no-global-function-names': true,
+				'scss/no-unused-private-members': true,
+				'scss/percent-placeholder-pattern': '^[a-z]+(-[a-z]+)*$',
+				'scss/selector-no-union-class-name': true
+			}
 		}
 	],
 	rules: {
@@ -157,7 +248,7 @@ export default {
 			}
 		],
 		'at-rule-no-deprecated': true,
-		'at-rule-no-unknown': null, // scss/at-rule-no-unknown
+		'at-rule-no-unknown': true,
 		'at-rule-no-vendor-prefix': true,
 		'at-rule-prelude-no-invalid': true,
 		'at-rule-property-required-list': [{
@@ -170,7 +261,7 @@ export default {
 				ignore: ['with-var-inside']
 			}
 		],
-		'color-hex-alpha': null, // @todo Not widely supported yet. Activate in 2024.
+		'color-hex-alpha': null, // Alpha values should only be used if necessary
 		'color-hex-length': 'short',
 		'color-named': 'never',
 		'color-no-hex': true,
@@ -186,11 +277,11 @@ export default {
 		'comment-pattern': /^[^\s].+[^\s]$/u,
 		'comment-whitespace-inside': 'always',
 		'comment-word-disallowed-list': null,
-		'container-name-pattern': (linterBundleConfig.sass?.patternPrefix ? `${linterBundleConfig.sass.patternPrefix}-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)+` : null),
-		'custom-media-pattern': (linterBundleConfig.sass?.patternPrefix ? `${linterBundleConfig.sass.patternPrefix}-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)+` : null),
+		'container-name-pattern': (linterBundleConfig.css.patternPrefix ? `${linterBundleConfig.css.patternPrefix}-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)+` : null),
+		'custom-media-pattern': (linterBundleConfig.css.patternPrefix ? `${linterBundleConfig.css.patternPrefix}-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)+` : null),
 		'custom-property-empty-line-before': null, // Empty lines between custom properties are optional
 		'custom-property-no-missing-var-function': true,
-		'custom-property-pattern': (linterBundleConfig.sass?.patternPrefix ? `${linterBundleConfig.sass.patternPrefix}-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)*` : null),
+		'custom-property-pattern': (linterBundleConfig.css.patternPrefix ? `${linterBundleConfig.css.patternPrefix}-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)*` : null),
 		'declaration-block-no-duplicate-custom-properties': true,
 		'declaration-block-no-duplicate-properties': [
 			true,
@@ -228,7 +319,7 @@ export default {
 		'declaration-property-value-allowed-list': null,
 		'declaration-property-value-disallowed-list': null,
 		'declaration-property-value-keyword-no-deprecated': true,
-		'declaration-property-value-no-unknown': null, // Covered by scss/declaration-property-value-no-unknown
+		'declaration-property-value-no-unknown': true,
 		'font-family-name-quotes': 'always-where-recommended',
 		'font-family-no-duplicate-names': true,
 		'font-family-no-missing-generic-family-keyword': true,
@@ -238,7 +329,7 @@ export default {
 		'function-disallowed-list': null,
 		'function-linear-gradient-no-nonstandard-direction': true,
 		'function-name-case': 'lower',
-		'function-no-unknown': null, // Implemented by scss/function-no-unknown
+		'function-no-unknown': true,
 		'function-url-no-scheme-relative': true,
 		'function-url-quotes': 'always',
 		'function-url-scheme-disallowed-list': null,
@@ -250,7 +341,7 @@ export default {
 		'keyframe-declaration-no-important': true,
 		'keyframe-selector-notation': 'percentage',
 		'keyframes-name-pattern': String.raw`^[a-z]+(-[a-z]+)*\d*$`,
-		'layer-name-pattern': (linterBundleConfig.sass?.patternPrefix ? `${linterBundleConfig.sass.patternPrefix}-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)+` : null),
+		'layer-name-pattern': (linterBundleConfig.css.patternPrefix ? `${linterBundleConfig.css.patternPrefix}-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)+` : null),
 		'length-zero-no-unit': true,
 		'max-nesting-depth': 6,
 		'media-feature-name-allowed-list': null,
@@ -279,7 +370,7 @@ export default {
 			'font', // Shorthand property is to complex
 			'grid-gap' // @deprecated Use gap.
 		],
-		'property-no-unknown': null, // Covered by scss/property-no-unknown
+		'property-no-unknown': true,
 		'property-no-vendor-prefix': true,
 		'rule-selector-property-disallowed-list': null,
 		'rule-empty-line-before': [
@@ -316,7 +407,7 @@ export default {
 		'selector-nested-pattern': null,
 		'selector-no-qualifying-type': [true, { ignore: ['attribute', 'class'] }],
 		'selector-no-vendor-prefix': true,
-		'selector-not-notation': null, // 'complex', @todo Reactivate in 2024. Disabled for now, because it depends on the project if modern Selectors Level 4 CSS can be used.
+		'selector-not-notation': 'complex',
 		'selector-pseudo-class-allowed-list': null,
 		'selector-pseudo-class-disallowed-list': null,
 		'selector-pseudo-class-no-unknown': [true, { ignorePseudoClasses: ['global'] }],
@@ -950,68 +1041,56 @@ export default {
 		 *
 		 * @see https://www.npmjs.com/package/stylelint-scss
 		 */
-		'scss/at-each-key-value-single-line': true,
-		'scss/at-else-closing-brace-newline-after': 'always-last-in-chain',
-		'scss/at-else-closing-brace-space-after': 'never-intermediate',
-		'scss/at-else-empty-line-before': 'never',
-		'scss/at-else-if-parentheses-space-before': 'always',
-		'scss/at-extend-no-missing-placeholder': true,
-		'scss/function-calculation-no-interpolation': true,
-		'scss/at-function-named-arguments': ['never', { ignoreFunctions: ['scale-color', 'color.scale'] }],
-		'scss/at-function-parentheses-space-before': 'always',
-		'scss/at-function-pattern': '^[a-z]+(-[a-z]+)*$',
-		'scss/at-if-closing-brace-newline-after': 'always-last-in-chain',
-		'scss/at-if-closing-brace-space-after': 'never-intermediate',
-		'scss/at-if-no-null': true,
+		'scss/at-each-key-value-single-line': null,
+		'scss/at-else-closing-brace-newline-after': null,
+		'scss/at-else-closing-brace-space-after': null,
+		'scss/at-else-empty-line-before': null,
+		'scss/at-else-if-parentheses-space-before': null,
+		'scss/at-extend-no-missing-placeholder': null,
+		'scss/function-calculation-no-interpolation': null,
+		'scss/at-function-named-arguments': null,
+		'scss/at-function-parentheses-space-before': null,
+		'scss/at-function-pattern': null,
+		'scss/at-if-closing-brace-newline-after': null,
+		'scss/at-if-closing-brace-space-after': null,
+		'scss/at-if-no-null': null,
 		'scss/at-import-partial-extension-allowed-list': null,
 		'scss/at-import-partial-extension-disallowed-list': null,
-		'scss/at-mixin-argumentless-call-parentheses': 'never',
-		'scss/at-mixin-named-arguments': ['always', { ignore: ['single-argument'] }],
-		'scss/at-mixin-no-risky-nesting-selector': true,
-		'scss/at-mixin-parentheses-space-before': 'always',
-		'scss/at-mixin-pattern': '^[a-z]+(-[a-z]+)*$',
-		'scss/at-root-no-redundant': true,
-		'scss/at-rule-conditional-no-parentheses': true,
-		'scss/at-rule-no-unknown': true,
-		'scss/at-use-no-unnamespaced': true,
+		'scss/at-mixin-argumentless-call-parentheses': null,
+		'scss/at-mixin-named-arguments': null,
+		'scss/at-mixin-no-risky-nesting-selector': null,
+		'scss/at-mixin-parentheses-space-before': null,
+		'scss/at-mixin-pattern': null,
+		'scss/at-root-no-redundant': null,
+		'scss/at-rule-conditional-no-parentheses': null,
+		'scss/at-rule-no-unknown': null,
+		'scss/at-use-no-unnamespaced': null,
 		'scss/at-use-no-redundant-alias': null,
 		'scss/block-no-redundant-nesting': null,
 		'scss/comment-no-empty': true,
-		'scss/comment-no-loud': true,
-		'scss/declaration-nested-properties-no-divided-groups': true,
-		'scss/declaration-nested-properties': 'never',
+		'scss/comment-no-loud': null,
+		'scss/declaration-nested-properties-no-divided-groups': null,
+		'scss/declaration-nested-properties': null,
 		'scss/declaration-property-value-no-unknown': [
 			true,
 			{
 				ignoreProperties: {
 					'initial-value': /.+/u,
-					'grid-template-areas': /^\([^\u0000]+\)$/u, // Whole block wrapped in parentheses.
-					'/.+/': /((^|\s)\$[a-z])|/ui // SCSS variables
+					'grid-template-areas': /^\([^\u0000]+\)$/u // Whole block wrapped in parentheses.
 				}
 			}
 		],
-		'scss/dimension-no-non-numeric-values': true,
+		'scss/dimension-no-non-numeric-values': null,
 		'scss/dollar-variable-colon-newline-after': null,
-		'scss/dollar-variable-colon-space-after': 'always',
-		'scss/dollar-variable-colon-space-before': 'never',
+		'scss/dollar-variable-colon-space-after': null,
+		'scss/dollar-variable-colon-space-before': null,
 		'scss/dollar-variable-default': null,
-		'scss/dollar-variable-empty-line-before': [
-			'always',
-			{
-				except: ['first-nested', 'after-comment', 'after-dollar-variable']
-			}
-		],
-		'scss/dollar-variable-empty-line-after': [
-			'always',
-			{
-				except: ['last-nested', 'before-dollar-variable'],
-				ignore: ['before-comment', 'inside-single-line-block']
-			}
-		],
-		'scss/dollar-variable-first-in-block': [true, { ignore: ['comments', 'imports'] }],
-		'scss/dollar-variable-no-missing-interpolation': true,
-		'scss/dollar-variable-no-namespaced-assignment': true,
-		'scss/dollar-variable-pattern': '^[a-z]+(-[a-z]+)*$',
+		'scss/dollar-variable-empty-line-before': null,
+		'scss/dollar-variable-empty-line-after': null,
+		'scss/dollar-variable-first-in-block': null,
+		'scss/dollar-variable-no-missing-interpolation': null,
+		'scss/dollar-variable-no-namespaced-assignment': null,
+		'scss/dollar-variable-pattern': null,
 		'scss/double-slash-comment-empty-line-before': [
 			'always',
 			{
@@ -1021,31 +1100,31 @@ export default {
 		],
 		'scss/double-slash-comment-inline': null,
 		'scss/double-slash-comment-whitespace-inside': 'always',
-		'scss/function-color-channel': true,
-		'scss/function-color-relative': true,
+		'scss/function-color-channel': null,
+		'scss/function-color-relative': null,
 		'scss/function-disallowed-list': null,
-		'scss/function-no-unknown': [true, { ignoreFunctions: [/^custom-/u] }],
-		'scss/function-quote-no-quoted-strings-inside': true,
-		'scss/function-unquote-no-unquoted-strings-inside': true,
+		'scss/function-no-unknown': null,
+		'scss/function-quote-no-quoted-strings-inside': null,
+		'scss/function-unquote-no-unquoted-strings-inside': null,
 		'scss/load-no-partial-leading-underscore': null,
-		'scss/load-partial-extension': 'always',
-		'scss/map-keys-quotes': 'always',
-		'scss/media-feature-value-dollar-variable': 'never',
+		'scss/load-partial-extension': null,
+		'scss/map-keys-quotes': null,
+		'scss/media-feature-value-dollar-variable': null,
 		'scss/no-dollar-variables': null,
-		'scss/no-duplicate-dollar-variables': true,
+		'scss/no-duplicate-dollar-variables': null,
 		'scss/no-duplicate-load-rules': true,
-		'scss/no-duplicate-mixins': true,
-		'scss/no-global-function-names': true,
-		'scss/no-unused-private-members': true,
+		'scss/no-duplicate-mixins': null,
+		'scss/no-global-function-names': null,
+		'scss/no-unused-private-members': null,
 		'scss/operator-no-newline-after': true,
 		'scss/operator-no-newline-before': true,
 		'scss/operator-no-unspaced': true,
 		'scss/partial-no-import': null,
-		'scss/percent-placeholder-pattern': '^[a-z]+(-[a-z]+)*$',
+		'scss/percent-placeholder-pattern': null,
 		'scss/property-no-unknown': true,
 		'scss/selector-nest-combinators': null, // Sometimes nesting does not make sense
 		'scss/selector-no-redundant-nesting-selector': true,
-		'scss/selector-no-union-class-name': true,
+		'scss/selector-no-union-class-name': null,
 
 		/**
 		 * stylelint-selector-no-empty

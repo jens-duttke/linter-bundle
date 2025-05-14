@@ -104,8 +104,33 @@
 			},
 			"additionalProperties": false
 		},
+		"css": {
+			"type": "object",
+			"properties": {
+				"verbose": {
+					"type": "boolean"
+				},
+				"timing": {
+					"type": "boolean"
+				},
+				"git": {
+					"type": "boolean"
+				},
+				"include": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"patternPrefix": {
+					"type": "string"
+				}
+			},
+			"additionalProperties": false
+		},
 		"sass": {
 			"type": "object",
+			"deprecated": true,
 			"properties": {
 				"verbose": {
 					"type": "boolean"

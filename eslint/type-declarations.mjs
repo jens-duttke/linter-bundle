@@ -36,14 +36,17 @@ export default [
 		}
 	},
 	{
-		files: ['**/*.scss.d.ts'],
+		files: [
+			'**/*.css.d.ts',
+			'**/*.scss.d.ts'
+		],
 		rules: {
 			/**
 			 * eslint
 			 *
 			 * @see https://eslint.org/docs/rules/
 			 */
-			'linebreak-style': 'off' // Ignore for automatically generated .scss.d.ts files, since that does not affect the project.
+			'linebreak-style': 'off' // Ignore for automatically generated .(s)css.d.ts files, since that does not affect the project.
 		}
 	}
 ];
