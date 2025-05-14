@@ -6,7 +6,32 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.5.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.6.0...HEAD)
+
+## [7.6.0] - 2025-05-14
+
+- [general] Added support for `.css` files in ESLint and Stylelint rules
+- [eslint] Updated `eslint` from `9.24.0` to `9.26.0`
+- [eslint] Updated `eslint-import-resolver-typescript` from `4.3.2` to `4.3.4`
+- [eslint] Updated `eslint-plugin-jsdoc` from `50.6.9` to `50.6.17`
+- [eslint] Updated `eslint-plugin-n` from `17.17.0` to `17.18.0`
+- [eslint] Updated `eslint-plugin-unicorn` from `58.0.0` to `59.0.1`
+- [eslint] Updated `globals` from `16.0.0` to `16.1.0`
+- [eslint] Updated `typescript-eslint` from `8.29.1` to `8.32.1`
+- [stylelint] Updated `stylelint` from `16.18.0` to `16.19.1`
+- [stylelint] Updated `stylelint-order` from `6.0.4` to `7.0.0`
+- [stylelint] Updated `stylelint-scss` from `6.11.1` to `6.12.0`
+- [eslint] Renamed `unicorn/no-array-push-push` rule to `prefer-single-call`
+- [eslint] Renamed `unicorn/no-length-as-slice-end` rule to `no-unnecessary-slice-end`
+- [eslint] Added but disabled [`unicorn/prefer-import-meta-properties`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-import-meta-properties.md) rule
+- [eslint] Added [`unicorn/no-unnecessary-array-flat-depth`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-unnecessary-array-flat-depth.md) rule
+- [eslint] Added [`unicorn/no-unnecessary-array-splice-count`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-unnecessary-array-splice-count.md) rule
+- [eslint] Activated [`unicorn/prefer-event-target`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-event-target.md) rule
+- [eslint] Activated [`unicorn/prefer-top-level-await`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-top-level-await.md) rule
+- [eslint] Added [`@typescript-eslint/no-unnecessary-type-conversion`](https://typescript-eslint.io/rules/no-unnecessary-type-conversion/) rule
+- [stylelint] Activated [`selector-not-notation`](https://stylelint.io/user-guide/rules/selector-not-notation/) rule with "complex" option
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.5.0...v7.6.0)
 
 ## [7.5.0] - 2025-04-08
 
