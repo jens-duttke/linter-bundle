@@ -6,9 +6,46 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.6.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.7.0...HEAD)
+
+## [7.7.0] - 2025-07-25
+
+### Breaking changes
+
+- [general] Drop support for Node.js version less than 20.12.0, 21.*.* and 23.*.* as some of the ESLint plugins are not supporting them anymore
+
+### Changed
+
+- [eslint] Updated `eslint` from `9.26.0` to `9.31.0`
+- [eslint] Updated `eslint-import-resolver-typescript` from `4.3.4` to `4.4.4`
+- [eslint] Updated `eslint-plugin-functional` from `9.0.1` to `9.0.2`
+- [eslint] Updated `eslint-plugin-import` from `2.31.0` to `2.32.0`
+- [eslint] Updated `eslint-plugin-jest` from `28.11.0` to `29.0.1`
+- [eslint] Updated `eslint-plugin-jsdoc` from `50.6.17` to `51.4.1`
+- [eslint] Updated `eslint-plugin-n` from `17.18.0` to `17.21.0`
+- [eslint] Updated `eslint-plugin-unicorn` from `59.0.1` to `60.0.0`
+- [eslint] Updated `globals` from `16.1.0` to `16.3.0`
+- [eslint] Updated `@stylistic/eslint-plugin` from `4.2.0` to `5.2.2`
+- [eslint] Updated `@stylistic/eslint-plugin-jsx` from `4.2.0` to `4.4.1`
+- [eslint] Updated `typescript-eslint` from `8.32.1` to `8.38.0`
+- [markdownlint] Updated `markdownlint-cli` from `0.44.0` to `0.45.0`
+- [stylelint] Updated `stylelint` from `16.19.1` to `16.22.0`
+- [stylelint] Updated `stylelint-scss` from `6.12.0` to `6.12.1`
+- [eslint] Added [`no-unassigned-vars`](https://github.com/eslint/eslint/blob/main/docs/src/rules/no-unassigned-vars.md) rule
+- [eslint] Added [`unicorn/prefer-class-fields`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-class-fields.md) rule
+- [eslint] Added [`unicorn/no-array-reverse`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-array-reverse.md) rule
+- [eslint] Added [`unicorn/require-module-specifiers`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/require-module-specifiers.md) rule
+- [eslint] Added [`unicorn/no-useless-error-capture-stack-trace`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-useless-error-capture-stack-trace.md) rule
+- [eslint] Added [`jest/prefer-ending-with-an-expect`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/prefer-ending-with-an-expect.md) rule
+- [eslint] Added but disabled [`import/enforce-node-protocol-usage`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/enforce-node-protocol-usage.md) rule, as this is covered by `unicorn/prefer-node-protocol`
+- [eslint] Added but disabled [`n/no-top-level-await`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-top-level-await.md) rule as it conflicts with `unicorn/prefer-top-level-await`
+- [stylelint] Activate `custom-property-empty-line-before` rule and `ignore` `"after-custom-property"`
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.6.0...v7.7.0)
 
 ## [7.6.0] - 2025-05-14
+
+### Changed
 
 - [general] Added support for `.css` files in ESLint and Stylelint rules
 - [eslint] Updated `eslint` from `9.24.0` to `9.26.0`
@@ -34,6 +71,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.5.0...v7.6.0)
 
 ## [7.5.0] - 2025-04-08
+
+### Changed
 
 - [eslint] Updated `eslint` from `9.23.0` to `9.24.0`
 - [eslint] Updated `eslint-import-resolver-typescript` from `4.2.2` to `4.3.2`
@@ -151,7 +190,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] The prefixes "override-" has been removed from the specialized rule files and the suffix `.cjs` has been replaced by `.mjs`
 - [stylelint] The stylelint configuration has been renamed from `linter-bundle/stylelint.cjs` to  `linter-bundle/stylelint.mjs`
 - [stylelint] As the interface for rules changed slightly, I had to remove some auto-fixes for the previously forked stylistic rules.
-- [general] Drop support for Node.js version less than v20.9.0 and v21.1.0 as a lot of ESLint plugins are not supporting them
+- [general] Drop support for Node.js version less than v20.9.0 and v21.1.0 as a lot of the ESLint plugins are not supporting them
 
 ### Fixed
 

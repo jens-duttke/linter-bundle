@@ -279,7 +279,12 @@ export default {
 		'comment-word-disallowed-list': null,
 		'container-name-pattern': (linterBundleConfig.css.patternPrefix ? `${linterBundleConfig.css.patternPrefix}-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)+` : null),
 		'custom-media-pattern': (linterBundleConfig.css.patternPrefix ? `${linterBundleConfig.css.patternPrefix}-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)+` : null),
-		'custom-property-empty-line-before': null, // Empty lines between custom properties are optional
+		'custom-property-empty-line-before': [
+			true,
+			{
+				ignore: ["after-custom-property"]
+			}
+		],
 		'custom-property-no-missing-var-function': true,
 		'custom-property-pattern': (linterBundleConfig.css.patternPrefix ? `${linterBundleConfig.css.patternPrefix}-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)*` : null),
 		'declaration-block-no-duplicate-custom-properties': true,

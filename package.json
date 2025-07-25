@@ -24,7 +24,7 @@
 		"lint": "lint.js"
 	},
 	"engines": {
-		"node": "^20.9.0 || >=21.1.0"
+		"node": "^20.12.0 || ^22.0.0 || >=24.0.0"
 	},
 	"repository": {
 		"type": "git",
@@ -42,34 +42,34 @@
 		"_test-stylelint": "node ./test-stylelint.js"
 	},
 	"dependencies": {
-		"@stylistic/eslint-plugin": "4.2.0",
-		"@stylistic/eslint-plugin-jsx": "4.2.0",
-		"eslint": "9.26.0",
+		"@stylistic/eslint-plugin": "5.2.2",
+		"@stylistic/eslint-plugin-jsx": "4.4.1",
+		"eslint": "9.31.0",
 		"eslint-formatter-unix": "8.40.0",
-		"eslint-import-resolver-typescript": "4.3.4",
+		"eslint-import-resolver-typescript": "4.4.4",
 		"eslint-import-resolver-webpack": "0.13.10",
 		"eslint-plugin-eslint-comments": "3.2.0",
-		"eslint-plugin-functional": "9.0.1",
-		"eslint-plugin-import": "2.31.0",
-		"eslint-plugin-jest": "28.11.0",
-		"eslint-plugin-jsdoc": "50.6.17",
+		"eslint-plugin-functional": "9.0.2",
+		"eslint-plugin-import": "2.32.0",
+		"eslint-plugin-jest": "29.0.1",
+		"eslint-plugin-jsdoc": "51.4.1",
 		"eslint-plugin-jsx-a11y": "6.10.2",
-		"eslint-plugin-n": "17.18.0",
+		"eslint-plugin-n": "17.21.0",
 		"eslint-plugin-promise": "7.2.1",
 		"eslint-plugin-react": "7.37.5",
 		"eslint-plugin-react-hooks": "5.2.0",
-		"eslint-plugin-unicorn": "59.0.1",
-		"globals": "16.1.0",
-		"markdownlint-cli": "0.44.0",
+		"eslint-plugin-unicorn": "60.0.0",
+		"globals": "16.3.0",
+		"markdownlint-cli": "0.45.0",
 		"micromatch": "4.0.8",
 		"postcss-scss": "4.0.9",
-		"stylelint": "16.19.1",
+		"stylelint": "16.22.0",
 		"stylelint-declaration-block-no-ignored-properties": "2.8.0",
 		"stylelint-high-performance-animation": "1.11.0",
 		"stylelint-order": "7.0.0",
-		"stylelint-scss": "6.12.0",
+		"stylelint-scss": "6.12.1",
 		"stylelint-use-logical-spec": "5.0.1",
-		"typescript-eslint": "8.32.1"
+		"typescript-eslint": "8.38.0"
 	},
 	"peerDependencies": {
 		"@typescript-eslint/utils": "*",
@@ -79,7 +79,7 @@
 	"devDependencies": {
 		"@types/eslint": "9.6.1",
 		"@types/micromatch": "4.0.9",
-		"@types/node": "22.15.18",
+		"@types/node": "24.1.0",
 		"stylelint-find-new-rules": "5.0.0",
 		"typescript": "5.8.3"
 	}

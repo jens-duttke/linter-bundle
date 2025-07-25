@@ -45,6 +45,7 @@ export default [
 			 *
 			 * @see https://github.com/import-js/eslint-plugin-import
 			 */
+			'import/enforce-node-protocol-usage': 'off', // Covered by unicorn/prefer-node-protocol
 			'import/no-commonjs': 'off',
 			'import/no-import-module-exports': 'error',
 			'import/no-internal-modules': 'off',
@@ -82,6 +83,7 @@ export default [
 			'n/no-unsupported-features/es-builtins': 'error',
 			'n/no-unsupported-features/es-syntax': 'error',
 			'n/no-unsupported-features/node-builtins': 'error',
+			'n/no-top-level-await': 'off', // Conflicts with unicorn/prefer-await
 			'n/prefer-global/buffer': 'error',
 			'n/prefer-global/console': 'error',
 			'n/prefer-global/process': 'error',

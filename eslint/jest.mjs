@@ -96,6 +96,7 @@ export default [
 			'jest/prefer-hooks-on-top': 'error',
 			'jest/prefer-comparison-matcher': 'error',
 			'jest/prefer-each': 'error',
+			'jest/prefer-ending-with-an-expect': 'error',
 			'jest/prefer-equality-matcher': 'error',
 			'jest/prefer-importing-jest-globals': 'error',
 			'jest/prefer-jest-mocked': 'error',
