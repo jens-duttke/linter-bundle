@@ -452,7 +452,7 @@ export default [
 			'@stylistic/brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
 			'@stylistic/comma-dangle': ['error', { generics: 'ignore' }],
 			'@stylistic/comma-spacing': 'error',
-			'@stylistic/func-call-spacing': 'error',
+			'@stylistic/function-call-spacing': 'error',
 			'@stylistic/indent': [
 				'error',
 				'tab',
