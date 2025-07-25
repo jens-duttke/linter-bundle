@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Breaking changes
 
 - [general] Drop support for Node.js version less than 20.12.0, 21.*.* and 23.*.* as some of the ESLint plugins are not supporting them anymore
+- [eslint] Removed deprecated `@stylistic/eslint-plugin-jsx` plugin
 
 ### Changed
 
@@ -26,7 +27,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Updated `eslint-plugin-unicorn` from `59.0.1` to `60.0.0`
 - [eslint] Updated `globals` from `16.1.0` to `16.3.0`
 - [eslint] Updated `@stylistic/eslint-plugin` from `4.2.0` to `5.2.2`
-- [eslint] Updated `@stylistic/eslint-plugin-jsx` from `4.2.0` to `4.4.1`
 - [eslint] Updated `typescript-eslint` from `8.32.1` to `8.38.0`
 - [markdownlint] Updated `markdownlint-cli` from `0.44.0` to `0.45.0`
 - [stylelint] Updated `stylelint` from `16.19.1` to `16.22.0`
@@ -39,6 +39,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Added [`jest/prefer-ending-with-an-expect`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/prefer-ending-with-an-expect.md) rule
 - [eslint] Added but disabled [`import/enforce-node-protocol-usage`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/enforce-node-protocol-usage.md) rule, as this is covered by `unicorn/prefer-node-protocol`
 - [eslint] Added but disabled [`n/no-top-level-await`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-top-level-await.md) rule as it conflicts with `unicorn/prefer-top-level-await`
+- [eslint] Rename `@stylistic/func-call-spacing` to `@stylistic/function-call-spacing`
 - [stylelint] Activate `custom-property-empty-line-before` rule and `ignore` `"after-custom-property"`
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.6.0...v7.7.0)
@@ -89,13 +90,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [stylelint] Added new [`layer-name-pattern`](https://github.com/stylelint/stylelint/blob/main/lib/rules/layer-name-pattern/README.md) rule and apply `sass` > `patternPrefix` from the linter-bundle configuration, if set
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.4.0...v7.5.0)
-
-### Changed
-
-- [eslint] Updated `eslint` from `9.22.0` to `9.23.0`
-- [eslint/react] Activated `allowExpressions` of the `@typescript-eslint/explicit-function-return-type`rule also for the React overrides
-
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.3.0...v7.4.0)
 
 ## [7.4.0] - 2025-03-23
 
