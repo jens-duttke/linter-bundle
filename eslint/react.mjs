@@ -2,7 +2,6 @@
  * @file Settings for React code in TypeScript (TSX) files.
  */
 
-import stylisticJSXPlugin from '@stylistic/eslint-plugin-jsx';
 import reactPlugin from 'eslint-plugin-react';
 import * as reactHooksPlugin from 'eslint-plugin-react-hooks';
 
@@ -13,8 +12,7 @@ export default [
 	{
 		plugins: {
 			'react-hooks': reactHooksPlugin,
-			'react': reactPlugin,
-			'@stylistic/jsx': stylisticJSXPlugin
+			'react': reactPlugin
 		}
 	},
 	{
