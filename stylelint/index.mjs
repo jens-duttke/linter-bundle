@@ -280,9 +280,9 @@ export default {
 		'container-name-pattern': (linterBundleConfig.css.patternPrefix ? `${linterBundleConfig.css.patternPrefix}-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)+` : null),
 		'custom-media-pattern': (linterBundleConfig.css.patternPrefix ? `${linterBundleConfig.css.patternPrefix}-[a-z][a-zA-Z]+(-[a-z][a-zA-Z]+\\d*)+` : null),
 		'custom-property-empty-line-before': [
-			true,
+			'always',
 			{
-				ignore: ["after-custom-property"]
+				ignore: ['after-custom-property']
 			}
 		],
 		'custom-property-no-missing-var-function': true,
