@@ -233,7 +233,7 @@ const rule = (primary, _secondaryOptions) => (root, result) => {
 	 * @returns {string}
 	 */
 	function removeIndices (str, indices) {
-		for (const index of indices.reverse()) {
+		for (const index of indices.toReversed()) {
 			str = str.slice(0, index) + str.slice(index + 1);
 		}
 

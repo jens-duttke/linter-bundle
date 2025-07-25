@@ -197,7 +197,7 @@ function getCheckBefore (valueNode) {
 function getCheckAfter (valueNode) {
 	let after = '';
 
-	for (const node of [...valueNode.nodes].reverse()) {
+	for (const node of [...valueNode.nodes].toReversed()) {
 		if (node.type === 'comment') {
 			continue;
 		}
@@ -277,7 +277,7 @@ function fixAfterForAlways (valueNode, newline) {
 function fixAfterForNever (valueNode) {
 	valueNode.after = '';
 
-	for (const node of [...valueNode.nodes].reverse()) {
+	for (const node of [...valueNode.nodes].toReversed()) {
 		if (node.type === 'comment') {
 			continue;
 		}
