@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import configurationError from 'stylelint/lib/utils/configurationError.mjs';
+import { ConfigurationError } from 'stylelint/lib/utils/errors.mjs';
 import isSingleLineString from 'stylelint/lib/utils/isSingleLineString.mjs';
 import isWhitespace from 'stylelint/lib/utils/isWhitespace.mjs';
 import { assertFunction, isNullish } from 'stylelint/lib/utils/validateTypes.mjs';
@@ -144,7 +144,7 @@ export default function whitespaceChecker (targetWhitespace, expectation, messag
 				rejectBefore(messages.rejectedBeforeMultiLine);
 				break;
 			default:
-				throw configurationError(`Unknown expectation "${expectation}"`);
+				throw new ConfigurationError(`Unknown expectation "${expectation}"`);
 		}
 	}
 
@@ -191,7 +191,7 @@ export default function whitespaceChecker (targetWhitespace, expectation, messag
 				rejectAfter(messages.rejectedAfterMultiLine);
 				break;
 			default:
-				throw configurationError(`Unknown expectation "${expectation}"`);
+				throw new ConfigurationError(`Unknown expectation "${expectation}"`);
 		}
 	}
 
