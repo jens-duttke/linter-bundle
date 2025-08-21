@@ -6,7 +6,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.7.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.8.0...HEAD)
+
+## [7.8.0] - 2025-08-21
+
+### Changed
+
+- [eslint] Updated `eslint` from `9.31.0` to `9.33.0`
+- [eslint] Updated `eslint-plugin-jsdoc` from `51.4.1` to `54.1.1`
+- [eslint] Updated `eslint-plugin-n` from `17.21.0` to `17.21.3`
+- [eslint] Updated `typescript-eslint` from `8.38.0` to `8.40.0`
+- [stylelint] Updated `stylelint` from `16.22.0` to `16.23.1`
+- [stylelint] Updated `@stylistic/eslint-plugin` from `5.2.2` to `5.2.3`
+- [stylelint] Add `first-nested` option to `ignore` of [`custom-property-empty-line-before`](https://stylelint.io/user-guide/rules/custom-property-empty-line-before/) rule
+- [stylelint] Make use of new [`block-no-redundant-nested-style-rules`](https://github.com/stylelint/stylelint/blob/main/lib/rules/block-no-redundant-nested-style-rules) rule
+- [stylelint] Make use of new [`media-type-no-deprecated`](https://github.com/stylelint/stylelint/tree/main/lib/rules/media-type-no-deprecated) rule
+- [stylelint] Make use of new [`nesting-selector-no-missing-scoping-root`](https://github.com/stylelint/stylelint/blob/main/lib/rules/nesting-selector-no-missing-scoping-root) rule
+- [stylelint] Make use of new [`no-invalid-position-declaration`](https://github.com/stylelint/stylelint/blob/main/lib/rules/no-invalid-position-declaration) rule
+- [stylelint] Make use of new [`property-no-deprecated`](https://github.com/stylelint/stylelint/blob/main/lib/rules/property-no-deprecated) rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.7.0...v7.8.0)
 
 ## [7.7.0] - 2025-07-25
 
