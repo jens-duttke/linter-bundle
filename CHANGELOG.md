@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [stylelint] Make use of new [`nesting-selector-no-missing-scoping-root`](https://github.com/stylelint/stylelint/blob/main/lib/rules/nesting-selector-no-missing-scoping-root) rule
 - [stylelint] Make use of new [`no-invalid-position-declaration`](https://github.com/stylelint/stylelint/blob/main/lib/rules/no-invalid-position-declaration) rule
 - [stylelint] Make use of new [`property-no-deprecated`](https://github.com/stylelint/stylelint/blob/main/lib/rules/property-no-deprecated) rule
+- [audit] Updated `improved-yarn-audit` from `3.0.3` to `3.0.4`
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.7.0...v7.8.0)
 
