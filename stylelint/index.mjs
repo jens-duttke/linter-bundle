@@ -255,6 +255,7 @@ export default {
 			'font-face': ['font-family', 'font-style', 'font-weight', 'src']
 		}],
 		'block-no-empty': true,
+		'block-no-redundant-nested-style-rules': true,
 		'color-function-alias-notation': 'without-alpha',
 		'color-function-notation': [
 			'modern', {
@@ -282,7 +283,10 @@ export default {
 		'custom-property-empty-line-before': [
 			'always',
 			{
-				ignore: ['after-custom-property']
+				ignore: [
+					'first-nested',
+					'after-custom-property'
+				]
 			}
 		],
 		'custom-property-no-missing-var-function': true,
@@ -358,19 +362,23 @@ export default {
 		'media-feature-name-value-no-unknown': true,
 		'media-feature-range-notation': 'prefix',
 		'media-query-no-invalid': true,
+		'media-type-no-deprecated': true,
 		'named-grid-areas-no-invalid': true,
+		'nesting-selector-no-missing-scoping-root': true,
 		'no-descending-specificity': null, // doesn't work in many cases (e.g. while using the SCSS :global()-pseudo-class)
 		'no-duplicate-at-import-rules': true,
 		'no-duplicate-selectors': true,
 		'no-empty-source': true,
 		'no-invalid-double-slash-comments': true,
 		'no-invalid-position-at-import-rule': true,
+		'no-invalid-position-declaration': true,
 		'no-irregular-whitespace': true,
 		'no-unknown-animations': true,
 		'no-unknown-custom-media': true,
 		'no-unknown-custom-properties': null, // @todo Activate in 2025 as Firefox currently does not support "@property" and there is no way to specify which custom properties are available
 		'number-max-precision': 5,
 		'property-allowed-list': null,
+		'property-no-deprecated': true,
 		'property-disallowed-list': [
 			'font', // Shorthand property is to complex
 			'grid-gap' // @deprecated Use gap.
