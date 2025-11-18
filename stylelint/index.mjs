@@ -383,7 +383,7 @@ export default {
 			'font', // Shorthand property is to complex
 			'grid-gap' // @deprecated Use gap.
 		],
-		'property-no-unknown': true,
+		'property-no-unknown': null, // Covered by scss/property-no-unknown
 		'property-no-vendor-prefix': true,
 		'rule-selector-property-disallowed-list': null,
 		'rule-empty-line-before': [
@@ -393,6 +393,7 @@ export default {
 				ignore: ['after-comment']
 			}
 		],
+		'rule-nesting-at-rule-required-list': null,
 		'selector-anb-no-unmatchable': true,
 		'selector-attribute-name-disallowed-list': null,
 		'selector-attribute-operator-allowed-list': null,
@@ -440,7 +441,8 @@ export default {
 		'value-keyword-case': [
 			'lower',
 			{
-				camelCaseSvgKeywords: true
+				camelCaseSvgKeywords: true,
+				ignoreProperties: ['composes']
 			}
 		],
 		'value-no-vendor-prefix': true,
@@ -1134,7 +1136,7 @@ export default {
 		'scss/operator-no-unspaced': true,
 		'scss/partial-no-import': null,
 		'scss/percent-placeholder-pattern': null,
-		'scss/property-no-unknown': true,
+		'scss/property-no-unknown': [true, { ignoreProperties: ['composes'] }],
 		'scss/selector-nest-combinators': null, // Sometimes nesting does not make sense
 		'scss/selector-no-redundant-nesting-selector': true,
 		'scss/selector-no-union-class-name': null,

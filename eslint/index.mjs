@@ -411,6 +411,7 @@ export default [
 			'prefer-rest-params': 'error',
 			'prefer-spread': 'error',
 			'prefer-template': 'error',
+			'preserve-caught-error': 'error',
 			'quote-props': ['error', 'consistent-as-needed'],
 			'quotes': 'off', // Covered by @stylistic/quotes
 			'radix': 'error',
@@ -881,7 +882,7 @@ export default [
 			'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
 			'import/default': 'error',
 			'import/dynamic-import-chunkname': ['error', {
-				webpackChunknameFormat: '[0-9a-zA-Z-_/.+]+'
+				webpackChunknameFormat: '([0-9a-zA-Z-_/.+]*(\\[(?:index|request)\\])?)+'
 			}],
 			'import/export': 'error',
 			'import/exports-last': 'off', // Exports should be declared first; helper functions last
@@ -1054,12 +1055,14 @@ export default [
 			'unicorn/no-array-method-this-argument': 'error',
 			'unicorn/no-array-reduce': ['error', { allowSimpleOperations: true }],
 			'unicorn/no-array-reverse': 'error',
+			'unicorn/no-array-sort': 'error',
 			'unicorn/no-await-expression-member': 'error',
 			'unicorn/no-console-spaces': 'error',
 			'unicorn/no-document-cookie': 'error',
 			'unicorn/no-empty-file': 'error',
 			'unicorn/no-for-loop': 'off', // @typescript-eslint/prefer-for-of
 			'unicorn/no-hex-escape': 'error',
+			'unicorn/no-immediate-mutation': 'error',
 			'unicorn/no-instanceof-builtins': 'error',
 			'unicorn/no-invalid-fetch-options': 'error',
 			'unicorn/no-invalid-remove-event-listener': 'error',
@@ -1087,6 +1090,7 @@ export default [
 			'unicorn/no-unreadable-array-destructuring': 'error',
 			'unicorn/no-unreadable-iife': 'error',
 			'unicorn/no-unused-properties': 'error',
+			'unicorn/no-useless-collection-argument': 'error',
 			'unicorn/no-useless-error-capture-stack-trace': 'error',
 			'unicorn/no-useless-fallback-in-spread': 'error',
 			'unicorn/no-useless-promise-resolve-reject': 'error',
@@ -1105,7 +1109,9 @@ export default [
 			'unicorn/prefer-array-some': 'error',
 			'unicorn/prefer-at': 'off', // @todo Disabled for now, since `at` is not supported by TypeScript type definitions yet.
 			'unicorn/prefer-blob-reading-methods': 'off', // @todo Disabled for now, since it's only supported in Safari 14+. Activate in 2025
+			'unicorn/prefer-bigint-literals': 'error',
 			'unicorn/prefer-class-fields': 'error',
+			'unicorn/prefer-classlist-toggle': 'error',
 			'unicorn/prefer-code-point': 'error',
 			'unicorn/prefer-date-now': 'error',
 			'unicorn/prefer-default-parameters': 'error',
@@ -1134,6 +1140,7 @@ export default [
 			'unicorn/prefer-prototype-methods': 'error',
 			'unicorn/prefer-query-selector': 'off', // document.getElementById() is much faster
 			'unicorn/prefer-reflect-apply': 'error',
+			'unicorn/prefer-response-static-json': 'error',
 			'unicorn/prefer-set-has': 'error',
 			'unicorn/prefer-set-size': 'error',
 			'unicorn/prefer-single-call': 'error',
@@ -1152,6 +1159,7 @@ export default [
 			'unicorn/prevent-abbreviations': ['error', { ignore: ['args', 'i', 'j', 'i18n', /[Rr]ef/u, /[Pp]arams/u, /[Pp]rops/u] }],
 			'unicorn/relative-url-style': 'error',
 			'unicorn/require-array-join-separator': 'error',
+			'unicorn/require-module-attributes': 'error',
 			'unicorn/require-module-specifiers': 'error',
 			'unicorn/require-number-to-fixed-digits-argument': 'error',
 			'unicorn/require-post-message-target-origin': 'off', // False-positive with Workers which don't support a `targetOrigin`
