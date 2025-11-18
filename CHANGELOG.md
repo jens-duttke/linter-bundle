@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.8.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.9.0...HEAD)
 
 ## [7.9.0] - 2025-11-18
 
@@ -51,6 +51,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [eslint] Change `import/dynamic-import-chunkname` pattern to `"([0-9a-zA-Z-_/.+]*(\\[(?:index|request)\\])?)+"`
 - [stylelint] Ignore property casing for `composes` in `value-keyword-case`rule
 - [stylelint] Add `composes` to the ignored property list of the `scss/property-no-unknown` rule
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.8.0...v7.9.0)
 
 ## [7.8.0] - 2025-08-21
 
