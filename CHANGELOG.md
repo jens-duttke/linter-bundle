@@ -8,6 +8,50 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.8.0...HEAD)
 
+## [7.9.0] - 2025-11-18
+
+- [eslint] Updated `@stylistic/eslint-plugin` from `5.2.3` to `5.6.0`
+- [eslint] Updated `eslint` from `9.33.0` to `9.39.1`
+- [eslint] Updated `eslint-formatter-unix` from `8.40.0` to `9.0.1`
+- [eslint] Updated `eslint-plugin-jest` from `29.0.1` to `29.1.0`
+- [eslint] Updated `eslint-plugin-jsdoc` from `54.1.1` to `61.2.1`
+- [eslint] Updated `eslint-plugin-n` from `17.21.3` to `17.23.1`
+- [eslint] Updated `eslint-plugin-react-hooks` from `5.2.0` to `7.0.1`
+- [eslint] Updated `eslint-plugin-unicorn` from `60.0.0` to `62.0.0`
+- [eslint] Updated `globals` from `16.3.0` to `16.5.0`
+- [eslint] Updated `typescript-eslint` from `8.40.0` to `8.47.0`
+- [stylelint] Updated `stylelint` from `16.23.1` to `16.25.0`
+- [eslint] Make use of new [`preserve-caught-error`](https://github.com/eslint/eslint/blob/main/docs/src/rules/preserve-caught-error.md) rule
+- [eslint] Make use of new [`jsdoc/require-throws-description`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-throws-description.md) rule
+- [eslint] Make use of new [`jsdoc/require-throws-type`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-throws-type.md) rule
+- [eslint] Make use of new [`jsdoc/require-yields-description`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-yields-description.md) rule
+- [eslint] Make use of new [`jsdoc/require-yields-type`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-yields-type.md) rule
+- [eslint] Make use of new [`jsdoc/ts-method-signature-style`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/ts-method-signature-style.md) rule with value `"property"`
+- [eslint] Make use of new [`jsdoc/ts-no-empty-object-type`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/ts-no-empty-object-type.md) rule
+- [eslint] Make use of new [`jsdoc/ts-no-unnecessary-template-expression`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/ts-no-unnecessary-template-expression.md) rule
+- [eslint] Make use of new [`jsdoc/ts-prefer-function-type`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/ts-prefer-function-type.md) rule
+- [eslint] Added but disabled [`jsdoc/escape-inline-tags`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/escape-inline-tags.md) rule
+- [eslint] Added but disabled [`jsdoc/prefer-import-tag`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/prefer-import-tag.md) rule
+- [eslint] Added but disabled [`jsdoc/reject-any-type`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/reject-any-type.md) rule
+- [eslint] Added but disabled [`jsdoc/reject-function-type`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/reject-function-type.md) rule
+- [eslint] Added but disabled [`jsdoc/require-next-description`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-next-description.md) rule
+- [eslint] Added but disabled [`jsdoc/require-next-type`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-next-type.md) rule
+- [eslint] Added but disabled [`jsdoc/required-tags`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/required-tags.md) rule
+- [eslint] Added but disabled [`jsdoc/require-template-description`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-template-description.md) rule
+- [eslint] Added but disabled [`jsdoc/type-formatting`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/type-formatting.md) rule
+- [eslint] Make use of new [`unicorn/prefer-bigint-literals`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-bigint-literals.md) rule
+- [eslint] Make use of new [`unicorn/prefer-classlist-toggle`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-classlist-toggle.md) rule
+- [eslint] Make use of new [`unicorn/require-module-attributes`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/require-module-attributes.md) rule
+- [eslint] Make use of new [`unicorn/no-array-sort`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-array-sort.md) rule
+- [eslint] Make use of new [`unicorn/no-immediate-mutation`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/30f08471987e620755963ef2809ecc3dbcdb21d5/docs/rules/no-immediate-mutation.md) rule
+- [eslint] Make use of new [`unicorn/no-useless-collection-argument`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/30f08471987e620755963ef2809ecc3dbcdb21d5/docs/rules/no-useless-collection-argument.md) rule
+- [eslint] Make use of new [`unicorn/prefer-response-static-json`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/30f08471987e620755963ef2809ecc3dbcdb21d5/docs/rules/prefer-response-static-json.md) rule
+- [stylelint] Added but disabled [`rule-nesting-at-rule-required-list`](https://github.com/stylelint/stylelint/tree/main/lib/rules/rule-nesting-at-rule-required-list) rule
+- [eslint] Activate [multithread linting](https://eslint.org/blog/2025/08/multithread-linting/) using `--concurrency auto`
+- [eslint] Change `import/dynamic-import-chunkname` pattern to `"([0-9a-zA-Z-_/.+]*(\\[(?:index|request)\\])?)+"`
+- [stylelint] Ignore property casing for `composes` in `value-keyword-case`rule
+- [stylelint] Add `composes` to the ignored property list of the `scss/property-no-unknown` rule
+
 ## [7.8.0] - 2025-08-21
 
 ### Changed
