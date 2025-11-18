@@ -71,7 +71,7 @@ If these plugins are maintained again, the plugins will also be used again.
 
 ## Install
 
-Ensure you are using atleast Node.js version 20.9.0/21.1.0.
+Ensure you are using atleast Node.js version 20.12.0+, 22.0.0+, or 24+.
 
 ```sh
 npm install linter-bundle --save-dev
@@ -580,7 +580,7 @@ Argument | Description | Example
 Will execute:
 
 ```sh
-eslint "./**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}" --format unix
+eslint "./**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}" --concurrency auto --format unix
 ```
 
 Additionally, the environment variable `TIMING` is set to `10`, to show timing information about the 10 slowest rules.
