@@ -202,6 +202,7 @@ async function runESLintTask (taskName, taskConfig) {
 			`"${path.join(path.dirname(require.resolve('eslint')), '../bin/eslint.js')}"`,
 			includes,
 			newTaskConfig.exclude?.map((exclude) => `--ignore-pattern ${exclude}`).join(' '),
+			'--concurrency auto',
 			'--format unix'
 		].filter((argument) => Boolean(argument)).join(' '),
 		taskConfig: newTaskConfig,
