@@ -68,7 +68,7 @@ const rule = (primary, secondaryOptions) => (root, result) => {
 		}
 	}
 
-	skippedSubStrings = skippedSubStrings.sort((a, b) => a[0] - b[0]);
+	skippedSubStrings = skippedSubStrings.toSorted((a, b) => a[0] - b[0]);
 
 	// Check first line
 	checkNewline({ endIndex: 0 });

@@ -164,11 +164,11 @@ const rule = (primary, _secondaryOptions) => (root, result) => {
 
 			styleSearch({ source: rawAfterNode, target: ';' }, (match) => {
 				const index =
-						getOffsetByNode(node) +
-						node.toString().length -
-						1 -
-						rawAfterNode.length +
-						match.startIndex;
+					getOffsetByNode(node) +
+					node.toString().length -
+					1 -
+					rawAfterNode.length +
+					match.startIndex;
 
 				report({
 					message: messages.rejected,
@@ -202,7 +202,7 @@ const rule = (primary, _secondaryOptions) => (root, result) => {
 				}
 
 				const index =
-						getOffsetByNode(node) +
+					getOffsetByNode(node) +
 						node.toString().length -
 						rawOwnSemicolon.length +
 						match.startIndex;

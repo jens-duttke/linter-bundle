@@ -65,7 +65,7 @@ const rule = (primary, _secondaryOptions) => {
 
 		if (fixData) {
 			for (const [decl, commaIndices] of fixData.entries()) {
-				for (const index of commaIndices.sort((a, b) => b - a)) {
+				for (const index of commaIndices.toSorted((a, b) => b - a)) {
 					const value = getDeclarationValue(decl);
 					const valueIndex = index - declarationValueIndex(decl);
 					let beforeValue = value.slice(0, valueIndex);

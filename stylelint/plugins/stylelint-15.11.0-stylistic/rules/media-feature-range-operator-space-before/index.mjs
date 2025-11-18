@@ -45,7 +45,7 @@ const rule = (primary, _secondaryOptions) => {
 			if (fixOperatorIndices.length > 0) {
 				let parameters = atRule.raws.params ? atRule.raws.params.raw : atRule.params;
 
-				for (const index of fixOperatorIndices.sort((a, b) => b - a)) {
+				for (const index of fixOperatorIndices.toSorted((a, b) => b - a)) {
 					const beforeOperator = parameters.slice(0, index);
 					const afterOperator = parameters.slice(index);
 

@@ -92,7 +92,7 @@ const rule = (primary, _secondaryOptions, context) => {
 			if (fixIndices.length > 0) {
 				let fixedSelector = selector;
 
-				for (const index of fixIndices.sort((a, b) => b - a)) {
+				for (const index of fixIndices.toSorted((a, b) => b - a)) {
 					const beforeSelector = fixedSelector.slice(0, index);
 					let afterSelector = fixedSelector.slice(index);
 

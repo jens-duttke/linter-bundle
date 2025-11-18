@@ -47,15 +47,13 @@ const rule = (primary, _secondaryOptions) => {
 				if (between == null) { throw new Error('`between` must be present'); }
 
 				if (primary.startsWith('always')) {
-					decl.raws.between =
-							between.slice(0, colonIndex) + between.slice(colonIndex).replace(/^:\s*/u, ': ');
+					decl.raws.between = between.slice(0, colonIndex) + between.slice(colonIndex).replace(/^:\s*/u, ': ');
 
 					return true;
 				}
 
 				if (primary === 'never') {
-					decl.raws.between =
-							between.slice(0, colonIndex) + between.slice(colonIndex).replace(/^:\s*/u, ':');
+					decl.raws.between = between.slice(0, colonIndex) + between.slice(colonIndex).replace(/^:\s*/u, ':');
 
 					return true;
 				}

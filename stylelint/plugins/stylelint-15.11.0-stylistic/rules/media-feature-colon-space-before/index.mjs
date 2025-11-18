@@ -59,7 +59,7 @@ const rule = (primary, _secondaryOptions) => {
 			for (const [atRule, colonIndices] of fixData.entries()) {
 				let parameters = atRule.raws.params ? atRule.raws.params.raw : atRule.params;
 
-				for (const index of colonIndices.sort((a, b) => b - a)) {
+				for (const index of colonIndices.toSorted((a, b) => b - a)) {
 					const beforeColon = parameters.slice(0, index);
 					const afterColon = parameters.slice(index);
 

@@ -58,7 +58,7 @@ const rule = (primary, _secondaryOptions) => {
 			for (const [ruleNode, commaIndices] of fixData.entries()) {
 				let selector = ruleNode.raws.selector ? ruleNode.raws.selector.raw : ruleNode.selector;
 
-				for (const index of commaIndices.sort((a, b) => b - a)) {
+				for (const index of commaIndices.toSorted((a, b) => b - a)) {
 					const beforeSelector = selector.slice(0, index + 1);
 					let afterSelector = selector.slice(index + 1);
 

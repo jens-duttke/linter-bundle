@@ -63,7 +63,7 @@ const rule = (primary, _secondaryOptions, context) => {
 			for (const [atRule, commaIndices] of fixData.entries()) {
 				let parameters = atRule.raws.params ? atRule.raws.params.raw : atRule.params;
 
-				for (const index of commaIndices.sort((a, b) => b - a)) {
+				for (const index of commaIndices.toSorted((a, b) => b - a)) {
 					const beforeComma = parameters.slice(0, index + 1);
 					const afterComma = parameters.slice(index + 1);
 

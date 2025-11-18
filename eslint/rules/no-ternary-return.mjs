@@ -19,7 +19,7 @@ export default {
 	create (context) {
 		return {
 			ReturnStatement (node) {
-				if (node.argument && node.argument.type === 'ConditionalExpression') {
+				if (node.argument?.type === 'ConditionalExpression') {
 					context.report({
 						node,
 						message: 'Avoid using ternary expressions as return values; use an if-else statement instead.',

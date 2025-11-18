@@ -257,8 +257,8 @@ const rule = (primary, secondaryOptions) => (root, result) => {
 
 			if (lastEOL !== rootNode.raws.after.length - 1) {
 				rootNode.raws.after =
-						rootNode.raws.after.slice(0, lastEOL + 1) +
-						fixString(rootNode.raws.after.slice(lastEOL + 1));
+					rootNode.raws.after.slice(0, lastEOL + 1) +
+					fixString(rootNode.raws.after.slice(lastEOL + 1));
 			}
 		}
 	}

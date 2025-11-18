@@ -59,8 +59,7 @@ const rule = (primary, _secondaryOptions) => (root, result) => {
 					};
 				}
 
-				const rawSpacesOperator =
-						attributeNode.raws.spaces?.operator;
+				const rawSpacesOperator = attributeNode.raws.spaces?.operator;
 				const rawOperatorAfter = rawSpacesOperator?.after;
 
 				if (rawOperatorAfter) {
