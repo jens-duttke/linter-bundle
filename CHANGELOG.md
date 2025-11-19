@@ -6,7 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.9.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.10.0...HEAD)
+
+## [7.10.0] - 2025-11-19
+
+- [stylelint] Added configurable `allowCombinators` option to the `plugin/selector-tag-no-without-class` rule and enabled `>`, `+`, `~` combinators for CSS Modules to avoid false positives
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.9.0...v7.10.0)
+
 
 ## [7.9.0] - 2025-11-18
 
@@ -1659,7 +1666,7 @@ Beside these changes:
 ### Changed
 
 - [eslint] Updated `@typescript-eslint` from v4.24.0 to v4.25.0
-- [eslint] Updated `eslint-plugin-jsdoc` from v34.8.2 to v35.0.0  
+- [eslint] Updated `eslint-plugin-jsdoc` from v34.8.2 to v35.0.0
 - [eslint] Activated `ignoreNonDOM` option for [`jsx-a11y/no-autofocus`](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/no-autofocus.md) rule
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v1.20.0...v1.21.0)

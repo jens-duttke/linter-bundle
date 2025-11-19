@@ -22,26 +22,121 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
 });
 
 // @ts-expect-error -- Parameter 'primaryOption' implicitly has an 'any' type.
-function rule (primaryOption) {
+function rule (primaryOption, secondaryOptions = {}) {
 	// @ts-expect-error -- Parameter 'root' implicitly has an 'any' type. / Parameter 'result' implicitly has an 'any' type.
 	return (root, result) => {
-		const validOptions = stylelint.utils.validateOptions(result, ruleName, {
-			actual: primaryOption,
-			possible: [(string) => (typeof string === 'string' || Object.prototype.toString.call(string) === '[object String]')]
-		});
+		const validOptions = stylelint.utils.validateOptions(
+			result,
+			ruleName,
+			{
+				actual: primaryOption,
+				possible: [(string) => (typeof string === 'string' || Object.prototype.toString.call(string) === '[object String]')]
+			},
+			{
+				actual: secondaryOptions,
+				possible: {
+					allowCombinators: [' ', '+', '>', '~', '||']
+				},
+				optional: true
+			}
+		);
 
 		if (!validOptions) {
 			return;
 		}
 
+		/** @type {{ allowCombinators?: string | string[] }} */
+		const typedSecondaryOptions = secondaryOptions;
+		const allowCombinatorsOption = typedSecondaryOptions.allowCombinators;
+		const allowCombinatorValues = allowCombinatorsOption === undefined ? [] : (Array.isArray(allowCombinatorsOption) ? allowCombinatorsOption : [allowCombinatorsOption]);
+		/** @type {string[]} */
+		const normalizedAllowedCombinators = [];
+		for (const combinator of allowCombinatorValues) {
+			if (combinator.length === 0) {
+				continue;
+			}
+
+			normalizedAllowedCombinators.push(normalizeCombinatorValue(combinator));
+		}
+
+		const allowedCombinators = new Set(normalizedAllowedCombinators);
+
+		/**
+		 * @param {string | undefined} value
+		 * @returns {string}
+		 */
+		function normalizeCombinatorValue (value) {
+			if (typeof value !== 'string') {
+				return '';
+			}
+
+			return value.trim() === '' ? ' ' : value.trim();
+		}
+
+		/**
+		 * @param {import('postcss-selector-parser').Selector} selectorNode
+		 */
+		function splitSelectorIntoSegments (selectorNode) {
+			/** @type {{ nodes: import('postcss-selector-parser').Node[], leadingCombinator?: string }[]} */
+			const segments = [];
+			/** @type {import('postcss-selector-parser').Node[]} */
+			let currentSegment = [];
+			/** @type {string | undefined} */
+			let leadingCombinator;
+
+			function pushCurrentSegment () {
+				if (currentSegment.length === 0) {
+					return;
+				}
+
+				const segmentNodes = currentSegment;
+				currentSegment = [];
+
+				/** @type {{ nodes: import('postcss-selector-parser').Node[], leadingCombinator?: string }} */
+				const segment = { nodes: segmentNodes };
+
+				if (leadingCombinator !== undefined) {
+					segment.leadingCombinator = leadingCombinator;
+					leadingCombinator = undefined;
+				}
+
+				segments.push(segment);
+			}
+
+			selectorNode.each((/** @type {import('postcss-selector-parser').Node} */ child) => {
+				if (child.type === 'combinator') {
+					pushCurrentSegment();
+					leadingCombinator = normalizeCombinatorValue(child.value);
+
+					return;
+				}
+
+				currentSegment.push(child);
+			});
+
+			pushCurrentSegment();
+
+			return segments;
+		}
+
+		/**
+		 * @param {string | undefined} leadingCombinator
+		 */
+		function shouldIgnoreSegment (leadingCombinator) {
+			if (!leadingCombinator || allowedCombinators.size === 0) {
+				return false;
+			}
+
+			return allowedCombinators.has(leadingCombinator);
+		}
+
 		// @ts-expect-error -- Parameter 'selectorNode' implicitly has an 'any' type. / Parameter 'ruleNode' implicitly has an 'any' type.
 		function checkSelector (selectorNode, ruleNode) {
-			// @ts-expect-error -- Parameter 'node' implicitly has an 'any' type.
-			const combinedSegments = selectorNode.split((node) => (node.type === 'combinator'));
+			const segments = splitSelectorIntoSegments(selectorNode);
 
-			for (const segment of combinedSegments) {
+			for (const segment of segments) {
 				let unqualifiedTagNode;
-				for (const node of segment) {
+				for (const node of segment.nodes) {
 					if (node.type === 'tag' && matchesStringOrRegExp(node.value, primaryOption)) {
 						unqualifiedTagNode = node;
 					}
@@ -50,13 +145,13 @@ function rule (primaryOption) {
 					}
 				}
 
-				if (unqualifiedTagNode) {
+				if (unqualifiedTagNode && !shouldIgnoreSegment(segment.leadingCombinator)) {
 					stylelint.utils.report({
 						ruleName,
 						result,
 						node: ruleNode,
 						message: messages.unexpected(unqualifiedTagNode.value),
-						word: unqualifiedTagNode
+						word: unqualifiedTagNode.value
 					});
 				}
 			}

@@ -23,6 +23,7 @@ async function runTest () {
 	const folder = fs.mkdtempSync(temporaryPath);
 
 	const tempFilePath = path.join(folder, 'tmp.scss');
+	const tempModuleFilePath = path.join(folder, 'tmp.module.scss');
 
 	fs.writeFileSync(tempFilePath, `// Some test code
 $box-shadow-color: #fff; // stylelint-disable-line color-no-hex -- The initial value must be a hex-color
@@ -62,24 +63,58 @@ $box-shadow-size: 2px;
 }
 `, 'utf8');
 
-	const result = await runProcess(`stylelint -f json "${tempFilePath}"`);
+	fs.writeFileSync(tempModuleFilePath, `// Some test code for CSS modules
+.img {
+	> a,
+	+ a,
+	~ a {
+		font-weight: 700;
+	}
+
+	span { // stylelint-disable-line plugin/selector-tag-no-without-class -- Ensure this throws an error which can be suppressed here.
+		font-weight: 400;
+	}
+}
+
+div > span { // stylelint-disable-line plugin/selector-tag-no-without-class -- Ensure this throws an error which can be suppressed here.
+	font-weight: 300;
+}
+`, 'utf8');
+
+	const result = await runProcess(`stylelint -f json "${tempFilePath}" "${tempModuleFilePath}"`);
 
 	fs.unlinkSync(tempFilePath);
+	fs.unlinkSync(tempModuleFilePath);
 
 	try {
 		/**
-		 * @type {import('stylelint').LintResult}
+		 * @type {import('stylelint').LintResult[]}
 		 */
-		const { invalidOptionWarnings, warnings } = JSON.parse(result.stderr)[0];
+		const lintResults = JSON.parse(result.stderr);
 
-		if (warnings.length > 0) {
-			process.stderr.write(`Warnings:\n\n- ${warnings.map(({ text, line }) => `[line ${line}] ${text}`).join('\n- ')}\n`);
+		const warningMessages = [];
+		const optionWarningMessages = [];
+
+		for (const lintResult of lintResults) {
+			const { invalidOptionWarnings, source, warnings } = lintResult;
+
+			for (const warning of warnings) {
+				warningMessages.push(`[${(source ?? 'unknown')} line ${warning.line}] ${warning.text}`);
+			}
+
+			for (const invalidOptionWarning of invalidOptionWarnings) {
+				optionWarningMessages.push(invalidOptionWarning.text);
+			}
+		}
+
+		if (warningMessages.length > 0) {
+			process.stderr.write(`Warnings:\n\n- ${warningMessages.join('\n- ')}\n`);
 
 			return false;
 		}
 
-		if (invalidOptionWarnings.length > 0) {
-			process.stderr.write(`Invalid stylelint configuration:\n\n- ${invalidOptionWarnings.map(({ text }) => text).join('\n- ')}\n`);
+		if (optionWarningMessages.length > 0) {
+			process.stderr.write(`Invalid stylelint configuration:\n\n- ${optionWarningMessages.join('\n- ')}\n`);
 
 			return false;
 		}
