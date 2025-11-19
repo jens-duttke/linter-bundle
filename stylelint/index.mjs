@@ -611,6 +611,7 @@ export default {
 					noEmptyLineBetween: true,
 					properties: [
 						'display',
+						'content-visibility',
 						'visibility',
 
 						'appearance',
@@ -829,6 +830,7 @@ export default {
 					properties: [
 						'transform',
 						'transform-origin',
+						'transform-box',
 						'transform-style',
 						'backface-visibility',
 						'perspective',
@@ -844,7 +846,8 @@ export default {
 						'transition-property',
 						'transition-duration',
 						'transition-timing-function',
-						'transition-delay'
+						'transition-delay',
+						'transition-behavior'
 					]
 				},
 				{
