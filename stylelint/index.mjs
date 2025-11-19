@@ -577,14 +577,15 @@ export default {
 		'order/properties-order': [
 			[
 				{
-					groupName: 'Reset',
+					groupName: 'Reset & Defaults',
 					emptyLineBefore: 'always',
 					noEmptyLineBetween: true,
 					properties: [
-						'all'
+						'all',
+						'box-sizing',
+						'interpolate-size'
 					]
 				},
-
 				{
 					groupName: 'Performance Optimizations',
 					emptyLineBefore: 'always',
@@ -636,9 +637,7 @@ export default {
 						'inset-block-end',
 						'inset-inline',
 						'inset-inline-start',
-						'inset-inline-end',
-
-						'box-sizing'
+						'inset-inline-end'
 					]
 				},
 				{
