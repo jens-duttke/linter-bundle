@@ -3,6 +3,7 @@
  */
 
 import { createRequire } from 'node:module';
+import { isMainThread } from 'node:worker_threads';
 
 import jestPlugin from 'eslint-plugin-jest';
 import globals from 'globals';
@@ -165,12 +166,16 @@ async function getJestVersion () {
 		const jest = ('default' in jestModule ? jestModule.default : jestModule);
 		const version = jest.getVersion().split('.')[0];
 
-		process.stdout.write(`Detected Jest version: ${version}\n\n`);
+		if (isMainThread) {
+			process.stdout.write(`Detected Jest version: ${version}\n\n`);
+		}
 
 		return version;
 	}
 	catch {
-		process.stderr.write('No Jest version detected\n\n');
+		if (isMainThread) {
+			process.stderr.write('No Jest version detected\n\n');
+		}
 
 		return 'detect';
 	}
