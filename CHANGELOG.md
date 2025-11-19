@@ -6,7 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.10.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.11.0...HEAD)
+
+## [7.11.0] - 2025-11-19
+
+- [eslint] Update `eslint-plugin-jsdoc`from `61.2.1` to `61.3.0`
+- [eslint/jest] Report Jest version detection output only once (instead of once per thread)
+- [stylelint] Added "transform-box", "transition-behavior" and "interpolate-size" to `order/properties-order` rule, and moved "content-visibility" behind "display", and "box-sizing" behind "all"
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.10.0...v7.11.0)
 
 ## [7.10.0] - 2025-11-19
 
