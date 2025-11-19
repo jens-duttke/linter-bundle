@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - [eslint] Updated `@stylistic/eslint-plugin` from `5.6.0` to `5.6.1`
 - [markdown] Updated `markdownlint-cli` from `0.45.0` to `0.46.0``
+- [markdown] Added but disabled [`MD060 - Table column style`](https://github.com/DavidAnson/markdownlint/blob/main/doc/md060.md) rule
 - [stylelint] Added configurable `allowCombinators` option to the `plugin/selector-tag-no-without-class` rule and enabled `>`, `+`, `~` combinators for CSS Modules to avoid false positives
 
 [Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.9.0...v7.10.0)
