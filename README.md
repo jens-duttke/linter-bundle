@@ -113,8 +113,8 @@ export default [
   ...reactConfig,
   ...storybookConfig,
   ...typeDeclarationsConfig,
-  ...workerConfig
-  ...jestConfig,
+  ...workerConfig,
+  ...jestConfig
 ]
 ```
 
