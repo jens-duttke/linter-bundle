@@ -685,8 +685,8 @@ In order to fix the code according to the ESLint/stylelint rules when saving, th
 ```json
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.stylelint": true
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
   }
 }
 ```
