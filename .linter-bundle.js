@@ -16,7 +16,7 @@ export default {
 				basePath: '.',
 				allowed: [
 					'.git/**',
-					'.github/FUNDING.yml',
+					'.github/**',
 					'.vscode/settings.json',
 					`eslint/rules/${snippets.kebabCase}.{js,mjs,md}`,
 					`eslint/rules/helper/${snippets.kebabCase}.{js,mjs,md}`,
