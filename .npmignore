@@ -14,5 +14,6 @@ npm-debug.log*
 stylelint.config.js
 test-stylelint.js
 tsconfig.json
+UPDATE_PROCESS.md
 vscode-eslint-1.png
 vscode-eslint-2.png
