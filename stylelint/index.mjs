@@ -16,7 +16,7 @@ export default {
 		'stylelint-declaration-block-no-ignored-properties',
 		'stylelint-order',
 		'stylelint-scss',
-		'stylelint-use-logical-spec',
+		'stylelint-use-logical',
 		'stylelint-high-performance-animation',
 		await import('./plugins/stylelint-selector-no-empty.js'),
 		await import('./plugins/stylelint-selector-tag-no-without-class.js'),
@@ -329,6 +329,7 @@ export default {
 		'declaration-property-value-disallowed-list': null,
 		'declaration-property-value-keyword-no-deprecated': true,
 		'declaration-property-value-no-unknown': true,
+		'display-notation': null, // Not yet enforcing short vs. long display notation (e.g. "block flow" vs. "block")
 		'font-family-name-quotes': 'always-where-recommended',
 		'font-family-no-duplicate-names': true,
 		'font-family-no-missing-generic-family-keyword': true,
@@ -1139,6 +1140,7 @@ export default {
 		'scss/partial-no-import': null,
 		'scss/percent-placeholder-pattern': null,
 		'scss/property-no-unknown': [true, { ignoreProperties: ['composes'] }],
+		'scss/selector-class-pattern': null, // Already handled by core selector-class-pattern rule
 		'scss/selector-nest-combinators': null, // Sometimes nesting does not make sense
 		'scss/selector-no-redundant-nesting-selector': true,
 		'scss/selector-no-union-class-name': null,
@@ -1158,11 +1160,11 @@ export default {
 		'plugin/selector-tag-no-without-class': null,
 
 		/**
-		 * stylelint-use-logical-spec
+		 * stylelint-use-logical
 		 *
-		 * @see https://github.com/Jordan-Hall/stylelint-use-logical-spec
+		 * @see https://github.com/csstools/stylelint-use-logical
 		 */
-		'liberty/use-logical-spec': ['always', { except: [
+		'csstools/use-logical': ['always', { except: [
 			'float',
 
 			'inset',

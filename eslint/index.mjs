@@ -465,6 +465,7 @@ export default [
 					ignoredNodes: ['ConditionalExpression']
 				}
 			],
+			'@stylistic/jsx-props-style': 'off', // Experimental feature
 			'@stylistic/key-spacing': 'error',
 			'@stylistic/member-delimiter-style': ['error', { multiline: { delimiter: 'semi', requireLast: true }, singleline: { delimiter: 'semi', requireLast: true } }],
 			'@stylistic/no-extra-semi': 'error',
@@ -795,6 +796,7 @@ export default [
 			'@typescript-eslint/no-unsafe-unary-minus': 'error',
 			'@typescript-eslint/no-unused-expressions': 'error',
 			'@typescript-eslint/no-unsafe-type-assertion': 'error',
+			'@typescript-eslint/no-unused-private-class-members': 'error',
 			'@typescript-eslint/no-unused-vars': ['error', {
 				args: 'all',
 				argsIgnorePattern: '^_',
@@ -806,6 +808,7 @@ export default [
 			}],
 			'@typescript-eslint/no-use-before-define': ['error', { functions: false }],
 			'@typescript-eslint/no-useless-constructor': 'error',
+			'@typescript-eslint/no-useless-default-assignment': 'error',
 			'@typescript-eslint/no-useless-empty-export': 'error',
 			'@typescript-eslint/no-var-requires': 'error',
 			'@typescript-eslint/non-nullable-type-assertion-style': 'off', // Conflicts with `no-non-null-assertion`, which we prefer
@@ -841,6 +844,7 @@ export default [
 			'@typescript-eslint/sort-type-constituents': 'off', // Types should be sorted and grouped by priority and their meaning, not alphabetically
 			'@typescript-eslint/sort-type-union-intersection-members': 'off', // Types should be sorted and grouped by priority and their meaning, not alphabetically
 			'@typescript-eslint/strict-boolean-expressions': ['off', { allowNullable: true, allowSafe: true, ignoreRhs: true }], // @todo Doesn't work for specific code, check later after all linter warnings are fixed, maybe at some positions we can use '??'
+			'@typescript-eslint/strict-void-return': 'error',
 			'@typescript-eslint/switch-exhaustiveness-check': ['error', { considerDefaultExhaustiveForUnions: true }],
 			'@typescript-eslint/triple-slash-reference': 'error',
 			'@typescript-eslint/typedef': 'off', // We are using "noImplicitAny" in tsconfig.json instead
@@ -958,6 +962,7 @@ export default [
 
 			/**
 			 * eslint-plugin-eslint-comments
+			 *
 			 * @see https://mysticatea.github.io/eslint-plugin-eslint-comments/
 			 */
 			'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }],
@@ -1047,6 +1052,7 @@ export default [
 					}
 				}
 			}],
+			'unicorn/isolated-functions': 'error',
 			'unicorn/new-for-builtins': 'error',
 			'unicorn/no-abusive-eslint-disable': 'error',
 			'unicorn/no-accessor-recursion': 'error',

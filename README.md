@@ -56,7 +56,7 @@ Beside that, the following additional rules are part of this bundle:
 - [stylelint-scss](https://www.npmjs.com/package/stylelint-scss)
 - [stylelint-selector-no-empty](https://www.npmjs.com/package/stylelint-selector-no-empty) (Forked version)
 - [stylelint-selector-tag-no-without-class](https://www.npmjs.com/package/stylelint-selector-tag-no-without-class) (Forked version)
-- [stylelint-use-logical-spec](https://www.npmjs.com/package/stylelint-use-logical-spec)
+- [stylelint-use-logical](https://www.npmjs.com/package/stylelint-use-logical)
 
 Beside that [72 stylistic rules](https://github.com/jens-duttke/linter-bundle/tree/main/stylelint/plugins/stylelint-15.11.0-stylistic/rules) has been forked from `stylelint@15.11.0`, which have been removed in `stylelint@16.0.0`, are part of this bundle.
 

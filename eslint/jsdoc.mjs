@@ -77,6 +77,7 @@ export default [
 			'jsdoc/require-returns-description': 'error',
 			'jsdoc/require-returns-type': 'error',
 			'jsdoc/require-returns': ['error', { forceReturnsWithAsync: true }],
+			'jsdoc/require-rejects': 'error',
 			'jsdoc/require-template-description': 'off',
 			'jsdoc/require-template': 'error',
 			'jsdoc/require-throws-description': 'error',
