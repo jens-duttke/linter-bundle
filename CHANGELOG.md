@@ -6,7 +6,52 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.11.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.12.0...HEAD)
+
+## [7.12.0] - 2026-02-20
+
+### Breaking changes
+
+- [general] Drop support for Node.js versions less than 20.19.0, 22.0.0-22.12.x as some of the dependencies are not supporting them anymore
+- [stylelint] Replaced `stylelint-use-logical-spec` with [`stylelint-use-logical`](https://github.com/csstools/stylelint-use-logical). The rule name changed from `liberty/use-logical-spec` to `csstools/use-logical`.
+
+### Changed
+
+- [eslint] Updated `@stylistic/eslint-plugin` from `5.6.1` to `5.9.0`
+- [eslint] Updated `eslint` from `9.39.1` to `9.39.3`
+- [eslint] Updated `eslint-plugin-jest` from `29.1.0` to `29.15.0`
+- [eslint] Updated `eslint-plugin-jsdoc` from `61.3.0` to `62.7.0`
+- [eslint] Updated `eslint-plugin-n` from `17.23.1` to `17.24.0`
+- [eslint] Updated `eslint-plugin-unicorn` from `62.0.0` to `63.0.0`
+- [eslint] Updated `globals` from `16.5.0` to `17.3.0`
+- [eslint] Updated `typescript-eslint` from `8.47.0` to `8.56.0`
+- [stylelint] Updated `stylelint` from `16.25.0` to `17.3.0`
+- [stylelint] Updated `stylelint-declaration-block-no-ignored-properties` from `2.8.0` to `3.0.0`
+- [stylelint] Updated `stylelint-high-performance-animation` from `1.11.0` to `2.0.0`
+- [stylelint] Updated `stylelint-order` from `7.0.0` to `7.0.1`
+- [stylelint] Updated `stylelint-scss` from `6.12.1` to `7.0.0`
+- [markdown] Updated `markdownlint-cli` from `0.46.0` to `0.47.0`
+- [eslint] Make use of new [`jsdoc/require-rejects`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-rejects.md) rule
+- [eslint] Make use of new [`unicorn/isolated-functions`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/isolated-functions.md) rule
+- [eslint] Make use of new [`@typescript-eslint/no-unused-private-class-members`](https://typescript-eslint.io/rules/no-unused-private-class-members/) rule
+- [eslint] Make use of new [`@typescript-eslint/no-useless-default-assignment`](https://typescript-eslint.io/rules/no-useless-default-assignment/) rule
+- [eslint] Make use of new [`jest/no-error-equal`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/no-error-equal.md) rule
+- [eslint] Make use of new [`jest/no-unneeded-async-expect-function`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/no-unneeded-async-expect-function.md) rule
+- [eslint] Make use of new [`jest/no-unnecessary-assertion`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/no-unnecessary-assertion.md) rule
+- [eslint] Make use of new [`jest/prefer-mock-return-shorthand`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/prefer-mock-return-shorthand.md) rule
+- [eslint] Make use of new [`jest/prefer-to-have-been-called`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/prefer-to-have-been-called.md) rule
+- [eslint] Make use of new [`jest/prefer-to-have-been-called-times`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/prefer-to-have-been-called-times.md) rule
+- [eslint] Make use of new [`jest/valid-expect-with-promise`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/valid-expect-with-promise.md) rule
+- [eslint] Make use of new [`jest/valid-mock-module-path`](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/valid-mock-module-path.md) rule
+- [eslint] Make use of new [`n/prefer-global/crypto`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/prefer-global/crypto.md) rule
+- [eslint] Make use of new [`n/prefer-global/timers`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/prefer-global/timers.md) rule
+- [eslint] Make use of new [`@typescript-eslint/strict-void-return`](https://typescript-eslint.io/rules/strict-void-return/) rule
+- [eslint] Added but disabled [`@stylistic/jsx-props-style`](https://eslint.style/rules/jsx-props-style) rule, as it is an experimental feature
+- [stylelint] Added but disabled [`display-notation`](https://stylelint.io/user-guide/rules/display-notation/) rule
+- [stylelint] Added but disabled [`scss/selector-class-pattern`](https://github.com/stylelint-scss/stylelint-scss/tree/master/src/rules/selector-class-pattern) rule
+- [stylelint] Updated forked `plugin/selector-tag-no-without-class` for stylelint 17 compatibility (adapted `parseSelector` API change)
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.11.0...v7.12.0)
 
 ## [7.11.0] - 2025-11-19
 
