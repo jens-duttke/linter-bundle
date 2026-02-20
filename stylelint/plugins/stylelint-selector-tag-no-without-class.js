@@ -188,10 +188,11 @@ function rule (primaryOption, secondaryOptions = {}) {
 			}
 
 			for (const selector of ruleNode.selectors) {
-				// @ts-expect-error -- Parameter 'container' implicitly has an 'any' type.
-				parseSelector(selector, result, ruleNode, (container) => {
+				const container = parseSelector(selector, result, ruleNode);
+
+				if (container) {
 					checkSelectorRoot(container, ruleNode);
-				});
+				}
 			}
 		});
 	};
