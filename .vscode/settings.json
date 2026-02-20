@@ -15,6 +15,11 @@
 	"eslint.options": {
 		"overrideConfigFile": "./eslint.config.mjs"
 	},
+	"github.copilot.chat.commitMessageGeneration.instructions": [
+        {
+            "file": ".github/shared-copilot-commit-message-instructions.md"
+        }
+    ],
 	"files.associations": {
 		"*.json": "jsonc",
 		"package.json": "json"
