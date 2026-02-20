@@ -61,6 +61,15 @@ $box-shadow-size: 2px;
 
 	color: var(--color);
 }
+
+.test {
+	&,
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+}
 `, 'utf8');
 
 	fs.writeFileSync(tempModuleFilePath, `// Some test code for CSS modules
