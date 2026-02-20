@@ -35,9 +35,9 @@
 		"publish:minor": "npm version minor",
 		"publish:patch": "npm version patch",
 		"lint": "npm run _test-stylelint && npm run _stylelint-find-rules && node ./lint files tsc ts md audit --min-severity=critical",
-		"preversion": "npm run check-outdated && npm run lint",
+		"preversion": "npm whoami && npm run check-outdated && npm run lint",
 		"postversion": "git push && git push --tags && npm publish",
-		"check-outdated": "npx --yes -- check-outdated --ignore-pre-releases",
+		"check-outdated": "npx --yes -- check-outdated --ignore-pre-releases --min-age 30 --min-age-patch 1",
 		"_stylelint-find-rules": "stylelint-find-new-rules ./stylelint/index.mjs",
 		"_test-stylelint": "node ./test-stylelint.js"
 	},
