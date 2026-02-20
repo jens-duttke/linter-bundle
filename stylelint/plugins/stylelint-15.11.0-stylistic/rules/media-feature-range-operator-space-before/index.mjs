@@ -39,7 +39,7 @@ const rule = (primary, _secondaryOptions) => {
 			/** @type {number[]} */
 			const fixOperatorIndices = [];
 			findMediaOperator(atRule, (match, parameters, node) => {
-				checkBeforeOperator(match, parameters, node, (index) => fixOperatorIndices.push(index));
+				checkBeforeOperator(match, parameters, node, (index) => { fixOperatorIndices.push(index); });
 			});
 
 			if (fixOperatorIndices.length > 0) {
