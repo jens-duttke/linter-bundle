@@ -72,18 +72,19 @@ For each **high-risk** and **medium-risk** package, check the release notes betw
 
 3. Check `engines.node` — if any updated dependency raises its minimum Node.js version, update the `engines` field accordingly.
 
-4. Run:
-
-```sh
-npm install
-```
+4. Run `npm install`.
 
 5. Verify installation succeeds without errors. Watch for:
 
    - **Peer dependency conflicts** — May require `--legacy-peer-deps` temporarily, but ideally resolve the conflict.
    - **Deprecated package warnings** — Consider whether a replacement exists.
 
-6. **Never run `npm audit fix --force`**. It will downgrade packages to ancient, incompatible versions and break the entire dependency tree. Audit vulnerabilities in this project are typically in transitive dependencies of ESLint/Stylelint plugins and can only be resolved when those plugins release updates. To recover from an accidental `--force`, restore `package.json` and `package-lock.json` from git and run `npm install`.
+6. **Never run `npm audit fix --force`**. It will downgrade packages to ancient,
+   incompatible versions and break the entire dependency tree. Audit vulnerabilities
+   in this project are typically in transitive dependencies of ESLint/Stylelint plugins
+   and can only be resolved when those plugins release updates. To recover from an
+   accidental `--force`, restore `package.json` and `package-lock.json` from git
+   and run `npm install`.
 
 ---
 
