@@ -34,12 +34,12 @@ export async function getGitFiles () {
 	};
 
 	if (!gitFiles) {
-		const deletedFiles = gitProcessResult.deleted.stdout.trim().split('\0');
+		const deletedFiles = new Set(gitProcessResult.deleted.stdout.trim().split('\0'));
 
 		gitFiles = [
 			...gitProcessResult.diff.stdout.trim().split('\0'),
 			...gitProcessResult.modified.stdout.trim().split('\0')
-		].filter((file, index, self) => (!deletedFiles.includes(file) && self.indexOf(file) === index));
+		].filter((file, index, self) => (!deletedFiles.has(file) && self.indexOf(file) === index));
 	}
 
 	return gitFiles;
