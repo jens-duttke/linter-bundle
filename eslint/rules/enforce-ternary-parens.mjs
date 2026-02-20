@@ -13,7 +13,6 @@ export default {
 		fixable: 'code',
 		docs: {
 			description: 'Requires ternary expressions to be wrapped in parentheses.',
-			category: 'Styling',
 			recommended: true
 		}
 	},

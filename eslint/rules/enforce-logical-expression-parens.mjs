@@ -12,7 +12,6 @@ export default {
 		type: 'problem',
 		docs: {
 			description: 'Add parentheses around logical operations if not already present',
-			category: 'Best Practices',
 			recommended: true
 		},
 		fixable: 'code'

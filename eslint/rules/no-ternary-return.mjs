@@ -10,7 +10,6 @@ export default {
 		type: 'suggestion',
 		docs: {
 			description: 'Disallow ternary expressions as return values for better readability',
-			category: 'Stylistic Issues',
 			recommended: true
 		},
 		fixable: 'code',
