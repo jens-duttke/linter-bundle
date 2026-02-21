@@ -40,47 +40,51 @@ const rule = (primary, _secondaryOptions) => (root, result) => {
 		// @todo re-enable when parser and stylelint are compatible
 		if (selector.includes('/*')) { return; }
 
-		const fixedSelector = parseSelector(selector, result, ruleNode, (fullSelector) => {
-			fullSelector.walkCombinators((combinatorNode) => {
-				if (combinatorNode.value !== ' ') {
-					return;
-				}
+		const selectorTree = parseSelector(selector, result, ruleNode);
 
-				const value = combinatorNode.toString();
+		if (!selectorTree) {
+			return;
+		}
 
-				if (
-					value.includes('  ') ||
-						value.includes('\t') ||
-						value.includes('\n') ||
-						value.includes('\r')
-				) {
-					report({
-						result,
-						ruleName,
-						message: messages.rejected(value),
-						node: ruleNode,
-						index: combinatorNode.sourceIndex,
-						endIndex: combinatorNode.sourceIndex,
-						fix: ((/^\s+$/u).test(value) ? () => {
-							hasFixed = true;
+		selectorTree.walkCombinators((combinatorNode) => {
+			if (combinatorNode.value !== ' ') {
+				return;
+			}
 
-							if (!combinatorNode.raws) { combinatorNode.raws = {}; }
+			const value = combinatorNode.toString();
 
-							combinatorNode.raws.value = ' ';
-							combinatorNode.rawSpaceBefore = combinatorNode.rawSpaceBefore.replace(/^\s+/u, '');
-							combinatorNode.rawSpaceAfter = combinatorNode.rawSpaceAfter.replace(/\s+$/u, '');
-						} : undefined)
-					});
-				}
-			});
+			if (
+				value.includes('  ') ||
+					value.includes('\t') ||
+					value.includes('\n') ||
+					value.includes('\r')
+			) {
+				report({
+					result,
+					ruleName,
+					message: messages.rejected(value),
+					node: ruleNode,
+					index: combinatorNode.sourceIndex,
+					endIndex: combinatorNode.sourceIndex,
+					fix: ((/^\s+$/u).test(value) ? () => {
+						hasFixed = true;
+
+						if (!combinatorNode.raws) { combinatorNode.raws = {}; }
+
+						combinatorNode.raws.value = ' ';
+						combinatorNode.rawSpaceBefore = combinatorNode.rawSpaceBefore.replace(/^\s+/u, '');
+						combinatorNode.rawSpaceAfter = combinatorNode.rawSpaceAfter.replace(/\s+$/u, '');
+					} : undefined)
+				});
+			}
 		});
 
-		if (hasFixed && fixedSelector) {
+		if (hasFixed) {
 			if (!ruleNode.raws.selector) {
-				ruleNode.selector = fixedSelector;
+				ruleNode.selector = selectorTree.toString();
 			}
 			else {
-				ruleNode.raws.selector.raw = fixedSelector;
+				ruleNode.raws.selector.raw = selectorTree.toString();
 			}
 		}
 	});

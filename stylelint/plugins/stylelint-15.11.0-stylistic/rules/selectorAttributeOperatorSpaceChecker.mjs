@@ -30,30 +30,34 @@ export default function selectorAttributeOperatorSpaceChecker (options) {
 		let hasFixed = false;
 		const selector = rule.raws.selector ? rule.raws.selector.raw : rule.selector;
 
-		const fixedSelector = parseSelector(selector, options.result, rule, (selectorTree) => {
-			selectorTree.walkAttributes((attributeNode) => {
-				const operator = attributeNode.operator;
+		const selectorTree = parseSelector(selector, options.result, rule);
 
-				if (!operator) {
-					return;
-				}
+		if (!selectorTree) {
+			return;
+		}
 
-				const attributeNodeString = attributeNode.toString();
+		selectorTree.walkAttributes((attributeNode) => {
+			const operator = attributeNode.operator;
 
-				styleSearch({ source: attributeNodeString, target: operator }, (match) => {
-					const index = options.checkBeforeOperator ? match.startIndex : match.endIndex - 1;
+			if (!operator) {
+				return;
+			}
 
-					checkOperator(attributeNodeString, index, rule, attributeNode, operator);
-				});
+			const attributeNodeString = attributeNode.toString();
+
+			styleSearch({ source: attributeNodeString, target: operator }, (match) => {
+				const index = options.checkBeforeOperator ? match.startIndex : match.endIndex - 1;
+
+				checkOperator(attributeNodeString, index, rule, attributeNode, operator);
 			});
 		});
 
-		if (hasFixed && fixedSelector) {
+		if (hasFixed) {
 			if (!rule.raws.selector) {
-				rule.selector = fixedSelector;
+				rule.selector = selectorTree.toString();
 			}
 			else {
-				rule.raws.selector.raw = fixedSelector;
+				rule.raws.selector.raw = selectorTree.toString();
 			}
 		}
 

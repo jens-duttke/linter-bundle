@@ -28,47 +28,51 @@ export default function selectorCombinatorSpaceChecker (options) {
 		hasFixed = false;
 		const selector = rule.raws.selector ? rule.raws.selector.raw : rule.selector;
 
-		const fixedSelector = parseSelector(selector, options.result, rule, (selectorTree) => {
-			selectorTree.walkCombinators((node) => {
-				// Ignore non-standard combinators
-				if (!isStandardSyntaxCombinator(node)) {
-					return;
-				}
+		const selectorTree = parseSelector(selector, options.result, rule);
 
-				// Ignore spaced descendant combinator
-				if ((/\s/u).test(node.value)) {
-					return;
-				}
+		if (!selectorTree) {
+			return;
+		}
 
-				// Check the exist of node in prev of the combinator.
-				// in case some that aren't the first begin with combinators (nesting syntax)
-				if (options.locationType === 'before' && !node.prev()) {
-					return;
-				}
+		selectorTree.walkCombinators((node) => {
+			// Ignore non-standard combinators
+			if (!isStandardSyntaxCombinator(node)) {
+				return;
+			}
 
-				const parentParentNode = node.parent?.parent;
+			// Ignore spaced descendant combinator
+			if ((/\s/u).test(node.value)) {
+				return;
+			}
 
-				// Ignore pseudo-classes selector like `.foo:nth-child(2n + 1) {}`
-				if (parentParentNode && parentParentNode.type === 'pseudo') {
-					return;
-				}
+			// Check the exist of node in prev of the combinator.
+			// in case some that aren't the first begin with combinators (nesting syntax)
+			if (options.locationType === 'before' && !node.prev()) {
+				return;
+			}
 
-				const sourceIndex = node.sourceIndex;
-				const index =
-					node.value.length > 1 && options.locationType === 'before' ?
-						sourceIndex
-						: sourceIndex + node.value.length - 1;
+			const parentParentNode = node.parent?.parent;
 
-				check(selector, node, index, rule, sourceIndex);
-			});
+			// Ignore pseudo-classes selector like `.foo:nth-child(2n + 1) {}`
+			if (parentParentNode && parentParentNode.type === 'pseudo') {
+				return;
+			}
+
+			const sourceIndex = node.sourceIndex;
+			const index =
+				node.value.length > 1 && options.locationType === 'before' ?
+					sourceIndex
+					: sourceIndex + node.value.length - 1;
+
+			check(selector, node, index, rule, sourceIndex);
 		});
 
-		if (hasFixed && fixedSelector) {
+		if (hasFixed) {
 			if (!rule.raws.selector) {
-				rule.selector = fixedSelector;
+				rule.selector = selectorTree.toString();
 			}
 			else {
-				rule.raws.selector.raw = fixedSelector;
+				rule.raws.selector.raw = selectorTree.toString();
 			}
 		}
 	});

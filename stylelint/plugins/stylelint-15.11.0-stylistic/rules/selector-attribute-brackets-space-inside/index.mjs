@@ -47,88 +47,92 @@ const rule = (primary, _secondaryOptions) => {
 			const selector = ruleNode.raws.selector ? ruleNode.raws.selector.raw : ruleNode.selector;
 
 			let hasFixed;
-			const fixedSelector = parseSelector(selector, result, ruleNode, (selectorTree) => {
-				selectorTree.walkAttributes((attributeNode) => {
-					const attributeSelectorString = attributeNode.toString();
+			const selectorTree = parseSelector(selector, result, ruleNode);
 
-					styleSearch({ source: attributeSelectorString, target: '[' }, (match) => {
-						const nextCharIsSpace = attributeSelectorString[match.startIndex + 1] === ' ';
-						const index = attributeNode.sourceIndex + match.startIndex + 1;
+			if (!selectorTree) {
+				return;
+			}
 
-						if (nextCharIsSpace && primary === 'never') {
-							report({
-								message: messages.rejectedOpening,
-								index,
-								endIndex: index,
-								result,
-								ruleName,
-								node: ruleNode,
-								fix: () => {
-									hasFixed = true;
-									fixBefore(attributeNode);
-								}
-							});
-						}
+			selectorTree.walkAttributes((attributeNode) => {
+				const attributeSelectorString = attributeNode.toString();
 
-						if (!nextCharIsSpace && primary === 'always') {
-							report({
-								message: messages.expectedOpening,
-								index,
-								endIndex: index,
-								result,
-								ruleName,
-								node: ruleNode,
-								fix: () => {
-									hasFixed = true;
-									fixBefore(attributeNode);
-								}
-							});
-						}
-					});
+				styleSearch({ source: attributeSelectorString, target: '[' }, (match) => {
+					const nextCharIsSpace = attributeSelectorString[match.startIndex + 1] === ' ';
+					const index = attributeNode.sourceIndex + match.startIndex + 1;
 
-					styleSearch({ source: attributeSelectorString, target: ']' }, (match) => {
-						const previousCharIsSpace = attributeSelectorString[match.startIndex - 1] === ' ';
-						const index = attributeNode.sourceIndex + match.startIndex - 1;
+					if (nextCharIsSpace && primary === 'never') {
+						report({
+							message: messages.rejectedOpening,
+							index,
+							endIndex: index,
+							result,
+							ruleName,
+							node: ruleNode,
+							fix: () => {
+								hasFixed = true;
+								fixBefore(attributeNode);
+							}
+						});
+					}
 
-						if (previousCharIsSpace && primary === 'never') {
-							report({
-								message: messages.rejectedClosing,
-								index,
-								endIndex: index,
-								result,
-								ruleName,
-								node: ruleNode,
-								fix: () => {
-									hasFixed = true;
-									fixAfter(attributeNode);
-								}
-							});
-						}
+					if (!nextCharIsSpace && primary === 'always') {
+						report({
+							message: messages.expectedOpening,
+							index,
+							endIndex: index,
+							result,
+							ruleName,
+							node: ruleNode,
+							fix: () => {
+								hasFixed = true;
+								fixBefore(attributeNode);
+							}
+						});
+					}
+				});
 
-						if (!previousCharIsSpace && primary === 'always') {
-							report({
-								message: messages.expectedClosing,
-								index,
-								endIndex: index,
-								result,
-								ruleName,
-								node: ruleNode,
-								fix: () => {
-									hasFixed = true;
-									fixAfter(attributeNode);
-								}
-							});
-						}
-					});
+				styleSearch({ source: attributeSelectorString, target: ']' }, (match) => {
+					const previousCharIsSpace = attributeSelectorString[match.startIndex - 1] === ' ';
+					const index = attributeNode.sourceIndex + match.startIndex - 1;
+
+					if (previousCharIsSpace && primary === 'never') {
+						report({
+							message: messages.rejectedClosing,
+							index,
+							endIndex: index,
+							result,
+							ruleName,
+							node: ruleNode,
+							fix: () => {
+								hasFixed = true;
+								fixAfter(attributeNode);
+							}
+						});
+					}
+
+					if (!previousCharIsSpace && primary === 'always') {
+						report({
+							message: messages.expectedClosing,
+							index,
+							endIndex: index,
+							result,
+							ruleName,
+							node: ruleNode,
+							fix: () => {
+								hasFixed = true;
+								fixAfter(attributeNode);
+							}
+						});
+					}
 				});
 			});
 
-			if (hasFixed && fixedSelector) {
+			if (hasFixed) {
 				if (!ruleNode.raws.selector) {
-					ruleNode.selector = fixedSelector;
+					ruleNode.selector = selectorTree.toString();
 				}
 				else {
-					ruleNode.raws.selector.raw = fixedSelector;
+					ruleNode.raws.selector.raw = selectorTree.toString();
 				}
 			}
 		});

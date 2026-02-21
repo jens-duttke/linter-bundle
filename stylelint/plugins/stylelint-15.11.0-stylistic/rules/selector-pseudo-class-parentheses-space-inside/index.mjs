@@ -43,87 +43,91 @@ const rule = (primary, _secondaryOptions) => (root, result) => {
 
 		let hasFixed = false;
 		const selector = ruleNode.raws.selector ? ruleNode.raws.selector.raw : ruleNode.selector;
-		const fixedSelector = parseSelector(selector, result, ruleNode, (selectorTree) => {
-			selectorTree.walkPseudos((pseudoNode) => {
-				if (pseudoNode.length === 0) {
-					return;
-				}
+		const selectorTree = parseSelector(selector, result, ruleNode);
 
-				const paramString = pseudoNode.map((node) => String(node)).join(',');
-				const nextCharIsSpace = paramString.startsWith(' ');
-				const openIndex = pseudoNode.sourceIndex + pseudoNode.value.length + 1;
+		if (!selectorTree) {
+			return;
+		}
 
-				if (nextCharIsSpace && primary === 'never') {
-					report({
-						message: messages.rejectedOpening,
-						index: openIndex,
-						endIndex: openIndex,
-						result,
-						ruleName,
-						node: ruleNode,
-						fix: () => {
-							hasFixed = true;
-							setFirstNodeSpaceBefore(pseudoNode, '');
-						}
-					});
-				}
+		selectorTree.walkPseudos((pseudoNode) => {
+			if (pseudoNode.length === 0) {
+				return;
+			}
 
-				if (!nextCharIsSpace && primary === 'always') {
-					report({
-						message: messages.expectedOpening,
-						index: openIndex,
-						endIndex: openIndex,
-						result,
-						ruleName,
-						node: ruleNode,
-						fix: () => {
-							hasFixed = true;
-							setFirstNodeSpaceBefore(pseudoNode, ' ');
-						}
-					});
-				}
+			const paramString = pseudoNode.map((node) => String(node)).join(',');
+			const nextCharIsSpace = paramString.startsWith(' ');
+			const openIndex = pseudoNode.sourceIndex + pseudoNode.value.length + 1;
 
-				const previousCharIsSpace = paramString.endsWith(' ');
-				const closeIndex = openIndex + paramString.length - 1;
+			if (nextCharIsSpace && primary === 'never') {
+				report({
+					message: messages.rejectedOpening,
+					index: openIndex,
+					endIndex: openIndex,
+					result,
+					ruleName,
+					node: ruleNode,
+					fix: () => {
+						hasFixed = true;
+						setFirstNodeSpaceBefore(pseudoNode, '');
+					}
+				});
+			}
 
-				if (previousCharIsSpace && primary === 'never') {
-					report({
-						message: messages.rejectedClosing,
-						index: closeIndex,
-						endIndex: closeIndex,
-						result,
-						ruleName,
-						node: ruleNode,
-						fix: () => {
-							hasFixed = true;
-							setLastNodeSpaceAfter(pseudoNode, '');
-						}
-					});
-				}
+			if (!nextCharIsSpace && primary === 'always') {
+				report({
+					message: messages.expectedOpening,
+					index: openIndex,
+					endIndex: openIndex,
+					result,
+					ruleName,
+					node: ruleNode,
+					fix: () => {
+						hasFixed = true;
+						setFirstNodeSpaceBefore(pseudoNode, ' ');
+					}
+				});
+			}
 
-				if (!previousCharIsSpace && primary === 'always') {
-					report({
-						message: messages.expectedClosing,
-						index: closeIndex,
-						endIndex: closeIndex,
-						result,
-						ruleName,
-						node: ruleNode,
-						fix: () => {
-							hasFixed = true;
-							setLastNodeSpaceAfter(pseudoNode, ' ');
-						}
-					});
-				}
-			});
+			const previousCharIsSpace = paramString.endsWith(' ');
+			const closeIndex = openIndex + paramString.length - 1;
+
+			if (previousCharIsSpace && primary === 'never') {
+				report({
+					message: messages.rejectedClosing,
+					index: closeIndex,
+					endIndex: closeIndex,
+					result,
+					ruleName,
+					node: ruleNode,
+					fix: () => {
+						hasFixed = true;
+						setLastNodeSpaceAfter(pseudoNode, '');
+					}
+				});
+			}
+
+			if (!previousCharIsSpace && primary === 'always') {
+				report({
+					message: messages.expectedClosing,
+					index: closeIndex,
+					endIndex: closeIndex,
+					result,
+					ruleName,
+					node: ruleNode,
+					fix: () => {
+						hasFixed = true;
+						setLastNodeSpaceAfter(pseudoNode, ' ');
+					}
+				});
+			}
 		});
 
-		if (hasFixed && fixedSelector) {
+		if (hasFixed) {
 			if (!ruleNode.raws.selector) {
-				ruleNode.selector = fixedSelector;
+				ruleNode.selector = selectorTree.toString();
 			}
 			else {
-				ruleNode.raws.selector.raw = fixedSelector;
+				ruleNode.raws.selector.raw = selectorTree.toString();
 			}
 		}
 	});

@@ -62,7 +62,7 @@ $box-shadow-size: 2px;
 	color: var(--color);
 }
 
-.test {
+.test2 {
 	&,
 	*,
 	*::before,

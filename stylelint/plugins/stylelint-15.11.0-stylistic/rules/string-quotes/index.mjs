@@ -86,7 +86,9 @@ const rule = (primary, secondaryOptions) => {
 			/** @type {number[]} */
 			const fixPositions = [];
 
-			parseSelector(ruleNode.selector, result, ruleNode, (selectorTree) => {
+			const selectorTree = parseSelector(ruleNode.selector, result, ruleNode);
+
+			if (selectorTree) {
 				let selectorFixed = false;
 
 				selectorTree.walkAttributes((attributeNode) => {
@@ -165,7 +167,7 @@ const rule = (primary, secondaryOptions) => {
 				if (selectorFixed) {
 					ruleNode.selector = selectorTree.toString();
 				}
-			});
+			}
 
 			for (const fixIndex of fixPositions) {
 				ruleNode.selector = replaceQuote(ruleNode.selector, fixIndex, correctQuote);

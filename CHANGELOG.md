@@ -6,7 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.12.0...HEAD)
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.12.1...HEAD)
+
+## [7.12.1] - 2026-02-21
+
+### Fixed
+
+- [stylelint] Fix stylistic plugins crashing with `TypeError: selector.startsWith is not a function` due to `parseSelector` API change in stylelint 17 (callback parameter removed, now returns AST instead of string)
+
+[Show all code changes](https://github.com/jens-duttke/linter-bundle/compare/v7.12.0...v7.12.1)
 
 ## [7.12.0] - 2026-02-20
 
